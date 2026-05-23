@@ -1135,6 +1135,11 @@ body {
     background: rgba(255, 255, 255, 0.08);
 }
 
+.form-control option {
+    background-color: #121020;
+    color: var(--text-main);
+}
+
 .calc-double-input {
     display: grid;
     grid-template-columns: 1fr 1fr;
