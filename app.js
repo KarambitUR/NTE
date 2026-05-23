@@ -457,9 +457,9 @@ const LOCALIZED_ATTRIBUTE_MATERIALS = {
                 farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "Esper Ability Book I",
-                T2: "Esper Ability Book II",
-                T3: "Esper Ability Book III",
+                T1: "Біла троянда",
+                T2: "Чорний капелюх",
+                T3: "Ніч прискореного серцебиття",
                 farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         },
@@ -475,9 +475,9 @@ const LOCALIZED_ATTRIBUTE_MATERIALS = {
                 farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "Esper Ability Book I",
-                T2: "Esper Ability Book II",
-                T3: "Esper Ability Book III",
+                T1: "White Rose",
+                T2: "Black Hat",
+                T3: "Heart-Racing Night",
                 farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         }
@@ -495,9 +495,9 @@ const LOCALIZED_ATTRIBUTE_MATERIALS = {
                 farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "Esper Ability Book I",
-                T2: "Esper Ability Book II",
-                T3: "Esper Ability Book III",
+                T1: "Друге Я",
+                T2: "CO",
+                T3: "Відома втома",
                 farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         },
@@ -513,9 +513,9 @@ const LOCALIZED_ATTRIBUTE_MATERIALS = {
                 farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "Esper Ability Book I",
-                T2: "Esper Ability Book II",
-                T3: "Esper Ability Book III",
+                T1: "The Second Self",
+                T2: "CO",
+                T3: "Known Weariness",
                 farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         }
@@ -533,9 +533,9 @@ const LOCALIZED_ATTRIBUTE_MATERIALS = {
                 farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "The Olive Branch",
-                T2: "Dove's Flutter",
-                T3: "Nestling's Longing",
+                T1: "Оливкова гілка",
+                T2: "Тріпотіння голуба",
+                T3: "Туга пташеняти",
                 farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         },
@@ -571,9 +571,9 @@ const LOCALIZED_ATTRIBUTE_MATERIALS = {
                 farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "Esper Ability Book I",
-                T2: "Esper Ability Book II",
-                T3: "Esper Ability Book III",
+                T1: "Резонанс віри",
+                T2: "Призупинений шепіт",
+                T3: "FNG",
                 farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         },
@@ -589,9 +589,9 @@ const LOCALIZED_ATTRIBUTE_MATERIALS = {
                 farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "Esper Ability Book I",
-                T2: "Esper Ability Book II",
-                T3: "Esper Ability Book III",
+                T1: "Resonance of Faith",
+                T2: "Suspended Whispers",
+                T3: "FNG",
                 farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         }
@@ -609,9 +609,9 @@ const LOCALIZED_ATTRIBUTE_MATERIALS = {
                 farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "Esper Ability Book I",
-                T2: "Esper Ability Book II",
-                T3: "Esper Ability Book III",
+                T1: "Перші очікування",
+                T2: "Синхронність думок",
+                T3: "Коливання хвиль",
                 farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         },
@@ -627,9 +627,9 @@ const LOCALIZED_ATTRIBUTE_MATERIALS = {
                 farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "Esper Ability Book I",
-                T2: "Esper Ability Book II",
-                T3: "Esper Ability Book III",
+                T1: "First Expectations",
+                T2: "Synchronicity of Thought",
+                T3: "Hesitation of the Waves",
                 farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         }
@@ -2617,19 +2617,59 @@ const MATERIAL_ICON_BY_NAME = {
 };
 
 // Use real material icons from public NTE databases; fallback keeps the card readable if a CDN image fails.
-function getMaterialIcon(id) {
-    const src = MATERIAL_ICON_URLS[id];
+const ATTRIBUTE_SCROLL_ICONS = {
+    Cosmos: [
+        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/The-Olive-Branch.webp",
+        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Doves-Flutter.webp",
+        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Nestlings-Longing.webp"
+    ],
+    Anima: [
+        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/White-Rose.webp",
+        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Black-Hat.webp",
+        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Heart-Racing-Night.webp"
+    ],
+    Incantation: [
+        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/The-Second-Self.webp",
+        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/CO.webp",
+        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Known-Weariness.webp"
+    ],
+    Chaos: [
+        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Resonance-of-Faith.webp",
+        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Suspended-Whispers-1.webp",
+        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/FNG.webp"
+    ],
+    Psyche: [
+        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/First-Expectations.webp",
+        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Synchronicity-of-Thought.webp",
+        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Hesitation-of-the-Waves.webp"
+    ]
+};
+
+function getMaterialIcon(id, profile = null, attrDetails = null, char = null) {
+    let src = null;
+    if (profile) {
+        if ((id === "boss" || id === "specialty") && profile.uniqueIcon) {
+            src = profile.uniqueIcon;
+        } else if (id === "scroll_t1" || id === "scroll_t2" || id === "scroll_t3") {
+            const idx = id === "scroll_t1" ? 0 : id === "scroll_t2" ? 1 : 2;
+            if (profile.skillBookIcons && profile.skillBookIcons[idx]) {
+                src = profile.skillBookIcons[idx];
+            } else if (char && char.attribute && ATTRIBUTE_SCROLL_ICONS[char.attribute]) {
+                src = ATTRIBUTE_SCROLL_ICONS[char.attribute][idx];
+            } else if (attrDetails && attrDetails.scrolls) {
+                const scrollName = idx === 0 ? attrDetails.scrolls.T1 : idx === 1 ? attrDetails.scrolls.T2 : idx === 2 ? attrDetails.scrolls.T3 : null;
+                if (scrollName && MATERIAL_ICON_BY_NAME[scrollName]) {
+                    src = MATERIAL_ICON_BY_NAME[scrollName];
+                }
+            }
+        }
+    }
+    if (!src) {
+        src = MATERIAL_ICON_URLS[id];
+    }
     const label = id.split("_").map(part => part[0]).join("").slice(0, 2).toUpperCase();
     if (!src) return `<span class="mat-fallback-icon">${label}</span>`;
     return `<img src="${src}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'mat-fallback-icon',textContent:'${label}'}))">`;
-}
-
-function setMaterialIcon(id, src) {
-    if (src) MATERIAL_ICON_URLS[id] = src;
-}
-
-function setMaterialIconByName(id, name) {
-    setMaterialIcon(id, MATERIAL_ICON_BY_NAME[name]);
 }
 
 function renderCalculatorSetup() {
@@ -3006,15 +3046,14 @@ function calculateResources() {
     const dyesBasic = Math.ceil(weapExpRem / 500);
 
     // Specific names based on character attribute
-    const attrDetails = (LOCALIZED_ATTRIBUTE_MATERIALS[char.attribute] && LOCALIZED_ATTRIBUTE_MATERIALS[char.attribute][currentLang]) || LOCALIZED_ATTRIBUTE_MATERIALS["Anima"][currentLang];
+    const baseAttrDetails = (LOCALIZED_ATTRIBUTE_MATERIALS[char.attribute] && LOCALIZED_ATTRIBUTE_MATERIALS[char.attribute][currentLang]) || LOCALIZED_ATTRIBUTE_MATERIALS["Anima"][currentLang];
+    const attrDetails = JSON.parse(JSON.stringify(baseAttrDetails));
     const profile = CHARACTER_MATERIAL_PROFILES[char.id] || {};
     if (profile.unique) {
         attrDetails.boss = profile.unique;
         attrDetails.farmBoss = profile.uniqueFarm || attrDetails.farmBoss;
         attrDetails.specialty = profile.unique;
         attrDetails.farmSpecialty = profile.uniqueFarm || attrDetails.farmSpecialty;
-        setMaterialIcon("boss", profile.uniqueIcon);
-        setMaterialIcon("specialty", profile.uniqueIcon);
     }
     if (profile.commonFamily) {
         attrDetails.common.T1 = profile.commonFamily[0];
@@ -3025,12 +3064,6 @@ function calculateResources() {
         attrDetails.scrolls.T1 = profile.skillBooks[0];
         attrDetails.scrolls.T2 = profile.skillBooks[1];
         attrDetails.scrolls.T3 = profile.skillBooks[2];
-        setMaterialIcon("scroll_t1", profile.skillBookIcons && profile.skillBookIcons[0]);
-        setMaterialIcon("scroll_t2", profile.skillBookIcons && profile.skillBookIcons[1]);
-        setMaterialIcon("scroll_t3", profile.skillBookIcons && profile.skillBookIcons[2]);
-        setMaterialIconByName("scroll_t1", attrDetails.scrolls.T1);
-        setMaterialIconByName("scroll_t2", attrDetails.scrolls.T2);
-        setMaterialIconByName("scroll_t3", attrDetails.scrolls.T3);
     }
     const weaponMats = LOCALIZED_WEAPON_MATERIALS[currentLang] || LOCALIZED_WEAPON_MATERIALS["uk"];
 
@@ -3179,7 +3212,7 @@ function calculateResources() {
         
         card.innerHTML = `
             <div class="mat-card-top">
-                <div class="mat-icon">${getMaterialIcon(id)}</div>
+                <div class="mat-icon">${getMaterialIcon(id, profile, attrDetails, char)}</div>
                 <div class="mat-card-info">
                     <span class="mat-card-name">${name}</span>
                     <span class="mat-card-farm">${farmLoc}</span>
@@ -3305,7 +3338,8 @@ function exportCalcReport() {
     }
     
     // Sort materials by calculatedRequirements
-    const attrDetails = (LOCALIZED_ATTRIBUTE_MATERIALS[char.attribute] && LOCALIZED_ATTRIBUTE_MATERIALS[char.attribute][currentLang]) || LOCALIZED_ATTRIBUTE_MATERIALS["Anima"][currentLang];
+    const baseAttrDetails = (LOCALIZED_ATTRIBUTE_MATERIALS[char.attribute] && LOCALIZED_ATTRIBUTE_MATERIALS[char.attribute][currentLang]) || LOCALIZED_ATTRIBUTE_MATERIALS["Anima"][currentLang];
+    const attrDetails = JSON.parse(JSON.stringify(baseAttrDetails));
     const weaponMats = LOCALIZED_WEAPON_MATERIALS[currentLang] || LOCALIZED_WEAPON_MATERIALS["uk"];
     const profile = CHARACTER_MATERIAL_PROFILES[char.id] || {};
     if (profile.unique) {
