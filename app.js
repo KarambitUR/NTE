@@ -167,7 +167,7 @@ const CHARACTERS = [
 // Helper to render character avatars (supports both image URLs and emojis)
 function renderAvatarHtml(char) {
     if (char && char.avatar && char.avatar.startsWith('http')) {
-        return `<img src="${char.avatar}" alt="${char.name}" class="avatar-img">`;
+        return `<img src="${char.avatar}" alt="${char.name}" class="avatar-img" referrerpolicy="no-referrer">`;
     }
     return char ? char.avatar : '';
 }
