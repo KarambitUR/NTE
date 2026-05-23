@@ -9,7 +9,7 @@ const CHARACTERS = [
         attribute: "Anima",
         role: "Main DPS",
         tier: "S+",
-        avatar: "🦊",
+        avatar: "https://static.wikia.nocookie.net/neverness-to-everness/images/4/44/Nanally_-_Character_Showcase.jpg/revision/latest/scale-to-width-down/200?cb=20241229191211",
         summary: "Найсильніший ДПС персонаж стихії Anima. Володіє неймовірною мобільністю завдяки антигравітаційним механікам та завдає колосальної шкоди авто-атаками супроводу.",
         weapon: "Goodnight Kiss (Сигнатурний Arc)",
         weaponF2p: "Raging Flames (Лють Полум'я)",
@@ -25,7 +25,7 @@ const CHARACTERS = [
         attribute: "Incantation",
         role: "Support",
         tier: "S+",
-        avatar: "🐰",
+        avatar: "https://static.wikia.nocookie.net/neverness-to-everness/images/3/32/Sakiri_Card.png/revision/latest/scale-to-width-down/200?cb=20260309141104",
         summary: "Найкращий саппорт у грі. Стягує ворогів, накладає потужне зниження опору до стихій та баффає силу атаки всієї команди після активації вибуху стихій.",
         weapon: "Good Boy's Grand Adventure (Сигнатурний)",
         weaponF2p: "Failing You, Heavy in My Heart",
@@ -41,7 +41,7 @@ const CHARACTERS = [
         attribute: "Anima",
         role: "Sub-DPS",
         tier: "S",
-        avatar: "🐉",
+        avatar: "https://static.wikia.nocookie.net/neverness-to-everness/images/5/57/Jiuyuan_Card.png/revision/latest/scale-to-width-down/200?cb=20260309140453",
         summary: "Потужний суб-ДПС, який наносить швидку вибухову шкоду. Ідеально підходить для активації реакції Blossom (Цвітіння) разом з Наналлі.",
         weapon: "Jade Dragon Whisper (Сигнатурний)",
         weaponF2p: "Rising Wind (Порив Вітру)",
@@ -57,7 +57,7 @@ const CHARACTERS = [
         attribute: "Cosmos",
         role: "Sub-DPS",
         tier: "S",
-        avatar: "🦉",
+        avatar: "https://static.wikia.nocookie.net/neverness-to-everness/images/4/41/Hotori_in_game_Model.png/revision/latest/scale-to-width-down/200?cb=20260223173459",
         summary: "Унікальний саппорт/саб-ДПС, здатний записувати та повторювати навички активних членів загону, подвоюючи загальну шкоду команди.",
         weapon: "Echoes of Eternity",
         weaponF2p: "Appraiser's Notebook",
@@ -73,7 +73,7 @@ const CHARACTERS = [
         attribute: "Cosmos",
         role: "Support",
         tier: "S",
-        avatar: "✨",
+        avatar: "https://static.wikia.nocookie.net/neverness-to-everness/images/c/c2/Esper_Zero_Male_Card.png/revision/latest/scale-to-width-down/200?cb=20260315121329",
         summary: "Головний герой. Володіє Cosmos атрибутом, що є універсальним каталізатором для активації ефекту Esper Cycle для будь-якої іншої стихії.",
         weapon: "Eibon Legacy (Спадщина Ейбона)",
         weaponF2p: "Hunter's Resolve (Рішучість Мисливця)",
@@ -89,7 +89,7 @@ const CHARACTERS = [
         attribute: "Chaos",
         role: "Support",
         tier: "A",
-        avatar: "🛡️",
+        avatar: "https://static.wikia.nocookie.net/neverness-to-everness/images/3/33/Adler_Card.png/revision/latest/scale-to-width-down/200?cb=20260309120100",
         summary: "Надійний щитовик. Створює міцний щит, що поглинає шкоду пропорційно його максимальному здоров'ю, та накладає ефекти періодичної шкоди (DoT) на ворогів.",
         weapon: "Sentinel's Barrier",
         weaponF2p: "Rusty Alloy Shield",
@@ -105,7 +105,7 @@ const CHARACTERS = [
         attribute: "Anima",
         role: "Main DPS",
         tier: "A",
-        avatar: "🍃",
+        avatar: "https://static.wikia.nocookie.net/neverness-to-everness/images/2/20/Mint_Card.png/revision/latest/scale-to-width-down/200?cb=20260307142424",
         summary: "Хороший безкоштовний F2P ДПС персонаж. Проста механіка комбо-атак та швидка перезарядка елементальних умінь.",
         weapon: "Zephyr Blade",
         weaponF2p: "Steel Rapier",
@@ -121,7 +121,7 @@ const CHARACTERS = [
         attribute: "Incantation",
         role: "Support",
         tier: "A",
-        avatar: "🩹",
+        avatar: "https://static.wikia.nocookie.net/neverness-to-everness/images/b/b9/Haniel_Card.png/revision/latest/scale-to-width-down/200?cb=20260309131027",
         summary: "Доступний хілер. Відновлює здоров'я всьому загону залежно від власної сили атаки та знімає негативні ефекти.",
         weapon: "Prayer of Light",
         weaponF2p: "Medic's Flask",
@@ -137,7 +137,7 @@ const CHARACTERS = [
         attribute: "Chaos",
         role: "Main DPS",
         tier: "S",
-        avatar: "🎭",
+        avatar: "https://static.wikia.nocookie.net/neverness-to-everness/images/3/37/Lacrimosa_-_Character_Showcase.jpg/revision/latest/scale-to-width-down/200?cb=20241229191213",
         summary: "Новий анонсований персонаж версії 1.1. Спеціалізується на Chaos шкоді та потужних комбо-атаках масками.",
         weapon: "Tragedy & Comedy (Сигнатурний)",
         weaponF2p: "Failing You, Heavy in My Heart",
@@ -147,6 +147,14 @@ const CHARACTERS = [
         lore: "Театральна акторка, чиї вистави зачаровують глядачів Гетеро. Кажуть, що її маски мають власне аномальне життя."
     }
 ];
+
+// Helper to render character avatars (supports both image URLs and emojis)
+function renderAvatarHtml(char) {
+    if (char && char.avatar && char.avatar.startsWith('http')) {
+        return `<img src="${char.avatar}" alt="${char.name}" class="avatar-img">`;
+    }
+    return char ? char.avatar : '';
+}
 
 // 2. PROMO CODES DATABASE (Initial state)
 let PROMO_CODES = [
@@ -305,7 +313,7 @@ function renderTierList() {
         card.className = `char-card rarity-${char.rarity}`;
         card.innerHTML = `
             <span class="char-card-attr-badge attr-${char.attribute.toLowerCase()}">${char.attribute[0]}</span>
-            <div class="char-card-avatar">${char.avatar}</div>
+            <div class="char-card-avatar">${renderAvatarHtml(char)}</div>
             <div class="char-card-name">${char.name.split(" ")[0]}</div>
             <div class="char-card-meta">${char.role}</div>
         `;
@@ -365,7 +373,7 @@ function renderBuilds() {
 
         card.innerHTML = `
             <div class="build-card-header">
-                <div class="build-char-avatar rarity-${char.rarity}">${char.avatar}</div>
+                <div class="build-char-avatar rarity-${char.rarity}">${renderAvatarHtml(char)}</div>
                 <div class="build-header-info">
                     <h3>${char.name}</h3>
                     <span class="badge attr-${char.attribute.toLowerCase()}">${char.attribute} • ${char.role}</span>
@@ -412,7 +420,7 @@ function openCharacterModal(charId) {
 
     detailContainer.innerHTML = `
         <div class="modal-char-header">
-            <div class="modal-avatar-big rarity-${char.rarity}">${char.avatar}</div>
+            <div class="modal-avatar-big rarity-${char.rarity}">${renderAvatarHtml(char)}</div>
             <div class="modal-header-desc">
                 <h2>${char.name}</h2>
                 <div class="modal-char-meta-row">
@@ -510,7 +518,7 @@ function openSelectorModal() {
         }
         
         card.innerHTML = `
-            <div class="select-card-avatar rarity-${char.rarity}">${char.avatar}</div>
+            <div class="select-card-avatar rarity-${char.rarity}">${renderAvatarHtml(char)}</div>
             <div class="select-card-name">${char.name.split(" ")[0]}</div>
             <span class="badge attr-${char.attribute.toLowerCase()}" style="font-size:0.6rem; padding: 0.1rem 0.3rem; margin-top:0.2rem;">${char.attribute}</span>
         `;
@@ -554,7 +562,7 @@ function updateTeamSlotsUI() {
             slotEl.innerHTML = `
                 <div class="slot-filled-card">
                     <button class="slot-remove-btn" data-slot="${i}">&times;</button>
-                    <div class="slot-filled-avatar rarity-${char.rarity}">${char.avatar}</div>
+                    <div class="slot-filled-avatar rarity-${char.rarity}">${renderAvatarHtml(char)}</div>
                     <div class="char-card-name">${char.name.split(" ")[0]}</div>
                     <span class="badge attr-${char.attribute.toLowerCase()}">${char.attribute} • ${char.role}</span>
                 </div>

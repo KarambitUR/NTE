@@ -730,6 +730,19 @@ body {
     position: relative;
     border: 2px solid;
     transition: all var(--transition-speed) ease;
+    overflow: hidden; /* Ensure image doesn't overflow circular border */
+}
+
+.char-card-avatar .avatar-img,
+.build-char-avatar .avatar-img,
+.modal-avatar-big .avatar-img,
+.select-card-avatar .avatar-img,
+.slot-filled-avatar .avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
 }
 
 .rarity-5 .char-card-avatar {
