@@ -2276,8 +2276,46 @@ body {
         left: 23px;
     }
     
-    .hero-title {
-        font-size: 2.2rem;
+    .banner-showcase {
+        height: auto;
+        min-height: 480px;
+    }
+    
+    .banner-overlay {
+        background: linear-gradient(to top, rgba(7, 6, 12, 0.98) 0%, rgba(7, 6, 12, 0.85) 60%, rgba(7, 6, 12, 0.4) 85%, transparent 100%);
+        padding: 2rem 1.5rem;
+        justify-content: flex-end;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .banner-text-content {
+        max-width: 100%;
+        align-items: center;
+    }
+    
+    .banner-main-title {
+        font-size: 1.6rem;
+    }
+    
+    .banner-desc {
+        font-size: 0.85rem;
+    }
+    
+    .banner-bottom-row {
+        justify-content: center;
+        gap: 1.2rem;
+        width: 100%;
+    }
+    
+    .banner-actions {
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .banner-timer {
+        justify-content: center;
+        width: 100%;
     }
     
     .builder-slots {
@@ -2830,6 +2868,12 @@ body {
 }
 
 /* Redesigned Banner Showcase */
+.hero-banner-container {
+    margin-bottom: 3rem;
+    margin-top: 0.5rem;
+    width: 100%;
+}
+
 .banner-showcase {
     position: relative;
     width: 100%;
@@ -2851,6 +2895,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: 85% center; /* Ensure Hotori is visible on the right */
     transition: transform 0.8s ease;
 }
 
@@ -2861,13 +2906,65 @@ body {
 .banner-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(7, 6, 12, 0.98) 0%, rgba(7, 6, 12, 0.8) 35%, rgba(7, 6, 12, 0.3) 70%, transparent 100%);
+    background: linear-gradient(to right, rgba(7, 6, 12, 0.98) 0%, rgba(7, 6, 12, 0.8) 40%, rgba(7, 6, 12, 0.3) 65%, transparent 100%),
+                linear-gradient(to top, rgba(7, 6, 12, 0.9) 0%, transparent 35%);
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: flex-start;
-    padding: 2rem;
+    padding: 3.5rem;
     z-index: 2;
+}
+
+.banner-text-content {
+    max-width: 650px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.banner-welcome {
+    font-family: var(--font-heading);
+    color: var(--color-cyan);
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
+}
+
+.banner-main-title {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: #fff;
+    margin-bottom: 0.2rem;
+}
+
+.banner-desc {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.banner-bottom-row {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 0.8rem;
+}
+
+.banner-actions {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+}
+
+.banner-actions .btn {
+    margin-top: 0 !important;
 }
 
 .banner-badge {
@@ -2879,8 +2976,9 @@ body {
     border-radius: 4px;
     background: rgba(255, 42, 122, 0.1);
     letter-spacing: 1px;
-    margin-bottom: 0.6rem;
     text-shadow: 0 0 5px rgba(255, 42, 122, 0.3);
+    display: inline-block;
+    width: fit-content;
 }
 
 .banner-title {

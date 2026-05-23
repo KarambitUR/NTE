@@ -82,48 +82,28 @@
         
         <!-- SECTION: HOME -->
         <section class="tab-pane active" id="pane-home">
-            <div class="hero-section">
-                <div class="hero-content">
-                    <span class="hero-tagline" data-i18n="hero_tagline">СУПЕРПРИРОДНА МІСЬКА RPG ВІД HOTTA STUDIO</span>
-                    <h1 class="hero-title" data-i18n="hero_title">Увійдіть в аномальний світ <br><span class="highlight-text">Neverness to Everness</span></h1>
-                    <p class="hero-desc" data-i18n="hero_desc">Ласкаво просимо в Eibon Terminal — ваш персональний довідник з дослідження мегаполісу Гетеро. Оцінюйте аномалії, керуйте бізнесом, збирайте найкращі команди та відстежуйте свіжі новини.</p>
-                    <div class="hero-actions">
-                        <button class="btn btn-primary" onclick="switchTab('tierlist')" data-i18n="hero_btn_tierlist">Переглянути Тір-ліст</button>
-                        <button class="btn btn-secondary" onclick="switchTab('teambuilder')" data-i18n="hero_btn_teambuilder">Зібрати Загін</button>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="banner-showcase">
-                        <img src="assets/nte_hero_banner.png" alt="NTE Banner" class="banner-image">
-                        <div class="banner-overlay">
-                            <span class="banner-badge" data-i18n="active_banner_badge">АКТИВНИЙ БАНЕР</span>
-                            <h3 class="banner-title" data-i18n="active_banner_title">Хоторі: Відлуння Вічності</h3>
-                            <div class="banner-timer">
-                                <span class="timer-label" data-i18n="banner_timer_label">До завершення:</span>
-                                <span class="timer-value" id="bannerCountdown">00д 00г 00хв</span>
+            <!-- Active Banner / Hero Banner -->
+            <div class="hero-banner-container">
+                <div class="banner-showcase">
+                    <img src="https://images.weserv.nl/?url=https%3A%2F%2Fstatic.wikia.nocookie.net%2Fneverness-to-everness%2Fimages%2F6%2F65%2FHotori_Splashart.webp&w=1200" alt="Hotori Banner" class="banner-image">
+                    <div class="banner-overlay">
+                        <div class="banner-text-content">
+                            <span class="banner-welcome" data-i18n="hero_tagline">СУПЕРПРИРОДНА МІСЬКА RPG ВІД HOTTA STUDIO</span>
+                            <h1 class="banner-main-title"><span data-i18n="active_banner_badge">АКТИВНИЙ БАНЕР</span>: <span class="highlight-text" data-i18n="active_banner_title">Хоторі: Відлуння Вічності</span></h1>
+                            <p class="banner-desc" data-i18n="hero_desc">Ласкаво просимо в Eibon Terminal — ваш персональний довідник з дослідження мегаполісу Гетеро. Оцінюйте аномалії, збирайте найкращі команди та відстежуйте свіжі новини.</p>
+                            
+                            <div class="banner-bottom-row">
+                                <div class="banner-timer">
+                                    <span class="timer-label" data-i18n="banner_timer_label">До завершення:</span>
+                                    <span class="timer-value" id="bannerCountdown">00д 00г 00хв</span>
+                                </div>
+                                <div class="banner-actions">
+                                    <button class="btn btn-accent btn-sm" id="btnGoToBannerChar" data-i18n="view_build_btn">Оцінка та білд</button>
+                                    <button class="btn btn-secondary btn-sm" onclick="switchTab('tierlist')" data-i18n="hero_btn_tierlist">Переглянути Тір-ліст</button>
+                                </div>
                             </div>
-                            <button class="btn btn-accent btn-sm mt-3" id="btnGoToBannerChar" data-i18n="view_build_btn">Оцінка та білд</button>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Features Quick Links -->
-            <div class="features-grid">
-                <div class="feature-card" onclick="switchTab('tierlist')">
-                    <div class="feature-icon">👑</div>
-                    <h3 data-i18n="feat_tierlist_title">Інтерактивний Тір-ліст</h3>
-                    <p class="feature-text" data-i18n="feat_tierlist_desc">Актуальний рейтинг мисливців на аномалії. Дізнайтеся, хто домінує в поточній меті гри.</p>
-                </div>
-                <div class="feature-card" onclick="switchTab('teambuilder')">
-                    <div class="feature-icon">⚔️</div>
-                    <h3 data-i18n="feat_teams_title">Конструктор Команд</h3>
-                    <p class="feature-text" data-i18n="feat_teams_desc">Складайте загони та аналізуйте ефекти взаємодії стихій і стилів бою.</p>
-                </div>
-                <div class="feature-card" onclick="switchTab('calculator')">
-                    <div class="feature-icon">📊</div>
-                    <h3 data-i18n="feat_calc_title">Калькулятор Прокачки</h3>
-                    <p class="feature-text" data-i18n="feat_calc_desc">Рахуйте точну кількість монет, досвіду та матеріалів босів для розвитку персонажів.</p>
                 </div>
             </div>
 
