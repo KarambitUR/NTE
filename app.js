@@ -697,6 +697,11 @@ const CHARACTER_MATERIAL_PROFILES = {
         uniqueFarm: "Anomaly Hunt: Serenetti / Material Selection Box",
         commonFamily: ["Lost Whispers", "Obscure Whispers", "Paradoxical Whispers"],
         skillBooks: ["The Olive Branch", "Dove's Flutter", "Nestling's Longing"],
+        skillBookIcons: [
+            "https://neverness.gg/wp-content/uploads/sites/88/2026/05/The-Olive-Branch.webp",
+            "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Doves-Flutter.webp",
+            "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Nestlings-Longing.webp"
+        ],
         weekly: "Dress Sleeves of Vanity",
         weeklyFarm: "Anomaly Pilgrimage: The Never-ending Arachne",
         uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Confessional-Flower-Seed.webp",
@@ -2593,6 +2598,24 @@ const MATERIAL_ICON_URLS = {
     ore_t3: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Chaotic-Dye.webp"
 };
 
+const MATERIAL_ICON_BY_NAME = {
+    "The Olive Branch": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/The-Olive-Branch.webp",
+    "White Rose": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/White-Rose.webp",
+    "Black Hat": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Black-Hat.webp",
+    "Heart-Racing Night": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Heart-Racing-Night.webp",
+    "The Second Self": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/The-Second-Self.webp",
+    "Dove's Flutter": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Doves-Flutter.webp",
+    "CO": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/CO.webp",
+    "Known Weariness": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Known-Weariness.webp",
+    "Resonance of Faith": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Resonance-of-Faith.webp",
+    "Suspended Whispers": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Suspended-Whispers-1.webp",
+    "Nestling's Longing": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Nestlings-Longing.webp",
+    "FNG": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/FNG.webp",
+    "First Expectations": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/First-Expectations.webp",
+    "Synchronicity of Thought": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Synchronicity-of-Thought.webp",
+    "Hesitation of the Waves": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Hesitation-of-the-Waves.webp"
+};
+
 // Use real material icons from public NTE databases; fallback keeps the card readable if a CDN image fails.
 function getMaterialIcon(id) {
     const src = MATERIAL_ICON_URLS[id];
@@ -2603,6 +2626,10 @@ function getMaterialIcon(id) {
 
 function setMaterialIcon(id, src) {
     if (src) MATERIAL_ICON_URLS[id] = src;
+}
+
+function setMaterialIconByName(id, name) {
+    setMaterialIcon(id, MATERIAL_ICON_BY_NAME[name]);
 }
 
 function renderCalculatorSetup() {
@@ -2998,6 +3025,12 @@ function calculateResources() {
         attrDetails.scrolls.T1 = profile.skillBooks[0];
         attrDetails.scrolls.T2 = profile.skillBooks[1];
         attrDetails.scrolls.T3 = profile.skillBooks[2];
+        setMaterialIcon("scroll_t1", profile.skillBookIcons && profile.skillBookIcons[0]);
+        setMaterialIcon("scroll_t2", profile.skillBookIcons && profile.skillBookIcons[1]);
+        setMaterialIcon("scroll_t3", profile.skillBookIcons && profile.skillBookIcons[2]);
+        setMaterialIconByName("scroll_t1", attrDetails.scrolls.T1);
+        setMaterialIconByName("scroll_t2", attrDetails.scrolls.T2);
+        setMaterialIconByName("scroll_t3", attrDetails.scrolls.T3);
     }
     const weaponMats = LOCALIZED_WEAPON_MATERIALS[currentLang] || LOCALIZED_WEAPON_MATERIALS["uk"];
 
