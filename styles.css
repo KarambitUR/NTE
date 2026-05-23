@@ -492,16 +492,16 @@ body {
     font-weight: 600;
     padding: 0.15rem 0.5rem;
     border-radius: 4px;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     vertical-align: middle;
+    line-height: 1.2;
 }
 
 .badge-hot {
     background: var(--color-pink);
     color: #fff;
-    font-family: var(--font-heading);
-    font-weight: bold;
-    margin-bottom: 0.5rem;
 }
 
 .badge-anima {
@@ -1240,6 +1240,7 @@ body {
 
 .calc-preview-badges {
     display: flex;
+    align-items: center;
     gap: 0.4rem;
 }
 
@@ -1999,6 +2000,7 @@ body {
 
 .modal-char-meta-row {
     display: flex;
+    align-items: center;
     gap: 0.5rem;
     margin-top: 0.4rem;
 }
