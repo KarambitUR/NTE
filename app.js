@@ -457,9 +457,9 @@ const LOCALIZED_ATTRIBUTE_MATERIALS = {
                 farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "Біла троянда",
-                T2: "Чорний капелюх",
-                T3: "Ніч прискореного серцебиття",
+                T1: "FNG",
+                T2: "CO",
+                T3: "Біла троянда",
                 farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         },
@@ -475,9 +475,9 @@ const LOCALIZED_ATTRIBUTE_MATERIALS = {
                 farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "White Rose",
-                T2: "Black Hat",
-                T3: "Heart-Racing Night",
+                T1: "FNG",
+                T2: "CO",
+                T3: "White Rose",
                 farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         }
@@ -495,9 +495,9 @@ const LOCALIZED_ATTRIBUTE_MATERIALS = {
                 farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "Друге Я",
-                T2: "CO",
-                T3: "Відома втома",
+                T1: "Перші очікування",
+                T2: "Відома втома",
+                T3: "Чорний капелюх",
                 farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         },
@@ -513,9 +513,9 @@ const LOCALIZED_ATTRIBUTE_MATERIALS = {
                 farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "The Second Self",
-                T2: "CO",
-                T3: "Known Weariness",
+                T1: "First Expectations",
+                T2: "Known Weariness",
+                T3: "Black Hat",
                 farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         }
@@ -533,9 +533,9 @@ const LOCALIZED_ATTRIBUTE_MATERIALS = {
                 farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "Оливкова гілка",
+                T1: "Туга пташеняти",
                 T2: "Тріпотіння голуба",
-                T3: "Туга пташеняти",
+                T3: "Оливкова гілка",
                 farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         },
@@ -551,9 +551,9 @@ const LOCALIZED_ATTRIBUTE_MATERIALS = {
                 farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "The Olive Branch",
+                T1: "Nestling's Longing",
                 T2: "Dove's Flutter",
-                T3: "Nestling's Longing",
+                T3: "The Olive Branch",
                 farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         }
@@ -571,9 +571,9 @@ const LOCALIZED_ATTRIBUTE_MATERIALS = {
                 farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "Резонанс віри",
+                T1: "Коливання хвиль",
                 T2: "Призупинений шепіт",
-                T3: "FNG",
+                T3: "Друге Я",
                 farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         },
@@ -589,9 +589,9 @@ const LOCALIZED_ATTRIBUTE_MATERIALS = {
                 farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "Resonance of Faith",
+                T1: "Hesitation of the Waves",
                 T2: "Suspended Whispers",
-                T3: "FNG",
+                T3: "The Second Self",
                 farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         }
@@ -609,9 +609,9 @@ const LOCALIZED_ATTRIBUTE_MATERIALS = {
                 farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "Перші очікування",
-                T2: "Синхронність думок",
-                T3: "Коливання хвиль",
+                T1: "Синхронність думок",
+                T2: "Резонанс віри",
+                T3: "Ніч прискореного серцебиття",
                 farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         },
@@ -627,9 +627,9 @@ const LOCALIZED_ATTRIBUTE_MATERIALS = {
                 farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "First Expectations",
-                T2: "Synchronicity of Thought",
-                T3: "Hesitation of the Waves",
+                T1: "Synchronicity of Thought",
+                T2: "Resonance of Faith",
+                T3: "Heart-Racing Night",
                 farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         }
@@ -2619,29 +2619,29 @@ const MATERIAL_ICON_BY_NAME = {
 // Use real material icons from public NTE databases; fallback keeps the card readable if a CDN image fails.
 const ATTRIBUTE_SCROLL_ICONS = {
     Cosmos: [
-        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/The-Olive-Branch.webp",
+        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Nestlings-Longing.webp",
         "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Doves-Flutter.webp",
-        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Nestlings-Longing.webp"
+        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/The-Olive-Branch.webp"
     ],
     Anima: [
-        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/White-Rose.webp",
-        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Black-Hat.webp",
-        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Heart-Racing-Night.webp"
+        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/FNG.webp",
+        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/CO.webp",
+        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/White-Rose.webp"
     ],
     Incantation: [
-        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/The-Second-Self.webp",
-        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/CO.webp",
-        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Known-Weariness.webp"
+        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/First-Expectations.webp",
+        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Known-Weariness.webp",
+        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Black-Hat.webp"
     ],
     Chaos: [
-        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Resonance-of-Faith.webp",
+        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Hesitation-of-the-Waves.webp",
         "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Suspended-Whispers-1.webp",
-        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/FNG.webp"
+        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/The-Second-Self.webp"
     ],
     Psyche: [
-        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/First-Expectations.webp",
         "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Synchronicity-of-Thought.webp",
-        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Hesitation-of-the-Waves.webp"
+        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Resonance-of-Faith.webp",
+        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Heart-Racing-Night.webp"
     ]
 };
 
