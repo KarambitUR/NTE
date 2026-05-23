@@ -298,50 +298,180 @@
         <section class="tab-pane" id="pane-calculator">
             <div class="section-header">
                 <h2>Калькулятор Прогресу та Ресурсів</h2>
-                <p>Розрахуйте кількість досвіду, Beetle Coins та ресурсів прориву ліміту</p>
+                <p>Професійний планувальник для максимального розвитку вашого мисливця, навичок та зброї</p>
             </div>
 
             <div class="calculator-layout">
+                <!-- Left panel: Inputs with tabs -->
                 <div class="calc-inputs-panel glass-panel">
-                    <h3>Параметри Розрахунку</h3>
-                    
-                    <div class="form-group">
-                        <label for="calcCharacter">Мисливець:</label>
+                    <!-- Character preview header -->
+                    <div class="calc-char-preview" id="calcCharPreview">
+                        <div class="calc-preview-avatar" id="calcPreviewAvatar">👤</div>
+                        <div class="calc-preview-info">
+                            <h3 id="calcPreviewName">Завантаження...</h3>
+                            <div class="calc-preview-badges" id="calcPreviewBadges">
+                                <span class="badge badge-anima" id="calcPreviewAttr">-</span>
+                                <span class="badge badge-incant" id="calcPreviewRarity">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dropdown to change character -->
+                    <div class="form-group mt-3">
+                        <label for="calcCharacter">Оберіть мисливця:</label>
                         <select id="calcCharacter" class="form-control">
                             <!-- Dynamic select -->
                         </select>
                     </div>
 
-                    <div class="calc-double-input">
+                    <!-- Inner tab navigation -->
+                    <div class="calc-tab-nav">
+                        <button class="calc-tab-btn active" data-calc-tab="char">Персонаж</button>
+                        <button class="calc-tab-btn" data-calc-tab="skills">Навички</button>
+                        <button class="calc-tab-btn" data-calc-tab="weapon">Зброя (Arc)</button>
+                    </div>
+
+                    <!-- TAB CONTENT: CHARACTER LEVEL -->
+                    <div class="calc-tab-content active" id="calc-tab-char">
+                        <h4 class="calc-sub-title">Рівень Персонажа</h4>
                         <div class="form-group">
-                            <label for="calcLevelStart">Початковий рівень:</label>
-                            <input type="number" id="calcLevelStart" min="1" max="80" value="1" class="form-control">
+                            <div class="range-header">
+                                <label for="calcLevelStart">Початковий рівень:</label>
+                                <span class="range-val" id="valLevelStart">1</span>
+                            </div>
+                            <div class="range-input-wrapper">
+                                <input type="range" id="calcLevelStart" min="1" max="80" value="1" class="slider-control">
+                                <input type="number" id="calcLevelStartNum" min="1" max="80" value="1" class="number-control">
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="calcLevelEnd">Цільовий рівень:</label>
-                            <input type="number" id="calcLevelEnd" min="1" max="80" value="80" class="form-control">
+                            <div class="range-header">
+                                <label for="calcLevelEnd">Цільовий рівень:</label>
+                                <span class="range-val" id="valLevelEnd">80</span>
+                            </div>
+                            <div class="range-input-wrapper">
+                                <input type="range" id="calcLevelEnd" min="1" max="80" value="80" class="slider-control">
+                                <input type="number" id="calcLevelEndNum" min="1" max="80" value="80" class="number-control">
+                            </div>
+                        </div>
+                        <div class="level-hints">
+                            <p>* Максимальний рівень мисливця - 80. Прориви відбуваються на 20, 40, 50, 60 та 70 рівнях.</p>
                         </div>
                     </div>
 
-                    <div class="calc-checkbox-group">
-                        <div class="checkbox-control">
-                            <input type="checkbox" id="calcSkills" checked>
-                            <label for="calcSkills">Враховувати покращення навичок (всі навички до Рівня 8)</label>
+                    <!-- TAB CONTENT: SKILLS LEVEL -->
+                    <div class="calc-tab-content" id="calc-tab-skills">
+                        <h4 class="calc-sub-title">Рівні Навичок (1 - 10)</h4>
+                        
+                        <div class="skill-row">
+                            <div class="skill-name-col">
+                                <span class="skill-icon-placeholder">⚔️</span>
+                                <span class="skill-label">Авто-атака (Basic ATK)</span>
+                            </div>
+                            <div class="skill-selects-col">
+                                <select id="skillStart_0" class="form-control form-control-sm skill-select"></select>
+                                <span class="skill-arrow">➔</span>
+                                <select id="skillEnd_0" class="form-control form-control-sm skill-select"></select>
+                            </div>
                         </div>
-                        <div class="checkbox-control">
-                            <input type="checkbox" id="calcWeapon" checked>
-                            <label for="calcWeapon">Враховувати прокачку зброї (Arc) до того ж рівня</label>
+                        
+                        <div class="skill-row">
+                            <div class="skill-name-col">
+                                <span class="skill-icon-placeholder">⚡</span>
+                                <span class="skill-label">Активна навичка (Skill)</span>
+                            </div>
+                            <div class="skill-selects-col">
+                                <select id="skillStart_1" class="form-control form-control-sm skill-select"></select>
+                                <span class="skill-arrow">➔</span>
+                                <select id="skillEnd_1" class="form-control form-control-sm skill-select"></select>
+                            </div>
+                        </div>
+
+                        <div class="skill-row">
+                            <div class="skill-name-col">
+                                <span class="skill-icon-placeholder">🛡️</span>
+                                <span class="skill-label">Пасивна навичка (Passive)</span>
+                            </div>
+                            <div class="skill-selects-col">
+                                <select id="skillStart_2" class="form-control form-control-sm skill-select"></select>
+                                <span class="skill-arrow">➔</span>
+                                <select id="skillEnd_2" class="form-control form-control-sm skill-select"></select>
+                            </div>
+                        </div>
+
+                        <div class="skill-row">
+                            <div class="skill-name-col">
+                                <span class="skill-icon-placeholder">🔥</span>
+                                <span class="skill-label">Вибух стихій (Ultimate)</span>
+                            </div>
+                            <div class="skill-selects-col">
+                                <select id="skillStart_3" class="form-control form-control-sm skill-select"></select>
+                                <span class="skill-arrow">➔</span>
+                                <select id="skillEnd_3" class="form-control form-control-sm skill-select"></select>
+                            </div>
+                        </div>
+                        
+                        <div class="level-hints">
+                            <p>* Рівні навичок 8-10 потребують рідкісних ядер босів та Корони Аномалії.</p>
+                        </div>
+                    </div>
+
+                    <!-- TAB CONTENT: WEAPON LEVEL -->
+                    <div class="calc-tab-content" id="calc-tab-weapon">
+                        <div class="checkbox-control mb-3">
+                            <input type="checkbox" id="calcWeaponActive" checked>
+                            <label for="calcWeaponActive" class="label-large">Прокачувати зброю (Arc)</label>
+                        </div>
+                        
+                        <div id="weaponSettingsBlock">
+                            <div class="form-group">
+                                <label for="calcWeaponRarity">Рідкість зброї:</label>
+                                <select id="calcWeaponRarity" class="form-control">
+                                    <option value="5">S-Ранг (5★ Сигнатурна)</option>
+                                    <option value="4" selected>A-Ранг (4★ F2P)</option>
+                                    <option value="3">B-Ранг (3★ Стартова)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="range-header">
+                                    <label for="calcWeaponLevelStart">Початковий рівень:</label>
+                                    <span class="range-val" id="valWeaponLevelStart">1</span>
+                                </div>
+                                <div class="range-input-wrapper">
+                                    <input type="range" id="calcWeaponLevelStart" min="1" max="80" value="1" class="slider-control">
+                                    <input type="number" id="calcWeaponLevelStartNum" min="1" max="80" value="1" class="number-control">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="range-header">
+                                    <label for="calcWeaponLevelEnd">Цільовий рівень:</label>
+                                    <span class="range-val" id="valWeaponLevelEnd">80</span>
+                                </div>
+                                <div class="range-input-wrapper">
+                                    <input type="range" id="calcWeaponLevelEnd" min="1" max="80" value="80" class="slider-control">
+                                    <input type="number" id="calcWeaponLevelEndNum" min="1" max="80" value="80" class="number-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right panel: Results with inventory planning -->
+                <div class="calc-results-panel glass-panel">
+                    <div class="results-header-row">
+                        <h3>Необхідні Матеріали</h3>
+                        <div class="results-actions">
+                            <button class="btn btn-secondary btn-xs" id="btnClearInventory">Очистити склад</button>
+                            <button class="btn btn-accent btn-xs" id="btnExportReport">Скопіювати звіт</button>
                         </div>
                     </div>
                     
-                    <button class="btn btn-primary w-100 mt-3" id="btnCalculate">Розрахувати витрати</button>
-                </div>
-
-                <div class="calc-results-panel glass-panel">
-                    <h3>Необхідні Матеріали</h3>
-                    <div class="materials-list" id="calcMaterialsList">
-                        <!-- Initial or computed results -->
-                        <div class="material-row-placeholder">Введіть параметри та натисніть кнопку розрахунку</div>
+                    <p class="results-subtitle">Введіть ваші запаси в полі «Маю в наявності», щоб розрахувати чистий дефіцит.</p>
+                    
+                    <div class="materials-grid-new" id="calcMaterialsList">
+                        <!-- Dynamic items -->
                     </div>
                 </div>
             </div>

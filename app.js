@@ -1011,182 +1011,797 @@ function evaluateTeamSynergy() {
 }
 
 // 10. RESOURCE CALCULATOR LOGIC
-function renderCalculatorSetup() {
-    const select = document.getElementById("calcCharacter");
-    select.innerHTML = CHARACTERS.map(c => `<option value="${c.id}">${c.name}</option>`).join("");
+
+// 1. Progression Constants
+const CHAR_EXP_BY_LEVEL = [];
+const WEAPON_EXP_BY_LEVEL = [];
+
+const CHAR_BREAKTHROUGH_TABLE = {
+    20: { coins: 15000, boss: 2, specialty: 3, commonT1: 3, commonT2: 0, commonT3: 0 },
+    40: { coins: 30000, boss: 5, specialty: 8, commonT1: 8, commonT2: 3, commonT3: 0 },
+    50: { coins: 50000, boss: 8, specialty: 12, commonT1: 15, commonT2: 8, commonT3: 0 },
+    60: { coins: 80000, boss: 12, specialty: 20, commonT1: 0, commonT2: 12, commonT3: 4 },
+    70: { coins: 120000, boss: 20, specialty: 30, commonT1: 0, commonT2: 16, commonT3: 8 }
+};
+
+const WEAPON_BREAKTHROUGH_TABLE = {
+    20: { coins: 10000, oreT1: 3, oreT2: 0, oreT3: 0, commonT1: 3, commonT2: 0, commonT3: 0 },
+    40: { coins: 20000, oreT1: 6, oreT2: 3, oreT3: 0, commonT1: 6, commonT2: 2, commonT3: 0 },
+    50: { coins: 35000, oreT1: 0, oreT2: 6, oreT3: 0, commonT1: 10, commonT2: 5, commonT3: 0 },
+    60: { coins: 55000, oreT1: 0, oreT2: 10, oreT3: 3, commonT1: 0, commonT2: 8, commonT3: 3 },
+    70: { coins: 85000, oreT1: 0, oreT2: 0, oreT3: 6, commonT1: 0, commonT2: 12, commonT3: 6 }
+};
+
+const SKILL_COST_TABLE = {
+    1: { coins: 3000, scrollsT1: 2, scrollsT2: 0, scrollsT3: 0, commonT1: 0, commonT2: 0, commonT3: 0, boss: 0, crown: 0 },
+    2: { coins: 6000, scrollsT1: 4, scrollsT2: 0, scrollsT3: 0, commonT1: 3, commonT2: 0, commonT3: 0, boss: 0, crown: 0 },
+    3: { coins: 12000, scrollsT1: 0, scrollsT2: 2, scrollsT3: 0, commonT1: 4, commonT2: 0, commonT3: 0, boss: 0, crown: 0 },
+    4: { coins: 20000, scrollsT1: 0, scrollsT2: 4, scrollsT3: 0, commonT1: 0, commonT2: 3, commonT3: 0, boss: 0, crown: 0 },
+    5: { coins: 35000, scrollsT1: 0, scrollsT2: 6, scrollsT3: 0, commonT1: 0, commonT2: 5, commonT3: 0, boss: 0, crown: 0 },
+    6: { coins: 60000, scrollsT1: 0, scrollsT2: 0, scrollsT3: 4, commonT1: 0, commonT2: 6, commonT3: 0, boss: 0, crown: 0 },
+    7: { coins: 100000, scrollsT1: 0, scrollsT2: 0, scrollsT3: 6, commonT1: 0, commonT2: 0, commonT3: 4, boss: 1, crown: 0 },
+    8: { coins: 180000, scrollsT1: 0, scrollsT2: 0, scrollsT3: 8, commonT1: 0, commonT2: 0, commonT3: 6, boss: 2, crown: 0 },
+    9: { coins: 300000, scrollsT1: 0, scrollsT2: 0, scrollsT3: 12, commonT1: 0, commonT2: 0, commonT3: 8, boss: 3, crown: 1 }
+};
+
+const ATTRIBUTE_MATERIALS = {
+    "Anima": {
+        boss: "Ядро боса: Гравітаційний Павук",
+        specialty: "Anima-кристали лісу",
+        farmSpecialty: "Збір у Лісовій Аномалії Hethereau",
+        farmBoss: "Світовий бос: Гравітаційний Павук",
+        common: {
+            T1: "Пилок аномальних рослин",
+            T2: "Стебло хижої квітки",
+            T3: "Суть живого лісу",
+            farm: "Рослинні аномалії в парках"
+        },
+        scrolls: {
+            T1: "Сувій сили природи",
+            T2: "Гайд по контролю флори",
+            T3: "Таємниці Аніми",
+            farm: "Rabbit Hole (Понеділок/Четвер)"
+        }
+    },
+    "Incantation": {
+        boss: "Ядро боса: Вогняний Кролик",
+        specialty: "Спеціальність: Квіти закляття",
+        farmSpecialty: "Збір у східних районах Гетеро",
+        farmBoss: "Світовий бос: Вогняний Кролик",
+        common: {
+            T1: "Попіл згаслих рун",
+            T2: "Фрагмент палаючої руни",
+            T3: "Стародавнє ядро заклять",
+            farm: "Магічні аномалії в місті"
+        },
+        scrolls: {
+            T1: "Ескіз магічних знаків",
+            T2: "Підручник ритуалів",
+            T3: "Гримуар Таємних Слів",
+            farm: "Rabbit Hole (Вівторок/П'ятниця)"
+        }
+    },
+    "Cosmos": {
+        boss: "Ядро боса: Кронос-Вартовий",
+        specialty: "Спеціальність: Зоряний пил",
+        farmSpecialty: "Секретні дахи та хмарочоси",
+        farmBoss: "Світовий бос: Кронос-Вартовий",
+        common: {
+            T1: "Уламок метеорита",
+            T2: "Космічний пил",
+            T3: "Сутність сингулярності",
+            farm: "Космічні тіні у центрі міста"
+        },
+        scrolls: {
+            T1: "Малюнок сузір'я",
+            T2: "Зоряна мапа Hethereau",
+            T3: "Сувої Нескінченного Космосу",
+            farm: "Rabbit Hole (Середа/Субота)"
+        }
+    },
+    "Chaos": {
+        boss: "Ядро боса: Руйнівник Масок",
+        specialty: "Спеціальність: Шарми хаосу",
+        farmSpecialty: "Аномальні провулки Гетеро",
+        farmBoss: "Світовий бос: Руйнівник Масок",
+        common: {
+            T1: "Тріснута маска",
+            T2: "Театральна маска",
+            T3: "Маска істинної сутності",
+            farm: "Міражі хаосу та міми"
+        },
+        scrolls: {
+            T1: "Записки божевільного",
+            T2: "П'єса трагікомедії",
+            T3: "Хроніки Парадоксу",
+            farm: "Rabbit Hole (Четвер/Неділя)"
+        }
+    },
+    "Psyche": {
+        boss: "Ядро боса: Володар Кошмарів",
+        specialty: "Спеціальність: Психічні кристали",
+        farmSpecialty: "Дзеркальні аномальні галереї",
+        farmBoss: "Світовий бос: Володар Кошмарів",
+        common: {
+            T1: "Фрагмент спогаду",
+            T2: "Скляна сльоза",
+            T3: "Дзеркало чистої свідомості",
+            farm: "Дзеркальні фантоми"
+        },
+        scrolls: {
+            T1: "Текст гіпнозу",
+            T2: "Книга сновидінь",
+            T3: "Концепт Несвідомого",
+            farm: "Rabbit Hole (П'ятниця/Неділя)"
+        }
+    },
+    "Lakshana": {
+        boss: "Ядро боса: Вартовий Закону",
+        specialty: "Спеціальність: Кристали порядку",
+        farmSpecialty: "Зони фінансового кварталу",
+        farmBoss: "Світовий бос: Вартовий Закону",
+        common: {
+            T1: "Іржава шестерня",
+            T2: "Срібний поршень",
+            T3: "Золотий годинниковий механізм",
+            farm: "Механічні годинникові міньйони"
+        },
+        scrolls: {
+            T1: "Статут Бюро",
+            T2: "Звід законів Гетеро",
+            T3: "Директиви Чистого Порядку",
+            farm: "Rabbit Hole (Субота/Неділя)"
+        }
+    }
+};
+
+const WEAPON_MATERIALS = {
+    T1: "Компонент зброї T1",
+    T2: "Модифікатор зброї T2",
+    T3: "Нано-ядро зброї T3",
+    farm: "Rabbit Hole: Прорив Зброї"
+};
+
+let calcInventory = {};
+let calculatedRequirements = {}; // Store computed required totals for inventory sync
+
+// Initialize progression tables programmatically
+function initCalculatorData() {
+    for (let l = 1; l <= 80; l++) {
+        // Character level EXP cost
+        let charXp = 0;
+        if (l < 20) charXp = 800 + l * 400;
+        else if (l < 40) charXp = 6000 + (l - 20) * 1200;
+        else if (l < 50) charXp = 25000 + (l - 40) * 3500;
+        else if (l < 60) charXp = 50000 + (l - 50) * 8000;
+        else if (l < 70) charXp = 100000 + (l - 60) * 15000;
+        else charXp = 200000 + (l - 70) * 30000;
+        
+        CHAR_EXP_BY_LEVEL[l] = {
+            xp: charXp,
+            coins: Math.round(charXp * 0.2)
+        };
+
+        // Weapon level EXP cost
+        let weapXp = 0;
+        if (l < 20) weapXp = 500 + l * 250;
+        else if (l < 40) weapXp = 4000 + (l - 20) * 800;
+        else if (l < 50) weapXp = 16000 + (l - 40) * 2200;
+        else if (l < 60) weapXp = 32000 + (l - 50) * 5000;
+        else if (l < 70) weapXp = 64000 + (l - 60) * 9000;
+        else weapXp = 120000 + (l - 70) * 18000;
+        
+        WEAPON_EXP_BY_LEVEL[l] = {
+            xp: weapXp,
+            coins: Math.round(weapXp * 0.15)
+        };
+    }
+    
+    // Load inventory cache
+    try {
+        const cached = localStorage.getItem('nte_calc_inventory');
+        if (cached) calcInventory = JSON.parse(cached);
+    } catch (e) {
+        console.warn('Could not load inventory:', e);
+    }
 }
 
+// Generate inline SVG icons
+function getMaterialIcon(id) {
+    const colors = {
+        grey: '#90a4ae',
+        green: '#4db6ac',
+        blue: '#4fc3f7',
+        purple: '#ba68c8',
+        gold: '#ffd54f',
+        red: '#e57373'
+    };
+
+    if (id === 'coin') {
+        return `<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="${colors.gold}" stroke="#d4af37" stroke-width="2"/><circle cx="24" cy="24" r="14" fill="none" stroke="#d4af37" stroke-width="1" stroke-dasharray="3,3" opacity="0.7"/><text x="24" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#8B6914">$</text></svg>`;
+    }
+    if (id.includes('exp_basic') || id.includes('dye_basic') || id.includes('scroll_basic') || id.includes('ore_basic')) {
+        return `<svg viewBox="0 0 48 48"><rect x="12" y="8" width="24" height="32" rx="3" fill="${colors.green}" stroke="#00796b" stroke-width="2"/><path d="M16 18h16M16 26h16" stroke="#e0f2f1" stroke-width="2" stroke-linecap="round"/></svg>`;
+    }
+    if (id.includes('exp_medium') || id.includes('dye_medium') || id.includes('scroll_medium') || id.includes('ore_medium')) {
+        return `<svg viewBox="0 0 48 48"><rect x="12" y="8" width="24" height="32" rx="3" fill="${colors.blue}" stroke="#0288d1" stroke-width="2"/><path d="M16 18h16M16 26h16" stroke="#e1f5fe" stroke-width="2" stroke-linecap="round"/></svg>`;
+    }
+    if (id.includes('exp_elite') || id.includes('dye_elite') || id.includes('scroll_elite') || id.includes('ore_elite')) {
+        return `<svg viewBox="0 0 48 48"><rect x="12" y="8" width="24" height="32" rx="3" fill="${colors.purple}" stroke="#7b1fa2" stroke-width="2"/><path d="M16 18h16M16 26h16" stroke="#f3e5f5" stroke-width="2" stroke-linecap="round"/></svg>`;
+    }
+    if (id === 'boss') {
+        return `<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="${colors.red}" stroke="#c62828" stroke-width="2"/><path d="M16 22a3 3 0 0 1 6 0M26 22a3 3 0 0 1 6 0M18 32q6 4 12 0" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>`;
+    }
+    if (id === 'specialty') {
+        return `<svg viewBox="0 0 48 48"><polygon points="24,6 38,20 32,42 16,42 10,20" fill="${colors.purple}" stroke="#7b1fa2" stroke-width="2"/><polygon points="24,6 30,20 24,42 18,20" fill="#e1bee7" opacity="0.6"/><circle cx="24" cy="24" r="3" fill="#fff" opacity="0.8"/></svg>`;
+    }
+    if (id.includes('common_t1')) {
+        return `<svg viewBox="0 0 48 48"><polygon points="24,10 38,34 10,34" fill="${colors.grey}" stroke="#37474f" stroke-width="2"/></svg>`;
+    }
+    if (id.includes('common_t2')) {
+        return `<svg viewBox="0 0 48 48"><polygon points="24,10 38,34 10,34" fill="${colors.green}" stroke="#004d40" stroke-width="2"/></svg>`;
+    }
+    if (id.includes('common_t3')) {
+        return `<svg viewBox="0 0 48 48"><polygon points="24,10 38,34 10,34" fill="${colors.purple}" stroke="#4a148c" stroke-width="2"/></svg>`;
+    }
+    if (id === 'crown') {
+        return `<svg viewBox="0 0 48 48"><path d="M8 38 L12 16 L20 26 L24 10 L28 26 L36 16 L40 38 Z" fill="${colors.gold}" stroke="#b58900" stroke-width="2"/><ellipse cx="24" cy="38" rx="14" ry="3" fill="#fff" opacity="0.4"/></svg>`;
+    }
+    return `<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="${colors.grey}"/></svg>`;
+}
+
+function renderCalculatorSetup() {
+    initCalculatorData();
+
+    // Populate characters
+    const select = document.getElementById("calcCharacter");
+    const activeList = CHARACTERS.length > 0 ? CHARACTERS : FALLBACK_CHARACTERS;
+    select.innerHTML = activeList.map(c => `<option value="${c.id}">${c.name}</option>`).join("");
+
+    // Populate skills select options (1-10)
+    for (let i = 0; i < 4; i++) {
+        const startSelect = document.getElementById(`skillStart_${i}`);
+        const endSelect = document.getElementById(`skillEnd_${i}`);
+        if (startSelect && endSelect) {
+            startSelect.innerHTML = Array.from({length: 10}, (_, k) => `<option value="${k+1}">Lvl ${k+1}</option>`).join("");
+            endSelect.innerHTML = Array.from({length: 10}, (_, k) => `<option value="${k+1}" ${k===7 ? 'selected' : ''}>Lvl ${k+1}</option>`).join("");
+        }
+    }
+
+    // Set initial calculations
+    setTimeout(() => {
+        calculateResources();
+    }, 100);
+}
+
+// Setup events & bi-directional bindings
 function setupCalculatorEvents() {
-    document.getElementById("btnCalculate").addEventListener("click", () => {
+    const startRange = document.getElementById("calcLevelStart");
+    const startNum = document.getElementById("calcLevelStartNum");
+    const endRange = document.getElementById("calcLevelEnd");
+    const endNum = document.getElementById("calcLevelEndNum");
+    const charSelect = document.getElementById("calcCharacter");
+
+    const wStartRange = document.getElementById("calcWeaponLevelStart");
+    const wStartNum = document.getElementById("calcWeaponLevelStartNum");
+    const wEndRange = document.getElementById("calcWeaponLevelEnd");
+    const wEndNum = document.getElementById("calcWeaponLevelEndNum");
+    const weaponActive = document.getElementById("calcWeaponActive");
+    const weaponRarity = document.getElementById("calcWeaponRarity");
+
+    // Sync helper
+    function syncControl(slider, num, isStart, otherNum, limits) {
+        let val = parseInt(slider.value);
+        num.value = val;
+
+        // Constraint: Start level must be <= End level
+        if (isStart) {
+            if (val > parseInt(otherNum.value)) {
+                otherNum.value = val;
+                // Dispatch event to sync other slider
+                otherNum.dispatchEvent(new Event('input'));
+            }
+        } else {
+            if (val < parseInt(otherNum.value)) {
+                otherNum.value = val;
+                otherNum.dispatchEvent(new Event('input'));
+            }
+        }
+        calculateResources();
+    }
+
+    // Bind slider -> number
+    startRange.addEventListener("input", () => syncControl(startRange, startNum, true, endNum));
+    endRange.addEventListener("input", () => syncControl(endRange, endNum, false, startNum));
+    wStartRange.addEventListener("input", () => syncControl(wStartRange, wStartNum, true, wEndNum));
+    wEndRange.addEventListener("input", () => syncControl(wEndRange, wEndNum, false, wStartNum));
+
+    // Bind number -> slider
+    function syncNumInput(num, slider, minVal, maxVal) {
+        let val = parseInt(num.value);
+        if (isNaN(val) || val < minVal) val = minVal;
+        if (val > maxVal) val = maxVal;
+        num.value = val;
+        slider.value = val;
+        
+        // Trigger constraints by firing input on slider
+        slider.dispatchEvent(new Event('input'));
+    }
+
+    startNum.addEventListener("change", () => syncNumInput(startNum, startRange, 1, 80));
+    endNum.addEventListener("change", () => syncNumInput(endNum, endRange, 1, 80));
+    wStartNum.addEventListener("change", () => syncNumInput(wStartNum, wStartRange, 1, 80));
+    wEndNum.addEventListener("change", () => syncNumInput(wEndNum, wEndRange, 1, 80));
+
+    // Character changes
+    charSelect.addEventListener("change", () => {
         calculateResources();
     });
+
+    // Skill dropdown selections
+    for (let i = 0; i < 4; i++) {
+        document.getElementById(`skillStart_${i}`).addEventListener("change", (e) => {
+            // Constraint: start <= end
+            const startVal = parseInt(e.target.value);
+            const endSelect = document.getElementById(`skillEnd_${i}`);
+            if (parseInt(endSelect.value) < startVal) {
+                endSelect.value = startVal;
+            }
+            calculateResources();
+        });
+        document.getElementById(`skillEnd_${i}`).addEventListener("change", (e) => {
+            const endVal = parseInt(e.target.value);
+            const startSelect = document.getElementById(`skillStart_${i}`);
+            if (parseInt(startSelect.value) > endVal) {
+                startSelect.value = endVal;
+            }
+            calculateResources();
+        });
+    }
+
+    // Weapon toggles
+    weaponActive.addEventListener("change", () => {
+        const block = document.getElementById("weaponSettingsBlock");
+        block.style.opacity = weaponActive.checked ? "1" : "0.4";
+        block.style.pointerEvents = weaponActive.checked ? "auto" : "none";
+        calculateResources();
+    });
+
+    weaponRarity.addEventListener("change", () => {
+        calculateResources();
+    });
+
+    // Calculator inner tab navigation
+    const tabBtns = document.querySelectorAll(".calc-tab-btn");
+    tabBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            tabBtns.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+
+            const tabName = btn.getAttribute("data-calc-tab");
+            document.querySelectorAll(".calc-tab-content").forEach(pane => {
+                pane.classList.remove("active");
+            });
+            document.getElementById(`calc-tab-${tabName}`).classList.add("active");
+        });
+    });
+
+    // Inventory inputs listener (delegated)
+    const listContainer = document.getElementById("calcMaterialsList");
+    listContainer.addEventListener("input", (e) => {
+        if (e.target.classList.contains("mat-have-input")) {
+            const matId = e.target.getAttribute("data-mat-id");
+            let val = parseInt(e.target.value);
+            if (isNaN(val) || val < 0) val = 0;
+            e.target.value = val;
+            
+            calcInventory[matId] = val;
+            saveInventory();
+            updateSingleMaterialCard(matId, val);
+        }
+    });
+
+    // Reset inventory button
+    document.getElementById("btnClearInventory").addEventListener("click", () => {
+        calcInventory = {};
+        saveInventory();
+        document.querySelectorAll(".mat-have-input").forEach(input => {
+            input.value = 0;
+        });
+        // Re-evaluate completion highlights
+        Object.keys(calculatedRequirements).forEach(matId => {
+            updateSingleMaterialCard(matId, 0);
+        });
+        showToast("Склад очищено!");
+    });
+
+    // Export report
+    document.getElementById("btnExportReport").addEventListener("click", () => {
+        exportCalcReport();
+    });
+}
+
+function saveInventory() {
+    localStorage.setItem('nte_calc_inventory', JSON.stringify(calcInventory));
+}
+
+// Update deficit display in real-time without rebuild to keep input focus
+function updateSingleMaterialCard(matId, haveAmount) {
+    const card = document.getElementById(`mat-card-${matId}`);
+    if (!card) return;
+
+    const needed = calculatedRequirements[matId] || 0;
+    const remaining = Math.max(0, needed - haveAmount);
+    
+    const needValEl = card.querySelector(".mat-val");
+    const labelTextEl = card.querySelector(".mat-need");
+
+    if (remaining === 0) {
+        card.classList.add("mat-completed");
+        if (labelTextEl) labelTextEl.innerHTML = `Потрібно: <span class="mat-val">${needed.toLocaleString()}</span> (Готово)`;
+    } else {
+        card.classList.remove("mat-completed");
+        if (labelTextEl) labelTextEl.innerHTML = `Залишилось: <span class="mat-val">${remaining.toLocaleString()}</span> / ${needed.toLocaleString()}`;
+    }
 }
 
 function calculateResources() {
     const charId = document.getElementById("calcCharacter").value;
-    const startLvl = parseInt(document.getElementById("calcLevelStart").value) || 1;
-    const endLvl = parseInt(document.getElementById("calcLevelEnd").value) || 80;
-    const includeSkills = document.getElementById("calcSkills").checked;
-    const includeWeapon = document.getElementById("calcWeapon").checked;
-
-    const char = CHARACTERS.find(c => c.id === charId);
+    const activeList = CHARACTERS.length > 0 ? CHARACTERS : FALLBACK_CHARACTERS;
+    const char = activeList.find(c => c.id === charId);
     if (!char) return;
 
-    if (startLvl >= endLvl) {
-        showToast("Цільовий рівень має бути більшим за початковий!");
-        return;
+    // Render Preview Card
+    document.getElementById("calcPreviewName").innerText = char.name;
+    document.getElementById("calcPreviewAttr").innerText = char.attribute;
+    document.getElementById("calcPreviewAttr").className = `badge attr-${char.attribute.toLowerCase()}`;
+    document.getElementById("calcPreviewRarity").innerText = `${char.rarity}★ Ранг`;
+    document.getElementById("calcPreviewRarity").className = `badge ${char.rarity === 5 ? 'badge-hot' : 'badge-cosmos'}`;
+    
+    const avatarContainer = document.getElementById("calcPreviewAvatar");
+    avatarContainer.innerHTML = renderAvatarHtml(char);
+    avatarContainer.className = `calc-preview-avatar rarity-${char.rarity}`;
+
+    // Read Character level inputs
+    const startLvl = parseInt(document.getElementById("calcLevelStart").value) || 1;
+    const endLvl = parseInt(document.getElementById("calcLevelEnd").value) || 80;
+    document.getElementById("valLevelStart").innerText = startLvl;
+    document.getElementById("valLevelEnd").innerText = endLvl;
+    document.getElementById("calcLevelStartNum").value = startLvl;
+    document.getElementById("calcLevelEndNum").value = endLvl;
+
+    // Sum Char Level Costs
+    let totalCharExp = 0;
+    let totalCharCoins = 0;
+    for (let l = startLvl; l < endLvl; l++) {
+        totalCharExp += CHAR_EXP_BY_LEVEL[l].xp;
+        totalCharCoins += CHAR_EXP_BY_LEVEL[l].coins;
     }
 
-    if (startLvl < 1 || endLvl > 80) {
-        showToast("Рівні мають бути в діапазоні від 1 до 80!");
-        return;
-    }
+    // Sum Char Breakthrough Costs
+    let totalCharBoss = 0;
+    let totalCharSpecialty = 0;
+    let totalCharCommonT1 = 0;
+    let totalCharCommonT2 = 0;
+    let totalCharCommonT3 = 0;
+    let totalCharBtCoins = 0;
 
-    // EXP and Coin calculations logic
-    let totalExpGuides = 0; // Elite equivalent (1 elite = 10,000 exp)
-    let totalCoins = 0;
-    let totalBossDrops = 0;
-    let totalRegionalSpecialties = 0;
-    let skillMaterials = 0;
-
-    // Estimate based on level tiers
-    // We break progression into standard steps
-    for (let lvl = startLvl; lvl < endLvl; lvl++) {
-        if (lvl < 20) {
-            totalExpGuides += 0.8; 
-            totalCoins += 500;
-        } else if (lvl === 20) { // Ascension 1
-            totalCoins += 10000;
-            totalBossDrops += 2;
-            totalRegionalSpecialties += 3;
-        } else if (lvl < 40) {
-            totalExpGuides += 1.8;
-            totalCoins += 1200;
-        } else if (lvl === 40) { // Ascension 2
-            totalCoins += 25000;
-            totalBossDrops += 5;
-            totalRegionalSpecialties += 8;
-        } else if (lvl < 60) {
-            totalExpGuides += 3.5;
-            totalCoins += 3000;
-        } else if (lvl === 60) { // Ascension 3
-            totalCoins += 60000;
-            totalBossDrops += 12;
-            totalRegionalSpecialties += 20;
-        } else if (lvl < 80) {
-            totalExpGuides += 8;
-            totalCoins += 8000;
+    const breakthroughLevels = [20, 40, 50, 60, 70];
+    for (let bt of breakthroughLevels) {
+        if (startLvl <= bt && endLvl > bt) {
+            const cost = CHAR_BREAKTHROUGH_TABLE[bt];
+            totalCharBoss += cost.boss;
+            totalCharSpecialty += cost.specialty;
+            totalCharCommonT1 += cost.commonT1;
+            totalCharCommonT2 += cost.commonT2;
+            totalCharCommonT3 += cost.commonT3;
+            totalCharBtCoins += cost.coins;
         }
     }
-    
-    // Final level breakthrough at 80
-    if (endLvl === 80) {
-        totalCoins += 120000;
-        totalBossDrops += 20;
-        totalRegionalSpecialties += 30;
+
+    // Sum Skills Costs
+    let totalSkillCoins = 0;
+    let totalSkillScrollsT1 = 0;
+    let totalSkillScrollsT2 = 0;
+    let totalSkillScrollsT3 = 0;
+    let totalSkillCommonT1 = 0;
+    let totalSkillCommonT2 = 0;
+    let totalSkillCommonT3 = 0;
+    let totalSkillBoss = 0;
+    let totalSkillCrown = 0;
+
+    for (let i = 0; i < 4; i++) {
+        const skStart = parseInt(document.getElementById(`skillStart_${i}`).value) || 1;
+        const skEnd = parseInt(document.getElementById(`skillEnd_${i}`).value) || 1;
+        
+        for (let lvl = skStart; lvl < skEnd; lvl++) {
+            const cost = SKILL_COST_TABLE[lvl];
+            totalSkillCoins += cost.coins;
+            totalSkillScrollsT1 += cost.scrollsT1;
+            totalSkillScrollsT2 += cost.scrollsT2;
+            totalSkillScrollsT3 += cost.scrollsT3;
+            totalSkillCommonT1 += cost.commonT1;
+            totalSkillCommonT2 += cost.commonT2;
+            totalSkillCommonT3 += cost.commonT3;
+            totalSkillBoss += cost.boss;
+            totalSkillCrown += cost.crown;
+        }
     }
 
-    // Round values
-    totalExpGuides = Math.ceil(totalExpGuides);
-    totalCoins = Math.round(totalCoins);
+    // Sum Weapon Costs
+    let totalWeapExp = 0;
+    let totalWeapCoins = 0;
+    let totalWeapOreT1 = 0;
+    let totalWeapOreT2 = 0;
+    let totalWeapOreT3 = 0;
+    let totalWeapCommonT1 = 0;
+    let totalWeapCommonT2 = 0;
+    let totalWeapCommonT3 = 0;
+    let totalWeapBtCoins = 0;
 
-    // Skills additions
-    if (includeSkills) {
-        totalCoins += 180000;
-        skillMaterials = Math.round((endLvl - startLvl) * 0.8) + 12;
-    }
-
-    // Weapon progression
-    let weaponExpDye = 0;
+    const includeWeapon = document.getElementById("calcWeaponActive").checked;
     if (includeWeapon) {
-        totalCoins += Math.round(totalCoins * 0.5);
-        weaponExpDye = Math.round(totalExpGuides * 1.2);
+        const wStartLvl = parseInt(document.getElementById("calcWeaponLevelStart").value) || 1;
+        const wEndLvl = parseInt(document.getElementById("calcWeaponLevelEnd").value) || 80;
+        const wRarity = parseInt(document.getElementById("calcWeaponRarity").value) || 4;
+        
+        document.getElementById("valWeaponLevelStart").innerText = wStartLvl;
+        document.getElementById("valWeaponLevelEnd").innerText = wEndLvl;
+        document.getElementById("calcWeaponLevelStartNum").value = wStartLvl;
+        document.getElementById("calcWeaponLevelEndNum").value = wEndLvl;
+
+        // Multiplier based on weapon rarity
+        const rarityMult = wRarity === 5 ? 1.25 : wRarity === 4 ? 1.0 : 0.75;
+
+        // Weapon Exp & Coin Costs
+        for (let l = wStartLvl; l < wEndLvl; l++) {
+            totalWeapExp += Math.round(WEAPON_EXP_BY_LEVEL[l].xp * rarityMult);
+            totalWeapCoins += Math.round(WEAPON_EXP_BY_LEVEL[l].coins * rarityMult);
+        }
+
+        // Weapon Breakthrough Costs
+        for (let bt of breakthroughLevels) {
+            if (wStartLvl <= bt && wEndLvl > bt) {
+                const cost = WEAPON_BREAKTHROUGH_TABLE[bt];
+                totalWeapOreT1 += Math.round(cost.oreT1 * rarityMult);
+                totalWeapOreT2 += Math.round(cost.oreT2 * rarityMult);
+                totalWeapOreT3 += Math.round(cost.oreT3 * rarityMult);
+                totalWeapCommonT1 += Math.round(cost.commonT1 * rarityMult);
+                totalWeapCommonT2 += Math.round(cost.commonT2 * rarityMult);
+                totalWeapCommonT3 += Math.round(cost.commonT3 * rarityMult);
+                totalWeapBtCoins += Math.round(cost.coins * rarityMult);
+            }
+        }
     }
 
-    // Render results
-    const resultsContainer = document.getElementById("calcMaterialsList");
+    // Consolidate Totals
+    const finalCoins = totalCharCoins + totalCharBtCoins + totalSkillCoins + totalWeapCoins + totalWeapBtCoins;
     
-    const attributeDetails = {
-        "Anima": { specialty: "Anima-кристали лісу", boss: "Гравітаційний Павук" },
-        "Incantation": { specialty: "Квіти закляття", boss: "Вогняний Кролик" },
-        "Cosmos": { specialty: "Зоряний пил", boss: "Кронос-Вартовий" },
-        "Chaos": { specialty: "Шарми хаосу", boss: "Руйнівник Масок" },
-        "Phase": { specialty: "Фазові кристали", boss: "Привид Фази" },
-        "Psyche": { specialty: "Психічні кристали", boss: "Володар Кошмарів" },
-        "Lakshana": { specialty: "Кристали порядку", boss: "Вартовий Закону" }
+    // Character guides breakdown (1 elite = 10k, 1 med = 2k, 1 basic = 500)
+    let charExpRem = totalCharExp;
+    const guidesElite = Math.floor(charExpRem / 10000);
+    charExpRem %= 10000;
+    const guidesMed = Math.floor(charExpRem / 2000);
+    charExpRem %= 2000;
+    const guidesBasic = Math.ceil(charExpRem / 500);
+
+    // Weapon dyes breakdown (1 elite = 10k, 1 med = 2k, 1 basic = 500)
+    let weapExpRem = totalWeapExp;
+    const dyesElite = Math.floor(weapExpRem / 10000);
+    weapExpRem %= 10000;
+    const dyesMed = Math.floor(weapExpRem / 2000);
+    weapExpRem %= 2000;
+    const dyesBasic = Math.ceil(weapExpRem / 500);
+
+    // Specific names based on character attribute
+    const attrDetails = ATTRIBUTE_MATERIALS[char.attribute] || ATTRIBUTE_MATERIALS["Anima"];
+
+    // Combine common materials
+    const finalCommonT1 = totalCharCommonT1 + totalSkillCommonT1 + totalWeapCommonT1;
+    const finalCommonT2 = totalCharCommonT2 + totalSkillCommonT2 + totalWeapCommonT2;
+    const finalCommonT3 = totalCharCommonT3 + totalSkillCommonT3 + totalWeapCommonT3;
+
+    // Combine Boss drops
+    const finalBoss = totalCharBoss + totalSkillBoss;
+
+    // Set requirements object globally to check on have-input triggers
+    calculatedRequirements = {
+        coin: finalCoins,
+        exp_elite: guidesElite,
+        exp_medium: guidesMed,
+        exp_basic: guidesBasic,
+        dye_elite: dyesElite,
+        dye_medium: dyesMed,
+        dye_basic: dyesBasic,
+        boss: finalBoss,
+        specialty: totalCharSpecialty,
+        common_t1: finalCommonT1,
+        common_t2: finalCommonT2,
+        common_t3: finalCommonT3,
+        scroll_t1: totalSkillScrollsT1,
+        scroll_t2: totalSkillScrollsT2,
+        scroll_t3: totalSkillScrollsT3,
+        crown: totalSkillCrown,
+        ore_t1: totalWeapOreT1,
+        ore_t2: totalWeapOreT2,
+        ore_t3: totalWeapOreT3
     };
-    
-    const details = attributeDetails[char.attribute] || { specialty: "Рідкісна руда", boss: "Рейдовий Бос" };
 
-    // SVG icons for materials (inline, no external dependencies)
-    const matIcons = {
-        coin: `<svg viewBox="0 0 48 48" width="36" height="36"><circle cx="24" cy="24" r="20" fill="#FFD700" stroke="#B8860B" stroke-width="3"/><circle cx="24" cy="24" r="14" fill="none" stroke="#B8860B" stroke-width="1.5" opacity="0.5"/><text x="24" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#8B6914" font-family="serif">$</text></svg>`,
-        exp: `<svg viewBox="0 0 48 48" width="36" height="36"><rect x="10" y="6" width="28" height="36" rx="3" fill="#4FC3F7" stroke="#0288D1" stroke-width="2"/><rect x="14" y="6" width="24" height="36" rx="3" fill="#29B6F6" stroke="#0288D1" stroke-width="1.5"/><line x1="18" y1="15" x2="34" y2="15" stroke="#E1F5FE" stroke-width="2" stroke-linecap="round"/><line x1="18" y1="21" x2="34" y2="21" stroke="#E1F5FE" stroke-width="2" stroke-linecap="round"/><line x1="18" y1="27" x2="30" y2="27" stroke="#E1F5FE" stroke-width="2" stroke-linecap="round"/><polygon points="24,32 25.5,35 29,35.5 26.5,37.8 27,41 24,39.3 21,41 21.5,37.8 19,35.5 22.5,35" fill="#FFF176"/></svg>`,
-        boss: `<svg viewBox="0 0 48 48" width="36" height="36"><circle cx="24" cy="24" r="20" fill="#EF5350" stroke="#B71C1C" stroke-width="2"/><circle cx="17" cy="20" r="4" fill="#FFCDD2"/><circle cx="31" cy="20" r="4" fill="#FFCDD2"/><circle cx="17" cy="20" r="2" fill="#212121"/><circle cx="31" cy="20" r="2" fill="#212121"/><path d="M16 32 Q24 38 32 32" stroke="#FFCDD2" stroke-width="2.5" fill="none" stroke-linecap="round"/><line x1="19" y1="33" x2="19" y2="37" stroke="#FFCDD2" stroke-width="1.5"/><line x1="24" y1="35" x2="24" y2="39" stroke="#FFCDD2" stroke-width="1.5"/><line x1="29" y1="33" x2="29" y2="37" stroke="#FFCDD2" stroke-width="1.5"/></svg>`,
-        crystal: `<svg viewBox="0 0 48 48" width="36" height="36"><polygon points="24,4 38,18 32,44 16,44 10,18" fill="#AB47BC" stroke="#7B1FA2" stroke-width="2"/><polygon points="24,4 30,18 24,44 18,18" fill="#CE93D8" opacity="0.6"/><polygon points="24,4 38,18 30,18" fill="#E1BEE7" opacity="0.4"/><line x1="24" y1="4" x2="24" y2="44" stroke="#E1BEE7" stroke-width="0.5" opacity="0.5"/></svg>`,
-        scroll: `<svg viewBox="0 0 48 48" width="36" height="36"><rect x="12" y="8" width="24" height="32" rx="2" fill="#FFF8E1" stroke="#F9A825" stroke-width="2"/><circle cx="12" cy="10" r="4" fill="#FFD54F" stroke="#F9A825" stroke-width="1.5"/><circle cx="12" cy="38" r="4" fill="#FFD54F" stroke="#F9A825" stroke-width="1.5"/><circle cx="36" cy="10" r="4" fill="#FFD54F" stroke="#F9A825" stroke-width="1.5"/><circle cx="36" cy="38" r="4" fill="#FFD54F" stroke="#F9A825" stroke-width="1.5"/><line x1="17" y1="17" x2="31" y2="17" stroke="#F9A825" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="22" x2="31" y2="22" stroke="#F9A825" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="27" x2="27" y2="27" stroke="#F9A825" stroke-width="1.5" stroke-linecap="round"/></svg>`,
-        dye: `<svg viewBox="0 0 48 48" width="36" height="36"><path d="M18 8 L16 20 L12 40 Q12 44 16 44 L32 44 Q36 44 36 40 L32 20 L30 8 Z" fill="#66BB6A" stroke="#2E7D32" stroke-width="2"/><rect x="16" y="6" width="16" height="6" rx="2" fill="#A5D6A7" stroke="#2E7D32" stroke-width="1.5"/><ellipse cx="24" cy="36" rx="8" ry="4" fill="#A5D6A7" opacity="0.4"/><path d="M20 20 Q24 16 28 20" stroke="#A5D6A7" stroke-width="1.5" fill="none"/></svg>`
-    };
+    // Render HTML Categories
+    const resultsGrid = document.getElementById("calcMaterialsList");
+    resultsGrid.innerHTML = "";
 
-    resultsContainer.innerHTML = `
-        <div class="material-item">
-            <div class="mat-left">
-                <div class="mat-icon">${matIcons.coin}</div>
-                <div class="mat-name">Beetle Coins (Золото)</div>
-            </div>
-            <div class="mat-quantity">${totalCoins.toLocaleString()}</div>
-        </div>
+    function addCategoryHeader(title) {
+        const h = document.createElement("div");
+        h.className = "materials-cat-header";
+        h.innerText = title;
+        resultsGrid.appendChild(h);
+    }
+
+    function addMaterialCard(id, name, needed, farmLoc) {
+        if (needed <= 0) return;
         
-        <div class="material-item">
-            <div class="mat-left">
-                <div class="mat-icon">${matIcons.exp}</div>
-                <div class="mat-name">Elite Hunter Guides (Досвід)</div>
-            </div>
-            <div class="mat-quantity">${totalExpGuides} шт.</div>
-        </div>
+        const have = calcInventory[id] || 0;
+        const remaining = Math.max(0, needed - have);
+        const isCompleted = remaining === 0;
+
+        const card = document.createElement("div");
+        card.className = `material-card ${isCompleted ? 'mat-completed' : ''}`;
+        card.id = `mat-card-${id}`;
         
-        ${totalBossDrops > 0 ? `
-        <div class="material-item">
-            <div class="mat-left">
-                <div class="mat-icon">${matIcons.boss}</div>
-                <div class="mat-name">Ядро боса: ${details.boss}</div>
+        card.innerHTML = `
+            <div class="mat-card-top">
+                <div class="mat-icon">${getMaterialIcon(id)}</div>
+                <div class="mat-card-info">
+                    <span class="mat-card-name">${name}</span>
+                    <span class="mat-card-farm">${farmLoc}</span>
+                </div>
             </div>
-            <div class="mat-quantity">${totalBossDrops} шт.</div>
-        </div>
-        ` : ''}
+            <div class="mat-card-mid">
+                <span class="mat-need">
+                    ${isCompleted ? `Потрібно: <span class="mat-val">${needed.toLocaleString()}</span>` : `Залишилось: <span class="mat-val">${remaining.toLocaleString()}</span> / ${needed.toLocaleString()}`}
+                </span>
+                <span class="mat-completed-badge">✓ Готово</span>
+                <div class="mat-have-input-wrapper">
+                    <span class="mat-have-label">Маю:</span>
+                    <input type="number" class="mat-have-input" data-mat-id="${id}" min="0" value="${have}">
+                </div>
+            </div>
+        `;
+        resultsGrid.appendChild(card);
+    }
 
-        ${totalRegionalSpecialties > 0 ? `
-        <div class="material-item">
-            <div class="mat-left">
-                <div class="mat-icon">${matIcons.crystal}</div>
-                <div class="mat-name">Спеціальність: ${details.specialty}</div>
-            </div>
-            <div class="mat-quantity">${totalRegionalSpecialties} шт.</div>
-        </div>
-        ` : ''}
+    // 1. Currency & Exp Guides
+    addCategoryHeader("Основні Валюти & Досвід");
+    addMaterialCard("coin", "Beetle Coins (Золото)", finalCoins, "Rabbit Hole / Квести / Машини");
+    addMaterialCard("exp_elite", "Elite Hunter Guide (EXP 10k)", guidesElite, "Rabbit Hole: Досвід");
+    addMaterialCard("exp_medium", "Medium Hunter Guide (EXP 2k)", guidesMed, "Rabbit Hole: Досвід");
+    addMaterialCard("exp_basic", "Basic Hunter Guide (EXP 500)", guidesBasic, "Rabbit Hole: Досвід");
+    if (includeWeapon) {
+        addMaterialCard("dye_elite", "Elite Weapon Dye (Dye 10k)", dyesElite, "Rabbit Hole: Зброя");
+        addMaterialCard("dye_medium", "Medium Weapon Dye (Dye 2k)", dyesMed, "Rabbit Hole: Зброя");
+        addMaterialCard("dye_basic", "Basic Weapon Dye (Dye 500)", dyesBasic, "Rabbit Hole: Зброя");
+    }
 
-        ${includeSkills ? `
-        <div class="material-item">
-            <div class="mat-left">
-                <div class="mat-icon">${matIcons.scroll}</div>
-                <div class="mat-name">Матеріали навичок (Кроляча Нора)</div>
-            </div>
-            <div class="mat-quantity">${skillMaterials} шт.</div>
-        </div>
-        ` : ''}
+    // 2. Breakthrough Materials
+    if (totalCharSpecialty > 0 || finalBoss > 0 || (includeWeapon && (totalWeapOreT1 + totalWeapOreT2 + totalWeapOreT3 > 0))) {
+        addCategoryHeader("Матеріали Прориву (Breakthrough)");
+        addMaterialCard("boss", attrDetails.boss, finalBoss, attrDetails.farmBoss);
+        addMaterialCard("specialty", attrDetails.specialty, totalCharSpecialty, attrDetails.farmSpecialty);
+        if (includeWeapon) {
+            addMaterialCard("ore_t1", WEAPON_MATERIALS.T1, totalWeapOreT1, WEAPON_MATERIALS.farm);
+            addMaterialCard("ore_t2", WEAPON_MATERIALS.T2, totalWeapOreT2, WEAPON_MATERIALS.farm);
+            addMaterialCard("ore_t3", WEAPON_MATERIALS.T3, totalWeapOreT3, WEAPON_MATERIALS.farm);
+        }
+    }
 
-        ${includeWeapon ? `
-        <div class="material-item">
-            <div class="mat-left">
-                <div class="mat-icon">${matIcons.dye}</div>
-                <div class="mat-name">Dye (Досвід Зброї)</div>
-            </div>
-            <div class="mat-quantity">${weaponExpDye} шт.</div>
-        </div>
-        ` : ''}
-    `;
+    // 3. Skill Scrolls
+    if (totalSkillScrollsT1 + totalSkillScrollsT2 + totalSkillScrollsT3 + totalSkillCrown > 0) {
+        addCategoryHeader("Матеріали Навичок");
+        addMaterialCard("scroll_t1", attrDetails.scrolls.T1, totalSkillScrollsT1, attrDetails.scrolls.farm);
+        addMaterialCard("scroll_t2", attrDetails.scrolls.T2, totalSkillScrollsT2, attrDetails.scrolls.farm);
+        addMaterialCard("scroll_t3", attrDetails.scrolls.T3, totalSkillScrollsT3, attrDetails.scrolls.farm);
+        addMaterialCard("crown", "Корона Аномалії (Anomaly Crown)", totalSkillCrown, "Сезонні події / Особливі квести");
+    }
+
+    // 4. Common Enemy Drops
+    if (finalCommonT1 + finalCommonT2 + finalCommonT3 > 0) {
+        addCategoryHeader("Трофеї з Ворогів");
+        addMaterialCard("common_t1", attrDetails.common.T1, finalCommonT1, attrDetails.common.farm);
+        addMaterialCard("common_t2", attrDetails.common.T2, finalCommonT2, attrDetails.common.farm);
+        addMaterialCard("common_t3", attrDetails.common.T3, finalCommonT3, attrDetails.common.farm);
+    }
+}
+
+// Generate text report and copy to clipboard
+function exportCalcReport() {
+    const charSelect = document.getElementById("calcCharacter");
+    const charName = charSelect.options[charSelect.selectedIndex].text;
     
-    showToast("Витрати успішно розраховано!");
+    const startLvl = document.getElementById("calcLevelStart").value;
+    const endLvl = document.getElementById("calcLevelEnd").value;
+    
+    let report = `=== EIBON TERMINAL: ЗВІТ ПРО РЕСУРСИ ===\n`;
+    report += `Мисливець: ${charName} (Рівень ${startLvl} ➔ ${endLvl})\n`;
+    
+    // Skill levels
+    report += `Навички:\n`;
+    const skillLabels = ["Авто-атака", "Активна", "Пасивна", "Ультимейт"];
+    for (let i = 0; i < 4; i++) {
+        const start = document.getElementById(`skillStart_${i}`).value;
+        const end = document.getElementById(`skillEnd_${i}`).value;
+        report += `  - ${skillLabels[i]}: Рівень ${start} ➔ ${end}\n`;
+    }
+
+    // Weapon
+    const includeWeapon = document.getElementById("calcWeaponActive").checked;
+    if (includeWeapon) {
+        const wRarity = document.getElementById("calcWeaponRarity").value;
+        const wStart = document.getElementById("calcWeaponLevelStart").value;
+        const wEnd = document.getElementById("calcWeaponLevelEnd").value;
+        report += `Зброя (Arc) ${wRarity}★: Рівень ${wStart} ➔ ${wEnd}\n`;
+    } else {
+        report += `Зброя (Arc): Не враховувалась\n`;
+    }
+
+    report += `\nСПИСОК НЕОБХІДНИХ МАТЕРІАЛІВ:\n`;
+    
+    // Sort materials by calculatedRequirements
+    Object.keys(calculatedRequirements).forEach(id => {
+        const needed = calculatedRequirements[id];
+        if (needed <= 0) return;
+        
+        let matName = "";
+        if (id === 'coin') matName = "Beetle Coins (Золото)";
+        else if (id === 'exp_elite') matName = "Elite Hunter Guide (EXP 10k)";
+        else if (id === 'exp_medium') matName = "Medium Hunter Guide (EXP 2k)";
+        else if (id === 'exp_basic') matName = "Basic Hunter Guide (EXP 500)";
+        else if (id === 'dye_elite') matName = "Elite Weapon Dye (Dye 10k)";
+        else if (id === 'dye_medium') matName = "Medium Weapon Dye (Dye 2k)";
+        else if (id === 'dye_basic') matName = "Basic Weapon Dye (Dye 500)";
+        else if (id === 'boss') {
+            const charId = document.getElementById("calcCharacter").value;
+            const activeList = CHARACTERS.length > 0 ? CHARACTERS : FALLBACK_CHARACTERS;
+            const char = activeList.find(c => c.id === charId);
+            matName = (ATTRIBUTE_MATERIALS[char.attribute] || ATTRIBUTE_MATERIALS["Anima"]).boss;
+        }
+        else if (id === 'specialty') {
+            const charId = document.getElementById("calcCharacter").value;
+            const activeList = CHARACTERS.length > 0 ? CHARACTERS : FALLBACK_CHARACTERS;
+            const char = activeList.find(c => c.id === charId);
+            matName = (ATTRIBUTE_MATERIALS[char.attribute] || ATTRIBUTE_MATERIALS["Anima"]).specialty;
+        }
+        else if (id === 'ore_t1') matName = WEAPON_MATERIALS.T1;
+        else if (id === 'ore_t2') matName = WEAPON_MATERIALS.T2;
+        else if (id === 'ore_t3') matName = WEAPON_MATERIALS.T3;
+        else if (id === 'crown') matName = "Anomaly Crown (Корона Аномалії)";
+        else {
+            const charId = document.getElementById("calcCharacter").value;
+            const activeList = CHARACTERS.length > 0 ? CHARACTERS : FALLBACK_CHARACTERS;
+            const char = activeList.find(c => c.id === charId);
+            const details = ATTRIBUTE_MATERIALS[char.attribute] || ATTRIBUTE_MATERIALS["Anima"];
+            if (id === 'scroll_t1') matName = details.scrolls.T1;
+            else if (id === 'scroll_t2') matName = details.scrolls.T2;
+            else if (id === 'scroll_t3') matName = details.scrolls.T3;
+            else if (id === 'common_t1') matName = details.common.T1;
+            else if (id === 'common_t2') matName = details.common.T2;
+            else if (id === 'common_t3') matName = details.common.T3;
+        }
+
+        const have = calcInventory[id] || 0;
+        const rem = Math.max(0, needed - have);
+        
+        report += `- ${matName}: Потрібно ${needed.toLocaleString()} шт. (Маю: ${have.toLocaleString()} | Залишилось: ${rem.toLocaleString()})\n`;
+    });
+
+    report += `\nСгенеровано на Eibon Terminal. Успішного фарма! 🚀`;
+
+    navigator.clipboard.writeText(report).then(() => {
+        showToast("Звіт скопійовано у буфер обміну!");
+    }).catch(err => {
+        showToast("Помилка копіювання звіту.");
+        console.error(err);
+    });
 }
 
 // 11. PROMO CODES LOGIC
@@ -1208,6 +1823,7 @@ function renderPromoCodes() {
         card.querySelector(".btn-copy").addEventListener("click", () => {
             copyToClipboard(promo.code);
         });
+
 
         container.appendChild(card);
     });
