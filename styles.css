@@ -323,6 +323,20 @@ body {
     transform: translateY(-2px);
 }
 
+.btn-danger {
+    background: rgba(255, 42, 122, 0.1);
+    border: 1px solid var(--color-pink);
+    color: var(--color-pink);
+    box-shadow: 0 0 10px rgba(255, 42, 122, 0.2);
+}
+
+.btn-danger:hover {
+    background: var(--color-pink);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-neon-pink);
+}
+
 .btn-accent {
     background: var(--color-cyan);
     color: #000;

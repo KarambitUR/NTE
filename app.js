@@ -1956,6 +1956,12 @@ function initAuthAndUserTierlists() {
             if (authPrompt) authPrompt.classList.remove("hidden");
             if (container) container.classList.add("hidden");
         }
+
+        // Reload community lists to toggle owner "Delete" buttons in real time
+        const commTab = document.getElementById("sub-content-community");
+        if (commTab && commTab.classList.contains("active")) {
+            loadCommunityTierlists();
+        }
     });
 
     // Bind login on editor prompt
@@ -2287,21 +2293,50 @@ async function loadCommunityTierlists() {
             const data = doc.data();
             const dateStr = data.createdAt ? new Date(data.createdAt.seconds * 1000).toLocaleDateString("uk-UA") : "Нещодавно";
 
+            const currentUser = firebase.auth && firebase.auth().currentUser;
+            const isOwner = currentUser && currentUser.uid === data.userId;
+
             const card = document.createElement("div");
             card.className = "user-tierlist-card";
             card.innerHTML = `
                 <h4 class="user-card-title">${data.title}</h4>
                 <div class="user-card-meta">
-                    <img src="${data.userPhoto || '👤'}" class="user-card-avatar" referrerpolicy="no-referrer" alt="${data.userName}">
+                    <img src="${data.userPhoto || 'https://www.gstatic.com/images/branding/product/2x/avatar_anonymous_96dp.png'}" class="user-card-avatar" referrerpolicy="no-referrer" alt="${data.userName}">
                     <span class="user-card-author">${data.userName}</span>
                     <span class="user-card-date">${dateStr}</span>
                 </div>
-                <button class="btn btn-secondary btn-sm mt-2 view-tierlist-btn" data-id="${doc.id}">Переглянути</button>
+                <div class="user-card-actions" style="display: flex; gap: 0.5rem; width: 100%; margin-top: 0.5rem;">
+                    <button class="btn btn-secondary btn-sm view-tierlist-btn" style="flex: 1;" data-id="${doc.id}">Переглянути</button>
+                    ${isOwner ? `<button class="btn btn-danger btn-sm delete-tierlist-btn" style="flex: 1;" data-id="${doc.id}">Видалити</button>` : ""}
+                </div>
             `;
 
             card.querySelector(".view-tierlist-btn").addEventListener("click", () => {
                 viewUserTierlist(data);
             });
+
+            if (isOwner) {
+                const deleteBtn = card.querySelector(".delete-tierlist-btn");
+                if (deleteBtn) {
+                    deleteBtn.addEventListener("click", async (e) => {
+                        e.stopPropagation();
+                        if (confirm("Ви впевнені, що хочете видалити цей тір-ліст?")) {
+                            try {
+                                deleteBtn.disabled = true;
+                                deleteBtn.innerText = "Видалення...";
+                                await db.collection("userTierlists").doc(doc.id).delete();
+                                showToast("Тір-ліст успішно видалено! 🗑️");
+                                loadCommunityTierlists();
+                            } catch (err) {
+                                console.error("Delete tierlist failed:", err);
+                                showToast(`Помилка видалення: ${err.message}`);
+                                deleteBtn.disabled = false;
+                                deleteBtn.innerText = "Видалити";
+                            }
+                        }
+                    });
+                }
+            }
 
             container.appendChild(card);
         });
