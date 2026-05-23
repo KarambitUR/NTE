@@ -1,5 +1,20 @@
 [
     {
+        "code": "DREAMWALK0603",
+        "rewards": "100 Annulith, 5 Rising Hunter Guides, 5 Light Dyes, 4,000 Beetle Coins",
+        "active": true
+    },
+    {
+        "code": "TOMATO100",
+        "rewards": "100 Annulith, 5 Senior Hunter Guides, 5 Colorless Dyes, 6,000 Beetle Coins",
+        "active": true
+    },
+    {
+        "code": "RACENOLIMIT",
+        "rewards": "100 Annulith, 2 Elite Hunter Guides, 2 Chaotic Dyes, 12,000 Beetle Coins",
+        "active": true
+    },
+    {
         "code": "NTE429vtuber",
         "rewards": "30,000 Beetle Coins, 30,000 Fons",
         "active": true

@@ -12,10 +12,77 @@ const SOURCES = [
     {
         url: 'https://www.esportstales.com/neverness-to-everness/codes',
         name: 'EsportsTales'
+    },
+    {
+        url: 'https://www.pcgamesn.com/neverness-to-everness/codes',
+        name: 'PCGamesN'
+    },
+    {
+        url: 'https://game8.co/games/Neverness-to-Everness/archives/467889',
+        name: 'Game8'
+    },
+    {
+        url: 'https://www.dexerto.com/neverness-to-everness/all-nte-codes-3203068/',
+        name: 'Dexerto'
     }
 ];
 
 const CODES_FILE = path.join(__dirname, 'codes.json');
+
+// Firebase Admin SDK (optional - used when FIREBASE_SERVICE_ACCOUNT env var is set)
+let firestoreDb = null;
+
+async function initFirebaseAdmin() {
+    try {
+        // Check if service account is provided via environment variable
+        const serviceAccountJson = process.env.FIREBASE_SERVICE_ACCOUNT;
+        if (!serviceAccountJson) {
+            console.log('ℹ️  No FIREBASE_SERVICE_ACCOUNT env var. Skipping Firestore writes.');
+            return false;
+        }
+
+        const admin = require('firebase-admin');
+        const serviceAccount = JSON.parse(serviceAccountJson);
+        
+        admin.initializeApp({
+            credential: admin.credential.cert(serviceAccount)
+        });
+        
+        firestoreDb = admin.firestore();
+        console.log('🔥 Firebase Admin SDK initialized');
+        return true;
+    } catch (err) {
+        console.warn('Firebase Admin init failed (this is OK for local dev):', err.message);
+        return false;
+    }
+}
+
+// Write codes to Firestore
+async function writeToFirestore(codes) {
+    if (!firestoreDb) return;
+
+    try {
+        const batch = firestoreDb.batch();
+        let count = 0;
+
+        for (const code of codes) {
+            const ref = firestoreDb.collection('promoCodes').doc(code.code);
+            batch.set(ref, {
+                code: code.code,
+                rewards: code.rewards,
+                active: code.active,
+                addedAt: new Date().toISOString(),
+                source: 'scraper'
+            }, { merge: true }); // merge: true preserves existing fields
+            count++;
+        }
+
+        await batch.commit();
+        console.log(`🔥 Synced ${count} codes to Firestore`);
+    } catch (err) {
+        console.error('Firestore write failed:', err.message);
+    }
+}
 
 // Helper function to perform HTTPS GET with User-Agent header (follows redirects and handles decompression)
 function fetchPage(url) {
@@ -116,6 +183,15 @@ function extractCodes(html) {
         }
     }
 
+    // Additional pattern: codes in <code> or <kbd> tags  
+    const codeTagPattern = /(?:<code>|<kbd>)\s*(NTE[A-Za-z0-9_]{3,20}|[0-9]{5,}[A-Z]{4,}[A-Za-z0-9]+)\s*(?:<\/code>|<\/kbd>)/gi;
+    while ((match = codeTagPattern.exec(html)) !== null) {
+        let code = match[1].trim();
+        if (!foundCodes.some(c => c.code.toLowerCase() === code.toLowerCase())) {
+            foundCodes.push({ code, rewards: "Active Promo Code (Ресурси)", active: true });
+        }
+    }
+
     return foundCodes;
 }
 
@@ -145,6 +221,9 @@ function saveCodes(codes) {
 // Main execution function
 async function run() {
     console.log("Starting Neverness to Everness Promo Codes Scraper...");
+    
+    // Try to init Firebase Admin (optional)
+    await initFirebaseAdmin();
     
     let existingCodes = readExistingCodes();
     console.log(`Loaded ${existingCodes.length} existing codes.`);
@@ -190,6 +269,11 @@ async function run() {
 
     console.log(`Scrape finished. Added ${addedCount} new codes.`);
     saveCodes(updatedCodes);
+
+    // Sync ALL codes to Firestore (both old and new)
+    if (firestoreDb) {
+        await writeToFirestore(updatedCodes);
+    }
 }
 
 run();

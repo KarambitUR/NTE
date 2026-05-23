@@ -9,12 +9,13 @@
 // 6. Увімкни Authentication → Sign-in method → Google (для адмін-панелі)
 
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT.firebasestorage.app",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyCS4oakB81BaFV1WfuNEHxI0TK2mrHHLf8",
+    authDomain: "ntegames.firebaseapp.com",
+    projectId: "ntegames",
+    storageBucket: "ntegames.firebasestorage.app",
+    messagingSenderId: "208628827847",
+    appId: "1:208628827847:web:ce19738d081f97c4ffa0e2",
+    measurementId: "G-BVFR9F9SRH"
 };
 
 // Initialize Firebase
