@@ -39,7 +39,7 @@
         <div class="header-container">
             <div class="logo" id="headerLogo">
                 <span class="logo-accent">EIBON</span><span class="logo-main">TERMINAL</span>
-                <span class="logo-badge">NTE WIKI</span>
+                <span class="logo-badge" data-i18n="logo_badge">WIKI</span>
             </div>
             
             <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
@@ -52,20 +52,27 @@
 
             <nav class="main-nav" id="mainNav">
                 <ul class="nav-links">
-                    <li><button class="nav-btn active" data-tab="home" id="tabHome">Головна</button></li>
-                    <li><button class="nav-btn" data-tab="tierlist" id="tabTierList">Тір-ліст</button></li>
-                    <li><button class="nav-btn" data-tab="builds" id="tabBuilds">Білди</button></li>
-                    <li><button class="nav-btn" data-tab="teambuilder" id="tabTeamBuilder">Команди</button></li>
-                    <li><button class="nav-btn" data-tab="calculator" id="tabCalculator">Калькулятор</button></li>
-                    <li><button class="nav-btn" data-tab="codes-exploration" id="tabCodes">Промокоди & Дослідження</button></li>
-                    <li><button class="nav-btn" data-tab="calendar" id="tabCalendar">Календар</button></li>
+                    <li><button class="nav-btn active" data-tab="home" id="tabHome" data-i18n="nav_home">Головна</button></li>
+                    <li><button class="nav-btn" data-tab="tierlist" id="tabTierList" data-i18n="nav_tierlist">Тір-ліст</button></li>
+                    <li><button class="nav-btn" data-tab="builds" id="tabBuilds" data-i18n="nav_builds">Білди</button></li>
+                    <li><button class="nav-btn" data-tab="teambuilder" id="tabTeamBuilder" data-i18n="nav_teambuilder">Команди</button></li>
+                    <li><button class="nav-btn" data-tab="calculator" id="tabCalculator" data-i18n="nav_calculator">Калькулятор</button></li>
+                    <li><button class="nav-btn" data-tab="codes-exploration" id="tabCodes" data-i18n="nav_codes">Промокоди & Дослідження</button></li>
+                    <li><button class="nav-btn" data-tab="calendar" id="tabCalendar" data-i18n="nav_calendar">Календар</button></li>
                 </ul>
             </nav>
 
-            <div class="header-auth" id="headerAuth">
-                <button class="btn btn-primary btn-sm" id="btnLoginGoogle">
-                    <span class="auth-icon">🔑</span> Увійти
-                </button>
+            <div class="header-right-group">
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang="uk">UA</button>
+                    <span class="lang-divider">|</span>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+                <div class="header-auth" id="headerAuth">
+                    <button class="btn btn-primary btn-sm" id="btnLoginGoogle">
+                        <span class="auth-icon">🔑</span> <span data-i18n="btn_login">Увійти</span>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
@@ -77,31 +84,25 @@
         <section class="tab-pane active" id="pane-home">
             <div class="hero-section">
                 <div class="hero-content">
-                    <span class="hero-tagline">СУПЕРПРИРОДНА МІСЬКА RPG ВІД HOTTA STUDIO</span>
-                    <h1 class="hero-title">Увійдіть в аномальний світ <br><span class="highlight-text">Neverness to Everness</span></h1>
-                    <p class="hero-desc">Ласкаво просимо в Eibon Terminal — ваш персональний довідник з дослідження мегаполісу Гетеро. Оцінюйте аномалії, керуйте бізнесом, збирайте найкращі команди та відстежуйте свіжі новини.</p>
+                    <span class="hero-tagline" data-i18n="hero_tagline">СУПЕРПРИРОДНА МІСЬКА RPG ВІД HOTTA STUDIO</span>
+                    <h1 class="hero-title" data-i18n="hero_title">Увійдіть в аномальний світ <br><span class="highlight-text">Neverness to Everness</span></h1>
+                    <p class="hero-desc" data-i18n="hero_desc">Ласкаво просимо в Eibon Terminal — ваш персональний довідник з дослідження мегаполісу Гетеро. Оцінюйте аномалії, керуйте бізнесом, збирайте найкращі команди та відстежуйте свіжі новини.</p>
                     <div class="hero-actions">
-                        <button class="btn btn-primary" onclick="switchTab('tierlist')">Переглянути Тір-ліст</button>
-                        <button class="btn btn-secondary" onclick="switchTab('teambuilder')">Зібрати Загін</button>
+                        <button class="btn btn-primary" onclick="switchTab('tierlist')" data-i18n="hero_btn_tierlist">Переглянути Тір-ліст</button>
+                        <button class="btn btn-secondary" onclick="switchTab('teambuilder')" data-i18n="hero_btn_teambuilder">Зібрати Загін</button>
                     </div>
                 </div>
                 <div class="hero-visual">
-                    <div class="hero-card-glow">
-                        <div class="terminal-box">
-                            <div class="terminal-header">
-                                <span class="term-dot"></span>
-                                <span class="term-dot"></span>
-                                <span class="term-dot"></span>
-                                <span class="term-title">EIBON_SYS_INFO</span>
+                    <div class="banner-showcase">
+                        <img src="assets/nte_hero_banner.png" alt="NTE Banner" class="banner-image">
+                        <div class="banner-overlay">
+                            <span class="banner-badge" data-i18n="active_banner_badge">АКТИВНИЙ БАНЕР</span>
+                            <h3 class="banner-title" data-i18n="active_banner_title">Хоторі: Відлуння Вічності</h3>
+                            <div class="banner-timer">
+                                <span class="timer-label" data-i18n="banner_timer_label">До завершення:</span>
+                                <span class="timer-value" id="bannerCountdown">00д 00г 00хв</span>
                             </div>
-                            <div class="terminal-body">
-                                <p class="term-line"><span class="term-green">> CONNECTION ESTABLISHED:</span> SECURE_ANOMALY_NET</p>
-                                <p class="term-line"><span class="term-purple">> ACTIVE APPRAISER:</span> Esper Zero</p>
-                                <p class="term-line"><span class="term-blue">> TARGET REGION:</span> Hethereau Metropolis</p>
-                                <p class="term-line">> BANNERS ACTIVE: <span class="badge badge-cosmos">Hotori (S)</span></p>
-                                <p class="term-line">> INCOMING VERSION: 1.1 "Lacrimosa of Chaos" (June 3)</p>
-                                <div class="term-blink-line">█</div>
-                            </div>
+                            <button class="btn btn-accent btn-sm mt-3" id="btnGoToBannerChar" data-i18n="view_build_btn">Оцінка та білд</button>
                         </div>
                     </div>
                 </div>
@@ -111,84 +112,110 @@
             <div class="features-grid">
                 <div class="feature-card" onclick="switchTab('tierlist')">
                     <div class="feature-icon">👑</div>
-                    <h3>Інтерактивний Тір-ліст</h3>
-                    <p class="feature-text">Актуальний рейтинг мисливців на аномалії. Дізнайтеся, хто домінує в поточній меті гри.</p>
+                    <h3 data-i18n="feat_tierlist_title">Інтерактивний Тір-ліст</h3>
+                    <p class="feature-text" data-i18n="feat_tierlist_desc">Актуальний рейтинг мисливців на аномалії. Дізнайтеся, хто домінує в поточній меті гри.</p>
                 </div>
                 <div class="feature-card" onclick="switchTab('teambuilder')">
                     <div class="feature-icon">⚔️</div>
-                    <h3>Конструктор Команд</h3>
-                    <p class="feature-text">Складайте загони та аналізуйте ефекти взаємодії стихій і стилів бою.</p>
+                    <h3 data-i18n="feat_teams_title">Конструктор Команд</h3>
+                    <p class="feature-text" data-i18n="feat_teams_desc">Складайте загони та аналізуйте ефекти взаємодії стихій і стилів бою.</p>
                 </div>
                 <div class="feature-card" onclick="switchTab('calculator')">
                     <div class="feature-icon">📊</div>
-                    <h3>Калькулятор Прокачки</h3>
-                    <p class="feature-text">Рахуйте точну кількість монет, досвіду та матеріалів босів для розвитку персонажів.</p>
+                    <h3 data-i18n="feat_calc_title">Калькулятор Прокачки</h3>
+                    <p class="feature-text" data-i18n="feat_calc_desc">Рахуйте точну кількість монет, досвіду та матеріалів босів для розвитку персонажів.</p>
                 </div>
             </div>
 
-            <!-- Quick Updates Banner -->
-            <div class="quick-banner">
-                <div class="banner-info">
-                    <span class="badge badge-hot">СЬОГОДНІ</span>
-                    <h3>Спеціальний стрім розробників версії 1.1</h3>
-                    <p>Дивіться офіційну презентацію патчу 1.1 "Lacrimosa of Chaos". Дізнайтеся першими про нових героїв Lacrimosa та Chaos.</p>
+            <!-- Dynamic Home Widgets -->
+            <div class="home-widgets-grid">
+                <!-- Promo Codes Widget -->
+                <div class="home-widget-card glass-panel">
+                    <div class="widget-header">
+                        <div class="widget-title-group">
+                            <span class="widget-icon">🎁</span>
+                            <h3 data-i18n="widget_codes_title">Актуальні промокоди</h3>
+                        </div>
+                        <span class="widget-badge badge-green" data-i18n="widget_codes_badge">ПЕРЕВІРЕНО</span>
+                    </div>
+                    <div class="widget-body">
+                        <p class="widget-desc" data-i18n="widget_codes_desc">Натисніть на код, щоб миттєво скопіювати його.</p>
+                        <div class="home-codes-list" id="homeCodesList">
+                            <div class="widget-loading" data-i18n="widget_loading">Завантаження...</div>
+                        </div>
+                    </div>
                 </div>
-                <button class="btn btn-accent" onclick="switchTab('calendar')">Дивитись календар</button>
+
+                <!-- Events / Roadmap Widget -->
+                <div class="home-widget-card glass-panel">
+                    <div class="widget-header">
+                        <div class="widget-title-group">
+                            <span class="widget-icon">📅</span>
+                            <h3 data-i18n="widget_events_title">Графік подій та оновлень</h3>
+                        </div>
+                        <span class="widget-badge badge-cyan" data-i18n="widget_events_badge">ВЕРСІЯ 1.0</span>
+                    </div>
+                    <div class="widget-body">
+                        <div class="home-events-roadmap" id="homeEventsRoadmap">
+                            <div class="widget-loading" data-i18n="widget_loading">Завантаження...</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- SECTION: TIER LIST -->
         <section class="tab-pane" id="pane-tierlist">
             <div class="section-header">
-                <h2>Рейтинг Персонажів (Тір-ліст)</h2>
-                <p>Оцінка ефективності мисливців на аномалії у версії 1.0 (Глобальний реліз)</p>
+                <h2 data-i18n="tierlist_title">Рейтинг Персонажів (Тір-ліст)</h2>
+                <p data-i18n="tierlist_subtitle">Оцінка ефективності мисливців на аномалії у версії 1.0 (Глобальний реліз)</p>
             </div>
-
+ 
             <div class="tierlist-sub-nav">
-                <button class="sub-tab-btn active" data-sub-tab="official">Офіційний Тір-ліст</button>
-                <button class="sub-tab-btn" data-sub-tab="community">Тір-лісти спільноти</button>
-                <button class="sub-tab-btn" data-sub-tab="creator">Створити свій</button>
+                <button class="sub-tab-btn active" data-sub-tab="official" data-i18n="sub_tab_official">Офіційний Тір-ліст</button>
+                <button class="sub-tab-btn" data-sub-tab="community" data-i18n="sub_tab_community">Тір-лісти спільноти</button>
+                <button class="sub-tab-btn" data-sub-tab="creator" data-i18n="sub_tab_creator">Створити свій</button>
             </div>
-
+ 
             <!-- SUB-CONTENT: OFFICIAL TIER LIST -->
             <div class="tierlist-sub-content active" id="sub-content-official">
                 <!-- Filters Bar -->
                 <div class="filters-container">
                     <div class="search-box">
-                        <input type="text" id="charSearch" placeholder="Пошук персонажа за іменем...">
+                        <input type="text" id="charSearch" placeholder="Пошук персонажа за іменем..." data-i18n-placeholder="filter_search_placeholder">
                         <span class="search-icon">🔍</span>
                     </div>
                     
                     <div class="filter-groups">
                         <div class="filter-group">
-                            <span class="filter-label">Рідкість:</span>
+                            <span class="filter-label" data-i18n="filter_rarity_label">Рідкість:</span>
                             <div class="filter-options" id="filter-rarity">
-                                <button class="filter-btn active" data-rarity="all">Всі</button>
-                                <button class="filter-btn" data-rarity="S">S-Ранг (5★)</button>
-                                <button class="filter-btn" data-rarity="A">A-Ранг (4★)</button>
+                                <button class="filter-btn active" data-rarity="all" data-i18n="filter_rarity_all">Всі</button>
+                                <button class="filter-btn" data-rarity="S" data-i18n="filter_rarity_s">S-Ранг (5★)</button>
+                                <button class="filter-btn" data-rarity="A" data-i18n="filter_rarity_a">A-Ранг (4★)</button>
                             </div>
                         </div>
-
+ 
                         <div class="filter-group">
-                            <span class="filter-label">Стихія:</span>
+                            <span class="filter-label" data-i18n="filter_attribute_label">Стихія:</span>
                             <div class="filter-options flex-wrap" id="filter-attribute">
-                                <button class="filter-btn active" data-attribute="all">Всі</button>
-                                <button class="filter-btn" data-attribute="Anima">Anima (Аніма)</button>
-                                <button class="filter-btn" data-attribute="Cosmos">Cosmos (Космос)</button>
-                                <button class="filter-btn" data-attribute="Incantation">Incantation (Закляття)</button>
-                                <button class="filter-btn" data-attribute="Chaos">Chaos (Хаос)</button>
-                                <button class="filter-btn" data-attribute="Psyche">Psyche (Психея)</button>
-                                <button class="filter-btn" data-attribute="Lakshana">Lakshana (Лакшана)</button>
+                                <button class="filter-btn active" data-attribute="all" data-i18n="filter_rarity_all">Всі</button>
+                                <button class="filter-btn" data-attribute="Anima" data-i18n="attr_anima">Anima (Аніма)</button>
+                                <button class="filter-btn" data-attribute="Cosmos" data-i18n="attr_cosmos">Cosmos (Космос)</button>
+                                <button class="filter-btn" data-attribute="Incantation" data-i18n="attr_incant">Incantation (Закляття)</button>
+                                <button class="filter-btn" data-attribute="Chaos" data-i18n="attr_chaos">Chaos (Хаос)</button>
+                                <button class="filter-btn" data-attribute="Psyche" data-i18n="attr_psyche">Psyche (Психея)</button>
+                                <button class="filter-btn" data-attribute="Lakshana" data-i18n="attr_lakshana">Lakshana (Лакшана)</button>
                             </div>
                         </div>
-
+ 
                         <div class="filter-group">
-                            <span class="filter-label">Роль:</span>
+                            <span class="filter-label" data-i18n="filter_role_label">Роль:</span>
                             <div class="filter-options" id="filter-role">
-                                <button class="filter-btn active" data-role="all">Всі</button>
-                                <button class="filter-btn" data-role="Main DPS">Main DPS</button>
-                                <button class="filter-btn" data-role="Sub-DPS">Sub-DPS</button>
-                                <button class="filter-btn" data-role="Support">Support</button>
+                                <button class="filter-btn active" data-role="all" data-i18n="filter_rarity_all">Всі</button>
+                                <button class="filter-btn" data-role="Main DPS" data-i18n="role_main_dps">Main DPS</button>
+                                <button class="filter-btn" data-role="Sub-DPS" data-i18n="role_sub_dps">Sub-DPS</button>
+                                <button class="filter-btn" data-role="Support" data-i18n="role_support">Support</button>
                             </div>
                         </div>
                     </div>
@@ -229,14 +256,14 @@
                     </div>
                 </div>
                 
-                <p class="tier-note">* Натисніть на картку будь-якого персонажа, щоб відкрити його детальний білд, найкращу зброю (Arc) та рекомендовані картриджі.</p>
+                <p class="tier-note" data-i18n="tierlist_note">* Натисніть на картку будь-якого персонажа, щоб відкрити його детальний білд, найкращу зброю (Arc) та рекомендовані картриджі.</p>
             </div>
 
             <!-- SUB-CONTENT: COMMUNITY TIER LISTS -->
             <div class="tierlist-sub-content" id="sub-content-community">
                 <div class="community-header">
-                    <h3>Тір-лісти від Спільноти</h3>
-                    <p>Оцінки персонажів та думки інших гравців Neverness to Everness.</p>
+                    <h3 data-i18n="comm_title">Тір-лісти від Спільноти</h3>
+                    <p data-i18n="comm_subtitle">Оцінки персонажів та думки інших гравців Neverness to Everness.</p>
                 </div>
                 <div class="community-grid" id="communityGrid">
                     <!-- Dynamic list of user tierlists -->
@@ -249,19 +276,19 @@
                 <!-- Logged Out Prompt -->
                 <div class="editor-auth-prompt" id="editorAuthPrompt">
                     <div class="prompt-icon">🔐</div>
-                    <h3>Створіть власний тір-ліст</h3>
-                    <p>Щоб скористатися конструктором та зберегти свій рейтинг героїв, будь ласка, авторизуйтеся через Google.</p>
-                    <button class="btn btn-accent mt-3" id="btnEditorLogin">Увійти через Google</button>
+                    <h3 data-i18n="creator_prompt_title">Створіть власний тір-ліст</h3>
+                    <p data-i18n="creator_prompt_desc">Щоб скористатися конструктором та зберегти свій рейтинг героїв, будь ласка, авторизуйтеся через Google.</p>
+                    <button class="btn btn-accent mt-3" id="btnEditorLogin" data-i18n="creator_prompt_btn">Увійти через Google</button>
                 </div>
 
                 <!-- Editor Workspace -->
                 <div class="editor-container hidden" id="editorContainer">
                     <div class="editor-header-bar">
                         <div class="form-group flex-grow-1 mb-0">
-                            <label for="editorTitle">Назва тір-ліста:</label>
+                            <label for="editorTitle" data-i18n="creator_title_label">Назва тір-ліста:</label>
                             <input type="text" id="editorTitle" class="form-control" placeholder="Наприклад: Мій тір-ліст версії 1.0" value="Мій тір-ліст">
                         </div>
-                        <button class="btn btn-primary" id="btnSaveTierlist">Зберегти тір-ліст</button>
+                        <button class="btn btn-primary" id="btnSaveTierlist" data-i18n="creator_save_btn">Зберегти тір-ліст</button>
                     </div>
 
                     <div class="editor-tier-rows">
@@ -284,7 +311,7 @@
                     </div>
 
                     <div class="editor-pool-section">
-                        <h4>Пул Персонажів (натисніть на картку або перетягніть для розподілу)</h4>
+                        <h4 data-i18n="creator_pool_title">Пул Персонажів (натисніть на картку або перетягніть для розподілу)</h4>
                         <div class="editor-character-pool" id="editorCharacterPool" data-tier="pool">
                             <!-- Dynamic draggable cards -->
                         </div>
@@ -296,8 +323,8 @@
         <!-- SECTION: BUILDS -->
         <section class="tab-pane" id="pane-builds">
             <div class="section-header">
-                <h2>Гайди на Білди Персонажів</h2>
-                <p>Рекомендоване спорядження та параметри для максимальної бойової ефективності</p>
+                <h2 data-i18n="builds_title">Гайди на Білди Персонажів</h2>
+                <p data-i18n="builds_subtitle">Рекомендоване спорядження та параметри для максимальної бойової ефективності</p>
             </div>
 
             <div class="builds-grid" id="buildsGrid">
@@ -308,8 +335,8 @@
         <!-- SECTION: TEAM BUILDER -->
         <section class="tab-pane" id="pane-teambuilder">
             <div class="section-header">
-                <h2>Інтерактивний Конструктор Загону</h2>
-                <p>Зберіть команду з 4-х мисливців та дізнайтеся активні синергії стихій і ротації</p>
+                <h2 data-i18n="teams_title">Інтерактивний Конструктор Загону</h2>
+                <p data-i18n="teams_subtitle">Зберіть команду з 4-х мисливців та дізнайтеся активні синергії стихій і ротації</p>
             </div>
 
             <div class="teambuilder-container">
@@ -345,12 +372,12 @@
                 </div>
 
                 <div class="builder-actions-row">
-                    <button class="btn btn-secondary btn-sm" id="clearSquadBtn">Очистити команду</button>
+                    <button class="btn btn-secondary btn-sm" id="clearSquadBtn" data-i18n="teams_clear_btn">Очистити команду</button>
                 </div>
 
                 <div class="synergy-panel">
                     <div class="synergy-header">
-                        <h3>Аналіз Синергії Команди</h3>
+                        <h3 data-i18n="teams_analysis_title">Аналіз Синергії Команди</h3>
                         <div class="synergy-rating" id="synergyRating">-</div>
                     </div>
                     <div class="synergy-body">
@@ -374,8 +401,8 @@
         <!-- SECTION: CALCULATOR -->
         <section class="tab-pane" id="pane-calculator">
             <div class="section-header">
-                <h2>Калькулятор Прогресу та Ресурсів</h2>
-                <p>Професійний планувальник для максимального розвитку вашого мисливця, навичок та зброї</p>
+                <h2 data-i18n="calc_title">Калькулятор Прогресу та Ресурсів</h2>
+                <p data-i18n="calc_subtitle">Професійний планувальник для максимального розвитку вашого мисливця, навичок та зброї</p>
             </div>
 
             <div class="calculator-layout">
@@ -395,7 +422,7 @@
 
                     <!-- Dropdown to change character -->
                     <div class="form-group mt-3">
-                        <label for="calcCharacter">Оберіть мисливця:</label>
+                        <label for="calcCharacter" data-i18n="calc_char_label">Оберіть мисливця:</label>
                         <select id="calcCharacter" class="form-control">
                             <!-- Dynamic select -->
                         </select>
@@ -403,17 +430,17 @@
 
                     <!-- Inner tab navigation -->
                     <div class="calc-tab-nav">
-                        <button class="calc-tab-btn active" data-calc-tab="char">Персонаж</button>
-                        <button class="calc-tab-btn" data-calc-tab="skills">Навички</button>
-                        <button class="calc-tab-btn" data-calc-tab="weapon">Зброя (Arc)</button>
+                        <button class="calc-tab-btn active" data-calc-tab="char" data-i18n="calc_tab_char">Персонаж</button>
+                        <button class="calc-tab-btn" data-calc-tab="skills" data-i18n="calc_tab_skills">Навички</button>
+                        <button class="calc-tab-btn" data-calc-tab="weapon" data-i18n="calc_tab_weapon">Зброя (Arc)</button>
                     </div>
 
                     <!-- TAB CONTENT: CHARACTER LEVEL -->
                     <div class="calc-tab-content active" id="calc-tab-char">
-                        <h4 class="calc-sub-title">Рівень Персонажа</h4>
+                        <h4 class="calc-sub-title" data-i18n="calc_level_title">Рівень Персонажа</h4>
                         <div class="form-group">
                             <div class="range-header">
-                                <label for="calcLevelStart">Початковий рівень:</label>
+                                <label for="calcLevelStart" data-i18n="calc_level_start">Початковий рівень:</label>
                                 <span class="range-val" id="valLevelStart">1</span>
                             </div>
                             <div class="range-input-wrapper">
@@ -423,7 +450,7 @@
                         </div>
                         <div class="form-group">
                             <div class="range-header">
-                                <label for="calcLevelEnd">Цільовий рівень:</label>
+                                <label for="calcLevelEnd" data-i18n="calc_level_end">Цільовий рівень:</label>
                                 <span class="range-val" id="valLevelEnd">80</span>
                             </div>
                             <div class="range-input-wrapper">
@@ -432,18 +459,18 @@
                             </div>
                         </div>
                         <div class="level-hints">
-                            <p>* Максимальний рівень мисливця - 80. Прориви відбуваються на 20, 40, 50, 60 та 70 рівнях.</p>
+                            <p data-i18n="calc_level_max_hint">* Максимальний рівень мисливця - 80. Прориви відбуваються на 20, 40, 50, 60 та 70 рівнях.</p>
                         </div>
                     </div>
 
                     <!-- TAB CONTENT: SKILLS LEVEL -->
                     <div class="calc-tab-content" id="calc-tab-skills">
-                        <h4 class="calc-sub-title">Рівні Навичок (1 - 10)</h4>
+                        <h4 class="calc-sub-title" data-i18n="calc_skills_title">Рівні Навичок (1 - 10)</h4>
                         
                         <div class="skill-row">
                             <div class="skill-name-col">
                                 <span class="skill-icon-placeholder">⚔️</span>
-                                <span class="skill-label">Авто-атака (Basic ATK)</span>
+                                <span class="skill-label" data-i18n="calc_skill_basic">Авто-атака</span>
                             </div>
                             <div class="skill-selects-col">
                                 <select id="skillStart_0" class="form-control form-control-sm skill-select"></select>
@@ -455,7 +482,7 @@
                         <div class="skill-row">
                             <div class="skill-name-col">
                                 <span class="skill-icon-placeholder">⚡</span>
-                                <span class="skill-label">Активна навичка (Skill)</span>
+                                <span class="skill-label" data-i18n="calc_skill_active">Активна навичка</span>
                             </div>
                             <div class="skill-selects-col">
                                 <select id="skillStart_1" class="form-control form-control-sm skill-select"></select>
@@ -467,7 +494,7 @@
                         <div class="skill-row">
                             <div class="skill-name-col">
                                 <span class="skill-icon-placeholder">🛡️</span>
-                                <span class="skill-label">Пасивна навичка (Passive)</span>
+                                <span class="skill-label" data-i18n="calc_skill_passive">Пасивна навичка</span>
                             </div>
                             <div class="skill-selects-col">
                                 <select id="skillStart_2" class="form-control form-control-sm skill-select"></select>
@@ -479,7 +506,7 @@
                         <div class="skill-row">
                             <div class="skill-name-col">
                                 <span class="skill-icon-placeholder">🔥</span>
-                                <span class="skill-label">Вибух стихій (Ultimate)</span>
+                                <span class="skill-label" data-i18n="calc_skill_ultimate">Вибух стихій</span>
                             </div>
                             <div class="skill-selects-col">
                                 <select id="skillStart_3" class="form-control form-control-sm skill-select"></select>
@@ -489,7 +516,7 @@
                         </div>
                         
                         <div class="level-hints">
-                            <p>* Рівні навичок 8-10 потребують рідкісних ядер босів та Корони Аномалії.</p>
+                            <p data-i18n="calc_skills_hint">* Рівні навичок 8-10 потребують рідкісних ядер босів та Корони Аномалії.</p>
                         </div>
                     </div>
 
@@ -497,22 +524,22 @@
                     <div class="calc-tab-content" id="calc-tab-weapon">
                         <div class="checkbox-control mb-3">
                             <input type="checkbox" id="calcWeaponActive" checked>
-                            <label for="calcWeaponActive" class="label-large">Прокачувати зброю (Arc)</label>
+                            <label for="calcWeaponActive" class="label-large" data-i18n="calc_weapon_active">Прокачувати зброю (Arc)</label>
                         </div>
                         
                         <div id="weaponSettingsBlock">
                             <div class="form-group">
-                                <label for="calcWeaponRarity">Рідкість зброї:</label>
+                                <label for="calcWeaponRarity" data-i18n="calc_weapon_rarity">Рідкість зброї:</label>
                                 <select id="calcWeaponRarity" class="form-control">
-                                    <option value="5">S-Ранг (5★ Сигнатурна)</option>
-                                    <option value="4" selected>A-Ранг (4★ F2P)</option>
-                                    <option value="3">B-Ранг (3★ Стартова)</option>
+                                    <option value="5" data-i18n="calc_weapon_5star">S-Ранг (5★ Сигнатурна)</option>
+                                    <option value="4" selected data-i18n="calc_weapon_4star">A-Ранг (4★ F2P)</option>
+                                    <option value="3" data-i18n="calc_weapon_3star">B-Ранг (3★ Стартова)</option>
                                 </select>
                             </div>
                             
                             <div class="form-group">
                                 <div class="range-header">
-                                    <label for="calcWeaponLevelStart">Початковий рівень:</label>
+                                    <label for="calcWeaponLevelStart" data-i18n="calc_weapon_start">Початковий рівень:</label>
                                     <span class="range-val" id="valWeaponLevelStart">1</span>
                                 </div>
                                 <div class="range-input-wrapper">
@@ -523,7 +550,7 @@
                             
                             <div class="form-group">
                                 <div class="range-header">
-                                    <label for="calcWeaponLevelEnd">Цільовий рівень:</label>
+                                    <label for="calcWeaponLevelEnd" data-i18n="calc_weapon_end">Цільовий рівень:</label>
                                     <span class="range-val" id="valWeaponLevelEnd">80</span>
                                 </div>
                                 <div class="range-input-wrapper">
@@ -538,14 +565,14 @@
                 <!-- Right panel: Results with inventory planning -->
                 <div class="calc-results-panel glass-panel">
                     <div class="results-header-row">
-                        <h3>Необхідні Матеріали</h3>
+                        <h3 data-i18n="calc_materials_title">Необхідні Матеріали</h3>
                         <div class="results-actions">
-                            <button class="btn btn-secondary btn-xs" id="btnClearInventory">Очистити склад</button>
-                            <button class="btn btn-accent btn-xs" id="btnExportReport">Скопіювати звіт</button>
+                            <button class="btn btn-secondary btn-xs" id="btnClearInventory" data-i18n="calc_clear_inv">Очистити склад</button>
+                            <button class="btn btn-accent btn-xs" id="btnExportReport" data-i18n="calc_copy_report">Скопіювати звіт</button>
                         </div>
                     </div>
                     
-                    <p class="results-subtitle">Введіть ваші запаси в полі «Маю в наявності», щоб розрахувати чистий дефіцит.</p>
+                    <p class="results-subtitle" data-i18n="calc_inv_desc">Введіть ваші запаси в полі «Маю в наявності», щоб розрахувати чистий дефіцит.</p>
                     
                     <div class="materials-grid-new" id="calcMaterialsList">
                         <!-- Dynamic items -->
@@ -557,58 +584,58 @@
         <!-- SECTION: CODES & EXPLORATION -->
         <section class="tab-pane" id="pane-codes-exploration">
             <div class="section-header">
-                <h2>Активні Промокоди & Дослідження</h2>
-                <p>Безкоштовні ресурси від розробників та поради щодо вивчення Гетеро</p>
+                <h2 data-i18n="codes_title">Активні Промокоди & Дослідження</h2>
+                <p data-i18n="codes_subtitle">Безкоштовні ресурси від розробників та поради щодо вивчення Гетеро</p>
             </div>
 
             <div class="codes-exploration-layout">
                 <!-- Left: Codes -->
                 <div class="codes-column">
                     <div class="panel-header-row">
-                        <h3>Діючі Промокоди (Promo Codes)</h3>
-                        <span class="update-indicator pulse-green">Авто-оновлення: Активне</span>
+                        <h3 data-i18n="codes_header">Діючі Промокоди (Promo Codes)</h3>
+                        <span class="update-indicator pulse-green" data-i18n="codes_indicator">Авто-оновлення: Активне</span>
                     </div>
                     <div class="codes-list" id="promoCodesList">
                         <!-- Dynamic promo codes -->
                     </div>
                     
                     <div class="redemption-guide glass-panel mt-3">
-                        <h4>Як активувати промокоди в грі?</h4>
+                        <h4 data-i18n="codes_guide_title">Як активувати промокоди в грі?</h4>
                         <ol class="guide-steps">
-                            <li>Запустіть гру <strong>Neverness to Everness</strong>.</li>
-                            <li>Відкрийте <strong>Головне меню</strong> (іконка у правому верхньому кутку).</li>
-                            <li>Натисніть на іконку з <strong>трьома крапками (...)</strong> поруч із вашим нікнеймом.</li>
-                            <li>Виберіть пункт <strong>Redeem Code (Активувати код)</strong>.</li>
-                            <li>Введіть скопійований код та заберіть подарунки на ігровій пошті!</li>
+                            <li data-i18n="codes_guide_1">Запустіть гру <strong>Neverness to Everness</strong>.</li>
+                            <li data-i18n="codes_guide_2">Відкрийте <strong>Головне меню</strong> (іконка у правому верхньому кутку).</li>
+                            <li data-i18n="codes_guide_3">Натисніть на іконку з <strong>трьома крапками (...)</strong> поруч із вашим нікнеймом.</li>
+                            <li data-i18n="codes_guide_4">Виберіть пункт <strong>Redeem Code (Активувати код)</strong>.</li>
+                            <li data-i18n="codes_guide_5">Введіть скопійований код та заберіть подарунки на ігровій пошті!</li>
                         </ol>
                     </div>
                 </div>
 
                 <!-- Right: Exploration -->
                 <div class="exploration-column glass-panel">
-                    <h3>Посібник з дослідження міста Hethereau</h3>
+                    <h3 data-i18n="explor_title">Посібник з дослідження міста Hethereau</h3>
                     <div class="explor-article">
                         <div class="explor-header">
                             <span class="explor-icon">👁️</span>
-                            <h4>Використання Appraiser Vision (Зору Оцінювача)</h4>
+                            <h4 data-i18n="explor_art1_title">Використання Appraiser Vision (Зору Оцінювача)</h4>
                         </div>
-                        <p>Натискайте клавішу зору в місті, щоб виявляти приховані аномалії. Багато об'єктів (наприклад, статуї, дивні графіті або дзеркальні відображення) змінюють свій вигляд і відкривають секретні скрині після взаємодії у цьому режимі.</p>
+                        <p data-i18n="explor_art1_desc">Натискайте клавішу зору в місті, щоб виявляти приховані аномалії. Багато об'єктів (наприклад, статуї, дивні графіті або дзеркальні відображення) змінюють свій вигляд і відкривають секретні скрині після взаємодії у цьому режимі.</p>
                     </div>
 
                     <div class="explor-article">
                         <div class="explor-header">
                             <span class="explor-icon">🐰</span>
-                            <h4>Кролячі Нори (Rabbit Holes) та Аномальні Зони</h4>
+                            <h4 data-i18n="explor_art2_title">Кролячі Нори (Rabbit Holes) та Аномальні Зони</h4>
                         </div>
-                        <p>Витрачайте енергію Fons у зонах "Rabbit Holes" для фарма матеріалів для навичок. Щоденний фарм необхідний, оскільки ресурси навичок розділені по днях тижня. Завжди планують свій фарм заздалегідь.</p>
+                        <p data-i18n="explor_art2_desc">Витрачайте енергію Fons у зонах "Rabbit Holes" для фарма матеріалів для навичок. Щоденний фарм необхідний, оскільки ресурси навичок розділені по днях тижня. Завжди планують свій фарм заздалегідь.</p>
                     </div>
 
                     <div class="explor-article">
                         <div class="explor-header">
                             <span class="explor-icon">🚗</span>
-                            <h4>Автомобілі та Швидке Переміщення</h4>
+                            <h4 data-i18n="explor_art3_title">Автомобілі та Швидке Переміщення</h4>
                         </div>
-                        <p>Використовуйте свої авто не тільки для краси, а й для переміщення по великих шосе міста. Ви можете кастомізувати машини в гаражі Eibon, покращуючи їхню керованість та швидкість, що полегшить подолання дистанцій між аномаліями.</p>
+                        <p data-i18n="explor_art3_desc">Використовуйте свої авто не тільки для краси, а й для переміщення по великих шосе міста. Ви можете кастомізувати машини в гаражі Eibon, покращуючи їхню керованість та швидкість, що полегшить подолання дистанцій між аномаліями.</p>
                     </div>
                 </div>
             </div>
@@ -617,8 +644,8 @@
         <!-- SECTION: CALENDAR -->
         <section class="tab-pane" id="pane-calendar">
             <div class="section-header">
-                <h2>Календар Подій та Оновлень</h2>
-                <p>Слідкуйте за виходом нових патчів, банерів та івентів у Neverness to Everness</p>
+                <h2 data-i18n="cal_title">Календар Подій та Оновлень</h2>
+                <p data-i18n="cal_subtitle">Слідкуйте за виходом нових патчів, банерів та івентів у Neverness to Everness</p>
             </div>
 
             <!-- Timeline -->
@@ -643,7 +670,7 @@
     <div class="modal-overlay" id="selectorModalOverlay">
         <div class="modal-content select-modal-content glass-panel">
             <button class="modal-close-btn" id="selectorCloseBtn" aria-label="Close Selector">&times;</button>
-            <h3>Виберіть Персонажа</h3>
+            <h3 data-i18n="teams_modal_title">Виберіть Персонажа</h3>
             <div class="selector-grid" id="selectorGrid">
                 <!-- Dynamic selector grid cards -->
             </div>
@@ -681,8 +708,8 @@
     <!-- FOOTER -->
     <footer class="app-footer">
         <div class="footer-container">
-            <p>&copy; 2026 Eibon Terminal. Створено для спільноти Neverness to Everness.</p>
-            <p class="footer-disclaimer">Цей сайт є фан-ресурсом і не пов'язаний з Perfect World Games чи Hotta Studio. Усі права на гру належать їхнім правовласникам.</p>
+            <p data-i18n="footer_copyright">&copy; 2026 Eibon Terminal. Створено для спільноти Neverness to Everness.</p>
+            <p class="footer-disclaimer" data-i18n="footer_disclaimer">Цей сайт є фан-ресурсом і не пов'язаний з Perfect World Games чи Hotta Studio. Усі права на гру належать їхнім правовласникам.</p>
         </div>
     </footer>
 

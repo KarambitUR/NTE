@@ -8,6 +8,1329 @@ let PROMO_CODES = [];
 let TIMELINE_EVENTS = [];
 let dataSource = 'loading'; // 'firestore', 'cache', 'hardcoded'
 
+// --- I18N LOCALIZATION SYSTEM ---
+let currentLang = localStorage.getItem('nte_lang') || 'uk';
+
+const ROLE_TRANSLATIONS = {
+    uk: { "Main DPS": "Атакуючий", "Sub-DPS": "Допоміжний ДПС", "Support": "Підтримка" },
+    en: { "Main DPS": "Main DPS", "Sub-DPS": "Sub-DPS", "Support": "Support" }
+};
+
+const ATTR_TRANSLATIONS = {
+    uk: { "Anima": "Аніма", "Cosmos": "Космос", "Incantation": "Закляття", "Chaos": "Хаос", "Psyche": "Психея", "Lakshana": "Лакшана" },
+    en: { "Anima": "Anima", "Cosmos": "Cosmos", "Incantation": "Incantation", "Chaos": "Chaos", "Psyche": "Psyche", "Lakshana": "Lakshana" }
+};
+
+const STAT_TRANSLATIONS = {
+    uk: {
+        "Crit Rate": "Шанс криту",
+        "Crit Rate (75%+)": "Шанс криту (75%+)",
+        "Crit DMG": "Крит. шкода",
+        "ATK%": "Сила атаки %",
+        "DEF%": "Захист %",
+        "HP%": "Здоров'я %",
+        "Flat HP": "Здоров'я (фікс.)",
+        "Flat DEF": "Захист (фікс.)",
+        "Cycle Intensity": "Інтенсивність циклу",
+        "Break Effect": "Ефект пробиття",
+        "Break Intensity": "Інтенсивність пробиття",
+        "Energy Charge Efficiency": "Відновлення енергії",
+        "Anima DMG": "Аніма шкода",
+        "Cosmos DMG": "Космос шкода",
+        "Incantation DMG": "Шкода закляття",
+        "Chaos DMG": "Хаос шкода",
+        "Psyche DMG": "Психея шкода",
+        "Lakshana DMG": "Лакшана шкода",
+        "Healing Bonus": "Бонус лікування"
+    },
+    en: {
+        "Crit Rate": "Crit Rate",
+        "Crit Rate (75%+)": "Crit Rate (75%+)",
+        "Crit DMG": "Crit DMG",
+        "ATK%": "ATK%",
+        "DEF%": "DEF%",
+        "HP%": "HP%",
+        "Flat HP": "Flat HP",
+        "Flat DEF": "Flat DEF",
+        "Cycle Intensity": "Cycle Intensity",
+        "Break Effect": "Break Effect",
+        "Break Intensity": "Break Intensity",
+        "Energy Charge Efficiency": "Energy Recharge",
+        "Anima DMG": "Anima DMG",
+        "Cosmos DMG": "Cosmos DMG",
+        "Incantation DMG": "Incantation DMG",
+        "Chaos DMG": "Chaos DMG",
+        "Psyche DMG": "Psyche DMG",
+        "Lakshana DMG": "Lakshana DMG",
+        "Healing Bonus": "Healing Bonus"
+    }
+};
+
+const CHARACTER_TRANSLATIONS = {
+    nanally: {
+        uk: {
+            name: "Наналлі",
+            summary: "Найсильніший атакуючий персонаж стихії Аніма. Володіє неймовірною мобільністю завдяки антигравітаційним механікам та завдає колосальної шкоди авто-атаками супроводу.",
+            weapon: "Поцілунок на ніч (Сигнатурний Arc)",
+            weaponF2p: "Лють полум'я",
+            cartridge: "Світлячки та ліс (4 частини)",
+            stats: ["Шанс криту (75%+)", "Крит. шкода", "Аніма шкода", "Сила атаки %"],
+            teamSynergy: "Зеро (Космос), Сакірі (Закляття), Цзююань (Аніма)",
+            lore: "Загадкова дівчина з лисячими вушками, яка обожнює грати з гравітацією. Працює незалежним детективом аномалій у Hethereau."
+        },
+        en: {
+            name: "Nanally",
+            summary: "The strongest Anima attribute DPS character. Possesses incredible mobility thanks to anti-gravity mechanics and deals colossal damage with support auto-attacks.",
+            weapon: "Goodnight Kiss (Signature Arc)",
+            weaponF2p: "Raging Flames",
+            cartridge: "Fireflies and the Forest (4-piece)",
+            stats: ["Crit Rate (75%+)", "Crit DMG", "Anima DMG", "ATK%"],
+            teamSynergy: "Zero (Cosmos), Sakiri (Incantation), Jiuyuan (Anima)",
+            lore: "A mysterious girl with fox ears who loves playing with gravity. Works as an independent anomaly detective in Hethereau."
+        }
+    },
+    sakiri: {
+        uk: {
+            name: "Сакірі",
+            summary: "Найкращий персонаж підтримки у грі. Стягує ворогів, накладає потужне зниження опору до стихій та баффає силу атаки всієї команди після вибуху стихій.",
+            weapon: "Велика пригода хорошого хлопчика (Сигнатурний)",
+            weaponF2p: "Смуток у моєму серці",
+            cartridge: "Швидкий їжак (4 частини)",
+            stats: ["Інтенсивність циклу", "Ефект пробиття", "Відновлення енергії", "Сила атаки %"],
+            teamSynergy: "Наналлі (Аніма), Зеро (Космос), Даффоділ (Хаос)",
+            lore: "Весела та енергійна дівчина, яка завжди носить із собою іграшкового кролика. Здатна бачити приховані нитки долі за допомогою заклять."
+        },
+        en: {
+            name: "Sakiri",
+            summary: "The best support character in the game. Groups enemies, applies heavy elemental resistance shred, and buffs the ATK of the entire team after using Ultimate Burst.",
+            weapon: "Good Boy's Grand Adventure (Signature)",
+            weaponF2p: "Failing You, Heavy in My Heart",
+            cartridge: "Speedy Hedgehog (4-piece)",
+            stats: ["Cycle Intensity", "Break Effect", "Energy Recharge Efficiency", "ATK%"],
+            teamSynergy: "Nanally (Anima), Zero (Cosmos), Daffodil (Chaos)",
+            lore: "A cheerful and energetic girl who always carries a toy rabbit. Able to see hidden threads of fate using incantations."
+        }
+    },
+    jiuyuan: {
+        uk: {
+            name: "Цзююань",
+            summary: "Потужний допоміжний ДПС, який завдає швидку вибухову шкоду. Ідеально підходить для активації реакції Blossom (Цвітіння) разом з Наналлі.",
+            weapon: "Шепіт нефритового дракона (Сигнатурний)",
+            weaponF2p: "Порив вітру",
+            cartridge: "Світлячки та ліс (4 частини)",
+            stats: ["Шанс криту", "Крит. шкода", "Аніма шкода", "Відновлення енергії"],
+            teamSynergy: "Наналлі (Аніма), Сакірі (Закляття), Зеро (Космос)",
+            lore: "Мисливиця на аномалії стародавнього роду з витонченими манерами. Використовує віяло для виклику аномальних повітряних потоків."
+        },
+        en: {
+            name: "Jiuyuan",
+            summary: "A powerful Sub-DPS character who deals quick burst damage. Perfectly suited for triggering Blossom reactions alongside Nanally.",
+            weapon: "Jade Dragon Whisper (Signature)",
+            weaponF2p: "Rising Wind",
+            cartridge: "Fireflies and the Forest (4-piece)",
+            stats: ["Crit Rate", "Crit DMG", "Anima DMG", "Energy Recharge Efficiency"],
+            teamSynergy: "Nanally (Anima), Sakiri (Incantation), Zero (Cosmos)",
+            lore: "An anomaly hunter of an ancient lineage with refined manners. Uses a fan to summon anomalous air currents."
+        }
+    },
+    hotori: {
+        uk: {
+            name: "Хоторі",
+            summary: "Унікальний допоміжний ДПС / підтримка, здатна записувати та повторювати навички активних членів загону, подвоюючи загальну шкоду команди.",
+            weapon: "Відлуння вічності (Сигнатурний)",
+            weaponF2p: "Блокнот оцінювача",
+            cartridge: "Швидкий їжак (4 частини)",
+            stats: ["Відновлення енергії", "Інтенсивність циклу", "Сила атаки %", "Здоров'я %"],
+            teamSynergy: "Наналлі (Аніма), Адлер (Хаос), Ханіель (Закляття)",
+            lore: "Тихий оцінювач аномальних предметів, який проводить більшу частину часу в бібліотеці антикварної крамниці Eibon."
+        },
+        en: {
+            name: "Hotori",
+            summary: "A unique Sub-DPS / Support character capable of recording and repeating the active team members' skills, doubling the overall team damage.",
+            weapon: "Echoes of Eternity (Signature)",
+            weaponF2p: "Appraiser's Notebook",
+            cartridge: "Speedy Hedgehog (4-piece)",
+            stats: ["Energy Recharge Efficiency", "Cycle Intensity", "ATK%", "HP%"],
+            teamSynergy: "Nanally (Anima), Adler (Chaos), Haniel (Incantation)",
+            lore: "A quiet appraiser of anomalous items who spends most of her time in the library of the Eibon antique shop."
+        }
+    },
+    zero: {
+        uk: {
+            name: "Зеро",
+            summary: "Головний герой. Володіє Cosmos атрибутом, що є універсальним каталізатором для активації ефекту Esper Cycle для будь-якої іншої стихії.",
+            weapon: "Спадщина Ейбона (Сигнатурний)",
+            weaponF2p: "Рішучість мисливця",
+            cartridge: "Швидкий їжак (4 частини)",
+            stats: ["Сила атаки %", "Шанс криту", "Інтенсивність циклу", "Відновлення енергії"],
+            teamSynergy: "Будь-який ДПС персонаж стихії Аніма або Закляття",
+            lore: "Новий володар антикварної крамниці Eibon, що втратив спогади про своє минуле, але володіє дивним даром бачити сутність аномалій."
+        },
+        en: {
+            name: "Zero",
+            summary: "The main protagonist. Possesses the Cosmos attribute, acting as a universal catalyst to activate the Esper Cycle effect for any other element.",
+            weapon: "Eibon Legacy (Signature)",
+            weaponF2p: "Hunter's Resolve",
+            cartridge: "Speedy Hedgehog (4-piece)",
+            stats: ["ATK%", "Crit Rate", "Cycle Intensity", "Energy Recharge Efficiency"],
+            teamSynergy: "Any Anima or Incantation DPS character",
+            lore: "The new owner of the Eibon antique shop, who lost his memories of the past but possesses a strange gift of seeing the core of anomalies."
+        }
+    },
+    adler: {
+        uk: {
+            name: "Адлер",
+            summary: "Надійний щитовик стихії Закляття. Створює міцний щит, міцність якого масштабується від його захисту (DEF), та допомагає збивати стійкість ворогів.",
+            weapon: "Бар'єр вартового (Сигнатурний)",
+            weaponF2p: "Іржавий щит із сплаву",
+            cartridge: "Швидкий їжак (4 частини) або Захисний набір",
+            stats: ["Захист %", "Захист", "Ефект пробиття", "Відновлення енергії"],
+            teamSynergy: "Наналлі (Аніма), Сакірі (Закляття), Зеро (Космос)",
+            lore: "Колишній охоронець, який тепер допомагає крамниці Eibon із важкими замовленнями у небезпечних зонах Hethereau."
+        },
+        en: {
+            name: "Adler",
+            summary: "A reliable shield provider of the Incantation element. Generates a sturdy shield scaling with his DEF, helping to break enemy stability.",
+            weapon: "Sentinel's Barrier (Signature)",
+            weaponF2p: "Rusty Alloy Shield",
+            cartridge: "Speedy Hedgehog (4-piece) or Guard Set",
+            stats: ["DEF%", "Flat DEF", "Break Effect", "Energy Recharge Efficiency"],
+            teamSynergy: "Nanally (Anima), Sakiri (Incantation), Zero (Cosmos)",
+            lore: "A former security guard who now helps the Eibon shop with heavy commissions in the dangerous zones of Hethereau."
+        }
+    },
+    mint: {
+        uk: {
+            name: "Мінт",
+            summary: "Хороший безкоштовний F2P атакуючий персонаж. Проста механіка комбо-атак та швидка перезарядка елементальних умінь.",
+            weapon: "Клинок зефіру",
+            weaponF2p: "Сталева рапіра",
+            cartridge: "Світлячки та ліс (4 частини)",
+            stats: ["Сила атаки %", "Шанс криту", "Крит. шкода", "Аніма шкода"],
+            teamSynergy: "Зеро (Космос), Ханіель (Закляття), Адлер (Хаос)",
+            lore: "Молода стажерка в Eibon, яка прагне стати найкращим оцінювачем аномалій у місті."
+        },
+        en: {
+            name: "Mint",
+            summary: "A good free F2P DPS character. Features a simple combo attack mechanic and quick elemental skill cooldowns.",
+            weapon: "Zephyr Blade",
+            weaponF2p: "Steel Rapier",
+            cartridge: "Fireflies and the Forest (4-piece)",
+            stats: ["ATK%", "Crit Rate", "Crit DMG", "Anima DMG"],
+            teamSynergy: "Zero (Cosmos), Haniel (Incantation), Adler (Chaos)",
+            lore: "A young intern at Eibon who aspires to become the best anomaly appraiser in the city."
+        }
+    },
+    haniel: {
+        uk: {
+            name: "Ханіель",
+            summary: "Потужний персонаж підтримки стихії Психея. Баффає силу атаки загону та викликає помічника Hootie, який допомагає наносити шкоду та підтримувати союзників.",
+            weapon: "Королівський розум (Сигнатурний)",
+            weaponF2p: "Готовий-Готовий",
+            cartridge: "Велика маленька пригода (4 частини)",
+            stats: ["Сила атаки %", "Шанс криту", "Психея шкода", "Відновлення енергії"],
+            teamSynergy: "Мінт (Аніма), Зеро (Космос), Адлер (Закляття)",
+            lore: "Турботлива та мила дівчина, яка завжди носить із собою іграшкового сову-помічника Hootie, здатного надихати союзників під час бою."
+        },
+        en: {
+            name: "Haniel",
+            summary: "A strong support character of the Psyche element. Buffs squad ATK and summons helper Hootie to deal damage and sustain allies.",
+            weapon: "Mind Royale (Signature)",
+            weaponF2p: "Ready-Ready",
+            cartridge: "Tiny Big Adventure (4-piece)",
+            stats: ["ATK%", "Crit Rate", "Psyche DMG", "Energy Recharge Efficiency"],
+            teamSynergy: "Mint (Anima), Zero (Cosmos), Adler (Incantation)",
+            lore: "A caring and sweet girl who always carries a toy owl assistant Hootie, capable of inspiring allies during battle."
+        }
+    },
+    lacrimosa: {
+        uk: {
+            name: "Лакрімоза",
+            summary: "Новий анонсований персонаж версії 1.1. Спеціалізується на Хаос шкоді та потужних комбо-атаках масками.",
+            weapon: "Трагедія та комедія (Сигнатурний)",
+            weaponF2p: "Смуток у моєму серці",
+            cartridge: "Затемнення хаосу (4 частини)",
+            stats: ["Шанс криту", "Крит. шкода", "Хаос шкода", "Сила атаки %"],
+            teamSynergy: "Сакірі (Закляття), Зеро (Космос), Хоторі (Космос)",
+            lore: "Театральна акторка, чиї вистави зачаровують глядачів Гетеро. Кажуть, що її маски мають власне аномальне життя."
+        },
+        en: {
+            name: "Lacrimosa",
+            summary: "A newly announced version 1.1 character. Specializes in Chaos damage and powerful mask combo attacks.",
+            weapon: "Tragedy & Comedy (Signature)",
+            weaponF2p: "Failing You, Heavy in My Heart",
+            cartridge: "Chaos Eclipse (4-piece)",
+            stats: ["Crit Rate", "Crit DMG", "Chaos DMG", "ATK%"],
+            teamSynergy: "Sakiri (Incantation), Zero (Cosmos), Hotori (Cosmos)",
+            lore: "A theatrical actress whose performances enchant the audience of Hethereau. It is said that her masks have their own anomalous life."
+        }
+    },
+    daffodil: {
+        uk: {
+            name: "Даффоділ",
+            summary: "Потужний вибуховий атакуючий стихії Хаос, що спеціалізується на пробитті щитів (Break). Накопичує силу поза полем бою і завдає величезної вибухової шкоди при перемиканні.",
+            weapon: "Юнацька фантазія (Сигнатурний Arc)",
+            weaponF2p: "Світлі дні",
+            cartridge: "Затемнення хаосу (4 частини)",
+            stats: ["Інтенсивність пробиття", "Шанс криту", "Крит. шкода", "Сила атаки %"],
+            teamSynergy: "Наналлі (Аніма), Зеро (Космос), Сакірі (Закляття)",
+            lore: "Мовчазна та загадкова охоронниця антикварної крамниці Eibon. Володіє калейдоскопічними очима і приховує под холодною маскою відданість друзям."
+        },
+        en: {
+            name: "Daffodil",
+            summary: "A powerful Burst DPS of the Chaos element, specializing in shield breaking (Break). Accumulates power off-field and deals massive damage upon switching.",
+            weapon: "Youthful Fantasy (Signature Arc)",
+            weaponF2p: "Shiny Days",
+            cartridge: "Chaos Eclipse (4-piece)",
+            stats: ["Break Intensity", "Crit Rate", "Crit DMG", "ATK%"],
+            teamSynergy: "Nanally (Anima), Zero (Cosmos), Sakiri (Incantation)",
+            lore: "A quiet and mysterious guardian of the Eibon antique shop. Possesses kaleidoscopic eyes and hides her devotion to friends under a cold mask."
+        }
+    },
+    baicang: {
+        uk: {
+            name: "Байцан",
+            summary: "Потужний атакуючий персонаж стихії Закляття. Використовує механіку витрати власного здоров'я для підвищення шкоди. Потребує надійного цілителя в команді.",
+            weapon: "Товариство камелій (Сигнатурний)",
+            weaponF2p: "Час прийде",
+            cartridge: "Багряні метелики-близнята (4 частини)",
+            stats: ["Шанс криту", "Крит. шкода", "Шкода закляття", "Сила атаки %"],
+            teamSynergy: "Ханіель (Закляття), Сакірі (Закляття), Адлер (Хаос)",
+            lore: "Капітан підрозділу ETD-4 Бюро контролю аномалій. Досвідчений ветеран з невимушеним характером, який піклується про своїх підлеглих як старший брат."
+        },
+        en: {
+            name: "Baicang",
+            summary: "A powerful Main DPS of the Incantation element. Utilizes a self-HP drain mechanic to boost damage. Requires a reliable healer in the team.",
+            weapon: "Camellia Society (Signature)",
+            weaponF2p: "A Time Will Come",
+            cartridge: "Crimson: Twin Butterflies (4-piece)",
+            stats: ["Crit Rate", "Crit DMG", "Incantation DMG", "ATK%"],
+            teamSynergy: "Haniel (Incantation), Sakiri (Incantation), Adler (Chaos)",
+            lore: "Captain of the ETD-4 unit of the Anomaly Control Bureau. An experienced veteran with an easygoing personality who cares for his subordinates like a big brother."
+        }
+    },
+    chiz: {
+        uk: {
+            name: "Чіз",
+            summary: "Потужний атакуючий стихії Космос. Її ультимейт ігнорує велику частину захисту ворога, а сигнатурна зброя дає додаткову шкоду залежно від ваших Fons (монет).",
+            weapon: "Замислений кіт (Сигнатурний)",
+            weaponF2p: "Дика мрія",
+            cartridge: "Втрачене сяйво (4 частини)",
+            stats: ["Шанс криту", "Крит. шкода", "Космос шкода", "Сила атаки %"],
+            teamSynergy: "Зеро (Космос), Сакірі (Закляття), Хоторі (Космос)",
+            lore: "Персонаж, пов'язаний із Безіменним Банком. Має ділову жилку та користується важким молотом-йокай для вибивання боргів та аномалій."
+        },
+        en: {
+            name: "Chiz",
+            summary: "A powerful Cosmos element Main DPS. Her Ultimate Burst ignores a large portion of enemy defense, and signature weapon deals extra damage based on your Fons (coins).",
+            weapon: "Contemplative Cat (Signature)",
+            weaponF2p: "Wild Reverie",
+            cartridge: "Lost Radiance (4-piece)",
+            stats: ["Crit Rate", "Crit DMG", "Cosmos DMG", "ATK%"],
+            teamSynergy: "Zero (Cosmos), Sakiri (Incantation), Hotori (Cosmos)",
+            lore: "A character connected to the Nameless Bank. Has a business mind and uses a heavy yokai hammer to beat out debts and anomalies."
+        }
+    },
+    fadia: {
+        uk: {
+            name: "Фадія",
+            summary: "Потужний танк-цілитель стихії Психея. Перенаправляє шкоду союзників на себе та швидко відновлює здоров'я в режимі Lilith.",
+            weapon: "Вічний вальс (Сигнатурний)",
+            weaponF2p: "Флакон медика",
+            cartridge: "Велика маленька пригода (4 частини)",
+            stats: ["Здоров'я %", "Здоров'я", "Психея шкода", "Відновлення енергії"],
+            teamSynergy: "Байцан (Закляття), Наналлі (Аніма), Зеро (Космос)",
+            lore: "Дивовижна дівчина-вампір з Бюро контролю аномалій, яка носить із собою гігантський надгробок як щит та зброю."
+        },
+        en: {
+            name: "Fadia",
+            summary: "A powerful Psyche element Sustain character. Acts as a healer-tank that redirects allies' damage to herself and heals rapidly in Lilith state.",
+            weapon: "Eternal Waltz (Signature)",
+            weaponF2p: "Medic's Flask",
+            cartridge: "Tiny Big Adventure (4-piece)",
+            stats: ["HP%", "Flat HP", "Psyche DMG", "Energy Recharge Efficiency"],
+            teamSynergy: "Baicang (Incantation), Nanally (Anima), Zero (Cosmos)",
+            lore: "An amazing vampire girl from the Anomaly Control Bureau who carries a giant tombstone as a shield and weapon."
+        }
+    },
+    hathor: {
+        uk: {
+            name: "Хатор",
+            summary: "Потужний допоміжний ДПС стихії Лакшана. Використовує механіку Express Delivery Power для завдання величезної вибухової шкоди.",
+            weapon: "Шалене полум'я (Сигнатурний)",
+            weaponF2p: "Бар'єр вартового",
+            cartridge: "Вуличний боксер (4 частини)",
+            stats: ["Шанс криту", "Крит. шкода", "Лакшана шкода", "Сила атаки %"],
+            teamSynergy: "Зеро (Космос), Сакірі (Закляття), Даффоділ (Хаос)",
+            lore: "Впливова дівчина-фіксер з елітних кіл Гетеро, яка тісно співпрацює зі Sterry Express. Її витонченість приховує неперевершені бойові вміння."
+        },
+        en: {
+            name: "Hathor",
+            summary: "A powerful Burst Sub-DPS of the Lakshana element. Utilizes the Express Delivery Power stacking mechanic to deal massive burst damage.",
+            weapon: "Raging Flames (Signature)",
+            weaponF2p: "Sentinel's Barrier",
+            cartridge: "Street Boxer (4-piece)",
+            stats: ["Crit Rate", "Crit DMG", "Lakshana DMG", "ATK%"],
+            teamSynergy: "Zero (Cosmos), Sakiri (Incantation), Daffodil (Chaos)",
+            lore: "An influential fixer girl from the elite circles of Hethereau, who works closely with Sterry Express. Her elegance hides unmatched combat skills."
+        }
+    },
+    aurelia: {
+        uk: {
+            name: "Аурелія",
+            summary: "Атакуючий персонаж стихії Психея. Використовує атаки медуз у стані Cadenza для нанесення значної шкоди. Отримується безкоштовно за 3-денний вхід.",
+            weapon: "Зоряна вуаль (Сигнатурна)",
+            weaponF2p: "Ораора!",
+            cartridge: "Прокляття крові диявола (4 частини)",
+            stats: ["Шанс криту", "Крит. шкода", "Психея шкода", "Сила атаки %"],
+            teamSynergy: "Зеро (Космос), Фадія (Психея), Сакірі (Закляття)",
+            lore: "Студентка-музикант у Гетеро, яка виявила в собі аномальні здібності під час одного з вуличних виступів. Керує аномальними медузами."
+        },
+        en: {
+            name: "Aurelia",
+            summary: "Psyche element A-Rank Main DPS. Uses jellyfish attacks in the Cadenza state to deal significant damage. Obtained for free on a 3-day log-in.",
+            weapon: "Stellar Veil (Signature)",
+            weaponF2p: "Oraora!",
+            cartridge: "Devil's Blood: Curse (4-piece)",
+            stats: ["Crit Rate", "Crit DMG", "Psyche DMG", "ATK%"],
+            teamSynergy: "Zero (Cosmos), Fadia (Psyche), Sakiri (Incantation)",
+            lore: "A music student in Hethereau who discovered her anomalous abilities during one of her street performances. Controls anomalous jellyfish."
+        }
+    },
+    edgar: {
+        uk: {
+            name: "Едгар",
+            summary: "Доступний цілитель стихії Космос. Його навички відновлюють здоров'я союзникам пропорційно його максимальному HP, а ультимейт створює велику зону лікування.",
+            weapon: "Заклик викривленого міста (Сигнатурний)",
+            weaponF2p: "Королівський розум",
+            cartridge: "Нічна таверна Теї (4 частини)",
+            stats: ["Здоров'я %", "Бонус лікування", "Здоров'я", "Відновлення енергії"],
+            teamSynergy: "Зеро (Космос), Хоторі (Космос), Цзююань (Аніма)",
+            lore: "Співробітник антикварної крамниці Eibon. Спокійний та врівноважений юнак, який завжди готовий надати першу допомогу та смачний гарячий чай."
+        },
+        en: {
+            name: "Edgar",
+            summary: "An accessible Cosmos element healer. His skills restore health to allies proportional to his max HP, and his Ultimate creates a large healing zone.",
+            weapon: "Call of the Twisted City (Signature)",
+            weaponF2p: "Mind Royale",
+            cartridge: "Thea's Night Tavern (4-piece)",
+            stats: ["HP%", "Healing Bonus", "Flat HP", "Energy Recharge Efficiency"],
+            teamSynergy: "Zero (Cosmos), Hotori (Cosmos), Jiuyuan (Anima)",
+            lore: "An employee of the Eibon antique shop. A calm and balanced youth who is always ready to provide first aid and delicious hot tea."
+        }
+    },
+    skia: {
+        uk: {
+            name: "Скіа",
+            summary: "Потужний допоміжний ДПС стихії Лакшана, який спеціалізується на мітках Fang Thrust та унікальних навичках прихованості в тіні. Чудово доповнює команди на реакції Remora.",
+            weapon: "Стережись голів! (Сигнатурна)",
+            weaponF2p: "Велика пригода хорошого хлопчика",
+            cartridge: "Вуличний боксер (4 частини)",
+            stats: ["Шанс криту", "Крит. шкода", "Лакшана шкода", "Сила атаки %"],
+            teamSynergy: "Зеро (Космос), Сакірі (Закляття), Наналлі (Аніма)",
+            lore: "Лейтенант підрозділу ETD-4 Бюро контролю аномалій. Мовчазний вовк-офіцер із великим шрамом на лівому оці, який вірно несе службу."
+        },
+        en: {
+            name: "Skia",
+            summary: "A powerful Lakshana element Sub-DPS specializing in Fang Thrust marks and unique shadow stealth skills. Greatly complements Remora reaction teams.",
+            weapon: "Watch Your Heads! (Signature)",
+            weaponF2p: "Good Boy's Grand Adventure",
+            cartridge: "Street Boxer (4-piece)",
+            stats: ["Crit Rate", "Crit DMG", "Lakshana DMG", "ATK%"],
+            teamSynergy: "Zero (Cosmos), Sakiri (Incantation), Nanally (Anima)",
+            lore: "Lieutenant of the ETD-4 unit of the Anomaly Control Bureau. A silent wolf-officer with a large scar on his left eye who serves faithfully."
+        }
+    }
+};
+
+const LOCALIZED_ATTRIBUTE_MATERIALS = {
+    Anima: {
+        uk: {
+            boss: "Ядро боса: Гравітаційний Павук",
+            specialty: "Аніма-кристали лісу",
+            farmSpecialty: "Збір у Лісовій Аномалії Hethereau",
+            farmBoss: "Світовий бос: Гравітаційний Павук",
+            common: {
+                T1: "Пилок аномальних рослин",
+                T2: "Стебло хижої квітки",
+                T3: "Суть живого лісу",
+                farm: "Рослинні аномалії в парках"
+            },
+            scrolls: {
+                T1: "Сувій сили природи",
+                T2: "Гайд по контролю флори",
+                T3: "Таємниці Аніми",
+                farm: "Rabbit Hole (Понеділок/Четвер)"
+            }
+        },
+        en: {
+            boss: "Boss Core: Gravity Spider",
+            specialty: "Anima Forest Crystals",
+            farmSpecialty: "Harvest in Hethereau Forest Anomaly",
+            farmBoss: "World Boss: Gravity Spider",
+            common: {
+                T1: "Anomalous Plant Pollen",
+                T2: "Carnivorous Flower Stem",
+                T3: "Essence of the Living Forest",
+                farm: "Plant anomalies in parks"
+            },
+            scrolls: {
+                T1: "Scroll of Nature's Power",
+                T2: "Flora Control Guide",
+                T3: "Mysteries of Anima",
+                farm: "Rabbit Hole (Monday/Thursday)"
+            }
+        }
+    },
+    Incantation: {
+        uk: {
+            boss: "Ядро боса: Вогняний Кролик",
+            specialty: "Квіти закляття",
+            farmSpecialty: "Збір у східних районах Гетеро",
+            farmBoss: "Світовий бос: Вогняний Кролик",
+            common: {
+                T1: "Попіл згаслих рун",
+                T2: "Фрагмент палаючої руни",
+                T3: "Стародавнє ядро заклять",
+                farm: "Магічні аномалії в місті"
+            },
+            scrolls: {
+                T1: "Ескіз магічних знаків",
+                T2: "Підручник ритуалів",
+                T3: "Гримуар Таємних Слів",
+                farm: "Rabbit Hole (Вівторок/П'ятниця)"
+            }
+        },
+        en: {
+            boss: "Boss Core: Fire Rabbit",
+            specialty: "Incantation Flowers",
+            farmSpecialty: "Harvest in East Hethereau",
+            farmBoss: "World Boss: Fire Rabbit",
+            common: {
+                T1: "Ashes of Extinguished Runes",
+                T2: "Fragment of Burning Rune",
+                T3: "Ancient Incantation Core",
+                farm: "Magical anomalies in city"
+            },
+            scrolls: {
+                T1: "Magic Sign Sketch",
+                T2: "Ritual Textbook",
+                T3: "Grimoire of Secret Words",
+                farm: "Rabbit Hole (Tuesday/Friday)"
+            }
+        }
+    },
+    Cosmos: {
+        uk: {
+            boss: "Ядро боса: Кронос-Вартовий",
+            specialty: "Зоряний пил",
+            farmSpecialty: "Секретні дахи та хмарочоси",
+            farmBoss: "Світовий бос: Кронос-Вартовий",
+            common: {
+                T1: "Уламок метеорита",
+                T2: "Космічний пил",
+                T3: "Сутність сингулярності",
+                farm: "Космічні тіні у центрі міста"
+            },
+            scrolls: {
+                T1: "Малюнок сузір'я",
+                T2: "Зоряна мапа Hethereau",
+                T3: "Сувої Нескінченного Космосу",
+                farm: "Rabbit Hole (Середа/Субота)"
+            }
+        },
+        en: {
+            boss: "Boss Core: Chronos Guardian",
+            specialty: "Star Dust",
+            farmSpecialty: "Secret rooftops and skyscrapers",
+            farmBoss: "World Boss: Chronos Guardian",
+            common: {
+                T1: "Meteorite Shard",
+                T2: "Cosmic Dust",
+                T3: "Essence of Singularity",
+                farm: "Cosmic shadows in city center"
+            },
+            scrolls: {
+                T1: "Constellation Drawing",
+                T2: "Hethereau Star Map",
+                T3: "Scrolls of Infinite Cosmos",
+                farm: "Rabbit Hole (Wednesday/Saturday)"
+            }
+        }
+    },
+    Chaos: {
+        uk: {
+            boss: "Ядро боса: Руйнівник Масок",
+            specialty: "Шарми хаосу",
+            farmSpecialty: "Аномальні провулки Гетеро",
+            farmBoss: "Світовий бос: Руйнівник Масок",
+            common: {
+                T1: "Тріснута маска",
+                T2: "Театральна маска",
+                T3: "Маска істинної сутності",
+                farm: "Міражі хаосу та міми"
+            },
+            scrolls: {
+                T1: "Записки божевільного",
+                T2: "П'єса трагікомедії",
+                T3: "Хроніки Парадоксу",
+                farm: "Rabbit Hole (Четвер/Неділя)"
+            }
+        },
+        en: {
+            boss: "Boss Core: Mask Destroyer",
+            specialty: "Chaos Charms",
+            farmSpecialty: "Anomalous Hethereau alleys",
+            farmBoss: "World Boss: Mask Destroyer",
+            common: {
+                T1: "Cracked Mask",
+                T2: "Theatrical Mask",
+                T3: "Mask of True Essence",
+                farm: "Chaos mirages and mimes"
+            },
+            scrolls: {
+                T1: "Madman's Notes",
+                T2: "Tragicomedy Play",
+                T3: "Chronicles of Paradox",
+                farm: "Rabbit Hole (Thursday/Sunday)"
+            }
+        }
+    },
+    Psyche: {
+        uk: {
+            boss: "Ядро боса: Володар Кошмарів",
+            specialty: "Психічні кристали",
+            farmSpecialty: "Дзеркальні аномальні галереї",
+            farmBoss: "Світовий бос: Володар Кошмарів",
+            common: {
+                T1: "Фрагмент спогаду",
+                T2: "Скляна сльоза",
+                T3: "Дзеркало чистої свідомості",
+                farm: "Дзеркальні фантоми"
+            },
+            scrolls: {
+                T1: "Текст гіпнозу",
+                T2: "Книга сновидінь",
+                T3: "Концепт Несвідомого",
+                farm: "Rabbit Hole (П'ятниця/Неділя)"
+            }
+        },
+        en: {
+            boss: "Boss Core: Nightmare Lord",
+            specialty: "Psyche Crystals",
+            farmSpecialty: "Mirror anomaly galleries",
+            farmBoss: "World Boss: Nightmare Lord",
+            common: {
+                T1: "Memory Fragment",
+                T2: "Glass Tear",
+                T3: "Mirror of Pure Consciousness",
+                farm: "Mirror phantoms"
+            },
+            scrolls: {
+                T1: "Hypnosis Script",
+                T2: "Dream Book",
+                T3: "Concept of the Unconscious",
+                farm: "Rabbit Hole (Friday/Sunday)"
+            }
+        }
+    },
+    Lakshana: {
+        uk: {
+            boss: "Ядро боса: Вартовий Закону",
+            specialty: "Кристали порядку",
+            farmSpecialty: "Зони фінансового кварталу",
+            farmBoss: "Світовий бос: Вартовий Закону",
+            common: {
+                T1: "Іржава шестерня",
+                T2: "Срібний поршень",
+                T3: "Золотий годинниковий механізм",
+                farm: "Механічні годинникові міньйони"
+            },
+            scrolls: {
+                T1: "Статут Бюро",
+                T2: "Звід законів Гетеро",
+                T3: "Директиви Чистого Порядку",
+                farm: "Rabbit Hole (Субота/Неділя)"
+            }
+        },
+        en: {
+            boss: "Boss Core: Law Guardian",
+            specialty: "Order Crystals",
+            farmSpecialty: "Financial district zones",
+            farmBoss: "World Boss: Law Guardian",
+            common: {
+                T1: "Rusty Gear",
+                T2: "Silver Piston",
+                T3: "Golden Clockwork Mechanism",
+                farm: "Mechanical clockwork minions"
+            },
+            scrolls: {
+                T1: "Bureau Statute",
+                T2: "Hethereau Law Codex",
+                T3: "Directives of Pure Order",
+                farm: "Rabbit Hole (Saturday/Sunday)"
+            }
+        }
+    }
+};
+
+const LOCALIZED_WEAPON_MATERIALS = {
+    uk: {
+        T1: "Компонент зброї T1",
+        T2: "Модифікатор зброї T2",
+        T3: "Нано-ядро зброї T3",
+        farm: "Rabbit Hole: Прорив Зброї"
+    },
+    en: {
+        T1: "Weapon Component T1",
+        T2: "Weapon Modifier T2",
+        T3: "Weapon Nano-Core T3",
+        farm: "Rabbit Hole: Weapon Breakthrough"
+    }
+};
+
+const TIMELINE_TRANSLATIONS = {
+    "Глобальний Реліз Neverness to Everness (1.0)": {
+        uk: {
+            title: "Глобальний Реліз Neverness to Everness (1.0)",
+            date: "29 Квітня 2026",
+            desc: "Офіційний запуск гри на PC, iOS та Android. Доступні початкові розділи сюжету в місті Гетеро, лімітований банер Наналлі, а також стартові події."
+        },
+        en: {
+            title: "Global Release: Neverness to Everness (1.0)",
+            date: "April 29, 2026",
+            desc: "Official game launch on PC, iOS, and Android. Initial story chapters in Hethereau, Nanally limited banner, and start events are now available."
+        }
+    },
+    "Стрім Розробників: Презентація Версії 1.1": {
+        uk: {
+            title: "Стрім Розробників: Презентація Версії 1.1",
+            date: "23 Травня 2026",
+            desc: "Спеціальна трансляція від Hotta Studio. Анонсовано нових персонажів Lacrimosa (Хаос ДПС), нове розширення міста, ігрові режими та промокоди."
+        },
+        en: {
+            title: "Developer Stream: Version 1.1 Showcase",
+            date: "May 23, 2026",
+            desc: "Special broadcast by Hotta Studio. Announced new characters like Lacrimosa (Chaos DPS), city expansion, game modes, and codes."
+        }
+    },
+    "Оновлення 1.1: 'Lacrimosa of Chaos'": {
+        uk: {
+            title: "Оновлення 1.1: 'Lacrimosa of Chaos'",
+            date: "3-4 Червня 2026",
+            desc: "Вихід першого великого патчу. Старт першої фази банера з Лакрімозою. Новий сюжетний епізод 'Театр Тіней'. Початок літнього івенту."
+        },
+        en: {
+            title: "Version 1.1: 'Lacrimosa of Chaos'",
+            date: "June 3-4, 2026",
+            desc: "Launch of the first major update. Start of the first phase banner with Lacrimosa. New story chapter 'Theater of Shadows'. Summer event kickoff."
+        }
+    },
+    "Оновлення 1.2 та нові герої Shinku й Iroi": {
+        uk: {
+            title: "Оновлення 1.2 та нові герої Shinku й Iroi",
+            date: "Липень 2026 (Прогноз)",
+            desc: "Очікуване оновлення на основі витоків інформації. Додавання нових аномальних зон на півночі Гетеро та вихід нових персонажів S-рангу."
+        },
+        en: {
+            title: "Version 1.2: New Heroes Shinku & Iroi",
+            date: "July 2026 (Estimate)",
+            desc: "Anticipated update based on leaks. Addition of new anomaly zones in north Hethereau and release of new S-rank characters."
+        }
+    }
+};
+
+const REACTION_TRANSLATIONS = {
+    Blossom: {
+        uk: {
+            name: "Блоссом / Цвітіння",
+            desc: "Активовано! Загін отримує +15% швидкості накопичення енергії та підвищене Аніма-пошкодження. Ідеально підходить для розгону авто-атак Наналлі."
+        },
+        en: {
+            name: "Blossom",
+            desc: "Activated! The squad gains +15% Energy Recharge and increased Anima damage. Ideal for boosting Nanally's auto-attacks."
+        }
+    },
+    EsperCycle: {
+        uk: {
+            name: "Цикл Есперів",
+            desc: "Активовано! Cosmos-атрибут (наприклад, Зеро чи Чіз) виступає в ролі прискорювача. Зміна персонажів наповнює шкалу Esper Meter на 30% швидше."
+        },
+        en: {
+            name: "Esper Cycle",
+            desc: "Activated! The Cosmos attribute (e.g. Zero or Chiz) acts as a catalyst. Swapping characters fills the Esper Meter 30% faster."
+        }
+    },
+    Scorch: {
+        uk: {
+            name: "Випалювання",
+            desc: "Активовано! Створює термічну реакцію, що підпалює цілі навколо та наносить DoT (періодичне пошкодження) кожні 1.5 секунди."
+        },
+        en: {
+            name: "Scorch",
+            desc: "Activated! Triggers a thermal reaction that ignites surrounding targets, dealing periodic DoT damage every 1.5 seconds."
+        }
+    },
+    Charged: {
+        uk: {
+            name: "Зарядження",
+            desc: "Активовано! Накладає дебафф 'Зниження стабільності' на ворогів, що дозволяє легше збивати їхні щити та збивати з ніг."
+        },
+        en: {
+            name: "Charged",
+            desc: "Activated! Applies a 'Stability Shred' debuff on enemies, making it easier to break their shields and knock them down."
+        }
+    },
+    Remora: {
+        uk: {
+            name: "Ремора",
+            desc: "Активовано! Реакція між Lakshana та Cosmos. Збільшує шанс критичного удару на 10% та суттєво підвищує фізичну і космічну шкоду загону."
+        },
+        en: {
+            name: "Remora",
+            desc: "Activated! A reaction between Lakshana and Cosmos. Increases Crit Rate by 10% and significantly boosts physical and Cosmos damage."
+        }
+    },
+    Discord: {
+        uk: {
+            name: "Розбрат",
+            desc: "Активовано! Елементи Chaos/Incantation створюють ментальний дисонанс з Psyche, знижуючи стабільність ворогів та наносячи на 25% більше шкоди по пробитих щитах."
+        },
+        en: {
+            name: "Discord",
+            desc: "Activated! Chaos/Incantation elements create mental dissonance with Psyche, lowering enemy stability and dealing 25% more damage to broken shields."
+        }
+    },
+    Stain: {
+        uk: {
+            name: "Пляма",
+            desc: "Активовано! Поєднання Lakshana та Psyche спотворює сприйняття ворогів, змушуючи їх отримувати додаткову періодичну шкоду та послаблюючи їхню атаку."
+        },
+        en: {
+            name: "Stain",
+            desc: "Activated! Combining Lakshana and Psyche distorts enemy perception, forcing them to take extra DoT and reducing their ATK."
+        }
+    },
+    Nova: {
+        uk: {
+            name: "Нова",
+            desc: "Активовано! Аніма та Психея викликають елементальний вибух розуму, що наносить колосальну площинну (AoE) шкоду навколишнім ворогам."
+        },
+        en: {
+            name: "Nova",
+            desc: "Activated! Anima and Psyche trigger a mental elemental blast, dealing colossal area (AoE) damage to nearby enemies."
+        }
+    }
+};
+
+const i18n = {
+    uk: {
+        logo_badge: "ВІКІ",
+        nav_home: "Головна",
+        nav_tierlist: "Тір-ліст",
+        nav_builds: "Білди",
+        nav_teambuilder: "Команди",
+        nav_calculator: "Калькулятор",
+        nav_codes: "Промокоди & Посібники",
+        nav_calendar: "Календар",
+        btn_login: "Увійти",
+        btn_logout: "Вийти",
+        hero_tagline: "СУПЕРПРИРОДНА МІСЬКА RPG ВІД HOTTA STUDIO",
+        hero_title: "Увійдіть в аномальний світ <br><span class=\"highlight-text\">Neverness to Everness</span>",
+        hero_desc: "Ласкаво просимо в Eibon Terminal — ваш персональний довідник з дослідження мегаполісу Гетеро. Оцінюйте аномалії, керуйте бізнесом, збирайте найкращі команди та відстежуйте свіжі новини.",
+        hero_btn_tierlist: "Переглянути Тір-ліст",
+        hero_btn_teambuilder: "Зібрати Загін",
+        active_banner_badge: "АКТИВНИЙ БАНЕР",
+        active_banner_title: "Хоторі: Відлуння Вічності",
+        banner_timer_label: "До завершення:",
+        view_build_btn: "Оцінка та білд",
+        feat_tierlist_title: "Інтерактивний Тір-ліст",
+        feat_tierlist_desc: "Актуальний рейтинг мисливців на аномалії. Дізнайтеся, хто домінує в поточній меті гри.",
+        feat_teams_title: "Конструктор Команд",
+        feat_teams_desc: "Складайте загони та аналізуйте ефекти взаємодії стихій і стилів бою.",
+        feat_calc_title: "Калькулятор Прокачки",
+        feat_calc_desc: "Рахуйте точну кількість монет, досвіду та матеріалів босів для розвитку персонажів.",
+        widget_codes_title: "Актуальні промокоди",
+        widget_codes_badge: "ПЕРЕВІРЕНО",
+        widget_codes_desc: "Натисніть на код, щоб миттєво скопіювати його.",
+        widget_events_title: "Графік подій та оновлень",
+        widget_events_badge: "ВЕРСІЯ 1.0",
+        widget_loading: "Завантаження...",
+        widget_copy_btn: "Копіювати",
+        widget_copied: "Скопійовано!",
+        tierlist_title: "Рейтинг Персонажів (Тір-ліст)",
+        tierlist_subtitle: "Оцінка ефективності мисливців на аномалії у версії 1.0 (Глобальний реліз)",
+        sub_tab_official: "Офіційний Тір-ліст",
+        sub_tab_community: "Тір-лісти спільноти",
+        sub_tab_creator: "Створити свій",
+        filter_search_placeholder: "Пошук персонажа за іменем...",
+        filter_rarity_label: "Рідкість:",
+        filter_rarity_all: "Всі",
+        filter_rarity_s: "S-Ранг (5★)",
+        filter_rarity_a: "A-Ранг (4★)",
+        filter_attribute_label: "Стихія:",
+        filter_role_label: "Роль:",
+        tierlist_note: "* Натисніть на картку будь-якого персонажа, щоб відкрити його детальний білд, найкращу зброю (Arc) та рекомендовані картриджі.",
+        no_chars_found: "Персонажів не знайдено",
+        comm_title: "Тір-лісти від Спільноти",
+        comm_subtitle: "Оцінки персонажів та думки інших гравців Neverness to Everness.",
+        comm_loading: "Завантаження тір-лістів спільноти...",
+        comm_empty: "Немає збережених тір-лістів. Створіть перший! 🚀",
+        comm_db_unavailable: "База даних недоступна. Увійдіть у мережу для перегляду.",
+        comm_view_btn: "Переглянути",
+        comm_delete_btn: "Видалити",
+        comm_delete_confirm: "Ви впевнені, що хочете видалити цей тір-ліст?",
+        comm_deleted_toast: "Тір-ліст успішно видалено! 🗑️",
+        comm_delete_error: "Помилка видалення: ",
+        creator_prompt_title: "Створіть власний тір-ліст",
+        creator_prompt_desc: "Щоб скористатися конструктором та зберегти свій рейтинг героїв, будь ласка, авторизуйтеся через Google.",
+        creator_prompt_btn: "Увійти через Google",
+        creator_title_label: "Назва тір-ліста:",
+        creator_title_placeholder: "Наприклад: Мій тір-ліст версії 1.0",
+        creator_save_btn: "Зберегти тір-ліст",
+        creator_pool_title: "Пул Персонажів (натисніть на картку або перетягніть для розподілу)",
+        creator_saved_toast: "Тір-ліст успішно опубліковано! 🎉",
+        creator_empty_error: "Будь ласка, розподіліть персонажів по рядах!",
+        creator_auth_error: "Будь ласка, спочатку авторизуйтеся!",
+        builds_title: "Гайди на Білди Персонажів",
+        builds_subtitle: "Рекомендоване спорядження та параметри для максимальної бойової ефективності",
+        build_best_weapon: "Найкраща Зброя (Arc)",
+        build_f2p_alt: "F2P Альтернатива",
+        build_cartridge: "Набір Картриджів",
+        build_stats_pri: "Пріоритет Статів",
+        build_partners: "Рекомендовані партнери:",
+        teams_title: "Інтерактивний Конструктор Загону",
+        teams_subtitle: "Зберіть команду з 4-х мисливців та дізнайтеся активні синергії стихій і ротації",
+        teams_clear_btn: "Очистити команду",
+        teams_analysis_title: "Аналіз Синергії Команди",
+        teams_start_prompt: "Виберіть персонажів для початку розрахунку.",
+        teams_desc_prompt: "Додайте мисливців у слоти вище. Система автоматично проаналізує їхні класи, стихії та виведе оптимальну послідовність навичок (ротацію) для бою.",
+        teams_slot_leader: "Слот 1 (Лідер)",
+        teams_slot_label: "Слот ",
+        teams_modal_title: "Виберіть Персонажа",
+        calc_title: "Калькулятор Прогресу та Ресурсів",
+        calc_subtitle: "Професійний планувальник для максимального розвитку вашого мисливця, навичок та зброї",
+        calc_char_label: "Оберіть мисливця:",
+        calc_tab_char: "Персонаж",
+        calc_tab_skills: "Навички",
+        calc_tab_weapon: "Зброя (Arc)",
+        calc_level_title: "Рівень Персонажа",
+        calc_level_start: "Початковий рівень:",
+        calc_level_end: "Цільовий рівень:",
+        calc_level_max_hint: "* Максимальний рівень мисливця - 80. Прориви відбуваються на 20, 40, 50, 60 та 70 рівнях.",
+        calc_skills_title: "Рівні Навичок (1 - 10)",
+        calc_skill_basic: "Авто-атака",
+        calc_skill_active: "Активна навичка",
+        calc_skill_passive: "Пасивна навичка",
+        calc_skill_ultimate: "Вибух стихій",
+        calc_skills_hint: "* Рівні навичок 8-10 потребують рідкісних ядер босів та Корони Аномалії.",
+        calc_weapon_active: "Прокачувати зброю (Arc)",
+        calc_weapon_rarity: "Рідкість зброї:",
+        calc_weapon_5star: "S-Ранг (5★ Сигнатурна)",
+        calc_weapon_4star: "A-Ранг (4★ F2P)",
+        calc_weapon_3star: "B-Ранг (3★ Стартова)",
+        calc_weapon_start: "Початковий рівень:",
+        calc_weapon_end: "Цільовий рівень:",
+        calc_materials_title: "Необхідні Матеріали",
+        calc_clear_inv: "Очистити склад",
+        calc_copy_report: "Скопіювати звіт",
+        calc_inv_desc: "Введіть ваші запаси в полі «Маю в наявності», щоб розрахувати чистий дефіцит.",
+        calc_have_label: "Маю:",
+        calc_need_label: "Потрібно:",
+        calc_left_label: "Залишилось:",
+        calc_done_label: "Готово",
+        codes_title: "Активні Промокоди & Дослідження",
+        codes_subtitle: "Безкоштовні ресурси від розробників та поради щодо вивчення Гетеро",
+        codes_header: "Діючі Промокоди (Promo Codes)",
+        codes_indicator: "Авто-оновлення: Активне",
+        codes_guide_title: "Як активувати промокоди в грі?",
+        codes_guide_1: "Запустіть гру <strong>Neverness to Everness</strong>.",
+        codes_guide_2: "Відкрийте <strong>Головне меню</strong> (іконка у правому верхньому кутку).",
+        codes_guide_3: "Натисніть на іконку з <strong>трьома крапками (...)</strong> поруч із вашим нікнеймом.",
+        codes_guide_4: "Виберіть пункт <strong>Redeem Code (Активувати код)</strong>.",
+        codes_guide_5: "Введіть скопійований код та заберіть подарунки на ігровій пошті!",
+        explor_title: "Посібник з дослідження міста Hethereau",
+        explor_art1_title: "Використання Appraiser Vision (Зору Оцінювача)",
+        explor_art1_desc: "Натискайте клавішу зору в місті, щоб виявляти приховані аномалії. Багато об'єктів (наприклад, статуї, дивні графіті або дзеркальні відображення) змінюють свій вигляд і відкривають секретні скрині після взаємодії у цьому режимі.",
+        explor_art2_title: "Кролячі Нори (Rabbit Holes) та Аномальні Зони",
+        explor_art2_desc: "Витрачайте енергію Fons у зонах \"Rabbit Holes\" для фарма матеріалів для навичок. Щоденний фарм необхідний, оскільки ресурси навичок розділені по днях тижня. Завжди планують свій фарм заздалегідь.",
+        explor_art3_title: "Автомобілі та Швидке Переміщення",
+        explor_art3_desc: "Використовуйте свої авто не тільки для краси, а й для переміщення по великих шосе міста. Ви можете кастомізувати машини в гаражі Eibon, покращуючи їхню керованість та швидкість, що полегшить подолання дистанцій між аномаліями.",
+        cal_title: "Календар Подій та Оновлень",
+        cal_subtitle: "Слідкуйте за виходом нових патчів, банерів та івентів у Neverness to Everness",
+        modal_char_desc: "Опис Персонажа",
+        modal_best_build: "Найкращий Білд",
+        modal_gear_weapon_desc: "Дає найкращі базові характеристики та унікальний пасивний бафф.",
+        modal_gear_f2p_desc: "Легко отримати під час квестів або крафту.",
+        modal_gear_cartridge_desc: "Активує потужний бонус від 4-х частин набору.",
+        modal_gear_substats_desc: "Суб-характеристики",
+        modal_synergy_story: "Синергія та Загін",
+        modal_team_partners: "Рекомендована команда:",
+        modal_char_history: "Історія персонажа:",
+        footer_copyright: "&copy; 2026 Eibon Terminal. Створено для спільноти Neverness to Everness.",
+        footer_disclaimer: "Цей сайт є фан-ресурсом і не пов'язаний з Perfect World Games чи Hotta Studio. Усі права на гру належать їхнім правовласникам.",
+        toast_code_copied: "Код скопійовано! 📋",
+        toast_codes_cleared: "Склад очищено!",
+        toast_report_copied: "Звіт скопійовано у буфер обміну!",
+        toast_report_error: "Помилка копіювання звіту.",
+        toast_welcome: "Вітаємо, ",
+        toast_logged_out: "Ви вийшли з акаунта.",
+        toast_firebase_error: "Firebase Auth не підключений!",
+        toast_save_success: "Тір-ліст успішно опубліковано! 🎉",
+        toast_save_error: "Помилка збереження: ",
+        role_main_dps: "Атакуючий",
+        role_sub_dps: "Допоміжний ДПС",
+        role_support: "Підтримка",
+        attr_anima: "Аніма",
+        attr_incant: "Закляття",
+        attr_cosmos: "Космос",
+        attr_chaos: "Хаос",
+        attr_psyche: "Психея",
+        attr_lakshana: "Лакшана"
+    },
+    en: {
+        logo_badge: "WIKI",
+        nav_home: "Home",
+        nav_tierlist: "Tier List",
+        nav_builds: "Builds",
+        nav_teambuilder: "Teams",
+        nav_calculator: "Calculator",
+        nav_codes: "Promo Codes & Guides",
+        nav_calendar: "Calendar",
+        btn_login: "Login",
+        btn_logout: "Logout",
+        hero_tagline: "SUPERNATURAL URBAN RPG BY HOTTA STUDIO",
+        hero_title: "Enter the Anomaly World of <br><span class=\"highlight-text\">Neverness to Everness</span>",
+        hero_desc: "Welcome to Eibon Terminal — your personal guide to exploring the Hethereau metropolis. Evaluate anomalies, manage businesses, assemble the best teams, and track fresh updates.",
+        hero_btn_tierlist: "View Tier List",
+        hero_btn_teambuilder: "Build Squad",
+        active_banner_badge: "ACTIVE BANNER",
+        active_banner_title: "Hotori: Echoes of Eternity",
+        banner_timer_label: "Ends in:",
+        view_build_btn: "Review & Build",
+        feat_tierlist_title: "Interactive Tier List",
+        feat_tierlist_desc: "Up-to-date rating of anomaly hunters. Find out who dominates the current game meta.",
+        feat_teams_title: "Squad Builder",
+        feat_teams_desc: "Assemble squads and analyze element synergies and combat styles interaction.",
+        feat_calc_title: "Progression Calculator",
+        feat_calc_desc: "Calculate precise amounts of coins, exp, and boss drops required to upgrade characters.",
+        widget_codes_title: "Active Promo Codes",
+        widget_codes_badge: "VERIFIED",
+        widget_codes_desc: "Click on any code to copy it instantly.",
+        widget_events_title: "Events & Version Roadmap",
+        widget_events_badge: "VERSION 1.0",
+        widget_loading: "Loading...",
+        widget_copy_btn: "Copy",
+        widget_copied: "Copied!",
+        tierlist_title: "Character Rating (Tier List)",
+        tierlist_subtitle: "Evaluation of anomaly hunters' effectiveness in version 1.0 (Global Release)",
+        sub_tab_official: "Official Tier List",
+        sub_tab_community: "Community Lists",
+        sub_tab_creator: "Create Own",
+        filter_search_placeholder: "Search character by name...",
+        filter_rarity_label: "Rarity:",
+        filter_rarity_all: "All",
+        filter_rarity_s: "S-Rank (5★)",
+        filter_rarity_a: "A-Rank (4★)",
+        filter_attribute_label: "Element:",
+        filter_role_label: "Role:",
+        tierlist_note: "* Click on any character's card to open their detailed build, best weapon (Arc), and recommended cartridges.",
+        no_chars_found: "No characters found",
+        comm_title: "Community Tier Lists",
+        comm_subtitle: "Character evaluations and opinions from other Neverness to Everness players.",
+        comm_loading: "Loading community lists...",
+        comm_empty: "No saved tier lists yet. Create the first one! 🚀",
+        comm_db_unavailable: "Database is unavailable. Connect to the network to view.",
+        comm_view_btn: "View",
+        comm_delete_btn: "Delete",
+        comm_delete_confirm: "Are you sure you want to delete this tier list?",
+        comm_deleted_toast: "Tier list deleted successfully! 🗑️",
+        comm_delete_error: "Delete failed: ",
+        creator_prompt_title: "Create Your Own Tier List",
+        creator_prompt_desc: "To use the builder and save your character ratings, please log in using Google.",
+        creator_prompt_btn: "Log in with Google",
+        creator_title_label: "Tier List Title:",
+        creator_title_placeholder: "e.g., My Tier List Version 1.0",
+        creator_save_btn: "Save Tier List",
+        creator_pool_title: "Character Pool (click or drag cards to assign)",
+        creator_saved_toast: "Tier list published successfully! 🎉",
+        creator_empty_error: "Please assign characters to tiers first!",
+        creator_auth_error: "Please log in first!",
+        builds_title: "Character Build Guides",
+        builds_subtitle: "Recommended gear and stats priorities for maximum combat performance",
+        build_best_weapon: "Best Weapon (Arc)",
+        build_f2p_alt: "F2P Alternative",
+        build_cartridge: "Cartridge Set",
+        build_stats_pri: "Stats Priority",
+        build_partners: "Recommended teammates:",
+        teams_title: "Interactive Squad Builder",
+        teams_subtitle: "Assemble a team of 4 hunters to discover element synergies and combat rotations",
+        teams_clear_btn: "Clear Squad",
+        teams_analysis_title: "Squad Synergy Analysis",
+        teams_start_prompt: "Select characters to begin calculation.",
+        teams_desc_prompt: "Add hunters to slots above. The system will automatically analyze classes and attributes to outline optimal combat rotations.",
+        teams_slot_leader: "Slot 1 (Leader)",
+        teams_slot_label: "Slot ",
+        teams_modal_title: "Select Character",
+        calc_title: "Progress & Resources Calculator",
+        calc_subtitle: "Professional planner to maximize your hunter, skills, and weapon development",
+        calc_char_label: "Select Hunter:",
+        calc_tab_char: "Character",
+        calc_tab_skills: "Skills",
+        calc_tab_weapon: "Weapon (Arc)",
+        calc_level_title: "Character Level",
+        calc_level_start: "Start Level:",
+        calc_level_end: "Target Level:",
+        calc_level_max_hint: "* Maximum hunter level is 80. Breakthroughs occur at levels 20, 40, 50, 60, and 70.",
+        calc_skills_title: "Skill Levels (1 - 10)",
+        calc_skill_basic: "Basic Attack",
+        calc_skill_active: "Active Skill",
+        calc_skill_passive: "Passive Skill",
+        calc_skill_ultimate: "Ultimate Burst",
+        calc_skills_hint: "* Skill levels 8-10 require rare boss cores and Anomaly Crown.",
+        calc_weapon_active: "Upgrade Weapon (Arc)",
+        calc_weapon_rarity: "Weapon Rarity:",
+        calc_weapon_5star: "S-Rank (5★ Signature)",
+        calc_weapon_4star: "A-Rank (4★ F2P)",
+        calc_weapon_3star: "B-Rank (3★ Starter)",
+        calc_weapon_start: "Start Level:",
+        calc_weapon_end: "Target Level:",
+        calc_materials_title: "Required Materials",
+        calc_clear_inv: "Clear Inventory",
+        calc_copy_report: "Copy Report",
+        calc_inv_desc: "Enter your current stock in \"Have\" fields to calculate net deficit.",
+        calc_have_label: "Have:",
+        calc_need_label: "Need:",
+        calc_left_label: "Left:",
+        calc_done_label: "Done",
+        codes_title: "Active Codes & Exploration",
+        codes_subtitle: "Free resources from developers and tips for exploring Hethereau",
+        codes_header: "Active Promo Codes",
+        codes_indicator: "Auto-update: Active",
+        codes_guide_title: "How to activate promo codes in game?",
+        codes_guide_1: "Launch <strong>Neverness to Everness</strong>.",
+        codes_guide_2: "Open the <strong>Main Menu</strong> (top right icon).",
+        codes_guide_3: "Click the <strong>triple dot icon (...)</strong> next to your nickname.",
+        codes_guide_4: "Select <strong>Redeem Code</strong>.",
+        codes_guide_5: "Enter the copied code and claim rewards in your in-game mailbox!",
+        explor_title: "Hethereau City Exploration Guide",
+        explor_art1_title: "Using Appraiser Vision",
+        explor_art1_desc: "Press the vision key in the city to detect hidden anomalies. Many objects (like statues, strange graffiti, or mirror reflections) change their appearance and open secret chests after interaction in this mode.",
+        explor_art2_title: "Rabbit Holes & Anomaly Zones",
+        explor_art2_desc: "Spend Fons energy in \"Rabbit Holes\" zones to farm skill materials. Daily farming is crucial as skill materials are divided by days of the week. Plan your farming ahead of time.",
+        explor_art3_title: "Cars & Fast Travel",
+        explor_art3_desc: "Use your vehicles not only for style but also to traverse the city's vast highways. Customize cars in the Eibon garage to improve handling and speed, making it easier to cover distances between anomalies.",
+        cal_title: "Events & Version Roadmap",
+        cal_subtitle: "Follow patch releases, banners, and events in Neverness to Everness",
+        modal_char_desc: "Character Summary",
+        modal_best_build: "Best Build",
+        modal_gear_weapon_desc: "Provides the best base attributes and unique passive buff.",
+        modal_gear_f2p_desc: "Easily obtained via quests or crafting.",
+        modal_gear_cartridge_desc: "Activates powerful 4-piece set bonus.",
+        modal_gear_substats_desc: "Sub-stats",
+        modal_synergy_story: "Synergy & Squad",
+        modal_team_partners: "Recommended Team:",
+        modal_char_history: "Character Lore:",
+        footer_copyright: "&copy; 2026 Eibon Terminal. Built for the Neverness to Everness community.",
+        footer_disclaimer: "This website is a fan resource and is not associated with Perfect World Games or Hotta Studio. All game rights belong to their respective owners.",
+        toast_code_copied: "Code copied to clipboard! 📋",
+        toast_codes_cleared: "Inventory cleared!",
+        toast_report_copied: "Report copied to clipboard!",
+        toast_report_error: "Failed to copy report.",
+        toast_welcome: "Welcome, ",
+        toast_logged_out: "Logged out successfully.",
+        toast_firebase_error: "Firebase Auth not connected!",
+        toast_save_success: "Tier list published successfully! 🎉",
+        toast_save_error: "Save failed: ",
+        role_main_dps: "Main DPS",
+        role_sub_dps: "Sub-DPS",
+        role_support: "Support",
+        attr_anima: "Anima",
+        attr_incant: "Incantation",
+        attr_cosmos: "Cosmos",
+        attr_chaos: "Chaos",
+        attr_psyche: "Psyche",
+        attr_lakshana: "Lakshana"
+    }
+};
+
+function translatePage(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    
+    const dict = i18n[lang] || i18n['uk'];
+    
+    // Find all data-i18n tags and translate
+    const elements = document.querySelectorAll("[data-i18n]");
+    elements.forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (dict[key]) {
+            el.innerHTML = dict[key];
+        }
+    });
+    
+    // Localize placeholders
+    const placeholders = document.querySelectorAll("[data-i18n-placeholder]");
+    placeholders.forEach(el => {
+        const key = el.getAttribute("data-i18n-placeholder");
+        if (dict[key]) {
+            el.placeholder = dict[key];
+        }
+    });
+    
+    // Update active class on switcher buttons
+    const langBtns = document.querySelectorAll(".lang-btn");
+    langBtns.forEach(btn => {
+        if (btn.getAttribute("data-lang") === lang) {
+            btn.classList.add("active");
+        } else {
+            btn.classList.remove("active");
+        }
+    });
+}
+
+function getLocalizedChar(char) {
+    if (!char) return null;
+    const trans = CHARACTER_TRANSLATIONS[char.id];
+    const lang = currentLang || 'uk';
+    
+    const locChar = { ...char };
+    
+    if (trans && trans[lang]) {
+        const lData = trans[lang];
+        locChar.name = lData.name || char.name;
+        locChar.summary = lData.summary || char.summary;
+        locChar.weapon = lData.weapon || char.weapon;
+        locChar.weaponF2p = lData.weaponF2p || char.weaponF2p;
+        locChar.cartridge = lData.cartridge || char.cartridge;
+        locChar.teamSynergy = lData.teamSynergy || char.teamSynergy;
+        locChar.lore = lData.lore || char.lore;
+        if (lData.stats) locChar.stats = lData.stats;
+    } else {
+        // Fallback translation if not explicitly in table
+        locChar.role = (ROLE_TRANSLATIONS[lang] && ROLE_TRANSLATIONS[lang][char.role]) || char.role;
+        locChar.attribute = (ATTR_TRANSLATIONS[lang] && ATTR_TRANSLATIONS[lang][char.attribute]) || char.attribute;
+        
+        if (Array.isArray(char.stats)) {
+            locChar.stats = char.stats.map(s => {
+                const translation = STAT_TRANSLATIONS[lang] && STAT_TRANSLATIONS[lang][s];
+                return translation || s;
+            });
+        }
+    }
+    
+    if (ROLE_TRANSLATIONS[lang] && ROLE_TRANSLATIONS[lang][char.role]) {
+        locChar.role = ROLE_TRANSLATIONS[lang][char.role];
+    }
+    if (ATTR_TRANSLATIONS[lang] && ATTR_TRANSLATIONS[lang][char.attribute]) {
+        locChar.attribute = ATTR_TRANSLATIONS[lang][char.attribute];
+    }
+    
+    return locChar;
+}
+
+// Active Banner Countdown
+function startBannerCountdown() {
+    const bannerEndDate = new Date("2026-06-10T18:00:00+03:00").getTime();
+    
+    function updateTimer() {
+        const now = new Date().getTime();
+        const distance = bannerEndDate - now;
+        
+        const timerEl = document.getElementById("bannerCountdown");
+        if (!timerEl) return;
+        
+        if (distance < 0) {
+            timerEl.innerText = currentLang === 'uk' ? "Завершено" : "Ended";
+            return;
+        }
+        
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        if (currentLang === 'uk') {
+            timerEl.innerText = `${days}д ${hours}г ${minutes}хв ${seconds}с`;
+        } else {
+            timerEl.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+    }
+    
+    updateTimer();
+    setInterval(updateTimer, 1000);
+}
+
+function renderHomeWidgets() {
+    // 1. Promo codes widget
+    const codesContainer = document.getElementById("homeCodesList");
+    if (codesContainer) {
+        codesContainer.innerHTML = "";
+        const activeCodes = PROMO_CODES.filter(c => c.active).slice(0, 3);
+        if (activeCodes.length === 0) {
+            codesContainer.innerHTML = `<div class="widget-loading">${currentLang === 'uk' ? 'Промокоди відсутні' : 'No active codes'}</div>`;
+        } else {
+            activeCodes.forEach(promo => {
+                const item = document.createElement("div");
+                item.className = "home-code-item";
+                item.style.cursor = "pointer";
+                item.innerHTML = `
+                    <div class="home-code-info">
+                        <span class="home-code-string">${promo.code}</span>
+                        <span class="home-code-rewards">${promo.rewards}</span>
+                    </div>
+                    <button class="btn-copy btn-xs">${currentLang === 'uk' ? 'Копіювати' : 'Copy'}</button>
+                `;
+                item.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    copyToClipboard(promo.code);
+                });
+                codesContainer.appendChild(item);
+            });
+        }
+    }
+    
+    // 2. Timeline widget
+    const eventsContainer = document.getElementById("homeEventsRoadmap");
+    if (eventsContainer) {
+        eventsContainer.innerHTML = "";
+        const displayEvents = TIMELINE_EVENTS.slice(0, 3);
+        if (displayEvents.length === 0) {
+            eventsContainer.innerHTML = `<div class="widget-loading">${currentLang === 'uk' ? 'Події відсутні' : 'No events scheduled'}</div>`;
+        } else {
+            displayEvents.forEach(event => {
+                const item = document.createElement("div");
+                item.className = "home-event-item";
+                
+                let title = event.title;
+                let date = event.date;
+                const trans = TIMELINE_TRANSLATIONS[event.title];
+                if (trans && trans[currentLang]) {
+                    title = trans[currentLang].title;
+                    date = trans[currentLang].date;
+                }
+                
+                let statusText = event.status;
+                if (event.status === 'Released') {
+                    statusText = currentLang === 'uk' ? 'Випущено' : 'Released';
+                } else if (event.status === 'Upcoming') {
+                    statusText = currentLang === 'uk' ? 'Майбутнє' : 'Upcoming';
+                }
+                
+                item.innerHTML = `
+                    <div class="home-event-info">
+                        <span class="home-event-title">${title}</span>
+                        <span class="home-event-date">${date}</span>
+                    </div>
+                    <span class="badge ${event.badgeClass}">${statusText}</span>
+                `;
+                eventsContainer.appendChild(item);
+            });
+        }
+    }
+}
+// ---------------------------------
+
 // 2. HARDCODED FALLBACK DATA (used when Firestore and cache are unavailable)
 const FALLBACK_CHARACTERS = [
     {
@@ -408,6 +1731,7 @@ function setupRealtimeListeners() {
                     PROMO_CODES = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
                     localStorage.setItem('nte_promoCodes', JSON.stringify(PROMO_CODES));
                     renderPromoCodes();
+                    renderHomeWidgets();
                     console.log('🔄 Promo codes updated in realtime');
                 }
             }, (error) => {
@@ -422,6 +1746,7 @@ function setupRealtimeListeners() {
                 renderTierList();
                 renderBuilds();
                 renderCalculatorSetup();
+                renderHomeWidgets();
                 console.log('🔄 Characters updated in realtime');
             }
         }, (error) => {
@@ -479,6 +1804,30 @@ document.addEventListener("DOMContentLoaded", async () => {
         PROMO_CODES = [...FALLBACK_PROMO_CODES];
     }
 
+    // Setup language switcher binding
+    const langBtns = document.querySelectorAll(".lang-btn");
+    langBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const selectedLang = btn.getAttribute("data-lang");
+            if (selectedLang !== currentLang) {
+                localStorage.setItem('nte_lang', selectedLang);
+                translatePage(selectedLang);
+                
+                // Re-render
+                renderTierList();
+                renderBuilds();
+                renderTimeline();
+                renderCalculatorSetup();
+                renderHomeWidgets();
+                evaluateTeamSynergy();
+                updateTeamSlotsUI();
+            }
+        });
+    });
+
+    // Run initial translation
+    translatePage(currentLang);
+
     // Initialize all UI components
     initNavigation();
     renderTierList();
@@ -488,6 +1837,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     setupTeamBuilder();
     setupCalculatorEvents();
     renderPromoCodes();
+    
+    // Start active banner countdown & home widgets
+    startBannerCountdown();
+    renderHomeWidgets();
+
+    // Setup banner CTA click
+    const bannerBtn = document.getElementById("btnGoToBannerChar");
+    if (bannerBtn) {
+        bannerBtn.addEventListener("click", () => {
+            switchTab("builds");
+            openCharacterModal("hotori");
+        });
+    }
 
     // Setup realtime listeners for live updates
     setupRealtimeListeners();
@@ -573,10 +1935,13 @@ function renderTierList() {
     
     Object.values(grids).forEach(grid => grid.innerHTML = "");
 
+    const activeList = CHARACTERS.length > 0 ? CHARACTERS : FALLBACK_CHARACTERS;
+
     // Filter characters
-    const filtered = CHARACTERS.filter(char => {
-        const matchesSearch = char.name.toLowerCase().includes(searchVal);
-        const matchesRarity = activeRarity === "all" ? true : (activeRarity === "S" ? char.rarity === 5 : char.rarity === 4);
+    const filtered = activeList.filter(char => {
+        const locChar = getLocalizedChar(char);
+        const matchesSearch = locChar.name.toLowerCase().includes(searchVal);
+        const matchesRarity = activeRarity === "all" ? true : (activeRarity === "S" ? locChar.rarity === 5 : locChar.rarity === 4);
         const matchesAttr = activeAttribute === "all" ? true : char.attribute === activeAttribute;
         const matchesRole = activeRole === "all" ? true : char.role === activeRole;
         return matchesSearch && matchesRarity && matchesAttr && matchesRole;
@@ -586,26 +1951,27 @@ function renderTierList() {
     let counts = { "S+": 0, "S": 0, "A": 0, "B": 0 };
     
     filtered.forEach(char => {
+        const locChar = getLocalizedChar(char);
         const card = document.createElement("div");
-        card.className = `char-card rarity-${char.rarity}`;
+        card.className = `char-card rarity-${locChar.rarity}`;
         card.innerHTML = `
             <span class="char-card-attr-badge attr-${char.attribute.toLowerCase()}">${char.attribute[0]}</span>
-            <div class="char-card-avatar">${renderAvatarHtml(char)}</div>
-            <div class="char-card-name">${char.name.split(" ")[0]}</div>
-            <div class="char-card-meta">${char.role}</div>
+            <div class="char-card-avatar">${renderAvatarHtml(locChar)}</div>
+            <div class="char-card-name">${locChar.name.split(" ")[0]}</div>
+            <div class="char-card-meta">${locChar.role}</div>
         `;
-        card.addEventListener("click", () => openCharacterModal(char.id));
+        card.addEventListener("click", () => openCharacterModal(locChar.id));
         
-        if (grids[char.tier]) {
-            grids[char.tier].appendChild(card);
-            counts[char.tier]++;
+        if (grids[locChar.tier]) {
+            grids[locChar.tier].appendChild(card);
+            counts[locChar.tier]++;
         }
     });
 
     // Show empty message if a row has 0 elements
     Object.keys(grids).forEach(tier => {
         if (counts[tier] === 0) {
-            grids[tier].innerHTML = `<div class="no-chars-alert">Персонажів не знайдено</div>`;
+            grids[tier].innerHTML = `<div class="no-chars-alert" data-i18n="no_chars_found">${i18n[currentLang].no_chars_found}</div>`;
         }
     });
 }
@@ -639,46 +2005,49 @@ function renderBuilds() {
     const buildsGrid = document.getElementById("buildsGrid");
     buildsGrid.innerHTML = "";
 
+    const activeList = CHARACTERS.length > 0 ? CHARACTERS : FALLBACK_CHARACTERS;
+
     // Show S and S+ character builds on builds tab
-    const buildChars = CHARACTERS.filter(c => c.tier === "S+" || c.tier === "S" || c.id === "adler" || c.id === "mint");
+    const buildChars = activeList.filter(c => c.tier === "S+" || c.tier === "S" || c.id === "adler" || c.id === "mint");
 
     buildChars.forEach(char => {
+        const locChar = getLocalizedChar(char);
         const card = document.createElement("div");
         card.className = "build-card";
         
-        const statsTags = char.stats.map(s => `<span class="stat-tag">${s}</span>`).join("");
+        const statsTags = locChar.stats.map(s => `<span class="stat-tag">${s}</span>`).join("");
 
         card.innerHTML = `
             <div class="build-card-header">
-                <div class="build-char-avatar rarity-${char.rarity}">${renderAvatarHtml(char)}</div>
+                <div class="build-char-avatar rarity-${locChar.rarity}">${renderAvatarHtml(locChar)}</div>
                 <div class="build-header-info">
-                    <h3>${char.name}</h3>
-                    <span class="badge attr-${char.attribute.toLowerCase()}">${char.attribute} • ${char.role}</span>
+                    <h3>${locChar.name}</h3>
+                    <span class="badge attr-${char.attribute.toLowerCase()}">${locChar.attribute} • ${locChar.role}</span>
                 </div>
             </div>
             
             <div class="build-grid-details">
                 <div class="build-section-block">
-                    <span class="build-section-label">Найкраща Зброя (Arc)</span>
-                    <span class="build-section-value">${char.weapon}</span>
+                    <span class="build-section-label" data-i18n="build_best_weapon">${i18n[currentLang].build_best_weapon}</span>
+                    <span class="build-section-value">${locChar.weapon}</span>
                 </div>
                 <div class="build-section-block">
-                    <span class="build-section-label">F2P Альтернатива</span>
-                    <span class="build-section-value">${char.weaponF2p}</span>
+                    <span class="build-section-label" data-i18n="build_f2p_alt">${i18n[currentLang].build_f2p_alt}</span>
+                    <span class="build-section-value">${locChar.weaponF2p}</span>
                 </div>
                 <div class="build-section-block">
-                    <span class="build-section-label">Набір Картриджів</span>
-                    <span class="build-section-value">${char.cartridge}</span>
+                    <span class="build-section-label" data-i18n="build_cartridge">${i18n[currentLang].build_cartridge}</span>
+                    <span class="build-section-value">${locChar.cartridge}</span>
                 </div>
                 <div class="build-section-block">
-                    <span class="build-section-label">Пріоритет Статів</span>
+                    <span class="build-section-label" data-i18n="build_stats_pri">${i18n[currentLang].build_stats_pri}</span>
                     <div class="stat-pri-list">${statsTags}</div>
                 </div>
             </div>
             
             <div class="build-card-teams">
-                <span class="build-section-label">Рекомендовані партнери:</span>
-                <p style="font-size:0.9rem; margin-top:0.2rem; color:var(--text-muted);">${char.teamSynergy}</p>
+                <span class="build-section-label" data-i18n="build_partners">${i18n[currentLang].build_partners}</span>
+                <p style="font-size:0.9rem; margin-top:0.2rem; color:var(--text-muted);">${locChar.teamSynergy}</p>
             </div>
         `;
         buildsGrid.appendChild(card);
@@ -687,63 +2056,64 @@ function renderBuilds() {
 
 // 8. DETAIL MODAL LOGIC
 function openCharacterModal(charId) {
-    const char = CHARACTERS.find(c => c.id === charId);
+    const char = CHARACTERS.find(c => c.id === charId) || FALLBACK_CHARACTERS.find(c => c.id === charId);
     if (!char) return;
 
+    const locChar = getLocalizedChar(char);
     const modal = document.getElementById("charModalOverlay");
     const detailContainer = document.getElementById("modalCharDetail");
 
-    const statsTags = char.stats.map(s => `<span class="stat-tag">${s}</span>`).join("");
+    const statsTags = locChar.stats.map(s => `<span class="stat-tag">${s}</span>`).join("");
 
     detailContainer.innerHTML = `
         <div class="modal-char-header">
-            <div class="modal-avatar-big rarity-${char.rarity}">${renderAvatarHtml(char)}</div>
+            <div class="modal-avatar-big rarity-${locChar.rarity}">${renderAvatarHtml(locChar)}</div>
             <div class="modal-header-desc">
-                <h2>${char.name}</h2>
+                <h2>${locChar.name}</h2>
                 <div class="modal-char-meta-row">
-                    <span class="badge ${char.rarity === 5 ? 'badge-hot' : 'badge-cosmos'}">${char.rarity}★ Ранг</span>
-                    <span class="badge attr-${char.attribute.toLowerCase()}">${char.attribute}</span>
-                    <span class="badge badge-anima">${char.role}</span>
-                    <span class="badge badge-incant">Tier ${char.tier}</span>
+                    <span class="badge ${locChar.rarity === 5 ? 'badge-hot' : 'badge-cosmos'}">${locChar.rarity}★ ${currentLang === 'uk' ? 'Ранг' : 'Rank'}</span>
+                    <span class="badge attr-${char.attribute.toLowerCase()}">${locChar.attribute}</span>
+                    <span class="badge badge-anima">${locChar.role}</span>
+                    <span class="badge badge-incant">Tier ${locChar.tier}</span>
                 </div>
             </div>
         </div>
 
         <div class="modal-char-body">
             <div class="modal-section">
-                <h4>Опис Персонажа</h4>
-                <p>${char.summary}</p>
+                <h4 data-i18n="modal_char_desc">${i18n[currentLang].modal_char_desc}</h4>
+                <p>${locChar.summary}</p>
             </div>
 
             <div class="modal-section">
-                <h4>Найкращий Білд</h4>
+                <h4 data-i18n="modal_best_build">${i18n[currentLang].modal_best_build}</h4>
                 <div class="modal-gear-blocks">
                     <div class="gear-item">
-                        <span class="build-section-label">Рекомендований Arc (Зброя)</span>
-                        <div class="gear-title">${char.weapon}</div>
-                        <div class="gear-note">Дає найкращі базові характеристики та унікальний пасивний бафф.</div>
+                        <span class="build-section-label" data-i18n="build_best_weapon">${i18n[currentLang].build_best_weapon}</span>
+                        <div class="gear-title">${locChar.weapon}</div>
+                        <div class="gear-note" data-i18n="modal_gear_weapon_desc">${i18n[currentLang].modal_gear_weapon_desc}</div>
                     </div>
                     <div class="gear-item">
-                        <span class="build-section-label">F2P Зброя</span>
-                        <div class="gear-title">${char.weaponF2p}</div>
-                        <div class="gear-note">Легко отримати під час квестів або крафту.</div>
+                        <span class="build-section-label" data-i18n="build_f2p_alt">${i18n[currentLang].build_f2p_alt}</span>
+                        <div class="gear-title">${locChar.weaponF2p}</div>
+                        <div class="gear-note" data-i18n="modal_gear_f2p_desc">${i18n[currentLang].modal_gear_f2p_desc}</div>
                     </div>
                     <div class="gear-item">
-                        <span class="build-section-label">Набір Картриджів</span>
-                        <div class="gear-title">${char.cartridge}</div>
-                        <div class="gear-note">Активує потужний бонус від 4-х частин набору.</div>
+                        <span class="build-section-label" data-i18n="build_cartridge">${i18n[currentLang].build_cartridge}</span>
+                        <div class="gear-title">${locChar.cartridge}</div>
+                        <div class="gear-note" data-i18n="modal_gear_cartridge_desc">${i18n[currentLang].modal_gear_cartridge_desc}</div>
                     </div>
                     <div class="gear-item">
-                        <span class="build-section-label">Суб-характеристики</span>
+                        <span class="build-section-label" data-i18n="modal_gear_substats_desc">${i18n[currentLang].modal_gear_substats_desc}</span>
                         <div class="stat-pri-list" style="margin-top:0.4rem;">${statsTags}</div>
                     </div>
                 </div>
             </div>
 
             <div class="modal-section">
-                <h4>Синергія та Загін</h4>
-                <p><strong>Рекомендована команда:</strong> ${char.teamSynergy}</p>
-                <p style="margin-top:0.5rem;"><strong>Історія персонажа:</strong> ${char.lore}</p>
+                <h4 data-i18n="modal_synergy_story">${i18n[currentLang].modal_synergy_story}</h4>
+                <p><strong data-i18n="modal_team_partners">${i18n[currentLang].modal_team_partners}</strong> ${locChar.teamSynergy}</p>
+                <p style="margin-top:0.5rem;"><strong data-i18n="modal_char_history">${i18n[currentLang].modal_char_history}</strong> ${locChar.lore}</p>
             </div>
         </div>
     `;
@@ -784,8 +2154,10 @@ function openSelectorModal() {
     grid.innerHTML = "";
 
     // Load characters not in squad
-    CHARACTERS.forEach(char => {
+    const activeList = CHARACTERS.length > 0 ? CHARACTERS : FALLBACK_CHARACTERS;
+    activeList.forEach(char => {
         const isAlreadyInSquad = currentSquad.some(s => s && s.id === char.id);
+        const locChar = getLocalizedChar(char);
         
         const card = document.createElement("div");
         card.className = "select-card";
@@ -795,9 +2167,9 @@ function openSelectorModal() {
         }
         
         card.innerHTML = `
-            <div class="select-card-avatar rarity-${char.rarity}">${renderAvatarHtml(char)}</div>
-            <div class="select-card-name">${char.name.split(" ")[0]}</div>
-            <span class="badge attr-${char.attribute.toLowerCase()}" style="font-size:0.6rem; padding: 0.1rem 0.3rem; margin-top:0.2rem;">${char.attribute}</span>
+            <div class="select-card-avatar rarity-${locChar.rarity}">${renderAvatarHtml(locChar)}</div>
+            <div class="select-card-name">${locChar.name.split(" ")[0]}</div>
+            <span class="badge attr-${char.attribute.toLowerCase()}" style="font-size:0.6rem; padding: 0.1rem 0.3rem; margin-top:0.2rem;">${locChar.attribute}</span>
         `;
         
         if (!isAlreadyInSquad) {
@@ -836,12 +2208,13 @@ function updateTeamSlotsUI() {
         const char = currentSquad[i];
         
         if (char) {
+            const locChar = getLocalizedChar(char);
             slotEl.innerHTML = `
                 <div class="slot-filled-card">
                     <button class="slot-remove-btn" data-slot="${i}">&times;</button>
-                    <div class="slot-filled-avatar rarity-${char.rarity}">${renderAvatarHtml(char)}</div>
-                    <div class="char-card-name">${char.name.split(" ")[0]}</div>
-                    <span class="badge attr-${char.attribute.toLowerCase()}">${char.attribute} • ${char.role}</span>
+                    <div class="slot-filled-avatar rarity-${locChar.rarity}">${renderAvatarHtml(locChar)}</div>
+                    <div class="char-card-name">${locChar.name.split(" ")[0]}</div>
+                    <span class="badge attr-${char.attribute.toLowerCase()}">${locChar.attribute} • ${locChar.role}</span>
                 </div>
             `;
             // Re-bind click only on remove button, and prevent slot click triggers
@@ -853,10 +2226,13 @@ function updateTeamSlotsUI() {
                 evaluateTeamSynergy();
             });
         } else {
+            const slotText = i === 0 
+                ? i18n[currentLang].teams_slot_leader 
+                : i18n[currentLang].teams_slot_label + (i + 1);
             slotEl.innerHTML = `
                 <div class="slot-empty">
                     <span class="slot-plus">+</span>
-                    <span class="slot-label">${i === 0 ? 'Слот 1 (Лідер)' : `Слот ${i + 1}`}</span>
+                    <span class="slot-label">${slotText}</span>
                 </div>
             `;
         }
@@ -871,17 +2247,18 @@ function evaluateTeamSynergy() {
     const ratingEl = document.getElementById("synergyRating");
 
     if (activeChars.length === 0) {
-        badgesContainer.innerHTML = `<span class="no-synergy-text">Виберіть персонажів для початку розрахунку.</span>`;
+        badgesContainer.innerHTML = `<span class="no-synergy-text">${currentLang === 'uk' ? 'Виберіть персонажів для початку розрахунку.' : 'Select characters to begin calculation.'}</span>`;
         reactionsContainer.innerHTML = "";
-        descContainer.innerHTML = `<p>Додайте мисливців у слоти вище. Система автоматично проаналізує їхні класи, стихії та виведе оптимальну послідовність навичок (ротацію) для бою.</p>`;
+        descContainer.innerHTML = `<p>${currentLang === 'uk' ? 'Додайте мисливців у слоти вище. Система автоматично проаналізує їхні класи, стихії та виведе оптимальну послідовність навичок (ротацію) для бою.' : 'Add hunters to slots above. The system will automatically analyze classes and attributes to outline optimal combat rotations.'}</p>`;
         ratingEl.innerText = "-";
         return;
     }
 
     // Display active character attributes
-    badgesContainer.innerHTML = activeChars.map(c => `
-        <span class="badge attr-${c.attribute.toLowerCase()}">${c.name.split(" ")[0]} (${c.attribute})</span>
-    `).join("");
+    badgesContainer.innerHTML = activeChars.map(c => {
+        const locChar = getLocalizedChar(c);
+        return `<span class="badge attr-${c.attribute.toLowerCase()}">${locChar.name.split(" ")[0]} (${locChar.attribute})</span>`;
+    }).join("");
 
     // Calculate elements count
     const attributes = activeChars.map(c => c.attribute);
@@ -898,64 +2275,64 @@ function evaluateTeamSynergy() {
     // 1. Blossom Reaction (2+ Anima)
     if (count["Anima"] >= 2) {
         reactions.push({
-            name: "Блоссом / Цвітіння (Blossom Reaction)",
-            desc: "Активовано! Загін отримує +15% швидкості накопичення енергії та підвищене Аніма-пошкодження. Ідеально підходить для розгону авто-атак Наналлі."
+            name: REACTION_TRANSLATIONS.Blossom[currentLang].name,
+            desc: REACTION_TRANSLATIONS.Blossom[currentLang].desc
         });
     }
 
     // 2. Esper Cycle (Cosmos + any other attribute)
     if (count["Cosmos"] >= 1 && (count["Anima"] >= 1 || count["Incantation"] >= 1 || count["Chaos"] >= 1 || count["Psyche"] >= 1 || count["Lakshana"] >= 1)) {
         reactions.push({
-            name: "Цикл Есперів (Esper Cycle)",
-            desc: "Активовано! Cosmos-атрибут (наприклад, Зеро чи Чіз) виступає в ролі прискорювача. Зміна персонажів наповнює шкалу Esper Meter на 30% швидше."
+            name: REACTION_TRANSLATIONS.EsperCycle[currentLang].name,
+            desc: REACTION_TRANSLATIONS.EsperCycle[currentLang].desc
         });
     }
 
     // 3. Scorch Reaction (Anima + Incantation)
     if (count["Anima"] >= 1 && count["Incantation"] >= 1) {
         reactions.push({
-            name: "Випалювання (Scorch)",
-            desc: "Активовано! Створює термічну реакцію, що підпалює цілі навколо та наносить DoT (періодичне пошкодження) кожні 1.5 секунди."
+            name: REACTION_TRANSLATIONS.Scorch[currentLang].name,
+            desc: REACTION_TRANSLATIONS.Scorch[currentLang].desc
         });
     }
 
     // 4. Charged Reaction (Chaos + Incantation)
     if (count["Chaos"] >= 1 && count["Incantation"] >= 1) {
         reactions.push({
-            name: "Зарядження (Charged)",
-            desc: "Активовано! Накладає дебафф 'Зниження стабільності' на ворогів, що дозволяє легше збивати їхні щити та збивати з ніг."
+            name: REACTION_TRANSLATIONS.Charged[currentLang].name,
+            desc: REACTION_TRANSLATIONS.Charged[currentLang].desc
         });
     }
 
     // 5. Remora Reaction (Cosmos + Lakshana)
     if (count["Cosmos"] >= 1 && count["Lakshana"] >= 1) {
         reactions.push({
-            name: "Ремора (Remora)",
-            desc: "Активовано! Реакція між Lakshana та Cosmos. Збільшує шанс критичного удару на 10% та суттєво підвищує фізичну і космічну шкоду загону."
+            name: REACTION_TRANSLATIONS.Remora[currentLang].name,
+            desc: REACTION_TRANSLATIONS.Remora[currentLang].desc
         });
     }
 
     // 6. Discord Reaction (Incantation/Chaos + Psyche)
     if ((count["Incantation"] >= 1 || count["Chaos"] >= 1) && count["Psyche"] >= 1) {
         reactions.push({
-            name: "Розбрат (Discord)",
-            desc: "Активовано! Елементи Chaos/Incantation створюють ментальний дисонанс з Psyche, знижуючи стабільність ворогів та наносячи на 25% більше шкоди по пробитих щитах."
+            name: REACTION_TRANSLATIONS.Discord[currentLang].name,
+            desc: REACTION_TRANSLATIONS.Discord[currentLang].desc
         });
     }
 
     // 7. Stain Reaction (Lakshana + Psyche)
     if (count["Lakshana"] >= 1 && count["Psyche"] >= 1) {
         reactions.push({
-            name: "Пляма (Stain)",
-            desc: "Активовано! Поєднання Lakshana та Psyche спотворює сприйняття ворогів, змушуючи їх отримувати додаткову періодичну шкоду та послаблюючи їхню атаку."
+            name: REACTION_TRANSLATIONS.Stain[currentLang].name,
+            desc: REACTION_TRANSLATIONS.Stain[currentLang].desc
         });
     }
 
     // 8. Nova Reaction (Anima + Psyche)
     if (count["Anima"] >= 1 && count["Psyche"] >= 1) {
         reactions.push({
-            name: "Нова (Nova)",
-            desc: "Активовано! Аніма та Психея викликають елементальний вибух розуму, що наносить колосальну площинну (AoE) шкоду навколишнім ворогам."
+            name: REACTION_TRANSLATIONS.Nova[currentLang].name,
+            desc: REACTION_TRANSLATIONS.Nova[currentLang].desc
         });
     }
 
@@ -984,7 +2361,7 @@ function evaluateTeamSynergy() {
             </div>
         `).join("");
     } else {
-        reactionsContainer.innerHTML = `<p class="no-synergy-text" style="font-size:0.85rem;">Немає активних елементальних реакцій. Спробуйте поєднати інші стихії.</p>`;
+        reactionsContainer.innerHTML = `<p class="no-synergy-text" style="font-size:0.85rem;">${currentLang === 'uk' ? 'Немає активних елементальних реакцій. Спробуйте поєднати інші стихії.' : 'No active elemental reactions. Try combining other elements.'}</p>`;
     }
 
     // Generate Rotation Text based on squad
@@ -994,19 +2371,41 @@ function evaluateTeamSynergy() {
     const hasJiuyuan = activeChars.some(c => c.id === "jiuyuan");
 
     if (hasNanally && hasSakiri && hasZero) {
-        rotation = "<strong>Оптимальна ротація для бою:</strong><br>1. Почніть із <strong>Sakiri</strong>: стягніть ворогів умінням і запустіть ультимейт для зрізу опорів.<br>2. Переключіться на <strong>Zero</strong>: активуйте його поле, що запускає реакцію <em>Esper Cycle</em>.<br>3. Перейдіть на <strong>Nanally</strong>: виконайте посилену серію комбо під дією гравітації та ультимейт для фінального вибуху.";
+        if (currentLang === 'uk') {
+            rotation = "<strong>Оптимальна ротація для бою:</strong><br>1. Почніть із <strong>Сакірі</strong>: стягніть ворогів умінням і запустіть вибух стихій для зрізу опорів.<br>2. Переключіться на <strong>Зеро</strong>: активуйте його поле, що запускає реакцію <em>Цикл Есперів</em>.<br>3. Перейдіть на <strong>Наналлі</strong>: виконайте посилену серію авто-атак під дією гравітації та вибух стихій для фінального удару.";
+        } else {
+            rotation = "<strong>Optimal Combat Rotation:</strong><br>1. Start with <strong>Sakiri</strong>: group enemies with skill and trigger Ultimate Burst to shred resistances.<br>2. Switch to <strong>Zero</strong>: activate his field to trigger <em>Esper Cycle</em>.<br>3. Swap to <strong>Nanally</strong>: perform enhanced gravity combos and use Ultimate Burst for the final blowout.";
+        }
     } else if (hasNanally && hasJiuyuan) {
-        rotation = "<strong>Оптимальна ротація (Blossom):</strong><br>1. Використовуйте <strong>Jiuyuan</strong> для нанесення швидкої шкоди та накладання Аніма-статусу.<br>2. Перейдіть на <strong>Nanally</strong> для безперервного виклику реакції <em>Blossom</em> та нанесення основної шкоди.";
+        if (currentLang === 'uk') {
+            rotation = "<strong>Оптимальна ротація (Цвітіння):</strong><br>1. Використовуйте <strong>Цзююань</strong> для нанесення швидкої шкоди та накладання статусу Аніми.<br>2. Перейдіть на <strong>Наналлі</strong> для безперервного виклику реакції <em>Цвітіння</em> та нанесення основної шкоди.";
+        } else {
+            rotation = "<strong>Optimal Rotation (Blossom):</strong><br>1. Use <strong>Jiuyuan</strong> to deal rapid burst damage and apply Anima status.<br>2. Swap to <strong>Nanally</strong> for continuous <em>Blossom</em> triggers and main DPS damage.";
+        }
     } else if (activeChars.length >= 2) {
         const support = activeChars.find(c => c.role === "Support");
         const dps = activeChars.find(c => c.role === "Main DPS");
         if (support && dps) {
-            rotation = `<strong>Бойова порада:</strong><br>Починайте бій за саппорта <strong>${support.name.split(" ")[0]}</strong> для накладання ефектів контролю та баффів, після чого переключайтеся на ДПС <strong>${dps.name.split(" ")[0]}</strong> для завдання максимальної шкоди під баффами.`;
+            const locSupport = getLocalizedChar(support);
+            const locDps = getLocalizedChar(dps);
+            if (currentLang === 'uk') {
+                rotation = `<strong>Бойова порада:</strong><br>Починайте бій за підтримку <strong>${locSupport.name.split(" ")[0]}</strong> для накладання ефектів контролю та баффів, після чого переключайтеся на атакуючого <strong>${locDps.name.split(" ")[0]}</strong> для завдання максимальної шкоди під баффами.`;
+            } else {
+                rotation = `<strong>Combat Tip:</strong><br>Begin combat with support <strong>${locSupport.name.split(" ")[0]}</strong> to apply crowd control and buffs, then switch to Main DPS <strong>${locDps.name.split(" ")[0]}</strong> to deal maximum damage under buffs.`;
+            }
         } else {
-            rotation = "<strong>Бойова порада:</strong><br>Для збалансованого загону рекомендується мати принаймні одного Main DPS персонажа та одного Support. Експериментуйте з додаванням героїв Cosmos для прискорення ротацій.";
+            if (currentLang === 'uk') {
+                rotation = "<strong>Бойова порада:</strong><br>Для збалансованого загону рекомендується мати принаймні одного атакуючого (Main DPS) персонажа та одного підтримку (Support). Експериментуйте з додаванням героїв Космосу для прискорення ротацій.";
+            } else {
+                rotation = "<strong>Combat Tip:</strong><br>For a balanced squad, it is recommended to have at least one Main DPS character and one Support. Experiment with adding Cosmos heroes to accelerate rotations.";
+            }
         }
     } else {
-        rotation = "Додайте більше персонажів у команду для генерації тактичних порад.";
+        if (currentLang === 'uk') {
+            rotation = "Додайте більше персонажів у команду для генерації тактичних порад.";
+        } else {
+            rotation = "Add more characters to the squad to generate tactical tips.";
+        }
     }
 
     ratingEl.innerText = rating;
@@ -1256,25 +2655,50 @@ function getMaterialIcon(id) {
 function renderCalculatorSetup() {
     initCalculatorData();
 
-    // Populate characters
     const select = document.getElementById("calcCharacter");
-    const activeList = CHARACTERS.length > 0 ? CHARACTERS : FALLBACK_CHARACTERS;
-    select.innerHTML = activeList.map(c => `<option value="${c.id}">${c.name}</option>`).join("");
+    if (!select) return;
+    
+    // Save current values if they exist
+    const savedChar = select.value;
+    const savedSkills = [];
+    for (let i = 0; i < 4; i++) {
+        const startSelect = document.getElementById(`skillStart_${i}`);
+        const endSelect = document.getElementById(`skillEnd_${i}`);
+        savedSkills.push({
+            start: startSelect ? startSelect.value : "1",
+            end: endSelect ? endSelect.value : "8"
+        });
+    }
 
-    // Populate skills select options (1-10)
+    // Populate characters with localized names
+    const activeList = CHARACTERS.length > 0 ? CHARACTERS : FALLBACK_CHARACTERS;
+    select.innerHTML = activeList.map(c => {
+        const locC = getLocalizedChar(c);
+        return `<option value="${c.id}">${locC.name}</option>`;
+    }).join("");
+
+    if (savedChar && activeList.some(c => c.id === savedChar)) {
+        select.value = savedChar;
+    }
+
+    // Populate skills select options (1-10) with localized prefix
+    const skillPrefix = currentLang === 'uk' ? 'Рівень' : 'Lvl';
     for (let i = 0; i < 4; i++) {
         const startSelect = document.getElementById(`skillStart_${i}`);
         const endSelect = document.getElementById(`skillEnd_${i}`);
         if (startSelect && endSelect) {
-            startSelect.innerHTML = Array.from({length: 10}, (_, k) => `<option value="${k+1}">Lvl ${k+1}</option>`).join("");
-            endSelect.innerHTML = Array.from({length: 10}, (_, k) => `<option value="${k+1}" ${k===7 ? 'selected' : ''}>Lvl ${k+1}</option>`).join("");
+            startSelect.innerHTML = Array.from({length: 10}, (_, k) => `<option value="${k+1}">${skillPrefix} ${k+1}</option>`).join("");
+            endSelect.innerHTML = Array.from({length: 10}, (_, k) => `<option value="${k+1}">${skillPrefix} ${k+1}</option>`).join("");
+            
+            if (savedSkills[i]) {
+                startSelect.value = savedSkills[i].start;
+                endSelect.value = savedSkills[i].end;
+            }
         }
     }
 
     // Set initial calculations
-    setTimeout(() => {
-        calculateResources();
-    }, 100);
+    calculateResources();
 }
 
 // Setup events & bi-directional bindings
@@ -1439,12 +2863,15 @@ function updateSingleMaterialCard(matId, haveAmount) {
     const needValEl = card.querySelector(".mat-val");
     const labelTextEl = card.querySelector(".mat-need");
 
+    const labelText = currentLang === 'uk' ? 'Потрібно' : 'Need';
+    const remainingText = currentLang === 'uk' ? 'Залишилось' : 'Remaining';
+
     if (remaining === 0) {
         card.classList.add("mat-completed");
-        if (labelTextEl) labelTextEl.innerHTML = `Потрібно: <span class="mat-val">${needed.toLocaleString()}</span> (Готово)`;
+        if (labelTextEl) labelTextEl.innerHTML = `${labelText}: <span class="mat-val">${needed.toLocaleString()}</span>`;
     } else {
         card.classList.remove("mat-completed");
-        if (labelTextEl) labelTextEl.innerHTML = `Залишилось: <span class="mat-val">${remaining.toLocaleString()}</span> / ${needed.toLocaleString()}`;
+        if (labelTextEl) labelTextEl.innerHTML = `${remainingText}: <span class="mat-val">${remaining.toLocaleString()}</span> / ${needed.toLocaleString()}`;
     }
 }
 
@@ -1454,15 +2881,17 @@ function calculateResources() {
     const char = activeList.find(c => c.id === charId);
     if (!char) return;
 
+    const locChar = getLocalizedChar(char);
+
     // Render Preview Card
-    document.getElementById("calcPreviewName").innerText = char.name;
-    document.getElementById("calcPreviewAttr").innerText = char.attribute;
+    document.getElementById("calcPreviewName").innerText = locChar.name;
+    document.getElementById("calcPreviewAttr").innerText = locChar.attribute;
     document.getElementById("calcPreviewAttr").className = `badge attr-${char.attribute.toLowerCase()}`;
-    document.getElementById("calcPreviewRarity").innerText = `${char.rarity}★ Ранг`;
+    document.getElementById("calcPreviewRarity").innerText = `${char.rarity}★ ${currentLang === 'uk' ? 'Ранг' : 'Rank'}`;
     document.getElementById("calcPreviewRarity").className = `badge ${char.rarity === 5 ? 'badge-hot' : 'badge-cosmos'}`;
     
     const avatarContainer = document.getElementById("calcPreviewAvatar");
-    avatarContainer.innerHTML = renderAvatarHtml(char);
+    avatarContainer.innerHTML = renderAvatarHtml(locChar);
     avatarContainer.className = `calc-preview-avatar rarity-${char.rarity}`;
 
     // Read Character level inputs
@@ -1597,7 +3026,8 @@ function calculateResources() {
     const dyesBasic = Math.ceil(weapExpRem / 500);
 
     // Specific names based on character attribute
-    const attrDetails = ATTRIBUTE_MATERIALS[char.attribute] || ATTRIBUTE_MATERIALS["Anima"];
+    const attrDetails = (LOCALIZED_ATTRIBUTE_MATERIALS[char.attribute] && LOCALIZED_ATTRIBUTE_MATERIALS[char.attribute][currentLang]) || LOCALIZED_ATTRIBUTE_MATERIALS["Anima"][currentLang];
+    const weaponMats = LOCALIZED_WEAPON_MATERIALS[currentLang] || LOCALIZED_WEAPON_MATERIALS["uk"];
 
     // Combine common materials
     const finalCommonT1 = totalCharCommonT1 + totalSkillCommonT1 + totalWeapCommonT1;
@@ -1629,6 +3059,55 @@ function calculateResources() {
         ore_t2: totalWeapOreT2,
         ore_t3: totalWeapOreT3
     };
+
+    // Localization strings
+    const calcLoc = {
+        uk: {
+            cat_main: "Основні Валюти & Досвід",
+            cat_breakthrough: "Матеріали Прориву",
+            cat_skills: "Матеріали Навичок",
+            cat_drops: "Трофеї з Ворогів",
+            coin_name: "Монети Beetle (Золото)",
+            coin_farm: "Кроляча нора / Завдання / Машини",
+            exp_elite_name: "Елітне керівництво мисливця (Досвід 10к)",
+            exp_med_name: "Середнє керівництво мисливця (Досвід 2к)",
+            exp_basic_name: "Базове керівництво мисливця (Досвід 500)",
+            exp_farm: "Кроляча нора: Досвід",
+            dye_elite_name: "Елітне мастило для зброї (10к)",
+            dye_med_name: "Середнє мастило для зброї (2к)",
+            dye_basic_name: "Базове мастило для зброї (500)",
+            dye_farm: "Кроляча нора: Зброя",
+            crown_name: "Корона Аномалії",
+            crown_farm: "Сезонні події / Особливі завдання",
+            need_label: "Потрібно:",
+            remaining_label: "Залишилось:",
+            have_label: "Маю:",
+            done_badge: "✓ Готово"
+        },
+        en: {
+            cat_main: "Core Currencies & Experience",
+            cat_breakthrough: "Breakthrough Materials",
+            cat_skills: "Skill Materials",
+            cat_drops: "Enemy Trophies",
+            coin_name: "Beetle Coins (Gold)",
+            coin_farm: "Rabbit Hole / Quests / Cars",
+            exp_elite_name: "Elite Hunter Guide (EXP 10k)",
+            exp_med_name: "Medium Hunter Guide (EXP 2k)",
+            exp_basic_name: "Basic Hunter Guide (EXP 500)",
+            exp_farm: "Rabbit Hole: Experience",
+            dye_elite_name: "Elite Weapon Dye (Dye 10k)",
+            dye_med_name: "Medium Weapon Dye (Dye 2k)",
+            dye_basic_name: "Basic Weapon Dye (Dye 500)",
+            dye_farm: "Rabbit Hole: Weapon",
+            crown_name: "Anomaly Crown",
+            crown_farm: "Seasonal Events / Special Quests",
+            need_label: "Need:",
+            remaining_label: "Remaining:",
+            have_label: "Have:",
+            done_badge: "✓ Done"
+        }
+    };
+    const cLoc = calcLoc[currentLang] || calcLoc['uk'];
 
     // Render HTML Categories
     const resultsGrid = document.getElementById("calcMaterialsList");
@@ -1662,11 +3141,11 @@ function calculateResources() {
             </div>
             <div class="mat-card-mid">
                 <span class="mat-need">
-                    ${isCompleted ? `Потрібно: <span class="mat-val">${needed.toLocaleString()}</span>` : `Залишилось: <span class="mat-val">${remaining.toLocaleString()}</span> / ${needed.toLocaleString()}`}
+                    ${isCompleted ? `${cLoc.need_label} <span class="mat-val">${needed.toLocaleString()}</span>` : `${cLoc.remaining_label} <span class="mat-val">${remaining.toLocaleString()}</span> / ${needed.toLocaleString()}`}
                 </span>
-                <span class="mat-completed-badge">✓ Готово</span>
+                <span class="mat-completed-badge">${cLoc.done_badge}</span>
                 <div class="mat-have-input-wrapper">
-                    <span class="mat-have-label">Маю:</span>
+                    <span class="mat-have-label">${cLoc.have_label}</span>
                     <input type="number" class="mat-have-input" data-mat-id="${id}" min="0" value="${have}">
                 </div>
             </div>
@@ -1675,41 +3154,41 @@ function calculateResources() {
     }
 
     // 1. Currency & Exp Guides
-    addCategoryHeader("Основні Валюти & Досвід");
-    addMaterialCard("coin", "Beetle Coins (Золото)", finalCoins, "Rabbit Hole / Квести / Машини");
-    addMaterialCard("exp_elite", "Elite Hunter Guide (EXP 10k)", guidesElite, "Rabbit Hole: Досвід");
-    addMaterialCard("exp_medium", "Medium Hunter Guide (EXP 2k)", guidesMed, "Rabbit Hole: Досвід");
-    addMaterialCard("exp_basic", "Basic Hunter Guide (EXP 500)", guidesBasic, "Rabbit Hole: Досвід");
+    addCategoryHeader(cLoc.cat_main);
+    addMaterialCard("coin", cLoc.coin_name, finalCoins, cLoc.coin_farm);
+    addMaterialCard("exp_elite", cLoc.exp_elite_name, guidesElite, cLoc.exp_farm);
+    addMaterialCard("exp_medium", cLoc.exp_med_name, guidesMed, cLoc.exp_farm);
+    addMaterialCard("exp_basic", cLoc.exp_basic_name, guidesBasic, cLoc.exp_farm);
     if (includeWeapon) {
-        addMaterialCard("dye_elite", "Elite Weapon Dye (Dye 10k)", dyesElite, "Rabbit Hole: Зброя");
-        addMaterialCard("dye_medium", "Medium Weapon Dye (Dye 2k)", dyesMed, "Rabbit Hole: Зброя");
-        addMaterialCard("dye_basic", "Basic Weapon Dye (Dye 500)", dyesBasic, "Rabbit Hole: Зброя");
+        addMaterialCard("dye_elite", cLoc.dye_elite_name, dyesElite, cLoc.dye_farm);
+        addMaterialCard("dye_medium", cLoc.dye_med_name, dyesMed, cLoc.dye_farm);
+        addMaterialCard("dye_basic", cLoc.dye_basic_name, dyesBasic, cLoc.dye_farm);
     }
 
     // 2. Breakthrough Materials
     if (totalCharSpecialty > 0 || finalBoss > 0 || (includeWeapon && (totalWeapOreT1 + totalWeapOreT2 + totalWeapOreT3 > 0))) {
-        addCategoryHeader("Матеріали Прориву (Breakthrough)");
+        addCategoryHeader(cLoc.cat_breakthrough);
         addMaterialCard("boss", attrDetails.boss, finalBoss, attrDetails.farmBoss);
         addMaterialCard("specialty", attrDetails.specialty, totalCharSpecialty, attrDetails.farmSpecialty);
         if (includeWeapon) {
-            addMaterialCard("ore_t1", WEAPON_MATERIALS.T1, totalWeapOreT1, WEAPON_MATERIALS.farm);
-            addMaterialCard("ore_t2", WEAPON_MATERIALS.T2, totalWeapOreT2, WEAPON_MATERIALS.farm);
-            addMaterialCard("ore_t3", WEAPON_MATERIALS.T3, totalWeapOreT3, WEAPON_MATERIALS.farm);
+            addMaterialCard("ore_t1", weaponMats.T1, totalWeapOreT1, weaponMats.farm);
+            addMaterialCard("ore_t2", weaponMats.T2, totalWeapOreT2, weaponMats.farm);
+            addMaterialCard("ore_t3", weaponMats.T3, totalWeapOreT3, weaponMats.farm);
         }
     }
 
     // 3. Skill Scrolls
     if (totalSkillScrollsT1 + totalSkillScrollsT2 + totalSkillScrollsT3 + totalSkillCrown > 0) {
-        addCategoryHeader("Матеріали Навичок");
+        addCategoryHeader(cLoc.cat_skills);
         addMaterialCard("scroll_t1", attrDetails.scrolls.T1, totalSkillScrollsT1, attrDetails.scrolls.farm);
         addMaterialCard("scroll_t2", attrDetails.scrolls.T2, totalSkillScrollsT2, attrDetails.scrolls.farm);
         addMaterialCard("scroll_t3", attrDetails.scrolls.T3, totalSkillScrollsT3, attrDetails.scrolls.farm);
-        addMaterialCard("crown", "Корона Аномалії (Anomaly Crown)", totalSkillCrown, "Сезонні події / Особливі квести");
+        addMaterialCard("crown", cLoc.crown_name, totalSkillCrown, cLoc.crown_farm);
     }
 
     // 4. Common Enemy Drops
     if (finalCommonT1 + finalCommonT2 + finalCommonT3 > 0) {
-        addCategoryHeader("Трофеї з Ворогів");
+        addCategoryHeader(cLoc.cat_drops);
         addMaterialCard("common_t1", attrDetails.common.T1, finalCommonT1, attrDetails.common.farm);
         addMaterialCard("common_t2", attrDetails.common.T2, finalCommonT2, attrDetails.common.farm);
         addMaterialCard("common_t3", attrDetails.common.T3, finalCommonT3, attrDetails.common.farm);
@@ -1720,20 +3199,37 @@ function calculateResources() {
 function exportCalcReport() {
     const charSelect = document.getElementById("calcCharacter");
     const charName = charSelect.options[charSelect.selectedIndex].text;
+    const charId = charSelect.value;
+    const activeList = CHARACTERS.length > 0 ? CHARACTERS : FALLBACK_CHARACTERS;
+    const char = activeList.find(c => c.id === charId);
+    if (!char) return;
     
     const startLvl = document.getElementById("calcLevelStart").value;
     const endLvl = document.getElementById("calcLevelEnd").value;
     
-    let report = `=== EIBON TERMINAL: ЗВІТ ПРО РЕСУРСИ ===\n`;
-    report += `Мисливець: ${charName} (Рівень ${startLvl} ➔ ${endLvl})\n`;
+    let report = "";
+    if (currentLang === 'uk') {
+        report += `=== EIBON TERMINAL: ЗВІТ ПРО РЕСУРСИ ===\n`;
+        report += `Мисливець: ${charName} (Рівень ${startLvl} ➔ ${endLvl})\n`;
+        report += `Навички:\n`;
+    } else {
+        report += `=== EIBON TERMINAL: RESOURCE REPORT ===\n`;
+        report += `Hunter: ${charName} (Level ${startLvl} ➔ ${endLvl})\n`;
+        report += `Skills:\n`;
+    }
     
-    // Skill levels
-    report += `Навички:\n`;
-    const skillLabels = ["Авто-атака", "Активна", "Пасивна", "Ультимейт"];
+    const skillLabels = currentLang === 'uk' 
+        ? ["Авто-атака", "Активна навичка", "Пасивна навичка", "Вибух стихій"]
+        : ["Basic Attack", "Active Skill", "Passive Skill", "Ultimate Burst"];
+        
     for (let i = 0; i < 4; i++) {
         const start = document.getElementById(`skillStart_${i}`).value;
         const end = document.getElementById(`skillEnd_${i}`).value;
-        report += `  - ${skillLabels[i]}: Рівень ${start} ➔ ${end}\n`;
+        if (currentLang === 'uk') {
+            report += `  - ${skillLabels[i]}: Рівень ${start} ➔ ${end}\n`;
+        } else {
+            report += `  - ${skillLabels[i]}: Level ${start} ➔ ${end}\n`;
+        }
     }
 
     // Weapon
@@ -1742,67 +3238,96 @@ function exportCalcReport() {
         const wRarity = document.getElementById("calcWeaponRarity").value;
         const wStart = document.getElementById("calcWeaponLevelStart").value;
         const wEnd = document.getElementById("calcWeaponLevelEnd").value;
-        report += `Зброя (Arc) ${wRarity}★: Рівень ${wStart} ➔ ${wEnd}\n`;
+        if (currentLang === 'uk') {
+            report += `Зброя (Arc) ${wRarity}★: Рівень ${wStart} ➔ ${wEnd}\n`;
+        } else {
+            report += `Weapon (Arc) ${wRarity}★: Level ${wStart} ➔ ${wEnd}\n`;
+        }
     } else {
-        report += `Зброя (Arc): Не враховувалась\n`;
+        if (currentLang === 'uk') {
+            report += `Зброя (Arc): Не враховувалась\n`;
+        } else {
+            report += `Weapon (Arc): Not calculated\n`;
+        }
     }
 
-    report += `\nСПИСОК НЕОБХІДНИХ МАТЕРІАЛІВ:\n`;
+    if (currentLang === 'uk') {
+        report += `\nСПИСОК НЕОБХІДНИХ МАТЕРІАЛІВ:\n`;
+    } else {
+        report += `\nREQUIRED MATERIALS LIST:\n`;
+    }
     
     // Sort materials by calculatedRequirements
+    const attrDetails = (LOCALIZED_ATTRIBUTE_MATERIALS[char.attribute] && LOCALIZED_ATTRIBUTE_MATERIALS[char.attribute][currentLang]) || LOCALIZED_ATTRIBUTE_MATERIALS["Anima"][currentLang];
+    const weaponMats = LOCALIZED_WEAPON_MATERIALS[currentLang] || LOCALIZED_WEAPON_MATERIALS["uk"];
+
     Object.keys(calculatedRequirements).forEach(id => {
         const needed = calculatedRequirements[id];
         if (needed <= 0) return;
         
         let matName = "";
-        if (id === 'coin') matName = "Beetle Coins (Золото)";
-        else if (id === 'exp_elite') matName = "Elite Hunter Guide (EXP 10k)";
-        else if (id === 'exp_medium') matName = "Medium Hunter Guide (EXP 2k)";
-        else if (id === 'exp_basic') matName = "Basic Hunter Guide (EXP 500)";
-        else if (id === 'dye_elite') matName = "Elite Weapon Dye (Dye 10k)";
-        else if (id === 'dye_medium') matName = "Medium Weapon Dye (Dye 2k)";
-        else if (id === 'dye_basic') matName = "Basic Weapon Dye (Dye 500)";
+        if (id === 'coin') {
+            matName = currentLang === 'uk' ? "Монети Beetle (Золото)" : "Beetle Coins (Gold)";
+        }
+        else if (id === 'exp_elite') {
+            matName = currentLang === 'uk' ? "Елітне керівництво мисливця (EXP 10k)" : "Elite Hunter Guide (EXP 10k)";
+        }
+        else if (id === 'exp_medium') {
+            matName = currentLang === 'uk' ? "Середнє керівництво мисливця (EXP 2k)" : "Medium Hunter Guide (EXP 2k)";
+        }
+        else if (id === 'exp_basic') {
+            matName = currentLang === 'uk' ? "Базове керівництво мисливця (EXP 500)" : "Basic Hunter Guide (EXP 500)";
+        }
+        else if (id === 'dye_elite') {
+            matName = currentLang === 'uk' ? "Елітна фарба для зброї (Dye 10k)" : "Elite Weapon Dye (Dye 10k)";
+        }
+        else if (id === 'dye_medium') {
+            matName = currentLang === 'uk' ? "Середня фарба для зброї (Dye 2k)" : "Medium Weapon Dye (Dye 2k)";
+        }
+        else if (id === 'dye_basic') {
+            matName = currentLang === 'uk' ? "Базова фарба для зброї (Dye 500)" : "Basic Weapon Dye (Dye 500)";
+        }
         else if (id === 'boss') {
-            const charId = document.getElementById("calcCharacter").value;
-            const activeList = CHARACTERS.length > 0 ? CHARACTERS : FALLBACK_CHARACTERS;
-            const char = activeList.find(c => c.id === charId);
-            matName = (ATTRIBUTE_MATERIALS[char.attribute] || ATTRIBUTE_MATERIALS["Anima"]).boss;
+            matName = attrDetails.boss;
         }
         else if (id === 'specialty') {
-            const charId = document.getElementById("calcCharacter").value;
-            const activeList = CHARACTERS.length > 0 ? CHARACTERS : FALLBACK_CHARACTERS;
-            const char = activeList.find(c => c.id === charId);
-            matName = (ATTRIBUTE_MATERIALS[char.attribute] || ATTRIBUTE_MATERIALS["Anima"]).specialty;
+            matName = attrDetails.specialty;
         }
-        else if (id === 'ore_t1') matName = WEAPON_MATERIALS.T1;
-        else if (id === 'ore_t2') matName = WEAPON_MATERIALS.T2;
-        else if (id === 'ore_t3') matName = WEAPON_MATERIALS.T3;
-        else if (id === 'crown') matName = "Anomaly Crown (Корона Аномалії)";
+        else if (id === 'ore_t1') matName = weaponMats.T1;
+        else if (id === 'ore_t2') matName = weaponMats.T2;
+        else if (id === 'ore_t3') matName = weaponMats.T3;
+        else if (id === 'crown') {
+            matName = currentLang === 'uk' ? "Корона Аномалії" : "Anomaly Crown";
+        }
         else {
-            const charId = document.getElementById("calcCharacter").value;
-            const activeList = CHARACTERS.length > 0 ? CHARACTERS : FALLBACK_CHARACTERS;
-            const char = activeList.find(c => c.id === charId);
-            const details = ATTRIBUTE_MATERIALS[char.attribute] || ATTRIBUTE_MATERIALS["Anima"];
-            if (id === 'scroll_t1') matName = details.scrolls.T1;
-            else if (id === 'scroll_t2') matName = details.scrolls.T2;
-            else if (id === 'scroll_t3') matName = details.scrolls.T3;
-            else if (id === 'common_t1') matName = details.common.T1;
-            else if (id === 'common_t2') matName = details.common.T2;
-            else if (id === 'common_t3') matName = details.common.T3;
+            if (id === 'scroll_t1') matName = attrDetails.scrolls.T1;
+            else if (id === 'scroll_t2') matName = attrDetails.scrolls.T2;
+            else if (id === 'scroll_t3') matName = attrDetails.scrolls.T3;
+            else if (id === 'common_t1') matName = attrDetails.common.T1;
+            else if (id === 'common_t2') matName = attrDetails.common.T2;
+            else if (id === 'common_t3') matName = attrDetails.common.T3;
         }
 
         const have = calcInventory[id] || 0;
         const rem = Math.max(0, needed - have);
         
-        report += `- ${matName}: Потрібно ${needed.toLocaleString()} шт. (Маю: ${have.toLocaleString()} | Залишилось: ${rem.toLocaleString()})\n`;
+        if (currentLang === 'uk') {
+            report += `- ${matName}: Потрібно ${needed.toLocaleString()} шт. (Маю: ${have.toLocaleString()} | Залишилось: ${rem.toLocaleString()})\n`;
+        } else {
+            report += `- ${matName}: Need ${needed.toLocaleString()} pcs. (Have: ${have.toLocaleString()} | Remaining: ${rem.toLocaleString()})\n`;
+        }
     });
 
-    report += `\nСгенеровано на Eibon Terminal. Успішного фарма! 🚀`;
+    if (currentLang === 'uk') {
+        report += `\nСгенеровано на Eibon Terminal. Успішного фарма! 🚀`;
+    } else {
+        report += `\nGenerated on Eibon Terminal. Happy farming! 🚀`;
+    }
 
     navigator.clipboard.writeText(report).then(() => {
-        showToast("Звіт скопійовано у буфер обміну!");
+        showToast(currentLang === 'uk' ? "Звіт скопійовано у буфер обміну!" : "Report copied to clipboard!");
     }).catch(err => {
-        showToast("Помилка копіювання звіту.");
+        showToast(currentLang === 'uk' ? "Помилка копіювання звіту." : "Failed to copy report.");
         console.error(err);
     });
 }
@@ -1881,12 +3406,29 @@ function renderTimeline() {
         const isLeft = index % 2 === 0;
         item.className = `timeline-event ${isLeft ? 'timeline-left' : 'timeline-right'}`;
         
+        let title = event.title;
+        let date = event.date;
+        let desc = event.desc;
+        const trans = TIMELINE_TRANSLATIONS[event.title];
+        if (trans && trans[currentLang]) {
+            title = trans[currentLang].title;
+            date = trans[currentLang].date;
+            desc = trans[currentLang].desc;
+        }
+        
+        let statusText = event.status;
+        if (event.status === 'Released') {
+            statusText = currentLang === 'uk' ? 'Випущено' : 'Released';
+        } else if (event.status === 'Upcoming') {
+            statusText = currentLang === 'uk' ? 'Майбутнє' : 'Upcoming';
+        }
+        
         item.innerHTML = `
             <div class="timeline-content">
-                <span class="timeline-date">${event.date}</span>
-                <span class="badge ${event.badgeClass} timeline-badge">${event.status}</span>
-                <h3>${event.title}</h3>
-                <p>${event.desc}</p>
+                <span class="timeline-date">${date}</span>
+                <span class="badge ${event.badgeClass} timeline-badge">${statusText}</span>
+                <h3>${title}</h3>
+                <p>${desc}</p>
             </div>
         `;
         container.appendChild(item);
@@ -2013,24 +3555,26 @@ function initAuthAndUserTierlists() {
 // Google Login / Logout Functions
 function loginWithGoogle() {
     if (typeof firebase === "undefined" || !firebase.auth) {
-        showToast("Firebase Auth не підключений!");
+        showToast(currentLang === 'uk' ? "Firebase Auth не підключений!" : "Firebase Auth not connected!");
         return;
     }
     const provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider)
         .then((result) => {
-            showToast(`Вітаємо, ${result.user.displayName}! 🎉`);
+            const welcomeText = currentLang === 'uk' ? `Вітаємо, ${result.user.displayName}! 🎉` : `Welcome, ${result.user.displayName}! 🎉`;
+            showToast(welcomeText);
         })
         .catch((error) => {
             console.error("Login failed:", error);
-            showToast(`Помилка входу: ${error.message}`);
+            const errText = currentLang === 'uk' ? `Помилка входу: ${error.message}` : `Login failed: ${error.message}`;
+            showToast(errText);
         });
 }
 
 function logout() {
     if (typeof firebase === "undefined" || !firebase.auth) return;
     firebase.auth().signOut().then(() => {
-        showToast("Ви вийшли з акаунта.");
+        showToast(currentLang === 'uk' ? "Ви вийшли з акаунта." : "Logged out successfully.");
     });
 }
 
@@ -2040,18 +3584,21 @@ function updateAuthUI(user) {
     if (!authBox) return;
 
     if (user) {
+        const logoutLabel = currentLang === 'uk' ? 'Вийти' : 'Logout';
+        const userFallbackName = currentLang === 'uk' ? 'Користувач' : 'User';
         authBox.innerHTML = `
             <div class="user-profile">
                 <img src="${user.photoURL || ''}" class="user-avatar" referrerpolicy="no-referrer" alt="${user.displayName}">
-                <span class="user-name">${(user.displayName || "Користувач").split(" ")[0]}</span>
-                <button class="btn btn-secondary btn-xs" id="btnLogoutGoogle">Вийти</button>
+                <span class="user-name">${(user.displayName || userFallbackName).split(" ")[0]}</span>
+                <button class="btn btn-secondary btn-xs" id="btnLogoutGoogle">${logoutLabel}</button>
             </div>
         `;
         document.getElementById("btnLogoutGoogle").addEventListener("click", logout);
     } else {
+        const loginLabel = currentLang === 'uk' ? 'Увійти' : 'Login';
         authBox.innerHTML = `
             <button class="btn btn-primary btn-sm" id="btnLoginGoogle">
-                <span class="auth-icon">🔑</span> Увійти
+                <span class="auth-icon">🔑</span> ${loginLabel}
             </button>
         `;
         document.getElementById("btnLoginGoogle").addEventListener("click", loginWithGoogle);
@@ -2133,17 +3680,25 @@ function createDraggableElement(char, currentTier) {
 // Mobile/Click menu for shifting characters
 function openClickMoveMenu(charId) {
     const tiers = ["S+", "S", "A", "B", "pool"];
-    const names = {
+    const names = currentLang === 'uk' ? {
         "S+": "Ранг S+",
         "S": "Ранг S",
         "A": "Ранг A",
         "B": "Ранг B",
         "pool": "Скинути в пул"
+    } : {
+        "S+": "Rank S+",
+        "S": "Rank S",
+        "A": "Rank A",
+        "B": "Rank B",
+        "pool": "Reset to pool"
     };
 
     const activeList = CHARACTERS.length > 0 ? CHARACTERS : FALLBACK_CHARACTERS;
     const char = activeList.find(c => c.id === charId);
     if (!char) return;
+
+    const locChar = getLocalizedChar(char);
 
     // Create popup dialog
     const menu = document.createElement("div");
@@ -2163,10 +3718,10 @@ function openClickMoveMenu(charId) {
     menu.style.gap = "0.8rem";
 
     menu.innerHTML = `
-        <h4 style="margin-bottom: 0.4rem; color: var(--color-cyan); font-family: var(--font-heading);">Перемістити ${char.name.split(" ")[0]}</h4>
+        <h4 style="margin-bottom: 0.4rem; color: var(--color-cyan); font-family: var(--font-heading);">${currentLang === 'uk' ? 'Перемістити' : 'Move'} ${locChar.name.split(" ")[0]}</h4>
         <div style="display: flex; flex-direction: column; gap: 0.5rem; width: 200px;">
             ${tiers.map(t => `<button class="btn btn-secondary btn-sm select-tier-btn" data-target="${t}">${names[t]}</button>`).join("")}
-            <button class="btn btn-accent btn-sm mt-1 close-menu-btn">Скасувати</button>
+            <button class="btn btn-accent btn-sm mt-1 close-menu-btn">${currentLang === 'uk' ? 'Скасувати' : 'Cancel'}</button>
         </div>
     `;
 
@@ -2219,12 +3774,12 @@ function moveCharInEditor(charId, targetTier) {
 async function saveUserTierlist() {
     const user = firebase.auth && firebase.auth().currentUser;
     if (!user) {
-        showToast("Будь ласка, спочатку авторизуйтеся!");
+        showToast(i18n[currentLang].creator_auth_error || "Будь ласка, спочатку авторизуйтеся!");
         return;
     }
 
     const titleInput = document.getElementById("editorTitle");
-    const title = (titleInput && titleInput.value.trim()) || "Мій тір-ліст";
+    const title = (titleInput && titleInput.value.trim()) || (currentLang === 'uk' ? "Мій тір-ліст" : "My Tier List");
 
     // Count assigned characters
     const assignedCount = Object.keys(editorState).reduce((acc, tier) => {
@@ -2232,14 +3787,14 @@ async function saveUserTierlist() {
     }, 0);
 
     if (assignedCount === 0) {
-        showToast("Будь ласка, розподіліть персонажів по рядах!");
+        showToast(i18n[currentLang].creator_empty_error || "Будь ласка, розподіліть персонажів по рядах!");
         return;
     }
 
     try {
         const docData = {
             userId: user.uid,
-            userName: user.displayName || "Гість",
+            userName: user.displayName || (currentLang === 'uk' ? "Гість" : "Guest"),
             userPhoto: user.photoURL || "",
             title: title,
             tiers: {
@@ -2252,19 +3807,19 @@ async function saveUserTierlist() {
         };
 
         if (typeof db === "undefined") {
-            showToast("База даних Firestore недоступна!");
+            showToast(currentLang === 'uk' ? "База даних Firestore недоступна!" : "Firestore database is unavailable!");
             return;
         }
 
         await db.collection("userTierlists").add(docData);
-        showToast("Тір-ліст успішно опубліковано! 🎉");
+        showToast(i18n[currentLang].toast_save_success || "Тір-ліст успішно опубліковано! 🎉");
 
         // Force switch to community tab
         const commBtn = document.querySelector('[data-sub-tab="community"]');
         if (commBtn) commBtn.click();
     } catch (e) {
         console.error("Save custom tierlist failed:", e);
-        showToast(`Помилка збереження: ${e.message}`);
+        showToast((i18n[currentLang].toast_save_error || "Помилка збереження: ") + e.message);
     }
 }
 
@@ -2273,10 +3828,10 @@ async function loadCommunityTierlists() {
     const container = document.getElementById("communityGrid");
     if (!container) return;
 
-    container.innerHTML = `<div class="community-loading">Завантаження тір-лістів спільноти...</div>`;
+    container.innerHTML = `<div class="community-loading">${i18n[currentLang].comm_loading || "Завантаження..."}</div>`;
 
     if (typeof db === "undefined") {
-        container.innerHTML = `<div class="community-loading">База даних недоступна. Увійдіть у мережу для перегляду.</div>`;
+        container.innerHTML = `<div class="community-loading">${i18n[currentLang].comm_db_unavailable || "База даних недоступна."}</div>`;
         return;
     }
 
@@ -2284,14 +3839,23 @@ async function loadCommunityTierlists() {
         const snapshot = await db.collection("userTierlists").orderBy("createdAt", "desc").limit(40).get();
         
         if (snapshot.empty) {
-            container.innerHTML = `<div class="community-loading">Немає збережених тір-лістів. Створіть перший! 🚀</div>`;
+            container.innerHTML = `<div class="community-loading">${i18n[currentLang].comm_empty || "Немає збережених тір-лістів."}</div>`;
             return;
         }
 
         container.innerHTML = "";
         snapshot.docs.forEach(doc => {
             const data = doc.data();
-            const dateStr = data.createdAt ? new Date(data.createdAt.seconds * 1000).toLocaleDateString("uk-UA") : "Нещодавно";
+            
+            let dateStr = "Нещодавно";
+            if (data.createdAt) {
+                const dateObj = new Date(data.createdAt.seconds * 1000);
+                dateStr = currentLang === 'uk' 
+                    ? dateObj.toLocaleDateString("uk-UA") 
+                    : dateObj.toLocaleDateString("en-US");
+            } else {
+                dateStr = currentLang === 'uk' ? "Нещодавно" : "Recently";
+            }
 
             const currentUser = firebase.auth && firebase.auth().currentUser;
             const isOwner = currentUser && currentUser.uid === data.userId;
@@ -2306,8 +3870,8 @@ async function loadCommunityTierlists() {
                     <span class="user-card-date">${dateStr}</span>
                 </div>
                 <div class="user-card-actions" style="display: flex; gap: 0.5rem; width: 100%; margin-top: 0.5rem;">
-                    <button class="btn btn-secondary btn-sm view-tierlist-btn" style="flex: 1;" data-id="${doc.id}">Переглянути</button>
-                    ${isOwner ? `<button class="btn btn-danger btn-sm delete-tierlist-btn" style="flex: 1;" data-id="${doc.id}">Видалити</button>` : ""}
+                    <button class="btn btn-secondary btn-sm view-tierlist-btn" style="flex: 1;" data-id="${doc.id}">${i18n[currentLang].comm_view_btn || "Переглянути"}</button>
+                    ${isOwner ? `<button class="btn btn-danger btn-sm delete-tierlist-btn" style="flex: 1;" data-id="${doc.id}">${i18n[currentLang].comm_delete_btn || "Видалити"}</button>` : ""}
                 </div>
             `;
 
@@ -2320,18 +3884,18 @@ async function loadCommunityTierlists() {
                 if (deleteBtn) {
                     deleteBtn.addEventListener("click", async (e) => {
                         e.stopPropagation();
-                        if (confirm("Ви впевнені, що хочете видалити цей тір-ліст?")) {
+                        if (confirm(i18n[currentLang].comm_delete_confirm || "Ви впевнені?")) {
                             try {
                                 deleteBtn.disabled = true;
-                                deleteBtn.innerText = "Видалення...";
+                                deleteBtn.innerText = currentLang === 'uk' ? "Видалення..." : "Deleting...";
                                 await db.collection("userTierlists").doc(doc.id).delete();
-                                showToast("Тір-ліст успішно видалено! 🗑️");
+                                showToast(i18n[currentLang].comm_deleted_toast || "Тір-ліст видалено!");
                                 loadCommunityTierlists();
                             } catch (err) {
                                 console.error("Delete tierlist failed:", err);
-                                showToast(`Помилка видалення: ${err.message}`);
+                                showToast((i18n[currentLang].comm_delete_error || "Помилка: ") + err.message);
                                 deleteBtn.disabled = false;
-                                deleteBtn.innerText = "Видалити";
+                                deleteBtn.innerText = i18n[currentLang].comm_delete_btn || "Видалити";
                             }
                         }
                     });
@@ -2342,7 +3906,7 @@ async function loadCommunityTierlists() {
         });
     } catch (e) {
         console.error("Load community lists failed:", e);
-        container.innerHTML = `<div class="community-loading">Помилка завантаження: ${e.message}</div>`;
+        container.innerHTML = `<div class="community-loading">${currentLang === 'uk' ? 'Помилка завантаження: ' : 'Load error: '}${e.message}</div>`;
     }
 }
 
@@ -2367,7 +3931,7 @@ function viewUserTierlist(data) {
     if (!modal || !title || !author) return;
 
     title.innerText = data.title;
-    author.innerText = `Автор: ${data.userName}`;
+    author.innerText = (currentLang === 'uk' ? "Автор: " : "Author: ") + data.userName;
 
     const tiers = ["S+", "S", "A", "B"];
     const activeList = CHARACTERS.length > 0 ? CHARACTERS : FALLBACK_CHARACTERS;
@@ -2381,20 +3945,21 @@ function viewUserTierlist(data) {
 
         const charIds = data.tiers[tier] || [];
         if (charIds.length === 0) {
-            grid.innerHTML = `<span style="font-size:0.75rem; color:var(--text-muted); opacity: 0.5;">Порожньо</span>`;
+            grid.innerHTML = `<span style="font-size:0.75rem; color:var(--text-muted); opacity: 0.5;">${currentLang === 'uk' ? 'Порожньо' : 'Empty'}</span>`;
         } else {
             charIds.forEach(charId => {
                 const char = activeList.find(c => c.id === charId);
                 if (char) {
+                    const locChar = getLocalizedChar(char);
                     const badge = document.createElement("div");
                     badge.className = "view-char-badge";
                     
                     const avatarUrl = renderAvatarUrlOnly(char);
-                    const avatarHtml = avatarUrl ? `<img src="${avatarUrl}" class="view-char-avatar" alt="${char.name}">` : '';
+                    const avatarHtml = avatarUrl ? `<img src="${avatarUrl}" class="view-char-avatar" alt="${locChar.name}">` : '';
                     
                     badge.innerHTML = `
                         ${avatarHtml}
-                        <span class="view-char-name">${char.name.split(" ")[0]}</span>
+                        <span class="view-char-name">${locChar.name.split(" ")[0]}</span>
                     `;
                     grid.appendChild(badge);
                 }
