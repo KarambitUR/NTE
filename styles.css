@@ -2291,7 +2291,7 @@ body {
         grid-template-columns: 1fr;
     }
     
-    .codes-exploration-layout {
+    .codes-layout {
         grid-template-columns: 1fr;
     }
     
@@ -2387,14 +2387,23 @@ body {
     }
     
     .banner-bottom-row {
-        justify-content: center;
-        gap: 1.2rem;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
         width: 100%;
+        margin-top: 0.5rem;
     }
     
     .banner-actions {
-        justify-content: center;
+        flex-direction: column;
         width: 100%;
+        gap: 0.6rem;
+    }
+
+    .banner-actions .btn {
+        width: 100%;
+        text-align: center;
+        margin: 0 !important;
     }
     
     .banner-timer {
@@ -2416,6 +2425,42 @@ body {
         text-align: center;
         padding: 1.5rem;
     }
+
+    /* Mobile Widgets Grid */
+    .home-widgets-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    /* Mobile Header Grid Alignment */
+    .header-container {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.6rem 1rem;
+    }
+    
+    .logo {
+        order: 1;
+    }
+    
+    .header-right-group {
+        order: 2;
+        justify-self: end;
+        gap: 0.4rem;
+    }
+    
+    .menu-toggle {
+        order: 3;
+        display: block;
+        justify-self: end;
+    }
+
+    .main-nav {
+        grid-column: 1 / -1;
+        order: 4;
+    }
 }
 
 @media (max-width: 480px) {
@@ -2425,6 +2470,14 @@ body {
     
     .app-content {
         padding: 0 1rem;
+    }
+
+    /* Hide TERMINAL from logo to prevent header crowding */
+    .logo-main {
+        display: none;
+    }
+    .logo {
+        gap: 0.2rem;
     }
 }
 
