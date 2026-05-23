@@ -161,13 +161,130 @@ const CHARACTERS = [
         stats: ["Break Intensity", "Crit Rate", "Crit DMG", "ATK%"],
         teamSynergy: "Nanally (Аніма), Zero (Космос), Sakiri (Закляття)",
         lore: "Мовчазна та загадкова охоронниця антикварної крамниці Eibon. Володіє калейдоскопічними очима і приховує під холодною маскою відданість друзям."
+    },
+    {
+        id: "baicang",
+        name: "Baicang (Байцан)",
+        rarity: 5,
+        attribute: "Incantation",
+        role: "Main DPS",
+        tier: "S",
+        avatar: "https://static.wikia.nocookie.net/neverness-to-everness/images/5/5c/Baicang_Card.png",
+        summary: "Потужний Main DPS стихії Incantation. Використовує механіку витрати власного здоров'я для підвищення шкоди. Потребує надійного цілителя в команді.",
+        weapon: "Camellia Society (Товариство Камелій)",
+        weaponF2p: "A Time Will Come (Час прийде)",
+        cartridge: "Crimson: Twin Butterflies (4-piece)",
+        stats: ["Crit Rate", "Crit DMG", "Incantation DMG", "ATK%"],
+        teamSynergy: "Haniel (Закляття), Sakiri (Закляття), Adler (Хаос)",
+        lore: "Капітан підрозділу ETD-4 Бюро контролю аномалій. Досвідчений ветеран з невимушеним характером, який піклується про своїх підлеглих як старший брат."
+    },
+    {
+        id: "chiz",
+        name: "Chiz (Чіз)",
+        rarity: 5,
+        attribute: "Cosmos",
+        role: "Main DPS",
+        tier: "S",
+        avatar: "https://static.wikia.nocookie.net/neverness-to-everness/images/2/21/Chiz_Card.png",
+        summary: "Потужний Main DPS стихії Cosmos. Її ультимейт ігнорує велику частину захисту ворога, а сигнатурна зброя дає додаткову шкоду залежно від ваших Fons (монет).",
+        weapon: "Contemplative Cat (Замислений Кот)",
+        weaponF2p: "Wild Reverie (Дика мрія)",
+        cartridge: "Lost Radiance (4-piece)",
+        stats: ["Crit Rate", "Crit DMG", "Cosmos DMG", "ATK%"],
+        teamSynergy: "Zero (Космос), Sakiri (Закляття), Hotori (Космос)",
+        lore: "Персонаж, пов'язаний із Безіменним Банком. Має ділову жилку та користується важким молотом-йокай для вибивання боргів та аномалій."
+    },
+    {
+        id: "fadia",
+        name: "Fadia (Фадія)",
+        rarity: 5,
+        attribute: "Psyche",
+        role: "Support",
+        tier: "S",
+        avatar: "https://static.wikia.nocookie.net/neverness-to-everness/images/6/68/Fadia_Card.png",
+        summary: "Потужний Sustain-персонаж стихії Psyche. Працює як танк-цілитель, що перенаправляє шкоду союзників на себе та відновлює здоров'я в режимі Lilith.",
+        weapon: "Eternal Waltz (Вічний вальс)",
+        weaponF2p: "Medic's Flask (Флакон медика)",
+        cartridge: "Tiny Big Adventure (4-piece)",
+        stats: ["HP%", "Flat HP", "Psyche DMG", "Energy Charge Efficiency"],
+        teamSynergy: "Baicang (Закляття), Nanally (Аніма), Zero (Космос)",
+        lore: "Дивовижна дівчина-вампір з Бюро контролю аномалій, яка носить із собою гігантський надгробок як щит та зброю."
+    },
+    {
+        id: "hathor",
+        name: "Hathor (Хатор)",
+        rarity: 5,
+        attribute: "Lakshana",
+        role: "Sub-DPS",
+        tier: "S",
+        avatar: "https://static.wikia.nocookie.net/neverness-to-everness/images/3/30/Hathor_Card.png",
+        summary: "Потужний Burst Sub-DPS стихії Lakshana. Використовує механіку накопичення стаків Express Delivery Power для завдання величезної вибухової шкоди.",
+        weapon: "Raging Flames (Лють Полум'я)",
+        weaponF2p: "Sentinel's Barrier (Бар'єр Вартового)",
+        cartridge: "Street Boxer (4-piece)",
+        stats: ["Crit Rate", "Crit DMG", "Lakshana DMG", "ATK%"],
+        teamSynergy: "Zero (Космос), Sakiri (Закляття), Daffodil (Хаос)",
+        lore: "Впливова дівчина-фіксер з елітних кіл Гетеро, яка тісно співпрацює зі Sterry Express. Її витонченість приховує неперевершені бойові вміння."
+    },
+    {
+        id: "aurelia",
+        name: "Aurelia (Аурелія)",
+        rarity: 4,
+        attribute: "Psyche",
+        role: "Main DPS",
+        tier: "A",
+        avatar: "https://static.wikia.nocookie.net/neverness-to-everness/images/f/fd/Aurelia_-_Character_Promo.png",
+        summary: "A-Rank Main DPS стихії Psyche. Використовує атаки медуз у стані Cadenza для нанесення значної шкоди. Отримується безкоштовно за 3-денний вхід.",
+        weapon: "Stellar Veil (Зоряна Вуаль)",
+        weaponF2p: "Oraora! (Ораора!)",
+        cartridge: "Devil's Blood: Curse (4-piece)",
+        stats: ["Crit Rate", "Crit DMG", "Psyche DMG", "ATK%"],
+        teamSynergy: "Zero (Космос), Fadia (Психея), Sakiri (Закляття)",
+        lore: "Студентка-музикант у Гетеро, яка виявила в собі аномальні здібності під час одного з вуличних виступів. Керує аномальними медузами."
+    },
+    {
+        id: "edgar",
+        name: "Edgar (Едгар)",
+        rarity: 4,
+        attribute: "Cosmos",
+        role: "Support",
+        tier: "A",
+        avatar: "https://static.wikia.nocookie.net/neverness-to-everness/images/1/1d/Edgar_Card.png",
+        summary: "Доступний цілитель стихії Cosmos. Його навички відновлюють здоров'я союзникам пропорційно його максимальному HP, а ультимейт створює велику зону лікування.",
+        weapon: "Call of the Twisted City (Заклик викривленого міста)",
+        weaponF2p: "Mind Royale (Рояль Розуму)",
+        cartridge: "Thea's Night Tavern (4-piece)",
+        stats: ["HP%", "Healing Bonus", "Flat HP", "Energy Charge Efficiency"],
+        teamSynergy: "Zero (Космос), Hotori (Космос), Jiuyuan (Аніма)",
+        lore: "Співробітник антикварної крамниці Eibon. Спокійний та врівноважений юнак, який завжди готовий надати першу допомогу та смачний гарячий чай."
+    },
+    {
+        id: "skia",
+        name: "Skia (Скіа)",
+        rarity: 4,
+        attribute: "Lakshana",
+        role: "Sub-DPS",
+        tier: "A",
+        avatar: "https://static.wikia.nocookie.net/neverness-to-everness/images/0/01/Skia_by_nte_1.jpg/revision/latest/scale-to-width-down/1200?cb=20260212004246",
+        summary: "Потужний суб-ДПС стихії Lakshana, який спеціалізується на мітках Fang Thrust та унікальних навичках прихованості в тіні. Чудово доповнює команди на реакції Remora.",
+        weapon: "Watch Your Heads! (Стережись голів!)",
+        weaponF2p: "Good Boy's Grand Adventure (Велика пригода хорошого хлопчика)",
+        cartridge: "Street Boxer (4-piece)",
+        stats: ["Crit Rate", "Crit DMG", "Lakshana DMG", "ATK%"],
+        teamSynergy: "Zero (Космос), Sakiri (Закляття), Nanally (Аніма)",
+        lore: "Лейтенант підрозділу ETD-4 Бюро контролю аномалій. Мовчазний вовк-офіцер із великим шрамом на лівому оці, який вірно несе службу."
     }
 ];
 
-// Helper to render character avatars (supports both image URLs and emojis)
+// Helper to render character avatars (supports both image URLs and emojis, with proxying to bypass hotlinking blockers)
 function renderAvatarHtml(char) {
     if (char && char.avatar && char.avatar.startsWith('http')) {
-        return `<img src="${char.avatar}" alt="${char.name}" class="avatar-img" referrerpolicy="no-referrer">`;
+        let cleanUrl = char.avatar;
+        if (cleanUrl.includes('/revision/')) {
+            cleanUrl = cleanUrl.split('/revision/')[0];
+        }
+        const proxiedUrl = `https://images.weserv.nl/?url=${encodeURIComponent(cleanUrl)}&w=200`;
+        return `<img src="${proxiedUrl}" alt="${char.name}" class="avatar-img" referrerpolicy="no-referrer">`;
     }
     return char ? char.avatar : '';
 }
@@ -642,11 +759,11 @@ function evaluateTeamSynergy() {
         });
     }
 
-    // 2. Esper Cycle (Cosmos + Anima/Incantation/Chaos)
-    if (count["Cosmos"] >= 1 && (count["Anima"] >= 1 || count["Incantation"] >= 1 || count["Chaos"] >= 1)) {
+    // 2. Esper Cycle (Cosmos + any other attribute)
+    if (count["Cosmos"] >= 1 && (count["Anima"] >= 1 || count["Incantation"] >= 1 || count["Chaos"] >= 1 || count["Psyche"] >= 1 || count["Lakshana"] >= 1)) {
         reactions.push({
             name: "Цикл Есперів (Esper Cycle)",
-            desc: "Активовано! Cosmos-атрибут (наприклад, Зеро) виступає в ролі прискорювача. Зміна персонажів наповнює шкалу Esper Meter на 30% швидше."
+            desc: "Активовано! Cosmos-атрибут (наприклад, Зеро чи Чіз) виступає в ролі прискорювача. Зміна персонажів наповнює шкалу Esper Meter на 30% швидше."
         });
     }
 
@@ -663,6 +780,38 @@ function evaluateTeamSynergy() {
         reactions.push({
             name: "Зарядження (Charged)",
             desc: "Активовано! Накладає дебафф 'Зниження стабільності' на ворогів, що дозволяє легше збивати їхні щити та збивати з ніг."
+        });
+    }
+
+    // 5. Remora Reaction (Cosmos + Lakshana)
+    if (count["Cosmos"] >= 1 && count["Lakshana"] >= 1) {
+        reactions.push({
+            name: "Ремора (Remora)",
+            desc: "Активовано! Реакція між Lakshana та Cosmos. Збільшує шанс критичного удару на 10% та суттєво підвищує фізичну і космічну шкоду загону."
+        });
+    }
+
+    // 6. Discord Reaction (Incantation/Chaos + Psyche)
+    if ((count["Incantation"] >= 1 || count["Chaos"] >= 1) && count["Psyche"] >= 1) {
+        reactions.push({
+            name: "Розбрат (Discord)",
+            desc: "Активовано! Елементи Chaos/Incantation створюють ментальний дисонанс з Psyche, знижуючи стабільність ворогів та наносячи на 25% більше шкоди по пробитих щитах."
+        });
+    }
+
+    // 7. Stain Reaction (Lakshana + Psyche)
+    if (count["Lakshana"] >= 1 && count["Psyche"] >= 1) {
+        reactions.push({
+            name: "Пляма (Stain)",
+            desc: "Активовано! Поєднання Lakshana та Psyche спотворює сприйняття ворогів, змушуючи їх отримувати додаткову періодичну шкоду та послаблюючи їхню атаку."
+        });
+    }
+
+    // 8. Nova Reaction (Anima + Psyche)
+    if (count["Anima"] >= 1 && count["Psyche"] >= 1) {
+        reactions.push({
+            name: "Нова (Nova)",
+            desc: "Активовано! Аніма та Психея викликають елементальний вибух розуму, що наносить колосальну площинну (AoE) шкоду навколишнім ворогам."
         });
     }
 
@@ -821,7 +970,9 @@ function calculateResources() {
         "Incantation": { specialty: "Квіти закляття", boss: "Вогняний Кролик" },
         "Cosmos": { specialty: "Зоряний пил", boss: "Кронос-Вартовий" },
         "Chaos": { specialty: "Шарми хаосу", boss: "Руйнівник Масок" },
-        "Phase": { specialty: "Фазові кристали", boss: "Привид Фази" }
+        "Phase": { specialty: "Фазові кристали", boss: "Привид Фази" },
+        "Psyche": { specialty: "Психічні кристали", boss: "Володар Кошмарів" },
+        "Lakshana": { specialty: "Кристали порядку", boss: "Вартовий Закону" }
     };
     
     const details = attributeDetails[char.attribute] || { specialty: "Рідкісна руда", boss: "Рейдовий Бос" };

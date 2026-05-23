@@ -513,6 +513,18 @@ body {
     border: 1px solid rgba(57, 255, 20, 0.3);
 }
 
+.badge-psyche {
+    background: rgba(0, 150, 255, 0.15);
+    color: #7ecfff;
+    border: 1px solid rgba(0, 150, 255, 0.3);
+}
+
+.badge-lakshana {
+    background: rgba(255, 170, 0, 0.15);
+    color: #ffca7e;
+    border: 1px solid rgba(255, 170, 0, 0.3);
+}
+
 /* Section Header */
 .section-header {
     margin-bottom: 2.5rem;
@@ -791,6 +803,8 @@ body {
 .attr-cosmos { background: var(--color-purple); color: #fff; }
 .attr-chaos { background: var(--color-amber); color: #000; }
 .attr-phase { background: var(--color-green); color: #000; }
+.attr-psyche { background: #0096ff; color: #fff; }
+.attr-lakshana { background: #ffaa00; color: #000; }
 
 .tier-note {
     font-size: 0.85rem;
