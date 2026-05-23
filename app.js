@@ -980,7 +980,7 @@ function calculateResources() {
     resultsContainer.innerHTML = `
         <div class="material-item">
             <div class="mat-left">
-                <div class="mat-icon"><img src="https://images.weserv.nl/?url=https://static.wikia.nocookie.net/zenless-zone-zero/images/2/2f/Item_Denny.png&w=100" alt="Beetle Coins"></div>
+                <div class="mat-icon"><img src="https://images.weserv.nl/?url=${encodeURIComponent('https://static.wikia.nocookie.net/gensin-impact/images/f/f0/Item_Mora.png')}&w=50" alt="Beetle Coins"></div>
                 <div class="mat-name">Beetle Coins (Золото)</div>
             </div>
             <div class="mat-quantity">${totalCoins.toLocaleString()}</div>
@@ -988,7 +988,7 @@ function calculateResources() {
         
         <div class="material-item">
             <div class="mat-left">
-                <div class="mat-icon"><img src="https://images.weserv.nl/?url=https://static.wikia.nocookie.net/houkai-star-rail/images/c/c2/Item_Traveler%27s_Guide.png&w=100" alt="EXP Guide"></div>
+                <div class="mat-icon"><img src="https://images.weserv.nl/?url=${encodeURIComponent('https://static.wikia.nocookie.net/houkai-star-rail/images/c/c2/Item_Traveler%27s_Guide.png')}&w=50" alt="EXP Guide"></div>
                 <div class="mat-name">Elite Hunter Guides (Досвід)</div>
             </div>
             <div class="mat-quantity">${totalExpGuides} шт.</div>
@@ -997,7 +997,7 @@ function calculateResources() {
         ${totalBossDrops > 0 ? `
         <div class="material-item">
             <div class="mat-left">
-                <div class="mat-icon"><img src="https://images.weserv.nl/?url=https://static.wikia.nocookie.net/houkai-star-rail/images/b/bd/Item_Extinguished_Core.png&w=100" alt="Boss Drops"></div>
+                <div class="mat-icon"><img src="https://images.weserv.nl/?url=${encodeURIComponent('https://static.wikia.nocookie.net/houkai-star-rail/images/b/bd/Item_Extinguished_Core.png')}&w=50" alt="Boss Drops"></div>
                 <div class="mat-name">Ядро боса: ${details.boss}</div>
             </div>
             <div class="mat-quantity">${totalBossDrops} шт.</div>
@@ -1007,7 +1007,7 @@ function calculateResources() {
         ${totalRegionalSpecialties > 0 ? `
         <div class="material-item">
             <div class="mat-left">
-                <div class="mat-icon"><img src="https://images.weserv.nl/?url=https://static.wikia.nocookie.net/genshin-impact/images/a/a2/Item_Windwheel_Aster.png&w=100" alt="Specialties"></div>
+                <div class="mat-icon"><img src="https://images.weserv.nl/?url=${encodeURIComponent('https://static.wikia.nocookie.net/gensin-impact/images/6/6c/Item_Enhancement_Ore.png')}&w=50" alt="Specialties"></div>
                 <div class="mat-name">Спеціальність: ${details.specialty}</div>
             </div>
             <div class="mat-quantity">${totalRegionalSpecialties} шт.</div>
@@ -1017,7 +1017,7 @@ function calculateResources() {
         ${includeSkills ? `
         <div class="material-item">
             <div class="mat-left">
-                <div class="mat-icon"><img src="https://images.weserv.nl/?url=https://static.wikia.nocookie.net/houkai-star-rail/images/c/cc/Item_Key_of_Wisdom.png&w=100" alt="Skill Scrolls"></div>
+                <div class="mat-icon"><img src="https://images.weserv.nl/?url=${encodeURIComponent('https://static.wikia.nocookie.net/houkai-star-rail/images/d/d4/Item_Key_of_Inspiration.png')}&w=50" alt="Skill Scrolls"></div>
                 <div class="mat-name">Матеріали навичок (Кроляча Нора)</div>
             </div>
             <div class="mat-quantity">${skillMaterials} шт.</div>
@@ -1027,7 +1027,7 @@ function calculateResources() {
         ${includeWeapon ? `
         <div class="material-item">
             <div class="mat-left">
-                <div class="mat-icon"><img src="https://images.weserv.nl/?url=https://static.wikia.nocookie.net/houkai-star-rail/images/d/d7/Item_Refined_Aether.png&w=100" alt="Weapon EXP"></div>
+                <div class="mat-icon"><img src="https://images.weserv.nl/?url=${encodeURIComponent('https://static.wikia.nocookie.net/houkai-star-rail/images/d/d7/Item_Refined_Aether.png')}&w=50" alt="Weapon EXP"></div>
                 <div class="mat-name">Dye (Досвід Зброї)</div>
             </div>
             <div class="mat-quantity">${weaponExpDye} шт.</div>
