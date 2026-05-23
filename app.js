@@ -986,7 +986,14 @@ const i18n = {
         attr_cosmos: "Космос",
         attr_chaos: "Хаос",
         attr_psyche: "Психея",
-        attr_lakshana: "Лакшана"
+        attr_lakshana: "Лакшана",
+        loading_text: "Завантаження даних...",
+        teams_no_synergy: "Виберіть персонажів для початку розрахунку.",
+        teams_synergy_placeholder: "Додайте мисливців у слоти вище. Система автоматично проаналізує їхні класи, стихії та виведе оптимальну послідовність навичок (ротацію) для бою.",
+        teams_slot_2: "Слот 2",
+        teams_slot_3: "Слот 3",
+        teams_slot_4: "Слот 4",
+        creator_title_placeholder: "Наприклад: Мій тір-ліст версії 1.0"
     },
     en: {
         logo_badge: "WIKI",
@@ -1150,7 +1157,14 @@ const i18n = {
         attr_cosmos: "Cosmos",
         attr_chaos: "Chaos",
         attr_psyche: "Psyche",
-        attr_lakshana: "Lakshana"
+        attr_lakshana: "Lakshana",
+        loading_text: "Loading data...",
+        teams_no_synergy: "Select characters to start the synergy analysis.",
+        teams_synergy_placeholder: "Add hunters to the slots above. The system will automatically analyze their classes, elements, and suggest an optimal skill rotation for combat.",
+        teams_slot_2: "Slot 2",
+        teams_slot_3: "Slot 3",
+        teams_slot_4: "Slot 4",
+        creator_title_placeholder: "e.g., My Tier List v1.0"
     }
 };
 
@@ -1187,6 +1201,17 @@ function translatePage(lang) {
             btn.classList.remove("active");
         }
     });
+
+    // Update page title and meta description
+    if (lang === 'en') {
+        document.title = "Eibon Terminal | Neverness to Everness (NTE) Guides & Tier List";
+        const meta = document.querySelector('meta[name="description"]');
+        if (meta) meta.content = "Best guides, interactive tier list, resource calculator, team builder and fresh promo codes for Neverness to Everness (NTE).";
+    } else {
+        document.title = "Eibon Terminal | Neverness to Everness (NTE) Гайди та Тір-ліст";
+        const meta = document.querySelector('meta[name="description"]');
+        if (meta) meta.content = "Найкращі гайди, інтерактивний тір-ліст, калькулятор ресурсів, конструктор команд та завжди свіжі промокоди для гри Neverness to Everness (NTE).";
+    }
 }
 
 function getLocalizedChar(char) {
@@ -1819,8 +1844,19 @@ document.addEventListener("DOMContentLoaded", async () => {
                 renderTimeline();
                 renderCalculatorSetup();
                 renderHomeWidgets();
+                renderPromoCodes();
                 evaluateTeamSynergy();
                 updateTeamSlotsUI();
+                // Re-render auth UI and community lists for the new language
+                if (typeof firebase !== 'undefined' && firebase.auth && firebase.auth().currentUser) {
+                    updateAuthUI(firebase.auth().currentUser);
+                } else {
+                    updateAuthUI(null);
+                }
+                const commContent = document.getElementById('sub-content-community');
+                if (commContent && commContent.classList.contains('active')) {
+                    loadCommunityTierlists();
+                }
             }
         });
     });
@@ -2839,7 +2875,7 @@ function setupCalculatorEvents() {
         Object.keys(calculatedRequirements).forEach(matId => {
             updateSingleMaterialCard(matId, 0);
         });
-        showToast("Склад очищено!");
+        showToast(i18n[currentLang].toast_codes_cleared || "Склад очищено!");
     });
 
     // Export report
@@ -3345,7 +3381,7 @@ function renderPromoCodes() {
                 <div class="code-string">${promo.code}</div>
                 <div class="code-rewards">${promo.rewards}</div>
             </div>
-            <button class="btn-copy" data-code="${promo.code}">Копіювати</button>
+            <button class="btn-copy" data-code="${promo.code}">${currentLang === 'uk' ? 'Копіювати' : 'Copy'}</button>
         `;
         
         card.querySelector(".btn-copy").addEventListener("click", () => {
@@ -3358,10 +3394,12 @@ function renderPromoCodes() {
 }
 
 function copyToClipboard(text) {
+    const successMsg = currentLang === 'uk' ? `Код "${text}" скопійовано у буфер обміну!` : `Code "${text}" copied to clipboard!`;
+    const errorMsg = currentLang === 'uk' ? "Не вдалося скопіювати код." : "Failed to copy code.";
     navigator.clipboard.writeText(text).then(() => {
-        showToast(`Код "${text}" скопійовано у буфер обміну!`);
+        showToast(successMsg);
     }).catch(err => {
-        console.error("Помилка копіювання: ", err);
+        console.error("Copy error: ", err);
         // Fallback
         const textArea = document.createElement("textarea");
         textArea.value = text;
@@ -3369,9 +3407,9 @@ function copyToClipboard(text) {
         textArea.select();
         try {
             document.execCommand('copy');
-            showToast(`Код "${text}" скопійовано!`);
+            showToast(successMsg);
         } catch (e) {
-            showToast("Не вдалося скопіювати код.");
+            showToast(errorMsg);
         }
         document.body.removeChild(textArea);
     });

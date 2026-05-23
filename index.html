@@ -26,7 +26,7 @@
     <div class="loading-overlay" id="loadingOverlay">
         <div class="loading-spinner">
             <div class="spinner-ring"></div>
-            <span class="loading-text">Завантаження даних...</span>
+            <span class="loading-text" data-i18n="loading_text">Завантаження даних...</span>
         </div>
     </div>
 
@@ -95,7 +95,7 @@
                             <div class="banner-bottom-row">
                                 <div class="banner-timer">
                                     <span class="timer-label" data-i18n="banner_timer_label">До завершення:</span>
-                                    <span class="timer-value" id="bannerCountdown">00д 00г 00хв</span>
+                                    <span class="timer-value" id="bannerCountdown">00d 00h 00m</span>
                                 </div>
                                 <div class="banner-actions">
                                     <button class="btn btn-accent btn-sm" id="btnGoToBannerChar" data-i18n="view_build_btn">Оцінка та білд</button>
@@ -247,7 +247,7 @@
                 </div>
                 <div class="community-grid" id="communityGrid">
                     <!-- Dynamic list of user tierlists -->
-                    <div class="community-loading">Завантаження тір-лістів...</div>
+                    <div class="community-loading" data-i18n="comm_loading">Завантаження тір-лістів...</div>
                 </div>
             </div>
 
@@ -266,7 +266,7 @@
                     <div class="editor-header-bar">
                         <div class="form-group flex-grow-1 mb-0">
                             <label for="editorTitle" data-i18n="creator_title_label">Назва тір-ліста:</label>
-                            <input type="text" id="editorTitle" class="form-control" placeholder="Наприклад: Мій тір-ліст версії 1.0" value="Мій тір-ліст">
+                            <input type="text" id="editorTitle" class="form-control" placeholder="Наприклад: Мій тір-ліст версії 1.0" data-i18n-placeholder="creator_title_placeholder" value="Мій тір-ліст">
                         </div>
                         <button class="btn btn-primary" id="btnSaveTierlist" data-i18n="creator_save_btn">Зберегти тір-ліст</button>
                     </div>
@@ -325,28 +325,28 @@
                     <div class="char-slot" data-slot="0" id="slot-0">
                         <div class="slot-empty">
                             <span class="slot-plus">+</span>
-                            <span class="slot-label">Слот 1 (Лідер)</span>
+                            <span class="slot-label" data-i18n="teams_slot_leader">Слот 1 (Лідер)</span>
                         </div>
                     </div>
                     <!-- Slot 2 -->
                     <div class="char-slot" data-slot="1" id="slot-1">
                         <div class="slot-empty">
                             <span class="slot-plus">+</span>
-                            <span class="slot-label">Слот 2</span>
+                            <span class="slot-label" data-i18n="teams_slot_2">Слот 2</span>
                         </div>
                     </div>
                     <!-- Slot 3 -->
                     <div class="char-slot" data-slot="2" id="slot-2">
                         <div class="slot-empty">
                             <span class="slot-plus">+</span>
-                            <span class="slot-label">Слот 3</span>
+                            <span class="slot-label" data-i18n="teams_slot_3">Слот 3</span>
                         </div>
                     </div>
                     <!-- Slot 4 -->
                     <div class="char-slot" data-slot="3" id="slot-3">
                         <div class="slot-empty">
                             <span class="slot-plus">+</span>
-                            <span class="slot-label">Слот 4</span>
+                            <span class="slot-label" data-i18n="teams_slot_4">Слот 4</span>
                         </div>
                     </div>
                 </div>
@@ -363,7 +363,7 @@
                     <div class="synergy-body">
                         <div class="synergy-element-badges" id="synergyElements">
                             <!-- Active cycles badges -->
-                            <span class="no-synergy-text">Виберіть персонажів для початку розрахунку.</span>
+                            <span class="no-synergy-text" data-i18n="teams_no_synergy">Виберіть персонажів для початку розрахунку.</span>
                         </div>
                         
                         <div class="synergy-reactions" id="synergyReactions">
@@ -371,7 +371,7 @@
                         </div>
 
                         <div class="synergy-description" id="synergyDescription">
-                            <p>Додайте мисливців у слоти вище. Система автоматично проаналізує їхні класи, стихії та виведе оптимальну послідовність навичок (ротацію) для бою.</p>
+                            <p data-i18n="teams_synergy_placeholder">Додайте мисливців у слоти вище. Система автоматично проаналізує їхні класи, стихії та виведе оптимальну послідовність навичок (ротацію) для бою.</p>
                         </div>
                     </div>
                 </div>
@@ -392,7 +392,7 @@
                     <div class="calc-char-preview" id="calcCharPreview">
                         <div class="calc-preview-avatar" id="calcPreviewAvatar">👤</div>
                         <div class="calc-preview-info">
-                            <h3 id="calcPreviewName">Завантаження...</h3>
+                            <h3 id="calcPreviewName" data-i18n="widget_loading">Завантаження...</h3>
                             <div class="calc-preview-badges" id="calcPreviewBadges">
                                 <span class="badge badge-anima" id="calcPreviewAttr">-</span>
                                 <span class="badge badge-incant" id="calcPreviewRarity">-</span>
