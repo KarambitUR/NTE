@@ -1256,7 +1256,8 @@ function getLocalizedChar(char) {
 
 // Active Banner Countdown
 function startBannerCountdown() {
-    const bannerEndDate = new Date("2026-06-10T18:00:00+03:00").getTime();
+    // Hotori's Misty Tipsy Style banner ends on June 3, 2026 at 05:59 UTC+8.
+    const bannerEndDate = new Date("2026-06-02T21:59:00Z").getTime();
     
     function updateTimer() {
         const now = new Date().getTime();
