@@ -2608,7 +2608,7 @@ const MATERIAL_ICON_BY_NAME = {
     "CO": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/CO.webp",
     "Known Weariness": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Known-Weariness.webp",
     "Resonance of Faith": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Resonance-of-Faith.webp",
-    "Suspended Whispers": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Suspended-Whispers-1.webp",
+    "Suspended Whispers": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Suspended-Whispers.webp",
     "Nestling's Longing": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Nestlings-Longing.webp",
     "FNG": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/FNG.webp",
     "First Expectations": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/First-Expectations.webp",
@@ -2635,7 +2635,7 @@ const ATTRIBUTE_SCROLL_ICONS = {
     ],
     Chaos: [
         "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Hesitation-of-the-Waves.webp",
-        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Suspended-Whispers-1.webp",
+        "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Suspended-Whispers.webp",
         "https://neverness.gg/wp-content/uploads/sites/88/2026/05/The-Second-Self.webp"
     ],
     Psyche: [
