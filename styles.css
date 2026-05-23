@@ -1210,6 +1210,12 @@ body {
     font-size: 1.4rem;
 }
 
+.mat-icon img {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+}
+
 .mat-name {
     font-weight: 600;
     font-size: 0.95rem;
