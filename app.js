@@ -145,6 +145,22 @@ const CHARACTERS = [
         stats: ["Crit Rate", "Crit DMG", "Chaos DMG", "ATK%"],
         teamSynergy: "Sakiri (Закляття), Zero (Космос), Hotori (Космос)",
         lore: "Театральна акторка, чиї вистави зачаровують глядачів Гетеро. Кажуть, що її маски мають власне аномальне життя."
+    },
+    {
+        id: "daffodil",
+        name: "Daffodil (Даффоділ)",
+        rarity: 5,
+        attribute: "Chaos",
+        role: "Main DPS",
+        tier: "S",
+        avatar: "https://static.wikia.nocookie.net/neverness-to-everness/images/a/af/Daffodill_Card.png/revision/latest/scale-to-width-down/200?cb=20260309135850",
+        summary: "Потужний Burst DPS стихії Chaos, що спеціалізується на пробитті щитів (Break). Накопичує силу поза полем бою і завдає величезної вибухової шкоди при перемиканні.",
+        weapon: "Youthful Fantasy (Сигнатурний Arc)",
+        weaponF2p: "Shiny Days (Світлі Дні)",
+        cartridge: "Chaos Eclipse (4-piece)",
+        stats: ["Break Intensity", "Crit Rate", "Crit DMG", "ATK%"],
+        teamSynergy: "Nanally (Аніма), Zero (Космос), Sakiri (Закляття)",
+        lore: "Мовчазна та загадкова охоронниця антикварної крамниці Eibon. Володіє калейдоскопічними очима і приховує під холодною маскою відданість друзям."
     }
 ];
 
