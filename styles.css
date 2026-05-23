@@ -1635,8 +1635,8 @@ body {
 }
 
 
-/* SECTION: CODES & EXPLORATION */
-.codes-exploration-layout {
+/* SECTION: PROMO CODES */
+.codes-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
@@ -1761,48 +1761,94 @@ body {
     color: var(--text-main);
 }
 
-/* Exploration Column */
-.exploration-column {
+/* Redemption Column */
+.redemption-column {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.2rem;
 }
 
-.exploration-column h3 {
+.redemption-column h3 {
     font-family: var(--font-heading);
     font-size: 1.3rem;
+    color: var(--color-cyan);
     border-bottom: 1px solid var(--border-glass);
     padding-bottom: 0.8rem;
     margin-bottom: 0.5rem;
 }
 
-.explor-article {
+/* SECTION: GUIDES */
+.guides-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.guide-card {
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 1rem;
+    transition: transform var(--transition-speed), border-color var(--transition-speed);
 }
 
-.explor-header {
+.guide-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0, 242, 254, 0.3);
+}
+
+.guide-card-header {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.8rem;
+    border-bottom: 1px solid var(--border-glass);
+    padding-bottom: 0.8rem;
 }
 
-.explor-icon {
-    font-size: 1.4rem;
+.guide-icon {
+    font-size: 1.8rem;
 }
 
-.explor-header h4 {
+.guide-card-header h3 {
     font-family: var(--font-heading);
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--text-main);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
 }
 
-.explor-article p {
-    font-size: 0.85rem;
+.guide-card-body {
+    font-size: 0.92rem;
     color: var(--text-muted);
     line-height: 1.6;
+}
+
+.guide-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.guide-list li {
+    position: relative;
+    padding-left: 1.4rem;
+}
+
+.guide-list li::before {
+    content: "◈";
+    position: absolute;
+    left: 0;
+    color: var(--color-cyan);
+    font-weight: bold;
+}
+
+.guide-list li strong {
+    color: var(--text-main);
+    display: block;
+    margin-bottom: 0.2rem;
 }
 
 /* SECTION: CALENDAR (Timeline) */

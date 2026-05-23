@@ -56,8 +56,9 @@
                     <li><button class="nav-btn" data-tab="tierlist" id="tabTierList" data-i18n="nav_tierlist">Тір-ліст</button></li>
                     <li><button class="nav-btn" data-tab="builds" id="tabBuilds" data-i18n="nav_builds">Білди</button></li>
                     <li><button class="nav-btn" data-tab="teambuilder" id="tabTeamBuilder" data-i18n="nav_teambuilder">Команди</button></li>
+                    <li><button class="nav-btn" data-tab="guides" id="tabGuides" data-i18n="nav_guides">Гайди</button></li>
                     <li><button class="nav-btn" data-tab="calculator" id="tabCalculator" data-i18n="nav_calculator">Калькулятор</button></li>
-                    <li><button class="nav-btn" data-tab="codes-exploration" id="tabCodes" data-i18n="nav_codes">Промокоди & Дослідження</button></li>
+                    <li><button class="nav-btn" data-tab="codes" id="tabCodes" data-i18n="nav_codes">Промокоди</button></li>
                     <li><button class="nav-btn" data-tab="calendar" id="tabCalendar" data-i18n="nav_calendar">Календар</button></li>
                 </ul>
             </nav>
@@ -561,14 +562,14 @@
             </div>
         </section>
 
-        <!-- SECTION: CODES & EXPLORATION -->
-        <section class="tab-pane" id="pane-codes-exploration">
+        <!-- SECTION: PROMO CODES -->
+        <section class="tab-pane" id="pane-codes">
             <div class="section-header">
-                <h2 data-i18n="codes_title">Активні Промокоди & Дослідження</h2>
-                <p data-i18n="codes_subtitle">Безкоштовні ресурси від розробників та поради щодо вивчення Гетеро</p>
+                <h2 data-i18n="codes_title">Активні Промокоди</h2>
+                <p data-i18n="codes_subtitle">Безкоштовні ресурси від розробників для Neverness to Everness (NTE)</p>
             </div>
 
-            <div class="codes-exploration-layout">
+            <div class="codes-layout">
                 <!-- Left: Codes -->
                 <div class="codes-column">
                     <div class="panel-header-row">
@@ -578,44 +579,93 @@
                     <div class="codes-list" id="promoCodesList">
                         <!-- Dynamic promo codes -->
                     </div>
-                    
-                    <div class="redemption-guide glass-panel mt-3">
-                        <h4 data-i18n="codes_guide_title">Як активувати промокоди в грі?</h4>
-                        <ol class="guide-steps">
-                            <li data-i18n="codes_guide_1">Запустіть гру <strong>Neverness to Everness</strong>.</li>
-                            <li data-i18n="codes_guide_2">Відкрийте <strong>Головне меню</strong> (іконка у правому верхньому кутку).</li>
-                            <li data-i18n="codes_guide_3">Натисніть на іконку з <strong>трьома крапками (...)</strong> поруч із вашим нікнеймом.</li>
-                            <li data-i18n="codes_guide_4">Виберіть пункт <strong>Redeem Code (Активувати код)</strong>.</li>
-                            <li data-i18n="codes_guide_5">Введіть скопійований код та заберіть подарунки на ігровій пошті!</li>
-                        </ol>
+                </div>
+
+                <!-- Right: Redemption Guide -->
+                <div class="redemption-column glass-panel">
+                    <h3 data-i18n="codes_guide_title">Як активувати промокоди в грі?</h3>
+                    <ol class="guide-steps">
+                        <li data-i18n="codes_guide_1">Запустіть гру <strong>Neverness to Everness</strong>.</li>
+                        <li data-i18n="codes_guide_2">Відкрийте <strong>Головне меню</strong> (іконка у правому верхньому кутку).</li>
+                        <li data-i18n="codes_guide_3">Натисніть на іконку з <strong>трьома крапками (...)</strong> поруч із вашим нікнеймом.</li>
+                        <li data-i18n="codes_guide_4">Виберіть пункт <strong>Redeem Code (Активувати код)</strong>.</li>
+                        <li data-i18n="codes_guide_5">Введіть скопійований код та заберіть подарунки на ігровій пошті!</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: GUIDES -->
+        <section class="tab-pane" id="pane-guides">
+            <div class="section-header">
+                <h2 data-i18n="guides_title">Посібники та Гайди</h2>
+                <p data-i18n="guides_subtitle">Корисні поради щодо прокачки мисливців, розвитку бізнесу та дослідження Гетеро</p>
+            </div>
+
+            <div class="guides-grid">
+                <!-- Guide Card 1: Beginner Progression -->
+                <div class="guide-card glass-panel">
+                    <div class="guide-card-header">
+                        <span class="guide-icon">🚀</span>
+                        <h3 data-i18n="guide_prog_title">Гайд з прогресії: Старт та пріоритети</h3>
+                    </div>
+                    <div class="guide-card-body">
+                        <ul class="guide-list">
+                            <li>
+                                <strong>Сюжет перш за все:</strong> Фокусуйтеся на сюжетних квестах, щоб швидко підвищити Рівень Мисливця (Hunter Level) та Рівень Оцінки (Appraisal Level) для зняття лімітів прокачки.
+                            </li>
+                            <li>
+                                <strong>Бізнес-імперія (City Tycoon):</strong> Розвивайте кав'ярню одразу після відкриття. На 18-му рівні City Tycoon ви безкоштовно отримаєте чудового атакуючого персонажа <strong>Чіз (Chiz)</strong>, а на 21-му рівні — її кращу сигнатурну зброю!
+                            </li>
+                            <li>
+                                <strong>Мотоцикл Novis ST-X 950:</strong> Купіть цей мотоцикл у дилера Regalia в районі New Herland. На відміну від автомобілів, його можна викликати прямо посеред бездоріжжя, що прискорить проходження карти.
+                            </li>
+                            <li>
+                                <strong>Телефонні будки ReroRero:</strong> Обов'язково взаємодійте з ними під час подорожі містом для створення швидкої мережі телепортації.
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
-                <!-- Right: Exploration -->
-                <div class="exploration-column glass-panel">
-                    <h3 data-i18n="explor_title">Посібник з дослідження міста Hethereau</h3>
-                    <div class="explor-article">
-                        <div class="explor-header">
-                            <span class="explor-icon">👁️</span>
-                            <h4 data-i18n="explor_art1_title">Використання Appraiser Vision (Зору Оцінювача)</h4>
-                        </div>
-                        <p data-i18n="explor_art1_desc">Натискайте клавішу зору в місті, щоб виявляти приховані аномалії. Багато об'єктів (наприклад, статуї, дивні графіті або дзеркальні відображення) змінюють свій вигляд і відкривають секретні скрині після взаємодії у цьому режимі.</p>
+                <!-- Guide Card 2: Character Upgrades -->
+                <div class="guide-card glass-panel">
+                    <div class="guide-card-header">
+                        <span class="guide-icon">⚔️</span>
+                        <h3 data-i18n="guide_char_title">Прокачка персонажів та бойова сила</h3>
                     </div>
-
-                    <div class="explor-article">
-                        <div class="explor-header">
-                            <span class="explor-icon">🐰</span>
-                            <h4 data-i18n="explor_art2_title">Кролячі Нори (Rabbit Holes) та Аномальні Зони</h4>
-                        </div>
-                        <p data-i18n="explor_art2_desc">Витрачайте енергію Fons у зонах "Rabbit Holes" для фарма матеріалів для навичок. Щоденний фарм необхідний, оскільки ресурси навичок розділені по днях тижня. Завжди планують свій фарм заздалегідь.</p>
+                    <div class="guide-card-body">
+                        <ul class="guide-list">
+                            <li>
+                                <strong>Один Головний ДПС (Main Carry):</strong> Спочатку вкладайте ресурси лише в одного персонажа нанесення шкоди. Не розпорошуйте матеріали на всю команду. Початкових героїв не варто качати вище 40 рівня.
+                            </li>
+                            <li>
+                                <strong>Гарантоване покращення:</strong> Завжди спочатку прокачуйте рівень, зброю та рівні навичок. Фарм картриджів (артефактів) залиште на етап високого рівня, щоб не витрачати енергію на випадкові характеристики.
+                            </li>
+                            <li>
+                                <strong>Пріоритет сет-бонусів:</strong> Завжди намагайтеся спочатку зібрати повноцінний комплект з 4-х картриджів заради потужного ефекту набору, навіть якщо суб-характеристики на них не є ідеальними.
+                            </li>
+                        </ul>
                     </div>
+                </div>
 
-                    <div class="explor-article">
-                        <div class="explor-header">
-                            <span class="explor-icon">🚗</span>
-                            <h4 data-i18n="explor_art3_title">Автомобілі та Швидке Переміщення</h4>
-                        </div>
-                        <p data-i18n="explor_art3_desc">Використовуйте свої авто не тільки для краси, а й для переміщення по великих шосе міста. Ви можете кастомізувати машини в гаражі Eibon, покращуючи їхню керованість та швидкість, що полегшить подолання дистанцій між аномаліями.</p>
+                <!-- Guide Card 3: Exploration & Collection -->
+                <div class="guide-card glass-panel">
+                    <div class="guide-card-header">
+                        <span class="guide-icon">🔍</span>
+                        <h3 data-i18n="guide_explor_title">Дослідження Hethereau та фарм</h3>
+                    </div>
+                    <div class="guide-card-body">
+                        <ul class="guide-list">
+                            <li>
+                                <strong>Зоровий аналізатор (Vision):</strong> Регулярно перевіряйте оточення режимом зору, щоб помітить приховані дзеркала, графіті або статуї, взаємодія з якими відкриє цінні скрині.
+                            </li>
+                            <li>
+                                <strong>Хатина Відьми (Witch's House):</strong> Збирайте магічних птахів та здавайте їх. На 3-му рівні Хатини птахи почнуть відображатися прямо на вашій міні-карті, що полегшить збір.
+                            </li>
+                            <li>
+                                <strong>Безкоштовна S-зброя:</strong> Шукайте та проходьте Аномальні доручення (Anomaly Commissions) з 4 зірками складності на карті міста, за які гарантовано дають легендарні Arcs.
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
