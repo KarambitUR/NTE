@@ -446,229 +446,229 @@ const CHARACTER_TRANSLATIONS = {
 const LOCALIZED_ATTRIBUTE_MATERIALS = {
     Anima: {
         uk: {
-            boss: "Ядро боса: Гравітаційний Павук",
-            specialty: "Аніма-кристали лісу",
-            farmSpecialty: "Збір у Лісовій Аномалії Hethereau",
-            farmBoss: "Світовий бос: Гравітаційний Павук",
+            boss: "Унікальний матеріал Anomaly Hunt",
+            specialty: "Матеріал Anomaly Hunt",
+            farmSpecialty: "Anomaly Hunt / Material Selection Box",
+            farmBoss: "Anomaly Hunt",
             common: {
-                T1: "Пилок аномальних рослин",
-                T2: "Стебло хижої квітки",
-                T3: "Суть живого лісу",
-                farm: "Рослинні аномалії в парках"
+                T1: "Fading Silhouette",
+                T2: "Blurred Silhouette",
+                T3: "Chaos Silhouette",
+                farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "Сувій сили природи",
-                T2: "Гайд по контролю флори",
-                T3: "Таємниці Аніми",
-                farm: "Rabbit Hole (Понеділок/Четвер)"
+                T1: "Esper Ability Book I",
+                T2: "Esper Ability Book II",
+                T3: "Esper Ability Book III",
+                farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         },
         en: {
-            boss: "Boss Core: Gravity Spider",
-            specialty: "Anima Forest Crystals",
-            farmSpecialty: "Harvest in Hethereau Forest Anomaly",
-            farmBoss: "World Boss: Gravity Spider",
+            boss: "Unique Anomaly Hunt Material",
+            specialty: "Anomaly Hunt Material",
+            farmSpecialty: "Anomaly Hunt / Material Selection Box",
+            farmBoss: "Anomaly Hunt",
             common: {
-                T1: "Anomalous Plant Pollen",
-                T2: "Carnivorous Flower Stem",
-                T3: "Essence of the Living Forest",
-                farm: "Plant anomalies in parks"
+                T1: "Fading Silhouette",
+                T2: "Blurred Silhouette",
+                T3: "Chaos Silhouette",
+                farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "Scroll of Nature's Power",
-                T2: "Flora Control Guide",
-                T3: "Mysteries of Anima",
-                farm: "Rabbit Hole (Monday/Thursday)"
+                T1: "Esper Ability Book I",
+                T2: "Esper Ability Book II",
+                T3: "Esper Ability Book III",
+                farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         }
     },
     Incantation: {
         uk: {
-            boss: "Ядро боса: Вогняний Кролик",
-            specialty: "Квіти закляття",
-            farmSpecialty: "Збір у східних районах Гетеро",
-            farmBoss: "Світовий бос: Вогняний Кролик",
+            boss: "Унікальний матеріал Anomaly Hunt",
+            specialty: "Матеріал Anomaly Hunt",
+            farmSpecialty: "Anomaly Hunt / Material Selection Box",
+            farmBoss: "Anomaly Hunt",
             common: {
-                T1: "Попіл згаслих рун",
-                T2: "Фрагмент палаючої руни",
-                T3: "Стародавнє ядро заклять",
-                farm: "Магічні аномалії в місті"
+                T1: "Blurred Numeral",
+                T2: "Unsolved Numeral",
+                T3: "Distorted Numeral",
+                farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "Ескіз магічних знаків",
-                T2: "Підручник ритуалів",
-                T3: "Гримуар Таємних Слів",
-                farm: "Rabbit Hole (Вівторок/П'ятниця)"
+                T1: "Esper Ability Book I",
+                T2: "Esper Ability Book II",
+                T3: "Esper Ability Book III",
+                farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         },
         en: {
-            boss: "Boss Core: Fire Rabbit",
-            specialty: "Incantation Flowers",
-            farmSpecialty: "Harvest in East Hethereau",
-            farmBoss: "World Boss: Fire Rabbit",
+            boss: "Unique Anomaly Hunt Material",
+            specialty: "Anomaly Hunt Material",
+            farmSpecialty: "Anomaly Hunt / Material Selection Box",
+            farmBoss: "Anomaly Hunt",
             common: {
-                T1: "Ashes of Extinguished Runes",
-                T2: "Fragment of Burning Rune",
-                T3: "Ancient Incantation Core",
-                farm: "Magical anomalies in city"
+                T1: "Blurred Numeral",
+                T2: "Unsolved Numeral",
+                T3: "Distorted Numeral",
+                farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "Magic Sign Sketch",
-                T2: "Ritual Textbook",
-                T3: "Grimoire of Secret Words",
-                farm: "Rabbit Hole (Tuesday/Friday)"
+                T1: "Esper Ability Book I",
+                T2: "Esper Ability Book II",
+                T3: "Esper Ability Book III",
+                farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         }
     },
     Cosmos: {
         uk: {
-            boss: "Ядро боса: Кронос-Вартовий",
-            specialty: "Зоряний пил",
-            farmSpecialty: "Секретні дахи та хмарочоси",
-            farmBoss: "Світовий бос: Кронос-Вартовий",
+            boss: "Унікальний матеріал Anomaly Hunt",
+            specialty: "Матеріал Anomaly Hunt",
+            farmSpecialty: "Anomaly Hunt / Material Selection Box",
+            farmBoss: "Anomaly Hunt",
             common: {
-                T1: "Уламок метеорита",
-                T2: "Космічний пил",
-                T3: "Сутність сингулярності",
-                farm: "Космічні тіні у центрі міста"
+                T1: "Lost Whispers",
+                T2: "Obscure Whispers",
+                T3: "Paradoxical Whispers",
+                farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "Малюнок сузір'я",
-                T2: "Зоряна мапа Hethereau",
-                T3: "Сувої Нескінченного Космосу",
-                farm: "Rabbit Hole (Середа/Субота)"
+                T1: "The Olive Branch",
+                T2: "Dove's Flutter",
+                T3: "Nestling's Longing",
+                farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         },
         en: {
-            boss: "Boss Core: Chronos Guardian",
-            specialty: "Star Dust",
-            farmSpecialty: "Secret rooftops and skyscrapers",
-            farmBoss: "World Boss: Chronos Guardian",
+            boss: "Unique Anomaly Hunt Material",
+            specialty: "Anomaly Hunt Material",
+            farmSpecialty: "Anomaly Hunt / Material Selection Box",
+            farmBoss: "Anomaly Hunt",
             common: {
-                T1: "Meteorite Shard",
-                T2: "Cosmic Dust",
-                T3: "Essence of Singularity",
-                farm: "Cosmic shadows in city center"
+                T1: "Lost Whispers",
+                T2: "Obscure Whispers",
+                T3: "Paradoxical Whispers",
+                farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "Constellation Drawing",
-                T2: "Hethereau Star Map",
-                T3: "Scrolls of Infinite Cosmos",
-                farm: "Rabbit Hole (Wednesday/Saturday)"
+                T1: "The Olive Branch",
+                T2: "Dove's Flutter",
+                T3: "Nestling's Longing",
+                farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         }
     },
     Chaos: {
         uk: {
-            boss: "Ядро боса: Руйнівник Масок",
-            specialty: "Шарми хаосу",
-            farmSpecialty: "Аномальні провулки Гетеро",
-            farmBoss: "Світовий бос: Руйнівник Масок",
+            boss: "Унікальний матеріал Anomaly Hunt",
+            specialty: "Матеріал Anomaly Hunt",
+            farmSpecialty: "Anomaly Hunt / Material Selection Box",
+            farmBoss: "Anomaly Hunt",
             common: {
-                T1: "Тріснута маска",
-                T2: "Театральна маска",
-                T3: "Маска істинної сутності",
-                farm: "Міражі хаосу та міми"
+                T1: "Suspended Delusions",
+                T2: "Yearning Delusions",
+                T3: "Transcendent Delusions",
+                farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "Записки божевільного",
-                T2: "П'єса трагікомедії",
-                T3: "Хроніки Парадоксу",
-                farm: "Rabbit Hole (Четвер/Неділя)"
+                T1: "Esper Ability Book I",
+                T2: "Esper Ability Book II",
+                T3: "Esper Ability Book III",
+                farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         },
         en: {
-            boss: "Boss Core: Mask Destroyer",
-            specialty: "Chaos Charms",
-            farmSpecialty: "Anomalous Hethereau alleys",
-            farmBoss: "World Boss: Mask Destroyer",
+            boss: "Unique Anomaly Hunt Material",
+            specialty: "Anomaly Hunt Material",
+            farmSpecialty: "Anomaly Hunt / Material Selection Box",
+            farmBoss: "Anomaly Hunt",
             common: {
-                T1: "Cracked Mask",
-                T2: "Theatrical Mask",
-                T3: "Mask of True Essence",
-                farm: "Chaos mirages and mimes"
+                T1: "Suspended Delusions",
+                T2: "Yearning Delusions",
+                T3: "Transcendent Delusions",
+                farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "Madman's Notes",
-                T2: "Tragicomedy Play",
-                T3: "Chronicles of Paradox",
-                farm: "Rabbit Hole (Thursday/Sunday)"
+                T1: "Esper Ability Book I",
+                T2: "Esper Ability Book II",
+                T3: "Esper Ability Book III",
+                farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         }
     },
     Psyche: {
         uk: {
-            boss: "Ядро боса: Володар Кошмарів",
-            specialty: "Психічні кристали",
-            farmSpecialty: "Дзеркальні аномальні галереї",
-            farmBoss: "Світовий бос: Володар Кошмарів",
+            boss: "Унікальний матеріал Anomaly Hunt",
+            specialty: "Матеріал Anomaly Hunt",
+            farmSpecialty: "Anomaly Hunt / Material Selection Box",
+            farmBoss: "Anomaly Hunt",
             common: {
-                T1: "Фрагмент спогаду",
-                T2: "Скляна сльоза",
-                T3: "Дзеркало чистої свідомості",
-                farm: "Дзеркальні фантоми"
+                T1: "Lost Whispers",
+                T2: "Obscure Whispers",
+                T3: "Paradoxical Whispers",
+                farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "Текст гіпнозу",
-                T2: "Книга сновидінь",
-                T3: "Концепт Несвідомого",
-                farm: "Rabbit Hole (П'ятниця/Неділя)"
+                T1: "Esper Ability Book I",
+                T2: "Esper Ability Book II",
+                T3: "Esper Ability Book III",
+                farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         },
         en: {
-            boss: "Boss Core: Nightmare Lord",
-            specialty: "Psyche Crystals",
-            farmSpecialty: "Mirror anomaly galleries",
-            farmBoss: "World Boss: Nightmare Lord",
+            boss: "Unique Anomaly Hunt Material",
+            specialty: "Anomaly Hunt Material",
+            farmSpecialty: "Anomaly Hunt / Material Selection Box",
+            farmBoss: "Anomaly Hunt",
             common: {
-                T1: "Memory Fragment",
-                T2: "Glass Tear",
-                T3: "Mirror of Pure Consciousness",
-                farm: "Mirror phantoms"
+                T1: "Lost Whispers",
+                T2: "Obscure Whispers",
+                T3: "Paradoxical Whispers",
+                farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "Hypnosis Script",
-                T2: "Dream Book",
-                T3: "Concept of the Unconscious",
-                farm: "Rabbit Hole (Friday/Sunday)"
+                T1: "Esper Ability Book I",
+                T2: "Esper Ability Book II",
+                T3: "Esper Ability Book III",
+                farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         }
     },
     Lakshana: {
         uk: {
-            boss: "Ядро боса: Вартовий Закону",
-            specialty: "Кристали порядку",
-            farmSpecialty: "Зони фінансового кварталу",
-            farmBoss: "Світовий бос: Вартовий Закону",
+            boss: "Унікальний матеріал Anomaly Hunt",
+            specialty: "Матеріал Anomaly Hunt",
+            farmSpecialty: "Anomaly Hunt / Material Selection Box",
+            farmBoss: "Anomaly Hunt",
             common: {
-                T1: "Іржава шестерня",
-                T2: "Срібний поршень",
-                T3: "Золотий годинниковий механізм",
-                farm: "Механічні годинникові міньйони"
+                T1: "Suspended Delusions",
+                T2: "Yearning Delusions",
+                T3: "Transcendent Delusions",
+                farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "Статут Бюро",
-                T2: "Звід законів Гетеро",
-                T3: "Директиви Чистого Порядку",
-                farm: "Rabbit Hole (Субота/Неділя)"
+                T1: "Esper Ability Book I",
+                T2: "Esper Ability Book II",
+                T3: "Esper Ability Book III",
+                farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         },
         en: {
-            boss: "Boss Core: Law Guardian",
-            specialty: "Order Crystals",
-            farmSpecialty: "Financial district zones",
-            farmBoss: "World Boss: Law Guardian",
+            boss: "Unique Anomaly Hunt Material",
+            specialty: "Anomaly Hunt Material",
+            farmSpecialty: "Anomaly Hunt / Material Selection Box",
+            farmBoss: "Anomaly Hunt",
             common: {
-                T1: "Rusty Gear",
-                T2: "Silver Piston",
-                T3: "Golden Clockwork Mechanism",
-                farm: "Mechanical clockwork minions"
+                T1: "Suspended Delusions",
+                T2: "Yearning Delusions",
+                T3: "Transcendent Delusions",
+                farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "Bureau Statute",
-                T2: "Hethereau Law Codex",
-                T3: "Directives of Pure Order",
-                farm: "Rabbit Hole (Saturday/Sunday)"
+                T1: "Esper Ability Book I",
+                T2: "Esper Ability Book II",
+                T3: "Esper Ability Book III",
+                farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         }
     }
@@ -676,17 +676,50 @@ const LOCALIZED_ATTRIBUTE_MATERIALS = {
 
 const LOCALIZED_WEAPON_MATERIALS = {
     uk: {
-        T1: "Компонент зброї T1",
-        T2: "Модифікатор зброї T2",
-        T3: "Нано-ядро зброї T3",
-        farm: "Rabbit Hole: Прорив Зброї"
+        T1: "Light Dye",
+        T2: "Colorless Dye",
+        T3: "Chaotic Dye",
+        farm: "Houdinii's Magic Stage / Hunter Exchange / World Exploration"
     },
     en: {
-        T1: "Weapon Component T1",
-        T2: "Weapon Modifier T2",
-        T3: "Weapon Nano-Core T3",
-        farm: "Rabbit Hole: Weapon Breakthrough"
+        T1: "Light Dye",
+        T2: "Colorless Dye",
+        T3: "Chaotic Dye",
+        farm: "Houdinii's Magic Stage / Hunter Exchange / World Exploration"
     }
+};
+
+const CHARACTER_MATERIAL_PROFILES = {
+    hotori: {
+        verified: true,
+        source: "AllThings.How + Neverness.gg",
+        unique: "Confessional Flower Seed",
+        uniqueFarm: "Anomaly Hunt: Serenetti / Material Selection Box",
+        commonFamily: ["Lost Whispers", "Obscure Whispers", "Paradoxical Whispers"],
+        skillBooks: ["The Olive Branch", "Dove's Flutter", "Nestling's Longing"],
+        weekly: "Dress Sleeves of Vanity",
+        weeklyFarm: "Anomaly Pilgrimage: The Never-ending Arachne",
+        fullTotals: {
+            coin: 2273000,
+            boss: 86,
+            common_t1: 57,
+            common_t2: 68,
+            common_t3: 79,
+            scroll_t1: 64,
+            scroll_t2: 40,
+            scroll_t3: 40,
+            weekly: 32
+        }
+    },
+    zero: { unique: "Charging Knight Spark Plug", uniqueFarm: "Anomaly Hunt: Headless Rider / Material Selection Box" },
+    sakiri: { unique: "Charging Knight Spark Plug", uniqueFarm: "Anomaly Hunt: Headless Rider / Material Selection Box" },
+    daffodil: { unique: "Charging Knight Spark Plug", uniqueFarm: "Anomaly Hunt: Headless Rider / Material Selection Box" },
+    nanally: { unique: "A Page from Delusion's Shore", uniqueFarm: "Anomaly Hunt: Black Tome / Material Selection Box" },
+    mint: { unique: "A Page from Delusion's Shore", uniqueFarm: "Anomaly Hunt: Black Tome / Material Selection Box" },
+    jiuyuan: { unique: "Tear of the Sea", uniqueFarm: "Anomaly Hunt: Sea Prisoner / Material Selection Box" },
+    adler: { unique: "Water Moon Pick", uniqueFarm: "Anomaly Hunt: Beat King / Material Selection Box" },
+    haniel: { unique: "Nest Guard Fragment", uniqueFarm: "Anomaly Hunt: Nestbound Bird / Material Selection Box" },
+    skia: { unique: "Confessional Flower Seed", uniqueFarm: "Anomaly Hunt: Serenetti / Material Selection Box" }
 };
 
 const TIMELINE_TRANSLATIONS = {
@@ -2485,122 +2518,11 @@ const SKILL_COST_TABLE = {
     9: { coins: 300000, scrollsT1: 0, scrollsT2: 0, scrollsT3: 12, commonT1: 0, commonT2: 0, commonT3: 8, boss: 3, crown: 1 }
 };
 
-const ATTRIBUTE_MATERIALS = {
-    "Anima": {
-        boss: "Ядро боса: Гравітаційний Павук",
-        specialty: "Anima-кристали лісу",
-        farmSpecialty: "Збір у Лісовій Аномалії Hethereau",
-        farmBoss: "Світовий бос: Гравітаційний Павук",
-        common: {
-            T1: "Пилок аномальних рослин",
-            T2: "Стебло хижої квітки",
-            T3: "Суть живого лісу",
-            farm: "Рослинні аномалії в парках"
-        },
-        scrolls: {
-            T1: "Сувій сили природи",
-            T2: "Гайд по контролю флори",
-            T3: "Таємниці Аніми",
-            farm: "Rabbit Hole (Понеділок/Четвер)"
-        }
-    },
-    "Incantation": {
-        boss: "Ядро боса: Вогняний Кролик",
-        specialty: "Спеціальність: Квіти закляття",
-        farmSpecialty: "Збір у східних районах Гетеро",
-        farmBoss: "Світовий бос: Вогняний Кролик",
-        common: {
-            T1: "Попіл згаслих рун",
-            T2: "Фрагмент палаючої руни",
-            T3: "Стародавнє ядро заклять",
-            farm: "Магічні аномалії в місті"
-        },
-        scrolls: {
-            T1: "Ескіз магічних знаків",
-            T2: "Підручник ритуалів",
-            T3: "Гримуар Таємних Слів",
-            farm: "Rabbit Hole (Вівторок/П'ятниця)"
-        }
-    },
-    "Cosmos": {
-        boss: "Ядро боса: Кронос-Вартовий",
-        specialty: "Спеціальність: Зоряний пил",
-        farmSpecialty: "Секретні дахи та хмарочоси",
-        farmBoss: "Світовий бос: Кронос-Вартовий",
-        common: {
-            T1: "Уламок метеорита",
-            T2: "Космічний пил",
-            T3: "Сутність сингулярності",
-            farm: "Космічні тіні у центрі міста"
-        },
-        scrolls: {
-            T1: "Малюнок сузір'я",
-            T2: "Зоряна мапа Hethereau",
-            T3: "Сувої Нескінченного Космосу",
-            farm: "Rabbit Hole (Середа/Субота)"
-        }
-    },
-    "Chaos": {
-        boss: "Ядро боса: Руйнівник Масок",
-        specialty: "Спеціальність: Шарми хаосу",
-        farmSpecialty: "Аномальні провулки Гетеро",
-        farmBoss: "Світовий бос: Руйнівник Масок",
-        common: {
-            T1: "Тріснута маска",
-            T2: "Театральна маска",
-            T3: "Маска істинної сутності",
-            farm: "Міражі хаосу та міми"
-        },
-        scrolls: {
-            T1: "Записки божевільного",
-            T2: "П'єса трагікомедії",
-            T3: "Хроніки Парадоксу",
-            farm: "Rabbit Hole (Четвер/Неділя)"
-        }
-    },
-    "Psyche": {
-        boss: "Ядро боса: Володар Кошмарів",
-        specialty: "Спеціальність: Психічні кристали",
-        farmSpecialty: "Дзеркальні аномальні галереї",
-        farmBoss: "Світовий бос: Володар Кошмарів",
-        common: {
-            T1: "Фрагмент спогаду",
-            T2: "Скляна сльоза",
-            T3: "Дзеркало чистої свідомості",
-            farm: "Дзеркальні фантоми"
-        },
-        scrolls: {
-            T1: "Текст гіпнозу",
-            T2: "Книга сновидінь",
-            T3: "Концепт Несвідомого",
-            farm: "Rabbit Hole (П'ятниця/Неділя)"
-        }
-    },
-    "Lakshana": {
-        boss: "Ядро боса: Вартовий Закону",
-        specialty: "Спеціальність: Кристали порядку",
-        farmSpecialty: "Зони фінансового кварталу",
-        farmBoss: "Світовий бос: Вартовий Закону",
-        common: {
-            T1: "Іржава шестерня",
-            T2: "Срібний поршень",
-            T3: "Золотий годинниковий механізм",
-            farm: "Механічні годинникові міньйони"
-        },
-        scrolls: {
-            T1: "Статут Бюро",
-            T2: "Звід законів Гетеро",
-            T3: "Директиви Чистого Порядку",
-            farm: "Rabbit Hole (Субота/Неділя)"
-        }
-    }
-};
-
 const WEAPON_MATERIALS = {
-    T1: "Компонент зброї T1",
-    T2: "Модифікатор зброї T2",
-    T3: "Нано-ядро зброї T3",
-    farm: "Rabbit Hole: Прорив Зброї"
+    T1: "Light Dye",
+    T2: "Colorless Dye",
+    T3: "Chaotic Dye",
+    farm: "Houdinii's Magic Stage / Hunter Exchange / World Exploration"
 };
 
 let calcInventory = {};
@@ -2647,48 +2569,35 @@ function initCalculatorData() {
     }
 }
 
-// Generate inline SVG icons
-function getMaterialIcon(id) {
-    const colors = {
-        grey: '#90a4ae',
-        green: '#4db6ac',
-        blue: '#4fc3f7',
-        purple: '#ba68c8',
-        gold: '#ffd54f',
-        red: '#e57373'
-    };
+const MATERIAL_ICON_URLS = {
+    coin: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Beetle-Coin.webp",
+    exp_basic: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Rising-Hunter-Guide.webp",
+    exp_medium: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Senior-Hunter-Guide.webp",
+    exp_elite: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Elite-Hunter-Guide.webp",
+    dye_basic: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Light-Dye.webp",
+    dye_medium: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Colorless-Dye.webp",
+    dye_elite: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Chaotic-Dye.webp",
+    boss: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Confessional-Flower-Seed.webp",
+    specialty: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Confessional-Flower-Seed.webp",
+    common_t1: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Lost-Whispers.webp",
+    common_t2: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Obscure-Whispers.webp",
+    common_t3: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Paradoxical-Whispers.webp",
+    scroll_t1: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/The-Olive-Branch.webp",
+    scroll_t2: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Doves-Flutter.webp",
+    scroll_t3: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Nestlings-Longing.webp",
+    weekly: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Dress-Sleeves-of-Vanity.webp",
+    crown: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Anomaly-Material-Selection-Box-III.webp",
+    ore_t1: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Light-Dye.webp",
+    ore_t2: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Colorless-Dye.webp",
+    ore_t3: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Chaotic-Dye.webp"
+};
 
-    if (id === 'coin') {
-        return `<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="${colors.gold}" stroke="#d4af37" stroke-width="2"/><circle cx="24" cy="24" r="14" fill="none" stroke="#d4af37" stroke-width="1" stroke-dasharray="3,3" opacity="0.7"/><text x="24" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#8B6914">$</text></svg>`;
-    }
-    if (id.includes('exp_basic') || id.includes('dye_basic') || id.includes('scroll_basic') || id.includes('ore_basic')) {
-        return `<svg viewBox="0 0 48 48"><rect x="12" y="8" width="24" height="32" rx="3" fill="${colors.green}" stroke="#00796b" stroke-width="2"/><path d="M16 18h16M16 26h16" stroke="#e0f2f1" stroke-width="2" stroke-linecap="round"/></svg>`;
-    }
-    if (id.includes('exp_medium') || id.includes('dye_medium') || id.includes('scroll_medium') || id.includes('ore_medium')) {
-        return `<svg viewBox="0 0 48 48"><rect x="12" y="8" width="24" height="32" rx="3" fill="${colors.blue}" stroke="#0288d1" stroke-width="2"/><path d="M16 18h16M16 26h16" stroke="#e1f5fe" stroke-width="2" stroke-linecap="round"/></svg>`;
-    }
-    if (id.includes('exp_elite') || id.includes('dye_elite') || id.includes('scroll_elite') || id.includes('ore_elite')) {
-        return `<svg viewBox="0 0 48 48"><rect x="12" y="8" width="24" height="32" rx="3" fill="${colors.purple}" stroke="#7b1fa2" stroke-width="2"/><path d="M16 18h16M16 26h16" stroke="#f3e5f5" stroke-width="2" stroke-linecap="round"/></svg>`;
-    }
-    if (id === 'boss') {
-        return `<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="${colors.red}" stroke="#c62828" stroke-width="2"/><path d="M16 22a3 3 0 0 1 6 0M26 22a3 3 0 0 1 6 0M18 32q6 4 12 0" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>`;
-    }
-    if (id === 'specialty') {
-        return `<svg viewBox="0 0 48 48"><polygon points="24,6 38,20 32,42 16,42 10,20" fill="${colors.purple}" stroke="#7b1fa2" stroke-width="2"/><polygon points="24,6 30,20 24,42 18,20" fill="#e1bee7" opacity="0.6"/><circle cx="24" cy="24" r="3" fill="#fff" opacity="0.8"/></svg>`;
-    }
-    if (id.includes('common_t1')) {
-        return `<svg viewBox="0 0 48 48"><polygon points="24,10 38,34 10,34" fill="${colors.grey}" stroke="#37474f" stroke-width="2"/></svg>`;
-    }
-    if (id.includes('common_t2')) {
-        return `<svg viewBox="0 0 48 48"><polygon points="24,10 38,34 10,34" fill="${colors.green}" stroke="#004d40" stroke-width="2"/></svg>`;
-    }
-    if (id.includes('common_t3')) {
-        return `<svg viewBox="0 0 48 48"><polygon points="24,10 38,34 10,34" fill="${colors.purple}" stroke="#4a148c" stroke-width="2"/></svg>`;
-    }
-    if (id === 'crown') {
-        return `<svg viewBox="0 0 48 48"><path d="M8 38 L12 16 L20 26 L24 10 L28 26 L36 16 L40 38 Z" fill="${colors.gold}" stroke="#b58900" stroke-width="2"/><ellipse cx="24" cy="38" rx="14" ry="3" fill="#fff" opacity="0.4"/></svg>`;
-    }
-    return `<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="${colors.grey}"/></svg>`;
+// Use real material icons from public NTE databases; fallback keeps the card readable if a CDN image fails.
+function getMaterialIcon(id) {
+    const src = MATERIAL_ICON_URLS[id];
+    const label = id.split("_").map(part => part[0]).join("").slice(0, 2).toUpperCase();
+    if (!src) return `<span class="mat-fallback-icon">${label}</span>`;
+    return `<img src="${src}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'mat-fallback-icon',textContent:'${label}'}))">`;
 }
 
 function renderCalculatorSetup() {
@@ -2705,7 +2614,7 @@ function renderCalculatorSetup() {
         const endSelect = document.getElementById(`skillEnd_${i}`);
         savedSkills.push({
             start: startSelect ? startSelect.value : "1",
-            end: endSelect ? endSelect.value : "8"
+            end: endSelect ? endSelect.value : "10"
         });
     }
 
@@ -3048,24 +2957,41 @@ function calculateResources() {
     // Consolidate Totals
     const finalCoins = totalCharCoins + totalCharBtCoins + totalSkillCoins + totalWeapCoins + totalWeapBtCoins;
     
-    // Character guides breakdown (1 elite = 10k, 1 med = 2k, 1 basic = 500)
+    // Character guides breakdown: Rising 1,000, Senior 5,000, Elite 20,000 EXP.
     let charExpRem = totalCharExp;
-    const guidesElite = Math.floor(charExpRem / 10000);
-    charExpRem %= 10000;
-    const guidesMed = Math.floor(charExpRem / 2000);
-    charExpRem %= 2000;
-    const guidesBasic = Math.ceil(charExpRem / 500);
+    const guidesElite = Math.floor(charExpRem / 20000);
+    charExpRem %= 20000;
+    const guidesMed = Math.floor(charExpRem / 5000);
+    charExpRem %= 5000;
+    const guidesBasic = Math.ceil(charExpRem / 1000);
 
-    // Weapon dyes breakdown (1 elite = 10k, 1 med = 2k, 1 basic = 500)
+    // Arc dyes breakdown: Light 500, Colorless 2,500, Chaotic 10,000 Arc EXP.
     let weapExpRem = totalWeapExp;
     const dyesElite = Math.floor(weapExpRem / 10000);
     weapExpRem %= 10000;
-    const dyesMed = Math.floor(weapExpRem / 2000);
-    weapExpRem %= 2000;
+    const dyesMed = Math.floor(weapExpRem / 2500);
+    weapExpRem %= 2500;
     const dyesBasic = Math.ceil(weapExpRem / 500);
 
     // Specific names based on character attribute
     const attrDetails = (LOCALIZED_ATTRIBUTE_MATERIALS[char.attribute] && LOCALIZED_ATTRIBUTE_MATERIALS[char.attribute][currentLang]) || LOCALIZED_ATTRIBUTE_MATERIALS["Anima"][currentLang];
+    const profile = CHARACTER_MATERIAL_PROFILES[char.id] || {};
+    if (profile.unique) {
+        attrDetails.boss = profile.unique;
+        attrDetails.farmBoss = profile.uniqueFarm || attrDetails.farmBoss;
+        attrDetails.specialty = profile.unique;
+        attrDetails.farmSpecialty = profile.uniqueFarm || attrDetails.farmSpecialty;
+    }
+    if (profile.commonFamily) {
+        attrDetails.common.T1 = profile.commonFamily[0];
+        attrDetails.common.T2 = profile.commonFamily[1];
+        attrDetails.common.T3 = profile.commonFamily[2];
+    }
+    if (profile.skillBooks) {
+        attrDetails.scrolls.T1 = profile.skillBooks[0];
+        attrDetails.scrolls.T2 = profile.skillBooks[1];
+        attrDetails.scrolls.T3 = profile.skillBooks[2];
+    }
     const weaponMats = LOCALIZED_WEAPON_MATERIALS[currentLang] || LOCALIZED_WEAPON_MATERIALS["uk"];
 
     // Combine common materials
@@ -3076,8 +3002,36 @@ function calculateResources() {
     // Combine Boss drops
     const finalBoss = totalCharBoss + totalSkillBoss;
 
-    // Set requirements object globally to check on have-input triggers
-    calculatedRequirements = {
+    const allSkillsFull = [0, 1, 2, 3].every(i => {
+        const start = parseInt(document.getElementById(`skillStart_${i}`).value) || 1;
+        const end = parseInt(document.getElementById(`skillEnd_${i}`).value) || 1;
+        return start === 1 && end === 10;
+    });
+    const isVerifiedFullBuild = Boolean(profile.verified && profile.fullTotals && startLvl === 1 && endLvl === 80 && allSkillsFull);
+
+    // Set requirements object globally to check on have-input triggers.
+    calculatedRequirements = isVerifiedFullBuild ? {
+        coin: profile.fullTotals.coin,
+        exp_elite: guidesElite,
+        exp_medium: guidesMed,
+        exp_basic: guidesBasic,
+        dye_elite: dyesElite,
+        dye_medium: dyesMed,
+        dye_basic: dyesBasic,
+        boss: profile.fullTotals.boss,
+        specialty: 0,
+        common_t1: profile.fullTotals.common_t1,
+        common_t2: profile.fullTotals.common_t2,
+        common_t3: profile.fullTotals.common_t3,
+        scroll_t1: profile.fullTotals.scroll_t1,
+        scroll_t2: profile.fullTotals.scroll_t2,
+        scroll_t3: profile.fullTotals.scroll_t3,
+        weekly: profile.fullTotals.weekly,
+        crown: 0,
+        ore_t1: totalWeapOreT1,
+        ore_t2: totalWeapOreT2,
+        ore_t3: totalWeapOreT3
+    } : {
         coin: finalCoins,
         exp_elite: guidesElite,
         exp_medium: guidesMed,
@@ -3093,6 +3047,7 @@ function calculateResources() {
         scroll_t1: totalSkillScrollsT1,
         scroll_t2: totalSkillScrollsT2,
         scroll_t3: totalSkillScrollsT3,
+        weekly: 0,
         crown: totalSkillCrown,
         ore_t1: totalWeapOreT1,
         ore_t2: totalWeapOreT2,
@@ -3107,17 +3062,19 @@ function calculateResources() {
             cat_skills: "Матеріали Навичок",
             cat_drops: "Трофеї з Ворогів",
             coin_name: "Монети Beetle (Золото)",
-            coin_farm: "Кроляча нора / Завдання / Машини",
-            exp_elite_name: "Елітне керівництво мисливця (Досвід 10к)",
-            exp_med_name: "Середнє керівництво мисливця (Досвід 2к)",
-            exp_basic_name: "Базове керівництво мисливця (Досвід 500)",
-            exp_farm: "Кроляча нора: Досвід",
-            dye_elite_name: "Елітне мастило для зброї (10к)",
-            dye_med_name: "Середнє мастило для зброї (2к)",
-            dye_basic_name: "Базове мастило для зброї (500)",
-            dye_farm: "Кроляча нора: Зброя",
-            crown_name: "Корона Аномалії",
-            crown_farm: "Сезонні події / Особливі завдання",
+            coin_farm: "Material Selection Box / Houdinii's Magic Stage / Hunter Exchange / World Exploration",
+            exp_elite_name: "Elite Hunter Guide (+20,000 EXP)",
+            exp_med_name: "Senior Hunter Guide (+5,000 EXP)",
+            exp_basic_name: "Rising Hunter Guide (+1,000 EXP)",
+            exp_farm: "Houdinii's Magic Stage / Hunter Exchange / World Exploration",
+            dye_elite_name: "Chaotic Dye (+10,000 Arc EXP)",
+            dye_med_name: "Colorless Dye (+2,500 Arc EXP)",
+            dye_basic_name: "Light Dye (+500 Arc EXP)",
+            dye_farm: "Houdinii's Magic Stage / Hunter Exchange / World Exploration",
+            crown_name: "Щотижневий матеріал навички",
+            crown_farm: "Anomaly Pilgrimage",
+            source_verified: "Точний total-cost підтверджено для цього пресету.",
+            source_estimate: "Частина чисел є планувальною оцінкою; назви ресурсів і джерела взято з відкритих баз.",
             need_label: "Потрібно:",
             remaining_label: "Залишилось:",
             have_label: "Маю:",
@@ -3129,17 +3086,19 @@ function calculateResources() {
             cat_skills: "Skill Materials",
             cat_drops: "Enemy Trophies",
             coin_name: "Beetle Coins (Gold)",
-            coin_farm: "Rabbit Hole / Quests / Cars",
-            exp_elite_name: "Elite Hunter Guide (EXP 10k)",
-            exp_med_name: "Medium Hunter Guide (EXP 2k)",
-            exp_basic_name: "Basic Hunter Guide (EXP 500)",
-            exp_farm: "Rabbit Hole: Experience",
-            dye_elite_name: "Elite Weapon Dye (Dye 10k)",
-            dye_med_name: "Medium Weapon Dye (Dye 2k)",
-            dye_basic_name: "Basic Weapon Dye (Dye 500)",
-            dye_farm: "Rabbit Hole: Weapon",
-            crown_name: "Anomaly Crown",
-            crown_farm: "Seasonal Events / Special Quests",
+            coin_farm: "Material Selection Box / Houdinii's Magic Stage / Hunter Exchange / World Exploration",
+            exp_elite_name: "Elite Hunter Guide (+20,000 EXP)",
+            exp_med_name: "Senior Hunter Guide (+5,000 EXP)",
+            exp_basic_name: "Rising Hunter Guide (+1,000 EXP)",
+            exp_farm: "Houdinii's Magic Stage / Hunter Exchange / World Exploration",
+            dye_elite_name: "Chaotic Dye (+10,000 Arc EXP)",
+            dye_med_name: "Colorless Dye (+2,500 Arc EXP)",
+            dye_basic_name: "Light Dye (+500 Arc EXP)",
+            dye_farm: "Houdinii's Magic Stage / Hunter Exchange / World Exploration",
+            crown_name: "Weekly Skill Material",
+            crown_farm: "Anomaly Pilgrimage",
+            source_verified: "Exact total cost is verified for this preset.",
+            source_estimate: "Some quantities are planning estimates; resource names and sources use public databases.",
             need_label: "Need:",
             remaining_label: "Remaining:",
             have_label: "Have:",
@@ -3151,6 +3110,14 @@ function calculateResources() {
     // Render HTML Categories
     const resultsGrid = document.getElementById("calcMaterialsList");
     resultsGrid.innerHTML = "";
+
+    const sourceNote = document.createElement("div");
+    sourceNote.className = `calc-source-note ${isVerifiedFullBuild ? 'verified' : 'estimate'}`;
+    sourceNote.innerHTML = `
+        <strong>${isVerifiedFullBuild ? 'Verified' : 'Planner'}</strong>
+        <span>${isVerifiedFullBuild ? cLoc.source_verified : cLoc.source_estimate}</span>
+    `;
+    resultsGrid.appendChild(sourceNote);
 
     function addCategoryHeader(title) {
         const h = document.createElement("div");
@@ -3194,43 +3161,44 @@ function calculateResources() {
 
     // 1. Currency & Exp Guides
     addCategoryHeader(cLoc.cat_main);
-    addMaterialCard("coin", cLoc.coin_name, finalCoins, cLoc.coin_farm);
-    addMaterialCard("exp_elite", cLoc.exp_elite_name, guidesElite, cLoc.exp_farm);
-    addMaterialCard("exp_medium", cLoc.exp_med_name, guidesMed, cLoc.exp_farm);
-    addMaterialCard("exp_basic", cLoc.exp_basic_name, guidesBasic, cLoc.exp_farm);
+    addMaterialCard("coin", cLoc.coin_name, calculatedRequirements.coin, cLoc.coin_farm);
+    addMaterialCard("exp_elite", cLoc.exp_elite_name, calculatedRequirements.exp_elite, cLoc.exp_farm);
+    addMaterialCard("exp_medium", cLoc.exp_med_name, calculatedRequirements.exp_medium, cLoc.exp_farm);
+    addMaterialCard("exp_basic", cLoc.exp_basic_name, calculatedRequirements.exp_basic, cLoc.exp_farm);
     if (includeWeapon) {
-        addMaterialCard("dye_elite", cLoc.dye_elite_name, dyesElite, cLoc.dye_farm);
-        addMaterialCard("dye_medium", cLoc.dye_med_name, dyesMed, cLoc.dye_farm);
-        addMaterialCard("dye_basic", cLoc.dye_basic_name, dyesBasic, cLoc.dye_farm);
+        addMaterialCard("dye_elite", cLoc.dye_elite_name, calculatedRequirements.dye_elite, cLoc.dye_farm);
+        addMaterialCard("dye_medium", cLoc.dye_med_name, calculatedRequirements.dye_medium, cLoc.dye_farm);
+        addMaterialCard("dye_basic", cLoc.dye_basic_name, calculatedRequirements.dye_basic, cLoc.dye_farm);
     }
 
     // 2. Breakthrough Materials
-    if (totalCharSpecialty > 0 || finalBoss > 0 || (includeWeapon && (totalWeapOreT1 + totalWeapOreT2 + totalWeapOreT3 > 0))) {
+    if (calculatedRequirements.specialty > 0 || calculatedRequirements.boss > 0 || (includeWeapon && (calculatedRequirements.ore_t1 + calculatedRequirements.ore_t2 + calculatedRequirements.ore_t3 > 0))) {
         addCategoryHeader(cLoc.cat_breakthrough);
-        addMaterialCard("boss", attrDetails.boss, finalBoss, attrDetails.farmBoss);
-        addMaterialCard("specialty", attrDetails.specialty, totalCharSpecialty, attrDetails.farmSpecialty);
+        addMaterialCard("boss", attrDetails.boss, calculatedRequirements.boss, attrDetails.farmBoss);
+        addMaterialCard("specialty", attrDetails.specialty, calculatedRequirements.specialty, attrDetails.farmSpecialty);
         if (includeWeapon) {
-            addMaterialCard("ore_t1", weaponMats.T1, totalWeapOreT1, weaponMats.farm);
-            addMaterialCard("ore_t2", weaponMats.T2, totalWeapOreT2, weaponMats.farm);
-            addMaterialCard("ore_t3", weaponMats.T3, totalWeapOreT3, weaponMats.farm);
+            addMaterialCard("ore_t1", weaponMats.T1, calculatedRequirements.ore_t1, weaponMats.farm);
+            addMaterialCard("ore_t2", weaponMats.T2, calculatedRequirements.ore_t2, weaponMats.farm);
+            addMaterialCard("ore_t3", weaponMats.T3, calculatedRequirements.ore_t3, weaponMats.farm);
         }
     }
 
     // 3. Skill Scrolls
-    if (totalSkillScrollsT1 + totalSkillScrollsT2 + totalSkillScrollsT3 + totalSkillCrown > 0) {
+    if (calculatedRequirements.scroll_t1 + calculatedRequirements.scroll_t2 + calculatedRequirements.scroll_t3 + calculatedRequirements.weekly + calculatedRequirements.crown > 0) {
         addCategoryHeader(cLoc.cat_skills);
-        addMaterialCard("scroll_t1", attrDetails.scrolls.T1, totalSkillScrollsT1, attrDetails.scrolls.farm);
-        addMaterialCard("scroll_t2", attrDetails.scrolls.T2, totalSkillScrollsT2, attrDetails.scrolls.farm);
-        addMaterialCard("scroll_t3", attrDetails.scrolls.T3, totalSkillScrollsT3, attrDetails.scrolls.farm);
-        addMaterialCard("crown", cLoc.crown_name, totalSkillCrown, cLoc.crown_farm);
+        addMaterialCard("scroll_t1", attrDetails.scrolls.T1, calculatedRequirements.scroll_t1, attrDetails.scrolls.farm);
+        addMaterialCard("scroll_t2", attrDetails.scrolls.T2, calculatedRequirements.scroll_t2, attrDetails.scrolls.farm);
+        addMaterialCard("scroll_t3", attrDetails.scrolls.T3, calculatedRequirements.scroll_t3, attrDetails.scrolls.farm);
+        addMaterialCard("weekly", profile.weekly || cLoc.crown_name, calculatedRequirements.weekly || 0, profile.weeklyFarm || cLoc.crown_farm);
+        addMaterialCard("crown", cLoc.crown_name, calculatedRequirements.crown || 0, cLoc.crown_farm);
     }
 
     // 4. Common Enemy Drops
-    if (finalCommonT1 + finalCommonT2 + finalCommonT3 > 0) {
+    if (calculatedRequirements.common_t1 + calculatedRequirements.common_t2 + calculatedRequirements.common_t3 > 0) {
         addCategoryHeader(cLoc.cat_drops);
-        addMaterialCard("common_t1", attrDetails.common.T1, finalCommonT1, attrDetails.common.farm);
-        addMaterialCard("common_t2", attrDetails.common.T2, finalCommonT2, attrDetails.common.farm);
-        addMaterialCard("common_t3", attrDetails.common.T3, finalCommonT3, attrDetails.common.farm);
+        addMaterialCard("common_t1", attrDetails.common.T1, calculatedRequirements.common_t1, attrDetails.common.farm);
+        addMaterialCard("common_t2", attrDetails.common.T2, calculatedRequirements.common_t2, attrDetails.common.farm);
+        addMaterialCard("common_t3", attrDetails.common.T3, calculatedRequirements.common_t3, attrDetails.common.farm);
     }
 }
 
@@ -3299,6 +3267,21 @@ function exportCalcReport() {
     // Sort materials by calculatedRequirements
     const attrDetails = (LOCALIZED_ATTRIBUTE_MATERIALS[char.attribute] && LOCALIZED_ATTRIBUTE_MATERIALS[char.attribute][currentLang]) || LOCALIZED_ATTRIBUTE_MATERIALS["Anima"][currentLang];
     const weaponMats = LOCALIZED_WEAPON_MATERIALS[currentLang] || LOCALIZED_WEAPON_MATERIALS["uk"];
+    const profile = CHARACTER_MATERIAL_PROFILES[char.id] || {};
+    if (profile.unique) {
+        attrDetails.boss = profile.unique;
+        attrDetails.specialty = profile.unique;
+    }
+    if (profile.commonFamily) {
+        attrDetails.common.T1 = profile.commonFamily[0];
+        attrDetails.common.T2 = profile.commonFamily[1];
+        attrDetails.common.T3 = profile.commonFamily[2];
+    }
+    if (profile.skillBooks) {
+        attrDetails.scrolls.T1 = profile.skillBooks[0];
+        attrDetails.scrolls.T2 = profile.skillBooks[1];
+        attrDetails.scrolls.T3 = profile.skillBooks[2];
+    }
 
     Object.keys(calculatedRequirements).forEach(id => {
         const needed = calculatedRequirements[id];
@@ -3309,22 +3292,22 @@ function exportCalcReport() {
             matName = currentLang === 'uk' ? "Монети Beetle (Золото)" : "Beetle Coins (Gold)";
         }
         else if (id === 'exp_elite') {
-            matName = currentLang === 'uk' ? "Елітне керівництво мисливця (EXP 10k)" : "Elite Hunter Guide (EXP 10k)";
+            matName = "Elite Hunter Guide (+20,000 EXP)";
         }
         else if (id === 'exp_medium') {
-            matName = currentLang === 'uk' ? "Середнє керівництво мисливця (EXP 2k)" : "Medium Hunter Guide (EXP 2k)";
+            matName = "Senior Hunter Guide (+5,000 EXP)";
         }
         else if (id === 'exp_basic') {
-            matName = currentLang === 'uk' ? "Базове керівництво мисливця (EXP 500)" : "Basic Hunter Guide (EXP 500)";
+            matName = "Rising Hunter Guide (+1,000 EXP)";
         }
         else if (id === 'dye_elite') {
-            matName = currentLang === 'uk' ? "Елітна фарба для зброї (Dye 10k)" : "Elite Weapon Dye (Dye 10k)";
+            matName = "Chaotic Dye (+10,000 Arc EXP)";
         }
         else if (id === 'dye_medium') {
-            matName = currentLang === 'uk' ? "Середня фарба для зброї (Dye 2k)" : "Medium Weapon Dye (Dye 2k)";
+            matName = "Colorless Dye (+2,500 Arc EXP)";
         }
         else if (id === 'dye_basic') {
-            matName = currentLang === 'uk' ? "Базова фарба для зброї (Dye 500)" : "Basic Weapon Dye (Dye 500)";
+            matName = "Light Dye (+500 Arc EXP)";
         }
         else if (id === 'boss') {
             matName = attrDetails.boss;
@@ -3336,7 +3319,10 @@ function exportCalcReport() {
         else if (id === 'ore_t2') matName = weaponMats.T2;
         else if (id === 'ore_t3') matName = weaponMats.T3;
         else if (id === 'crown') {
-            matName = currentLang === 'uk' ? "Корона Аномалії" : "Anomaly Crown";
+            matName = currentLang === 'uk' ? "Щотижневий матеріал навички" : "Weekly Skill Material";
+        }
+        else if (id === 'weekly') {
+            matName = profile.weekly || (currentLang === 'uk' ? "Щотижневий матеріал навички" : "Weekly Skill Material");
         }
         else {
             if (id === 'scroll_t1') matName = attrDetails.scrolls.T1;

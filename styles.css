@@ -1452,6 +1452,35 @@ body {
     padding-right: 0.3rem;
 }
 
+.calc-source-note {
+    grid-column: span 2;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.75rem 0.9rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.035);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.calc-source-note strong {
+    color: var(--color-cyan);
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.calc-source-note.verified {
+    border-color: rgba(57, 255, 20, 0.22);
+    background: rgba(57, 255, 20, 0.035);
+}
+
+.calc-source-note.verified strong {
+    color: var(--color-green);
+}
+
 .materials-cat-header {
     grid-column: span 2;
     font-family: var(--font-heading);
@@ -1493,25 +1522,32 @@ body {
 }
 
 .mat-card-top .mat-icon {
-    width: 32px;
-    height: 32px;
+    width: 42px;
+    height: 42px;
     font-size: 1.2rem;
     background: rgba(255, 255, 255, 0.04);
-    border-radius: 4px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 }
 
 .mat-card-top .mat-icon img {
-    width: 22px;
-    height: 22px;
+    width: 36px;
+    height: 36px;
     object-fit: contain;
 }
 
 .mat-card-top .mat-icon svg {
     width: 24px;
     height: 24px;
+}
+
+.mat-fallback-icon {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--color-cyan);
 }
 
 .mat-card-info {
