@@ -59,6 +59,12 @@
                     <li><button class="nav-btn" data-tab="calendar" id="tabCalendar">Календар</button></li>
                 </ul>
             </nav>
+
+            <div class="header-auth" id="headerAuth">
+                <button class="btn btn-primary btn-sm" id="btnLoginGoogle">
+                    <span class="auth-icon">🔑</span> Увійти
+                </button>
+            </div>
         </div>
     </header>
 
@@ -136,84 +142,153 @@
                 <p>Оцінка ефективності мисливців на аномалії у версії 1.0 (Глобальний реліз)</p>
             </div>
 
-            <!-- Filters Bar -->
-            <div class="filters-container">
-                <div class="search-box">
-                    <input type="text" id="charSearch" placeholder="Пошук персонажа за іменем...">
-                    <span class="search-icon">🔍</span>
+            <div class="tierlist-sub-nav">
+                <button class="sub-tab-btn active" data-sub-tab="official">Офіційний Тір-ліст</button>
+                <button class="sub-tab-btn" data-sub-tab="community">Тір-лісти спільноти</button>
+                <button class="sub-tab-btn" data-sub-tab="creator">Створити свій</button>
+            </div>
+
+            <!-- SUB-CONTENT: OFFICIAL TIER LIST -->
+            <div class="tierlist-sub-content active" id="sub-content-official">
+                <!-- Filters Bar -->
+                <div class="filters-container">
+                    <div class="search-box">
+                        <input type="text" id="charSearch" placeholder="Пошук персонажа за іменем...">
+                        <span class="search-icon">🔍</span>
+                    </div>
+                    
+                    <div class="filter-groups">
+                        <div class="filter-group">
+                            <span class="filter-label">Рідкість:</span>
+                            <div class="filter-options" id="filter-rarity">
+                                <button class="filter-btn active" data-rarity="all">Всі</button>
+                                <button class="filter-btn" data-rarity="S">S-Ранг (5★)</button>
+                                <button class="filter-btn" data-rarity="A">A-Ранг (4★)</button>
+                            </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <span class="filter-label">Стихія:</span>
+                            <div class="filter-options flex-wrap" id="filter-attribute">
+                                <button class="filter-btn active" data-attribute="all">Всі</button>
+                                <button class="filter-btn" data-attribute="Anima">Anima (Аніма)</button>
+                                <button class="filter-btn" data-attribute="Cosmos">Cosmos (Космос)</button>
+                                <button class="filter-btn" data-attribute="Incantation">Incantation (Закляття)</button>
+                                <button class="filter-btn" data-attribute="Chaos">Chaos (Хаос)</button>
+                                <button class="filter-btn" data-attribute="Psyche">Psyche (Психея)</button>
+                                <button class="filter-btn" data-attribute="Lakshana">Lakshana (Лакшана)</button>
+                            </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <span class="filter-label">Роль:</span>
+                            <div class="filter-options" id="filter-role">
+                                <button class="filter-btn active" data-role="all">Всі</button>
+                                <button class="filter-btn" data-role="Main DPS">Main DPS</button>
+                                <button class="filter-btn" data-role="Sub-DPS">Sub-DPS</button>
+                                <button class="filter-btn" data-role="Support">Support</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tier List Grid Rows -->
+                <div class="tier-rows-container">
+                    <!-- Tier S+ -->
+                    <div class="tier-row" data-tier="S+">
+                        <div class="tier-badge tier-s-plus">S+</div>
+                        <div class="tier-row-content" id="tier-S-plus-grid">
+                            <!-- Dynamic content -->
+                        </div>
+                    </div>
+
+                    <!-- Tier S -->
+                    <div class="tier-row" data-tier="S">
+                        <div class="tier-badge tier-s">S</div>
+                        <div class="tier-row-content" id="tier-S-grid">
+                            <!-- Dynamic content -->
+                        </div>
+                    </div>
+
+                    <!-- Tier A -->
+                    <div class="tier-row" data-tier="A">
+                        <div class="tier-badge tier-a">A</div>
+                        <div class="tier-row-content" id="tier-A-grid">
+                            <!-- Dynamic content -->
+                        </div>
+                    </div>
+
+                    <!-- Tier B -->
+                    <div class="tier-row" data-tier="B">
+                        <div class="tier-badge tier-b">B</div>
+                        <div class="tier-row-content" id="tier-B-grid">
+                            <!-- Dynamic content -->
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="filter-groups">
-                    <div class="filter-group">
-                        <span class="filter-label">Рідкість:</span>
-                        <div class="filter-options" id="filter-rarity">
-                            <button class="filter-btn active" data-rarity="all">Всі</button>
-                            <button class="filter-btn" data-rarity="S">S-Ранг (5★)</button>
-                            <button class="filter-btn" data-rarity="A">A-Ранг (4★)</button>
+                <p class="tier-note">* Натисніть на картку будь-якого персонажа, щоб відкрити його детальний білд, найкращу зброю (Arc) та рекомендовані картриджі.</p>
+            </div>
+
+            <!-- SUB-CONTENT: COMMUNITY TIER LISTS -->
+            <div class="tierlist-sub-content" id="sub-content-community">
+                <div class="community-header">
+                    <h3>Тір-лісти від Спільноти</h3>
+                    <p>Оцінки персонажів та думки інших гравців Neverness to Everness.</p>
+                </div>
+                <div class="community-grid" id="communityGrid">
+                    <!-- Dynamic list of user tierlists -->
+                    <div class="community-loading">Завантаження тір-лістів...</div>
+                </div>
+            </div>
+
+            <!-- SUB-CONTENT: TIER LIST CREATOR -->
+            <div class="tierlist-sub-content" id="sub-content-creator">
+                <!-- Logged Out Prompt -->
+                <div class="editor-auth-prompt" id="editorAuthPrompt">
+                    <div class="prompt-icon">🔐</div>
+                    <h3>Створіть власний тір-ліст</h3>
+                    <p>Щоб скористатися конструктором та зберегти свій рейтинг героїв, будь ласка, авторизуйтеся через Google.</p>
+                    <button class="btn btn-accent mt-3" id="btnEditorLogin">Увійти через Google</button>
+                </div>
+
+                <!-- Editor Workspace -->
+                <div class="editor-container hidden" id="editorContainer">
+                    <div class="editor-header-bar">
+                        <div class="form-group flex-grow-1 mb-0">
+                            <label for="editorTitle">Назва тір-ліста:</label>
+                            <input type="text" id="editorTitle" class="form-control" placeholder="Наприклад: Мій тір-ліст версії 1.0" value="Мій тір-ліст">
+                        </div>
+                        <button class="btn btn-primary" id="btnSaveTierlist">Зберегти тір-ліст</button>
+                    </div>
+
+                    <div class="editor-tier-rows">
+                        <div class="editor-tier-row" data-tier="S+">
+                            <div class="editor-tier-badge tier-s-plus">S+</div>
+                            <div class="editor-tier-dropzone" id="dropzone-S-plus" data-tier="S+"></div>
+                        </div>
+                        <div class="editor-tier-row" data-tier="S">
+                            <div class="editor-tier-badge tier-s">S</div>
+                            <div class="editor-tier-dropzone" id="dropzone-S" data-tier="S"></div>
+                        </div>
+                        <div class="editor-tier-row" data-tier="A">
+                            <div class="editor-tier-badge tier-a">A</div>
+                            <div class="editor-tier-dropzone" id="dropzone-A" data-tier="A"></div>
+                        </div>
+                        <div class="editor-tier-row" data-tier="B">
+                            <div class="editor-tier-badge tier-b">B</div>
+                            <div class="editor-tier-dropzone" id="dropzone-B" data-tier="B"></div>
                         </div>
                     </div>
 
-                    <div class="filter-group">
-                        <span class="filter-label">Стихія:</span>
-                        <div class="filter-options flex-wrap" id="filter-attribute">
-                            <button class="filter-btn active" data-attribute="all">Всі</button>
-                            <button class="filter-btn" data-attribute="Anima">Anima (Аніма)</button>
-                            <button class="filter-btn" data-attribute="Cosmos">Cosmos (Космос)</button>
-                            <button class="filter-btn" data-attribute="Incantation">Incantation (Закляття)</button>
-                            <button class="filter-btn" data-attribute="Chaos">Chaos (Хаос)</button>
-                            <button class="filter-btn" data-attribute="Psyche">Psyche (Психея)</button>
-                            <button class="filter-btn" data-attribute="Lakshana">Lakshana (Лакшана)</button>
-                        </div>
-                    </div>
-
-                    <div class="filter-group">
-                        <span class="filter-label">Роль:</span>
-                        <div class="filter-options" id="filter-role">
-                            <button class="filter-btn active" data-role="all">Всі</button>
-                            <button class="filter-btn" data-role="Main DPS">Main DPS</button>
-                            <button class="filter-btn" data-role="Sub-DPS">Sub-DPS</button>
-                            <button class="filter-btn" data-role="Support">Support</button>
+                    <div class="editor-pool-section">
+                        <h4>Пул Персонажів (натисніть на картку або перетягніть для розподілу)</h4>
+                        <div class="editor-character-pool" id="editorCharacterPool" data-tier="pool">
+                            <!-- Dynamic draggable cards -->
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Tier List Grid Rows -->
-            <div class="tier-rows-container">
-                <!-- Tier S+ -->
-                <div class="tier-row" data-tier="S+">
-                    <div class="tier-badge tier-s-plus">S+</div>
-                    <div class="tier-row-content" id="tier-S-plus-grid">
-                        <!-- Dynamic content -->
-                    </div>
-                </div>
-
-                <!-- Tier S -->
-                <div class="tier-row" data-tier="S">
-                    <div class="tier-badge tier-s">S</div>
-                    <div class="tier-row-content" id="tier-S-grid">
-                        <!-- Dynamic content -->
-                    </div>
-                </div>
-
-                <!-- Tier A -->
-                <div class="tier-row" data-tier="A">
-                    <div class="tier-badge tier-a">A</div>
-                    <div class="tier-row-content" id="tier-A-grid">
-                        <!-- Dynamic content -->
-                    </div>
-                </div>
-
-                <!-- Tier B -->
-                <div class="tier-row" data-tier="B">
-                    <div class="tier-badge tier-b">B</div>
-                    <div class="tier-row-content" id="tier-B-grid">
-                        <!-- Dynamic content -->
-                    </div>
-                </div>
-            </div>
-            
-            <p class="tier-note">* Натисніть на картку будь-якого персонажа, щоб відкрити його детальний білд, найкращу зброю (Arc) та рекомендовані картриджі.</p>
         </section>
 
         <!-- SECTION: BUILDS -->
@@ -569,6 +644,34 @@
             <h3>Виберіть Персонажа</h3>
             <div class="selector-grid" id="selectorGrid">
                 <!-- Dynamic selector grid cards -->
+            </div>
+        </div>
+    </div>
+
+    <!-- USER TIERLIST VIEW MODAL -->
+    <div class="modal-overlay" id="userTierlistModalOverlay">
+        <div class="modal-content user-tierlist-modal glass-panel">
+            <button class="modal-close-btn" id="userTierlistCloseBtn" aria-label="Close Modal">&times;</button>
+            <h3 id="viewTierlistTitle" class="modal-title">-</h3>
+            <p id="viewTierlistAuthor" class="modal-subtitle">-</p>
+            
+            <div class="view-tier-rows">
+                <div class="view-tier-row">
+                    <div class="view-tier-badge tier-s-plus">S+</div>
+                    <div class="view-tier-grid" id="viewGrid-S-plus"></div>
+                </div>
+                <div class="view-tier-row">
+                    <div class="view-tier-badge tier-s">S</div>
+                    <div class="view-tier-grid" id="viewGrid-S"></div>
+                </div>
+                <div class="view-tier-row">
+                    <div class="view-tier-badge tier-a">A</div>
+                    <div class="view-tier-grid" id="viewGrid-A"></div>
+                </div>
+                <div class="view-tier-row">
+                    <div class="view-tier-badge tier-b">B</div>
+                    <div class="view-tier-grid" id="viewGrid-B"></div>
+                </div>
             </div>
         </div>
     </div>

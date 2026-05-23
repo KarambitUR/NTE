@@ -492,6 +492,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Setup realtime listeners for live updates
     setupRealtimeListeners();
 
+    // Setup Auth and Community Tier lists
+    initAuthAndUserTierlists();
+
     // Hide loading overlay
     const loadingOverlay = document.getElementById('loadingOverlay');
     if (loadingOverlay) {
@@ -1889,3 +1892,481 @@ function renderTimeline() {
         container.appendChild(item);
     });
 }
+
+// 14. AUTH & CUSTOM USER TIERLISTS LOGIC
+
+let editorState = {
+    "S+": [],
+    "S": [],
+    "A": [],
+    "B": [],
+    "pool": []
+};
+
+// Main entry point for auth and user tierlist features
+function initAuthAndUserTierlists() {
+    // Bind global header auth click
+    const loginBtn = document.getElementById("btnLoginGoogle");
+    if (loginBtn) {
+        loginBtn.addEventListener("click", loginWithGoogle);
+    }
+
+    // Bind sub-tabs inside tierlist page
+    const subTabBtns = document.querySelectorAll(".sub-tab-btn");
+    subTabBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            subTabBtns.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+
+            const targetTab = btn.getAttribute("data-sub-tab");
+            document.querySelectorAll(".tierlist-sub-content").forEach(content => {
+                content.classList.remove("active");
+            });
+            document.getElementById(`sub-content-${targetTab}`).classList.add("active");
+
+            if (targetTab === "community") {
+                loadCommunityTierlists();
+            } else if (targetTab === "creator") {
+                const user = firebase.auth && firebase.auth().currentUser;
+                if (user) {
+                    initTierlistEditor();
+                }
+            }
+        });
+    });
+
+    // Check if Firebase is available
+    if (typeof firebase === "undefined") {
+        console.warn("Firebase Auth not available, disabling user tier lists.");
+        return;
+    }
+
+    // Listen to Firebase Auth state changes
+    firebase.auth().onAuthStateChanged((user) => {
+        updateAuthUI(user);
+        
+        const authPrompt = document.getElementById("editorAuthPrompt");
+        const container = document.getElementById("editorContainer");
+
+        if (user) {
+            if (authPrompt) authPrompt.classList.add("hidden");
+            if (container) container.classList.remove("hidden");
+            initTierlistEditor();
+        } else {
+            if (authPrompt) authPrompt.classList.remove("hidden");
+            if (container) container.classList.add("hidden");
+        }
+    });
+
+    // Bind login on editor prompt
+    const editorLoginBtn = document.getElementById("btnEditorLogin");
+    if (editorLoginBtn) {
+        editorLoginBtn.addEventListener("click", loginWithGoogle);
+    }
+
+    // Bind editor save button
+    const saveBtn = document.getElementById("btnSaveTierlist");
+    if (saveBtn) {
+        saveBtn.addEventListener("click", saveUserTierlist);
+    }
+
+    // Bind Drag and Drop listeners to dropzones
+    const dropzones = document.querySelectorAll(".editor-tier-dropzone, #editorCharacterPool");
+    dropzones.forEach(zone => {
+        zone.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            zone.classList.add("dragover");
+        });
+        zone.addEventListener("dragleave", () => {
+            zone.classList.remove("dragover");
+        });
+        zone.addEventListener("drop", (e) => {
+            e.preventDefault();
+            zone.classList.remove("dragover");
+            const charId = e.dataTransfer.getData("text/plain");
+            const targetTier = zone.getAttribute("data-tier") || "pool";
+            if (charId) {
+                moveCharInEditor(charId, targetTier);
+            }
+        });
+    });
+
+    // Bind modal close buttons
+    const userModal = document.getElementById("userTierlistModalOverlay");
+    const closeBtn = document.getElementById("userTierlistCloseBtn");
+    if (closeBtn && userModal) {
+        closeBtn.addEventListener("click", () => userModal.classList.remove("active"));
+        userModal.addEventListener("click", (e) => {
+            if (e.target.id === "userTierlistModalOverlay") {
+                userModal.classList.remove("active");
+            }
+        });
+    }
+}
+
+// Google Login / Logout Functions
+function loginWithGoogle() {
+    if (typeof firebase === "undefined" || !firebase.auth) {
+        showToast("Firebase Auth не підключений!");
+        return;
+    }
+    const provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider)
+        .then((result) => {
+            showToast(`Вітаємо, ${result.user.displayName}! 🎉`);
+        })
+        .catch((error) => {
+            console.error("Login failed:", error);
+            showToast(`Помилка входу: ${error.message}`);
+        });
+}
+
+function logout() {
+    if (typeof firebase === "undefined" || !firebase.auth) return;
+    firebase.auth().signOut().then(() => {
+        showToast("Ви вийшли з акаунта.");
+    });
+}
+
+// Update the global header profile layout
+function updateAuthUI(user) {
+    const authBox = document.getElementById("headerAuth");
+    if (!authBox) return;
+
+    if (user) {
+        authBox.innerHTML = `
+            <div class="user-profile">
+                <img src="${user.photoURL || ''}" class="user-avatar" referrerpolicy="no-referrer" alt="${user.displayName}">
+                <span class="user-name">${(user.displayName || "Користувач").split(" ")[0]}</span>
+                <button class="btn btn-secondary btn-xs" id="btnLogoutGoogle">Вийти</button>
+            </div>
+        `;
+        document.getElementById("btnLogoutGoogle").addEventListener("click", logout);
+    } else {
+        authBox.innerHTML = `
+            <button class="btn btn-primary btn-sm" id="btnLoginGoogle">
+                <span class="auth-icon">🔑</span> Увійти
+            </button>
+        `;
+        document.getElementById("btnLoginGoogle").addEventListener("click", loginWithGoogle);
+    }
+}
+
+// Initialize Custom Tier List Editor
+function initTierlistEditor() {
+    // Fill state
+    editorState = {
+        "S+": [],
+        "S": [],
+        "A": [],
+        "B": [],
+        "pool": []
+    };
+
+    const activeList = CHARACTERS.length > 0 ? CHARACTERS : FALLBACK_CHARACTERS;
+    activeList.forEach(char => {
+        editorState.pool.push(char.id);
+    });
+
+    renderEditor();
+}
+
+// Render the editor UI rows and pool
+function renderEditor() {
+    const tiers = ["S+", "S", "A", "B"];
+    const activeList = CHARACTERS.length > 0 ? CHARACTERS : FALLBACK_CHARACTERS;
+
+    // Render Rows
+    tiers.forEach(tier => {
+        const dropzoneId = `dropzone-${tier.replace("+", "-plus")}`;
+        const zone = document.getElementById(dropzoneId);
+        if (!zone) return;
+        zone.innerHTML = "";
+
+        editorState[tier].forEach(charId => {
+            const char = activeList.find(c => c.id === charId);
+            if (char) zone.appendChild(createDraggableElement(char, tier));
+        });
+    });
+
+    // Render Pool
+    const pool = document.getElementById("editorCharacterPool");
+    if (pool) {
+        pool.innerHTML = "";
+        editorState.pool.forEach(charId => {
+            const char = activeList.find(c => c.id === charId);
+            if (char) pool.appendChild(createDraggableElement(char, "pool"));
+        });
+    }
+}
+
+// Create a draggable character element for the editor workspace (mobile friendly via click)
+function createDraggableElement(char, currentTier) {
+    const el = document.createElement("div");
+    el.className = `draggable-char rarity-${char.rarity}`;
+    el.draggable = true;
+    el.innerHTML = `
+        <div class="draggable-char-avatar">${renderAvatarHtml(char)}</div>
+        <span class="draggable-char-name">${char.name.split(" ")[0]}</span>
+    `;
+
+    // Drag start
+    el.addEventListener("dragstart", (e) => {
+        e.dataTransfer.setData("text/plain", char.id);
+        e.dataTransfer.setData("source", currentTier);
+    });
+
+    // Mobile click-to-move menu
+    el.addEventListener("click", () => {
+        openClickMoveMenu(char.id);
+    });
+
+    return el;
+}
+
+// Mobile/Click menu for shifting characters
+function openClickMoveMenu(charId) {
+    const tiers = ["S+", "S", "A", "B", "pool"];
+    const names = {
+        "S+": "Ранг S+",
+        "S": "Ранг S",
+        "A": "Ранг A",
+        "B": "Ранг B",
+        "pool": "Скинути в пул"
+    };
+
+    const activeList = CHARACTERS.length > 0 ? CHARACTERS : FALLBACK_CHARACTERS;
+    const char = activeList.find(c => c.id === charId);
+    if (!char) return;
+
+    // Create popup dialog
+    const menu = document.createElement("div");
+    menu.className = "click-move-menu glass-panel";
+    menu.style.position = "fixed";
+    menu.style.top = "50%";
+    menu.style.left = "50%";
+    menu.style.transform = "translate(-50%, -50%)";
+    menu.style.zIndex = "10000";
+    menu.style.padding = "1.5rem";
+    menu.style.boxShadow = "var(--shadow-panel)";
+    menu.style.borderRadius = "12px";
+    menu.style.background = "var(--bg-panel)";
+    menu.style.border = "1px solid var(--border-glass)";
+    menu.style.display = "flex";
+    menu.style.flexDirection = "column";
+    menu.style.gap = "0.8rem";
+
+    menu.innerHTML = `
+        <h4 style="margin-bottom: 0.4rem; color: var(--color-cyan); font-family: var(--font-heading);">Перемістити ${char.name.split(" ")[0]}</h4>
+        <div style="display: flex; flex-direction: column; gap: 0.5rem; width: 200px;">
+            ${tiers.map(t => `<button class="btn btn-secondary btn-sm select-tier-btn" data-target="${t}">${names[t]}</button>`).join("")}
+            <button class="btn btn-accent btn-sm mt-1 close-menu-btn">Скасувати</button>
+        </div>
+    `;
+
+    document.body.appendChild(menu);
+
+    // Blocking backdrop
+    const bg = document.createElement("div");
+    bg.style.position = "fixed";
+    bg.style.inset = "0";
+    bg.style.zIndex = "9999";
+    bg.style.background = "rgba(0,0,0,0.5)";
+    document.body.appendChild(bg);
+
+    const close = () => {
+        menu.remove();
+        bg.remove();
+    };
+
+    bg.addEventListener("click", close);
+    menu.querySelector(".close-menu-btn").addEventListener("click", close);
+    menu.querySelectorAll(".select-tier-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const target = btn.getAttribute("data-target");
+            moveCharInEditor(charId, target);
+            close();
+        });
+    });
+}
+
+// Core editor moving logic
+function moveCharInEditor(charId, targetTier) {
+    // Find current tier
+    let currentTier = null;
+    Object.keys(editorState).forEach(t => {
+        if (editorState[t].includes(charId)) currentTier = t;
+    });
+
+    if (currentTier === targetTier || !currentTier) return;
+
+    // Remove from source
+    editorState[currentTier] = editorState[currentTier].filter(id => id !== charId);
+    
+    // Add to target
+    editorState[targetTier].push(charId);
+
+    renderEditor();
+}
+
+// Save Custom Tier List to Firestore
+async function saveUserTierlist() {
+    const user = firebase.auth && firebase.auth().currentUser;
+    if (!user) {
+        showToast("Будь ласка, спочатку авторизуйтеся!");
+        return;
+    }
+
+    const titleInput = document.getElementById("editorTitle");
+    const title = (titleInput && titleInput.value.trim()) || "Мій тір-ліст";
+
+    // Count assigned characters
+    const assignedCount = Object.keys(editorState).reduce((acc, tier) => {
+        return acc + (tier !== "pool" ? editorState[tier].length : 0);
+    }, 0);
+
+    if (assignedCount === 0) {
+        showToast("Будь ласка, розподіліть персонажів по рядах!");
+        return;
+    }
+
+    try {
+        const docData = {
+            userId: user.uid,
+            userName: user.displayName || "Гість",
+            userPhoto: user.photoURL || "",
+            title: title,
+            tiers: {
+                "S+": editorState["S+"],
+                "S": editorState["S"],
+                "A": editorState["A"],
+                "B": editorState["B"]
+            },
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        };
+
+        if (typeof db === "undefined") {
+            showToast("База даних Firestore недоступна!");
+            return;
+        }
+
+        await db.collection("userTierlists").add(docData);
+        showToast("Тір-ліст успішно опубліковано! 🎉");
+
+        // Force switch to community tab
+        const commBtn = document.querySelector('[data-sub-tab="community"]');
+        if (commBtn) commBtn.click();
+    } catch (e) {
+        console.error("Save custom tierlist failed:", e);
+        showToast(`Помилка збереження: ${e.message}`);
+    }
+}
+
+// Load community tier lists from Firestore
+async function loadCommunityTierlists() {
+    const container = document.getElementById("communityGrid");
+    if (!container) return;
+
+    container.innerHTML = `<div class="community-loading">Завантаження тір-лістів спільноти...</div>`;
+
+    if (typeof db === "undefined") {
+        container.innerHTML = `<div class="community-loading">База даних недоступна. Увійдіть у мережу для перегляду.</div>`;
+        return;
+    }
+
+    try {
+        const snapshot = await db.collection("userTierlists").orderBy("createdAt", "desc").limit(40).get();
+        
+        if (snapshot.empty) {
+            container.innerHTML = `<div class="community-loading">Немає збережених тір-лістів. Створіть перший! 🚀</div>`;
+            return;
+        }
+
+        container.innerHTML = "";
+        snapshot.docs.forEach(doc => {
+            const data = doc.data();
+            const dateStr = data.createdAt ? new Date(data.createdAt.seconds * 1000).toLocaleDateString("uk-UA") : "Нещодавно";
+
+            const card = document.createElement("div");
+            card.className = "user-tierlist-card";
+            card.innerHTML = `
+                <h4 class="user-card-title">${data.title}</h4>
+                <div class="user-card-meta">
+                    <img src="${data.userPhoto || '👤'}" class="user-card-avatar" referrerpolicy="no-referrer" alt="${data.userName}">
+                    <span class="user-card-author">${data.userName}</span>
+                    <span class="user-card-date">${dateStr}</span>
+                </div>
+                <button class="btn btn-secondary btn-sm mt-2 view-tierlist-btn" data-id="${doc.id}">Переглянути</button>
+            `;
+
+            card.querySelector(".view-tierlist-btn").addEventListener("click", () => {
+                viewUserTierlist(data);
+            });
+
+            container.appendChild(card);
+        });
+    } catch (e) {
+        console.error("Load community lists failed:", e);
+        container.innerHTML = `<div class="community-loading">Помилка завантаження: ${e.message}</div>`;
+    }
+}
+
+// Render raw avatar URL for view badges
+function renderAvatarUrlOnly(char) {
+    if (char && char.avatar && char.avatar.startsWith('http')) {
+        let cleanUrl = char.avatar;
+        if (cleanUrl.includes('/revision/')) {
+            cleanUrl = cleanUrl.split('/revision/')[0];
+        }
+        return `https://images.weserv.nl/?url=${encodeURIComponent(cleanUrl)}&w=200`;
+    }
+    return '';
+}
+
+// Display custom tierlist inside Modal popup
+function viewUserTierlist(data) {
+    const modal = document.getElementById("userTierlistModalOverlay");
+    const title = document.getElementById("viewTierlistTitle");
+    const author = document.getElementById("viewTierlistAuthor");
+
+    if (!modal || !title || !author) return;
+
+    title.innerText = data.title;
+    author.innerText = `Автор: ${data.userName}`;
+
+    const tiers = ["S+", "S", "A", "B"];
+    const activeList = CHARACTERS.length > 0 ? CHARACTERS : FALLBACK_CHARACTERS;
+
+    tiers.forEach(tier => {
+        const gridId = `viewGrid-${tier.replace("+", "-plus")}`;
+        const grid = document.getElementById(gridId);
+        if (!grid) return;
+        
+        grid.innerHTML = "";
+
+        const charIds = data.tiers[tier] || [];
+        if (charIds.length === 0) {
+            grid.innerHTML = `<span style="font-size:0.75rem; color:var(--text-muted); opacity: 0.5;">Порожньо</span>`;
+        } else {
+            charIds.forEach(charId => {
+                const char = activeList.find(c => c.id === charId);
+                if (char) {
+                    const badge = document.createElement("div");
+                    badge.className = "view-char-badge";
+                    
+                    const avatarUrl = renderAvatarUrlOnly(char);
+                    const avatarHtml = avatarUrl ? `<img src="${avatarUrl}" class="view-char-avatar" alt="${char.name}">` : '';
+                    
+                    badge.innerHTML = `
+                        ${avatarHtml}
+                        <span class="view-char-name">${char.name.split(" ")[0]}</span>
+                    `;
+                    grid.appendChild(badge);
+                }
+            });
+        }
+    });
+
+    modal.classList.add("active");
+}
+
