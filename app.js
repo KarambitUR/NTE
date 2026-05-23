@@ -1338,6 +1338,8 @@ function renderHomeWidgets() {
                 let statusText = event.status;
                 if (event.status === 'Released') {
                     statusText = currentLang === 'uk' ? 'Випущено' : 'Released';
+                } else if (event.status === 'Active') {
+                    statusText = currentLang === 'uk' ? 'Активне' : 'Active';
                 } else if (event.status === 'Upcoming') {
                     statusText = currentLang === 'uk' ? 'Майбутнє' : 'Upcoming';
                 }
@@ -3457,6 +3459,8 @@ function renderTimeline() {
         let statusText = event.status;
         if (event.status === 'Released') {
             statusText = currentLang === 'uk' ? 'Випущено' : 'Released';
+        } else if (event.status === 'Active') {
+            statusText = currentLang === 'uk' ? 'Активне' : 'Active';
         } else if (event.status === 'Upcoming') {
             statusText = currentLang === 'uk' ? 'Майбутнє' : 'Upcoming';
         }
