@@ -977,10 +977,20 @@ function calculateResources() {
     
     const details = attributeDetails[char.attribute] || { specialty: "Рідкісна руда", boss: "Рейдовий Бос" };
 
+    // SVG icons for materials (inline, no external dependencies)
+    const matIcons = {
+        coin: `<svg viewBox="0 0 48 48" width="36" height="36"><circle cx="24" cy="24" r="20" fill="#FFD700" stroke="#B8860B" stroke-width="3"/><circle cx="24" cy="24" r="14" fill="none" stroke="#B8860B" stroke-width="1.5" opacity="0.5"/><text x="24" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#8B6914" font-family="serif">$</text></svg>`,
+        exp: `<svg viewBox="0 0 48 48" width="36" height="36"><rect x="10" y="6" width="28" height="36" rx="3" fill="#4FC3F7" stroke="#0288D1" stroke-width="2"/><rect x="14" y="6" width="24" height="36" rx="3" fill="#29B6F6" stroke="#0288D1" stroke-width="1.5"/><line x1="18" y1="15" x2="34" y2="15" stroke="#E1F5FE" stroke-width="2" stroke-linecap="round"/><line x1="18" y1="21" x2="34" y2="21" stroke="#E1F5FE" stroke-width="2" stroke-linecap="round"/><line x1="18" y1="27" x2="30" y2="27" stroke="#E1F5FE" stroke-width="2" stroke-linecap="round"/><polygon points="24,32 25.5,35 29,35.5 26.5,37.8 27,41 24,39.3 21,41 21.5,37.8 19,35.5 22.5,35" fill="#FFF176"/></svg>`,
+        boss: `<svg viewBox="0 0 48 48" width="36" height="36"><circle cx="24" cy="24" r="20" fill="#EF5350" stroke="#B71C1C" stroke-width="2"/><circle cx="17" cy="20" r="4" fill="#FFCDD2"/><circle cx="31" cy="20" r="4" fill="#FFCDD2"/><circle cx="17" cy="20" r="2" fill="#212121"/><circle cx="31" cy="20" r="2" fill="#212121"/><path d="M16 32 Q24 38 32 32" stroke="#FFCDD2" stroke-width="2.5" fill="none" stroke-linecap="round"/><line x1="19" y1="33" x2="19" y2="37" stroke="#FFCDD2" stroke-width="1.5"/><line x1="24" y1="35" x2="24" y2="39" stroke="#FFCDD2" stroke-width="1.5"/><line x1="29" y1="33" x2="29" y2="37" stroke="#FFCDD2" stroke-width="1.5"/></svg>`,
+        crystal: `<svg viewBox="0 0 48 48" width="36" height="36"><polygon points="24,4 38,18 32,44 16,44 10,18" fill="#AB47BC" stroke="#7B1FA2" stroke-width="2"/><polygon points="24,4 30,18 24,44 18,18" fill="#CE93D8" opacity="0.6"/><polygon points="24,4 38,18 30,18" fill="#E1BEE7" opacity="0.4"/><line x1="24" y1="4" x2="24" y2="44" stroke="#E1BEE7" stroke-width="0.5" opacity="0.5"/></svg>`,
+        scroll: `<svg viewBox="0 0 48 48" width="36" height="36"><rect x="12" y="8" width="24" height="32" rx="2" fill="#FFF8E1" stroke="#F9A825" stroke-width="2"/><circle cx="12" cy="10" r="4" fill="#FFD54F" stroke="#F9A825" stroke-width="1.5"/><circle cx="12" cy="38" r="4" fill="#FFD54F" stroke="#F9A825" stroke-width="1.5"/><circle cx="36" cy="10" r="4" fill="#FFD54F" stroke="#F9A825" stroke-width="1.5"/><circle cx="36" cy="38" r="4" fill="#FFD54F" stroke="#F9A825" stroke-width="1.5"/><line x1="17" y1="17" x2="31" y2="17" stroke="#F9A825" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="22" x2="31" y2="22" stroke="#F9A825" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="27" x2="27" y2="27" stroke="#F9A825" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+        dye: `<svg viewBox="0 0 48 48" width="36" height="36"><path d="M18 8 L16 20 L12 40 Q12 44 16 44 L32 44 Q36 44 36 40 L32 20 L30 8 Z" fill="#66BB6A" stroke="#2E7D32" stroke-width="2"/><rect x="16" y="6" width="16" height="6" rx="2" fill="#A5D6A7" stroke="#2E7D32" stroke-width="1.5"/><ellipse cx="24" cy="36" rx="8" ry="4" fill="#A5D6A7" opacity="0.4"/><path d="M20 20 Q24 16 28 20" stroke="#A5D6A7" stroke-width="1.5" fill="none"/></svg>`
+    };
+
     resultsContainer.innerHTML = `
         <div class="material-item">
             <div class="mat-left">
-                <div class="mat-icon"><img src="https://img.icons8.com/color/96/coins.png" alt="Beetle Coins"></div>
+                <div class="mat-icon">${matIcons.coin}</div>
                 <div class="mat-name">Beetle Coins (Золото)</div>
             </div>
             <div class="mat-quantity">${totalCoins.toLocaleString()}</div>
@@ -988,7 +998,7 @@ function calculateResources() {
         
         <div class="material-item">
             <div class="mat-left">
-                <div class="mat-icon"><img src="https://img.icons8.com/color/96/book.png" alt="EXP Guide"></div>
+                <div class="mat-icon">${matIcons.exp}</div>
                 <div class="mat-name">Elite Hunter Guides (Досвід)</div>
             </div>
             <div class="mat-quantity">${totalExpGuides} шт.</div>
@@ -997,7 +1007,7 @@ function calculateResources() {
         ${totalBossDrops > 0 ? `
         <div class="material-item">
             <div class="mat-left">
-                <div class="mat-icon"><img src="https://img.icons8.com/color/96/monster-face.png" alt="Boss Drops"></div>
+                <div class="mat-icon">${matIcons.boss}</div>
                 <div class="mat-name">Ядро боса: ${details.boss}</div>
             </div>
             <div class="mat-quantity">${totalBossDrops} шт.</div>
@@ -1007,7 +1017,7 @@ function calculateResources() {
         ${totalRegionalSpecialties > 0 ? `
         <div class="material-item">
             <div class="mat-left">
-                <div class="mat-icon"><img src="https://img.icons8.com/color/96/crystal.png" alt="Specialties"></div>
+                <div class="mat-icon">${matIcons.crystal}</div>
                 <div class="mat-name">Спеціальність: ${details.specialty}</div>
             </div>
             <div class="mat-quantity">${totalRegionalSpecialties} шт.</div>
@@ -1017,7 +1027,7 @@ function calculateResources() {
         ${includeSkills ? `
         <div class="material-item">
             <div class="mat-left">
-                <div class="mat-icon"><img src="https://img.icons8.com/color/96/scroll.png" alt="Skill Scrolls"></div>
+                <div class="mat-icon">${matIcons.scroll}</div>
                 <div class="mat-name">Матеріали навичок (Кроляча Нора)</div>
             </div>
             <div class="mat-quantity">${skillMaterials} шт.</div>
@@ -1027,7 +1037,7 @@ function calculateResources() {
         ${includeWeapon ? `
         <div class="material-item">
             <div class="mat-left">
-                <div class="mat-icon"><img src="https://img.icons8.com/color/96/test-tube.png" alt="Weapon EXP"></div>
+                <div class="mat-icon">${matIcons.dye}</div>
                 <div class="mat-name">Dye (Досвід Зброї)</div>
             </div>
             <div class="mat-quantity">${weaponExpDye} шт.</div>
