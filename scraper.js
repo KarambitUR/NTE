@@ -274,6 +274,155 @@ async function run() {
     if (firestoreDb) {
         await writeToFirestore(updatedCodes);
     }
+
+    // ===== TIMELINE AUTO-UPDATE =====
+    if (firestoreDb) {
+        await updateTimelineStatuses();
+        await scrapeTimelineEvents();
+    }
+}
+
+// Auto-update timeline event statuses based on current date
+async function updateTimelineStatuses() {
+    if (!firestoreDb) return;
+
+    try {
+        const snapshot = await firestoreDb.collection('timelineEvents').get();
+        if (snapshot.empty) return;
+
+        const now = new Date();
+        const batch = firestoreDb.batch();
+        let updatedCount = 0;
+
+        // Date parsing map for Ukrainian months
+        const monthMap = {
+            'Січня': 0, 'Лютого': 1, 'Березня': 2, 'Квітня': 3,
+            'Травня': 4, 'Червня': 5, 'Липня': 6, 'Серпня': 7,
+            'Вересня': 8, 'Жовтня': 9, 'Листопада': 10, 'Грудня': 11
+        };
+
+        snapshot.docs.forEach(doc => {
+            const event = doc.data();
+            if (!event.date) return;
+
+            // Try to parse the date
+            let eventDate = null;
+
+            // Match patterns like "29 Квітня 2026" or "3-4 Червня 2026"
+            const dateMatch = event.date.match(/(\d{1,2})(?:-\d{1,2})?\s+(\S+)\s+(\d{4})/);
+            if (dateMatch) {
+                const day = parseInt(dateMatch[1]);
+                const monthName = dateMatch[2];
+                const year = parseInt(dateMatch[3]);
+
+                if (monthMap[monthName] !== undefined) {
+                    // For ranges like "3-4 Червня", use the last day
+                    const rangeMatch = event.date.match(/\d{1,2}-(\d{1,2})/);
+                    const actualDay = rangeMatch ? parseInt(rangeMatch[1]) : day;
+                    eventDate = new Date(year, monthMap[monthName], actualDay, 23, 59, 59);
+                }
+            }
+
+            if (!eventDate) return;
+
+            let newStatus = event.status;
+            if (eventDate < now && event.status !== 'Released') {
+                newStatus = 'Released';
+            } else if (eventDate > now) {
+                // Check if it's today or within 24 hours
+                const diffHours = (eventDate - now) / (1000 * 60 * 60);
+                if (diffHours <= 24 && event.status !== 'Active') {
+                    newStatus = 'Active';
+                }
+            }
+
+            if (newStatus !== event.status) {
+                batch.update(doc.ref, { status: newStatus });
+                updatedCount++;
+                console.log(`📅 Timeline "${event.title}" status: ${event.status} → ${newStatus}`);
+            }
+        });
+
+        if (updatedCount > 0) {
+            await batch.commit();
+            console.log(`📅 Updated ${updatedCount} timeline event statuses`);
+        } else {
+            console.log('📅 All timeline statuses are up to date');
+        }
+    } catch (err) {
+        console.error('Timeline status update failed:', err.message);
+    }
+}
+
+// Scrape for new NTE game events/updates
+async function scrapeTimelineEvents() {
+    if (!firestoreDb) return;
+
+    const eventSources = [
+        { url: 'https://www.eurogamer.net/neverness-to-everness-nte-codes', name: 'Eurogamer' },
+        { url: 'https://www.pcgamesn.com/neverness-to-everness/codes', name: 'PCGamesN' }
+    ];
+
+    let foundEvents = [];
+
+    for (const source of eventSources) {
+        try {
+            const html = await fetchPage(source.url);
+
+            // Look for update/version mentions with dates
+            // Pattern: "Version X.X" or "Update X.X" with nearby dates
+            const versionPattern = /(?:version|update|patch)\s*(\d+\.\d+)[^<]*?(?:(\w+\s+\d{1,2})|(\d{1,2}\s+\w+))\s*,?\s*(\d{4})?/gi;
+            let match;
+            while ((match = versionPattern.exec(html)) !== null) {
+                const version = match[1];
+                const dateStr = (match[2] || match[3] || '').trim();
+                if (version && dateStr) {
+                    foundEvents.push({
+                        version,
+                        dateStr,
+                        source: source.name
+                    });
+                }
+            }
+        } catch (err) {
+            // Silently skip failed sources for events
+        }
+    }
+
+    if (foundEvents.length > 0) {
+        console.log(`📅 Found ${foundEvents.length} potential timeline events from web`);
+        
+        // Check which events are already in Firestore
+        const existing = await firestoreDb.collection('timelineEvents').get();
+        const existingTitles = existing.docs.map(d => d.data().title?.toLowerCase() || '');
+
+        const batch = firestoreDb.batch();
+        let addedCount = 0;
+
+        for (const event of foundEvents) {
+            const title = `Оновлення ${event.version}`;
+            if (!existingTitles.some(t => t.includes(event.version))) {
+                const ref = firestoreDb.collection('timelineEvents').doc(`event_auto_${event.version.replace('.', '_')}`);
+                batch.set(ref, {
+                    date: event.dateStr,
+                    title: title,
+                    desc: `Нове оновлення версії ${event.version}. Інформація отримана автоматично з ${event.source}.`,
+                    status: 'Upcoming',
+                    badgeClass: 'badge-phase',
+                    order: 100 + addedCount,
+                    autoAdded: true,
+                    source: event.source
+                });
+                addedCount++;
+                console.log(`📅 [NEW EVENT]: ${title} (${event.dateStr})`);
+            }
+        }
+
+        if (addedCount > 0) {
+            await batch.commit();
+            console.log(`📅 Added ${addedCount} new timeline events`);
+        }
+    }
 }
 
 run();
