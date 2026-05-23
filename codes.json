@@ -56,22 +56,22 @@
     },
     {
         "code": "NTE0429",
-        "rewards": "Active Promo Code (Ресурси)",
+        "rewards": "12k beetle coins, 100 annulith, five elite hunter guides, and two chaotic dye",
         "active": true
     },
     {
         "code": "NTENANALLYGO",
-        "rewards": "Active Promo Code (Ресурси)",
+        "rewards": "6k beetle coins, 100 annulith, five senior hunter guides, and five colorless dye",
         "active": true
     },
     {
         "code": "NTENOWTOENJOY",
-        "rewards": "Active Promo Code (Ресурси)",
+        "rewards": "6k beetle coins, 100 annulith, five rising hunter guides, and five light dye",
         "active": true
     },
     {
         "code": "NTEHAVEFUN",
-        "rewards": "Active Promo Code (Ресурси)",
+        "rewards": "three rising hunter guide, three light dyes, and three manhole thugs",
         "active": true
     }
 ]
