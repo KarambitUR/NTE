@@ -699,6 +699,7 @@ const CHARACTER_MATERIAL_PROFILES = {
         skillBooks: ["The Olive Branch", "Dove's Flutter", "Nestling's Longing"],
         weekly: "Dress Sleeves of Vanity",
         weeklyFarm: "Anomaly Pilgrimage: The Never-ending Arachne",
+        uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Confessional-Flower-Seed.webp",
         fullTotals: {
             coin: 2273000,
             boss: 86,
@@ -711,15 +712,15 @@ const CHARACTER_MATERIAL_PROFILES = {
             weekly: 32
         }
     },
-    zero: { unique: "Charging Knight Spark Plug", uniqueFarm: "Anomaly Hunt: Headless Rider / Material Selection Box" },
-    sakiri: { unique: "Charging Knight Spark Plug", uniqueFarm: "Anomaly Hunt: Headless Rider / Material Selection Box" },
-    daffodil: { unique: "Charging Knight Spark Plug", uniqueFarm: "Anomaly Hunt: Headless Rider / Material Selection Box" },
-    nanally: { unique: "A Page from Delusion's Shore", uniqueFarm: "Anomaly Hunt: Black Tome / Material Selection Box" },
-    mint: { unique: "A Page from Delusion's Shore", uniqueFarm: "Anomaly Hunt: Black Tome / Material Selection Box" },
-    jiuyuan: { unique: "Tear of the Sea", uniqueFarm: "Anomaly Hunt: Sea Prisoner / Material Selection Box" },
-    adler: { unique: "Water Moon Pick", uniqueFarm: "Anomaly Hunt: Beat King / Material Selection Box" },
-    haniel: { unique: "Nest Guard Fragment", uniqueFarm: "Anomaly Hunt: Nestbound Bird / Material Selection Box" },
-    skia: { unique: "Confessional Flower Seed", uniqueFarm: "Anomaly Hunt: Serenetti / Material Selection Box" }
+    zero: { unique: "Charging Knight Spark Plug", uniqueFarm: "Anomaly Hunt: Headless Rider / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Charging-Knight-Spark-Plug.webp" },
+    sakiri: { unique: "Charging Knight Spark Plug", uniqueFarm: "Anomaly Hunt: Headless Rider / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Charging-Knight-Spark-Plug.webp" },
+    daffodil: { unique: "Charging Knight Spark Plug", uniqueFarm: "Anomaly Hunt: Headless Rider / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Charging-Knight-Spark-Plug.webp" },
+    nanally: { unique: "A Page from Delusion's Shore", uniqueFarm: "Anomaly Hunt: Black Tome / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/A-Page-from-Delusions-Shore.webp" },
+    mint: { unique: "A Page from Delusion's Shore", uniqueFarm: "Anomaly Hunt: Black Tome / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/A-Page-from-Delusions-Shore.webp" },
+    jiuyuan: { unique: "Tear of the Sea", uniqueFarm: "Anomaly Hunt: Sea Prisoner / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Tear-of-the-Sea.webp" },
+    adler: { unique: "Water Moon Pick", uniqueFarm: "Anomaly Hunt: Beat King / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Water-Moon-Pick.webp" },
+    haniel: { unique: "Nest Guard Fragment", uniqueFarm: "Anomaly Hunt: Nestbound Bird / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Nest-Guard-Fragment.webp" },
+    skia: { unique: "Confessional Flower Seed", uniqueFarm: "Anomaly Hunt: Serenetti / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Confessional-Flower-Seed.webp" }
 };
 
 const TIMELINE_TRANSLATIONS = {
@@ -2600,6 +2601,10 @@ function getMaterialIcon(id) {
     return `<img src="${src}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'mat-fallback-icon',textContent:'${label}'}))">`;
 }
 
+function setMaterialIcon(id, src) {
+    if (src) MATERIAL_ICON_URLS[id] = src;
+}
+
 function renderCalculatorSetup() {
     initCalculatorData();
 
@@ -2981,6 +2986,8 @@ function calculateResources() {
         attrDetails.farmBoss = profile.uniqueFarm || attrDetails.farmBoss;
         attrDetails.specialty = profile.unique;
         attrDetails.farmSpecialty = profile.uniqueFarm || attrDetails.farmSpecialty;
+        setMaterialIcon("boss", profile.uniqueIcon);
+        setMaterialIcon("specialty", profile.uniqueIcon);
     }
     if (profile.commonFamily) {
         attrDetails.common.T1 = profile.commonFamily[0];
