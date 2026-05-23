@@ -1,7 +1,15 @@
 // NTE Eibon Terminal - Core Application Logic
+// =============================================
+// Data is loaded from Firebase Firestore with localStorage fallback
 
-// 1. CHARACTER DATABASE
-const CHARACTERS = [
+// 1. DATA STORES (populated from Firestore or fallback)
+let CHARACTERS = [];
+let PROMO_CODES = [];
+let TIMELINE_EVENTS = [];
+let dataSource = 'loading'; // 'firestore', 'cache', 'hardcoded'
+
+// 2. HARDCODED FALLBACK DATA (used when Firestore and cache are unavailable)
+const FALLBACK_CHARACTERS = [
     {
         id: "nanally",
         name: "Nanally (Наналлі)",
@@ -276,21 +284,7 @@ const CHARACTERS = [
     }
 ];
 
-// Helper to render character avatars (supports both image URLs and emojis, with proxying to bypass hotlinking blockers)
-function renderAvatarHtml(char) {
-    if (char && char.avatar && char.avatar.startsWith('http')) {
-        let cleanUrl = char.avatar;
-        if (cleanUrl.includes('/revision/')) {
-            cleanUrl = cleanUrl.split('/revision/')[0];
-        }
-        const proxiedUrl = `https://images.weserv.nl/?url=${encodeURIComponent(cleanUrl)}&w=200`;
-        return `<img src="${proxiedUrl}" alt="${char.name}" class="avatar-img" referrerpolicy="no-referrer">`;
-    }
-    return char ? char.avatar : '';
-}
-
-// 2. PROMO CODES DATABASE (Initial state)
-let PROMO_CODES = [
+const FALLBACK_PROMO_CODES = [
     { code: "NTE429vtuber", rewards: "30,000 Beetle Coins, 30,000 Fons", active: true },
     { code: "NTEWINFONS", rewards: "10,000 Fons", active: true },
     { code: "NTEFUNGAME", rewards: "10,000 Fons", active: true },
@@ -301,8 +295,7 @@ let PROMO_CODES = [
     { code: "504980102FKGOVNS", rewards: "30 Annulith, 1 Gubichi Flavor Chips, 20,000 Beetle Coins", active: true }
 ];
 
-// 3. UPDATES CALENDAR DATABASE
-const TIMELINE_EVENTS = [
+const FALLBACK_TIMELINE_EVENTS = [
     {
         date: "29 Квітня 2026",
         title: "Глобальний Реліз Neverness to Everness (1.0)",
@@ -333,12 +326,160 @@ const TIMELINE_EVENTS = [
     }
 ];
 
+// 3. FIRESTORE DATA LOADING
+async function loadFromFirestore() {
+    if (typeof firebase === 'undefined' || typeof db === 'undefined') {
+        console.warn('Firebase not initialized, using fallback data');
+        return false;
+    }
+
+    try {
+        // Load characters
+        const charsSnapshot = await db.collection('characters').get();
+        if (!charsSnapshot.empty) {
+            CHARACTERS = charsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            localStorage.setItem('nte_characters', JSON.stringify(CHARACTERS));
+            console.log(`✅ Loaded ${CHARACTERS.length} characters from Firestore`);
+        }
+
+        // Load promo codes
+        const codesSnapshot = await db.collection('promoCodes').where('active', '==', true).get();
+        if (!codesSnapshot.empty) {
+            PROMO_CODES = codesSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            localStorage.setItem('nte_promoCodes', JSON.stringify(PROMO_CODES));
+            console.log(`✅ Loaded ${PROMO_CODES.length} promo codes from Firestore`);
+        }
+
+        // Load timeline events
+        const timelineSnapshot = await db.collection('timelineEvents').orderBy('order', 'asc').get();
+        if (!timelineSnapshot.empty) {
+            TIMELINE_EVENTS = timelineSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            localStorage.setItem('nte_timelineEvents', JSON.stringify(TIMELINE_EVENTS));
+            console.log(`✅ Loaded ${TIMELINE_EVENTS.length} timeline events from Firestore`);
+        }
+
+        dataSource = 'firestore';
+        return true;
+    } catch (error) {
+        console.warn('Firestore load failed:', error.message);
+        return false;
+    }
+}
+
+function loadFromCache() {
+    try {
+        const cachedChars = localStorage.getItem('nte_characters');
+        const cachedCodes = localStorage.getItem('nte_promoCodes');
+        const cachedTimeline = localStorage.getItem('nte_timelineEvents');
+
+        if (cachedChars) CHARACTERS = JSON.parse(cachedChars);
+        if (cachedCodes) PROMO_CODES = JSON.parse(cachedCodes);
+        if (cachedTimeline) TIMELINE_EVENTS = JSON.parse(cachedTimeline);
+
+        if (cachedChars || cachedCodes || cachedTimeline) {
+            dataSource = 'cache';
+            console.log('📦 Loaded data from localStorage cache');
+            return true;
+        }
+    } catch (e) {
+        console.warn('Cache load failed:', e);
+    }
+    return false;
+}
+
+function loadFallbackData() {
+    CHARACTERS = [...FALLBACK_CHARACTERS];
+    PROMO_CODES = [...FALLBACK_PROMO_CODES];
+    TIMELINE_EVENTS = [...FALLBACK_TIMELINE_EVENTS];
+    dataSource = 'hardcoded';
+    console.log('📋 Using hardcoded fallback data');
+}
+
+// Setup realtime listeners for promo codes (auto-update when admin changes them)
+function setupRealtimeListeners() {
+    if (typeof firebase === 'undefined' || typeof db === 'undefined') return;
+
+    try {
+        // Realtime listener for promo codes
+        db.collection('promoCodes')
+            .where('active', '==', true)
+            .onSnapshot((snapshot) => {
+                if (!snapshot.empty) {
+                    PROMO_CODES = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                    localStorage.setItem('nte_promoCodes', JSON.stringify(PROMO_CODES));
+                    renderPromoCodes();
+                    console.log('🔄 Promo codes updated in realtime');
+                }
+            }, (error) => {
+                console.warn('Promo codes realtime listener error:', error);
+            });
+
+        // Realtime listener for characters (for tier changes, new chars)
+        db.collection('characters').onSnapshot((snapshot) => {
+            if (!snapshot.empty) {
+                CHARACTERS = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                localStorage.setItem('nte_characters', JSON.stringify(CHARACTERS));
+                renderTierList();
+                renderBuilds();
+                renderCalculatorSetup();
+                console.log('🔄 Characters updated in realtime');
+            }
+        }, (error) => {
+            console.warn('Characters realtime listener error:', error);
+        });
+    } catch (e) {
+        console.warn('Realtime listeners setup failed:', e);
+    }
+}
+
+// Helper to render character avatars (supports both image URLs and emojis, with proxying to bypass hotlinking blockers)
+function renderAvatarHtml(char) {
+    if (char && char.avatar && char.avatar.startsWith('http')) {
+        let cleanUrl = char.avatar;
+        if (cleanUrl.includes('/revision/')) {
+            cleanUrl = cleanUrl.split('/revision/')[0];
+        }
+        const proxiedUrl = `https://images.weserv.nl/?url=${encodeURIComponent(cleanUrl)}&w=200`;
+        return `<img src="${proxiedUrl}" alt="${char.name}" class="avatar-img" referrerpolicy="no-referrer">`;
+    }
+    return char ? char.avatar : '';
+}
+
 // 4. APPLICATION STATE
 let currentSquad = [null, null, null, null]; // Slots for Team Builder
 let activeSelectorSlot = null;
 
 // 5. INITIALIZATION & ROUTING
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+    // Try loading data in priority order: Firestore → Cache → Hardcoded fallback
+    const firestoreSuccess = await loadFromFirestore();
+    
+    if (!firestoreSuccess) {
+        const cacheSuccess = loadFromCache();
+        if (!cacheSuccess) {
+            loadFallbackData();
+        }
+    }
+
+    // Also try loading codes.json as additional fallback for promo codes
+    if (PROMO_CODES.length === 0) {
+        try {
+            const res = await fetch('codes.json');
+            const data = await res.json();
+            if (Array.isArray(data) && data.length > 0) {
+                PROMO_CODES = data;
+            }
+        } catch (e) {
+            console.warn('codes.json fallback also failed');
+        }
+    }
+
+    // If still no promo codes, use fallback
+    if (PROMO_CODES.length === 0) {
+        PROMO_CODES = [...FALLBACK_PROMO_CODES];
+    }
+
+    // Initialize all UI components
     initNavigation();
     renderTierList();
     renderBuilds();
@@ -346,20 +487,20 @@ document.addEventListener("DOMContentLoaded", () => {
     renderTimeline();
     setupTeamBuilder();
     setupCalculatorEvents();
-    
-    // Fetch dynamic codes
-    fetch('codes.json')
-        .then(res => res.json())
-        .then(data => {
-            if (Array.isArray(data) && data.length > 0) {
-                PROMO_CODES = data;
-            }
-            renderPromoCodes();
-        })
-        .catch(err => {
-            console.warn("Could not load codes.json, using local backup:", err);
-            renderPromoCodes();
-        });
+    renderPromoCodes();
+
+    // Setup realtime listeners for live updates
+    setupRealtimeListeners();
+
+    // Hide loading overlay
+    const loadingOverlay = document.getElementById('loadingOverlay');
+    if (loadingOverlay) {
+        loadingOverlay.classList.add('hidden');
+    }
+
+    // Show data source indicator
+    const sourceEmoji = dataSource === 'firestore' ? '🔥' : dataSource === 'cache' ? '📦' : '📋';
+    console.log(`${sourceEmoji} App initialized with data from: ${dataSource}`);
     
     // Logo Click returns to Home
     document.getElementById("headerLogo").addEventListener("click", () => switchTab("home"));
