@@ -2,7 +2,7 @@ import { FALLBACK_CHARACTERS } from '../utils/fallbackData.js';
 import { state } from '../scripts/state.js';
 import { db } from '../firebase/firebase.js';
 import { getLocalizedChar, translatePage } from '../localization/i18n.js';
-import { ROLE_TRANSLATIONS, ATTR_TRANSLATIONS } from '../localization/translations.js';
+import { i18n, ROLE_TRANSLATIONS, ATTR_TRANSLATIONS } from '../localization/translations.js';
 import { showToast, renderAvatarHtml, renderAvatarUrlOnly } from '../utils/helpers.js';
 
 import { updateAuthUI } from './auth.js';
@@ -22,7 +22,7 @@ function renderTierList() {
         "A": document.getElementById("tier-A-grid"),
         "B": document.getElementById("tier-B-grid")
     };
-    
+
     Object.values(grids).forEach(grid => grid.innerHTML = "");
 
     const activeList = state.CHARACTERS.length > 0 ? state.CHARACTERS : FALLBACK_CHARACTERS;
@@ -39,7 +39,7 @@ function renderTierList() {
 
     // Populate rows
     let counts = { "S+": 0, "S": 0, "A": 0, "B": 0 };
-    
+
     filtered.forEach(char => {
         const locChar = getLocalizedChar(char);
         const card = document.createElement("div");
@@ -51,7 +51,7 @@ function renderTierList() {
             <div class="char-card-meta">${locChar.role}</div>
         `;
         card.addEventListener("click", () => openCharacterModal(locChar.id));
-        
+
         if (grids[locChar.tier]) {
             grids[locChar.tier].appendChild(card);
             counts[locChar.tier]++;
@@ -248,7 +248,7 @@ function moveCharInEditor(charId, targetTier) {
 
     // Remove from source
     state.editorState[currentTier] = state.editorState[currentTier].filter(id => id !== charId);
-    
+
     // Add to target
     state.editorState[targetTier].push(charId);
 
@@ -323,7 +323,7 @@ async function loadCommunityTierlists() {
 
     try {
         const snapshot = await db.collection("userTierlists").orderBy("createdAt", "desc").limit(40).get();
-        
+
         if (snapshot.empty) {
             container.innerHTML = `<div class="community-loading">${i18n[state.currentLang].comm_empty || "Немає збережених тір-лістів."}</div>`;
             return;
@@ -332,12 +332,12 @@ async function loadCommunityTierlists() {
         container.innerHTML = "";
         snapshot.docs.forEach(doc => {
             const data = doc.data();
-            
+
             let dateStr = "Нещодавно";
             if (data.createdAt) {
                 const dateObj = new Date(data.createdAt.seconds * 1000);
-                dateStr = state.currentLang === 'uk' 
-                    ? dateObj.toLocaleDateString("uk-UA") 
+                dateStr = state.currentLang === 'uk'
+                    ? dateObj.toLocaleDateString("uk-UA")
                     : dateObj.toLocaleDateString("en-US");
             } else {
                 dateStr = state.currentLang === 'uk' ? "Нещодавно" : "Recently";
@@ -415,7 +415,7 @@ function viewUserTierlist(data) {
         const gridId = `viewGrid-${tier.replace("+", "-plus")}`;
         const grid = document.getElementById(gridId);
         if (!grid) return;
-        
+
         grid.innerHTML = "";
 
         const charIds = data.tiers[tier] || [];
@@ -428,10 +428,10 @@ function viewUserTierlist(data) {
                     const locChar = getLocalizedChar(char);
                     const badge = document.createElement("div");
                     badge.className = "view-char-badge";
-                    
+
                     const avatarUrl = renderAvatarUrlOnly(char);
                     const avatarHtml = avatarUrl ? `<img src="${avatarUrl}" class="view-char-avatar" alt="${locChar.name}">` : '';
-                    
+
                     badge.innerHTML = `
                         ${avatarHtml}
                         <span class="view-char-name">${locChar.name.split(" ")[0]}</span>
