@@ -38,6 +38,8 @@ function initGuides() {
             } else {
                 if (teamToggleRow) teamToggleRow.classList.add("hidden");
                 if (customBuilderWrapper) customBuilderWrapper.classList.add("hidden");
+                const guidesGrid = document.getElementById("guidesGridNew");
+                if (guidesGrid) guidesGrid.classList.remove("hidden");
             }
 
             renderGuidesGrid();
