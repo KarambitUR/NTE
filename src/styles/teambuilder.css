@@ -1,0 +1,182 @@
+/* SECTION: TEAM BUILDER */
+.teambuilder-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.builder-slots {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.char-slot {
+    background: var(--bg-panel);
+    border: 2px dashed rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    height: 180px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-speed) ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.char-slot:hover {
+    border-color: var(--color-cyan);
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.15);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.slot-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+}
+
+.slot-plus {
+    font-size: 2.2rem;
+    line-height: 1;
+}
+
+.slot-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.slot-filled-card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 1rem;
+    position: relative;
+}
+
+.slot-filled-avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    font-size: 2rem;
+    background: rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid;
+}
+
+.slot-remove-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: var(--text-main);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: background var(--transition-speed) ease;
+}
+
+.slot-remove-btn:hover {
+    background: var(--color-pink);
+}
+
+.builder-actions-row {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.synergy-panel {
+    background: var(--bg-panel);
+    border: 1px solid var(--border-glass);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: var(--shadow-panel);
+}
+
+.synergy-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-glass);
+    padding-bottom: 1rem;
+    margin-bottom: 1.2rem;
+}
+
+.synergy-header h3 {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+}
+
+.synergy-rating {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-cyan);
+    text-shadow: 0 0 10px rgba(0, 242, 254, 0.4);
+    background: rgba(0, 242, 254, 0.1);
+    padding: 0.2rem 1.2rem;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 242, 254, 0.3);
+}
+
+.synergy-element-badges {
+    display: flex;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+}
+
+.no-synergy-text {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.synergy-reactions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.reaction-item {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border-glass);
+    border-radius: 8px;
+    padding: 0.8rem 1.2rem;
+}
+
+.reaction-name {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--color-amber);
+    margin-bottom: 0.2rem;
+}
+
+.reaction-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.synergy-description {
+    background: rgba(0, 0, 0, 0.2);
+    border-left: 3px solid var(--color-pink);
+    padding: 1rem;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}

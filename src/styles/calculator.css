@@ -1,0 +1,518 @@
+/* SECTION: CALCULATOR */
+.calculator-layout {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+}
+
+.form-control {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-glass);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    color: var(--text-main);
+    font-family: var(--font-ui);
+    font-size: 0.95rem;
+    outline: none;
+    transition: all var(--transition-speed) ease;
+}
+
+.form-control:focus {
+    border-color: var(--color-pink);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.form-control option {
+    background-color: #121020;
+    color: var(--text-main);
+}
+
+.calc-double-input {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.calc-checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.checkbox-control {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: pointer;
+}
+
+.checkbox-control input {
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    accent-color: var(--color-pink);
+}
+
+.checkbox-control label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+/* Materials Grid and Tab styling for New Calculator */
+.calc-char-preview {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-glass);
+    border-radius: 8px;
+    margin-bottom: 1.2rem;
+}
+
+.calc-preview-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 2px solid var(--color-pink);
+    font-size: 1.5rem;
+}
+
+.calc-preview-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.calc-preview-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.calc-preview-info h3 {
+    font-size: 1.1rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+}
+
+.calc-preview-badges {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.calc-tab-nav {
+    display: flex;
+    border-bottom: 1px solid var(--border-glass);
+    margin-bottom: 1.2rem;
+    gap: 0.4rem;
+}
+
+.calc-tab-btn {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 0.6rem 0.8rem;
+    color: var(--text-muted);
+    font-family: var(--font-ui);
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+}
+
+.calc-tab-btn:hover {
+    color: var(--text-main);
+}
+
+.calc-tab-btn.active {
+    color: var(--color-pink);
+    border-bottom-color: var(--color-pink);
+    text-shadow: 0 0 5px rgba(255, 42, 122, 0.3);
+}
+
+.calc-tab-content {
+    display: none;
+}
+
+.calc-tab-content.active {
+    display: block;
+}
+
+.calc-sub-title {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    color: var(--color-cyan);
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+}
+
+.range-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.4rem;
+}
+
+.range-val {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--color-cyan);
+}
+
+.range-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.slider-control {
+    flex-grow: 1;
+    accent-color: var(--color-pink);
+    height: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+}
+
+.number-control {
+    width: 60px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border-glass);
+    border-radius: 6px;
+    padding: 0.35rem 0.5rem;
+    color: #fff;
+    text-align: center;
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    outline: none;
+}
+
+.number-control:focus {
+    border-color: var(--color-pink);
+}
+
+.level-hints p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+/* Skills inputs */
+.skill-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+}
+
+.skill-row:last-child {
+    border-bottom: none;
+}
+
+.skill-name-col {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.skill-icon-placeholder {
+    font-size: 1rem;
+    width: 24px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.04);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.skill-label {
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.skill-selects-col {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.skill-select {
+    width: 55px !important;
+    padding: 0.25rem 0.4rem !important;
+    font-size: 0.8rem !important;
+    background: rgba(0, 0, 0, 0.4) !important;
+    border: 1px solid var(--border-glass) !important;
+    border-radius: 4px !important;
+    height: 28px !important;
+}
+
+.skill-arrow {
+    color: var(--text-muted);
+    font-size: 0.7rem;
+}
+
+/* Weapon setup toggles */
+.label-large {
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    color: var(--text-main) !important;
+}
+
+#weaponSettingsBlock {
+    margin-top: 1rem;
+}
+
+/* Results panel styles */
+.results-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-glass);
+    padding-bottom: 0.6rem;
+}
+
+.results-header-row h3 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+}
+
+.results-actions {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.results-subtitle {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.4rem;
+    margin-bottom: 1rem;
+}
+
+.btn-xs {
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.7rem !important;
+    border-radius: 4px;
+}
+
+/* Material cards grid */
+.materials-grid-new {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    max-height: 480px;
+    overflow-y: auto;
+    padding-right: 0.3rem;
+}
+
+.calc-source-note {
+    grid-column: span 2;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.75rem 0.9rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.035);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.calc-source-note strong {
+    color: var(--color-cyan);
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.calc-source-note.verified {
+    border-color: rgba(57, 255, 20, 0.22);
+    background: rgba(57, 255, 20, 0.035);
+}
+
+.calc-source-note.verified strong {
+    color: var(--color-green);
+}
+
+.materials-cat-header {
+    grid-column: span 2;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-cyan);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 0.6rem;
+    padding-bottom: 0.2rem;
+    letter-spacing: 0.5px;
+}
+
+.material-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-glass);
+    border-radius: 8px;
+    padding: 0.6rem 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    transition: all var(--transition-speed) ease;
+}
+
+.material-card:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.material-card.mat-completed {
+    border-color: rgba(57, 255, 20, 0.25);
+    background: rgba(57, 255, 20, 0.02);
+}
+
+.mat-card-top {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.mat-card-top .mat-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 1.2rem;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.mat-card-top .mat-icon img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+}
+
+.mat-card-top .mat-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.mat-fallback-icon {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--color-cyan);
+}
+
+.mat-card-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.mat-card-name {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-main);
+    line-height: 1.2;
+}
+
+.mat-card-farm {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+}
+
+.mat-card-mid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    padding-top: 0.4rem;
+}
+
+.mat-need {
+    font-weight: 700;
+    color: var(--color-cyan);
+}
+
+.material-card.mat-completed .mat-need {
+    color: var(--color-green);
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.mat-completed-badge {
+    display: none;
+    color: var(--color-green);
+    font-weight: bold;
+    font-size: 0.8rem;
+    margin-left: 0.3rem;
+}
+
+.material-card.mat-completed .mat-completed-badge {
+    display: inline;
+}
+
+.mat-have-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.mat-have-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+.mat-have-input {
+    width: 50px;
+    height: 22px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border-glass);
+    border-radius: 4px;
+    padding: 0 0.3rem;
+    color: #fff;
+    text-align: center;
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    outline: none;
+}
+
+.mat-have-input:focus {
+    border-color: var(--color-pink);
+}
+
+.material-card.mat-completed .mat-have-input {
+    border-color: rgba(57, 255, 20, 0.2);
+    opacity: 0.8;
+}
+
