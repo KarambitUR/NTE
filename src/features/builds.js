@@ -2,7 +2,7 @@ import { FALLBACK_CHARACTERS } from '../utils/fallbackData.js';
 import { renderAvatarHtml } from '../utils/helpers.js';
 import { state } from '../scripts/state.js';
 import { getLocalizedChar } from '../localization/i18n.js';
-import { ROLE_TRANSLATIONS, ATTR_TRANSLATIONS, STAT_TRANSLATIONS } from '../localization/translations.js';
+import { i18n, ROLE_TRANSLATIONS, ATTR_TRANSLATIONS, STAT_TRANSLATIONS } from '../localization/translations.js';
 
 
 // 7. BUILDS RENDERING
@@ -19,7 +19,7 @@ function renderBuilds() {
         const locChar = getLocalizedChar(char);
         const card = document.createElement("div");
         card.className = "build-card";
-        
+
         const statsTags = locChar.stats.map(s => `<span class="stat-tag">${s}</span>`).join("");
 
         card.innerHTML = `
