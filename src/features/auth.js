@@ -1,7 +1,8 @@
 import { state } from '../scripts/state.js';
 import { auth, googleProvider } from '../firebase/firebase.js';
 import { showToast } from '../utils/helpers.js';
-import { loadCommunityTierlists, initTierlistEditor } from './tierlist.js';
+import { loadCommunityTierlists, initTierlistEditor, saveUserTierlist, moveCharInEditor } from './tierlist.js';
+
 
 // 14. AUTH & CUSTOM USER TIERLISTS LOGIC
 

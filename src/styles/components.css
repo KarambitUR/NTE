@@ -260,6 +260,7 @@
 }
 
 
+@media (max-width: 480px) {
     /* Banner modifications for very small viewports */
     .banner-showcase {
         min-height: 420px;

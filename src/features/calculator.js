@@ -952,12 +952,10 @@ export {
     getMaterialIcon,
     renderCalculatorSetup,
     setupCalculatorEvents,
-    syncControl,
-    syncNumInput,
     saveInventory,
     updateSingleMaterialCard,
     calculateResources,
-    addCategoryHeader,
-    addMaterialCard,
     exportCalcReport
 };
+
+
