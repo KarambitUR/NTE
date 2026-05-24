@@ -121,20 +121,50 @@ export const FALLBACK_GUIDES = [
                 {
                     title: "1. Реакція Blossom (Цвітіння) - Anima + Anima",
                     titleEn: "1. Blossom Reaction - Anima + Anima",
-                    text: "Активується при поєднанні двох атак стихії Аніми. Створює вибухові квіти, які наносять періодичну АоЕ шкоду та стягують дрібних ворогів. Основна реакція для зв'язки Наналлі + Цзююань.",
-                    textEn: "Triggered by combining two Anima attacks. Spawns explosive blooms that deal periodic AoE damage and pull small enemies. The primary reaction for Nanally + Jiuyuan combo."
+                    text: "Активується при поєднанні двох або більше персонажів стихії Аніми в команді. Збільшує швидкість відновлення енергії (Energy Recharge) на 15% та підвищує Аніма-шкоду загону. Чудово підходить для прискорення атак Наналлі та Цзююань.",
+                    textEn: "Triggered by having 2 or more Anima characters in the team. Increases Energy Recharge by 15% and boosts Anima DMG. Highly effective for speeding up Nanally and Jiuyuan's attacks."
                 },
                 {
-                    title: "2. Esper Cycle (Цикл Есперів) - Cosmos + Будь-яка стихія",
-                    titleEn: "2. Esper Cycle - Cosmos + Any Element",
-                    text: "Унікальна реакція елемента Космосу. Зменшує час перезарядки навичок всієї команди на 25% та відновлює енергію вибуху стихій. Зеро та Хоторі — ключові активатори цієї реакції.",
-                    textEn: "A unique reaction of the Cosmos element. Decreases skill cooldowns of the entire team by 25% and restores ultimate energy. Zero and Hotori are key activators for this."
+                    title: "2. Esper Cycle (Цикл Есперів) - Cosmos + Будь-яка інша стихія",
+                    titleEn: "2. Esper Cycle - Cosmos + Any Other Element",
+                    text: "Реакція за участю елемента Космосу. Космос виступає універсальним каталізатором: заміна персонажів наповнює шкалу еспер-енергії (Esper Meter) на 30% швидше, полегшуючи проведення комбо-атак.",
+                    textEn: "Reaction involving the Cosmos element. Cosmos acts as a universal catalyst: swapping characters fills the Esper Meter 30% faster, making combo-attacks much easier."
                 },
                 {
                     title: "3. Scorch (Випалювання) - Anima + Incantation",
                     titleEn: "3. Scorch - Anima + Incantation",
-                    text: "Комбінація вітру та вогняних заклять. Накладає ефект горіння, який ігнорує 15% захисту ворога і наносить постійну шкоду.",
-                    textEn: "Combination of wind and fire incantations. Applies a burning effect that ignores 15% of the enemy defense and inflicts damage over time."
+                    text: "Реакція між вітром (Anima) та вогняним закляттям (Incantation). Створює потужний тепловий ефект, що підпалює ворогів навколо та завдає періодичної вогняної шкоди (DoT) кожні 1.5 сек.",
+                    textEn: "Reaction between wind (Anima) and fire (Incantation). Triggers a thermal combustion effect that ignites surrounding targets, dealing fire damage over time (DoT) every 1.5 seconds."
+                },
+                {
+                    title: "4. Charged (Зарядження) - Chaos + Incantation",
+                    titleEn: "4. Charged - Chaos + Incantation",
+                    text: "Реакція при поєднанні Хаосу та Закляття. Накладає на ворогів дебафф 'Зниження стабільності', що значно послаблює їхню стійкість, дозволяючи набагато швидше пробивати щити (Break).",
+                    textEn: "Reaction triggered by combining Chaos and Incantation. Applies a 'Stability Shred' debuff on enemies, significantly weakening their poise and letting you break their shields much faster."
+                },
+                {
+                    title: "5. Remora (Ремора) - Cosmos + Lakshana",
+                    titleEn: "5. Remora - Cosmos + Lakshana",
+                    text: "Поєднання Космосу та Лакшани. Підвищує загальний шанс критичного удару загону на 10%, а також суттєво баффає фізичну та космічну шкоду всіх членів команди.",
+                    textEn: "Reaction between Cosmos and Lakshana. Increases the team's overall Crit Rate by 10%, while significantly boosting physical and Cosmos damage for all squad members."
+                },
+                {
+                    title: "6. Discord (Розбрат) - (Incantation або Chaos) + Psyche",
+                    titleEn: "6. Discord - (Incantation / Chaos) + Psyche",
+                    text: "Створюється при взаємодії Закляття або Хаосу з Психеєю. Викликає ментальний дисонанс у ворогів, знижуючи їхню стійкість і збільшуючи шкоду по пробитих щитах на 25%.",
+                    textEn: "Reaction of Incantation or Chaos with Psyche. Induces mental dissonance in targets, reducing their poise stability and dealing 25% more damage to enemies with broken shields."
+                },
+                {
+                    title: "7. Stain (Пляма) - Lakshana + Psyche",
+                    titleEn: "7. Stain - Lakshana + Psyche",
+                    text: "Поєднання Лакшани та Психеї. Спотворює сприйняття ворогів, через що вони отримують додаткову періодичну шкоду, а їхня сила атаки (ATK) знижується на час дії ефекту.",
+                    textEn: "Combining Lakshana and Psyche. Distorts enemy perception, forcing targets to receive extra damage over time while lowering their total Attack power (ATK) during the effect."
+                },
+                {
+                    title: "8. Nova (Нова) - Anima + Psyche",
+                    titleEn: "8. Nova - Anima + Psyche",
+                    text: "Реакція між Анімою та Психеєю. Викликає потужний психічний вибух, який завдає колосальної площинної (AoE) шкоди навколишнім супротивникам.",
+                    textEn: "Reaction between Anima and Psyche. Triggers a massive mental shockwave, dealing colossal area-of-effect (AoE) damage to all nearby opponents."
                 }
             ]
         },
