@@ -198,7 +198,7 @@ export const FALLBACK_CHARACTERS = [
         rarity: 5,
         attribute: "Psyche",
         role: "Support",
-        tier: "S",
+        tier: "A",
         avatar: "https://static.wikia.nocookie.net/neverness-to-everness/images/6/68/Fadia_Card.png",
         summary: "Потужний Sustain-персонаж стихії Psyche. Працює як танк-цілитель, що перенаправляє шкоду союзників на себе та відновлює здоров'я в режимі Lilith.",
         weapon: "Eternal Waltz (Вічний вальс)",
