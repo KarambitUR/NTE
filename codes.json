@@ -52,26 +52,26 @@
     {
         "code": "504980102FKGOVNS",
         "rewards": "30 Annulith, 1 Gubichi Flavor Chips, 20,000 Beetle Coins",
-        "active": true
+        "active": false
     },
     {
         "code": "NTE0429",
         "rewards": "12k beetle coins, 100 annulith, five elite hunter guides, and two chaotic dye",
-        "active": true
+        "active": false
     },
     {
         "code": "NTENANALLYGO",
         "rewards": "6k beetle coins, 100 annulith, five senior hunter guides, and five colorless dye",
-        "active": true
+        "active": false
     },
     {
         "code": "NTENOWTOENJOY",
         "rewards": "6k beetle coins, 100 annulith, five rising hunter guides, and five light dye",
-        "active": true
+        "active": false
     },
     {
         "code": "NTEHAVEFUN",
         "rewards": "three rising hunter guide, three light dyes, and three manhole thugs",
-        "active": true
+        "active": false
     }
 ]

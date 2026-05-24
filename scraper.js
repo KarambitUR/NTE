@@ -265,8 +265,10 @@ async function run() {
             addedCount++;
             console.log(`[NEW CODE ADDED]: ${newCode.code} - ${newCode.rewards}`);
         } else {
-            // Existing code, ensure active status is preserved
-            updatedCodes[index].active = true;
+            // Existing code, preserve active status if it was explicitly set to false
+            if (updatedCodes[index].active !== false) {
+                updatedCodes[index].active = true;
+            }
             // Update rewards if they were placeholder and now we have better description
             if (updatedCodes[index].rewards.includes("Active Promo Code") && !newCode.rewards.includes("Active Promo Code")) {
                 updatedCodes[index].rewards = newCode.rewards;
