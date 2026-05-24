@@ -19,7 +19,7 @@ function initGuides() {
     }
 
     // 2. Bind filter buttons
-    const filterBtns = document.querySelectorAll(".filter-btn");
+    const filterBtns = document.querySelectorAll("#guidesFilters .filter-btn");
     filterBtns.forEach(btn => {
         btn.addEventListener("click", () => {
             filterBtns.forEach(b => b.classList.remove("active"));
