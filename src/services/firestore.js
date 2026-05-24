@@ -19,37 +19,49 @@ async function loadFromFirestore() {
     }
 
     try {
-        // Load characters
-        const charsSnapshot = await db.collection('characters').get();
-        if (!charsSnapshot.empty) {
-            state.CHARACTERS = charsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-            localStorage.setItem('nte_characters', JSON.stringify(state.CHARACTERS));
-            console.log(`✅ Loaded ${state.CHARACTERS.length} characters from Firestore`);
-        }
+        const loadPromise = async () => {
+            // Load characters
+            const charsSnapshot = await db.collection('characters').get();
+            if (!charsSnapshot.empty) {
+                state.CHARACTERS = charsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                localStorage.setItem('nte_characters', JSON.stringify(state.CHARACTERS));
+                console.log(`✅ Loaded ${state.CHARACTERS.length} characters from Firestore`);
+            }
 
-        // Load promo codes
-        const codesSnapshot = await db.collection('promoCodes').where('active', '==', true).get();
-        if (!codesSnapshot.empty) {
-            state.PROMO_CODES = codesSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-            localStorage.setItem('nte_promoCodes', JSON.stringify(state.PROMO_CODES));
-            console.log(`✅ Loaded ${state.PROMO_CODES.length} promo codes from Firestore`);
-        }
+            // Load promo codes
+            const codesSnapshot = await db.collection('promoCodes').where('active', '==', true).get();
+            if (!codesSnapshot.empty) {
+                state.PROMO_CODES = codesSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                localStorage.setItem('nte_promoCodes', JSON.stringify(state.PROMO_CODES));
+                console.log(`✅ Loaded ${state.PROMO_CODES.length} promo codes from Firestore`);
+            }
 
-        // Load timeline events
-        const timelineSnapshot = await db.collection('timelineEvents').orderBy('order', 'asc').get();
-        if (!timelineSnapshot.empty) {
-            state.TIMELINE_EVENTS = timelineSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-            localStorage.setItem('nte_timelineEvents', JSON.stringify(state.TIMELINE_EVENTS));
-            console.log(`✅ Loaded ${state.TIMELINE_EVENTS.length} timeline events from Firestore`);
-        }
+            // Load timeline events
+            const timelineSnapshot = await db.collection('timelineEvents').orderBy('order', 'asc').get();
+            if (!timelineSnapshot.empty) {
+                state.TIMELINE_EVENTS = timelineSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                localStorage.setItem('nte_timelineEvents', JSON.stringify(state.TIMELINE_EVENTS));
+                console.log(`✅ Loaded ${state.TIMELINE_EVENTS.length} timeline events from Firestore`);
+            }
+            return true;
+        };
 
-        state.dataSource = 'firestore';
-        return true;
+        const timeoutPromise = new Promise((_, reject) =>
+            setTimeout(() => reject(new Error('Firestore connection timed out after 2.5s')), 2500)
+        );
+
+        const success = await Promise.race([loadPromise(), timeoutPromise]);
+        if (success) {
+            state.dataSource = 'firestore';
+            return true;
+        }
+        return false;
     } catch (error) {
-        console.warn('Firestore load failed:', error.message);
+        console.warn('⚠️ Firestore load failed or timed out:', error.message);
         return false;
     }
 }
+
 
 function loadFromCache() {
     try {
@@ -61,9 +73,14 @@ function loadFromCache() {
         if (cachedCodes) state.PROMO_CODES = JSON.parse(cachedCodes);
         if (cachedTimeline) state.TIMELINE_EVENTS = JSON.parse(cachedTimeline);
 
+        // Fill in missing parts from fallback data to ensure no empty screens
+        if (state.CHARACTERS.length === 0) state.CHARACTERS = [...FALLBACK_CHARACTERS];
+        if (state.PROMO_CODES.length === 0) state.PROMO_CODES = [...FALLBACK_PROMO_CODES];
+        if (state.TIMELINE_EVENTS.length === 0) state.TIMELINE_EVENTS = [...FALLBACK_TIMELINE_EVENTS];
+
         if (cachedChars || cachedCodes || cachedTimeline) {
             state.dataSource = 'cache';
-            console.log('📦 Loaded data from localStorage cache');
+            console.log('📦 Loaded data from localStorage cache (with fallback fallbacks if needed)');
             return true;
         }
     } catch (e) {
@@ -71,6 +88,7 @@ function loadFromCache() {
     }
     return false;
 }
+
 
 function loadFallbackData() {
     state.CHARACTERS = [...FALLBACK_CHARACTERS];
