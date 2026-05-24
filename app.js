@@ -1351,7 +1351,12 @@ function renderHomeWidgets() {
     const codesContainer = document.getElementById("homeCodesList");
     if (codesContainer) {
         codesContainer.innerHTML = "";
-        const activeCodes = PROMO_CODES.filter(c => c.active).slice(0, 3);
+        const sortedCodes = [...PROMO_CODES].sort((a, b) => {
+            const dateA = a.addedAt ? new Date(a.addedAt) : new Date(0);
+            const dateB = b.addedAt ? new Date(b.addedAt) : new Date(0);
+            return dateB - dateA;
+        });
+        const activeCodes = sortedCodes.filter(c => c.active).slice(0, 3);
         if (activeCodes.length === 0) {
             codesContainer.innerHTML = `<div class="widget-loading">${currentLang === 'uk' ? 'Промокоди відсутні' : 'No active codes'}</div>`;
         } else {
@@ -3456,7 +3461,13 @@ function renderPromoCodes() {
     const container = document.getElementById("promoCodesList");
     container.innerHTML = "";
 
-    PROMO_CODES.forEach(promo => {
+    const sortedCodes = [...PROMO_CODES].sort((a, b) => {
+        const dateA = a.addedAt ? new Date(a.addedAt) : new Date(0);
+        const dateB = b.addedAt ? new Date(b.addedAt) : new Date(0);
+        return dateB - dateA;
+    });
+
+    sortedCodes.forEach(promo => {
         const card = document.createElement("div");
         card.className = "code-card";
         card.innerHTML = `
