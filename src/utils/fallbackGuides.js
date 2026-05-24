@@ -42,7 +42,7 @@ export const FALLBACK_GUIDES = [
                 }
             ]
         },
-        references: ["https://reddit.com/r/NevernessToEverness", "https://wiki.nevernesstoeverness.com"],
+        references: ["https://reddit.com/r/NevernessToEverness", "https://nevernesstoeverness.fandom.com"],
         recommendedTeams: ["nanally", "sakiri", "zero", "jiuyuan"],
         progressionTips: [
             "Спочатку вкладайте ресурси лише в одного головного ДПС.",
@@ -80,18 +80,18 @@ export const FALLBACK_GUIDES = [
                 {
                     title: "2. Матеріали навичок (Книги)",
                     titleEn: "2. Skill Materials (Scrolls)",
-                    text: "Сувої навичок падають в Anomaly Pilgrimage. Зверніть увагу, що тип сувою залежить від дня тижня. Плануйте витрати витривалості заздалегідь.",
-                    textEn: "Skill scrolls drop in Anomaly Pilgrimage. Note that the scroll type depends on the day of the week. Plan your stamina usage in advance."
+                    text: "Сувої навичок падають у випробуванні Houdinii's Schemes. Зверніть увагу, що тип сувою залежить від дня тижня. Плануйте витрати витривалості заздалегідь.",
+                    textEn: "Skill scrolls drop in Houdinii's Schemes. Note that the scroll type depends on the day of the week. Plan your stamina usage in advance."
                 },
                 {
                     title: "3. Матеріали прориву з Босів",
                     titleEn: "3. Boss Breakthrough Materials",
-                    text: "Для покращення мисливців вище 20/40/50 рівнів потрібні унікальні трофеї зі світових босів (наприклад, Лялька або Шестерня). Витрата енергії становить 40 одиниць за кожен збір.",
-                    textEn: "To upgrade hunters past levels 20/40/50, you need unique trophies from world bosses (e.g. Doll or Gear). Energy cost is 40 per collection."
+                    text: "Для покращення мисливців вище 20/40/50 рівнів потрібні унікальні трофеї зі світових босів (наприклад, Вершник без голови або Серенетті). Витрата енергії становить 40 одиниць за кожен збір.",
+                    textEn: "To upgrade hunters past levels 20/40/50, you need unique trophies from world bosses (e.g. Headless Rider or Serenetti). Energy cost is 40 per collection."
                 }
             ]
         },
-        references: ["https://reddit.com/r/NevernessToEverness", "https://wiki.nevernesstoeverness.com"],
+        references: ["https://reddit.com/r/NevernessToEverness", "https://nevernesstoeverness.fandom.com"],
         recommendedTeams: ["zero", "sakiri", "nanally", "daffodil"],
         progressionTips: [
             "Використовуйте густу енергію (Condensed Energy) для подвоєння нагород з босів.",
