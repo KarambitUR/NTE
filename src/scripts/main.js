@@ -11,117 +11,130 @@ import { renderPromoCodes } from '../features/codes.js';
 import { initAuthAndUserTierlists, updateAuthUI } from '../features/auth.js';
 import { FALLBACK_PROMO_CODES } from '../utils/fallbackData.js';
 
-// Setup language switcher binding, tabs navigation, etc.
 // 5. INITIALIZATION & ROUTING
 document.addEventListener("DOMContentLoaded", async () => {
-    // Try loading data in priority order: Firestore → Cache → Hardcoded fallback
-    const firestoreSuccess = await loadFromFirestore();
-    
-    if (!firestoreSuccess) {
-        const cacheSuccess = loadFromCache();
-        if (!cacheSuccess) {
-            loadFallbackData();
+    // Failsafe: always hide loading overlay after 10 seconds max
+    const failsafeTimer = setTimeout(() => {
+        const overlay = document.getElementById('loadingOverlay');
+        if (overlay && !overlay.classList.contains('hidden')) {
+            overlay.classList.add('hidden');
+            console.warn('⚠️ Loading overlay hidden by failsafe timer');
+        }
+    }, 10000);
+
+    try {
+        // Try loading data in priority order: Firestore → Cache → Hardcoded fallback
+        const firestoreSuccess = await loadFromFirestore();
+        
+        if (!firestoreSuccess) {
+            const cacheSuccess = loadFromCache();
+            if (!cacheSuccess) {
+                loadFallbackData();
+            }
+        }
+
+        // Also try loading codes.json as additional fallback for promo codes
+        if (state.PROMO_CODES.length === 0) {
+            try {
+                const res = await fetch('codes.json');
+                const data = await res.json();
+                if (Array.isArray(data) && data.length > 0) {
+                    state.PROMO_CODES = data;
+                }
+            } catch (e) {
+                console.warn('codes.json fallback also failed');
+            }
+        }
+
+        // If still no promo codes, use fallback
+        if (state.PROMO_CODES.length === 0) {
+            state.PROMO_CODES = [...FALLBACK_PROMO_CODES];
+        }
+
+        // Setup language switcher binding
+        const langBtns = document.querySelectorAll(".lang-btn");
+        langBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const selectedLang = btn.getAttribute("data-lang");
+                if (selectedLang !== state.currentLang) {
+                    localStorage.setItem('nte_lang', selectedLang);
+                    translatePage(selectedLang);
+                    
+                    // Re-render
+                    renderTierList();
+                    renderBuilds();
+                    renderTimeline();
+                    renderCalculatorSetup();
+                    renderHomeWidgets();
+                    renderPromoCodes();
+                    evaluateTeamSynergy();
+                    updateTeamSlotsUI();
+                    // Re-render auth UI and community lists for the new language
+                    if (typeof firebase !== 'undefined' && firebase.auth && firebase.auth().currentUser) {
+                        updateAuthUI(firebase.auth().currentUser);
+                    } else {
+                        updateAuthUI(null);
+                    }
+                    const commContent = document.getElementById('sub-content-community');
+                    if (commContent && commContent.classList.contains('active')) {
+                        loadCommunityTierlists();
+                    }
+                }
+            });
+        });
+
+        // Run initial translation
+        translatePage(state.currentLang);
+
+        // Initialize all UI components
+        initNavigation();
+        renderTierList();
+        renderBuilds();
+        renderCalculatorSetup();
+        renderTimeline();
+        setupTeamBuilder();
+        setupCalculatorEvents();
+        renderPromoCodes();
+        
+        // Start active banner countdown & home widgets
+        startBannerCountdown();
+        renderHomeWidgets();
+
+        // Setup banner CTA click
+        const bannerBtn = document.getElementById("btnGoToBannerChar");
+        if (bannerBtn) {
+            bannerBtn.addEventListener("click", () => {
+                switchTab("builds");
+                openCharacterModal("hotori");
+            });
+        }
+
+        // Setup realtime listeners for live updates
+        setupRealtimeListeners();
+
+        // Setup Auth and Community Tier lists
+        initAuthAndUserTierlists();
+
+        // Show data source indicator
+        const sourceEmoji = state.dataSource === 'firestore' ? '🔥' : state.dataSource === 'cache' ? '📦' : '📋';
+        console.log(`${sourceEmoji} App initialized with data from: ${state.dataSource}`);
+        
+        // Logo Click returns to Home
+        document.getElementById("headerLogo").addEventListener("click", () => switchTab("home"));
+
+    } catch (error) {
+        console.error('❌ App initialization error:', error);
+    } finally {
+        // Always hide loading overlay
+        clearTimeout(failsafeTimer);
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        if (loadingOverlay) {
+            loadingOverlay.classList.add('hidden');
         }
     }
-
-    // Also try loading codes.json as additional fallback for promo codes
-    if (state.PROMO_CODES.length === 0) {
-        try {
-            const res = await fetch('codes.json');
-            const data = await res.json();
-            if (Array.isArray(data) && data.length > 0) {
-                state.PROMO_CODES = data;
-            }
-        } catch (e) {
-            console.warn('codes.json fallback also failed');
-        }
-    }
-
-    // If still no promo codes, use fallback
-    if (state.PROMO_CODES.length === 0) {
-        state.PROMO_CODES = [...FALLBACK_PROMO_CODES];
-    }
-
-    // Setup language switcher binding
-    const langBtns = document.querySelectorAll(".lang-btn");
-    langBtns.forEach(btn => {
-        btn.addEventListener("click", () => {
-            const selectedLang = btn.getAttribute("data-lang");
-            if (selectedLang !== state.currentLang) {
-                localStorage.setItem('nte_lang', selectedLang);
-                translatePage(selectedLang);
-                
-                // Re-render
-                renderTierList();
-                renderBuilds();
-                renderTimeline();
-                renderCalculatorSetup();
-                renderHomeWidgets();
-                renderPromoCodes();
-                evaluateTeamSynergy();
-                updateTeamSlotsUI();
-                // Re-render auth UI and community lists for the new language
-                if (typeof firebase !== 'undefined' && firebase.auth && firebase.auth().currentUser) {
-                    updateAuthUI(firebase.auth().currentUser);
-                } else {
-                    updateAuthUI(null);
-                }
-                const commContent = document.getElementById('sub-content-community');
-                if (commContent && commContent.classList.contains('active')) {
-                    loadCommunityTierlists();
-                }
-            }
-        });
-    });
-
-    // Run initial translation
-    translatePage(state.currentLang);
-
-    // Initialize all UI components
-    initNavigation();
-    renderTierList();
-    renderBuilds();
-    renderCalculatorSetup();
-    renderTimeline();
-    setupTeamBuilder();
-    setupCalculatorEvents();
-    renderPromoCodes();
-    
-    // Start active banner countdown & home widgets
-    startBannerCountdown();
-    renderHomeWidgets();
-
-    // Setup banner CTA click
-    const bannerBtn = document.getElementById("btnGoToBannerChar");
-    if (bannerBtn) {
-        bannerBtn.addEventListener("click", () => {
-            switchTab("builds");
-            openCharacterModal("hotori");
-        });
-    }
-
-    // Setup realtime listeners for live updates
-    setupRealtimeListeners();
-
-    // Setup Auth and Community Tier lists
-    initAuthAndUserTierlists();
-
-    // Hide loading overlay
-    const loadingOverlay = document.getElementById('loadingOverlay');
-    if (loadingOverlay) {
-        loadingOverlay.classList.add('hidden');
-    }
-
-    // Show data source indicator
-    const sourceEmoji = state.dataSource === 'firestore' ? '🔥' : state.dataSource === 'cache' ? '📦' : '📋';
-    console.log(`${sourceEmoji} App initialized with data from: ${state.dataSource}`);
-    
-    // Logo Click returns to Home
-    document.getElementById("headerLogo").addEventListener("click", () => switchTab("home"));
 });
 
 // Navigation logic
-
 function initNavigation() {
     const navBtns = document.querySelectorAll(".nav-btn");
     const panes = document.querySelectorAll(".tab-pane");
@@ -167,7 +180,6 @@ function switchTab(tabId) {
     // Scroll to top
     window.scrollTo({ top: 0, behavior: "smooth" });
 }
-
 
 // Expose legacy global functions for inline HTML event handlers
 window.switchTab = switchTab;

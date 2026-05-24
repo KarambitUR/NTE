@@ -13,7 +13,7 @@ import { updateAuthUI } from '../features/auth.js';
 
 // 3. FIRESTORE DATA LOADING
 async function loadFromFirestore() {
-    if (typeof firebase === 'undefined' || typeof db === 'undefined') {
+    if (typeof firebase === 'undefined' || !db) {
         console.warn('Firebase not initialized, using fallback data');
         return false;
     }
@@ -82,7 +82,7 @@ function loadFallbackData() {
 
 // Setup realtime listeners for promo codes (auto-update when admin changes them)
 function setupRealtimeListeners() {
-    if (typeof firebase === 'undefined' || typeof db === 'undefined') return;
+    if (typeof firebase === 'undefined' || !db) return;
 
     try {
         // Realtime listener for promo codes
@@ -118,13 +118,5 @@ function setupRealtimeListeners() {
         console.warn('Realtime listeners setup failed:', e);
     }
 }
-
-// Helper to render character avatars (supports both image URLs and emojis, with proxying to bypass hotlinking blockers)
-
-
-
-
-
-// Display custom tierlist inside Modal popup
 
 export { loadFromFirestore, loadFromCache, loadFallbackData, setupRealtimeListeners };

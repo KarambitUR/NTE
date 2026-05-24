@@ -291,7 +291,7 @@ async function saveUserTierlist() {
             createdAt: firebase.firestore.FieldValue.serverTimestamp()
         };
 
-        if (typeof db === "undefined") {
+        if (!db) {
             showToast(state.currentLang === 'uk' ? "База даних Firestore недоступна!" : "Firestore database is unavailable!");
             return;
         }
@@ -316,7 +316,7 @@ async function loadCommunityTierlists() {
 
     container.innerHTML = `<div class="community-loading">${i18n[state.currentLang].comm_loading || "Завантаження..."}</div>`;
 
-    if (typeof db === "undefined") {
+    if (!db) {
         container.innerHTML = `<div class="community-loading">${i18n[state.currentLang].comm_db_unavailable || "База даних недоступна."}</div>`;
         return;
     }
