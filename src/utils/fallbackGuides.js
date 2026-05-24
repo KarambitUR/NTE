@@ -250,15 +250,154 @@ export const FALLBACK_GUIDES = [
                 }
             ]
         },
-        references: ["https://reddit.com/r/NevernessToEverness"],
+        references: ["https://reddit.com/r/NevernessToEverness", "https://nevernesstoeverness.fandom.com"],
         recommendedTeams: ["nanally", "jiuyuan", "sakiri", "zero"],
         progressionTips: [
-            "Намагайтеся підтримувати щит Зеро активним весь час.",
-            "Використовуйте Ultimate Сакірі строго перед виходом Наналлі."
+            "Намагайтеся підтримувати щит Зеро активним весь час для стабільності.",
+            "Використовуйте Ultimate Сакірі строго перед виходом Наналлі для максимального баффу.",
+            "Активуйте комбо Цзююань під час відкату основних навичок Наналлі для безперервного Цвітіння.",
+            "Зберігайте ультимейт Наналлі для фази пробиття щитів боса (Break State)."
         ],
         progressionTipsEn: [
-            "Try to keep Zero's shield active at all times.",
-            "Use Sakiri's Ultimate strictly before swapping to Nanally."
+            "Try to keep Zero's shield active at all times for posture stability.",
+            "Use Sakiri's Ultimate strictly before swapping to Nanally for maximum damage buff.",
+            "Execute Jiuyuan's quick combo when Nanally's main skills are on cooldown to maintain Blossom.",
+            "Save Nanally's Ultimate Burst for the boss's shield broken state (Break phase)."
+        ]
+    },
+    {
+        id: "guide-team-chaos-charged",
+        title: "Команда 'Хаотичний Заряд' (Chaos Charged Poise Shred)",
+        titleEn: "Team 'Chaos Charged' (Charged Shield Break)",
+        description: "Вибухова команда стихії Хаос, орієнтована на миттєве знищення стійкості ворогів через реакцію Charged (Хаос + Закляття).",
+        descriptionEn: "High-tier Chaos team focused on shredding enemy poise stability via Charged reaction (Chaos + Incantation).",
+        category: "teams",
+        isFeatured: false,
+        difficulty: "Medium",
+        difficultyEn: "Medium",
+        updateDate: "2026-05-24",
+        tags: ["Teams", "Meta", "Chaos", "A-Tier"],
+        tagsEn: ["Teams", "Meta", "Chaos", "A-Tier"],
+        avatar: "👥",
+        content: {
+            sections: [
+                {
+                    title: "Склад загону (Squad Composition)",
+                    titleEn: "Squad Composition",
+                    text: "• <strong>Лакрімоза (Lacrimosa):</strong> Головний ДПС, нанесення Хаос шкоди масками.<br>• <strong>Даффоділ (Daffodil):</strong> Саб-ДПС, спеціалізується на пробитті щитів (Break).<br>• <strong>Сакірі (Sakiri):</strong> Саппорт, стягування ворогів та зріз опорів.<br>• <strong>Адлер (Adler):</strong> Саппорт/Щитовик, захист та додаткове збиття стійкості.",
+                    textEn: "• <strong>Lacrimosa:</strong> Main DPS, continuous mask Chaos damage.<br>• <strong>Daffodil:</strong> Sub-DPS, shield breaking expert (Break).<br>• <strong>Sakiri:</strong> Support, crowd control and shred.<br>• <strong>Adler:</strong> Support/Shield, protection and poise break assistance."
+                },
+                {
+                    title: "Бойова ротація (Skill Rotation)",
+                    titleEn: "Combat Rotation",
+                    text: "1. Використовуйте <strong>Сакірі</strong> для стягування групи ворогів.<br>2. Переключіться на <strong>Адлера</strong> та активуйте його щит для захисту.<br>3. Перейдіть на <strong>Даффоділ</strong> та виконайте серію атак для активації реакції Charged та швидкого пробиття щитів боса.<br>4. Викличте <strong>Лакрімозу</strong> для нанесення колосальної вибухової шкоди по ворогах у стані Break.",
+                    textEn: "1. Use <strong>Sakiri</strong> to pull and group enemies.<br>2. Swap to <strong>Adler</strong> and activate his shield for defense.<br>3. Switch to <strong>Daffodil</strong> to trigger Charged reaction and break the boss's shields rapidly.<br>4. Bring in <strong>Lacrimosa</strong> to unleash massive burst damage on enemies in Break state."
+                }
+            ]
+        },
+        references: ["https://reddit.com/r/NevernessToEverness", "https://nevernesstoeverness.fandom.com"],
+        recommendedTeams: ["lacrimosa", "daffodil", "sakiri", "adler"],
+        progressionTips: [
+            "Завжди тримайте щит Адлера активним, оскільки міцність щита масштабується від його захисту.",
+            "Не витрачайте ультимейт Даффоділ на ворогів без щитів; її мета — швидке пробиття стійкості.",
+            "Реакція Charged знижує опір ворогів до фізичного та стихійного пошкодження.",
+            "Лакрімоза наносить значно більше шкоди по ворогах у стані контролю."
+        ],
+        progressionTipsEn: [
+            "Always keep Adler's shield active since its durability scales directly with his DEF.",
+            "Do not waste Daffodil's Ultimate on shieldless targets; her primary goal is poise breaking.",
+            "The Charged reaction shreds enemy posture, making stability break much faster.",
+            "Lacrimosa deals significantly amplified damage to controlled and broken enemies."
+        ]
+    },
+    {
+        id: "guide-team-f2p-starter",
+        title: "Стартовий загін F2P (Starter Catalyst)",
+        titleEn: "F2P Starter Team (Starter Catalyst)",
+        description: "Збалансований та повністю безкоштовний загін, доступний кожному гравцеві на початку гри для комфортного проходження сюжету.",
+        descriptionEn: "Balanced and fully free-to-play squad available to every player at start for comfortable story progression.",
+        category: "teams",
+        isFeatured: false,
+        difficulty: "Easy",
+        difficultyEn: "Easy",
+        updateDate: "2026-05-24",
+        tags: ["Teams", "F2P", "Starter", "Beginner"],
+        tagsEn: ["Teams", "F2P", "Starter", "Beginner"],
+        avatar: "👥",
+        content: {
+            sections: [
+                {
+                    title: "Склад загону (Squad Composition)",
+                    titleEn: "Squad Composition",
+                    text: "• <strong>Мінт (Mint):</strong> Головний ДПС, швидкі авто-атаки та комбо.<br>• <strong>Зеро (Zero):</strong> Саппорт/Космос, прискорення відкату навичок та реакції.<br>• <strong>Едгар (Edgar):</strong> Цілитель, відновлення здоров'я та виживання.<br>• <strong>Ханіель (Haniel):</strong> Саппорт/Баффер, підвищення сили атаки помічником Hootie.",
+                    textEn: "• <strong>Mint:</strong> Main DPS, quick auto-attacks and combos.<br>• <strong>Zero:</strong> Support/Cosmos, cooldown acceleration and catalyst.<br>• <strong>Edgar:</strong> Healer, health recovery and squad survival.<br>• <strong>Haniel:</strong> Support/Buffer, ATK buffing helper Hootie."
+                },
+                {
+                    title: "Бойова ротація (Skill Rotation)",
+                    titleEn: "Combat Rotation",
+                    text: "1. Почніть із <strong>Ханіель</strong>: викличте сову Hootie для баффу атаки всього загону.<br>2. Переключіться на <strong>Зеро</strong> та активуйте його навичку для запуску Циклу Есперів.<br>3. Використовуйте лікувальну зону <strong>Едгара</strong> за потреби для підтримки здоров'я.<br>4. Перейдіть на <strong>Мінт</strong> та наносьте шкоду комбо-атаками під дією всіх баффів.",
+                    textEn: "1. Start with <strong>Haniel</strong>: summon owl Hootie to buff the entire squad's ATK.<br>2. Swap to <strong>Zero</strong> and use skill to trigger Esper Cycle catalyst.<br>3. Deploy <strong>Edgar's</strong> healing zone as needed to keep the squad healthy.<br>4. Switch to <strong>Mint</strong> and deal damage with combo attacks while all buffs are active."
+                }
+            ]
+        },
+        references: ["https://reddit.com/r/NevernessToEverness", "https://nevernesstoeverness.fandom.com"],
+        recommendedTeams: ["mint", "zero", "edgar", "haniel"],
+        progressionTips: [
+            "Слідкуйте за тим, щоб сова Ханіель постійно перебувала на полі бою.",
+            "Зеро є чудовим драйвером для реакцій завдяки Космос-атрибуту.",
+            "Едгар відновлює здоров'я пропорційно своєму максимальному HP, збирайте йому картриджі на здоров'я.",
+            "Мінт отримує безкоштовні бонуси до атаки при успішному ухиленні від ворожих ударів."
+        ],
+        progressionTipsEn: [
+            "Ensure Haniel's owl assistant is present on the battlefield at all times.",
+            "Zero works as an excellent driver for reactions due to his Cosmos element.",
+            "Edgar's healing scales with his max HP, so equip him with HP-boosting cartridges.",
+            "Mint gains free ATK buffs upon executing perfect dodges against enemy attacks."
+        ]
+    },
+    {
+        id: "guide-team-remora-crit",
+        title: "Команда 'Критичний Шторм' (Remora Critical Setup)",
+        titleEn: "Team 'Critical Storm' (Remora Crit Boost)",
+        description: "Високопродуктивний загін, заснований на реакції Remora (Космос + Лакшана) для радикального підвищення шансу критичного удару.",
+        descriptionEn: "High-performance team based on Remora reaction (Cosmos + Lakshana) to radically boost Crit Rate and physical damage.",
+        category: "teams",
+        isFeatured: false,
+        difficulty: "Hard",
+        difficultyEn: "Hard",
+        updateDate: "2026-05-24",
+        tags: ["Teams", "Meta", "Remora", "Critical"],
+        tagsEn: ["Teams", "Meta", "Remora", "Critical"],
+        avatar: "👥",
+        content: {
+            sections: [
+                {
+                    title: "Склад загону (Squad Composition)",
+                    titleEn: "Squad Composition",
+                    text: "• <strong>Хатор (Hathor):</strong> Головний ДПС стихії Лакшана, вибухова шкода.<br>• <strong>Скіа (Skia):</strong> Саб-ДПС, накладання міток тіні та швидкі атаки.<br>• <strong>Зеро (Zero):</strong> Саппорт/Космос, активатор реакції Ремора та прискорювач.<br>• <strong>Едгар (Edgar):</strong> Цілитель, стабільне виживання загону.",
+                    textEn: "• <strong>Hathor:</strong> Main DPS of Lakshana element, massive burst.<br>• <strong>Skia:</strong> Sub-DPS, shadow stealth and mark applications.<br>• <strong>Zero:</strong> Support/Cosmos, catalyst for Remora and CD acceleration.<br>• <strong>Edgar:</strong> Healer, reliable survival support."
+                },
+                {
+                    title: "Бойова ротація (Skill Rotation)",
+                    titleEn: "Combat Rotation",
+                    text: "1. Почніть зі <strong>Скіа</strong>: накладіть мітки Fang Thrust із прихованості.<br>2. Перейдіть на <strong>Зеро</strong> та активуйте його Космос-поле для запуску реакції Ремора.<br>3. Використовуйте ультимейт <strong>Едгара</strong> для баффу та лікування.<br>4. Переключіться на <strong>Хатор</strong>, накопичте стаки доставки та виконайте нищівний вибух стихій.",
+                    textEn: "1. Start with <strong>Skia</strong>: apply shadow Fang Thrust marks from stealth.<br>2. Swap to <strong>Zero</strong> and activate Cosmos field to trigger Remora reaction.<br>3. Deploy <strong>Edgar's</strong> ultimate zone for healing and energy buffs.<br>4. Switch to <strong>Hathor</strong>, stack up delivery power, and execute her devastating Ultimate Burst."
+                }
+            ]
+        },
+        references: ["https://reddit.com/r/NevernessToEverness", "https://nevernesstoeverness.fandom.com"],
+        recommendedTeams: ["hathor", "skia", "zero", "edgar"],
+        progressionTips: [
+            "Реакція Ремора збільшує шанс критичного удару всього загону на 10%.",
+            "Скіа наносить значно більше шкоди по ворогах, на яких є мітки від її тіней.",
+            "Слідкуйте за накопиченням стаків Hathor перед перемиканням для максимального критичного удару.",
+            "Намагайтеся координувати відкати навичок для синхронної активації Ремори."
+        ],
+        progressionTipsEn: [
+            "The Remora reaction grants a flat +10% Crit Rate boost to all team members.",
+            "Skia deals significantly increased damage to targets marked by her shadow attacks.",
+            "Monitor Hathor's delivery stacks carefully before switching to maximize critical burst.",
+            "Coordinate skill cooldowns to ensure synchronized activation of the Remora reaction."
         ]
     }
 ];

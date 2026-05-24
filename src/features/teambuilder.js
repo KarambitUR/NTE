@@ -243,6 +243,12 @@ function evaluateTeamSynergy() {
     const hasZero = activeChars.some(c => c.id === "zero");
     const hasNanally = activeChars.some(c => c.id === "nanally");
     const hasJiuyuan = activeChars.some(c => c.id === "jiuyuan");
+    const hasLacrimosa = activeChars.some(c => c.id === "lacrimosa");
+    const hasDaffodil = activeChars.some(c => c.id === "daffodil");
+    const hasHathor = activeChars.some(c => c.id === "hathor");
+    const hasSkia = activeChars.some(c => c.id === "skia");
+    const hasMint = activeChars.some(c => c.id === "mint");
+    const hasHaniel = activeChars.some(c => c.id === "haniel");
 
     if (hasNanally && hasSakiri && hasZero) {
         if (state.currentLang === 'uk') {
@@ -255,6 +261,24 @@ function evaluateTeamSynergy() {
             rotation = "<strong>Оптимальна ротація (Цвітіння):</strong><br>1. Використовуйте <strong>Цзююань</strong> для нанесення швидкої шкоди та накладання статусу Аніми.<br>2. Перейдіть на <strong>Наналлі</strong> для безперервного виклику реакції <em>Цвітіння</em> та нанесення основної шкоди.";
         } else {
             rotation = "<strong>Optimal Rotation (Blossom):</strong><br>1. Use <strong>Jiuyuan</strong> to deal rapid burst damage and apply Anima status.<br>2. Swap to <strong>Nanally</strong> for continuous <em>Blossom</em> triggers and main DPS damage.";
+        }
+    } else if (hasLacrimosa && hasDaffodil) {
+        if (state.currentLang === 'uk') {
+            rotation = "<strong>Оптимальна ротація (Хаотичний Заряд):</strong><br>1. Почніть із саппорта (наприклад, <strong>Сакірі</strong>), щоб стягнути ворогів.<br>2. Переключіться на <strong>Адлера</strong> та активуйте щит.<br>3. Перейдіть на <strong>Даффоділ</strong> для пробиття стійкості (Break) реакцією <em>Зарядження</em>.<br>4. Викличте <strong>Лакрімозу</strong> для нанесення колосальної вибухової шкоди масками по пробитим ворогам.";
+        } else {
+            rotation = "<strong>Optimal Rotation (Chaos Charged):</strong><br>1. Start with support (e.g. <strong>Sakiri</strong>) to pull targets.<br>2. Swap to <strong>Adler</strong> to deploy shields.<br>3. Swap to <strong>Daffodil</strong> to shred enemy poise (Break) via the <em>Charged</em> reaction.<br>4. Bring in <strong>Lacrimosa</strong> to deal massive burst damage with masks on broken targets.";
+        }
+    } else if (hasHathor && hasSkia) {
+        if (state.currentLang === 'uk') {
+            rotation = "<strong>Оптимальна ротація (Критичний Шторм):</strong><br>1. Почніть зі <strong>Скіа</strong>: накладіть мітки Fang Thrust із прихованості.<br>2. Передіть на <strong>Зеро</strong> та активуйте його Космос-поле для запуску реакції <em>Ремора</em> (+10% крит. шансу).<br>3. Переключіться на <strong>Хатор</strong>, накопичте стаки доставки та виконайте нищівний вибух стихій.";
+        } else {
+            rotation = "<strong>Optimal Rotation (Critical Storm):</strong><br>1. Start with <strong>Skia</strong>: apply shadow Fang Thrust marks from stealth.<br>2. Swap to <strong>Zero</strong> and activate Cosmos field to trigger the <em>Remora</em> reaction (+10% Crit Rate boost).<br>3. Switch to <strong>Hathor</strong>, stack up delivery power, and execute her devastating Ultimate Burst.";
+        }
+    } else if (hasMint && hasHaniel) {
+        if (state.currentLang === 'uk') {
+            rotation = "<strong>Оптимальна ротація (Стартовий загін):</strong><br>1. Почніть із <strong>Ханіель</strong>: викличте сову Hootie для баффу сили атаки загону.<br>2. Переключіться на <strong>Зеро</strong> та активуйте його навичку для запуску <em>Циклу Есперів</em>.<br>3. Перейдіть на <strong>Мінт</strong> та наносьте шкоду швидкими комбо під дією всіх баффів.";
+        } else {
+            rotation = "<strong>Optimal Rotation (Starter Team):</strong><br>1. Start with <strong>Haniel</strong>: summon owl Hootie to buff the entire squad's ATK.<br>2. Swap to <strong>Zero</strong> and use skill to trigger <em>Esper Cycle</em>.<br>3. Switch to <strong>Mint</strong> and deal damage with combo attacks while all buffs are active.";
         }
     } else if (activeChars.length >= 2) {
         const support = activeChars.find(c => c.role === "Support");

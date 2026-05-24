@@ -5,7 +5,7 @@ import { renderAvatarHtml, renderAvatarUrlOnly } from '../utils/helpers.js';
 import { getLocalizedChar } from '../localization/i18n.js';
 import { i18n } from '../localization/translations.js';
 import { openCharacterModal } from './builds.js';
-import { setupTeamBuilder } from './teambuilder.js';
+import { setupTeamBuilder, evaluateTeamSynergy, updateTeamSlotsUI } from './teambuilder.js';
 
 // GUIDES FEATURE HUB
 function initGuides() {
@@ -290,9 +290,9 @@ function openGuideDetailModal(guide) {
         `;
     }).join("");
 
-    // Recommended Teams avatars
+    // Recommended Teams avatars (Skip for preset teams category)
     let recommendedTeamsHtml = "";
-    const recTeamIds = guide.recommendedTeams || [];
+    const recTeamIds = (guide.recommendedTeams && guide.category !== "teams") ? guide.recommendedTeams : [];
     if (recTeamIds.length > 0) {
         const activeChars = state.CHARACTERS.length > 0 ? state.CHARACTERS : FALLBACK_CHARACTERS;
         const members = recTeamIds.map(id => activeChars.find(c => c.id === id)).filter(Boolean);
@@ -311,6 +311,18 @@ function openGuideDetailModal(guide) {
             <div class="guide-detail-block">
                 <span class="guide-detail-block-title">${i18n[state.currentLang].guides_recommended_teams}</span>
                 <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">${avatars}</div>
+            </div>
+        `;
+    }
+
+    // Customize preset team in Custom constructor CTA
+    let customizeBtnHtml = "";
+    if (guide.category === "teams") {
+        customizeBtnHtml = `
+            <div style="margin-top: 1.5rem; display: flex; justify-content: center;">
+                <button class="btn btn-primary" onclick="window.loadPresetToBuilder('${guide.id}')" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.8rem; font-weight: bold; border-radius: 8px; box-shadow: 0 0 15px rgba(0, 242, 254, 0.4); text-transform: uppercase; font-size: 0.85rem;">
+                    <i class="emoji">🛠️</i> ${state.currentLang === 'uk' ? 'Налаштувати цю команду в Конструкторі' : 'Customize this Team in Constructor'}
+                </button>
             </div>
         `;
     }
@@ -358,6 +370,7 @@ function openGuideDetailModal(guide) {
             ${recommendedTeamsHtml}
             ${tipsHtml}
             ${referencesHtml}
+            ${customizeBtnHtml}
         </div>
     `;
 
@@ -377,5 +390,50 @@ function isRecentlyUpdated(dateStr) {
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     return diffDays <= 14;
 }
+
+window.loadPresetToBuilder = function(presetId) {
+    const activeGuides = state.GUIDES.length > 0 ? state.GUIDES : FALLBACK_GUIDES;
+    const guide = activeGuides.find(g => g.id === presetId);
+    if (!guide || !guide.recommendedTeams) return;
+    
+    closeGuideDetailModal();
+    
+    // Switch filter to teams
+    state.activeGuideFilter = "teams";
+    const filterBtns = document.querySelectorAll("#guidesFilters .filter-btn");
+    filterBtns.forEach(btn => {
+        if (btn.getAttribute("data-category") === "teams") {
+            btn.classList.add("active");
+        } else {
+            btn.classList.remove("active");
+        }
+    });
+    
+    // Show teams sub-toolbar
+    const teamToggleRow = document.getElementById("teamGuidesToggleRow");
+    if (teamToggleRow) teamToggleRow.classList.remove("hidden");
+    
+    // Switch view mode to custom builder
+    showTeamViewMode("builder");
+    
+    // Pre-populate constructor slots with the recommended characters list
+    const activeChars = state.CHARACTERS.length > 0 ? state.CHARACTERS : FALLBACK_CHARACTERS;
+    const recommendedCharIds = guide.recommendedTeams;
+    
+    state.currentSquad = [null, null, null, null];
+    for (let i = 0; i < Math.min(4, recommendedCharIds.length); i++) {
+        const char = activeChars.find(c => c.id === recommendedCharIds[i]);
+        if (char) {
+            state.currentSquad[i] = char;
+        }
+    }
+    
+    // Re-evaluate reactions & rotation UI instantly
+    evaluateTeamSynergy();
+    updateTeamSlotsUI();
+    
+    // Re-render guides grid
+    renderGuidesGrid();
+};
 
 export { initGuides, renderGuides, renderGuidesGrid, openGuideDetailModal, closeGuideDetailModal };
