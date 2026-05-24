@@ -161,7 +161,7 @@ function updateAuthUI(user) {
         const loginLabel = state.currentLang === 'uk' ? 'Увійти' : 'Login';
         authBox.innerHTML = `
             <button class="btn btn-primary btn-sm" id="btnLoginGoogle">
-                <span class="auth-icon">🔑</span> ${loginLabel}
+                ${loginLabel}
             </button>
         `;
         document.getElementById("btnLoginGoogle").addEventListener("click", loginWithGoogle);
