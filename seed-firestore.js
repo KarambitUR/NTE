@@ -188,19 +188,19 @@
                     {
                         title: "3. Матеріали прориву з Босів",
                         titleEn: "3. Boss Breakthrough Materials",
-                        text: "Для покращення мисливців вище 20/40/50 рівнів потрібні унікальні трофеї зі світових босів (наприклад, Вершник без голови або Серенетті). Витрата енергії становить 40 одиниць за кожен збір.",
-                        textEn: "To upgrade hunters past levels 20/40/50, you need unique trophies from world bosses (e.g. Headless Rider or Serenetti). Energy cost is 40 per collection."
+                        text: "Для покращення мисливців вище 20/40/50/60/70 рівнів потрібні унікальні трофеї зі світових босів (наприклад, Вершник без голови або Серенетті). Витрата становить 40 Пікселів за кожен збір.",
+                        textEn: "To upgrade hunters past levels 20/40/50/60/70, you need unique trophies from world bosses (e.g. Headless Rider or Serenetti). Pixel cost is 40 per collection."
                     }
                 ]
             },
             references: ["https://reddit.com/r/NevernessToEverness", "https://nevernesstoeverness.fandom.com"],
             recommendedTeams: ["zero", "sakiri", "nanally", "daffodil"],
             progressionTips: [
-                "Використовуйте густу енергію (Condensed Energy) для подвоєння нагород з босів.",
+                "Використовуйте густі пікселі (Condensed Pixels) для подвоєння нагород з босів.",
                 "Фарміть щотижневих босів аномалій рівно 3 рази на тиждень."
             ],
             progressionTipsEn: [
-                "Use Condensed Energy to double rewards from bosses.",
+                "Use Condensed Pixels to double rewards from bosses.",
                 "Farm weekly anomaly bosses exactly 3 times a week."
             ]
         },
