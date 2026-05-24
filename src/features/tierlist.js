@@ -171,13 +171,19 @@ function openClickMoveMenu(charId) {
         "A": "Ранг A",
         "B": "Ранг B",
         "pool": "Скинути в пул"
+    } : (state.currentLang === 'fr' ? {
+        "S+": "Rang S+",
+        "S": "Rang S",
+        "A": "Rang A",
+        "B": "Rang B",
+        "pool": "Retour au pool"
     } : {
         "S+": "Rank S+",
         "S": "Rank S",
         "A": "Rank A",
         "B": "Rank B",
         "pool": "Reset to pool"
-    };
+    });
 
     const activeList = state.CHARACTERS.length > 0 ? state.CHARACTERS : FALLBACK_CHARACTERS;
     const char = activeList.find(c => c.id === charId);
@@ -203,10 +209,10 @@ function openClickMoveMenu(charId) {
     menu.style.gap = "0.8rem";
 
     menu.innerHTML = `
-        <h4 style="margin-bottom: 0.4rem; color: var(--color-cyan); font-family: var(--font-heading);">${state.currentLang === 'uk' ? 'Перемістити' : 'Move'} ${locChar.name.split(" ")[0]}</h4>
+        <h4 style="margin-bottom: 0.4rem; color: var(--color-cyan); font-family: var(--font-heading);">${state.currentLang === 'uk' ? 'Перемістити' : (state.currentLang === 'fr' ? 'Déplacer' : 'Move')} ${locChar.name.split(" ")[0]}</h4>
         <div style="display: flex; flex-direction: column; gap: 0.5rem; width: 200px;">
             ${tiers.map(t => `<button class="btn btn-secondary btn-sm select-tier-btn" data-target="${t}">${names[t]}</button>`).join("")}
-            <button class="btn btn-accent btn-sm mt-1 close-menu-btn">${state.currentLang === 'uk' ? 'Скасувати' : 'Cancel'}</button>
+            <button class="btn btn-accent btn-sm mt-1 close-menu-btn">${state.currentLang === 'uk' ? 'Скасувати' : (state.currentLang === 'fr' ? 'Annuler' : 'Cancel')}</button>
         </div>
     `;
 
@@ -264,7 +270,7 @@ async function saveUserTierlist() {
     }
 
     const titleInput = document.getElementById("editorTitle");
-    const title = (titleInput && titleInput.value.trim()) || (state.currentLang === 'uk' ? "Мій тір-ліст" : "My Tier List");
+    const title = (titleInput && titleInput.value.trim()) || (state.currentLang === 'uk' ? "Мій тір-ліст" : (state.currentLang === 'fr' ? "Ma Tier List" : "My Tier List"));
 
     // Count assigned characters
     const assignedCount = Object.keys(state.editorState).reduce((acc, tier) => {
@@ -279,7 +285,7 @@ async function saveUserTierlist() {
     try {
         const docData = {
             userId: user.uid,
-            userName: user.displayName || (state.currentLang === 'uk' ? "Гість" : "Guest"),
+            userName: user.displayName || (state.currentLang === 'uk' ? "Гість" : (state.currentLang === 'fr' ? "Invité" : "Guest")),
             userPhoto: user.photoURL || "",
             title: title,
             tiers: {
@@ -292,7 +298,7 @@ async function saveUserTierlist() {
         };
 
         if (!db) {
-            showToast(state.currentLang === 'uk' ? "База даних Firestore недоступна!" : "Firestore database is unavailable!");
+            showToast(i18n[state.currentLang].comm_db_unavailable || (state.currentLang === 'uk' ? "База даних Firestore недоступна!" : "Firestore database is unavailable!"));
             return;
         }
 
@@ -338,9 +344,9 @@ async function loadCommunityTierlists() {
                 const dateObj = new Date(data.createdAt.seconds * 1000);
                 dateStr = state.currentLang === 'uk'
                     ? dateObj.toLocaleDateString("uk-UA")
-                    : dateObj.toLocaleDateString("en-US");
+                    : (state.currentLang === 'fr' ? dateObj.toLocaleDateString("fr-FR") : dateObj.toLocaleDateString("en-US"));
             } else {
-                dateStr = state.currentLang === 'uk' ? "Нещодавно" : "Recently";
+                dateStr = state.currentLang === 'uk' ? "Нещодавно" : (state.currentLang === 'fr' ? "Récemment" : "Recently");
             }
 
             const currentUser = firebase.auth && firebase.auth().currentUser;
@@ -420,7 +426,7 @@ function viewUserTierlist(data) {
 
         const charIds = data.tiers[tier] || [];
         if (charIds.length === 0) {
-            grid.innerHTML = `<span style="font-size:0.75rem; color:var(--text-muted); opacity: 0.5;">${state.currentLang === 'uk' ? 'Порожньо' : 'Empty'}</span>`;
+            grid.innerHTML = `<span style="font-size:0.75rem; color:var(--text-muted); opacity: 0.5;">${state.currentLang === 'uk' ? 'Порожньо' : (state.currentLang === 'fr' ? 'Vide' : 'Empty')}</span>`;
         } else {
             charIds.forEach(charId => {
                 const char = activeList.find(c => c.id === charId);

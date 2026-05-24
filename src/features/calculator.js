@@ -1,7 +1,7 @@
 import { FALLBACK_CHARACTERS } from '../utils/fallbackData.js';
 import { state } from '../scripts/state.js';
 import { getLocalizedChar } from '../localization/i18n.js';
-import { ATTR_TRANSLATIONS, LOCALIZED_ATTRIBUTE_MATERIALS, LOCALIZED_WEAPON_MATERIALS, CHARACTER_MATERIAL_PROFILES } from '../localization/translations.js';
+import { i18n, ATTR_TRANSLATIONS, LOCALIZED_ATTRIBUTE_MATERIALS, LOCALIZED_WEAPON_MATERIALS, CHARACTER_MATERIAL_PROFILES } from '../localization/translations.js';
 import { showToast, renderAvatarHtml } from '../utils/helpers.js';
 
 
@@ -217,7 +217,7 @@ function renderCalculatorSetup() {
     }
 
     // Populate skills select options (1-10) with localized prefix
-    const skillPrefix = state.currentLang === 'uk' ? 'Рівень' : 'Lvl';
+    const skillPrefix = state.currentLang === 'uk' ? 'Рівень' : (state.currentLang === 'fr' ? 'Niv.' : 'Lvl');
     for (let i = 0; i < 4; i++) {
         const startSelect = document.getElementById(`skillStart_${i}`);
         const endSelect = document.getElementById(`skillEnd_${i}`);
@@ -398,8 +398,8 @@ function updateSingleMaterialCard(matId, haveAmount) {
     const needValEl = card.querySelector(".mat-val");
     const labelTextEl = card.querySelector(".mat-need");
 
-    const labelText = state.currentLang === 'uk' ? 'Потрібно' : 'Need';
-    const remainingText = state.currentLang === 'uk' ? 'Залишилось' : 'Remaining';
+    const labelText = state.currentLang === 'uk' ? 'Потрібно' : (state.currentLang === 'fr' ? 'Requis' : 'Need');
+    const remainingText = state.currentLang === 'uk' ? 'Залишилось' : (state.currentLang === 'fr' ? 'Restant' : 'Remaining');
 
     if (remaining === 0) {
         card.classList.add("mat-completed");
@@ -422,7 +422,7 @@ function calculateResources() {
     document.getElementById("calcPreviewName").innerText = locChar.name;
     document.getElementById("calcPreviewAttr").innerText = locChar.attribute;
     document.getElementById("calcPreviewAttr").className = `badge attr-${char.attribute.toLowerCase()}`;
-    document.getElementById("calcPreviewRarity").innerText = `${char.rarity}★ ${state.currentLang === 'uk' ? 'Ранг' : 'Rank'}`;
+    document.getElementById("calcPreviewRarity").innerText = `${char.rarity}★ ${state.currentLang === 'uk' ? 'Ранг' : (state.currentLang === 'fr' ? 'Rang' : 'Rank')}`;
     document.getElementById("calcPreviewRarity").className = `badge ${char.rarity === 5 ? 'badge-hot' : 'badge-cosmos'}`;
     
     const avatarContainer = document.getElementById("calcPreviewAvatar");
@@ -785,6 +785,201 @@ function calculateResources() {
     if (calculatedRequirements.common_t1 + calculatedRequirements.common_t2 + calculatedRequirements.common_t3 > 0) {
         addCategoryHeader(cLoc.cat_drops);
         addMaterialCard("common_t1", attrDetails.common.T1, calculatedRequirements.common_t1, attrDetails.common.farm);
+    const allSkillsFull = [0, 1, 2, 3].every(i => {
+        const start = parseInt(document.getElementById(`skillStart_${i}`).value) || 1;
+        const end = parseInt(document.getElementById(`skillEnd_${i}`).value) || 1;
+        return start === 1 && end === 10;
+    });
+    const isVerifiedFullBuild = Boolean(profile.verified && profile.fullTotals && startLvl === 1 && endLvl === 80 && allSkillsFull);
+
+    // Set requirements object globally to check on have-input triggers.
+    calculatedRequirements = isVerifiedFullBuild ? {
+        coin: profile.fullTotals.coin,
+        exp_elite: guidesElite,
+        exp_medium: guidesMed,
+        exp_basic: guidesBasic,
+        dye_elite: dyesElite,
+        dye_medium: dyesMed,
+        dye_basic: dyesBasic,
+        boss: profile.fullTotals.boss,
+        specialty: 0,
+        common_t1: profile.fullTotals.common_t1,
+        common_t2: profile.fullTotals.common_t2,
+        common_t3: profile.fullTotals.common_t3,
+        scroll_t1: profile.fullTotals.scroll_t1,
+        scroll_t2: profile.fullTotals.scroll_t2,
+        scroll_t3: profile.fullTotals.scroll_t3,
+        weekly: profile.fullTotals.weekly,
+        crown: 0,
+        ore_t1: totalWeapOreT1,
+        ore_t2: totalWeapOreT2,
+        ore_t3: totalWeapOreT3
+    } : {
+        coin: finalCoins,
+        exp_elite: guidesElite,
+        exp_medium: guidesMed,
+        exp_basic: guidesBasic,
+        dye_elite: dyesElite,
+        dye_medium: dyesMed,
+        dye_basic: dyesBasic,
+        boss: finalBoss,
+        specialty: totalCharSpecialty,
+        common_t1: finalCommonT1,
+        common_t2: finalCommonT2,
+        common_t3: finalCommonT3,
+        scroll_t1: totalSkillScrollsT1,
+        scroll_t2: totalSkillScrollsT2,
+        scroll_t3: totalSkillScrollsT3,
+        weekly: 0,
+        crown: totalSkillCrown,
+        ore_t1: totalWeapOreT1,
+        ore_t2: totalWeapOreT2,
+        ore_t3: totalWeapOreT3
+    };
+
+    // Localization strings
+    const calcLoc = {
+        uk: {
+            cat_main: "Основні Валюти & Досвід",
+            cat_breakthrough: "Матеріали Прориву",
+            cat_skills: "Матеріали Навичок",
+            cat_drops: "Трофеї з Ворогів",
+            coin_name: "Монети Beetle (Золото)",
+            coin_farm: "Material Selection Box / Houdinii's Magic Stage / Hunter Exchange / World Exploration",
+            exp_elite_name: "Elite Hunter Guide (+20,000 EXP)",
+            exp_med_name: "Senior Hunter Guide (+5,000 EXP)",
+            exp_basic_name: "Rising Hunter Guide (+1,000 EXP)",
+            exp_farm: "Houdinii's Magic Stage / Hunter Exchange / World Exploration",
+            dye_elite_name: "Chaotic Dye (+10,000 Arc EXP)",
+            dye_med_name: "Colorless Dye (+2,500 Arc EXP)",
+            dye_basic_name: "Light Dye (+500 Arc EXP)",
+            dye_farm: "Houdinii's Magic Stage / Hunter Exchange / World Exploration",
+            crown_name: "Щотижневий матеріал навички",
+            crown_farm: "Anomaly Pilgrimage",
+            source_verified: "Точний total-cost підтверджено для цього пресету.",
+            source_estimate: "Частина чисел є планувальною оцінкою; назви ресурсів і джерела взято з відкритих баз.",
+            need_label: "Потрібно:",
+            remaining_label: "Залишилось:",
+            have_label: "Маю:",
+            done_badge: "✓ Готово"
+        },
+        en: {
+            cat_main: "Core Currencies & Experience",
+            cat_breakthrough: "Breakthrough Materials",
+            cat_skills: "Skill Materials",
+            cat_drops: "Enemy Trophies",
+            coin_name: "Beetle Coins (Gold)",
+            coin_farm: "Material Selection Box / Houdinii's Magic Stage / Hunter Exchange / World Exploration",
+            exp_elite_name: "Elite Hunter Guide (+20,000 EXP)",
+            exp_med_name: "Senior Hunter Guide (+5,000 EXP)",
+            exp_basic_name: "Rising Hunter Guide (+1,000 EXP)",
+            exp_farm: "Houdinii's Magic Stage / Hunter Exchange / World Exploration",
+            dye_elite_name: "Chaotic Dye (+10,000 Arc EXP)",
+            dye_med_name: "Colorless Dye (+2,500 Arc EXP)",
+            dye_basic_name: "Light Dye (+500 Arc EXP)",
+            dye_farm: "Houdinii's Magic Stage / Hunter Exchange / World Exploration",
+            crown_name: "Weekly Skill Material",
+            crown_farm: "Anomaly Pilgrimage",
+            source_verified: "Exact total cost is verified for this preset.",
+            source_estimate: "Some quantities are planning estimates; resource names and sources use public databases.",
+            need_label: "Need:",
+            remaining_label: "Remaining:",
+            have_label: "Have:",
+            done_badge: "✓ Done"
+        }
+    };
+    const cLoc = calcLoc[state.currentLang] || calcLoc['uk'];
+
+    // Render HTML Categories
+    const resultsGrid = document.getElementById("calcMaterialsList");
+    resultsGrid.innerHTML = "";
+
+    const sourceNote = document.createElement("div");
+    sourceNote.className = `calc-source-note ${isVerifiedFullBuild ? 'verified' : 'estimate'}`;
+    sourceNote.innerHTML = `
+        <strong>${isVerifiedFullBuild ? 'Verified' : 'Planner'}</strong>
+        <span>${isVerifiedFullBuild ? cLoc.source_verified : cLoc.source_estimate}</span>
+    `;
+    resultsGrid.appendChild(sourceNote);
+
+    function addCategoryHeader(title) {
+        const h = document.createElement("div");
+        h.className = "materials-cat-header";
+        h.innerText = title;
+        resultsGrid.appendChild(h);
+    }
+
+    function addMaterialCard(id, name, needed, farmLoc) {
+        if (needed <= 0) return;
+        
+        const have = calcInventory[id] || 0;
+        const remaining = Math.max(0, needed - have);
+        const isCompleted = remaining === 0;
+
+        const card = document.createElement("div");
+        card.className = `material-card ${isCompleted ? 'mat-completed' : ''}`;
+        card.id = `mat-card-${id}`;
+        
+        card.innerHTML = `
+            <div class="mat-card-top">
+                <div class="mat-icon">${getMaterialIcon(id, profile, attrDetails, char)}</div>
+                <div class="mat-card-info">
+                    <span class="mat-card-name">${name}</span>
+                    <span class="mat-card-farm">${farmLoc}</span>
+                </div>
+            </div>
+            <div class="mat-card-mid">
+                <span class="mat-need">
+                    ${isCompleted ? `${cLoc.need_label} <span class="mat-val">${needed.toLocaleString()}</span>` : `${cLoc.remaining_label} <span class="mat-val">${remaining.toLocaleString()}</span> / ${needed.toLocaleString()}`}
+                </span>
+                <span class="mat-completed-badge">${cLoc.done_badge}</span>
+                <div class="mat-have-input-wrapper">
+                    <span class="mat-have-label">${cLoc.have_label}</span>
+                    <input type="number" class="mat-have-input" data-mat-id="${id}" min="0" value="${have}">
+                </div>
+            </div>
+        `;
+        resultsGrid.appendChild(card);
+    }
+
+    // 1. Currency & Exp Guides
+    addCategoryHeader(cLoc.cat_main);
+    addMaterialCard("coin", cLoc.coin_name, calculatedRequirements.coin, cLoc.coin_farm);
+    addMaterialCard("exp_elite", cLoc.exp_elite_name, calculatedRequirements.exp_elite, cLoc.exp_farm);
+    addMaterialCard("exp_medium", cLoc.exp_med_name, calculatedRequirements.exp_medium, cLoc.exp_farm);
+    addMaterialCard("exp_basic", cLoc.exp_basic_name, calculatedRequirements.exp_basic, cLoc.exp_farm);
+    if (includeWeapon) {
+        addMaterialCard("dye_elite", cLoc.dye_elite_name, calculatedRequirements.dye_elite, cLoc.dye_farm);
+        addMaterialCard("dye_medium", cLoc.dye_med_name, calculatedRequirements.dye_medium, cLoc.dye_farm);
+        addMaterialCard("dye_basic", cLoc.dye_basic_name, calculatedRequirements.dye_basic, cLoc.dye_farm);
+    }
+
+    // 2. Breakthrough Materials
+    if (calculatedRequirements.specialty > 0 || calculatedRequirements.boss > 0 || (includeWeapon && (calculatedRequirements.ore_t1 + calculatedRequirements.ore_t2 + calculatedRequirements.ore_t3 > 0))) {
+        addCategoryHeader(cLoc.cat_breakthrough);
+        addMaterialCard("boss", attrDetails.boss, calculatedRequirements.boss, attrDetails.farmBoss);
+        addMaterialCard("specialty", attrDetails.specialty, calculatedRequirements.specialty, attrDetails.farmSpecialty);
+        if (includeWeapon) {
+            addMaterialCard("ore_t1", weaponMats.T1, calculatedRequirements.ore_t1, weaponMats.farm);
+            addMaterialCard("ore_t2", weaponMats.T2, calculatedRequirements.ore_t2, weaponMats.farm);
+            addMaterialCard("ore_t3", weaponMats.T3, calculatedRequirements.ore_t3, weaponMats.farm);
+        }
+    }
+
+    // 3. Skill Scrolls
+    if (calculatedRequirements.scroll_t1 + calculatedRequirements.scroll_t2 + calculatedRequirements.scroll_t3 + calculatedRequirements.weekly + calculatedRequirements.crown > 0) {
+        addCategoryHeader(cLoc.cat_skills);
+        addMaterialCard("scroll_t1", attrDetails.scrolls.T1, calculatedRequirements.scroll_t1, attrDetails.scrolls.farm);
+        addMaterialCard("scroll_t2", attrDetails.scrolls.T2, calculatedRequirements.scroll_t2, attrDetails.scrolls.farm);
+        addMaterialCard("scroll_t3", attrDetails.scrolls.T3, calculatedRequirements.scroll_t3, attrDetails.scrolls.farm);
+        addMaterialCard("weekly", profile.weekly || cLoc.crown_name, calculatedRequirements.weekly || 0, profile.weeklyFarm || cLoc.crown_farm);
+        addMaterialCard("crown", cLoc.crown_name, calculatedRequirements.crown || 0, cLoc.crown_farm);
+    }
+
+    // 4. Common Enemy Drops
+    if (calculatedRequirements.common_t1 + calculatedRequirements.common_t2 + calculatedRequirements.common_t3 > 0) {
+        addCategoryHeader(cLoc.cat_drops);
+        addMaterialCard("common_t1", attrDetails.common.T1, calculatedRequirements.common_t1, attrDetails.common.farm);
         addMaterialCard("common_t2", attrDetails.common.T2, calculatedRequirements.common_t2, attrDetails.common.farm);
         addMaterialCard("common_t3", attrDetails.common.T3, calculatedRequirements.common_t3, attrDetails.common.farm);
     }
@@ -807,6 +1002,10 @@ function exportCalcReport() {
         report += `=== EIBON TERMINAL: ЗВІТ ПРО РЕСУРСИ ===\n`;
         report += `Мисливець: ${charName} (Рівень ${startLvl} ➔ ${endLvl})\n`;
         report += `Навички:\n`;
+    } else if (state.currentLang === 'fr') {
+        report += `=== EIBON TERMINAL: RAPPORT DE RESSOURCES ===\n`;
+        report += `Chasseur: ${charName} (Niveau ${startLvl} ➔ ${endLvl})\n`;
+        report += `Compétences:\n`;
     } else {
         report += `=== EIBON TERMINAL: RESOURCE REPORT ===\n`;
         report += `Hunter: ${charName} (Level ${startLvl} ➔ ${endLvl})\n`;
@@ -815,13 +1014,17 @@ function exportCalcReport() {
     
     const skillLabels = state.currentLang === 'uk' 
         ? ["Авто-атака", "Активна навичка", "Пасивна навичка", "Вибух стихій"]
-        : ["Basic Attack", "Active Skill", "Passive Skill", "Ultimate Burst"];
+        : (state.currentLang === 'fr'
+            ? ["Attaque Normale", "Compétence Active", "Compétence Passive", "Déchaînement Élémentaire"]
+            : ["Basic Attack", "Active Skill", "Passive Skill", "Ultimate Burst"]);
         
     for (let i = 0; i < 4; i++) {
         const start = document.getElementById(`skillStart_${i}`).value;
         const end = document.getElementById(`skillEnd_${i}`).value;
         if (state.currentLang === 'uk') {
             report += `  - ${skillLabels[i]}: Рівень ${start} ➔ ${end}\n`;
+        } else if (state.currentLang === 'fr') {
+            report += `  - ${skillLabels[i]}: Niveau ${start} ➔ ${end}\n`;
         } else {
             report += `  - ${skillLabels[i]}: Level ${start} ➔ ${end}\n`;
         }
@@ -835,12 +1038,16 @@ function exportCalcReport() {
         const wEnd = document.getElementById("calcWeaponLevelEnd").value;
         if (state.currentLang === 'uk') {
             report += `Зброя (Arc) ${wRarity}★: Рівень ${wStart} ➔ ${wEnd}\n`;
+        } else if (state.currentLang === 'fr') {
+            report += `Arme (Arc) ${wRarity}★: Niveau ${wStart} ➔ ${wEnd}\n`;
         } else {
             report += `Weapon (Arc) ${wRarity}★: Level ${wStart} ➔ ${wEnd}\n`;
         }
     } else {
         if (state.currentLang === 'uk') {
             report += `Зброя (Arc): Не враховувалась\n`;
+        } else if (state.currentLang === 'fr') {
+            report += `Arme (Arc): Non calculé\n`;
         } else {
             report += `Weapon (Arc): Not calculated\n`;
         }
@@ -848,6 +1055,8 @@ function exportCalcReport() {
 
     if (state.currentLang === 'uk') {
         report += `\nСПИСОК НЕОБХІДНИХ МАТЕРІАЛІВ:\n`;
+    } else if (state.currentLang === 'fr') {
+        report += `\nLISTE DES MATÉRIAUX REQUIS:\n`;
     } else {
         report += `\nREQUIRED MATERIALS LIST:\n`;
     }
@@ -878,7 +1087,7 @@ function exportCalcReport() {
         
         let matName = "";
         if (id === 'coin') {
-            matName = state.currentLang === 'uk' ? "Монети Beetle (Золото)" : "Beetle Coins (Gold)";
+            matName = state.currentLang === 'uk' ? "Монети Beetle (Золото)" : (state.currentLang === 'fr' ? "Pièces Beetle (Or)" : "Beetle Coins (Gold)");
         }
         else if (id === 'exp_elite') {
             matName = "Elite Hunter Guide (+20,000 EXP)";
@@ -908,10 +1117,10 @@ function exportCalcReport() {
         else if (id === 'ore_t2') matName = weaponMats.T2;
         else if (id === 'ore_t3') matName = weaponMats.T3;
         else if (id === 'crown') {
-            matName = state.currentLang === 'uk' ? "Щотижневий матеріал навички" : "Weekly Skill Material";
+            matName = state.currentLang === 'uk' ? "Щотижневий матеріал навички" : (state.currentLang === 'fr' ? "Matériau de compétence hebdomadaire" : "Weekly Skill Material");
         }
         else if (id === 'weekly') {
-            matName = profile.weekly || (state.currentLang === 'uk' ? "Щотижневий матеріал навички" : "Weekly Skill Material");
+            matName = profile.weekly || (state.currentLang === 'uk' ? "Щотижневий матеріал навички" : (state.currentLang === 'fr' ? "Matériau de compétence hebdomadaire" : "Weekly Skill Material"));
         }
         else {
             if (id === 'scroll_t1') matName = attrDetails.scrolls.T1;
@@ -927,6 +1136,8 @@ function exportCalcReport() {
         
         if (state.currentLang === 'uk') {
             report += `- ${matName}: Потрібно ${needed.toLocaleString()} шт. (Маю: ${have.toLocaleString()} | Залишилось: ${rem.toLocaleString()})\n`;
+        } else if (state.currentLang === 'fr') {
+            report += `- ${matName}: Requis ${needed.toLocaleString()} pcs. (Possède: ${have.toLocaleString()} | Restant: ${rem.toLocaleString()})\n`;
         } else {
             report += `- ${matName}: Need ${needed.toLocaleString()} pcs. (Have: ${have.toLocaleString()} | Remaining: ${rem.toLocaleString()})\n`;
         }
@@ -934,14 +1145,16 @@ function exportCalcReport() {
 
     if (state.currentLang === 'uk') {
         report += `\nСгенеровано на Eibon Terminal. Успішного фарма! 🚀`;
+    } else if (state.currentLang === 'fr') {
+        report += `\nGénéré sur Eibon Terminal. Bon farm ! 🚀`;
     } else {
         report += `\nGenerated on Eibon Terminal. Happy farming! 🚀`;
     }
 
     navigator.clipboard.writeText(report).then(() => {
-        showToast(state.currentLang === 'uk' ? "Звіт скопійовано у буфер обміну!" : "Report copied to clipboard!");
+        showToast(i18n[state.currentLang].toast_report_copied || "Report copied to clipboard!");
     }).catch(err => {
-        showToast(state.currentLang === 'uk' ? "Помилка копіювання звіту." : "Failed to copy report.");
+        showToast(i18n[state.currentLang].toast_report_error || "Failed to copy report.");
         console.error(err);
     });
 }

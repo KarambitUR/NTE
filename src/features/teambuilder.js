@@ -333,48 +333,64 @@ function evaluateTeamSynergy() {
     if (hasNanally && hasSakiri && hasZero) {
         if (state.currentLang === 'uk') {
             rotation = "<strong>Оптимальна ротація для бою:</strong><br>1. Почніть із <strong>Сакірі</strong>: стягніть ворогів умінням і запустіть вибух стихій для зрізу опорів.<br>2. Переключіться на <strong>Зеро</strong>: активуйте його поле, що запускає реакцію <em>Цикл Есперів</em>.<br>3. Перейдіть на <strong>Наналлі</strong>: виконайте посилену серію авто-атак під дією гравітації та вибух стихій для фінального удару.";
+        } else if (state.currentLang === 'fr') {
+            rotation = "<strong>Rotation de Combat Optimale :</strong><br>1. Commencez avec <strong>Sakiri</strong> : regroupez les ennemis avec sa compétence et déclenchez son Déchaînement Élémentaire pour réduire les résistances.<br>2. Passez à <strong>Zero</strong> : activez son champ pour déclencher le <em>Cycle d'Espers</em>.<br>3. Passez à <strong>Nanally</strong> : effectuez des combos aériens renforcés et utilisez son Déchaînement Élémentaire pour le coup de grâce.";
         } else {
             rotation = "<strong>Optimal Combat Rotation:</strong><br>1. Start with <strong>Sakiri</strong>: group enemies with skill and trigger Ultimate Burst to shred resistances.<br>2. Switch to <strong>Zero</strong>: activate his field to trigger <em>Esper Cycle</em>.<br>3. Swap to <strong>Nanally</strong>: perform enhanced gravity combos and use Ultimate Burst for the final blowout.";
         }
     } else if (hasBaicang && hasSakiri && (hasAdler || hasFadia)) {
         if (state.currentLang === 'uk') {
             rotation = "<strong>Оптимальна ротація (Полум'яний Гнів):</strong><br>1. Почніть з <strong>Адлера</strong> (або <strong>Фадії</strong>): активуйте щит/лікування для стабільності.<br>2. Переключіться на <strong>Сакірі</strong>: стягніть ворогів та запустіть ультимейт для зрізу опорів.<br>3. Перейдіть на <strong>Байцан</strong>: використовуйте посилені закляття та атаки, наносячи нищівну шкоду з витратою здоров'я.";
+        } else if (state.currentLang === 'fr') {
+            rotation = "<strong>Rotation Optimale (Colère Flamboyante) :</strong><br>1. Commencez avec <strong>Adler</strong> (ou <strong>Fadia</strong>) : déployez son bouclier/soin pour sécuriser la posture de Baicang.<br>2. Passez à <strong>Sakiri</strong> : regroupez les cibles et activez son ultime pour réduire les résistances.<br>3. Passez à <strong>Baicang</strong> : déclenchez ses enchaînements de compétences consommant des PV pour infliger des dégâts de burst dévastateurs.";
         } else {
             rotation = "<strong>Optimal Rotation (Blazing Wrath):</strong><br>1. Start with <strong>Adler</strong> (or <strong>Fadia</strong>): deploy shield/sustain to secure Baicang's posture.<br>2. Swap to <strong>Sakiri</strong>: group targets and activate Ultimate to shred resistances.<br>3. Swap to <strong>Baicang</strong>: trigger HP-consuming skill strings to unleash devastating burst damage.";
         }
     } else if (hasChiz && hasZero && hasHotori) {
         if (state.currentLang === 'uk') {
             rotation = "<strong>Оптимальна ротація (Золота Лихоманка):</strong><br>1. Почніть із <strong>Зеро</strong>: активуйте його Космос-поле для прискорення ротацій.<br>2. Переключіться на <strong>Хоторі</strong> та запустіть її прилад запису.<br>3. Перейдіть на <strong>Сакірі</strong> (або іншого саппорта) для стяжки та дебаффу ворогів.<br>4. Виведіть <strong>Чіз</strong>: виконайте комбо молотом та активуйте ультимейт для ігнорування захисту.";
+        } else if (state.currentLang === 'fr') {
+            rotation = "<strong>Rotation Optimale (Ruée vers l'Or) :</strong><br>1. Commencez avec <strong>Zero</strong> : activez son champ Cosmos pour accélérer les changements de personnage et booster l'équipe.<br>2. Passez à <strong>Hotori</strong> et lancez son enregistreur de compétences.<br>3. Passez à <strong>Sakiri</strong> (ou autre support) pour regrouper les ennemis et réduire leurs résistances.<br>4. Passez à <strong>Chiz</strong> : effectuez des combos de marteau et déclenchez son ultime ignorant la défense.";
         } else {
             rotation = "<strong>Optimal Rotation (Gold Rush):</strong><br>1. Start with <strong>Zero</strong>: activate his Cosmos field for swap acceleration and buffs.<br>2. Swap to <strong>Hotori</strong> and launch her recording device.<br>3. Swap to <strong>Sakiri</strong> (or other support) to apply crowd control and shred resistances.<br>4. Swap to <strong>Chiz</strong>: execute hammer combos and activate her defense-ignoring Ultimate Burst.";
         }
     } else if (hasAurelia && (hasFadia || hasSakiri)) {
         if (state.currentLang === 'uk') {
             rotation = "<strong>Оптимальна ротація (Симфонія Розуму):</strong><br>1. Почніть із <strong>Сакірі</strong>: згрупуйте ворогів стяжкою.<br>2. Перейдіть на <strong>Фадію</strong>: активуйте захисний надгробок для стійкості команди.<br>3. Використовуйте <strong>Наналлі</strong> (або іншого героя Аніми/Закляття) для швидкого накладання стихії.<br>4. Перейдіть на <strong>Аурелію</strong>: увійдіть у стан Cadenza та наносьте шкоду медузами (реакції Nova/Discord).";
+        } else if (state.currentLang === 'fr') {
+            rotation = "<strong>Rotation Optimale (Symphonie de l'Esprit) :</strong><br>1. Commencez avec <strong>Sakiri</strong> : utilisez son attraction pour regrouper les ennemis.<br>2. Passez à <strong>Fadia</strong> : déployez sa barrière tombale pour la protection et la survie de l'équipe.<br>3. Utilisez <strong>Nanally</strong> (ou un autre Anima/Incantation) pour appliquer les éléments de base.<br>4. Amenez <strong>Aurelia</strong> : entrez en état Cadenza et déclenchez les explosions AoE de ses méduses (réactions Nova/Discorde).";
         } else {
             rotation = "<strong>Optimal Rotation (Mind Symphony):</strong><br>1. Start with <strong>Sakiri</strong>: use crowd control pull to group enemies.<br>2. Swap to <strong>Fadia</strong>: deploy tombstone shields for overall party posture and health.<br>3. Swap to <strong>Nanally</strong> (or other Anima/Incantation) to apply primary elements.<br>4. Bring in <strong>Aurelia</strong>: enter Cadenza state and trigger mental jellyfish AoE bursts (Nova/Discord).";
         }
     } else if (hasLacrimosa && hasDaffodil) {
         if (state.currentLang === 'uk') {
             rotation = "<strong>Оптимальна ротація (Хаотичний Заряд):</strong><br>1. Почніть із саппорта (наприклад, <strong>Сакірі</strong>), щоб стягнути ворогів.<br>2. Переключіться на <strong>Адлера</strong> та активуйте щит.<br>3. Перейдіть на <strong>Даффоділ</strong> для пробиття стійкості (Break) реакцією <em>Зарядження</em>.<br>4. Викличте <strong>Лакрімозу</strong> для нанесення колосальної вибухової шкоди масками по пробитим ворогам.";
+        } else if (state.currentLang === 'fr') {
+            rotation = "<strong>Rotation Optimale (Charge Chaotique) :</strong><br>1. Commencez avec un support (ex: <strong>Sakiri</strong>) pour attirer les cibles.<br>2. Passez à <strong>Adler</strong> pour déployer son bouclier.<br>3. Passez à <strong>Daffodil</strong> pour briser rapidement la posture (Rupture) des ennemis via la réaction <em>Surchargé</em>.<br>4. Amenez <strong>Lacrimosa</strong> pour infliger d'énormes dégâts de burst avec ses masques sur les cibles brisées.";
         } else {
             rotation = "<strong>Optimal Rotation (Chaos Charged):</strong><br>1. Start with support (e.g. <strong>Sakiri</strong>) to pull targets.<br>2. Swap to <strong>Adler</strong> to deploy shields.<br>3. Swap to <strong>Daffodil</strong> to shred enemy poise (Break) via the <em>Charged</em> reaction.<br>4. Bring in <strong>Lacrimosa</strong> to deal massive burst damage with masks on broken targets.";
         }
     } else if (hasNanally && hasJiuyuan) {
         if (state.currentLang === 'uk') {
             rotation = "<strong>Оптимальна ротація (Цвітіння):</strong><br>1. Використовуйте <strong>Цзююань</strong> для нанесення швидкої шкоди та накладання статусу Аніми.<br>2. Перейдіть на <strong>Наналлі</strong> для безперервного виклику реакції <em>Цвітіння</em> та нанесення основної шкоди.";
+        } else if (state.currentLang === 'fr') {
+            rotation = "<strong>Rotation Optimale (Blossom) :</strong><br>1. Utilisez <strong>Jiuyuan</strong> pour infliger un burst rapide de dégâts et appliquer l'élément Anima.<br>2. Passez à <strong>Nanally</strong> pour déclencher continuellement la réaction <em>Blossom</em> et infliger les dégâts principaux.";
         } else {
             rotation = "<strong>Optimal Rotation (Blossom):</strong><br>1. Use <strong>Jiuyuan</strong> to deal rapid burst damage and apply Anima status.<br>2. Swap to <strong>Nanally</strong> for continuous <em>Blossom</em> triggers and main DPS damage.";
         }
     } else if (hasHathor && hasSkia) {
         if (state.currentLang === 'uk') {
             rotation = "<strong>Оптимальна ротація (Критичний Шторм):</strong><br>1. Почніть зі <strong>Скіа</strong>: накладіть мітки Fang Thrust із прихованості.<br>2. Передіть на <strong>Зеро</strong> та активуйте його Космос-поле для запуску реакції <em>Ремора</em> (+10% крит. шансу).<br>3. Переключіться на <strong>Хатор</strong>, накопичте стаки доставки та виконайте нищівний вибух стихій.";
+        } else if (state.currentLang === 'fr') {
+            rotation = "<strong>Rotation Optimale (Tempête Critique) :</strong><br>1. Commencez avec <strong>Skia</strong> : appliquez les marques Fang Thrust depuis la furtivité.<br>2. Passez à <strong>Zero</strong> et activez son champ Cosmos pour déclencher la réaction <em>Rémora</em> (+10% de Taux Critique).<br>3. Passez à <strong>Hathor</strong>, cumulez de la puissance de livraison et exécutez son Déchaînement Élémentaire.";
         } else {
             rotation = "<strong>Optimal Rotation (Critical Storm):</strong><br>1. Start with <strong>Skia</strong>: apply shadow Fang Thrust marks from stealth.<br>2. Swap to <strong>Zero</strong> and activate Cosmos field to trigger the <em>Remora</em> reaction (+10% Crit Rate boost).<br>3. Switch to <strong>Hathor</strong>, stack up delivery power, and execute her devastating Ultimate Burst.";
         }
     } else if (hasMint && hasHaniel) {
         if (state.currentLang === 'uk') {
             rotation = "<strong>Оптимальна ротація (Стартовий загін):</strong><br>1. Почніть із <strong>Ханіель</strong>: викличте сову Hootie для баффу сили атаки загону.<br>2. Переключіться на <strong>Зеро</strong> та активуйте його навичку для запуску <em>Циклу Есперів</em>.<br>3. Перейдіть на <strong>Мінт</strong> та наносьте шкоду швидкими комбо под дією всіх баффів.";
+        } else if (state.currentLang === 'fr') {
+            rotation = "<strong>Rotation Optimale (Équipe de Départ) :</strong><br>1. Commencez avec <strong>Haniel</strong> : invoquez le hibou Hootie pour booster l'ATK de l'équipe.<br>2. Passez à <strong>Zero</strong> et utilisez sa compétence pour déclencher le <em>Cycle d'Espers</em>.<br>3. Passez à <strong>Mint</strong> et infligez des dégâts avec des attaques combos sous l'effet de tous les buffs.";
         } else {
             rotation = "<strong>Optimal Rotation (Starter Team):</strong><br>1. Start with <strong>Haniel</strong>: summon owl Hootie to buff the entire squad's ATK.<br>2. Swap to <strong>Zero</strong> and use skill to trigger <em>Esper Cycle</em>.<br>3. Switch to <strong>Mint</strong> and deal damage with combo attacks while all buffs are active.";
         }
@@ -386,12 +402,16 @@ function evaluateTeamSynergy() {
             const locDps = getLocalizedChar(dps);
             if (state.currentLang === 'uk') {
                 rotation = `<strong>Бойова порада:</strong><br>Починайте бій за підтримку <strong>${locSupport.name.split(" ")[0]}</strong> для накладання ефектів контролю та баффів, після чого переключайтеся на атакуючого <strong>${locDps.name.split(" ")[0]}</strong> для завдання максимальної шкоди під баффами.`;
+            } else if (state.currentLang === 'fr') {
+                rotation = `<strong>Conseil de Combat :</strong><br>Commencez le combat avec le soutien <strong>${locSupport.name.split(" ")[0]}</strong> pour appliquer des contrôles et des buffs, puis passez au DPS Principal <strong>${locDps.name.split(" ")[0]}</strong> pour infliger un maximum de dégâts sous buffs.`;
             } else {
                 rotation = `<strong>Combat Tip:</strong><br>Begin combat with support <strong>${locSupport.name.split(" ")[0]}</strong> to apply crowd control and buffs, then switch to Main DPS <strong>${locDps.name.split(" ")[0]}</strong> to deal maximum damage under buffs.`;
             }
         } else {
             if (state.currentLang === 'uk') {
                 rotation = "<strong>Бойова порада:</strong><br>Для збалансованого загону рекомендується мати принаймні одного атакуючого (Main DPS) персонажа та одного підтримку (Support). Експериментуйте з додаванням героїв Космосу для прискорення ротацій.";
+            } else if (state.currentLang === 'fr') {
+                rotation = "<strong>Conseil de Combat :</strong><br>Pour une équipe équilibrée, il est recommandé d'avoir au moins un DPS Principal et un Soutien. Expérimentez en ajoutant des héros Cosmos pour accélérer les rotations.";
             } else {
                 rotation = "<strong>Combat Tip:</strong><br>For a balanced squad, it is recommended to have at least one Main DPS character and one Support. Experiment with adding Cosmos heroes to accelerate rotations.";
             }
@@ -399,6 +419,8 @@ function evaluateTeamSynergy() {
     } else {
         if (state.currentLang === 'uk') {
             rotation = "Додайте більше персонажів у команду для генерації тактичних порад.";
+        } else if (state.currentLang === 'fr') {
+            rotation = "Ajoutez plus de personnages à l'équipe pour générer des conseils tactiques.";
         } else {
             rotation = "Add more characters to the squad to generate tactical tips.";
         }

@@ -1,11 +1,13 @@
 export const ROLE_TRANSLATIONS = {
     uk: { "Main DPS": "Атакуючий", "Sub-DPS": "Допоміжний ДПС", "Support": "Підтримка" },
-    en: { "Main DPS": "Main DPS", "Sub-DPS": "Sub-DPS", "Support": "Support" }
+    en: { "Main DPS": "Main DPS", "Sub-DPS": "Sub-DPS", "Support": "Support" },
+    fr: { "Main DPS": "DPS Principal", "Sub-DPS": "Sub-DPS", "Support": "Soutien" }
 };
 
 export const ATTR_TRANSLATIONS = {
     uk: { "Anima": "Аніма", "Cosmos": "Космос", "Incantation": "Закляття", "Chaos": "Хаос", "Psyche": "Психея", "Lakshana": "Лакшана" },
-    en: { "Anima": "Anima", "Cosmos": "Cosmos", "Incantation": "Incantation", "Chaos": "Chaos", "Psyche": "Psyche", "Lakshana": "Lakshana" }
+    en: { "Anima": "Anima", "Cosmos": "Cosmos", "Incantation": "Incantation", "Chaos": "Chaos", "Psyche": "Psyche", "Lakshana": "Lakshana" },
+    fr: { "Anima": "Anima", "Cosmos": "Cosmos", "Incantation": "Incantation", "Chaos": "Chaos", "Psyche": "Psyché", "Lakshana": "Lakshana" }
 };
 
 export const STAT_TRANSLATIONS = {
@@ -50,6 +52,27 @@ export const STAT_TRANSLATIONS = {
         "Psyche DMG": "Psyche DMG",
         "Lakshana DMG": "Lakshana DMG",
         "Healing Bonus": "Healing Bonus"
+    },
+    fr: {
+        "Crit Rate": "Taux Critique",
+        "Crit Rate (75%+)": "Taux Critique (75%+)",
+        "Crit DMG": "Dégâts Critique",
+        "ATK%": "ATK %",
+        "DEF%": "Défense %",
+        "HP%": "PV %",
+        "Flat HP": "PV (Plat)",
+        "Flat DEF": "Défense (Plat)",
+        "Cycle Intensity": "Intensité de Cycle",
+        "Break Effect": "Effet de Rupture",
+        "Break Intensity": "Intensité de Rupture",
+        "Energy Charge Efficiency": "Recharge d'Énergie",
+        "Anima DMG": "Dégâts Anima",
+        "Cosmos DMG": "Dégâts Cosmos",
+        "Incantation DMG": "Dégâts Incantation",
+        "Chaos DMG": "Dégâts Chaos",
+        "Psyche DMG": "Dégâts Psyché",
+        "Lakshana DMG": "Dégâts Lakshana",
+        "Healing Bonus": "Bonus de Soin"
     }
 };
 
@@ -74,6 +97,16 @@ export const CHARACTER_TRANSLATIONS = {
             stats: ["Crit Rate (75%+)", "Crit DMG", "Anima DMG", "ATK%"],
             teamSynergy: "Zero (Cosmos), Sakiri (Incantation), Jiuyuan (Anima)",
             lore: "A mysterious girl with fox ears who loves playing with gravity. Works as an independent anomaly detective in Hethereau."
+        },
+        fr: {
+            name: "Nanally",
+            summary: "Le personnage DPS de l'attribut Anima le plus fort. Possède une mobilité incroyable grâce aux mécaniques anti-gravité et inflige des dégâts colossaux avec des auto-attaques de soutien.",
+            weapon: "Baiser de bonne nuit (Arc Signature)",
+            weaponF2p: "Flammes déchaînées",
+            cartridge: "Lucioles et la Forêt (4 pièces)",
+            stats: ["Taux Critique (75%+)", "Dégâts Critique", "Dégâts Anima", "ATK %"],
+            teamSynergy: "Zero (Cosmos), Sakiri (Incantation), Jiuyuan (Anima)",
+            lore: "Une fille mystérieuse avec des oreilles de renard qui adore jouer avec la gravité. Travaille comme détective d'anomalies indépendante à Hethereau."
         }
     },
     sakiri: {
@@ -96,6 +129,16 @@ export const CHARACTER_TRANSLATIONS = {
             stats: ["Cycle Intensity", "Break Effect", "Energy Recharge Efficiency", "ATK%"],
             teamSynergy: "Nanally (Anima), Zero (Cosmos), Daffodil (Chaos)",
             lore: "A cheerful and energetic girl who always carries a toy rabbit. Able to see hidden threads of fate using incantations."
+        },
+        fr: {
+            name: "Sakiri",
+            summary: "Le meilleur personnage de soutien du jeu. Regroupe les ennemis, applique une forte réduction de résistance élémentaire et augmente l'ATK de toute l'équipe après avoir utilisé le Déchaînement Élémentaire.",
+            weapon: "La grande aventure du bon garçon (Signature)",
+            weaponF2p: "La tristesse dans mon cœur",
+            cartridge: "Hérisson rapide (4 pièces)",
+            stats: ["Intensité de Cycle", "Effet de Rupture", "Recharge d'Énergie", "ATK %"],
+            teamSynergy: "Nanally (Anima), Zero (Cosmos), Daffodil (Chaos)",
+            lore: "Une fille joyeuse et énergétique qui porte toujours un lapin en peluche. Capable de voir les fils cachés du destin en utilisant des incantations."
         }
     },
     jiuyuan: {
@@ -118,6 +161,16 @@ export const CHARACTER_TRANSLATIONS = {
             stats: ["Crit Rate", "Crit DMG", "Anima DMG", "Energy Recharge Efficiency"],
             teamSynergy: "Nanally (Anima), Sakiri (Incantation), Zero (Cosmos)",
             lore: "An anomaly hunter of an ancient lineage with refined manners. Uses a fan to summon anomalous air currents."
+        },
+        fr: {
+            name: "Jiuyuan",
+            summary: "Un puissant personnage Sub-DPS qui inflige des dégâts instantanés rapides. Parfaitement adapté pour déclencher les réactions de Blossom aux côtés de Nanally.",
+            weapon: "Chuchotement du dragon de jade (Signature)",
+            weaponF2p: "Vent levant",
+            cartridge: "Lucioles et la Forêt (4 pièces)",
+            stats: ["Taux Critique", "Dégâts Critique", "Dégâts Anima", "Recharge d'Énergie"],
+            teamSynergy: "Nanally (Anima), Sakiri (Incantation), Zero (Cosmos)",
+            lore: "Une chasseuse d'anomalies d'une lignée ancienne aux manières raffinées. Utilise un éventail pour invoquer des courants d'air anormaux."
         }
     },
     hotori: {
@@ -140,6 +193,16 @@ export const CHARACTER_TRANSLATIONS = {
             stats: ["Energy Recharge Efficiency", "Cycle Intensity", "ATK%", "HP%"],
             teamSynergy: "Nanally (Anima), Adler (Chaos), Haniel (Incantation)",
             lore: "A quiet appraiser of anomalous items who spends most of her time in the library of the Eibon antique shop."
+        },
+        fr: {
+            name: "Hotori",
+            summary: "Un personnage Sub-DPS / Soutien unique capable d'enregistrer et de répéter les compétences des membres actifs de l'équipe, doublant les dégâts globaux de l'équipe.",
+            weapon: "Échos de l'éternité (Signature)",
+            weaponF2p: "Carnet de l'évaluateur",
+            cartridge: "Hérisson rapide (4 pièces)",
+            stats: ["Recharge d'Énergie", "Intensité de Cycle", "ATK %", "PV %"],
+            teamSynergy: "Nanally (Anima), Adler (Chaos), Haniel (Incantation)",
+            lore: "Une évalueuse discrète d'objets anormaux qui passe la majeure partie de son temps dans la bibliothèque de la boutique d'antiquités Eibon."
         }
     },
     zero: {
@@ -162,6 +225,16 @@ export const CHARACTER_TRANSLATIONS = {
             stats: ["ATK%", "Crit Rate", "Cycle Intensity", "Energy Recharge Efficiency"],
             teamSynergy: "Any Anima or Incantation DPS character",
             lore: "The new owner of the Eibon antique shop, who lost his memories of the past but possesses a strange gift of seeing the core of anomalies."
+        },
+        fr: {
+            name: "Zero",
+            summary: "Le protagoniste principal. Possède l'attribut Cosmos, agissant comme un catalyseur universel pour activer l'effet Cycle d'Espers pour tout autre élément.",
+            weapon: "Héritage d'Eibon (Signature)",
+            weaponF2p: "Résolution du chasseur",
+            cartridge: "Hérisson rapide (4 pièces)",
+            stats: ["ATK %", "Taux Critique", "Intensité de Cycle", "Recharge d'Énergie"],
+            teamSynergy: "Tout personnage DPS Anima ou Incantation",
+            lore: "Le nouveau propriétaire de la boutique d'antiquités Eibon, qui a perdu ses souvenirs du passé mais possède le don étrange de voir le cœur des anomalies."
         }
     },
     adler: {
@@ -184,6 +257,16 @@ export const CHARACTER_TRANSLATIONS = {
             stats: ["DEF%", "Flat DEF", "Break Effect", "Energy Recharge Efficiency"],
             teamSynergy: "Nanally (Anima), Sakiri (Incantation), Zero (Cosmos)",
             lore: "A former security guard who now helps the Eibon shop with heavy commissions in the dangerous zones of Hethereau."
+        },
+        fr: {
+            name: "Adler",
+            summary: "Un fournisseur de bouclier fiable de l'élément Incantation. Génère un bouclier robuste proportionnel à sa DEF, aidant à briser la stabilité de l'ennemi.",
+            weapon: "Barrière de la sentinelle (Signature)",
+            weaponF2p: "Bouclier en alliage rouillé",
+            cartridge: "Hérisson rapide (4 pièces) ou Set de Garde",
+            stats: ["Défense %", "Défense (Plat)", "Effet de Rupture", "Recharge d'Énergie"],
+            teamSynergy: "Nanally (Anima), Sakiri (Incantation), Zero (Cosmos)",
+            lore: "Un ancien garde de sécurité qui aide maintenant la boutique Eibon avec des commissions difficiles dans les zones dangereuses de Hethereau."
         }
     },
     mint: {
@@ -206,6 +289,16 @@ export const CHARACTER_TRANSLATIONS = {
             stats: ["ATK%", "Crit Rate", "Crit DMG", "Anima DMG"],
             teamSynergy: "Zero (Cosmos), Haniel (Incantation), Adler (Chaos)",
             lore: "A young intern at Eibon who aspires to become the best anomaly appraiser in the city."
+        },
+        fr: {
+            name: "Mint",
+            summary: "Un bon personnage DPS F2P gratuit. Présente une mécanique simple d'attaques combo et des temps de recharge de compétences élémentaires rapides.",
+            weapon: "Lame de Zéphyr",
+            weaponF2p: "Rapière en acier",
+            cartridge: "Lucioles et la Forêt (4 pièces)",
+            stats: ["ATK %", "Taux Critique", "Dégâts Critique", "Dégâts Anima"],
+            teamSynergy: "Zero (Cosmos), Haniel (Incantation), Adler (Chaos)",
+            lore: "Une jeune stagiaire chez Eibon qui aspire à devenir la meilleure évalueuse d'anomalies de la ville."
         }
     },
     haniel: {
@@ -228,6 +321,16 @@ export const CHARACTER_TRANSLATIONS = {
             stats: ["ATK%", "Crit Rate", "Psyche DMG", "Energy Recharge Efficiency"],
             teamSynergy: "Mint (Anima), Zero (Cosmos), Adler (Incantation)",
             lore: "A caring and sweet girl who always carries a toy owl assistant Hootie, capable of inspiring allies during battle."
+        },
+        fr: {
+            name: "Haniel",
+            summary: "Un personnage de soutien fort de l'élément Psyché. Augmente l'ATK de l'équipe et invoque l'assistant Hootie pour infliger des dégâts et soutenir ses alliés.",
+            weapon: "Esprit Royal (Signature)",
+            weaponF2p: "Prêt-Prêt",
+            cartridge: "Petite grande aventure (4 pièces)",
+            stats: ["ATK %", "Taux Critique", "Dégâts Psyché", "Recharge d'Énergie"],
+            teamSynergy: "Mint (Anima), Zero (Cosmos), Adler (Incantation)",
+            lore: "Une fille attentionnée et douce qui porte toujours un hibou en peluche assistant, Hootie, capable d'inspirer les alliés pendant le combat."
         }
     },
     lacrimosa: {
@@ -250,6 +353,16 @@ export const CHARACTER_TRANSLATIONS = {
             stats: ["Crit Rate", "Crit DMG", "Chaos DMG", "ATK%"],
             teamSynergy: "Sakiri (Incantation), Zero (Cosmos), Hotori (Cosmos)",
             lore: "A theatrical actress whose performances enchant the audience of Hethereau. It is said that her masks have their own anomalous life."
+        },
+        fr: {
+            name: "Lacrimosa",
+            summary: "Un personnage de la version 1.1 nouvellement annoncé. Spécialisé dans les dégâts de Chaos et les puissantes attaques combo de masques.",
+            weapon: "Tragédie & Comédie (Signature)",
+            weaponF2p: "La tristesse dans mon cœur",
+            cartridge: "Éclipse du Chaos (4 pièces)",
+            stats: ["Taux Critique", "Dégâts Critique", "Dégâts Chaos", "ATK %"],
+            teamSynergy: "Sakiri (Incantation), Zero (Cosmos), Hotori (Cosmos)",
+            lore: "Une actrice de théâtre dont les performances enchantent le public de Hethereau. On dit que ses masques ont leur propre vie anormale."
         }
     },
     daffodil: {
@@ -272,6 +385,16 @@ export const CHARACTER_TRANSLATIONS = {
             stats: ["Break Intensity", "Crit Rate", "Crit DMG", "ATK%"],
             teamSynergy: "Nanally (Anima), Zero (Cosmos), Sakiri (Incantation)",
             lore: "A quiet and mysterious guardian of the Eibon antique shop. Possesses kaleidoscopic eyes and hides her devotion to friends under a cold mask."
+        },
+        fr: {
+            name: "Daffodil",
+            summary: "Un puissant DPS de burst de l'élément Chaos, spécialisé dans le bris de bouclier (Rupture). Accumule de la puissance hors-terrain et inflige d'énormes dégâts lors du changement.",
+            weapon: "Fantaisie de jeunesse (Arc Signature)",
+            weaponF2p: "Jours ensoleillés",
+            cartridge: "Éclipse du Chaos (4 pièces)",
+            stats: ["Intensité de Rupture", "Taux Critique", "Dégâts Critique", "ATK %"],
+            teamSynergy: "Nanally (Anima), Zero (Cosmos), Sakiri (Incantation)",
+            lore: "Une gardienne discrète et mystérieuse de la boutique d'antiquités Eibon. Possède des yeux kaléidoscopiques et cache son dévouement envers ses amis sous un masque froid."
         }
     },
     baicang: {
@@ -294,6 +417,16 @@ export const CHARACTER_TRANSLATIONS = {
             stats: ["Crit Rate", "Crit DMG", "Incantation DMG", "ATK%"],
             teamSynergy: "Haniel (Incantation), Sakiri (Incantation), Adler (Chaos)",
             lore: "Captain of the ETD-4 unit of the Anomaly Control Bureau. An experienced veteran with an easygoing personality who cares for his subordinates like a big brother."
+        },
+        fr: {
+            name: "Baicang",
+            summary: "Un puissant DPS principal de l'élément Incantation. Utilise une mécanique de consommation de PV pour augmenter les dégâts. Nécessite un soigneur fiable dans l'équipe.",
+            weapon: "Société des Camélias (Signature)",
+            weaponF2p: "Le moment viendra",
+            cartridge: "Crimson: Papillons jumeaux (4 pièces)",
+            stats: ["Taux Critique", "Dégâts Critique", "Dégâts Incantation", "ATK %"],
+            teamSynergy: "Haniel (Incantation), Sakiri (Incantation), Adler (Chaos)",
+            lore: "Capitaine de l'unité ETD-4 du Bureau de Contrôle des Anomalies. Un vétéran expérimenté à la personnalité facile à vivre qui s'occupe de ses subordonnés comme un grand frère."
         }
     },
     chiz: {
@@ -316,6 +449,16 @@ export const CHARACTER_TRANSLATIONS = {
             stats: ["Crit Rate", "Crit DMG", "Cosmos DMG", "ATK%"],
             teamSynergy: "Zero (Cosmos), Sakiri (Incantation), Hotori (Cosmos)",
             lore: "A character connected to the Nameless Bank. Has a business mind and uses a heavy yokai hammer to beat out debts and anomalies."
+        },
+        fr: {
+            name: "Chiz",
+            summary: "Un puissant DPS principal de l'élément Cosmos. Son Déchaînement Élémentaire ignore une grande partie de la défense ennemie, et son arme signature inflige des dégâts supplémentaires basés sur vos Fons (pièces).",
+            weapon: "Chat contemplatif (Signature)",
+            weaponF2p: "Rêverie sauvage",
+            cartridge: "Éclat perdu (4 pièces)",
+            stats: ["Taux Critique", "Dégâts Critique", "Dégâts Cosmos", "ATK %"],
+            teamSynergy: "Zero (Cosmos), Sakiri (Incantation), Hotori (Cosmos)",
+            lore: "Un personnage lié à la Banque Sans Nom. Possède un esprit d'entreprise et utilise un lourd marteau yokai pour récupérer les dettes et éliminer les anomalies."
         }
     },
     fadia: {
@@ -338,6 +481,16 @@ export const CHARACTER_TRANSLATIONS = {
             stats: ["HP%", "Flat HP", "Psyche DMG", "Energy Recharge Efficiency"],
             teamSynergy: "Baicang (Incantation), Nanally (Anima), Zero (Cosmos)",
             lore: "An amazing vampire girl from the Anomaly Control Bureau who carries a giant tombstone as a shield and weapon."
+        },
+        fr: {
+            name: "Fadia",
+            summary: "Un puissant personnage de soutien de l'élément Psyché. Agit comme un soigneur-tank qui redirige les dégâts des alliés vers elle-même et se soigne rapidement dans l'état de Lilith.",
+            weapon: "Valse éternelle (Signature)",
+            weaponF2p: "Flacon du médecin",
+            cartridge: "Petite grande aventure (4 pièces)",
+            stats: ["PV %", "PV (Plat)", "Dégâts Psyché", "Recharge d'Énergie"],
+            teamSynergy: "Baicang (Incantation), Nanally (Anima), Zero (Cosmos)",
+            lore: "Une incroyable fille vampire du Bureau de Contrôle des Anomalies qui porte une pierre tombale géante comme bouclier et arme."
         }
     },
     hathor: {
@@ -360,6 +513,16 @@ export const CHARACTER_TRANSLATIONS = {
             stats: ["Crit Rate", "Crit DMG", "Lakshana DMG", "ATK%"],
             teamSynergy: "Zero (Cosmos), Sakiri (Incantation), Daffodil (Chaos)",
             lore: "An influential fixer girl from the elite circles of Hethereau, who works closely with Sterry Express. Her elegance hides unmatched combat skills."
+        },
+        fr: {
+            name: "Hathor",
+            summary: "Un puissant Sub-DPS de burst de l'élément Lakshana. Utilise la mécanique de cumul Express Delivery Power pour infliger d'énormes dégâts de burst.",
+            weapon: "Flammes déchaînées (Signature)",
+            weaponF2p: "Barrière de la sentinelle",
+            cartridge: "Boxeur de rue (4 pièces)",
+            stats: ["Taux Critique", "Dégâts Critique", "Dégâts Lakshana", "ATK %"],
+            teamSynergy: "Zero (Cosmos), Sakiri (Incantation), Daffodil (Chaos)",
+            lore: "Une fille fixatrice influente des cercles d'élite de Hethereau, qui travaille en étroite collaboration avec Sterry Express. Son élégance cache des compétences de combat inégalées."
         }
     },
     aurelia: {
@@ -382,6 +545,16 @@ export const CHARACTER_TRANSLATIONS = {
             stats: ["Crit Rate", "Crit DMG", "Psyche DMG", "ATK%"],
             teamSynergy: "Zero (Cosmos), Fadia (Psyche), Sakiri (Incantation)",
             lore: "A music student in Hethereau who discovered her anomalous abilities during one of her street performances. Controls anomalous jellyfish."
+        },
+        fr: {
+            name: "Aurelia",
+            summary: "Un DPS principal de rang A de l'élément Psyché. Utilise des attaques de méduse dans l'état Cadenza pour infliger des dégâts importants. Obtenu gratuitement lors de la connexion de 3 jours.",
+            weapon: "Voile stellaire (Signature)",
+            weaponF2p: "Oraora!",
+            cartridge: "Sang du démon: Malédiction (4 pièces)",
+            stats: ["Taux Critique", "Dégâts Critique", "Dégâts Psyché", "ATK %"],
+            teamSynergy: "Zero (Cosmos), Fadia (Psyché), Sakiri (Incantation)",
+            lore: "Une étudiante en musique à Hethereau qui a découvert ses capacités anormales lors de l'une de ses représentations de rue. Contrôle des méduses anormales."
         }
     },
     edgar: {
@@ -404,6 +577,16 @@ export const CHARACTER_TRANSLATIONS = {
             stats: ["HP%", "Healing Bonus", "Flat HP", "Energy Recharge Efficiency"],
             teamSynergy: "Zero (Cosmos), Hotori (Cosmos), Jiuyuan (Anima)",
             lore: "An employee of the Eibon antique shop. A calm and balanced youth who is always ready to provide first aid and delicious hot tea."
+        },
+        fr: {
+            name: "Edgar",
+            summary: "Un soigneur accessible de l'élément Cosmos. Ses compétences restaurent les PV des alliés proportionnellement à ses PV max, et son ultime crée une grande zone de soin.",
+            weapon: "Appel de la ville tordue (Signature)",
+            weaponF2p: "Esprit Royal",
+            cartridge: "Taverne nocturne de Thea (4 pièces)",
+            stats: ["PV %", "Bonus de Soin", "PV (Plat)", "Recharge d'Énergie"],
+            teamSynergy: "Zero (Cosmos), Hotori (Cosmos), Jiuyuan (Anima)",
+            lore: "Un employé de la boutique d'antiquités Eibon. Un jeune homme calme et équilibré qui est toujours prêt à prodiguer les premiers soins et à servir un délicieux thé chaud."
         }
     },
     skia: {
@@ -426,6 +609,16 @@ export const CHARACTER_TRANSLATIONS = {
             stats: ["Crit Rate", "Crit DMG", "Lakshana DMG", "ATK%"],
             teamSynergy: "Zero (Cosmos), Sakiri (Incantation), Nanally (Anima)",
             lore: "Lieutenant of the ETD-4 unit of the Anomaly Control Bureau. A silent wolf-officer with a large scar on his left eye who serves faithfully."
+        },
+        fr: {
+            name: "Skia",
+            summary: "Un puissant Sub-DPS de l'élément Lakshana spécialisé dans les marques Fang Thrust et des compétences uniques de furtivité dans l'ombre. Complète parfaitement les équipes de réaction Rémora.",
+            weapon: "Attention à vos têtes! (Signature)",
+            weaponF2p: "La grande aventure du bon garçon",
+            cartridge: "Boxeur de rue (4 pièces)",
+            stats: ["Taux Critique", "Dégâts Critique", "Dégâts Lakshana", "ATK %"],
+            teamSynergy: "Zero (Cosmos), Sakiri (Incantation), Nanally (Anima)",
+            lore: "Lieutenant de l'unité ETD-4 du Bureau de Contrôle des Anomalies. Un officier-loup silencieux avec une grande cicatrice à l'œil gauche qui sert fidèlement."
         }
     }
 };
@@ -467,6 +660,24 @@ export const LOCALIZED_ATTRIBUTE_MATERIALS = {
                 T3: "White Rose",
                 farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
+        },
+        fr: {
+            boss: "Matériau unique de Chasse aux Anomalies",
+            specialty: "Matériau de Chasse aux Anomalies",
+            farmSpecialty: "Chasse aux Anomalies / Boîte de sélection de matériaux",
+            farmBoss: "Chasse aux Anomalies",
+            common: {
+                T1: "Silhouette évanescente",
+                T2: "Silhouette floue",
+                T3: "Silhouette du chaos",
+                farm: "Butin d'anomalie / Échange de chasseur / Échange perdu"
+            },
+            scrolls: {
+                T1: "FNG",
+                T2: "CO",
+                T3: "Rose blanche",
+                farm: "Manigances de Houdinii / Échange de chasseur / Synthèse"
+            }
         }
     },
     Incantation: {
@@ -504,6 +715,24 @@ export const LOCALIZED_ATTRIBUTE_MATERIALS = {
                 T2: "Known Weariness",
                 T3: "Black Hat",
                 farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
+            }
+        },
+        fr: {
+            boss: "Matériau unique de Chasse aux Anomalies",
+            specialty: "Matériau de Chasse aux Anomalies",
+            farmSpecialty: "Chasse aux Anomalies / Boîte de sélection de matériaux",
+            farmBoss: "Chasse aux Anomalies",
+            common: {
+                T1: "Chiffre flou",
+                T2: "Chiffre non résolu",
+                T3: "Chiffre déformé",
+                farm: "Butin d'anomalie / Échange de chasseur / Échange perdu"
+            },
+            scrolls: {
+                T1: "Premières attentes",
+                T2: "Lassitude connue",
+                T3: "Chapeau noir",
+                farm: "Manigances de Houdinii / Échange de chasseur / Synthèse"
             }
         }
     },
@@ -543,6 +772,24 @@ export const LOCALIZED_ATTRIBUTE_MATERIALS = {
                 T3: "The Olive Branch",
                 farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
+        },
+        fr: {
+            boss: "Matériau unique de Chasse aux Anomalies",
+            specialty: "Matériau de Chasse aux Anomalies",
+            farmSpecialty: "Chasse aux Anomalies / Boîte de sélection de matériaux",
+            farmBoss: "Chasse aux Anomalies",
+            common: {
+                T1: "Chuchotements perdus",
+                T2: "Chuchotements obscurs",
+                T3: "Chuchotements paradoxaux",
+                farm: "Butin d'anomalie / Échange de chasseur / Échange perdu"
+            },
+            scrolls: {
+                T1: "Désir d'oisillon",
+                T2: "Battement de colombe",
+                T3: "Le rameau d'olivier",
+                farm: "Manigances de Houdinii / Échange de chasseur / Synthèse"
+            }
         }
     },
     Chaos: {
@@ -580,6 +827,24 @@ export const LOCALIZED_ATTRIBUTE_MATERIALS = {
                 T2: "Suspended Whispers",
                 T3: "The Second Self",
                 farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
+            }
+        },
+        fr: {
+            boss: "Matériau unique de Chasse aux Anomalies",
+            specialty: "Matériau de Chasse aux Anomalies",
+            farmSpecialty: "Chasse aux Anomalies / Boîte de sélection de matériaux",
+            farmBoss: "Chasse aux Anomalies",
+            common: {
+                T1: "Illusions suspendues",
+                T2: "Illusions désirantes",
+                T3: "Illusions transcendantes",
+                farm: "Butin d'anomalie / Échange de chasseur / Échange perdu"
+            },
+            scrolls: {
+                T1: "Hésitation des vagues",
+                T2: "Chuchotements suspendus",
+                T3: "Le second soi",
+                farm: "Manigances de Houdinii / Échange de chasseur / Synthèse"
             }
         }
     },
@@ -619,6 +884,24 @@ export const LOCALIZED_ATTRIBUTE_MATERIALS = {
                 T3: "Heart-Racing Night",
                 farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
+        },
+        fr: {
+            boss: "Matériau unique de Chasse aux Anomalies",
+            specialty: "Matériau de Chasse aux Anomalies",
+            farmSpecialty: "Chasse aux Anomalies / Boîte de sélection de matériaux",
+            farmBoss: "Chasse aux Anomalies",
+            common: {
+                T1: "Chuchotements perdus",
+                T2: "Chuchotements obscurs",
+                T3: "Chuchotements paradoxaux",
+                farm: "Butin d'anomalie / Échange de chasseur / Échange perdu"
+            },
+            scrolls: {
+                T1: "Synchronicité de pensée",
+                T2: "Résonance de foi",
+                T3: "Nuit palpitante",
+                farm: "Manigances de Houdinii / Échange de chasseur / Synthèse"
+            }
         }
     },
     Lakshana: {
@@ -657,6 +940,24 @@ export const LOCALIZED_ATTRIBUTE_MATERIALS = {
                 T3: "Esper Ability Book III",
                 farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
+        },
+        fr: {
+            boss: "Matériau unique de Chasse aux Anomalies",
+            specialty: "Matériau de Chasse aux Anomalies",
+            farmSpecialty: "Chasse aux Anomalies / Boîte de sélection de matériaux",
+            farmBoss: "Chasse aux Anomalies",
+            common: {
+                T1: "Illusions suspendues",
+                T2: "Illusions désirantes",
+                T3: "Illusions transcendantes",
+                farm: "Butin d'anomalie / Échange de chasseur / Échange perdu"
+            },
+            scrolls: {
+                T1: "Livre de compétences d'Esper I",
+                T2: "Livre de compétences d'Esper II",
+                T3: "Livre de compétences d'Esper III",
+                farm: "Manigances de Houdinii / Échange de chasseur / Synthèse"
+            }
         }
     }
 };
@@ -673,6 +974,12 @@ export const LOCALIZED_WEAPON_MATERIALS = {
         T2: "Colorless Dye",
         T3: "Chaotic Dye",
         farm: "Houdinii's Magic Stage / Hunter Exchange / World Exploration"
+    },
+    fr: {
+        T1: "Teinture légère",
+        T2: "Teinture incolore",
+        T3: "Teinture chaotique",
+        farm: "Scène magique de Houdinii / Échange de chasseur / Exploration du monde"
     }
 };
 
@@ -726,6 +1033,11 @@ export const TIMELINE_TRANSLATIONS = {
             title: "Global Release: Neverness to Everness (1.0)",
             date: "April 29, 2026",
             desc: "Official game launch on PC, iOS, and Android. Initial story chapters in Hethereau, Nanally limited banner, and start events are now available."
+        },
+        fr: {
+            title: "Lancement mondial : Neverness to Everness (1.0)",
+            date: "29 avril 2026",
+            desc: "Lancement officiel du jeu sur PC, iOS et Android. Chapitres d'histoire initiaux à Hethereau, bannière limitée de Nanally et événements de démarrage disponibles."
         }
     },
     "Стрім Розробників: Презентація Версії 1.1": {
@@ -738,6 +1050,11 @@ export const TIMELINE_TRANSLATIONS = {
             title: "Developer Stream: Version 1.1 Showcase",
             date: "May 23, 2026",
             desc: "Special broadcast by Hotta Studio. Announced new characters like Lacrimosa (Chaos DPS), city expansion, game modes, and codes."
+        },
+        fr: {
+            title: "Stream des développeurs : Présentation de la Version 1.1",
+            date: "23 mai 2026",
+            desc: "Diffusion spéciale par Hotta Studio. Annonce de nouveaux personnages comme Lacrimosa (DPS Chaos), extension de la ville, modes de jeu et codes promo."
         }
     },
     "Оновлення 1.1: 'Lacrimosa of Chaos'": {
@@ -750,6 +1067,11 @@ export const TIMELINE_TRANSLATIONS = {
             title: "Version 1.1: 'Lacrimosa of Chaos'",
             date: "June 3-4, 2026",
             desc: "Launch of the first major update. Start of the first phase banner with Lacrimosa. New story chapter 'Theater of Shadows'. Summer event kickoff."
+        },
+        fr: {
+            title: "Version 1.1 : 'Lacrimosa of Chaos'",
+            date: "3-4 juin 2026",
+            desc: "Lancement de la première mise à jour majeure. Début de la première phase de la bannière avec Lacrimosa. Nouveau chapitre d'histoire 'Théâtre des Ombres'. Lancement de l'événement estival."
         }
     },
     "Оновлення 1.2 та нові герої Shinku й Iroi": {
@@ -762,6 +1084,11 @@ export const TIMELINE_TRANSLATIONS = {
             title: "Version 1.2: New Heroes Shinku & Iroi",
             date: "July 2026 (Estimate)",
             desc: "Anticipated update based on leaks. Addition of new anomaly zones in north Hethereau and release of new S-rank characters."
+        },
+        fr: {
+            title: "Version 1.2 : Nouveaux héros Shinku & Iroi",
+            date: "Juillet 2026 (Estimation)",
+            desc: "Mise à jour anticipée basée sur les fuites. Ajout de nouvelles zones d'anomalies au nord de Hethereau et sortie de nouveaux personnages de rang S."
         }
     }
 };
@@ -775,6 +1102,10 @@ export const REACTION_TRANSLATIONS = {
         en: {
             name: "Blossom",
             desc: "Activated! The squad gains +15% Energy Recharge and increased Anima damage. Ideal for boosting Nanally's auto-attacks."
+        },
+        fr: {
+            name: "Blossom",
+            desc: "Activé! L'équipe gagne +15% de Recharge d'Énergie et des dégâts Anima accrus. Idéal pour booster les auto-attaques de Nanally."
         }
     },
     EsperCycle: {
@@ -785,6 +1116,10 @@ export const REACTION_TRANSLATIONS = {
         en: {
             name: "Esper Cycle",
             desc: "Activated! The Cosmos attribute (e.g. Zero or Chiz) acts as a catalyst. Swapping characters fills the Esper Meter 30% faster."
+        },
+        fr: {
+            name: "Cycle d'Espers",
+            desc: "Activé! L'attribut Cosmos (ex: Zero ou Chiz) sert de catalyseur. Changer de personnage remplit la jauge d'Esper 30% plus vite."
         }
     },
     Scorch: {
@@ -795,6 +1130,10 @@ export const REACTION_TRANSLATIONS = {
         en: {
             name: "Scorch",
             desc: "Activated! Triggers a thermal reaction that ignites surrounding targets, dealing periodic DoT damage every 1.5 seconds."
+        },
+        fr: {
+            name: "Consommer",
+            desc: "Activé! Déclenche une réaction thermique qui enflamme les cibles proches, infligeant des dégâts de feu continus (DoT) toutes les 1.5 secondes."
         }
     },
     Charged: {
@@ -805,6 +1144,10 @@ export const REACTION_TRANSLATIONS = {
         en: {
             name: "Charged",
             desc: "Activated! Applies a 'Stability Shred' debuff on enemies, making it easier to break their shields and knock them down."
+        },
+        fr: {
+            name: "Surchargé",
+            desc: "Activé! Applique un malus de 'Rupture de Stabilité' aux ennemis, facilitant le bris de boucliers et la mise à terre."
         }
     },
     Remora: {
@@ -815,6 +1158,10 @@ export const REACTION_TRANSLATIONS = {
         en: {
             name: "Remora",
             desc: "Activated! A reaction between Lakshana and Cosmos. Increases Crit Rate by 10% and significantly boosts physical and Cosmos damage."
+        },
+        fr: {
+            name: "Rémora",
+            desc: "Activé! Réaction entre Lakshana et Cosmos. Augmente le taux critique de 10% et booste significativement les dégâts physiques et Cosmos."
         }
     },
     Discord: {
@@ -825,6 +1172,10 @@ export const REACTION_TRANSLATIONS = {
         en: {
             name: "Discord",
             desc: "Activated! Chaos/Incantation elements create mental dissonance with Psyche, lowering enemy stability and dealing 25% more damage to broken shields."
+        },
+        fr: {
+            name: "Discorde",
+            desc: "Activé! Les éléments Chaos/Incantation créent une dissonance mentale avec Psyché, réduisant la stabilité ennemie et infligeant 25% de dégâts en plus aux boucliers brisés."
         }
     },
     Stain: {
@@ -835,6 +1186,10 @@ export const REACTION_TRANSLATIONS = {
         en: {
             name: "Stain",
             desc: "Activated! Combining Lakshana and Psyche distorts enemy perception, forcing them to take extra DoT and reducing their ATK."
+        },
+        fr: {
+            name: "Tache",
+            desc: "Activé! Combiner Lakshana et Psyché altère la perception des ennemis, leur infligeant des dégâts continus (DoT) et réduisant leur ATK."
         }
     },
     Nova: {
@@ -845,6 +1200,10 @@ export const REACTION_TRANSLATIONS = {
         en: {
             name: "Nova",
             desc: "Activated! Anima and Psyche trigger a mental elemental blast, dealing colossal area (AoE) damage to nearby enemies."
+        },
+        fr: {
+            name: "Nova",
+            desc: "Activé! Anima et Psyché déclenchent une explosion mentale, infligeant de colossaux dégâts de zone (AoE) aux ennemis proches."
         }
     }
 };
@@ -1253,5 +1612,207 @@ export const i18n = {
         guides_difficulty_hard: "Hard",
         guides_custom_builder_btn: "Squad Constructor",
         guides_view_presets_btn: "Preset Team Comps"
+    },
+    fr: {
+        logo_badge: "WIKI",
+        nav_home: "Accueil",
+        nav_tierlist: "Tier List",
+        nav_builds: "Builds",
+        nav_teambuilder: "Équipes",
+        nav_calculator: "Calculateur",
+        nav_codes: "Codes Promo",
+        nav_guides: "Guides",
+        nav_calendar: "Calendrier",
+        btn_login: "Connexion",
+        btn_logout: "Déconnexion",
+        hero_tagline: "RPG URBAIN SURNATUREL PAR HOTTA STUDIO",
+        hero_title: "Entrez dans le monde d'anomalies de <br><span class=\"highlight-text\">Neverness to Everness</span>",
+        hero_desc: "Bienvenue sur Eibon Terminal — votre guide personnel pour explorer la métropole de Hethereau. Évaluez les anomalies, gérez vos commerces, assemblez les meilleures équipes et suivez les dernières actualités.",
+        hero_btn_tierlist: "Voir la Tier List",
+        hero_btn_teambuilder: "Créer une Équipe",
+        active_banner_badge: "BANNIÈRE ACTIVE",
+        active_banner_title: "Hotori: Échos de l'Éternité",
+        banner_timer_label: "Se termine dans :",
+        view_build_btn: "Évaluation & Build",
+        feat_tierlist_title: "Tier List Interactive",
+        feat_tierlist_desc: "Classement à jour des chasseurs d'anomalies. Découvrez qui domine la méta actuelle du jeu.",
+        feat_teams_title: "Constructeur d'Équipes",
+        feat_teams_desc: "Composez vos équipes et analysez les synergies d'éléments et les styles de combat.",
+        feat_calc_title: "Calculateur de Progression",
+        feat_calc_desc: "Calculez le nombre exact de pièces, d'EXP et de matériaux de boss requis pour améliorer vos personnages.",
+        widget_codes_title: "Codes Promo Actifs",
+        widget_codes_badge: "VÉRIFIÉ",
+        widget_codes_desc: "Cliquez sur un code pour le copier instantanément.",
+        widget_events_title: "Calendrier des Événements & Versions",
+        widget_events_badge: "VERSION 1.0",
+        widget_loading: "Chargement...",
+        widget_copy_btn: "Copier",
+        widget_copied: "Copié !",
+        tierlist_title: "Classement des Personnages (Tier List)",
+        tierlist_subtitle: "Évaluation de l'efficacité des chasseurs d'anomalies dans la version 1.0 (Lancement Global)",
+        sub_tab_official: "Tier List Officielle",
+        sub_tab_community: "Listes de la Communauté",
+        sub_tab_creator: "Créer la Vôtre",
+        filter_search_placeholder: "Rechercher un personnage par nom...",
+        filter_rarity_label: "Rareté :",
+        filter_rarity_all: "Tous",
+        filter_rarity_s: "Rang S (5★)",
+        filter_rarity_a: "Rang A (4★)",
+        filter_attribute_label: "Élément :",
+        filter_role_label: "Rôle :",
+        tierlist_note: "* Cliquez sur la carte d'un personnage pour ouvrir son build détaillé, sa meilleure arme (Arc) et ses cartouches recommandées.",
+        no_chars_found: "Aucun personnage trouvé",
+        comm_title: "Tier Lists de la Communauté",
+        comm_subtitle: "Évaluations de personnages et avis des autres joueurs de Neverness to Everness.",
+        comm_loading: "Chargement des listes de la communauté...",
+        comm_empty: "Aucune tier list enregistrée pour le moment. Créez la première ! 🚀",
+        comm_db_unavailable: "Base de données indisponible. Connectez-vous au réseau pour voir.",
+        comm_view_btn: "Voir",
+        comm_delete_btn: "Supprimer",
+        comm_delete_confirm: "Êtes-vous sûr de vouloir supprimer cette tier list ?",
+        comm_deleted_toast: "Tier list supprimée avec succès ! 🗑️",
+        comm_delete_error: "Échec de la suppression : ",
+        creator_prompt_title: "Créez Votre Propre Tier List",
+        creator_prompt_desc: "Pour utiliser le constructeur et sauvegarder vos classements, veuillez vous connecter avec Google.",
+        creator_prompt_btn: "Se connecter avec Google",
+        creator_title_label: "Titre de la Tier List :",
+        creator_title_placeholder: "ex: Ma Tier List Version 1.0",
+        creator_save_btn: "Sauvegarder la Tier List",
+        creator_pool_title: "Sélection de Personnages (cliquez ou glissez pour assigner)",
+        creator_saved_toast: "Tier list publiée avec succès ! 🎉",
+        creator_empty_error: "Veuillez d'abord assigner des personnages aux paliers !",
+        creator_auth_error: "Veuillez d'abord vous connecter !",
+        builds_title: "Guides de Build des Personnages",
+        builds_subtitle: "Équipements recommandés et priorités de statistiques pour une performance de combat maximale",
+        build_best_weapon: "Meilleure Arme (Arc)",
+        build_f2p_alt: "Alternative F2P",
+        build_cartridge: "Set de Cartouches",
+        build_stats_pri: "Priorité des Stats",
+        build_partners: "Coéquipiers recommandés :",
+        teams_title: "Constructeur d'Équipe Interactif",
+        teams_subtitle: "Assemblez une équipe de 4 chasseurs pour découvrir les synergies élémentaires et les rotations de combat",
+        teams_clear_btn: "Vider l'Équipe",
+        teams_analysis_title: "Analyse de Synergie d'Équipe",
+        teams_start_prompt: "Sélectionnez des personnages pour commencer le calcul.",
+        teams_desc_prompt: "Ajoutez des chasseurs dans les emplacements ci-dessus. Le système analysera automatiquement les classes et attributs pour définir des rotations de combat optimales.",
+        teams_slot_leader: "Slot 1 (Leader)",
+        teams_slot_label: "Emplacement ",
+        teams_modal_title: "Sélectionner un Personnage",
+        calc_title: "Calculateur de Ressources & Progression",
+        calc_subtitle: "Planificateur professionnel pour maximiser le développement de votre chasseur, de vos compétences et de vos armes",
+        calc_char_label: "Sélectionner un Chasseur :",
+        calc_tab_char: "Personnage",
+        calc_tab_skills: "Compétences",
+        calc_tab_weapon: "Arme (Arc)",
+        calc_level_title: "Niveau du Personnage",
+        calc_level_start: "Niveau Initial :",
+        calc_level_end: "Niveau Cible :",
+        calc_level_max_hint: "* Le niveau maximum du chasseur est de 80. Les élévations se produisent aux niveaux 20, 40, 50, 60 et 70.",
+        calc_skills_title: "Niveaux de Compétence (1 - 10)",
+        calc_skill_basic: "Attaque Normale",
+        calc_skill_active: "Compétence Active",
+        calc_skill_passive: "Compétence Passive",
+        calc_skill_ultimate: "Déchaînement Élémentaire",
+        calc_skills_hint: "* Les niveaux de compétence 8 à 10 nécessitent des noyaux de boss rares et une Couronne d'Anomalie.",
+        calc_weapon_active: "Améliorer l'Arme (Arc)",
+        calc_weapon_rarity: "Rareté de l'Arme :",
+        calc_weapon_5star: "Rang S (5★ Signature)",
+        calc_weapon_4star: "Rang A (4★ F2P)",
+        calc_weapon_3star: "Rang B (3★ Débutant)",
+        calc_weapon_start: "Niveau Initial :",
+        calc_weapon_end: "Niveau Cible :",
+        calc_materials_title: "Matériaux Requis",
+        calc_clear_inv: "Vider l'Inventaire",
+        calc_copy_report: "Copier le Rapport",
+        calc_inv_desc: "Entrez votre stock actuel dans les champs « Possède » pour calculer le déficit net.",
+        calc_have_label: "Possède :",
+        calc_need_label: "Requis :",
+        calc_left_label: "Restant :",
+        calc_done_label: "Terminé",
+        codes_title: "Codes Promo Actifs",
+        codes_subtitle: "Ressources gratuites des développeurs pour Neverness to Everness (NTE)",
+        codes_header: "Codes Promo Actifs",
+        codes_indicator: "Mise à jour auto : Active",
+        codes_guide_title: "Comment activer les codes promo en jeu ?",
+        codes_guide_1: "Lancez <strong>Neverness to Everness</strong>.",
+        codes_guide_2: "Ouvrez le <strong>Menu Principal</strong> (icône en haut à droite).",
+        codes_guide_3: "Cliquez sur l'icône de <strong>trois points (...)</strong> à côté de votre pseudo.",
+        codes_guide_4: "Sélectionnez <strong>Redeem Code (Utiliser Code)</strong>.",
+        codes_guide_5: "Entrez le code copié et récupérez les récompenses dans votre boîte aux lettres en jeu !",
+        guides_title: "Wiki & Progression Guides",
+        guides_subtitle: "Stratégies essentielles pour l'amélioration des personnages, la gestion des commerces et l'exploration de la ville",
+        guide_prog_title: "Guide de Progression : Démarrage Rapide",
+        guide_prog_1: "<strong>L'Histoire d'Abord :</strong> Concentrez-vous sur les quêtes de l'histoire principale au début. C'est le moyen le plus rapide d'augmenter votre Niveau de Chasseur et votre Niveau d'Évaluation, nécessaires pour débloquer des fonctionnalités essentielles et les limites de niveau.",
+        guide_prog_2: "<strong>City Tycoon (Magnat de la Ville) :</strong> Aménagez votre Café dès qu'il est débloqué. Atteindre le Niveau 18 de City Tycoon vous offre gratuitement le puissant DPS de Rang S <strong>Chiz</strong>, et le Niveau 21 débloque son arme signature !",
+        guide_prog_3: "<strong>Moto Novis ST-X 950 :</strong> Achetez cette moto chez le concessionnaire Regalia dans le quartier de New Herland. Contrairement aux voitures, elle peut être invoquée hors route, facilitant énormément l'exploration du terrain.",
+        guide_prog_4: "<strong>Cabines Téléphoniques ReroRero :</strong> Assurez-vous de les activer sur votre carte pour établir un réseau de voyage rapide à travers la gigantesque ville de Hethereau.",
+        guide_char_title: "Puissance des Personnages & Améliorations",
+        guide_char_1: "<strong>Investissez dans votre Carry Principal :</strong> Concentrez vos matériaux de progression sur un seul donneur de dégâts principal. Évitez de disperser vos ressources sur trop de personnages. Arrêtez d'améliorer les personnages de départ au niveau 40.",
+        guide_char_2: "<strong>Améliorations Garanties :</strong> Donnez toujours la priorité au niveau du personnage, au niveau de l'arme et aux niveaux de compétence. Évitez de dépenser trop d'énergie à farmer des cartouches (artéfacts) au début en raison du taux élevé d'aléatoire.",
+        guide_char_3: "<strong>Priorité aux Bonus d'Ensemble :</strong> Concentrez-vous sur l'activation des bonus de set de 4 pièces de cartouche plutôt que de chasser des sous-statistiques parfaites au début, car les bonus d'ensemble agissent comme d'immenses multiplicateurs pour l'équipe.",
+        guide_explor_title: "Exploration de Hethereau & Farm",
+        guide_explor_1: "<strong>Vision d'Évaluateur :</strong> Utilisez fréquemment votre touche de Vision en ville pour révéler les anomalies cachées, les reflets de miroir ou les graffitis qui débloquent des coffres secrets à récompense élevée.",
+        guide_explor_2: "<strong>La Maison de la Sorcière :</strong> Collectez et soumettez des oiseaux d'oracle. Atteignez le Niveau 3 de la Maison de la Sorcière pour afficher les icônes d'oiseaux sur votre mini-carte, rendant l'exploration beaucoup plus rapide.",
+        guide_explor_3: "<strong>Armes de rang S gratuites :</strong> Cherchez et terminez des commissions d'anomalie 4 étoiles sur votre carte, qui garantissent des armes de rang S (Arcs) une fois terminées.",
+        cal_title: "Calendrier des Événements & Versions",
+        cal_subtitle: "Suivez les sorties de patchs, les bannières et les événements dans Neverness to Everness",
+        modal_char_desc: "Résumé du Personnage",
+        modal_best_build: "Meilleur Build",
+        modal_gear_weapon_desc: "Fournit les meilleures statistiques de base et un bonus passif unique.",
+        modal_gear_f2p_desc: "Facile à obtenir via les quêtes ou la synthèse.",
+        modal_gear_cartridge_desc: "Active un puissant bonus d'ensemble de 4 pièces.",
+        modal_gear_substats_desc: "Sous-statistiques",
+        modal_synergy_story: "Synergie & Équipe",
+        modal_team_partners: "Équipe recommandée :",
+        modal_char_history: "Lore du Personnage :",
+        footer_copyright: "&copy; 2026 Eibon Terminal. Conçu pour la communauté de Neverness to Everness.",
+        footer_disclaimer: "Ce site est une ressource de fans et n'est pas associé à Perfect World Games ou Hotta Studio. Tous les droits du jeu appartiennent à leurs propriétaires respectifs.",
+        toast_code_copied: "Code copié dans le presse-papiers ! 📋",
+        toast_codes_cleared: "Inventaire vidé !",
+        toast_report_copied: "Rapport copié dans le presse-papiers !",
+        toast_report_error: "Échec de la copie du rapport.",
+        toast_welcome: "Bienvenue, ",
+        toast_logged_out: "Déconnexion réussie.",
+        toast_firebase_error: "Firebase Auth non connecté !",
+        toast_save_success: "Tier list publiée avec succès ! 🎉",
+        toast_save_error: "Échec de la sauvegarde : ",
+        role_main_dps: "DPS Principal",
+        role_sub_dps: "Sub-DPS",
+        role_support: "Soutien",
+        attr_anima: "Anima",
+        attr_incant: "Incantation",
+        attr_cosmos: "Cosmos",
+        attr_chaos: "Chaos",
+        attr_psyche: "Psyché",
+        attr_lakshana: "Lakshana",
+        loading_text: "Chargement des données...",
+        teams_no_synergy: "Sélectionnez des personnages pour démarrer l'analyse de synergie.",
+        teams_synergy_placeholder: "Ajoutez des chasseurs dans les emplacements ci-dessus. Le système analysera automatiquement leurs classes, éléments et suggérera une rotation optimale des compétences pour le combat.",
+        teams_slot_2: "Slot 2",
+        teams_slot_3: "Slot 3",
+        teams_slot_4: "Slot 4",
+        creator_title_placeholder: "ex: Ma Tier List v1.0",
+        ad_placeholder: "PUBLICITÉ",
+        guides_search_placeholder: "Rechercher des guides par titre, tag ou description...",
+        guides_filter_all: "Tous les Guides",
+        guides_filter_featured: "Recommandés",
+        guides_filter_builds: "Builds de Personnages",
+        guides_filter_teams: "Compositions d'Équipe",
+        guides_filter_beginner: "Progression Débutant",
+        guides_filter_farming: "Routes de Farm",
+        guides_filter_systems: "Systèmes de Jeu",
+        guides_filter_meta: "Analyse de la Méta",
+        guides_difficulty_label: "Difficulté :",
+        guides_updated_label: "Mis à jour :",
+        guides_recently_updated: "Nouveau",
+        guides_read_btn: "Lire le Guide",
+        guides_references_title: "Sources & Références :",
+        guides_recommended_teams: "Personnages recommandés :",
+        guides_progression_tips: "Conseils de progression :",
+        guides_difficulty_easy: "Facile",
+        guides_difficulty_medium: "Moyen",
+        guides_difficulty_hard: "Difficile",
+        guides_custom_builder_btn: "Constructeur d'Équipe",
+        guides_view_presets_btn: "Compositions d'Équipe Prédéfinies"
     }
 };

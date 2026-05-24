@@ -114,8 +114,8 @@ function renderFeaturedBanner() {
     }
 
     bannerContainer.style.display = "flex";
-    const title = state.currentLang === "uk" ? featured.title : featured.titleEn;
-    const desc = state.currentLang === "uk" ? featured.description : featured.descriptionEn;
+    const title = state.currentLang === "uk" ? featured.title : (state.currentLang === "fr" ? (featured.titleFr || featured.titleEn) : featured.titleEn);
+    const desc = state.currentLang === "uk" ? featured.description : (state.currentLang === "fr" ? (featured.descriptionFr || featured.descriptionEn) : featured.descriptionEn);
     const btnText = i18n[state.currentLang].guides_read_btn;
     const badgeText = i18n[state.currentLang].guides_filter_featured;
 
@@ -144,9 +144,21 @@ function renderGuidesGrid() {
 
     // 1. Gather all raw Guides
     let filteredGuides = activeGuides.filter(g => {
-        const title = (state.currentLang === "uk" ? g.title : g.titleEn).toLowerCase();
-        const desc = (state.currentLang === "uk" ? g.description : g.descriptionEn).toLowerCase();
-        const tags = (state.currentLang === "uk" ? g.tags : g.tagsEn).join(" ").toLowerCase();
+        let titleVal = g.titleEn;
+        if (state.currentLang === "uk") titleVal = g.title;
+        else if (state.currentLang === "fr") titleVal = g.titleFr || g.titleEn;
+
+        let descVal = g.descriptionEn;
+        if (state.currentLang === "uk") descVal = g.description;
+        else if (state.currentLang === "fr") descVal = g.descriptionFr || g.descriptionEn;
+
+        let tagsVal = g.tagsEn || g.tags;
+        if (state.currentLang === "uk") tagsVal = g.tags;
+        else if (state.currentLang === "fr") tagsVal = g.tagsFr || g.tagsEn || g.tags;
+
+        const title = titleVal.toLowerCase();
+        const desc = descVal.toLowerCase();
+        const tags = tagsVal.join(" ").toLowerCase();
         
         // Search filter
         const matchesSearch = !query || title.includes(query) || desc.includes(query) || tags.includes(query);
@@ -208,9 +220,26 @@ function renderGuidesGrid() {
             ? (state.currentLang === "uk" ? "Дивитись білд" : "View Build") 
             : i18n[state.currentLang].guides_read_btn;
 
-        const title = item.isCharacterBuild ? item.title : (state.currentLang === "uk" ? item.title : item.titleEn);
-        const description = item.isCharacterBuild ? item.description : (state.currentLang === "uk" ? item.description : item.descriptionEn);
-        const activeTags = item.isCharacterBuild ? item.tags : (state.currentLang === "uk" ? item.tags : item.tagsEn || item.tags);
+        let title = item.title;
+        if (!item.isCharacterBuild) {
+            title = item.titleEn;
+            if (state.currentLang === "uk") title = item.title;
+            else if (state.currentLang === "fr") title = item.titleFr || item.titleEn;
+        }
+
+        let description = item.description;
+        if (!item.isCharacterBuild) {
+            description = item.descriptionEn;
+            if (state.currentLang === "uk") description = item.description;
+            else if (state.currentLang === "fr") description = item.descriptionFr || item.descriptionEn;
+        }
+
+        let activeTags = item.tags;
+        if (!item.isCharacterBuild) {
+            activeTags = item.tagsEn || item.tags;
+            if (state.currentLang === "uk") activeTags = item.tags;
+            else if (state.currentLang === "fr") activeTags = item.tagsFr || item.tagsEn || item.tags;
+        }
 
         const tagsHtml = activeTags.map(tag => {
             const lowTag = tag.toLowerCase();
@@ -273,8 +302,13 @@ function openGuideDetailModal(guide) {
     const container = document.getElementById("guideModalDetail");
     if (!modal || !container) return;
 
-    const title = state.currentLang === "uk" ? guide.title : guide.titleEn;
-    const desc = state.currentLang === "uk" ? guide.description : guide.descriptionEn;
+    let title = guide.titleEn;
+    if (state.currentLang === "uk") title = guide.title;
+    else if (state.currentLang === "fr") title = guide.titleFr || guide.titleEn;
+
+    let desc = guide.descriptionEn;
+    if (state.currentLang === "uk") desc = guide.description;
+    else if (state.currentLang === "fr") desc = guide.descriptionFr || guide.descriptionEn;
     const categoryLabel = i18n[state.currentLang][`guides_filter_${guide.category}`] || guide.category;
     const difficultyValText = i18n[state.currentLang][`guides_difficulty_${(guide.difficulty || "easy").toLowerCase()}`] || guide.difficulty;
     const difficultyClass = (guide.difficulty || "easy").toLowerCase();
@@ -282,8 +316,13 @@ function openGuideDetailModal(guide) {
     // Sections parsing
     const sections = guide.content.sections || [];
     const sectionsHtml = sections.map(sec => {
-        const secTitle = state.currentLang === "uk" ? sec.title : sec.titleEn;
-        const secText = state.currentLang === "uk" ? sec.text : sec.textEn;
+        let secTitle = sec.titleEn;
+        if (state.currentLang === "uk") secTitle = sec.title;
+        else if (state.currentLang === "fr") secTitle = sec.titleFr || sec.titleEn;
+
+        let secText = sec.textEn;
+        if (state.currentLang === "uk") secText = sec.text;
+        else if (state.currentLang === "fr") secText = sec.textFr || sec.textEn;
         return `
             <div class="guide-detail-section">
                 <h4>${secTitle}</h4>
@@ -331,7 +370,9 @@ function openGuideDetailModal(guide) {
 
     // Progression Tips
     let tipsHtml = "";
-    const tipsList = state.currentLang === "uk" ? guide.progressionTips : guide.progressionTipsEn;
+    let tipsList = guide.progressionTipsEn;
+    if (state.currentLang === "uk") tipsList = guide.progressionTips;
+    else if (state.currentLang === "fr") tipsList = guide.progressionTipsFr || guide.progressionTipsEn;
     if (tipsList && tipsList.length > 0) {
         const listItems = tipsList.map(tip => `<li>${tip}</li>`).join("");
         tipsHtml = `
