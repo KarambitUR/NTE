@@ -1352,8 +1352,8 @@ function renderHomeWidgets() {
     if (codesContainer) {
         codesContainer.innerHTML = "";
         const sortedCodes = [...PROMO_CODES].sort((a, b) => {
-            const dateA = a.addedAt ? new Date(a.addedAt) : new Date(0);
-            const dateB = b.addedAt ? new Date(b.addedAt) : new Date(0);
+            const dateA = parseFirebaseDate(a.addedAt);
+            const dateB = parseFirebaseDate(b.addedAt);
             return dateB - dateA;
         });
         const activeCodes = sortedCodes.filter(c => c.active).slice(0, 3);
@@ -3456,14 +3456,29 @@ function exportCalcReport() {
     });
 }
 
+function parseFirebaseDate(val) {
+    if (!val) return new Date(0);
+    if (typeof val.toDate === 'function') {
+        return val.toDate();
+    }
+    if (val.seconds !== undefined) {
+        return new Date(val.seconds * 1000);
+    }
+    if (val instanceof Date) {
+        return val;
+    }
+    const d = new Date(val);
+    return isNaN(d.getTime()) ? new Date(0) : d;
+}
+
 // 11. PROMO CODES LOGIC
 function renderPromoCodes() {
     const container = document.getElementById("promoCodesList");
     container.innerHTML = "";
 
     const sortedCodes = [...PROMO_CODES].sort((a, b) => {
-        const dateA = a.addedAt ? new Date(a.addedAt) : new Date(0);
-        const dateB = b.addedAt ? new Date(b.addedAt) : new Date(0);
+        const dateA = parseFirebaseDate(a.addedAt);
+        const dateB = parseFirebaseDate(b.addedAt);
         return dateB - dateA;
     });
 
