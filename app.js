@@ -1041,7 +1041,8 @@ const i18n = {
         teams_slot_2: "Слот 2",
         teams_slot_3: "Слот 3",
         teams_slot_4: "Слот 4",
-        creator_title_placeholder: "Наприклад: Мій тір-ліст версії 1.0"
+        creator_title_placeholder: "Наприклад: Мій тір-ліст версії 1.0",
+        ad_placeholder: "РЕКЛАМА"
     },
     en: {
         logo_badge: "WIKI",
@@ -1221,7 +1222,8 @@ const i18n = {
         teams_slot_2: "Slot 2",
         teams_slot_3: "Slot 3",
         teams_slot_4: "Slot 4",
-        creator_title_placeholder: "e.g., My Tier List v1.0"
+        creator_title_placeholder: "e.g., My Tier List v1.0",
+        ad_placeholder: "ADVERTISEMENT"
     }
 };
 

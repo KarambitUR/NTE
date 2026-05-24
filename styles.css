@@ -3293,3 +3293,51 @@ body {
     font-size: 0.75rem;
     color: var(--text-muted);
 }
+
+/* Sidebar Ads Gutters */
+.ad-sidebar {
+    position: fixed;
+    top: 100px;
+    width: 160px;
+    height: 600px;
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px dashed rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    border-radius: 8px;
+    transition: background var(--transition-speed), border-color var(--transition-speed);
+}
+
+.ad-sidebar:hover {
+    border-color: rgba(0, 242, 254, 0.15);
+    background: rgba(0, 242, 254, 0.01);
+}
+
+.ad-left {
+    left: calc(50% - 700px - 180px);
+}
+
+.ad-right {
+    right: calc(50% - 700px - 180px);
+}
+
+.ad-placeholder-text {
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    font-weight: 700;
+    opacity: 0.6;
+    text-align: center;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+}
+
+/* Hide ads on screens where side gutters are not wide enough to avoid overlap */
+@media (max-width: 1760px) {
+    .ad-sidebar {
+        display: none;
+    }
+}
