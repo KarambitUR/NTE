@@ -194,7 +194,8 @@
 }
 
 .guide-card-header-new {
-    height: 100px;
+    height: auto;
+    min-height: 100px;
     position: relative;
     background: linear-gradient(45deg, #1f1a3a 0%, #0d0a1b 100%);
     padding: 1rem;
@@ -226,6 +227,7 @@
     font-size: 1.8rem;
     z-index: 2;
     overflow: hidden;
+    flex-shrink: 0;
 }
 
 .guide-card-avatar img {
@@ -234,20 +236,26 @@
     object-fit: cover;
 }
 
+.guide-card-header-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    flex-grow: 1;
+    min-width: 0;
+    z-index: 2;
+}
+
 .guide-card-category {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: rgba(0, 0, 0, 0.5);
+    align-self: flex-start;
+    background: rgba(0, 0, 0, 0.4);
     border: 1px solid var(--border-glass);
-    padding: 0.2rem 0.5rem;
+    padding: 0.15rem 0.45rem;
     border-radius: 4px;
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: 0.5px;
     color: var(--color-cyan);
-    z-index: 2;
 }
 
 .guide-card-new.featured-card .guide-card-category {
@@ -257,10 +265,9 @@
 
 .guide-card-header-new h3 {
     font-family: var(--font-heading);
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: #fff;
-    z-index: 2;
     line-height: 1.3;
 }
 

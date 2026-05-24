@@ -206,7 +206,11 @@ function renderGuidesGrid() {
             ? (state.currentLang === "uk" ? "Дивитись білд" : "View Build") 
             : i18n[state.currentLang].guides_read_btn;
 
-        const tagsHtml = item.tags.map(tag => {
+        const title = item.isCharacterBuild ? item.title : (state.currentLang === "uk" ? item.title : item.titleEn);
+        const description = item.isCharacterBuild ? item.description : (state.currentLang === "uk" ? item.description : item.descriptionEn);
+        const activeTags = item.isCharacterBuild ? item.tags : (state.currentLang === "uk" ? item.tags : item.tagsEn || item.tags);
+
+        const tagsHtml = activeTags.map(tag => {
             const lowTag = tag.toLowerCase();
             const specialClass = lowTag === "meta" || lowTag === "s-tier" ? "tag-meta" 
                                : lowTag === "beginner" || lowTag === "progression" ? "tag-beginner" 
@@ -221,7 +225,7 @@ function renderGuidesGrid() {
         let avatarHtml = "";
         if (item.isCharacterBuild) {
             avatarHtml = item.avatarUrl.length > 2 
-                ? `<img src="${item.avatarUrl}" alt="${item.title}">` 
+                ? `<img src="${item.avatarUrl}" alt="${title}">` 
                 : `<span class="guide-avatar-emoji">${item.avatarUrl}</span>`;
         } else {
             avatarHtml = `<span class="guide-avatar-emoji">${item.avatar || "📖"}</span>`;
@@ -230,11 +234,13 @@ function renderGuidesGrid() {
         card.innerHTML = `
             <div class="guide-card-header-new">
                 <div class="guide-card-avatar">${avatarHtml}</div>
-                <div class="guide-card-category">${categoryLabel}</div>
-                <h3>${item.title}</h3>
+                <div class="guide-card-header-text">
+                    <div class="guide-card-category">${categoryLabel}</div>
+                    <h3>${title}</h3>
+                </div>
             </div>
             <div class="guide-card-body-new">
-                <p class="guide-card-desc">${item.description}</p>
+                <p class="guide-card-desc">${description}</p>
                 <div class="guide-tags">${tagsHtml}</div>
                 <div class="guide-meta-row">
                     <span class="guide-difficulty">
