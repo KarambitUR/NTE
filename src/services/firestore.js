@@ -1,6 +1,7 @@
 import { state } from '../scripts/state.js';
 import { db } from '../firebase/firebase.js';
 import { FALLBACK_CHARACTERS, FALLBACK_PROMO_CODES, FALLBACK_TIMELINE_EVENTS } from '../utils/fallbackData.js';
+import { FALLBACK_GUIDES } from '../utils/fallbackGuides.js';
 import { parseFirebaseDate } from '../utils/helpers.js';
 import { translatePage } from '../localization/i18n.js';
 import { renderPromoCodes } from '../features/codes.js';
@@ -43,6 +44,19 @@ async function loadFromFirestore() {
                 localStorage.setItem('nte_timelineEvents', JSON.stringify(state.TIMELINE_EVENTS));
                 console.log(`✅ Loaded ${state.TIMELINE_EVENTS.length} timeline events from Firestore`);
             }
+
+            // Load guides
+            try {
+                const guidesSnapshot = await db.collection('guides').get();
+                if (!guidesSnapshot.empty) {
+                    state.GUIDES = guidesSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                    localStorage.setItem('nte_guides', JSON.stringify(state.GUIDES));
+                    console.log(`✅ Loaded ${state.GUIDES.length} guides from Firestore`);
+                }
+            } catch (e) {
+                console.warn('Guides collection fetch failed:', e);
+            }
+
             return true;
         };
 
@@ -68,17 +82,20 @@ function loadFromCache() {
         const cachedChars = localStorage.getItem('nte_characters');
         const cachedCodes = localStorage.getItem('nte_promoCodes');
         const cachedTimeline = localStorage.getItem('nte_timelineEvents');
+        const cachedGuides = localStorage.getItem('nte_guides');
 
         if (cachedChars) state.CHARACTERS = JSON.parse(cachedChars);
         if (cachedCodes) state.PROMO_CODES = JSON.parse(cachedCodes);
         if (cachedTimeline) state.TIMELINE_EVENTS = JSON.parse(cachedTimeline);
+        if (cachedGuides) state.GUIDES = JSON.parse(cachedGuides);
 
         // Fill in missing parts from fallback data to ensure no empty screens
         if (state.CHARACTERS.length === 0) state.CHARACTERS = [...FALLBACK_CHARACTERS];
         if (state.PROMO_CODES.length === 0) state.PROMO_CODES = [...FALLBACK_PROMO_CODES];
         if (state.TIMELINE_EVENTS.length === 0) state.TIMELINE_EVENTS = [...FALLBACK_TIMELINE_EVENTS];
+        if (state.GUIDES.length === 0) state.GUIDES = [...FALLBACK_GUIDES];
 
-        if (cachedChars || cachedCodes || cachedTimeline) {
+        if (cachedChars || cachedCodes || cachedTimeline || cachedGuides) {
             state.dataSource = 'cache';
             console.log('📦 Loaded data from localStorage cache (with fallback fallbacks if needed)');
             return true;
@@ -90,13 +107,16 @@ function loadFromCache() {
 }
 
 
+
 function loadFallbackData() {
     state.CHARACTERS = [...FALLBACK_CHARACTERS];
     state.PROMO_CODES = [...FALLBACK_PROMO_CODES];
     state.TIMELINE_EVENTS = [...FALLBACK_TIMELINE_EVENTS];
+    state.GUIDES = [...FALLBACK_GUIDES];
     state.dataSource = 'hardcoded';
     console.log('📋 Using hardcoded fallback data');
 }
+
 
 // Setup realtime listeners for promo codes (auto-update when admin changes them)
 function setupRealtimeListeners() {
@@ -127,14 +147,28 @@ function setupRealtimeListeners() {
                 renderBuilds();
                 renderCalculatorSetup();
                 renderHomeWidgets();
+                if (window.renderGuides) window.renderGuides();
                 console.log('🔄 Characters updated in realtime');
             }
         }, (error) => {
             console.warn('Characters realtime listener error:', error);
         });
+
+        // Realtime listener for guides
+        db.collection('guides').onSnapshot((snapshot) => {
+            if (!snapshot.empty) {
+                state.GUIDES = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                localStorage.setItem('nte_guides', JSON.stringify(state.GUIDES));
+                if (window.renderGuides) window.renderGuides();
+                console.log('🔄 Guides updated in realtime');
+            }
+        }, (error) => {
+            console.warn('Guides realtime listener error:', error);
+        });
     } catch (e) {
         console.warn('Realtime listeners setup failed:', e);
     }
 }
+
 
 export { loadFromFirestore, loadFromCache, loadFallbackData, setupRealtimeListeners };

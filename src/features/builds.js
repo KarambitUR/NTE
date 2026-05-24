@@ -8,6 +8,7 @@ import { i18n, ROLE_TRANSLATIONS, ATTR_TRANSLATIONS, STAT_TRANSLATIONS } from '.
 // 7. BUILDS RENDERING
 function renderBuilds() {
     const buildsGrid = document.getElementById("buildsGrid");
+    if (!buildsGrid) return;
     buildsGrid.innerHTML = "";
 
     const activeList = state.CHARACTERS.length > 0 ? state.CHARACTERS : FALLBACK_CHARACTERS;

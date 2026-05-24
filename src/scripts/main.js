@@ -4,11 +4,12 @@ import { translatePage } from '../localization/i18n.js';
 import { startBannerCountdown } from '../utils/helpers.js';
 import { renderHomeWidgets, renderTimeline } from '../features/home.js';
 import { renderTierList, loadCommunityTierlists } from '../features/tierlist.js';
-import { renderBuilds, openCharacterModal } from '../features/builds.js';
-import { setupTeamBuilder, evaluateTeamSynergy, updateTeamSlotsUI } from '../features/teambuilder.js';
+import { openCharacterModal } from '../features/builds.js';
+import { evaluateTeamSynergy, updateTeamSlotsUI } from '../features/teambuilder.js';
 import { renderCalculatorSetup, setupCalculatorEvents } from '../features/calculator.js';
 import { renderPromoCodes } from '../features/codes.js';
 import { initAuthAndUserTierlists, updateAuthUI } from '../features/auth.js';
+import { initGuides, renderGuides } from '../features/guides.js';
 import { FALLBACK_PROMO_CODES } from '../utils/fallbackData.js';
 
 // 5. INITIALIZATION & ROUTING
@@ -62,7 +63,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     
                     // Re-render
                     renderTierList();
-                    renderBuilds();
+                    renderGuides();
                     renderTimeline();
                     renderCalculatorSetup();
                     renderHomeWidgets();
@@ -89,10 +90,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         // Initialize all UI components
         initNavigation();
         renderTierList();
-        renderBuilds();
+        initGuides();
         renderCalculatorSetup();
         renderTimeline();
-        setupTeamBuilder();
         setupCalculatorEvents();
         renderPromoCodes();
         
@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const bannerBtn = document.getElementById("btnGoToBannerChar");
         if (bannerBtn) {
             bannerBtn.addEventListener("click", () => {
-                switchTab("builds");
+                switchTab("guides");
                 openCharacterModal("hotori");
             });
         }

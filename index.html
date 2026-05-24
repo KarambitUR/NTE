@@ -61,14 +61,13 @@
                 <ul class="nav-links">
                     <li><button class="nav-btn active" data-tab="home" id="tabHome" data-i18n="nav_home">Головна</button></li>
                     <li><button class="nav-btn" data-tab="tierlist" id="tabTierList" data-i18n="nav_tierlist">Тір-ліст</button></li>
-                    <li><button class="nav-btn" data-tab="builds" id="tabBuilds" data-i18n="nav_builds">Білди</button></li>
-                    <li><button class="nav-btn" data-tab="teambuilder" id="tabTeamBuilder" data-i18n="nav_teambuilder">Команди</button></li>
                     <li><button class="nav-btn" data-tab="guides" id="tabGuides" data-i18n="nav_guides">Гайди</button></li>
                     <li><button class="nav-btn" data-tab="calculator" id="tabCalculator" data-i18n="nav_calculator">Калькулятор</button></li>
                     <li><button class="nav-btn" data-tab="codes" id="tabCodes" data-i18n="nav_codes">Промокоди</button></li>
                     <li><button class="nav-btn" data-tab="calendar" id="tabCalendar" data-i18n="nav_calendar">Календар</button></li>
                 </ul>
             </nav>
+
 
             <div class="header-right-group">
                 <div class="lang-switcher">
@@ -308,83 +307,7 @@
             </div>
         </section>
 
-        <!-- SECTION: BUILDS -->
-        <section class="tab-pane" id="pane-builds">
-            <div class="section-header">
-                <h2 data-i18n="builds_title">Гайди на Білди Персонажів</h2>
-                <p data-i18n="builds_subtitle">Рекомендоване спорядження та параметри для максимальної бойової ефективності</p>
-            </div>
 
-            <div class="builds-grid" id="buildsGrid">
-                <!-- Dynamic builds list -->
-            </div>
-        </section>
-
-        <!-- SECTION: TEAM BUILDER -->
-        <section class="tab-pane" id="pane-teambuilder">
-            <div class="section-header">
-                <h2 data-i18n="teams_title">Інтерактивний Конструктор Загону</h2>
-                <p data-i18n="teams_subtitle">Зберіть команду з 4-х мисливців та дізнайтеся активні синергії стихій і ротації</p>
-            </div>
-
-            <div class="teambuilder-container">
-                <div class="builder-slots">
-                    <!-- Slot 1 -->
-                    <div class="char-slot" data-slot="0" id="slot-0">
-                        <div class="slot-empty">
-                            <span class="slot-plus">+</span>
-                            <span class="slot-label" data-i18n="teams_slot_leader">Слот 1 (Лідер)</span>
-                        </div>
-                    </div>
-                    <!-- Slot 2 -->
-                    <div class="char-slot" data-slot="1" id="slot-1">
-                        <div class="slot-empty">
-                            <span class="slot-plus">+</span>
-                            <span class="slot-label" data-i18n="teams_slot_2">Слот 2</span>
-                        </div>
-                    </div>
-                    <!-- Slot 3 -->
-                    <div class="char-slot" data-slot="2" id="slot-2">
-                        <div class="slot-empty">
-                            <span class="slot-plus">+</span>
-                            <span class="slot-label" data-i18n="teams_slot_3">Слот 3</span>
-                        </div>
-                    </div>
-                    <!-- Slot 4 -->
-                    <div class="char-slot" data-slot="3" id="slot-3">
-                        <div class="slot-empty">
-                            <span class="slot-plus">+</span>
-                            <span class="slot-label" data-i18n="teams_slot_4">Слот 4</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="builder-actions-row">
-                    <button class="btn btn-secondary btn-sm" id="clearSquadBtn" data-i18n="teams_clear_btn">Очистити команду</button>
-                </div>
-
-                <div class="synergy-panel">
-                    <div class="synergy-header">
-                        <h3 data-i18n="teams_analysis_title">Аналіз Синергії Команди</h3>
-                        <div class="synergy-rating" id="synergyRating">-</div>
-                    </div>
-                    <div class="synergy-body">
-                        <div class="synergy-element-badges" id="synergyElements">
-                            <!-- Active cycles badges -->
-                            <span class="no-synergy-text" data-i18n="teams_no_synergy">Виберіть персонажів для початку розрахунку.</span>
-                        </div>
-                        
-                        <div class="synergy-reactions" id="synergyReactions">
-                            <!-- Reactions list -->
-                        </div>
-
-                        <div class="synergy-description" id="synergyDescription">
-                            <p data-i18n="teams_synergy_placeholder">Додайте мисливців у слоти вище. Система автоматично проаналізує їхні класи, стихії та виведе оптимальну послідовність навичок (ротацію) для бою.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- SECTION: CALCULATOR -->
         <section class="tab-pane" id="pane-calculator">
@@ -605,76 +528,104 @@
         <!-- SECTION: GUIDES -->
         <section class="tab-pane" id="pane-guides">
             <div class="section-header">
-                <h2 data-i18n="guides_title">Посібники та Гайди</h2>
-                <p data-i18n="guides_subtitle">Корисні поради щодо прокачки мисливців, розвитку бізнесу та дослідження Гетеро</p>
+                <h2 data-i18n="guides_title">Централізований Хаб Гайдів</h2>
+                <p data-i18n="guides_subtitle">Професійні збірки, командні синергії, розбір механік та посібники для новачків</p>
             </div>
 
-            <div class="guides-grid">
-                <!-- Guide Card 1: Beginner Progression -->
-                <div class="guide-card glass-panel">
-                    <div class="guide-card-header">
-                        <span class="guide-icon">🚀</span>
-                        <h3 data-i18n="guide_prog_title">Гайд з прогресії: Старт та пріоритети</h3>
-                    </div>
-                    <div class="guide-card-body">
-                        <ul class="guide-list">
-                            <li data-i18n="guide_prog_1">
-                                <strong>Сюжет перш за все:</strong> Фокусуйтеся на сюжетних квестах, щоб швидко підвищити Рівень Мисливця (Hunter Level) та Рівень Оцінки (Appraisal Level) для зняття лімітів прокачки.
-                            </li>
-                            <li data-i18n="guide_prog_2">
-                                <strong>Бізнес-імперія (City Tycoon):</strong> Розвивайте кав'ярню одразу після відкриття. На 18-му рівні City Tycoon ви безкоштовно отримаєте чудового атакуючого персонажа <strong>Чіз (Chiz)</strong>, а на 21-му рівні — її кращу сигнатурну зброю!
-                            </li>
-                            <li data-i18n="guide_prog_3">
-                                <strong>Мотоцикл Novis ST-X 950:</strong> Купіть цей мотоцикл у дилера Regalia в районі New Herland. На відміну від автомобілів, його можна викликати прямо посеред бездоріжжя, що прискорить проходження карти.
-                            </li>
-                            <li data-i18n="guide_prog_4">
-                                <strong>Телефонні будки ReroRero:</strong> Обов'язково взаємодійте з ними під час подорожі містом для створення швидкої мережі телепортації.
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+            <!-- Featured Guides Banner -->
+            <div class="featured-guides-banner" id="featuredGuidesBanner">
+                <!-- Dynamic slide content -->
+            </div>
 
-                <!-- Guide Card 2: Character Upgrades -->
-                <div class="guide-card glass-panel">
-                    <div class="guide-card-header">
-                        <span class="guide-icon">⚔️</span>
-                        <h3 data-i18n="guide_char_title">Прокачка персонажів та бойова сила</h3>
-                    </div>
-                    <div class="guide-card-body">
-                        <ul class="guide-list">
-                            <li data-i18n="guide_char_1">
-                                <strong>Один Головний ДПС (Main Carry):</strong> Спочатку вкладайте ресурси лише в одного персонажа нанесення шкоди. Не розпорошуйте матеріали на всю команду. Початкових героїв не варто качати вище 40 рівня.
-                            </li>
-                            <li data-i18n="guide_char_2">
-                                <strong>Гарантоване покращення:</strong> Завжди спочатку прокачуйте рівень, зброю та рівні навичок. Фарм картриджів (артефактів) залиште на етап високого рівня, щоб не витрачати енергію на випадкові характеристики.
-                            </li>
-                            <li data-i18n="guide_char_3">
-                                <strong>Пріоритет сет-бонусів:</strong> Завжди намагайтеся спочатку зібрати повноцінний комплект з 4-х картриджів заради потужного ефекту набору, навіть якщо суб-характеристики на них не є ідеальними.
-                            </li>
-                        </ul>
+            <!-- Toolbar: Search & Filters -->
+            <div class="guides-toolbar">
+                <div class="guides-search-wrapper">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="guidesSearchInput" class="guides-search-input" data-i18n-placeholder="guides_search_placeholder" placeholder="Пошук гайдів за назвою, тегом чи описом...">
+                </div>
+                <div class="guides-filters-wrapper">
+                    <div class="guides-filters" id="guidesFilters">
+                        <button class="filter-btn active" data-category="all" data-i18n="guides_filter_all">Всі гайди</button>
+                        <button class="filter-btn" data-category="featured" data-i18n="guides_filter_featured">Рекомендовані</button>
+                        <button class="filter-btn" data-category="builds" data-i18n="guides_filter_builds">Білди персонажів</button>
+                        <button class="filter-btn" data-category="teams" data-i18n="guides_filter_teams">Команди</button>
+                        <button class="filter-btn" data-category="beginner" data-i18n="guides_filter_beginner">Прогресія новачка</button>
+                        <button class="filter-btn" data-category="farming" data-i18n="guides_filter_farming">Фарм маршрути</button>
+                        <button class="filter-btn" data-category="systems" data-i18n="guides_filter_systems">Ігрові системи</button>
+                        <button class="filter-btn" data-category="meta" data-i18n="guides_filter_meta">Аналіз мети</button>
                     </div>
                 </div>
+            </div>
 
-                <!-- Guide Card 3: Exploration & Collection -->
-                <div class="guide-card glass-panel">
-                    <div class="guide-card-header">
-                        <span class="guide-icon">🔍</span>
-                        <h3 data-i18n="guide_explor_title">Дослідження Hethereau та фарм</h3>
+            <!-- Sub-toolbar for Teams category -->
+            <div class="team-guides-toggle-row hidden" id="teamGuidesToggleRow">
+                <button class="btn btn-primary btn-sm active" id="btnShowTeamPresets" data-i18n="guides_view_presets_btn">Готові збірки команд</button>
+                <button class="btn btn-secondary btn-sm" id="btnShowCustomBuilder" data-i18n="guides_custom_builder_btn">Конструктор загону</button>
+            </div>
+
+            <!-- Embedded Custom Squad Builder -->
+            <div class="teambuilder-wrapper hidden" id="customTeamBuilderWrapper">
+                <div class="teambuilder-container">
+                    <div class="builder-slots">
+                        <!-- Slot 1 -->
+                        <div class="char-slot" data-slot="0" id="slot-0">
+                            <div class="slot-empty">
+                                <span class="slot-plus">+</span>
+                                <span class="slot-label" data-i18n="teams_slot_leader">Слот 1 (Лідер)</span>
+                            </div>
+                        </div>
+                        <!-- Slot 2 -->
+                        <div class="char-slot" data-slot="1" id="slot-1">
+                            <div class="slot-empty">
+                                <span class="slot-plus">+</span>
+                                <span class="slot-label" data-i18n="teams_slot_2">Слот 2</span>
+                            </div>
+                        </div>
+                        <!-- Slot 3 -->
+                        <div class="char-slot" data-slot="2" id="slot-2">
+                            <div class="slot-empty">
+                                <span class="slot-plus">+</span>
+                                <span class="slot-label" data-i18n="teams_slot_3">Слот 3</span>
+                            </div>
+                        </div>
+                        <!-- Slot 4 -->
+                        <div class="char-slot" data-slot="3" id="slot-3">
+                            <div class="slot-empty">
+                                <span class="slot-plus">+</span>
+                                <span class="slot-label" data-i18n="teams_slot_4">Слот 4</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="guide-card-body">
-                        <ul class="guide-list">
-                            <li data-i18n="guide_explor_1">
-                                <strong>Зоровий аналізатор (Vision):</strong> Регулярно перевіряйте оточення режимом зору, щоб помітить приховані дзеркала, графіті або статуї, взаємодія з якими відкриє цінні скрині.
-                            </li>
-                            <li data-i18n="guide_explor_2">
-                                <strong>Хатина Відьми (Witch's House):</strong> Збирайте магічних птахів та здавайте їх. На 3-му рівні Хатини птахи почнуть відображатися прямо на вашій міні-карті, що полегшить збір.
-                            </li>
-                            <li data-i18n="guide_explor_3">
-                                <strong>Безкоштовна S-зброя:</strong> Шукайте та проходьте Аномальні доручення (Anomaly Commissions) з 4 зірками складності на карті міста, за які гарантовано дають легендарні Arcs.
-                            </li>
-                        </ul>
+
+                    <div class="builder-actions-row">
+                        <button class="btn btn-secondary btn-sm" id="clearSquadBtn" data-i18n="teams_clear_btn">Очистити команду</button>
+                    </div>
+
+                    <div class="synergy-panel">
+                        <div class="synergy-header">
+                            <h3 data-i18n="teams_analysis_title">Аналіз Синергії Команди</h3>
+                            <div class="synergy-rating" id="synergyRating">-</div>
+                        </div>
+                        <div class="synergy-body">
+                            <div class="synergy-element-badges" id="synergyElements">
+                                <span class="no-synergy-text" data-i18n="teams_no_synergy">Виберіть персонажів для початку розрахунку.</span>
+                            </div>
+                            
+                            <div class="synergy-reactions" id="synergyReactions">
+                                <!-- Reactions list -->
+                            </div>
+
+                            <div class="synergy-description" id="synergyDescription">
+                                <p data-i18n="teams_synergy_placeholder">Додайте мисливців у слоти вище. Система автоматично проаналізує їхні класи, стихії та виведе оптимальну послідовність навичок (ротацію) для бою.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- Dynamic Guide Cards Grid -->
+            <div class="guides-grid-new" id="guidesGridNew">
+                <!-- Guide cards dynamic injection -->
             </div>
         </section>
 
@@ -741,6 +692,17 @@
             </div>
         </div>
     </div>
+
+    <!-- GUIDE DETAIL MODAL -->
+    <div class="modal-overlay" id="guideModalOverlay">
+        <div class="modal-content guide-modal-content glass-panel">
+            <button class="modal-close-btn" id="guideModalCloseBtn" aria-label="Close Modal">&times;</button>
+            <div id="guideModalDetail">
+                <!-- Dynamic guide modal content -->
+            </div>
+        </div>
+    </div>
+
 
     <!-- FOOTER -->
     <footer class="app-footer">
