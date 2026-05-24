@@ -659,6 +659,28 @@
         <div class="modal-content select-modal-content glass-panel">
             <button class="modal-close-btn" id="selectorCloseBtn" aria-label="Close Selector">&times;</button>
             <h3 data-i18n="teams_modal_title">Виберіть Персонажа</h3>
+            
+            <div class="selector-filters-row">
+                <input type="text" id="selectorSearch" placeholder="Пошук за іменем..." class="selector-search-input" data-i18n-placeholder="filter_search_placeholder">
+                <div class="selector-selects">
+                    <select id="selectorFilterAttr" class="selector-filter-select">
+                        <option value="all" data-i18n="filter_rarity_all">Всі</option>
+                        <option value="Anima" data-i18n="attr_anima">Anima</option>
+                        <option value="Cosmos" data-i18n="attr_cosmos">Cosmos</option>
+                        <option value="Incantation" data-i18n="attr_incant">Incantation</option>
+                        <option value="Chaos" data-i18n="attr_chaos">Chaos</option>
+                        <option value="Psyche" data-i18n="attr_psyche">Psyche</option>
+                        <option value="Lakshana" data-i18n="attr_lakshana">Lakshana</option>
+                    </select>
+                    <select id="selectorFilterRole" class="selector-filter-select">
+                        <option value="all" data-i18n="filter_rarity_all">Всі</option>
+                        <option value="Main DPS" data-i18n="role_main_dps">Main DPS</option>
+                        <option value="Sub-DPS" data-i18n="role_sub_dps">Sub-DPS</option>
+                        <option value="Support" data-i18n="role_support">Support</option>
+                    </select>
+                </div>
+            </div>
+
             <div class="selector-grid" id="selectorGrid">
                 <!-- Dynamic selector grid cards -->
             </div>

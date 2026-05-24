@@ -180,3 +180,81 @@
     font-size: 0.95rem;
     line-height: 1.7;
 }
+
+/* Selector Filters Styling */
+.selector-filters-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin: 1rem 0;
+}
+
+.selector-search-input {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-glass);
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    color: var(--text-main);
+    font-size: 0.9rem;
+    width: 100%;
+    outline: none;
+    transition: border-color var(--transition-speed) ease;
+}
+
+.selector-search-input:focus {
+    border-color: var(--color-cyan);
+}
+
+.selector-selects {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.selector-filter-select {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-glass);
+    border-radius: 8px;
+    padding: 0.6rem;
+    color: var(--text-main);
+    font-size: 0.85rem;
+    outline: none;
+    cursor: pointer;
+}
+
+.selector-filter-select option {
+    background: #111;
+    color: #fff;
+}
+
+/* Character Slots Glow Effects */
+.char-slot.slot-anima {
+    border-color: rgba(0, 255, 136, 0.4);
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.15);
+    background: rgba(0, 255, 136, 0.02);
+}
+.char-slot.slot-cosmos {
+    border-color: rgba(186, 85, 211, 0.4);
+    box-shadow: 0 0 15px rgba(186, 85, 211, 0.15);
+    background: rgba(186, 85, 211, 0.02);
+}
+.char-slot.slot-incantation {
+    border-color: rgba(255, 68, 68, 0.4);
+    box-shadow: 0 0 15px rgba(255, 68, 68, 0.15);
+    background: rgba(255, 68, 68, 0.02);
+}
+.char-slot.slot-chaos {
+    border-color: rgba(255, 136, 0, 0.4);
+    box-shadow: 0 0 15px rgba(255, 136, 0, 0.15);
+    background: rgba(255, 136, 0, 0.02);
+}
+.char-slot.slot-psyche {
+    border-color: rgba(255, 0, 128, 0.4);
+    box-shadow: 0 0 15px rgba(255, 0, 128, 0.15);
+    background: rgba(255, 0, 128, 0.02);
+}
+.char-slot.slot-lakshana {
+    border-color: rgba(0, 221, 255, 0.4);
+    box-shadow: 0 0 15px rgba(0, 221, 255, 0.15);
+    background: rgba(0, 221, 255, 0.02);
+}

@@ -2,8 +2,13 @@ import { FALLBACK_CHARACTERS } from '../utils/fallbackData.js';
 import { renderAvatarHtml } from '../utils/helpers.js';
 import { state } from '../scripts/state.js';
 import { getLocalizedChar } from '../localization/i18n.js';
-import { ATTR_TRANSLATIONS, ROLE_TRANSLATIONS, REACTION_TRANSLATIONS } from '../localization/translations.js';
+import { ATTR_TRANSLATIONS, ROLE_TRANSLATIONS, REACTION_TRANSLATIONS, i18n } from '../localization/translations.js';
 
+
+// Global selector filter state
+let selectorSearchQuery = "";
+let selectorFilterAttr = "all";
+let selectorFilterRole = "all";
 
 // 9. TEAM BUILDER LOGIC
 function setupTeamBuilder() {
@@ -20,19 +25,77 @@ function setupTeamBuilder() {
         updateTeamSlotsUI();
         evaluateTeamSynergy();
     });
+
+    // Bind selector filters
+    const searchInput = document.getElementById("selectorSearch");
+    const attrSelect = document.getElementById("selectorFilterAttr");
+    const roleSelect = document.getElementById("selectorFilterRole");
+
+    if (searchInput) {
+        searchInput.addEventListener("input", (e) => {
+            selectorSearchQuery = e.target.value.toLowerCase().trim();
+            renderSelectorGrid();
+        });
+    }
+
+    if (attrSelect) {
+        attrSelect.addEventListener("change", (e) => {
+            selectorFilterAttr = e.target.value;
+            renderSelectorGrid();
+        });
+    }
+
+    if (roleSelect) {
+        roleSelect.addEventListener("change", (e) => {
+            selectorFilterRole = e.target.value;
+            renderSelectorGrid();
+        });
+    }
 }
 
 function openSelectorModal() {
     const overlay = document.getElementById("selectorModalOverlay");
+    
+    // Reset filters
+    selectorSearchQuery = "";
+    selectorFilterAttr = "all";
+    selectorFilterRole = "all";
+    
+    const searchInput = document.getElementById("selectorSearch");
+    const attrSelect = document.getElementById("selectorFilterAttr");
+    const roleSelect = document.getElementById("selectorFilterRole");
+    
+    if (searchInput) searchInput.value = "";
+    if (attrSelect) attrSelect.value = "all";
+    if (roleSelect) roleSelect.value = "all";
+
+    renderSelectorGrid();
+    overlay.classList.add("active");
+}
+
+function renderSelectorGrid() {
     const grid = document.getElementById("selectorGrid");
     grid.innerHTML = "";
 
     // Load characters not in squad
     const activeList = state.CHARACTERS.length > 0 ? state.CHARACTERS : FALLBACK_CHARACTERS;
+    let countRendered = 0;
+
     activeList.forEach(char => {
         const isAlreadyInSquad = state.currentSquad.some(s => s && s.id === char.id);
         const locChar = getLocalizedChar(char);
         
+        // Filter checks
+        const matchesSearch = !selectorSearchQuery || locChar.name.toLowerCase().includes(selectorSearchQuery);
+        const matchesAttr = selectorFilterAttr === "all" || char.attribute === selectorFilterAttr;
+        const matchesRole = selectorFilterRole === "all" || char.role === selectorFilterRole;
+
+        if (!matchesSearch || !matchesAttr || !matchesRole) {
+            return;
+        }
+
+        countRendered++;
+
         const card = document.createElement("div");
         card.className = "select-card";
         if (isAlreadyInSquad) {
@@ -49,14 +112,18 @@ function openSelectorModal() {
         if (!isAlreadyInSquad) {
             card.addEventListener("click", () => {
                 selectCharacterForSlot(char);
-                overlay.classList.remove("active");
+                document.getElementById("selectorModalOverlay").classList.remove("active");
             });
         }
         
         grid.appendChild(card);
     });
 
-    overlay.classList.add("active");
+    if (countRendered === 0) {
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); font-size: 0.9rem; padding: 1.5rem 0;">${
+            state.currentLang === 'uk' ? 'Персонажів не знайдено.' : 'No characters found.'
+        }</div>`;
+    }
 }
 
 document.getElementById("selectorCloseBtn").addEventListener("click", () => {
@@ -81,8 +148,15 @@ function updateTeamSlotsUI() {
         const slotEl = document.getElementById(`slot-${i}`);
         const char = state.currentSquad[i];
         
+        // Reset classes on the slot
+        slotEl.className = "char-slot";
+        
         if (char) {
             const locChar = getLocalizedChar(char);
+            
+            // Add element glow class
+            slotEl.classList.add(`slot-${char.attribute.toLowerCase()}`);
+
             slotEl.innerHTML = `
                 <div class="slot-filled-card">
                     <button class="slot-remove-btn" data-slot="${i}">&times;</button>
@@ -249,6 +323,12 @@ function evaluateTeamSynergy() {
     const hasSkia = activeChars.some(c => c.id === "skia");
     const hasMint = activeChars.some(c => c.id === "mint");
     const hasHaniel = activeChars.some(c => c.id === "haniel");
+    const hasBaicang = activeChars.some(c => c.id === "baicang");
+    const hasChiz = activeChars.some(c => c.id === "chiz");
+    const hasHotori = activeChars.some(c => c.id === "hotori");
+    const hasAurelia = activeChars.some(c => c.id === "aurelia");
+    const hasFadia = activeChars.some(c => c.id === "fadia");
+    const hasAdler = activeChars.some(c => c.id === "adler");
 
     if (hasNanally && hasSakiri && hasZero) {
         if (state.currentLang === 'uk') {
@@ -256,17 +336,35 @@ function evaluateTeamSynergy() {
         } else {
             rotation = "<strong>Optimal Combat Rotation:</strong><br>1. Start with <strong>Sakiri</strong>: group enemies with skill and trigger Ultimate Burst to shred resistances.<br>2. Switch to <strong>Zero</strong>: activate his field to trigger <em>Esper Cycle</em>.<br>3. Swap to <strong>Nanally</strong>: perform enhanced gravity combos and use Ultimate Burst for the final blowout.";
         }
-    } else if (hasNanally && hasJiuyuan) {
+    } else if (hasBaicang && hasSakiri && (hasAdler || hasFadia)) {
         if (state.currentLang === 'uk') {
-            rotation = "<strong>Оптимальна ротація (Цвітіння):</strong><br>1. Використовуйте <strong>Цзююань</strong> для нанесення швидкої шкоди та накладання статусу Аніми.<br>2. Перейдіть на <strong>Наналлі</strong> для безперервного виклику реакції <em>Цвітіння</em> та нанесення основної шкоди.";
+            rotation = "<strong>Оптимальна ротація (Полум'яний Гнів):</strong><br>1. Почніть з <strong>Адлера</strong> (або <strong>Фадії</strong>): активуйте щит/лікування для стабільності.<br>2. Переключіться на <strong>Сакірі</strong>: стягніть ворогів та запустіть ультимейт для зрізу опорів.<br>3. Перейдіть на <strong>Байцан</strong>: використовуйте посилені закляття та атаки, наносячи нищівну шкоду з витратою здоров'я.";
         } else {
-            rotation = "<strong>Optimal Rotation (Blossom):</strong><br>1. Use <strong>Jiuyuan</strong> to deal rapid burst damage and apply Anima status.<br>2. Swap to <strong>Nanally</strong> for continuous <em>Blossom</em> triggers and main DPS damage.";
+            rotation = "<strong>Optimal Rotation (Blazing Wrath):</strong><br>1. Start with <strong>Adler</strong> (or <strong>Fadia</strong>): deploy shield/sustain to secure Baicang's posture.<br>2. Swap to <strong>Sakiri</strong>: group targets and activate Ultimate to shred resistances.<br>3. Swap to <strong>Baicang</strong>: trigger HP-consuming skill strings to unleash devastating burst damage.";
+        }
+    } else if (hasChiz && hasZero && hasHotori) {
+        if (state.currentLang === 'uk') {
+            rotation = "<strong>Оптимальна ротація (Золота Лихоманка):</strong><br>1. Почніть із <strong>Зеро</strong>: активуйте його Космос-поле для прискорення ротацій.<br>2. Переключіться на <strong>Хоторі</strong> та запустіть її прилад запису.<br>3. Перейдіть на <strong>Сакірі</strong> (або іншого саппорта) для стяжки та дебаффу ворогів.<br>4. Виведіть <strong>Чіз</strong>: виконайте комбо молотом та активуйте ультимейт для ігнорування захисту.";
+        } else {
+            rotation = "<strong>Optimal Rotation (Gold Rush):</strong><br>1. Start with <strong>Zero</strong>: activate his Cosmos field for swap acceleration and buffs.<br>2. Swap to <strong>Hotori</strong> and launch her recording device.<br>3. Swap to <strong>Sakiri</strong> (or other support) to apply crowd control and shred resistances.<br>4. Swap to <strong>Chiz</strong>: execute hammer combos and activate her defense-ignoring Ultimate Burst.";
+        }
+    } else if (hasAurelia && (hasFadia || hasSakiri)) {
+        if (state.currentLang === 'uk') {
+            rotation = "<strong>Оптимальна ротація (Симфонія Розуму):</strong><br>1. Почніть із <strong>Сакірі</strong>: згрупуйте ворогів стяжкою.<br>2. Перейдіть на <strong>Фадію</strong>: активуйте захисний надгробок для стійкості команди.<br>3. Використовуйте <strong>Наналлі</strong> (або іншого героя Аніми/Закляття) для швидкого накладання стихії.<br>4. Перейдіть на <strong>Аурелію</strong>: увійдіть у стан Cadenza та наносьте шкоду медузами (реакції Nova/Discord).";
+        } else {
+            rotation = "<strong>Optimal Rotation (Mind Symphony):</strong><br>1. Start with <strong>Sakiri</strong>: use crowd control pull to group enemies.<br>2. Swap to <strong>Fadia</strong>: deploy tombstone shields for overall party posture and health.<br>3. Swap to <strong>Nanally</strong> (or other Anima/Incantation) to apply primary elements.<br>4. Bring in <strong>Aurelia</strong>: enter Cadenza state and trigger mental jellyfish AoE bursts (Nova/Discord).";
         }
     } else if (hasLacrimosa && hasDaffodil) {
         if (state.currentLang === 'uk') {
             rotation = "<strong>Оптимальна ротація (Хаотичний Заряд):</strong><br>1. Почніть із саппорта (наприклад, <strong>Сакірі</strong>), щоб стягнути ворогів.<br>2. Переключіться на <strong>Адлера</strong> та активуйте щит.<br>3. Перейдіть на <strong>Даффоділ</strong> для пробиття стійкості (Break) реакцією <em>Зарядження</em>.<br>4. Викличте <strong>Лакрімозу</strong> для нанесення колосальної вибухової шкоди масками по пробитим ворогам.";
         } else {
             rotation = "<strong>Optimal Rotation (Chaos Charged):</strong><br>1. Start with support (e.g. <strong>Sakiri</strong>) to pull targets.<br>2. Swap to <strong>Adler</strong> to deploy shields.<br>3. Swap to <strong>Daffodil</strong> to shred enemy poise (Break) via the <em>Charged</em> reaction.<br>4. Bring in <strong>Lacrimosa</strong> to deal massive burst damage with masks on broken targets.";
+        }
+    } else if (hasNanally && hasJiuyuan) {
+        if (state.currentLang === 'uk') {
+            rotation = "<strong>Оптимальна ротація (Цвітіння):</strong><br>1. Використовуйте <strong>Цзююань</strong> для нанесення швидкої шкоди та накладання статусу Аніми.<br>2. Перейдіть на <strong>Наналлі</strong> для безперервного виклику реакції <em>Цвітіння</em> та нанесення основної шкоди.";
+        } else {
+            rotation = "<strong>Optimal Rotation (Blossom):</strong><br>1. Use <strong>Jiuyuan</strong> to deal rapid burst damage and apply Anima status.<br>2. Swap to <strong>Nanally</strong> for continuous <em>Blossom</em> triggers and main DPS damage.";
         }
     } else if (hasHathor && hasSkia) {
         if (state.currentLang === 'uk') {
@@ -276,7 +374,7 @@ function evaluateTeamSynergy() {
         }
     } else if (hasMint && hasHaniel) {
         if (state.currentLang === 'uk') {
-            rotation = "<strong>Оптимальна ротація (Стартовий загін):</strong><br>1. Почніть із <strong>Ханіель</strong>: викличте сову Hootie для баффу сили атаки загону.<br>2. Переключіться на <strong>Зеро</strong> та активуйте його навичку для запуску <em>Циклу Есперів</em>.<br>3. Перейдіть на <strong>Мінт</strong> та наносьте шкоду швидкими комбо під дією всіх баффів.";
+            rotation = "<strong>Оптимальна ротація (Стартовий загін):</strong><br>1. Почніть із <strong>Ханіель</strong>: викличте сову Hootie для баффу сили атаки загону.<br>2. Переключіться на <strong>Зеро</strong> та активуйте його навичку для запуску <em>Циклу Есперів</em>.<br>3. Перейдіть на <strong>Мінт</strong> та наносьте шкоду швидкими комбо под дією всіх баффів.";
         } else {
             rotation = "<strong>Optimal Rotation (Starter Team):</strong><br>1. Start with <strong>Haniel</strong>: summon owl Hootie to buff the entire squad's ATK.<br>2. Swap to <strong>Zero</strong> and use skill to trigger <em>Esper Cycle</em>.<br>3. Switch to <strong>Mint</strong> and deal damage with combo attacks while all buffs are active.";
         }

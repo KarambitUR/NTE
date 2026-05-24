@@ -399,5 +399,141 @@ export const FALLBACK_GUIDES = [
             "Monitor Hathor's delivery stacks carefully before switching to maximize critical burst.",
             "Coordinate skill cooldowns to ensure synchronized activation of the Remora reaction."
         ]
+    },
+    {
+        id: "guide-team-baicang-burn",
+        title: "Команда 'Полум'яний Гнів' (Baicang Burn & Discord)",
+        titleEn: "Team 'Blazing Wrath' (Baicang Burn & Discord)",
+        description: "Потужна збірка навколо Байцан із використанням реакції Discord та Scorch для постійного нанесення періодичної шкоди та надійного захисту.",
+        descriptionEn: "A powerful composition centered on Baicang leveraging Discord and Scorch reactions to maintain damage over time and squad protection.",
+        category: "teams",
+        isFeatured: false,
+        difficulty: "Hard",
+        difficultyEn: "Hard",
+        updateDate: "2026-05-24",
+        tags: ["Teams", "Meta", "Incantation", "Discord"],
+        tagsEn: ["Teams", "Meta", "Incantation", "Discord"],
+        avatar: "👥",
+        content: {
+            sections: [
+                {
+                    title: "Склад загону (Squad Composition)",
+                    titleEn: "Squad Composition",
+                    text: "• <strong>Байцан (Baicang):</strong> Головний ДПС, нанесення основної шкоди з витратою здоров'я.<br>• <strong>Сакірі (Sakiri):</strong> Універсальний саппорт, стягування ворогів та зниження опорів.<br>• <strong>Адлер (Adler):</strong> Саппорт/Щитовик, захист від смертельних ударів.<br>• <strong>Фадія (Fadia):</strong> Цілитель/Танк, перенаправлення шкоди та лікування.",
+                    textEn: "• <strong>Baicang:</strong> Main DPS, primary carry consuming HP to boost damage.<br>• <strong>Sakiri:</strong> Universal support, crowd control pull and resistance shred.<br>• <strong>Adler:</strong> Support/Shield, protection against fatal hits.<br>• <strong>Fadia:</strong> Healer/Tank, damage redirection and ultimate healing."
+                },
+                {
+                    title: "Бойова ротація (Skill Rotation)",
+                    titleEn: "Combat Rotation",
+                    text: "1. Почніть з <strong>Адлера</strong>: викличте його щит для початкового захисту.<br>2. Переключіться на <strong>Сакірі</strong>: стягніть групу ворогів та накладіть дебафф ультимейтом.<br>3. Перейдіть на <strong>Фадію</strong>: активуйте її лікувальний режим та зону перенаправлення шкоди.<br>4. Виведіть <strong>Байцан</strong>: використовуйте посилені закляття, наносячи колосальну шкоду.",
+                    textEn: "1. Start with <strong>Adler</strong>: activate shield to secure initial posture protection.<br>2. Swap to <strong>Sakiri</strong>: use skill pull to bundle enemies and ultimate to shred resistances.<br>3. Swap to <strong>Fadia</strong>: launch Lilith state for active health recovery and damage sharing.<br>4. Finish with <strong>Baicang</strong>: trigger HP-consuming combat loops for massive burst output."
+                }
+            ]
+        },
+        references: ["https://reddit.com/r/NevernessToEverness", "https://nevernesstoeverness.fandom.com"],
+        recommendedTeams: ["baicang", "sakiri", "adler", "fadia"],
+        progressionTips: [
+            "Тримайте щит Адлера постійно активним перед тим як перемикатися на Байцан.",
+            "Фадія діє як страховка: її пасивна здатність запобігає випадковому нокауту Байцан.",
+            "Реакція Discord знижує стійкість босів, дозволяючи Байцан миттєво пробивати Break.",
+            "Слідкуйте за шкалою здоров'я Байцан і не бійтеся використовувати її вміння на низькому HP для максимального баффу."
+        ],
+        progressionTipsEn: [
+            "Ensure Adler's shield is active at all times before swapping into Baicang.",
+            "Fadia acts as a safety net: her passive helps prevent accidental knockouts of Baicang.",
+            "The Discord reaction shreds enemy composure, allowing Baicang to cause shield Break rapidly.",
+            "Keep an eye on Baicang's health pool; her damage scaling increases significantly at lower HP values."
+        ]
+    },
+    {
+        id: "guide-team-chiz-cosmos",
+        title: "Команда 'Золота Лихоманка' (Cosmos Esper Cycle)",
+        titleEn: "Team 'Gold Rush' (Cosmos Esper Cycle)",
+        description: "Космічний загін під керівництвом Чіз для миттєвого перезарядження навичок через реакцію Esper Cycle.",
+        descriptionEn: "A Cosmos-heavy composition led by Chiz for near-instantaneous skill cooldowns via the Esper Cycle reaction.",
+        category: "teams",
+        isFeatured: false,
+        difficulty: "Medium",
+        difficultyEn: "Medium",
+        updateDate: "2026-05-24",
+        tags: ["Teams", "Meta", "Cosmos", "Cycle"],
+        tagsEn: ["Teams", "Meta", "Cosmos", "Cycle"],
+        avatar: "👥",
+        content: {
+            sections: [
+                {
+                    title: "Склад загону (Squad Composition)",
+                    titleEn: "Squad Composition",
+                    text: "• <strong>Чіз (Chiz):</strong> Головний ДПС, нанесення нищівної космічної шкоди молотом.<br>• <strong>Зеро (Zero):</strong> Саппорт/Космос, універсальний каталізатор для прискорення ротацій.<br>• <strong>Хоторі (Hotori):</strong> Саб-ДПС, копіювання та повторення навичок членів команди.<br>• <strong>Сакірі (Sakiri):</strong> Саппорт, стягування ворогів та зріз опорів.",
+                    textEn: "• <strong>Chiz:</strong> Main DPS, dealing heavy Cosmos damage with hammer combos.<br>• <strong>Zero:</strong> Support/Cosmos, universal catalyst for rotation speedups.<br>• <strong>Hotori:</strong> Sub-DPS, recording and repeating team active combat actions.<br>• <strong>Sakiri:</strong> Support, grouping targets and applying resistance shred."
+                },
+                {
+                    title: "Бойова ротація (Skill Rotation)",
+                    titleEn: "Combat Rotation",
+                    text: "1. Почніть із <strong>Зеро</strong>: активуйте його Космос-поле для прискорення та баффу.<br>2. Переключіться на <strong>Хоторі</strong>: запустіть прилад запису, щоб скопіювати наступні ефекти.<br>3. Перейдіть на <strong>Сакірі</strong>: виконайте стяжку та запустіть вибух стихій.<br>4. Виведіть <strong>Чіз</strong>: нанесіть комбо ударів та активуйте ультимейт для ігнорування захисту ворогів.",
+                    textEn: "1. Start with <strong>Zero</strong>: deploy his Cosmos field to buff team swap speed and recharge.<br>2. Swap to <strong>Hotori</strong>: fire up her recording apparatus to duplicate subsequent skill outputs.<br>3. Swap to <strong>Sakiri</strong>: use her crowd control and ultimate to shred resistance pools.<br>4. Swap to <strong>Chiz</strong>: execute hammer combos and trigger her defense-ignoring Ultimate Burst."
+                }
+            ]
+        },
+        references: ["https://reddit.com/r/NevernessToEverness", "https://nevernesstoeverness.fandom.com"],
+        recommendedTeams: ["chiz", "zero", "hotori", "sakiri"],
+        progressionTips: [
+            "Шкода Чіз додатково масштабується від накопиченої золотої валюти Fons (у межах лімітів).",
+            "Реакція Esper Cycle прискорює заповнення Esper Meter на 30%, що дозволяє частіше виконувати комбо-зміни.",
+            "Хоторі найкраще показує себе при дублюванні навичок контролю Сакірі або потужних ударів Чіз.",
+            "Зберігайте ультимейт Чіз під дію поля Зеро для максимального ігнорування броні."
+        ],
+        progressionTipsEn: [
+            "Chiz's overall damage scales positively with the total Fons currency held in your current pool.",
+            "The Esper Cycle reaction charges the swap meter 30% faster, facilitating rapid-fire character chaining.",
+            "Hotori is best utilized when replicating Sakiri's grouping skill or Chiz's heavy slam attacks.",
+            "Time Chiz's Ultimate Burst strictly within Zero's active field to fully ignore enemy defense stats."
+        ]
+    },
+    {
+        id: "guide-team-aurelia-harmony",
+        title: "Команда 'Симфонія Розуму' (Psyche Nova)",
+        titleEn: "Team 'Mind Symphony' (Psyche Nova)",
+        description: "Гармонійний загін з Аурелією як головним ДПС, орієнтований на площинну (AoE) шкоду від реакцій Nova та Discord.",
+        descriptionEn: "A harmonic composition with Aurelia as main DPS, focused on area-of-effect (AoE) damage from Nova and Discord reactions.",
+        category: "teams",
+        isFeatured: false,
+        difficulty: "Easy",
+        difficultyEn: "Easy",
+        updateDate: "2026-05-24",
+        tags: ["Teams", "F2P", "Psyche", "Nova"],
+        tagsEn: ["Teams", "F2P", "Psyche", "Nova"],
+        avatar: "👥",
+        content: {
+            sections: [
+                {
+                    title: "Склад загону (Squad Composition)",
+                    titleEn: "Squad Composition",
+                    text: "• <strong>Аурелія (Aurelia):</strong> Головний ДПС, нанесення AoE шкоди медузами у стані Cadenza.<br>• <strong>Фадія (Fadia):</strong> Цілитель/Танк, надійне виживання загону.<br>• <strong>Наналлі (Nanally):</strong> Саб-ДПС, виклик реакції Нова та додаткова мобільність.<br>• <strong>Сакірі (Sakiri):</strong> Саппорт, стягування ворогів для вибухових AoE реакцій.",
+                    textEn: "• <strong>Aurelia:</strong> Main DPS, summoning jellyfish to deal AoE damage in Cadenza state.<br>• <strong>Fadia:</strong> Healer/Tank, securing overall party health and survival.<br>• <strong>Nanally:</strong> Sub-DPS, triggering the Nova reaction and aiding in vertical movement.<br>• <strong>Sakiri:</strong> Support, pulling target groups together to setup massive AoE reactions."
+                },
+                {
+                    title: "Бойова ротація (Skill Rotation)",
+                    titleEn: "Combat Rotation",
+                    text: "1. Почніть із <strong>Сакірі</strong>: виконайте стяжку, щоб згрупувати всіх ворогів разом.<br>2. Перейдіть на <strong>Фадію</strong>: встановіть щит-надгробок та активуйте лікування.<br>3. Переключіться на <strong>Наналлі</strong>: накладіть статус Аніми швидкою серією атак.<br>4. Swap to <strong>Аурелія</strong>: увійдіть у стан Cadenza та активуйте медуз для виклику реакції Nova.",
+                    textEn: "1. Start with <strong>Sakiri</strong>: deploy skill pull to group all targets closely.<br>2. Swap to <strong>Fadia</strong>: drop her tombstone barrier and activate the sustain loop.<br>3. Swap to <strong>Nanally</strong>: apply Anima elements using a quick sequence of normal attacks.<br>4. Swap to <strong>Aurelia</strong>: activate Cadenza mode and summon jellyfish to trigger the AoE Nova reaction."
+                }
+            ]
+        },
+        references: ["https://reddit.com/r/NevernessToEverness"],
+        recommendedTeams: ["aurelia", "fadia", "nanally", "sakiri"],
+        progressionTips: [
+            "Аурелія отримує значний бафф до атаки, коли вороги знаходяться під дією реакції Discord.",
+            "Реакція Nova створює потужні вибухи розуму, які завдають колосальної AoE шкоди стягнутим ворогам.",
+            "Фадія дозволяє Аурелії безперешкодно виконувати пісенні комбо без переривання від атак ворогів.",
+            "Наналлі може виступати як запасний ДПС під час перезарядки Cadenza в Аурелії."
+        ],
+        progressionTipsEn: [
+            "Aurelia gains a major attack boost when fighting targets affected by the Discord reaction.",
+            "The Nova reaction produces powerful mental shockwaves, dealing immense AoE damage to grouped targets.",
+            "Fadia's support prevents Aurelia's song performance from being interrupted by incoming enemy attacks.",
+            "Nanally can act as a secondary damage dealer when Aurelia's Cadenza is on cooldown."
+        ]
     }
 ];
+
