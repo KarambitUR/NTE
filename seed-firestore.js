@@ -188,8 +188,8 @@
                     {
                         title: "3. Матеріали прориву з Босів",
                         titleEn: "3. Boss Breakthrough Materials",
-                        text: "Для покращення мисливців вище 20/40/50/60/70 рівнів потрібні унікальні трофеї зі світових босів (наприклад, Вершник без голови або Серенетті). Витрата становить 40 Пікселів за кожен збір.",
-                        textEn: "To upgrade hunters past levels 20/40/50/60/70, you need unique trophies from world bosses (e.g. Headless Rider or Serenetti). Pixel cost is 40 per collection."
+                        text: "Для покращення мисливців вище 20/40/50/60/70 рівнів потрібні унікальні трофеї зі світових босів (наприклад, Вершник без голови або Серенетті). Витрата становить 60 Пікселів за кожен збір.",
+                        textEn: "To upgrade hunters past levels 20/40/50/60/70, you need unique trophies from world bosses (e.g. Headless Rider or Serenetti). Pixel cost is 60 per collection."
                     }
                 ]
             },
