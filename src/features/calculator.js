@@ -691,184 +691,13 @@ function calculateResources() {
             remaining_label: "Remaining:",
             have_label: "Have:",
             done_badge: "✓ Done"
-        }
-    };
-    const cLoc = calcLoc[state.currentLang] || calcLoc['uk'];
-
-    // Render HTML Categories
-    const resultsGrid = document.getElementById("calcMaterialsList");
-    resultsGrid.innerHTML = "";
-
-    const sourceNote = document.createElement("div");
-    sourceNote.className = `calc-source-note ${isVerifiedFullBuild ? 'verified' : 'estimate'}`;
-    sourceNote.innerHTML = `
-        <strong>${isVerifiedFullBuild ? 'Verified' : 'Planner'}</strong>
-        <span>${isVerifiedFullBuild ? cLoc.source_verified : cLoc.source_estimate}</span>
-    `;
-    resultsGrid.appendChild(sourceNote);
-
-    function addCategoryHeader(title) {
-        const h = document.createElement("div");
-        h.className = "materials-cat-header";
-        h.innerText = title;
-        resultsGrid.appendChild(h);
-    }
-
-    function addMaterialCard(id, name, needed, farmLoc) {
-        if (needed <= 0) return;
-        
-        const have = calcInventory[id] || 0;
-        const remaining = Math.max(0, needed - have);
-        const isCompleted = remaining === 0;
-
-        const card = document.createElement("div");
-        card.className = `material-card ${isCompleted ? 'mat-completed' : ''}`;
-        card.id = `mat-card-${id}`;
-        
-        card.innerHTML = `
-            <div class="mat-card-top">
-                <div class="mat-icon">${getMaterialIcon(id, profile, attrDetails, char)}</div>
-                <div class="mat-card-info">
-                    <span class="mat-card-name">${name}</span>
-                    <span class="mat-card-farm">${farmLoc}</span>
-                </div>
-            </div>
-            <div class="mat-card-mid">
-                <span class="mat-need">
-                    ${isCompleted ? `${cLoc.need_label} <span class="mat-val">${needed.toLocaleString()}</span>` : `${cLoc.remaining_label} <span class="mat-val">${remaining.toLocaleString()}</span> / ${needed.toLocaleString()}`}
-                </span>
-                <span class="mat-completed-badge">${cLoc.done_badge}</span>
-                <div class="mat-have-input-wrapper">
-                    <span class="mat-have-label">${cLoc.have_label}</span>
-                    <input type="number" class="mat-have-input" data-mat-id="${id}" min="0" value="${have}">
-                </div>
-            </div>
-        `;
-        resultsGrid.appendChild(card);
-    }
-
-    // 1. Currency & Exp Guides
-    addCategoryHeader(cLoc.cat_main);
-    addMaterialCard("coin", cLoc.coin_name, calculatedRequirements.coin, cLoc.coin_farm);
-    addMaterialCard("exp_elite", cLoc.exp_elite_name, calculatedRequirements.exp_elite, cLoc.exp_farm);
-    addMaterialCard("exp_medium", cLoc.exp_med_name, calculatedRequirements.exp_medium, cLoc.exp_farm);
-    addMaterialCard("exp_basic", cLoc.exp_basic_name, calculatedRequirements.exp_basic, cLoc.exp_farm);
-    if (includeWeapon) {
-        addMaterialCard("dye_elite", cLoc.dye_elite_name, calculatedRequirements.dye_elite, cLoc.dye_farm);
-        addMaterialCard("dye_medium", cLoc.dye_med_name, calculatedRequirements.dye_medium, cLoc.dye_farm);
-        addMaterialCard("dye_basic", cLoc.dye_basic_name, calculatedRequirements.dye_basic, cLoc.dye_farm);
-    }
-
-    // 2. Breakthrough Materials
-    if (calculatedRequirements.specialty > 0 || calculatedRequirements.boss > 0 || (includeWeapon && (calculatedRequirements.ore_t1 + calculatedRequirements.ore_t2 + calculatedRequirements.ore_t3 > 0))) {
-        addCategoryHeader(cLoc.cat_breakthrough);
-        addMaterialCard("boss", attrDetails.boss, calculatedRequirements.boss, attrDetails.farmBoss);
-        addMaterialCard("specialty", attrDetails.specialty, calculatedRequirements.specialty, attrDetails.farmSpecialty);
-        if (includeWeapon) {
-            addMaterialCard("ore_t1", weaponMats.T1, calculatedRequirements.ore_t1, weaponMats.farm);
-            addMaterialCard("ore_t2", weaponMats.T2, calculatedRequirements.ore_t2, weaponMats.farm);
-            addMaterialCard("ore_t3", weaponMats.T3, calculatedRequirements.ore_t3, weaponMats.farm);
-        }
-    }
-
-    // 3. Skill Scrolls
-    if (calculatedRequirements.scroll_t1 + calculatedRequirements.scroll_t2 + calculatedRequirements.scroll_t3 + calculatedRequirements.weekly + calculatedRequirements.crown > 0) {
-        addCategoryHeader(cLoc.cat_skills);
-        addMaterialCard("scroll_t1", attrDetails.scrolls.T1, calculatedRequirements.scroll_t1, attrDetails.scrolls.farm);
-        addMaterialCard("scroll_t2", attrDetails.scrolls.T2, calculatedRequirements.scroll_t2, attrDetails.scrolls.farm);
-        addMaterialCard("scroll_t3", attrDetails.scrolls.T3, calculatedRequirements.scroll_t3, attrDetails.scrolls.farm);
-        addMaterialCard("weekly", profile.weekly || cLoc.crown_name, calculatedRequirements.weekly || 0, profile.weeklyFarm || cLoc.crown_farm);
-        addMaterialCard("crown", cLoc.crown_name, calculatedRequirements.crown || 0, cLoc.crown_farm);
-    }
-
-    // 4. Common Enemy Drops
-    if (calculatedRequirements.common_t1 + calculatedRequirements.common_t2 + calculatedRequirements.common_t3 > 0) {
-        addCategoryHeader(cLoc.cat_drops);
-        addMaterialCard("common_t1", attrDetails.common.T1, calculatedRequirements.common_t1, attrDetails.common.farm);
-    const allSkillsFull = [0, 1, 2, 3].every(i => {
-        const start = parseInt(document.getElementById(`skillStart_${i}`).value) || 1;
-        const end = parseInt(document.getElementById(`skillEnd_${i}`).value) || 1;
-        return start === 1 && end === 10;
-    });
-    const isVerifiedFullBuild = Boolean(profile.verified && profile.fullTotals && startLvl === 1 && endLvl === 80 && allSkillsFull);
-
-    // Set requirements object globally to check on have-input triggers.
-    calculatedRequirements = isVerifiedFullBuild ? {
-        coin: profile.fullTotals.coin,
-        exp_elite: guidesElite,
-        exp_medium: guidesMed,
-        exp_basic: guidesBasic,
-        dye_elite: dyesElite,
-        dye_medium: dyesMed,
-        dye_basic: dyesBasic,
-        boss: profile.fullTotals.boss,
-        specialty: 0,
-        common_t1: profile.fullTotals.common_t1,
-        common_t2: profile.fullTotals.common_t2,
-        common_t3: profile.fullTotals.common_t3,
-        scroll_t1: profile.fullTotals.scroll_t1,
-        scroll_t2: profile.fullTotals.scroll_t2,
-        scroll_t3: profile.fullTotals.scroll_t3,
-        weekly: profile.fullTotals.weekly,
-        crown: 0,
-        ore_t1: totalWeapOreT1,
-        ore_t2: totalWeapOreT2,
-        ore_t3: totalWeapOreT3
-    } : {
-        coin: finalCoins,
-        exp_elite: guidesElite,
-        exp_medium: guidesMed,
-        exp_basic: guidesBasic,
-        dye_elite: dyesElite,
-        dye_medium: dyesMed,
-        dye_basic: dyesBasic,
-        boss: finalBoss,
-        specialty: totalCharSpecialty,
-        common_t1: finalCommonT1,
-        common_t2: finalCommonT2,
-        common_t3: finalCommonT3,
-        scroll_t1: totalSkillScrollsT1,
-        scroll_t2: totalSkillScrollsT2,
-        scroll_t3: totalSkillScrollsT3,
-        weekly: 0,
-        crown: totalSkillCrown,
-        ore_t1: totalWeapOreT1,
-        ore_t2: totalWeapOreT2,
-        ore_t3: totalWeapOreT3
-    };
-
-    // Localization strings
-    const calcLoc = {
-        uk: {
-            cat_main: "Основні Валюти & Досвід",
-            cat_breakthrough: "Матеріали Прориву",
-            cat_skills: "Матеріали Навичок",
-            cat_drops: "Трофеї з Ворогів",
-            coin_name: "Монети Beetle (Золото)",
-            coin_farm: "Material Selection Box / Houdinii's Magic Stage / Hunter Exchange / World Exploration",
-            exp_elite_name: "Elite Hunter Guide (+20,000 EXP)",
-            exp_med_name: "Senior Hunter Guide (+5,000 EXP)",
-            exp_basic_name: "Rising Hunter Guide (+1,000 EXP)",
-            exp_farm: "Houdinii's Magic Stage / Hunter Exchange / World Exploration",
-            dye_elite_name: "Chaotic Dye (+10,000 Arc EXP)",
-            dye_med_name: "Colorless Dye (+2,500 Arc EXP)",
-            dye_basic_name: "Light Dye (+500 Arc EXP)",
-            dye_farm: "Houdinii's Magic Stage / Hunter Exchange / World Exploration",
-            crown_name: "Щотижневий матеріал навички",
-            crown_farm: "Anomaly Pilgrimage",
-            source_verified: "Точний total-cost підтверджено для цього пресету.",
-            source_estimate: "Частина чисел є планувальною оцінкою; назви ресурсів і джерела взято з відкритих баз.",
-            need_label: "Потрібно:",
-            remaining_label: "Залишилось:",
-            have_label: "Маю:",
-            done_badge: "✓ Готово"
         },
-        en: {
-            cat_main: "Core Currencies & Experience",
-            cat_breakthrough: "Breakthrough Materials",
-            cat_skills: "Skill Materials",
-            cat_drops: "Enemy Trophies",
-            coin_name: "Beetle Coins (Gold)",
+        fr: {
+            cat_main: "Devises Principales & Expérience",
+            cat_breakthrough: "Matériaux d'Élévation",
+            cat_skills: "Matériaux de Compétence",
+            cat_drops: "Butin d'Ennemis",
+            coin_name: "Pièces Beetle (Or)",
             coin_farm: "Material Selection Box / Houdinii's Magic Stage / Hunter Exchange / World Exploration",
             exp_elite_name: "Elite Hunter Guide (+20,000 EXP)",
             exp_med_name: "Senior Hunter Guide (+5,000 EXP)",
@@ -878,14 +707,14 @@ function calculateResources() {
             dye_med_name: "Colorless Dye (+2,500 Arc EXP)",
             dye_basic_name: "Light Dye (+500 Arc EXP)",
             dye_farm: "Houdinii's Magic Stage / Hunter Exchange / World Exploration",
-            crown_name: "Weekly Skill Material",
+            crown_name: "Matériau de compétence hebdomadaire",
             crown_farm: "Anomaly Pilgrimage",
-            source_verified: "Exact total cost is verified for this preset.",
-            source_estimate: "Some quantities are planning estimates; resource names and sources use public databases.",
-            need_label: "Need:",
-            remaining_label: "Remaining:",
-            have_label: "Have:",
-            done_badge: "✓ Done"
+            source_verified: "Le coût total exact est vérifié pour ce préréglage.",
+            source_estimate: "Certaines quantités sont des estimations de planification ; les noms des ressources et les sources proviennent de bases de données publiques.",
+            need_label: "Requis :",
+            remaining_label: "Restant :",
+            have_label: "Possède :",
+            done_badge: "✓ Terminé"
         }
     };
     const cLoc = calcLoc[state.currentLang] || calcLoc['uk'];
