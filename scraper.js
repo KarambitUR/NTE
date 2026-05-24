@@ -58,7 +58,7 @@ async function initFirebaseAdmin() {
 }
 
 // Write codes to Firestore
-async function writeToFirestore(codes) {
+async function writeToFirestore(codes, existingCodes = []) {
     if (!firestoreDb) return;
 
     try {
@@ -67,13 +67,20 @@ async function writeToFirestore(codes) {
 
         for (const code of codes) {
             const ref = firestoreDb.collection('promoCodes').doc(code.code);
-            batch.set(ref, {
+            const dataToSet = {
                 code: code.code,
                 rewards: code.rewards,
                 active: code.active,
-                addedAt: new Date().toISOString(),
                 source: 'scraper'
-            }, { merge: true }); // merge: true preserves existing fields
+            };
+
+            // Only set addedAt if the code is brand new (not in existingCodes)
+            const isExisting = existingCodes.some(c => c.code.toLowerCase() === code.code.toLowerCase());
+            if (!isExisting) {
+                dataToSet.addedAt = new Date().toISOString();
+            }
+
+            batch.set(ref, dataToSet, { merge: true }); // merge: true preserves existing fields
             count++;
         }
 
@@ -272,7 +279,7 @@ async function run() {
 
     // Sync ALL codes to Firestore (both old and new)
     if (firestoreDb) {
-        await writeToFirestore(updatedCodes);
+        await writeToFirestore(updatedCodes, existingCodes);
     }
 
     // ===== TIMELINE AUTO-UPDATE =====
