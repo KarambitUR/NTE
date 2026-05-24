@@ -155,14 +155,21 @@ function fetchPage(url) {
 // Parse HTML page to find promo codes and their rewards
 function extractCodes(html) {
     const foundCodes = [];
+
+    // Split HTML at the heading of the expired codes section to only parse the active section
+    // Matches common headings containing "expired" or "no longer work"
+    const splitPattern = /<h[2-4][^>]*>[^<]*(?:expired|no longer work|out of date)[^<]*<\/h[2-4]>/i;
+    const parts = html.split(splitPattern);
+    const activeHtml = parts[0];
     
     // Regular expression to look for codes and potential rewards
     // Matches common formats like: **CODE** - Reward, CODE: Reward, CODE – Reward
-    // We search for NTE codes starting with NTE (case insensitive) or specific numeric-alphabetic patterns
-    const pattern = /(?:<strong>|<b>|\b)(NTE[A-Za-z0-9_]{3,20}|[0-9]{5,}[A-Z]{4,}[A-Za-z0-9]+)(?:<\/strong>|<\/b>|\b)(?:\s*[-–—:]\s*|\s+-\s+)([^\n<•]+)/gi;
+    // We search for NTE codes (case-insensitive for nte), general uppercase codes starting with a letter (e.g. DREAMWALK0603), or numeric-first codes (e.g. 504980102FKGOVNS)
+    // Note: We run without the /i flag to force general codes to be strictly uppercase, avoiding matching lowercase page content.
+    const pattern = /(?:<strong>|<b>|\b)([nN][tT][eE][A-Za-z0-9_]{3,20}|[A-Z][A-Z0-9_]{5,24}|[0-9]{5,}[A-Za-z0-9]+)(?:<\/strong>|<\/b>|\b)(?:\s*[-–—:]\s*|\s+-\s+)([^\n<•]+)/g;
     
     let match;
-    while ((match = pattern.exec(html)) !== null) {
+    while ((match = pattern.exec(activeHtml)) !== null) {
         let code = match[1].trim();
         let rewards = match[2].replace(/<\/?[^>]+(>|$)/g, "").trim(); // Strip any inline HTML tags
         
@@ -182,8 +189,8 @@ function extractCodes(html) {
     }
     
     // Fallback: search for codes written standalone in <li> tags
-    const listPattern = /<li>\s*(?:<strong>)?(NTE[A-Za-z0-9_]{3,20})(?:<\/strong>)?\s*<\/li>/gi;
-    while ((match = listPattern.exec(html)) !== null) {
+    const listPattern = /<li>\s*(?:<strong>)?([nN][tT][eE][A-Za-z0-9_]{3,20}|[A-Z][A-Z0-9_]{5,24})\s*(?:<\/strong>)?\s*<\/li>/g;
+    while ((match = listPattern.exec(activeHtml)) !== null) {
         let code = match[1].trim();
         if (!foundCodes.some(c => c.code.toLowerCase() === code.toLowerCase())) {
             foundCodes.push({ code, rewards: "Active Promo Code (Ресурси)", active: true });
@@ -191,8 +198,8 @@ function extractCodes(html) {
     }
 
     // Additional pattern: codes in <code> or <kbd> tags  
-    const codeTagPattern = /(?:<code>|<kbd>)\s*(NTE[A-Za-z0-9_]{3,20}|[0-9]{5,}[A-Z]{4,}[A-Za-z0-9]+)\s*(?:<\/code>|<\/kbd>)/gi;
-    while ((match = codeTagPattern.exec(html)) !== null) {
+    const codeTagPattern = /(?:<code>|<kbd>)\s*([nN][tT][eE][A-Za-z0-9_]{3,20}|[A-Z][A-Z0-9_]{5,24}|[0-9]{5,}[A-Za-z0-9]+)\s*(?:<\/code>|<\/kbd>)/g;
+    while ((match = codeTagPattern.exec(activeHtml)) !== null) {
         let code = match[1].trim();
         if (!foundCodes.some(c => c.code.toLowerCase() === code.toLowerCase())) {
             foundCodes.push({ code, rewards: "Active Promo Code (Ресурси)", active: true });
@@ -275,6 +282,22 @@ async function run() {
             }
         }
     });
+
+    // Auto-deactivate codes that are no longer found in the active section of ANY website
+    if (newlyFound.length > 0) {
+        let deactivatedCount = 0;
+        updatedCodes.forEach((exCode, idx) => {
+            const isStillActive = newlyFound.some(n => n.code.toLowerCase() === exCode.code.toLowerCase());
+            if (exCode.active && !isStillActive) {
+                updatedCodes[idx].active = false;
+                deactivatedCount++;
+                console.log(`[AUTO-DEACTIVATED]: ${exCode.code} is no longer active on scraped websites.`);
+            }
+        });
+        if (deactivatedCount > 0) {
+            console.log(`Auto-deactivated ${deactivatedCount} expired codes.`);
+        }
+    }
 
     console.log(`Scrape finished. Added ${addedCount} new codes.`);
     saveCodes(updatedCodes);
