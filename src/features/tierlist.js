@@ -1,9 +1,10 @@
+import { FALLBACK_CHARACTERS } from '../utils/fallbackData.js';
 import { state } from '../scripts/state.js';
 import { db } from '../firebase/firebase.js';
 import { getLocalizedChar, translatePage } from '../localization/i18n.js';
-import { ROLE_TRANSLATIONS, ATTR_TRANSLATIONS, i18n } from '../localization/translations.js';
-import { showToast } from '../utils/helpers.js';
-import { renderAvatarHtml, renderAvatarUrlOnly } from '../services/firestore.js';
+import { ROLE_TRANSLATIONS, ATTR_TRANSLATIONS } from '../localization/translations.js';
+import { showToast, renderAvatarHtml, renderAvatarUrlOnly } from '../utils/helpers.js';
+
 import { updateAuthUI } from './auth.js';
 import { openCharacterModal } from './builds.js';
 

@@ -96,4 +96,30 @@ function showToast(message) {
 }
 
 
-export { startBannerCountdown, parseFirebaseDate, copyToClipboard, showToast };
+
+
+
+function renderAvatarHtml(char) {
+    if (char && char.avatar && char.avatar.startsWith('http')) {
+        let cleanUrl = char.avatar;
+        if (cleanUrl.includes('/revision/')) {
+            cleanUrl = cleanUrl.split('/revision/')[0];
+        }
+        const proxiedUrl = `https://images.weserv.nl/?url=${encodeURIComponent(cleanUrl)}&w=200`;
+        return `<img src="${proxiedUrl}" alt="${char.name}" class="avatar-img" referrerpolicy="no-referrer">`;
+    }
+    return char ? char.avatar : '';
+}
+
+function renderAvatarUrlOnly(char) {
+    if (char && char.avatar && char.avatar.startsWith('http')) {
+        let cleanUrl = char.avatar;
+        if (cleanUrl.includes('/revision/')) {
+            cleanUrl = cleanUrl.split('/revision/')[0];
+        }
+        return `https://images.weserv.nl/?url=${encodeURIComponent(cleanUrl)}&w=200`;
+    }
+    return '';
+}
+
+export { startBannerCountdown, parseFirebaseDate, copyToClipboard, showToast, renderAvatarHtml, renderAvatarUrlOnly };

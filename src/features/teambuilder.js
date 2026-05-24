@@ -1,7 +1,9 @@
+import { FALLBACK_CHARACTERS } from '../utils/fallbackData.js';
+import { renderAvatarHtml } from '../utils/helpers.js';
 import { state } from '../scripts/state.js';
 import { getLocalizedChar } from '../localization/i18n.js';
-import { ATTR_TRANSLATIONS, ROLE_TRANSLATIONS, REACTION_TRANSLATIONS, i18n } from '../localization/translations.js';
-import { renderAvatarHtml } from '../services/firestore.js';
+import { ATTR_TRANSLATIONS, ROLE_TRANSLATIONS, REACTION_TRANSLATIONS } from '../localization/translations.js';
+
 
 // 9. TEAM BUILDER LOGIC
 function setupTeamBuilder() {

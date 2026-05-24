@@ -120,30 +120,11 @@ function setupRealtimeListeners() {
 }
 
 // Helper to render character avatars (supports both image URLs and emojis, with proxying to bypass hotlinking blockers)
-function renderAvatarHtml(char) {
-    if (char && char.avatar && char.avatar.startsWith('http')) {
-        let cleanUrl = char.avatar;
-        if (cleanUrl.includes('/revision/')) {
-            cleanUrl = cleanUrl.split('/revision/')[0];
-        }
-        const proxiedUrl = `https://images.weserv.nl/?url=${encodeURIComponent(cleanUrl)}&w=200`;
-        return `<img src="${proxiedUrl}" alt="${char.name}" class="avatar-img" referrerpolicy="no-referrer">`;
-    }
-    return char ? char.avatar : '';
-}
 
 
-function renderAvatarUrlOnly(char) {
-    if (char && char.avatar && char.avatar.startsWith('http')) {
-        let cleanUrl = char.avatar;
-        if (cleanUrl.includes('/revision/')) {
-            cleanUrl = cleanUrl.split('/revision/')[0];
-        }
-        return `https://images.weserv.nl/?url=${encodeURIComponent(cleanUrl)}&w=200`;
-    }
-    return '';
-}
+
+
 
 // Display custom tierlist inside Modal popup
 
-export { loadFromFirestore, loadFromCache, loadFallbackData, setupRealtimeListeners, renderAvatarHtml, renderAvatarUrlOnly };
+export { loadFromFirestore, loadFromCache, loadFallbackData, setupRealtimeListeners };

@@ -1,8 +1,9 @@
+import { FALLBACK_CHARACTERS } from '../utils/fallbackData.js';
 import { state } from '../scripts/state.js';
 import { getLocalizedChar } from '../localization/i18n.js';
-import { ATTR_TRANSLATIONS, LOCALIZED_ATTRIBUTE_MATERIALS, LOCALIZED_WEAPON_MATERIALS, CHARACTER_MATERIAL_PROFILES, i18n } from '../localization/translations.js';
-import { showToast } from '../utils/helpers.js';
-import { renderAvatarHtml } from '../services/firestore.js';
+import { ATTR_TRANSLATIONS, LOCALIZED_ATTRIBUTE_MATERIALS, LOCALIZED_WEAPON_MATERIALS, CHARACTER_MATERIAL_PROFILES } from '../localization/translations.js';
+import { showToast, renderAvatarHtml } from '../utils/helpers.js';
+
 
 // 10. RESOURCE CALCULATOR LOGIC
 
