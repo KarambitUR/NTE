@@ -1042,6 +1042,8 @@
         }
 ];
 
+    const batch = db.batch();
+
     // Characters
     for (const char of characters) {
         const ref = db.collection('characters').doc(char.id);
