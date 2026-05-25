@@ -264,14 +264,13 @@ function renderCalculatorSetup() {
         select.value = savedChar;
     }
 
-    // Populate skills select options (1-10) with localized prefix
-    const skillPrefix = state.currentLang === 'uk' ? 'Рів.' : (state.currentLang === 'fr' ? 'Niv.' : 'Lvl');
+    // Populate skills select options (1-10)
     for (let i = 0; i < 4; i++) {
         const startSelect = document.getElementById(`skillStart_${i}`);
         const endSelect = document.getElementById(`skillEnd_${i}`);
         if (startSelect && endSelect) {
-            startSelect.innerHTML = Array.from({length: 10}, (_, k) => `<option value="${k+1}">${skillPrefix} ${k+1}</option>`).join("");
-            endSelect.innerHTML = Array.from({length: 10}, (_, k) => `<option value="${k+1}">${skillPrefix} ${k+1}</option>`).join("");
+            startSelect.innerHTML = Array.from({length: 10}, (_, k) => `<option value="${k+1}">${k+1}</option>`).join("");
+            endSelect.innerHTML = Array.from({length: 10}, (_, k) => `<option value="${k+1}">${k+1}</option>`).join("");
             
             if (savedSkills[i]) {
                 startSelect.value = savedSkills[i].start;
