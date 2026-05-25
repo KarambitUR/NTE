@@ -1,7 +1,7 @@
 import { FALLBACK_CHARACTERS } from '../utils/fallbackData.js';
 import { state } from '../scripts/state.js';
 import { getLocalizedChar } from '../localization/i18n.js';
-import { i18n, ATTR_TRANSLATIONS, LOCALIZED_ATTRIBUTE_MATERIALS, LOCALIZED_WEAPON_MATERIALS, CHARACTER_MATERIAL_PROFILES } from '../localization/translations.js';
+import { i18n, ATTR_TRANSLATIONS, LOCALIZED_ATTRIBUTE_MATERIALS, LOCALIZED_WEAPON_MATERIALS, CHARACTER_MATERIAL_PROFILES, LOCALIZED_UNIQUE_MATERIALS } from '../localization/translations.js';
 import { showToast, renderAvatarHtml } from '../utils/helpers.js';
 
 
@@ -621,8 +621,14 @@ function calculateResources() {
     const attrDetails = JSON.parse(JSON.stringify(baseAttrDetails));
     const profile = CHARACTER_MATERIAL_PROFILES[char.id] || {};
     if (profile.unique) {
-        attrDetails.boss = profile.unique;
-        attrDetails.farmBoss = profile.uniqueFarm || attrDetails.farmBoss;
+        const uniqueData = LOCALIZED_UNIQUE_MATERIALS[profile.unique];
+        if (uniqueData && uniqueData[state.currentLang]) {
+            attrDetails.boss = uniqueData[state.currentLang].name;
+            attrDetails.farmBoss = uniqueData[state.currentLang].farm;
+        } else {
+            attrDetails.boss = profile.unique;
+            attrDetails.farmBoss = profile.uniqueFarm || attrDetails.farmBoss;
+        }
     }
     if (profile.commonFamily) {
         attrDetails.common.T1 = profile.commonFamily[0];
@@ -982,8 +988,14 @@ function exportCalcReport() {
     const weaponMatsGroup = LOCALIZED_WEAPON_MATERIALS[weaponType] || LOCALIZED_WEAPON_MATERIALS["synthesis"];
     const weaponMats = weaponMatsGroup[state.currentLang] || weaponMatsGroup["uk"];
     if (profile.unique) {
-        attrDetails.boss = profile.unique;
-        attrDetails.specialty = profile.unique;
+        const uniqueData = LOCALIZED_UNIQUE_MATERIALS[profile.unique];
+        if (uniqueData && uniqueData[state.currentLang]) {
+            attrDetails.boss = uniqueData[state.currentLang].name;
+            attrDetails.specialty = uniqueData[state.currentLang].name;
+        } else {
+            attrDetails.boss = profile.unique;
+            attrDetails.specialty = profile.unique;
+        }
     }
     if (profile.commonFamily) {
         attrDetails.common.T1 = profile.commonFamily[0];

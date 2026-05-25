@@ -1065,6 +1065,93 @@ export const LOCALIZED_WEAPON_MATERIALS = {
     }
 };
 
+export const LOCALIZED_UNIQUE_MATERIALS = {
+    "Confessional Flower Seed": {
+        uk: {
+            name: "Насіння Сповідальної Квітки",
+            farm: "Полювання на Аномалії: Серенетті (Silent Garden) / Ящик Вибору Матеріалів"
+        },
+        en: {
+            name: "Confessional Flower Seed",
+            farm: "Anomaly Hunt: Silent Garden (Serenetti) / Material Selection Box"
+        },
+        fr: {
+            name: "Graine de fleur confessionnelle",
+            farm: "Chasse aux Anomalies : Jardin silencieux (Serenetti) / Boîte de sélection"
+        }
+    },
+    "A Page from Delusion's Shore": {
+        uk: {
+            name: "Сторінка з Берегів Омани",
+            farm: "Полювання на Аномалії: Чорний Том / Ящик Вибору Матеріалів"
+        },
+        en: {
+            name: "A Page from Delusion's Shore",
+            farm: "Anomaly Hunt: Black Tome / Material Selection Box"
+        },
+        fr: {
+            name: "Page de la rive de l'illusion",
+            farm: "Chasse aux Anomalies : Tome noir / Boîte de sélection"
+        }
+    },
+    "Tear of the Sea": {
+        uk: {
+            name: "Сльоза Моря",
+            farm: "Полювання на Аномалії: Морський В'язень / Ящик Вибору Матеріалів"
+        },
+        en: {
+            name: "Tear of the Sea",
+            farm: "Anomaly Hunt: Sea Prisoner / Material Selection Box"
+        },
+        fr: {
+            name: "Larme de la mer",
+            farm: "Chasse aux Anomalies : Prisonnier de la mer / Boîte de sélection"
+        }
+    },
+    "Charging Knight Spark Plug": {
+        uk: {
+            name: "Свічка Запалювання Лицаря-Нападника",
+            farm: "Полювання на Аномалії: Вершник Без Голови / Ящик Вибору Матеріалів"
+        },
+        en: {
+            name: "Charging Knight Spark Plug",
+            farm: "Anomaly Hunt: Headless Rider / Material Selection Box"
+        },
+        fr: {
+            name: "Bougie d'allumage du chevalier chargeant",
+            farm: "Chasse aux Anomalies : Cavalier sans tête / Boîte de sélection"
+        }
+    },
+    "Water Moon Pick": {
+        uk: {
+            name: "Медіатор Водяного Місяця",
+            farm: "Полювання на Аномалії: Король Бітів / Ящик Вибору Матеріалів"
+        },
+        en: {
+            name: "Water Moon Pick",
+            farm: "Anomaly Hunt: Beat King / Material Selection Box"
+        },
+        fr: {
+            name: "Médiateur de lune d'eau",
+            farm: "Chasse aux Anomalies : Roi des beats / Boîte de sélection"
+        }
+    },
+    "Nest Guard Fragment": {
+        uk: {
+            name: "Фрагмент Вартового Гнізда",
+            farm: "Полювання на Аномалії: Птах у Гнізді / Ящик Вибору Матеріалів"
+        },
+        en: {
+            name: "Nest Guard Fragment",
+            farm: "Anomaly Hunt: Nestbound Bird / Material Selection Box"
+        },
+        fr: {
+            name: "Fragment du gardien du nid",
+            farm: "Chasse aux Anomalies : Oiseau du nid / Boîte de sélection"
+        }
+    }
+};
+
 export const CHARACTER_MATERIAL_PROFILES = {
     hotori: {
         verified: true,
