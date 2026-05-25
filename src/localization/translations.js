@@ -627,8 +627,8 @@ export const LOCALIZED_ATTRIBUTE_MATERIALS = {
     Anima: {
         uk: {
             boss: "Унікальний матеріал Anomaly Hunt",
-            specialty: "Матеріал Anomaly Hunt",
-            farmSpecialty: "Anomaly Hunt / Material Selection Box",
+            specialty: "Регіональна дивина",
+            farmSpecialty: "Дослідження світу / Збір у місті / Material Selection Box",
             farmBoss: "Anomaly Hunt",
             common: {
                 T1: "Fading Silhouette",
@@ -645,8 +645,8 @@ export const LOCALIZED_ATTRIBUTE_MATERIALS = {
         },
         en: {
             boss: "Unique Anomaly Hunt Material",
-            specialty: "Anomaly Hunt Material",
-            farmSpecialty: "Anomaly Hunt / Material Selection Box",
+            specialty: "Regional Specialty",
+            farmSpecialty: "World Exploration / City Gathering / Material Selection Box",
             farmBoss: "Anomaly Hunt",
             common: {
                 T1: "Fading Silhouette",
@@ -663,8 +663,8 @@ export const LOCALIZED_ATTRIBUTE_MATERIALS = {
         },
         fr: {
             boss: "Matériau unique de Chasse aux Anomalies",
-            specialty: "Matériau de Chasse aux Anomalies",
-            farmSpecialty: "Chasse aux Anomalies / Boîte de sélection de matériaux",
+            specialty: "Spécialité régionale",
+            farmSpecialty: "Exploration du monde / Collecte urbaine / Boîte de sélection de matériaux",
             farmBoss: "Chasse aux Anomalies",
             common: {
                 T1: "Silhouette évanescente",
@@ -683,8 +683,8 @@ export const LOCALIZED_ATTRIBUTE_MATERIALS = {
     Incantation: {
         uk: {
             boss: "Унікальний матеріал Anomaly Hunt",
-            specialty: "Матеріал Anomaly Hunt",
-            farmSpecialty: "Anomaly Hunt / Material Selection Box",
+            specialty: "Регіональна дивина",
+            farmSpecialty: "Дослідження світу / Збір у місті / Material Selection Box",
             farmBoss: "Anomaly Hunt",
             common: {
                 T1: "Blurred Numeral",
@@ -701,8 +701,8 @@ export const LOCALIZED_ATTRIBUTE_MATERIALS = {
         },
         en: {
             boss: "Unique Anomaly Hunt Material",
-            specialty: "Anomaly Hunt Material",
-            farmSpecialty: "Anomaly Hunt / Material Selection Box",
+            specialty: "Regional Specialty",
+            farmSpecialty: "World Exploration / City Gathering / Material Selection Box",
             farmBoss: "Anomaly Hunt",
             common: {
                 T1: "Blurred Numeral",
@@ -719,8 +719,8 @@ export const LOCALIZED_ATTRIBUTE_MATERIALS = {
         },
         fr: {
             boss: "Matériau unique de Chasse aux Anomalies",
-            specialty: "Matériau de Chasse aux Anomalies",
-            farmSpecialty: "Chasse aux Anomalies / Boîte de sélection de matériaux",
+            specialty: "Spécialité régionale",
+            farmSpecialty: "Exploration du monde / Collecte urbaine / Boîte de sélection de matériaux",
             farmBoss: "Chasse aux Anomalies",
             common: {
                 T1: "Chiffre flou",
@@ -739,8 +739,8 @@ export const LOCALIZED_ATTRIBUTE_MATERIALS = {
     Cosmos: {
         uk: {
             boss: "Унікальний матеріал Anomaly Hunt",
-            specialty: "Матеріал Anomaly Hunt",
-            farmSpecialty: "Anomaly Hunt / Material Selection Box",
+            specialty: "Регіональна дивина",
+            farmSpecialty: "Дослідження світу / Збір у місті / Material Selection Box",
             farmBoss: "Anomaly Hunt",
             common: {
                 T1: "Lost Whispers",
@@ -757,8 +757,8 @@ export const LOCALIZED_ATTRIBUTE_MATERIALS = {
         },
         en: {
             boss: "Unique Anomaly Hunt Material",
-            specialty: "Anomaly Hunt Material",
-            farmSpecialty: "Anomaly Hunt / Material Selection Box",
+            specialty: "Regional Specialty",
+            farmSpecialty: "World Exploration / City Gathering / Material Selection Box",
             farmBoss: "Anomaly Hunt",
             common: {
                 T1: "Lost Whispers",
@@ -775,8 +775,8 @@ export const LOCALIZED_ATTRIBUTE_MATERIALS = {
         },
         fr: {
             boss: "Matériau unique de Chasse aux Anomalies",
-            specialty: "Matériau de Chasse aux Anomalies",
-            farmSpecialty: "Chasse aux Anomalies / Boîte de sélection de matériaux",
+            specialty: "Spécialité régionale",
+            farmSpecialty: "Exploration du monde / Collecte urbaine / Boîte de sélection de matériaux",
             farmBoss: "Chasse aux Anomalies",
             common: {
                 T1: "Chuchotements perdus",
@@ -795,8 +795,8 @@ export const LOCALIZED_ATTRIBUTE_MATERIALS = {
     Chaos: {
         uk: {
             boss: "Унікальний матеріал Anomaly Hunt",
-            specialty: "Матеріал Anomaly Hunt",
-            farmSpecialty: "Anomaly Hunt / Material Selection Box",
+            specialty: "Регіональна дивина",
+            farmSpecialty: "Дослідження світу / Збір у місті / Material Selection Box",
             farmBoss: "Anomaly Hunt",
             common: {
                 T1: "Suspended Delusions",
@@ -813,8 +813,8 @@ export const LOCALIZED_ATTRIBUTE_MATERIALS = {
         },
         en: {
             boss: "Unique Anomaly Hunt Material",
-            specialty: "Anomaly Hunt Material",
-            farmSpecialty: "Anomaly Hunt / Material Selection Box",
+            specialty: "Regional Specialty",
+            farmSpecialty: "World Exploration / City Gathering / Material Selection Box",
             farmBoss: "Anomaly Hunt",
             common: {
                 T1: "Suspended Delusions",
@@ -831,8 +831,8 @@ export const LOCALIZED_ATTRIBUTE_MATERIALS = {
         },
         fr: {
             boss: "Matériau unique de Chasse aux Anomalies",
-            specialty: "Matériau de Chasse aux Anomalies",
-            farmSpecialty: "Chasse aux Anomalies / Boîte de sélection de matériaux",
+            specialty: "Spécialité régionale",
+            farmSpecialty: "Exploration du monde / Collecte urbaine / Boîte de sélection de matériaux",
             farmBoss: "Chasse aux Anomalies",
             common: {
                 T1: "Illusions suspendues",
@@ -851,8 +851,8 @@ export const LOCALIZED_ATTRIBUTE_MATERIALS = {
     Psyche: {
         uk: {
             boss: "Унікальний матеріал Anomaly Hunt",
-            specialty: "Матеріал Anomaly Hunt",
-            farmSpecialty: "Anomaly Hunt / Material Selection Box",
+            specialty: "Регіональна дивина",
+            farmSpecialty: "Дослідження світу / Збір у місті / Material Selection Box",
             farmBoss: "Anomaly Hunt",
             common: {
                 T1: "Lost Whispers",
@@ -869,8 +869,8 @@ export const LOCALIZED_ATTRIBUTE_MATERIALS = {
         },
         en: {
             boss: "Unique Anomaly Hunt Material",
-            specialty: "Anomaly Hunt Material",
-            farmSpecialty: "Anomaly Hunt / Material Selection Box",
+            specialty: "Regional Specialty",
+            farmSpecialty: "World Exploration / City Gathering / Material Selection Box",
             farmBoss: "Anomaly Hunt",
             common: {
                 T1: "Lost Whispers",
@@ -887,8 +887,8 @@ export const LOCALIZED_ATTRIBUTE_MATERIALS = {
         },
         fr: {
             boss: "Matériau unique de Chasse aux Anomalies",
-            specialty: "Matériau de Chasse aux Anomalies",
-            farmSpecialty: "Chasse aux Anomalies / Boîte de sélection de matériaux",
+            specialty: "Spécialité régionale",
+            farmSpecialty: "Exploration du monde / Collecte urbaine / Boîte de sélection de matériaux",
             farmBoss: "Chasse aux Anomalies",
             common: {
                 T1: "Chuchotements perdus",
@@ -907,8 +907,8 @@ export const LOCALIZED_ATTRIBUTE_MATERIALS = {
     Lakshana: {
         uk: {
             boss: "Унікальний матеріал Anomaly Hunt",
-            specialty: "Матеріал Anomaly Hunt",
-            farmSpecialty: "Anomaly Hunt / Material Selection Box",
+            specialty: "Регіональна дивина",
+            farmSpecialty: "Дослідження світу / Збір у місті / Material Selection Box",
             farmBoss: "Anomaly Hunt",
             common: {
                 T1: "Suspended Delusions",
@@ -925,8 +925,8 @@ export const LOCALIZED_ATTRIBUTE_MATERIALS = {
         },
         en: {
             boss: "Unique Anomaly Hunt Material",
-            specialty: "Anomaly Hunt Material",
-            farmSpecialty: "Anomaly Hunt / Material Selection Box",
+            specialty: "Regional Specialty",
+            farmSpecialty: "World Exploration / City Gathering / Material Selection Box",
             farmBoss: "Anomaly Hunt",
             common: {
                 T1: "Suspended Delusions",
@@ -943,8 +943,8 @@ export const LOCALIZED_ATTRIBUTE_MATERIALS = {
         },
         fr: {
             boss: "Matériau unique de Chasse aux Anomalies",
-            specialty: "Matériau de Chasse aux Anomalies",
-            farmSpecialty: "Chasse aux Anomalies / Boîte de sélection de matériaux",
+            specialty: "Spécialité régionale",
+            farmSpecialty: "Exploration du monde / Collecte urbaine / Boîte de sélection de matériaux",
             farmBoss: "Chasse aux Anomalies",
             common: {
                 T1: "Illusions suspendues",

@@ -163,7 +163,7 @@ const ATTRIBUTE_SCROLL_ICONS = {
 function getMaterialIcon(id, profile = null, attrDetails = null, char = null) {
     let src = null;
     if (profile) {
-        if ((id === "boss" || id === "specialty") && profile.uniqueIcon) {
+        if (id === "boss" && profile.uniqueIcon) {
             src = profile.uniqueIcon;
         } else if (id === "scroll_t1" || id === "scroll_t2" || id === "scroll_t3") {
             const idx = id === "scroll_t1" ? 0 : id === "scroll_t2" ? 1 : 2;
@@ -567,8 +567,6 @@ function calculateResources() {
     if (profile.unique) {
         attrDetails.boss = profile.unique;
         attrDetails.farmBoss = profile.uniqueFarm || attrDetails.farmBoss;
-        // Do not override specialty with boss drop to prevent duplicate cards
-        attrDetails.farmSpecialty = profile.uniqueFarm || attrDetails.farmSpecialty;
     }
     if (profile.commonFamily) {
         attrDetails.common.T1 = profile.commonFamily[0];
