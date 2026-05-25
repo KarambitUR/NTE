@@ -697,7 +697,7 @@ export const FALLBACK_GUIDES = [
         "id": "guide-team-baicang-burn",
         "title": "Команда 'Полум'яний Гнів' (Baicang Burn & Discord)",
         "titleEn": "Team 'Blazing Wrath' (Baicang Burn & Discord)",
-        "description": "Потужна збірка навколо Байцан із використанням реакції Discord та Scorch для постійного нанесення періодичної шкоди та надійного захисту.",
+        "description": "Потужна збірка навколо Байканг із використанням реакції Discord та Scorch для постійного нанесення періодичної шкоди та надійного захисту.",
         "descriptionEn": "A powerful composition centered on Baicang leveraging Discord and Scorch reactions to maintain damage over time and squad protection.",
         "category": "teams",
         "isFeatured": false,
@@ -722,7 +722,7 @@ export const FALLBACK_GUIDES = [
                 {
                     "title": "Склад загону (Squad Composition)",
                     "titleEn": "Squad Composition",
-                    "text": "• <strong>Байцан (Baicang):</strong> Головний ДПС, нанесення основної шкоди з витратою здоров'я.<br>• <strong>Сакірі (Sakiri):</strong> Універсальний саппорт, стягування ворогів та зниження опорів.<br>• <strong>Адлер (Adler):</strong> Саппорт/Щитовик, захист від смертельних ударів.<br>• <strong>Фадія (Fadia):</strong> Цілитель/Танк, перенаправлення шкоди та лікування.",
+                    "text": "• <strong>Байканг (Baicang):</strong> Головний ДПС, нанесення основної шкоди з витратою здоров'я.<br>• <strong>Сакірі (Sakiri):</strong> Універсальний саппорт, стягування ворогів та зниження опорів.<br>• <strong>Адлер (Adler):</strong> Саппорт/Щитовик, захист від смертельних ударів.<br>• <strong>Фадія (Fadia):</strong> Цілитель/Танк, перенаправлення шкоди та лікування.",
                     "textEn": "• <strong>Baicang:</strong> Main DPS, primary carry consuming HP to boost damage.<br>• <strong>Sakiri:</strong> Universal support, crowd control pull and resistance shred.<br>• <strong>Adler:</strong> Support/Shield, protection against fatal hits.<br>• <strong>Fadia:</strong> Healer/Tank, damage redirection and ultimate healing.",
                     "titleFr": "Composition de l'Équipe",
                     "textFr": "• <strong>Baicang :</strong> DPS Principal, carry consommant ses PV pour booster ses dégâts.<br>• <strong>Sakiri :</strong> Support universel, attraction des ennemis et réduction de résistance.<br>• <strong>Adler :</strong> Support/Bouclier, protection contre les coups fatals.<br>• <strong>Fadia :</strong> Soigneur/Tank, redirection des dégâts et soins de zone."
@@ -730,7 +730,7 @@ export const FALLBACK_GUIDES = [
                 {
                     "title": "Бойова ротація (Skill Rotation)",
                     "titleEn": "Combat Rotation",
-                    "text": "1. Почніть з <strong>Адлера</strong>: викличте його щит для початкового захисту.<br>2. Переключіться на <strong>Сакірі</strong>: стягніть групу ворогів та накладіть дебафф ультимейтом.<br>3. Перейдіть на <strong>Фадію</strong>: активуйте її лікувальний режим та зону перенаправлення шкоди.<br>4. Виведіть <strong>Байцан</strong>: використовуйте посилені закляття, наносячи колосальну шкоду.",
+                    "text": "1. Почніть з <strong>Адлера</strong>: викличте його щит для початкового захисту.<br>2. Переключіться на <strong>Сакірі</strong>: стягніть групу ворогів та накладіть дебафф ультимейтом.<br>3. Перейдіть на <strong>Фадію</strong>: активуйте її лікувальний режим та зону перенаправлення шкоди.<br>4. Виведіть <strong>Байканг</strong>: використовуйте посилені закляття, наносячи колосальну шкоду.",
                     "textEn": "1. Start with <strong>Adler</strong>: activate shield to secure initial posture protection.<br>2. Swap to <strong>Sakiri</strong>: use skill pull to bundle enemies and ultimate to shred resistances.<br>3. Swap to <strong>Fadia</strong>: launch Lilith state for active health recovery and damage sharing.<br>4. Finish with <strong>Baicang</strong>: trigger HP-consuming combat loops for massive burst output.",
                     "titleFr": "Rotation de Combat",
                     "textFr": "1. Commencez avec <strong>Adler</strong> : activez son bouclier pour sécuriser la posture initiale.<br>2. Passez à <strong>Sakiri</strong> : utilisez son attraction et son ultime pour réduire les résistances.<br>3. Passez à <strong>Fadia</strong> : lancez l'état Lilith pour la récupération active et le partage des dégâts.<br>4. Terminez avec <strong>Baicang</strong> : déclenchez ses combos de consommation de PV pour un burst massif."
@@ -748,10 +748,10 @@ export const FALLBACK_GUIDES = [
             "fadia"
         ],
         "progressionTips": [
-            "Тримайте щит Адлера постійно активним перед тим як перемикатися на Байцан.",
-            "Фадія діє як страховка: її пасивна здатність запобігає випадковому нокауту Байцан.",
-            "Реакція Discord знижує стійкість босів, дозволяючи Байцан миттєво пробивати Break.",
-            "Слідкуйте за шкалою здоров'я Байцан і не бійтеся використовувати її вміння на низькому HP для максимального баффу."
+            "Тримайте щит Адлера постійно активним перед тим як перемикатися на Байканг.",
+            "Фадія діє як страховка: її пасивна здатність запобігає випадковому нокауту Байканг.",
+            "Реакція Discord знижує стійкість босів, дозволяючи Байканг миттєво пробивати Break.",
+            "Слідкуйте за шкалою здоров'я Байканг і не бійтеся використовувати її вміння на низькому HP для максимального баффу."
         ],
         "progressionTipsEn": [
             "Ensure Adler's shield is active at all times before swapping into Baicang.",

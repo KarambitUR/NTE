@@ -162,7 +162,7 @@ export const FALLBACK_CHARACTERS = [
     },
     {
         id: "baicang",
-        name: "Baicang (Байцан)",
+        name: "Baicang (Байканг)",
         rarity: 5,
         attribute: "Incantation",
         role: "Main DPS",

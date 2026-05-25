@@ -341,7 +341,7 @@ function evaluateTeamSynergy() {
         }
     } else if (hasBaicang && hasSakiri && (hasAdler || hasFadia)) {
         if (state.currentLang === 'uk') {
-            rotation = "<strong>Оптимальна ротація (Полум'яний Гнів):</strong><br>1. Почніть з <strong>Адлера</strong> (або <strong>Фадії</strong>): активуйте щит/лікування для стабільності.<br>2. Переключіться на <strong>Сакірі</strong>: стягніть ворогів та запустіть ультимейт для зрізу опорів.<br>3. Перейдіть на <strong>Байцан</strong>: використовуйте посилені закляття та атаки, наносячи нищівну шкоду з витратою здоров'я.";
+            rotation = "<strong>Оптимальна ротація (Полум'яний Гнів):</strong><br>1. Почніть з <strong>Адлера</strong> (або <strong>Фадії</strong>): активуйте щит/лікування для стабільності.<br>2. Переключіться на <strong>Сакірі</strong>: стягніть ворогів та запустіть ультимейт для зрізу опорів.<br>3. Перейдіть на <strong>Байканг</strong>: використовуйте посилені закляття та атаки, наносячи нищівну шкоду з витратою здоров'я.";
         } else if (state.currentLang === 'fr') {
             rotation = "<strong>Rotation Optimale (Colère Flamboyante) :</strong><br>1. Commencez avec <strong>Adler</strong> (ou <strong>Fadia</strong>) : déployez son bouclier/soin pour sécuriser la posture de Baicang.<br>2. Passez à <strong>Sakiri</strong> : regroupez les cibles et activez son ultime pour réduire les résistances.<br>3. Passez à <strong>Baicang</strong> : déclenchez ses enchaînements de compétences consommant des PV pour infliger des dégâts de burst dévastateurs.";
         } else {
