@@ -12,11 +12,12 @@ const CHAR_EXP_BY_LEVEL = [];
 const WEAPON_EXP_BY_LEVEL = [];
 
 const CHAR_BREAKTHROUGH_TABLE = {
-    20: { coins: 15000, boss: 2, commonT1: 5, commonT2: 0, commonT3: 0 },
-    40: { coins: 30000, boss: 8, commonT1: 8, commonT2: 4, commonT3: 0 },
-    50: { coins: 50000, boss: 16, commonT1: 12, commonT2: 8, commonT3: 0 },
-    60: { coins: 80000, boss: 24, commonT1: 0, commonT2: 12, commonT3: 4 },
-    70: { coins: 120000, boss: 36, commonT1: 0, commonT2: 16, commonT3: 7 }
+    20: { coins: 15000, boss: 0, commonT1: 5, commonT2: 0, commonT3: 0 },
+    30: { coins: 20000, boss: 2, commonT1: 12, commonT2: 0, commonT3: 0 },
+    40: { coins: 30000, boss: 8, commonT1: 0, commonT2: 6, commonT3: 0 },
+    50: { coins: 50000, boss: 16, commonT1: 0, commonT2: 12, commonT3: 0 },
+    60: { coins: 80000, boss: 24, commonT1: 0, commonT2: 0, commonT3: 6 },
+    70: { coins: 120000, boss: 36, commonT1: 0, commonT2: 0, commonT3: 9 }
 };
 
 const WEAPON_BREAKTHROUGH_TABLE = {
@@ -450,8 +451,8 @@ function calculateResources() {
     let totalCharCommonT3 = 0;
     let totalCharBtCoins = 0;
 
-    const breakthroughLevels = [20, 40, 50, 60, 70];
-    for (let bt of breakthroughLevels) {
+    const charBreakthroughLevels = [20, 30, 40, 50, 60, 70];
+    for (let bt of charBreakthroughLevels) {
         if (startLvl <= bt && endLvl > bt) {
             const cost = CHAR_BREAKTHROUGH_TABLE[bt];
             totalCharBoss += cost.boss;
@@ -525,7 +526,8 @@ function calculateResources() {
         }
 
         // Weapon Breakthrough Costs
-        for (let bt of breakthroughLevels) {
+        const weaponBreakthroughLevels = [20, 40, 50, 60, 70];
+        for (let bt of weaponBreakthroughLevels) {
             if (wStartLvl <= bt && wEndLvl > bt) {
                 const cost = WEAPON_BREAKTHROUGH_TABLE[bt];
                 totalWeapOreT1 += Math.round(cost.oreT1 * rarityMult);
