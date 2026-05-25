@@ -12,11 +12,11 @@ const CHAR_EXP_BY_LEVEL = [];
 const WEAPON_EXP_BY_LEVEL = [];
 
 const CHAR_BREAKTHROUGH_TABLE = {
-    20: { coins: 15000, boss: 2, specialty: 3, commonT1: 5, commonT2: 0, commonT3: 0 },
-    40: { coins: 30000, boss: 8, specialty: 8, commonT1: 8, commonT2: 4, commonT3: 0 },
-    50: { coins: 50000, boss: 16, specialty: 12, commonT1: 12, commonT2: 8, commonT3: 0 },
-    60: { coins: 80000, boss: 24, specialty: 20, commonT1: 0, commonT2: 12, commonT3: 4 },
-    70: { coins: 120000, boss: 36, specialty: 30, commonT1: 0, commonT2: 16, commonT3: 7 }
+    20: { coins: 15000, boss: 2, commonT1: 5, commonT2: 0, commonT3: 0 },
+    40: { coins: 30000, boss: 8, commonT1: 8, commonT2: 4, commonT3: 0 },
+    50: { coins: 50000, boss: 16, commonT1: 12, commonT2: 8, commonT3: 0 },
+    60: { coins: 80000, boss: 24, commonT1: 0, commonT2: 12, commonT3: 4 },
+    70: { coins: 120000, boss: 36, commonT1: 0, commonT2: 16, commonT3: 7 }
 };
 
 const WEAPON_BREAKTHROUGH_TABLE = {
@@ -445,7 +445,6 @@ function calculateResources() {
 
     // Sum Char Breakthrough Costs
     let totalCharBoss = 0;
-    let totalCharSpecialty = 0;
     let totalCharCommonT1 = 0;
     let totalCharCommonT2 = 0;
     let totalCharCommonT3 = 0;
@@ -456,7 +455,6 @@ function calculateResources() {
         if (startLvl <= bt && endLvl > bt) {
             const cost = CHAR_BREAKTHROUGH_TABLE[bt];
             totalCharBoss += cost.boss;
-            totalCharSpecialty += cost.specialty;
             totalCharCommonT1 += cost.commonT1;
             totalCharCommonT2 += cost.commonT2;
             totalCharCommonT3 += cost.commonT3;
@@ -605,7 +603,6 @@ function calculateResources() {
         dye_medium: dyesMed,
         dye_basic: dyesBasic,
         boss: profile.fullTotals.boss,
-        specialty: totalCharSpecialty,
         common_t1: profile.fullTotals.common_t1 + (includeWeapon ? totalWeapCommonT1 : 0),
         common_t2: profile.fullTotals.common_t2 + (includeWeapon ? totalWeapCommonT2 : 0),
         common_t3: profile.fullTotals.common_t3 + (includeWeapon ? totalWeapCommonT3 : 0),
@@ -626,7 +623,6 @@ function calculateResources() {
         dye_medium: dyesMed,
         dye_basic: dyesBasic,
         boss: finalBoss,
-        specialty: totalCharSpecialty,
         common_t1: finalCommonT1,
         common_t2: finalCommonT2,
         common_t3: finalCommonT3,
@@ -782,10 +778,9 @@ function calculateResources() {
     }
 
     // 2. Breakthrough Materials
-    if (calculatedRequirements.specialty > 0 || calculatedRequirements.boss > 0 || (includeWeapon && (calculatedRequirements.ore_t1 + calculatedRequirements.ore_t2 + calculatedRequirements.ore_t3 > 0))) {
+    if (calculatedRequirements.boss > 0 || (includeWeapon && (calculatedRequirements.ore_t1 + calculatedRequirements.ore_t2 + calculatedRequirements.ore_t3 > 0))) {
         addCategoryHeader(cLoc.cat_breakthrough);
         addMaterialCard("boss", attrDetails.boss, calculatedRequirements.boss, attrDetails.farmBoss);
-        addMaterialCard("specialty", attrDetails.specialty, calculatedRequirements.specialty, attrDetails.farmSpecialty);
         if (includeWeapon) {
             addMaterialCard("ore_t1", weaponMats.T1, calculatedRequirements.ore_t1, weaponMats.farm);
             addMaterialCard("ore_t2", weaponMats.T2, calculatedRequirements.ore_t2, weaponMats.farm);
@@ -936,9 +931,6 @@ function exportCalcReport() {
         }
         else if (id === 'boss') {
             matName = attrDetails.boss;
-        }
-        else if (id === 'specialty') {
-            matName = attrDetails.specialty;
         }
         else if (id === 'ore_t1') matName = weaponMats.T1;
         else if (id === 'ore_t2') matName = weaponMats.T2;
