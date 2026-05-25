@@ -149,7 +149,7 @@ export const FALLBACK_CHARACTERS = [
         name: "Daffodil (Даффоділ)",
         rarity: 5,
         attribute: "Chaos",
-        role: "Main DPS",
+        role: "Sub-DPS",
         tier: "S",
         avatar: "https://static.wikia.nocookie.net/neverness-to-everness/images/a/af/Daffodill_Card.png/revision/latest/scale-to-width-down/200?cb=20260309135850",
         summary: "Потужний Burst DPS стихії Chaos, що спеціалізується на пробитті щитів (Break). Накопичує силу поза полем бою і завдає величезної вибухової шкоди при перемиканні.",
