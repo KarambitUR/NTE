@@ -37,7 +37,7 @@ const SKILL_COST_TABLE = {
     6: { coins: 30000, scrollsT1: 0, scrollsT2: 4, scrollsT3: 0, commonT1: 0, commonT2: 0, commonT3: 4, boss: 0, weekly: 0, crown: 0 },
     7: { coins: 46000, scrollsT1: 0, scrollsT2: 0, scrollsT3: 2, commonT1: 0, commonT2: 0, commonT3: 5, boss: 2, weekly: 1, crown: 0 },
     8: { coins: 65000, scrollsT1: 0, scrollsT2: 0, scrollsT3: 3, commonT1: 0, commonT2: 0, commonT3: 5, boss: 3, weekly: 2, crown: 0 },
-    9: { coins: 82500, scrollsT1: 0, scrollsT2: 0, scrollsT3: 5, commonT1: 0, commonT2: 0, commonT3: 0, boss: 4, weekly: 5, crown: 1 }
+    9: { coins: 82500, scrollsT1: 0, scrollsT2: 0, scrollsT3: 5, commonT1: 0, commonT2: 0, commonT3: 0, boss: 4, weekly: 5, crown: 0 }
 };
 
 const CHARACTER_WEAPON_TYPES = {
@@ -660,7 +660,7 @@ function calculateResources() {
         scroll_t2: profile.fullTotals.scroll_t2,
         scroll_t3: profile.fullTotals.scroll_t3,
         weekly: profile.fullTotals.weekly,
-        crown: 4,
+        crown: 0,
         ore_t1: totalWeapOreT1,
         ore_t2: totalWeapOreT2,
         ore_t3: totalWeapOreT3
