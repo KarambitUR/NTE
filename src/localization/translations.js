@@ -1000,7 +1000,7 @@ export const CHARACTER_MATERIAL_PROFILES = {
         weeklyFarm: "Anomaly Pilgrimage: The Never-ending Arachne",
         uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Confessional-Flower-Seed.webp",
         fullTotals: {
-            coin: 2293000,
+            coin: 2723000,
             boss: 122,
             common_t1: 49,
             common_t2: 46,

@@ -37,7 +37,7 @@ const SKILL_COST_TABLE = {
     6: { coins: 30000, scrollsT1: 0, scrollsT2: 4, scrollsT3: 0, commonT1: 0, commonT2: 0, commonT3: 4, boss: 0, weekly: 0, crown: 0 },
     7: { coins: 46000, scrollsT1: 0, scrollsT2: 0, scrollsT3: 2, commonT1: 0, commonT2: 0, commonT3: 5, boss: 2, weekly: 1, crown: 0 },
     8: { coins: 65000, scrollsT1: 0, scrollsT2: 0, scrollsT3: 3, commonT1: 0, commonT2: 0, commonT3: 5, boss: 3, weekly: 2, crown: 0 },
-    9: { coins: 82525, scrollsT1: 0, scrollsT2: 0, scrollsT3: 5, commonT1: 0, commonT2: 0, commonT3: 0, boss: 4, weekly: 5, crown: 1 }
+    9: { coins: 82500, scrollsT1: 0, scrollsT2: 0, scrollsT3: 5, commonT1: 0, commonT2: 0, commonT3: 0, boss: 4, weekly: 5, crown: 1 }
 };
 
 const WEAPON_MATERIALS = {
@@ -55,12 +55,12 @@ function initCalculatorData() {
     for (let l = 1; l <= 80; l++) {
         // Character level EXP cost
         let charXp = 0;
-        if (l < 20) charXp = 1000 + l * 350;
-        else if (l < 40) charXp = 8000 + (l - 20) * 850;
-        else if (l < 50) charXp = 25000 + (l - 40) * 2200;
-        else if (l < 60) charXp = 47000 + (l - 50) * 3800;
-        else if (l < 70) charXp = 85000 + (l - 60) * 6500;
-        else charXp = 150000 + (l - 70) * 12000;
+        if (l < 20) charXp = 800 + l * 400;
+        else if (l < 40) charXp = 6000 + (l - 20) * 1200;
+        else if (l < 50) charXp = 25000 + (l - 40) * 3500;
+        else if (l < 60) charXp = 50000 + (l - 50) * 8000;
+        else if (l < 70) charXp = 100000 + (l - 60) * 15000;
+        else charXp = 200000 + (l - 70) * 30000;
         
         CHAR_EXP_BY_LEVEL[l] = {
             xp: charXp,
@@ -69,16 +69,16 @@ function initCalculatorData() {
 
         // Weapon level EXP cost
         let weapXp = 0;
-        if (l < 20) weapXp = 600 + l * 250;
-        else if (l < 40) weapXp = 5600 + (l - 20) * 600;
-        else if (l < 50) weapXp = 17600 + (l - 40) * 1600;
-        else if (l < 60) weapXp = 33600 + (l - 50) * 2800;
-        else if (l < 70) weapXp = 61600 + (l - 60) * 5200;
-        else weapXp = 113600 + (l - 70) * 9000;
+        if (l < 20) weapXp = 500 + l * 250;
+        else if (l < 40) weapXp = 4000 + (l - 20) * 800;
+        else if (l < 50) weapXp = 16000 + (l - 40) * 2200;
+        else if (l < 60) weapXp = 32000 + (l - 50) * 5000;
+        else if (l < 70) weapXp = 64000 + (l - 60) * 9000;
+        else weapXp = 120000 + (l - 70) * 18000;
         
         WEAPON_EXP_BY_LEVEL[l] = {
             xp: weapXp,
-            coins: Math.round(weapXp * 0.05)
+            coins: Math.round(weapXp * 0.15)
         };
     }
     
