@@ -1094,15 +1094,22 @@ export const CHARACTER_MATERIAL_PROFILES = {
             weekly: 32
         }
     },
-    zero: { weaponType: "solid", unique: "Charging Knight Spark Plug", uniqueFarm: "Anomaly Hunt: Headless Rider / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Charging-Knight-Spark-Plug.webp" },
-    sakiri: { weaponType: "gas", unique: "Charging Knight Spark Plug", uniqueFarm: "Anomaly Hunt: Headless Rider / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Charging-Knight-Spark-Plug.webp" },
-    daffodil: { weaponType: "liquid", unique: "Charging Knight Spark Plug", uniqueFarm: "Anomaly Hunt: Headless Rider / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Charging-Knight-Spark-Plug.webp" },
-    nanally: { weaponType: "plasma", unique: "A Page from Delusion's Shore", uniqueFarm: "Anomaly Hunt: Black Tome / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/A-Page-from-Delusions-Shore.webp" },
-    mint: { weaponType: "liquid", unique: "A Page from Delusion's Shore", uniqueFarm: "Anomaly Hunt: Black Tome / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/A-Page-from-Delusions-Shore.webp" },
-    jiuyuan: { weaponType: "solid", unique: "Tear of the Sea", uniqueFarm: "Anomaly Hunt: Sea Prisoner / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Tear-of-the-Sea.webp" },
-    adler: { weaponType: "synthesis", unique: "Water Moon Pick", uniqueFarm: "Anomaly Hunt: Beat King / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Water-Moon-Pick.webp" },
-    haniel: { weaponType: "solid", unique: "Nest Guard Fragment", uniqueFarm: "Anomaly Hunt: Nestbound Bird / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Nest-Guard-Fragment.webp" },
-    skia: { weaponType: "gas", unique: "Confessional Flower Seed", uniqueFarm: "Anomaly Hunt: Serenetti / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Confessional-Flower-Seed.webp" }
+    zero: { weaponType: "solid", unique: "Charging Knight Spark Plug", uniqueFarm: "Anomaly Hunt: Headless Rider / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Charging-Knight-Spark-Plug.webp", weekly: "Good Boy Stamp", weeklyFarm: "Anomaly Pilgrimage: Morphix" },
+    sakiri: { weaponType: "gas", unique: "Charging Knight Spark Plug", uniqueFarm: "Anomaly Hunt: Headless Rider / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Charging-Knight-Spark-Plug.webp", weekly: "Good Boy Stamp", weeklyFarm: "Anomaly Pilgrimage: Morphix" },
+    daffodil: { weaponType: "liquid", unique: "Charging Knight Spark Plug", uniqueFarm: "Anomaly Hunt: Headless Rider / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Charging-Knight-Spark-Plug.webp", weekly: "Dress Sleeves of Vanity", weeklyFarm: "Anomaly Pilgrimage: The Never-ending Arachne" },
+    nanally: { weaponType: "plasma", unique: "A Page from Delusion's Shore", uniqueFarm: "Anomaly Hunt: Black Tome / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/A-Page-from-Delusions-Shore.webp", weekly: "Good Boy Stamp", weeklyFarm: "Anomaly Pilgrimage: Morphix" },
+    mint: { weaponType: "liquid", unique: "A Page from Delusion's Shore", uniqueFarm: "Anomaly Hunt: Black Tome / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/A-Page-from-Delusions-Shore.webp", weekly: "Good Boy Stamp", weeklyFarm: "Anomaly Pilgrimage: Morphix" },
+    jiuyuan: { weaponType: "solid", unique: "Tear of the Sea", uniqueFarm: "Anomaly Hunt: Sea Prisoner / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Tear-of-the-Sea.webp", weekly: "Dress Sleeves of Vanity", weeklyFarm: "Anomaly Pilgrimage: The Never-ending Arachne" },
+    adler: { weaponType: "synthesis", unique: "Water Moon Pick", uniqueFarm: "Anomaly Hunt: Beat King / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Water-Moon-Pick.webp", weekly: "Dress Sleeves of Vanity", weeklyFarm: "Anomaly Pilgrimage: The Never-ending Arachne" },
+    haniel: { weaponType: "solid", unique: "Nest Guard Fragment", uniqueFarm: "Anomaly Hunt: Nestbound Bird / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Nest-Guard-Fragment.webp", weekly: "Dress Sleeves of Vanity", weeklyFarm: "Anomaly Pilgrimage: The Never-ending Arachne" },
+    skia: { weaponType: "gas", unique: "Confessional Flower Seed", uniqueFarm: "Anomaly Hunt: Serenetti / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Confessional-Flower-Seed.webp", weekly: "Good Boy Stamp", weeklyFarm: "Anomaly Pilgrimage: Morphix" },
+    lacrimosa: { weaponType: "liquid", weekly: "Dress Sleeves of Vanity", weeklyFarm: "Anomaly Pilgrimage: The Never-ending Arachne" },
+    baicang: { weaponType: "plasma", weekly: "Good Boy Stamp", weeklyFarm: "Anomaly Pilgrimage: Morphix" },
+    chiz: { weaponType: "plasma", weekly: "Good Boy Stamp", weeklyFarm: "Anomaly Pilgrimage: Morphix" },
+    fadia: { weaponType: "liquid", weekly: "Dress Sleeves of Vanity", weeklyFarm: "Anomaly Pilgrimage: The Never-ending Arachne" },
+    hathor: { weaponType: "plasma", weekly: "Good Boy Stamp", weeklyFarm: "Anomaly Pilgrimage: Morphix" },
+    aurelia: { weaponType: "synthesis", weekly: "Good Boy Stamp", weeklyFarm: "Anomaly Pilgrimage: Morphix" },
+    edgar: { weaponType: "solid", weekly: "Good Boy Stamp", weeklyFarm: "Anomaly Pilgrimage: Morphix" }
 };
 
 export const TIMELINE_TRANSLATIONS = {

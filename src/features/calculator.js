@@ -170,7 +170,11 @@ const MATERIAL_ICON_BY_NAME = {
     "FNG": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/FNG.webp",
     "First Expectations": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/First-Expectations.webp",
     "Synchronicity of Thought": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Synchronicity-of-Thought.webp",
-    "Hesitation of the Waves": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Hesitation-of-the-Waves.webp"
+    "Hesitation of the Waves": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Hesitation-of-the-Waves.webp",
+    "Dress Sleeves of Vanity": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Dress-Sleeves-of-Vanity.webp",
+    "Crown Called Nobility": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Crown-Called-Nobility.webp",
+    "Scepter Called Prestige": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Scepter-Called-Prestige.webp",
+    "Good Boy Stamp": "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Good-Boy-Stamp.webp"
 };
 
 // Use real material icons from public NTE databases; fallback keeps the card readable if a CDN image fails.
@@ -225,6 +229,12 @@ function getMaterialIcon(id, profile = null, attrDetails = null, char = null) {
         const weaponType = (profile && profile.weaponType) || (char && CHARACTER_WEAPON_TYPES[char.id]) || "synthesis";
         if (WEAPON_ICON_URLS[weaponType] && WEAPON_ICON_URLS[weaponType][id]) {
             src = WEAPON_ICON_URLS[weaponType][id];
+        }
+    }
+    if (id === "weekly") {
+        const matName = (profile && profile.weekly) || "Dress Sleeves of Vanity";
+        if (MATERIAL_ICON_BY_NAME[matName]) {
+            src = MATERIAL_ICON_BY_NAME[matName];
         }
     }
     if (!src) {
@@ -707,6 +717,10 @@ function calculateResources() {
             crown_farm: "Anomaly Pilgrimage",
             weekly_name: "Матеріал тижневого боса",
             weekly_farm: "Anomaly Pilgrimage",
+            weekly_dress: "Рукава Сукні Марнославства",
+            weekly_crown: "Корона Шляхетності",
+            weekly_scepter: "Скіпетр Престижу",
+            weekly_stamp: "Печатка Гарного Хлопчика",
             source_verified: "Точний total-cost підтверджено для цього пресету.",
             source_estimate: "Частина чисел є планувальною оцінкою; назви ресурсів і джерела взято з відкритих баз.",
             need_label: "Потрібно:",
@@ -733,6 +747,10 @@ function calculateResources() {
             crown_farm: "Anomaly Pilgrimage",
             weekly_name: "Weekly Boss Material",
             weekly_farm: "Anomaly Pilgrimage",
+            weekly_dress: "Dress Sleeves of Vanity",
+            weekly_crown: "Crown Called Nobility",
+            weekly_scepter: "Scepter Called Prestige",
+            weekly_stamp: "Good Boy Stamp",
             source_verified: "Exact total cost is verified for this preset.",
             source_estimate: "Some quantities are planning estimates; resource names and sources use public databases.",
             need_label: "Need:",
@@ -759,6 +777,10 @@ function calculateResources() {
             crown_farm: "Anomaly Pilgrimage",
             weekly_name: "Matériau de boss hebdomadaire",
             weekly_farm: "Anomaly Pilgrimage",
+            weekly_dress: "Manches de robe de vanité",
+            weekly_crown: "Couronne appelée noblesse",
+            weekly_scepter: "Sceptre appelé prestige",
+            weekly_stamp: "Sceau de bon garçon",
             source_verified: "Le coût total exact est vérifié pour ce préréglage.",
             source_estimate: "Certaines quantités sont des estimations de planification ; les noms des ressources et les sources proviennent de bases de données publiques.",
             need_label: "Requis :",
@@ -850,7 +872,20 @@ function calculateResources() {
         addMaterialCard("scroll_t1", attrDetails.scrolls.T1, calculatedRequirements.scroll_t1, attrDetails.scrolls.farm);
         addMaterialCard("scroll_t2", attrDetails.scrolls.T2, calculatedRequirements.scroll_t2, attrDetails.scrolls.farm);
         addMaterialCard("scroll_t3", attrDetails.scrolls.T3, calculatedRequirements.scroll_t3, attrDetails.scrolls.farm);
-        addMaterialCard("weekly", profile.weekly || cLoc.weekly_name, calculatedRequirements.weekly || 0, profile.weeklyFarm || cLoc.weekly_farm);
+        let localizedWeeklyName = cLoc.weekly_name;
+        if (profile.weekly === "Dress Sleeves of Vanity") localizedWeeklyName = cLoc.weekly_dress;
+        else if (profile.weekly === "Crown Called Nobility") localizedWeeklyName = cLoc.weekly_crown;
+        else if (profile.weekly === "Scepter Called Prestige") localizedWeeklyName = cLoc.weekly_scepter;
+        else if (profile.weekly === "Good Boy Stamp") localizedWeeklyName = cLoc.weekly_stamp;
+
+        let localizedWeeklyFarm = profile.weeklyFarm || cLoc.weekly_farm;
+        if (localizedWeeklyFarm === "Anomaly Pilgrimage: The Never-ending Arachne") {
+            localizedWeeklyFarm = state.currentLang === 'uk' ? "Паломництво Аномалії: Нескінченна Арахна" : (state.currentLang === 'fr' ? "Pèlerinage d'anomalie : L'Arachne sans fin" : "Anomaly Pilgrimage: The Never-ending Arachne");
+        } else if (localizedWeeklyFarm === "Anomaly Pilgrimage: Morphix") {
+            localizedWeeklyFarm = state.currentLang === 'uk' ? "Паломництво Аномалії: Морфікс" : (state.currentLang === 'fr' ? "Pèlerinage d'anomalie : Morphix" : "Anomaly Pilgrimage: Morphix");
+        }
+
+        addMaterialCard("weekly", localizedWeeklyName, calculatedRequirements.weekly || 0, localizedWeeklyFarm);
         addMaterialCard("crown", cLoc.crown_name, calculatedRequirements.crown || 0, cLoc.crown_farm);
     }
 
@@ -997,7 +1032,18 @@ function exportCalcReport() {
             matName = state.currentLang === 'uk' ? "Корона Аномалії" : (state.currentLang === 'fr' ? "Couronne d'anomalie" : "Anomaly Crown");
         }
         else if (id === 'weekly') {
-            matName = profile.weekly || (state.currentLang === 'uk' ? "Матеріал тижневого боса" : (state.currentLang === 'fr' ? "Matériau de boss hebdomadaire" : "Weekly Boss Material"));
+            let localizedWeeklyName = state.currentLang === 'uk' ? "Матеріал тижневого боса" : (state.currentLang === 'fr' ? "Matériau de boss hebdomadaire" : "Weekly Boss Material");
+            const wName = profile.weekly || "Dress Sleeves of Vanity";
+            if (wName === "Dress Sleeves of Vanity") {
+                localizedWeeklyName = state.currentLang === 'uk' ? "Рукава Сукні Марнославства" : (state.currentLang === 'fr' ? "Manches de robe de vanité" : "Dress Sleeves of Vanity");
+            } else if (wName === "Crown Called Nobility") {
+                localizedWeeklyName = state.currentLang === 'uk' ? "Корона Шляхетності" : (state.currentLang === 'fr' ? "Couronne appelée noblesse" : "Crown Called Nobility");
+            } else if (wName === "Scepter Called Prestige") {
+                localizedWeeklyName = state.currentLang === 'uk' ? "Скіпетр Престижу" : (state.currentLang === 'fr' ? "Sceptre appelé prestige" : "Scepter Called Prestige");
+            } else if (wName === "Good Boy Stamp") {
+                localizedWeeklyName = state.currentLang === 'uk' ? "Печатка Гарного Хлопчика" : (state.currentLang === 'fr' ? "Sceau de bon garçon" : "Good Boy Stamp");
+            }
+            matName = localizedWeeklyName;
         }
         else {
             if (id === 'scroll_t1') matName = attrDetails.scrolls.T1;
