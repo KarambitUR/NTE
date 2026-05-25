@@ -12,11 +12,11 @@ const CHAR_EXP_BY_LEVEL = [];
 const WEAPON_EXP_BY_LEVEL = [];
 
 const CHAR_BREAKTHROUGH_TABLE = {
-    20: { coins: 15000, boss: 2, specialty: 3, commonT1: 3, commonT2: 0, commonT3: 0 },
-    40: { coins: 30000, boss: 5, specialty: 8, commonT1: 8, commonT2: 3, commonT3: 0 },
-    50: { coins: 50000, boss: 8, specialty: 12, commonT1: 15, commonT2: 8, commonT3: 0 },
-    60: { coins: 80000, boss: 12, specialty: 20, commonT1: 0, commonT2: 12, commonT3: 4 },
-    70: { coins: 120000, boss: 20, specialty: 30, commonT1: 0, commonT2: 16, commonT3: 8 }
+    20: { coins: 15000, boss: 2, specialty: 3, commonT1: 5, commonT2: 0, commonT3: 0 },
+    40: { coins: 30000, boss: 8, specialty: 8, commonT1: 8, commonT2: 4, commonT3: 0 },
+    50: { coins: 50000, boss: 16, specialty: 12, commonT1: 12, commonT2: 8, commonT3: 0 },
+    60: { coins: 80000, boss: 24, specialty: 20, commonT1: 0, commonT2: 12, commonT3: 4 },
+    70: { coins: 120000, boss: 36, specialty: 30, commonT1: 0, commonT2: 16, commonT3: 7 }
 };
 
 const WEAPON_BREAKTHROUGH_TABLE = {
