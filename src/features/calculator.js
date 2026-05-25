@@ -28,15 +28,15 @@ const WEAPON_BREAKTHROUGH_TABLE = {
 };
 
 const SKILL_COST_TABLE = {
-    1: { coins: 3000, scrollsT1: 2, scrollsT2: 0, scrollsT3: 0, commonT1: 0, commonT2: 0, commonT3: 0, boss: 0, crown: 0 },
-    2: { coins: 6000, scrollsT1: 4, scrollsT2: 0, scrollsT3: 0, commonT1: 3, commonT2: 0, commonT3: 0, boss: 0, crown: 0 },
-    3: { coins: 12000, scrollsT1: 0, scrollsT2: 2, scrollsT3: 0, commonT1: 4, commonT2: 0, commonT3: 0, boss: 0, crown: 0 },
-    4: { coins: 20000, scrollsT1: 0, scrollsT2: 4, scrollsT3: 0, commonT1: 0, commonT2: 3, commonT3: 0, boss: 0, crown: 0 },
-    5: { coins: 35000, scrollsT1: 0, scrollsT2: 6, scrollsT3: 0, commonT1: 0, commonT2: 5, commonT3: 0, boss: 0, crown: 0 },
-    6: { coins: 60000, scrollsT1: 0, scrollsT2: 0, scrollsT3: 4, commonT1: 0, commonT2: 6, commonT3: 0, boss: 0, crown: 0 },
-    7: { coins: 100000, scrollsT1: 0, scrollsT2: 0, scrollsT3: 6, commonT1: 0, commonT2: 0, commonT3: 4, boss: 1, crown: 0 },
-    8: { coins: 180000, scrollsT1: 0, scrollsT2: 0, scrollsT3: 8, commonT1: 0, commonT2: 0, commonT3: 6, boss: 2, crown: 0 },
-    9: { coins: 300000, scrollsT1: 0, scrollsT2: 0, scrollsT3: 12, commonT1: 0, commonT2: 0, commonT3: 8, boss: 3, crown: 1 }
+    1: { coins: 2000, scrollsT1: 2, scrollsT2: 0, scrollsT3: 0, commonT1: 3, commonT2: 0, commonT3: 0, boss: 0, weekly: 0, crown: 0 },
+    2: { coins: 4000, scrollsT1: 4, scrollsT2: 0, scrollsT3: 0, commonT1: 5, commonT2: 0, commonT3: 0, boss: 0, weekly: 0, crown: 0 },
+    3: { coins: 7000, scrollsT1: 10, scrollsT2: 0, scrollsT3: 0, commonT1: 0, commonT2: 3, commonT3: 0, boss: 0, weekly: 0, crown: 0 },
+    4: { coins: 11000, scrollsT1: 0, scrollsT2: 2, scrollsT3: 0, commonT1: 0, commonT2: 4, commonT3: 0, boss: 0, weekly: 0, crown: 0 },
+    5: { coins: 18000, scrollsT1: 0, scrollsT2: 4, scrollsT3: 0, commonT1: 0, commonT2: 0, commonT3: 3, boss: 0, weekly: 0, crown: 0 },
+    6: { coins: 30000, scrollsT1: 0, scrollsT2: 4, scrollsT3: 0, commonT1: 0, commonT2: 0, commonT3: 4, boss: 0, weekly: 0, crown: 0 },
+    7: { coins: 46000, scrollsT1: 0, scrollsT2: 0, scrollsT3: 2, commonT1: 0, commonT2: 0, commonT3: 5, boss: 2, weekly: 1, crown: 0 },
+    8: { coins: 65000, scrollsT1: 0, scrollsT2: 0, scrollsT3: 3, commonT1: 0, commonT2: 0, commonT3: 5, boss: 3, weekly: 2, crown: 0 },
+    9: { coins: 82525, scrollsT1: 0, scrollsT2: 0, scrollsT3: 5, commonT1: 0, commonT2: 0, commonT3: 0, boss: 4, weekly: 5, crown: 1 }
 };
 
 const WEAPON_MATERIALS = {
@@ -54,12 +54,12 @@ function initCalculatorData() {
     for (let l = 1; l <= 80; l++) {
         // Character level EXP cost
         let charXp = 0;
-        if (l < 20) charXp = 800 + l * 400;
-        else if (l < 40) charXp = 6000 + (l - 20) * 1200;
-        else if (l < 50) charXp = 25000 + (l - 40) * 3500;
-        else if (l < 60) charXp = 50000 + (l - 50) * 8000;
-        else if (l < 70) charXp = 100000 + (l - 60) * 15000;
-        else charXp = 200000 + (l - 70) * 30000;
+        if (l < 20) charXp = 1000 + l * 350;
+        else if (l < 40) charXp = 8000 + (l - 20) * 850;
+        else if (l < 50) charXp = 25000 + (l - 40) * 2200;
+        else if (l < 60) charXp = 47000 + (l - 50) * 3800;
+        else if (l < 70) charXp = 85000 + (l - 60) * 6500;
+        else charXp = 150000 + (l - 70) * 12000;
         
         CHAR_EXP_BY_LEVEL[l] = {
             xp: charXp,
@@ -68,16 +68,16 @@ function initCalculatorData() {
 
         // Weapon level EXP cost
         let weapXp = 0;
-        if (l < 20) weapXp = 500 + l * 250;
-        else if (l < 40) weapXp = 4000 + (l - 20) * 800;
-        else if (l < 50) weapXp = 16000 + (l - 40) * 2200;
-        else if (l < 60) weapXp = 32000 + (l - 50) * 5000;
-        else if (l < 70) weapXp = 64000 + (l - 60) * 9000;
-        else weapXp = 120000 + (l - 70) * 18000;
+        if (l < 20) weapXp = 600 + l * 250;
+        else if (l < 40) weapXp = 5600 + (l - 20) * 600;
+        else if (l < 50) weapXp = 17600 + (l - 40) * 1600;
+        else if (l < 60) weapXp = 33600 + (l - 50) * 2800;
+        else if (l < 70) weapXp = 61600 + (l - 60) * 5200;
+        else weapXp = 113600 + (l - 70) * 9000;
         
         WEAPON_EXP_BY_LEVEL[l] = {
             xp: weapXp,
-            coins: Math.round(weapXp * 0.15)
+            coins: Math.round(weapXp * 0.05)
         };
     }
     
@@ -395,18 +395,16 @@ function updateSingleMaterialCard(matId, haveAmount) {
     const needed = calculatedRequirements[matId] || 0;
     const remaining = Math.max(0, needed - haveAmount);
     
-    const needValEl = card.querySelector(".mat-val");
     const labelTextEl = card.querySelector(".mat-need");
-
-    const labelText = state.currentLang === 'uk' ? 'Потрібно' : (state.currentLang === 'fr' ? 'Requis' : 'Need');
     const remainingText = state.currentLang === 'uk' ? 'Залишилось' : (state.currentLang === 'fr' ? 'Restant' : 'Remaining');
 
     if (remaining === 0) {
         card.classList.add("mat-completed");
-        if (labelTextEl) labelTextEl.innerHTML = `${labelText}: <span class="mat-val">${needed.toLocaleString()}</span>`;
     } else {
         card.classList.remove("mat-completed");
-        if (labelTextEl) labelTextEl.innerHTML = `${remainingText}: <span class="mat-val">${remaining.toLocaleString()}</span> / ${needed.toLocaleString()}`;
+    }
+    if (labelTextEl) {
+        labelTextEl.innerHTML = `${remainingText}: <span class="mat-val">${remaining.toLocaleString()}</span> / ${needed.toLocaleString()}`;
     }
 }
 
@@ -475,6 +473,7 @@ function calculateResources() {
     let totalSkillCommonT2 = 0;
     let totalSkillCommonT3 = 0;
     let totalSkillBoss = 0;
+    let totalSkillWeekly = 0;
     let totalSkillCrown = 0;
 
     for (let i = 0; i < 4; i++) {
@@ -491,6 +490,7 @@ function calculateResources() {
             totalSkillCommonT2 += cost.commonT2;
             totalSkillCommonT3 += cost.commonT3;
             totalSkillBoss += cost.boss;
+            totalSkillWeekly += cost.weekly;
             totalSkillCrown += cost.crown;
         }
     }
@@ -567,7 +567,7 @@ function calculateResources() {
     if (profile.unique) {
         attrDetails.boss = profile.unique;
         attrDetails.farmBoss = profile.uniqueFarm || attrDetails.farmBoss;
-        attrDetails.specialty = profile.unique;
+        // Do not override specialty with boss drop to prevent duplicate cards
         attrDetails.farmSpecialty = profile.uniqueFarm || attrDetails.farmSpecialty;
     }
     if (profile.commonFamily) {
@@ -599,7 +599,7 @@ function calculateResources() {
 
     // Set requirements object globally to check on have-input triggers.
     calculatedRequirements = isVerifiedFullBuild ? {
-        coin: profile.fullTotals.coin,
+        coin: profile.fullTotals.coin + (includeWeapon ? (totalWeapCoins + totalWeapBtCoins) : 0),
         exp_elite: guidesElite,
         exp_medium: guidesMed,
         exp_basic: guidesBasic,
@@ -607,15 +607,15 @@ function calculateResources() {
         dye_medium: dyesMed,
         dye_basic: dyesBasic,
         boss: profile.fullTotals.boss,
-        specialty: 0,
-        common_t1: profile.fullTotals.common_t1,
-        common_t2: profile.fullTotals.common_t2,
-        common_t3: profile.fullTotals.common_t3,
+        specialty: totalCharSpecialty,
+        common_t1: profile.fullTotals.common_t1 + (includeWeapon ? totalWeapCommonT1 : 0),
+        common_t2: profile.fullTotals.common_t2 + (includeWeapon ? totalWeapCommonT2 : 0),
+        common_t3: profile.fullTotals.common_t3 + (includeWeapon ? totalWeapCommonT3 : 0),
         scroll_t1: profile.fullTotals.scroll_t1,
         scroll_t2: profile.fullTotals.scroll_t2,
         scroll_t3: profile.fullTotals.scroll_t3,
         weekly: profile.fullTotals.weekly,
-        crown: 0,
+        crown: 4,
         ore_t1: totalWeapOreT1,
         ore_t2: totalWeapOreT2,
         ore_t3: totalWeapOreT3
@@ -635,7 +635,7 @@ function calculateResources() {
         scroll_t1: totalSkillScrollsT1,
         scroll_t2: totalSkillScrollsT2,
         scroll_t3: totalSkillScrollsT3,
-        weekly: 0,
+        weekly: totalSkillWeekly,
         crown: totalSkillCrown,
         ore_t1: totalWeapOreT1,
         ore_t2: totalWeapOreT2,
@@ -759,7 +759,7 @@ function calculateResources() {
             </div>
             <div class="mat-card-mid">
                 <span class="mat-need">
-                    ${isCompleted ? `${cLoc.need_label} <span class="mat-val">${needed.toLocaleString()}</span>` : `${cLoc.remaining_label} <span class="mat-val">${remaining.toLocaleString()}</span> / ${needed.toLocaleString()}`}
+                    ${cLoc.remaining_label} <span class="mat-val">${remaining.toLocaleString()}</span> / ${needed.toLocaleString()}
                 </span>
                 <span class="mat-completed-badge">${cLoc.done_badge}</span>
                 <div class="mat-have-input-wrapper">
