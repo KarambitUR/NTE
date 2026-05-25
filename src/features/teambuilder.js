@@ -288,11 +288,12 @@ function evaluateTeamSynergy() {
     if (activeChars.length === 4) {
         const hasMainDps = roles.includes("Main DPS");
         const hasSupport = roles.includes("Support");
+        const dpsCount = roles.filter(r => r === "Main DPS").length;
         
         if (hasMainDps && hasSupport && reactions.length >= 2) {
-            rating = "S";
+            rating = dpsCount > 1 ? "A" : "S";
         } else if (hasMainDps && reactions.length >= 1) {
-            rating = "A";
+            rating = dpsCount > 1 ? "B" : "A";
         } else {
             rating = "B";
         }
@@ -426,8 +427,21 @@ function evaluateTeamSynergy() {
         }
     }
 
+    let warningText = "";
+    const dpsCount = roles.filter(r => r === "Main DPS").length;
+    if (dpsCount > 1) {
+        const dpsNames = activeChars.filter(c => c.role === "Main DPS").map(c => getLocalizedChar(c).name.split(" ")[0]).join(", ");
+        if (state.currentLang === 'uk') {
+            warningText = `<span style="color: #ff4a7d; font-weight: bold;">⚠️ Застереження щодо команди:</span><br>У вашій команді більше ніж один активний атакуючий персонаж (Main DPS: <strong>${dpsNames}</strong>). Вони конкуруватимуть за час на полі бою, що знижує загальну ефективність. Рекомендується залишити лише одного Main DPS, замінивши іншого на Sub-DPS або саппорта для баффу.<br><br>`;
+        } else if (state.currentLang === 'fr') {
+            warningText = `<span style="color: #ff4a7d; font-weight: bold;">⚠️ Avertissement d'équipe :</span><br>Votre équipe contient plus d'un personnage DPS principal (Main DPS : <strong>${dpsNames}</strong>). Ils se disputeront le temps sur le terrain, ce qui réduit l'efficacité globale. Il est recommandé de ne garder qu'un seul Main DPS et de remplacer l'autre par un Sub-DPS ou un Support.<br><br>`;
+        } else {
+            warningText = `<span style="color: #ff4a7d; font-weight: bold;">⚠️ Team Warning:</span><br>Your team contains more than one Main DPS character (Main DPS: <strong>${dpsNames}</strong>). They will compete for on-field time, reducing overall combat efficiency. It is recommended to keep only one Main DPS and replace the other with a Sub-DPS or Support.<br><br>`;
+        }
+    }
+
     ratingEl.innerText = rating;
-    descContainer.innerHTML = `<p>${rotation}</p>`;
+    descContainer.innerHTML = `<p>${warningText}${rotation}</p>`;
 }
 
 
