@@ -963,29 +963,112 @@ export const LOCALIZED_ATTRIBUTE_MATERIALS = {
 };
 
 export const LOCALIZED_WEAPON_MATERIALS = {
-    uk: {
-        T1: "Light Dye",
-        T2: "Colorless Dye",
-        T3: "Chaotic Dye",
-        farm: "Houdinii's Magic Stage / Hunter Exchange / World Exploration"
+    solid: {
+        uk: {
+            T1: "Залізне яблучне насіння",
+            T2: "Срібне яблучне насіння",
+            T3: "Золоте яблучне насіння",
+            farm: "Завод бабл-банок (Bubble Can Factory)"
+        },
+        en: {
+            T1: "Iron Appleseed",
+            T2: "Silver Appleseed",
+            T3: "Golden Appleseed",
+            farm: "Bubble Can Factory Anomaly Zone"
+        },
+        fr: {
+            T1: "Pépin de pomme en fer",
+            T2: "Pépin de pomme en argent",
+            T3: "Pépin de pomme en or",
+            farm: "Zone d'anomalie de la fabrique de canettes de bulles"
+        }
     },
-    en: {
-        T1: "Light Dye",
-        T2: "Colorless Dye",
-        T3: "Chaotic Dye",
-        farm: "Houdinii's Magic Stage / Hunter Exchange / World Exploration"
+    liquid: {
+        uk: {
+            T1: "Пробний набір рідких снів",
+            T2: "Дорожній набір рідких снів",
+            T3: "Банка рідких снів",
+            farm: "Завод бабл-банок (Bubble Can Factory)"
+        },
+        en: {
+            T1: "Liquid Dream Trial Kit",
+            T2: "Liquid Dream Travel Kit",
+            T3: "Liquid Dream Can",
+            farm: "Bubble Can Factory Anomaly Zone"
+        },
+        fr: {
+            T1: "Kit d'essai de rêve liquide",
+            T2: "Kit de voyage de rêve liquide",
+            T3: "Canette de rêve liquide",
+            farm: "Zone d'anomalie de la fabrique de canettes de bulles"
+        }
     },
-    fr: {
-        T1: "Teinture légère",
-        T2: "Teinture incolore",
-        T3: "Teinture chaotique",
-        farm: "Scène magique de Houdinii / Échange de chasseur / Exploration du monde"
+    gas: {
+        uk: {
+            T1: "Безсмаковий холодний десерт",
+            T2: "Простий холодний десерт",
+            T3: "Особливий холодний десерт",
+            farm: "Завод бабл-банок (Bubble Can Factory)"
+        },
+        en: {
+            T1: "Flavorless Cold Dessert",
+            T2: "Plain Cold Dessert",
+            T3: "Special Cold Dessert",
+            farm: "Bubble Can Factory Anomaly Zone"
+        },
+        fr: {
+            T1: "Dessert froid sans saveur",
+            T2: "Dessert froid nature",
+            T3: "Dessert froid spécial",
+            farm: "Zone d'anomalie de la fabrique de canettes de bulles"
+        }
+    },
+    plasma: {
+        uk: {
+            T1: "Початкове ядро драми",
+            T2: "Майстер-ядро драми",
+            T3: "Колекційне ядро драми",
+            farm: "Завод бабл-банок (Bubble Can Factory)"
+        },
+        en: {
+            T1: "Beginner Drama Core",
+            T2: "Master Drama Core",
+            T3: "Collector's Drama Core",
+            farm: "Bubble Can Factory Anomaly Zone"
+        },
+        fr: {
+            T1: "Noyau de drame pour débutant",
+            T2: "Noyau de drame de maître",
+            T3: "Noyau de drame de collectionneur",
+            farm: "Zone d'anomalie de la fabrique de canettes de bulles"
+        }
+    },
+    synthesis: {
+        uk: {
+            T1: "Біті (Beaty)",
+            T2: "Версі (Versey)",
+            T3: "Гармонія (Harmony)",
+            farm: "Завод бабл-банок (Bubble Can Factory)"
+        },
+        en: {
+            T1: "Beaty",
+            T2: "Versey",
+            T3: "Harmony",
+            farm: "Bubble Can Factory Anomaly Zone"
+        },
+        fr: {
+            T1: "Beaty",
+            T2: "Versey",
+            T3: "Harmony",
+            farm: "Zone d'anomalie de la fabrique de canettes de bulles"
+        }
     }
 };
 
 export const CHARACTER_MATERIAL_PROFILES = {
     hotori: {
         verified: true,
+        weaponType: "solid",
         source: "AllThings.How + Neverness.gg",
         unique: "Confessional Flower Seed",
         uniqueFarm: "Anomaly Hunt: Serenetti / Material Selection Box",
@@ -1011,15 +1094,15 @@ export const CHARACTER_MATERIAL_PROFILES = {
             weekly: 32
         }
     },
-    zero: { unique: "Charging Knight Spark Plug", uniqueFarm: "Anomaly Hunt: Headless Rider / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Charging-Knight-Spark-Plug.webp" },
-    sakiri: { unique: "Charging Knight Spark Plug", uniqueFarm: "Anomaly Hunt: Headless Rider / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Charging-Knight-Spark-Plug.webp" },
-    daffodil: { unique: "Charging Knight Spark Plug", uniqueFarm: "Anomaly Hunt: Headless Rider / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Charging-Knight-Spark-Plug.webp" },
-    nanally: { unique: "A Page from Delusion's Shore", uniqueFarm: "Anomaly Hunt: Black Tome / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/A-Page-from-Delusions-Shore.webp" },
-    mint: { unique: "A Page from Delusion's Shore", uniqueFarm: "Anomaly Hunt: Black Tome / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/A-Page-from-Delusions-Shore.webp" },
-    jiuyuan: { unique: "Tear of the Sea", uniqueFarm: "Anomaly Hunt: Sea Prisoner / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Tear-of-the-Sea.webp" },
-    adler: { unique: "Water Moon Pick", uniqueFarm: "Anomaly Hunt: Beat King / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Water-Moon-Pick.webp" },
-    haniel: { unique: "Nest Guard Fragment", uniqueFarm: "Anomaly Hunt: Nestbound Bird / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Nest-Guard-Fragment.webp" },
-    skia: { unique: "Confessional Flower Seed", uniqueFarm: "Anomaly Hunt: Serenetti / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Confessional-Flower-Seed.webp" }
+    zero: { weaponType: "solid", unique: "Charging Knight Spark Plug", uniqueFarm: "Anomaly Hunt: Headless Rider / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Charging-Knight-Spark-Plug.webp" },
+    sakiri: { weaponType: "gas", unique: "Charging Knight Spark Plug", uniqueFarm: "Anomaly Hunt: Headless Rider / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Charging-Knight-Spark-Plug.webp" },
+    daffodil: { weaponType: "liquid", unique: "Charging Knight Spark Plug", uniqueFarm: "Anomaly Hunt: Headless Rider / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Charging-Knight-Spark-Plug.webp" },
+    nanally: { weaponType: "plasma", unique: "A Page from Delusion's Shore", uniqueFarm: "Anomaly Hunt: Black Tome / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/A-Page-from-Delusions-Shore.webp" },
+    mint: { weaponType: "liquid", unique: "A Page from Delusion's Shore", uniqueFarm: "Anomaly Hunt: Black Tome / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/A-Page-from-Delusions-Shore.webp" },
+    jiuyuan: { weaponType: "solid", unique: "Tear of the Sea", uniqueFarm: "Anomaly Hunt: Sea Prisoner / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Tear-of-the-Sea.webp" },
+    adler: { weaponType: "synthesis", unique: "Water Moon Pick", uniqueFarm: "Anomaly Hunt: Beat King / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Water-Moon-Pick.webp" },
+    haniel: { weaponType: "solid", unique: "Nest Guard Fragment", uniqueFarm: "Anomaly Hunt: Nestbound Bird / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Nest-Guard-Fragment.webp" },
+    skia: { weaponType: "gas", unique: "Confessional Flower Seed", uniqueFarm: "Anomaly Hunt: Serenetti / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Confessional-Flower-Seed.webp" }
 };
 
 export const TIMELINE_TRANSLATIONS = {

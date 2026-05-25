@@ -40,11 +40,52 @@ const SKILL_COST_TABLE = {
     9: { coins: 82500, scrollsT1: 0, scrollsT2: 0, scrollsT3: 5, commonT1: 0, commonT2: 0, commonT3: 0, boss: 4, weekly: 5, crown: 1 }
 };
 
-const WEAPON_MATERIALS = {
-    T1: "Light Dye",
-    T2: "Colorless Dye",
-    T3: "Chaotic Dye",
-    farm: "Houdinii's Magic Stage / Hunter Exchange / World Exploration"
+const CHARACTER_WEAPON_TYPES = {
+    hotori: "solid",
+    zero: "solid",
+    sakiri: "gas",
+    daffodil: "liquid",
+    nanally: "plasma",
+    mint: "liquid",
+    jiuyuan: "solid",
+    adler: "synthesis",
+    haniel: "solid",
+    skia: "gas",
+    lacrimosa: "gas",
+    baicang: "synthesis",
+    chiz: "gas",
+    fadia: "synthesis",
+    hathor: "plasma",
+    aurelia: "solid",
+    edgar: "liquid"
+};
+
+const WEAPON_ICON_URLS = {
+    solid: {
+        ore_t1: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Iron-Appleseed.webp",
+        ore_t2: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Silver-Appleseed.webp",
+        ore_t3: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Golden-Appleseed.webp"
+    },
+    liquid: {
+        ore_t1: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Liquid-Dream-Trial-Kit.webp",
+        ore_t2: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Liquid-Dream-Travel-Kit.webp",
+        ore_t3: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Liquid-Dream-Can.webp"
+    },
+    gas: {
+        ore_t1: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Flavorless-Cold-Dessert.webp",
+        ore_t2: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Plain-Cold-Dessert.webp",
+        ore_t3: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Special-Cold-Dessert.webp"
+    },
+    plasma: {
+        ore_t1: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Beginner-Drama-Core.webp",
+        ore_t2: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Master-Drama-Core.webp",
+        ore_t3: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Collectors-Drama-Core.webp"
+    },
+    synthesis: {
+        ore_t1: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Beaty.webp",
+        ore_t2: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Versey.webp",
+        ore_t3: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Harmony.webp"
+    }
 };
 
 let calcInventory = {};
@@ -109,9 +150,9 @@ const MATERIAL_ICON_URLS = {
     scroll_t3: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Nestlings-Longing.webp",
     weekly: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Dress-Sleeves-of-Vanity.webp",
     crown: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Anomaly-Material-Selection-Box-III.webp",
-    ore_t1: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Light-Dye.webp",
-    ore_t2: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Colorless-Dye.webp",
-    ore_t3: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Chaotic-Dye.webp"
+    ore_t1: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Basic-Bubble-Can.webp",
+    ore_t2: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Advanced-Bubble-Can.webp",
+    ore_t3: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Elite-Bubble-Can.webp"
 };
 
 const MATERIAL_ICON_BY_NAME = {
@@ -178,6 +219,12 @@ function getMaterialIcon(id, profile = null, attrDetails = null, char = null) {
                     src = MATERIAL_ICON_BY_NAME[scrollName];
                 }
             }
+        }
+    }
+    if (id === "ore_t1" || id === "ore_t2" || id === "ore_t3") {
+        const weaponType = (profile && profile.weaponType) || (char && CHARACTER_WEAPON_TYPES[char.id]) || "synthesis";
+        if (WEAPON_ICON_URLS[weaponType] && WEAPON_ICON_URLS[weaponType][id]) {
+            src = WEAPON_ICON_URLS[weaponType][id];
         }
     }
     if (!src) {
@@ -578,7 +625,9 @@ function calculateResources() {
         attrDetails.scrolls.T2 = profile.skillBooks[1];
         attrDetails.scrolls.T3 = profile.skillBooks[2];
     }
-    const weaponMats = LOCALIZED_WEAPON_MATERIALS[state.currentLang] || LOCALIZED_WEAPON_MATERIALS["uk"];
+    const weaponType = profile.weaponType || CHARACTER_WEAPON_TYPES[char.id] || "synthesis";
+    const weaponMatsGroup = LOCALIZED_WEAPON_MATERIALS[weaponType] || LOCALIZED_WEAPON_MATERIALS["synthesis"];
+    const weaponMats = weaponMatsGroup[state.currentLang] || weaponMatsGroup["uk"];
 
     // Combine common materials
     const finalCommonT1 = totalCharCommonT1 + totalSkillCommonT1 + totalWeapCommonT1;
@@ -888,8 +937,10 @@ function exportCalcReport() {
     // Sort materials by calculatedRequirements
     const baseAttrDetails = (LOCALIZED_ATTRIBUTE_MATERIALS[char.attribute] && LOCALIZED_ATTRIBUTE_MATERIALS[char.attribute][state.currentLang]) || LOCALIZED_ATTRIBUTE_MATERIALS["Anima"][state.currentLang];
     const attrDetails = JSON.parse(JSON.stringify(baseAttrDetails));
-    const weaponMats = LOCALIZED_WEAPON_MATERIALS[state.currentLang] || LOCALIZED_WEAPON_MATERIALS["uk"];
     const profile = CHARACTER_MATERIAL_PROFILES[char.id] || {};
+    const weaponType = profile.weaponType || CHARACTER_WEAPON_TYPES[char.id] || "synthesis";
+    const weaponMatsGroup = LOCALIZED_WEAPON_MATERIALS[weaponType] || LOCALIZED_WEAPON_MATERIALS["synthesis"];
+    const weaponMats = weaponMatsGroup[state.currentLang] || weaponMatsGroup["uk"];
     if (profile.unique) {
         attrDetails.boss = profile.unique;
         attrDetails.specialty = profile.unique;
