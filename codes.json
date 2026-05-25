@@ -2,76 +2,91 @@
     {
         "code": "DREAMWALK0603",
         "rewards": "100 Annulith, 5 Rising Hunter Guides, 5 Light Dyes, 4,000 Beetle Coins",
-        "active": true
+        "active": true,
+        "addedAt": "2026-05-25T12:00:00Z"
     },
     {
         "code": "TOMATO100",
         "rewards": "100 Annulith, 5 Senior Hunter Guides, 5 Colorless Dyes, 6,000 Beetle Coins",
-        "active": true
+        "active": true,
+        "addedAt": "2026-05-25T11:00:00Z"
     },
     {
         "code": "RACENOLIMIT",
         "rewards": "100 Annulith, 2 Elite Hunter Guides, 2 Chaotic Dyes, 12,000 Beetle Coins",
-        "active": true
+        "active": true,
+        "addedAt": "2026-05-25T10:00:00Z"
     },
     {
         "code": "NTE429vtuber",
         "rewards": "30,000 Beetle Coins, 30,000 Fons",
-        "active": true
+        "active": true,
+        "addedAt": "2026-05-23T09:00:00Z"
     },
     {
         "code": "NTEWINFONS",
         "rewards": "10,000 Fons",
-        "active": true
+        "active": true,
+        "addedAt": "2026-05-23T08:00:00Z"
     },
     {
         "code": "NTEFUNGAME",
         "rewards": "10,000 Fons",
-        "active": true
+        "active": true,
+        "addedAt": "2026-05-23T07:00:00Z"
     },
     {
         "code": "NTENENE",
         "rewards": "10,000 Clicky Fries, 10 DynamiK",
-        "active": true
+        "active": true,
+        "addedAt": "2026-05-23T06:00:00Z"
     },
     {
         "code": "NTEFREE",
         "rewards": "30,000 Fons",
-        "active": true
+        "active": true,
+        "addedAt": "2026-05-23T05:00:00Z"
     },
     {
         "code": "NTEvtuber200",
         "rewards": "10,000 Beetle Coins, 10,000 Fons",
-        "active": true
+        "active": true,
+        "addedAt": "2026-05-23T04:00:00Z"
     },
     {
         "code": "NTEGIFT",
         "rewards": "50 Annulith, 5 Rising Hunter Guides, 5 Light Dye",
-        "active": true
+        "active": true,
+        "addedAt": "2026-05-23T03:00:00Z"
     },
     {
         "code": "504980102FKGOVNS",
         "rewards": "30 Annulith, 1 Gubichi Flavor Chips, 20,000 Beetle Coins",
-        "active": false
+        "active": false,
+        "addedAt": "2026-05-23T02:00:00Z"
     },
     {
         "code": "NTE0429",
         "rewards": "12k beetle coins, 100 annulith, five elite hunter guides, and two chaotic dye",
-        "active": false
+        "active": false,
+        "addedAt": "2026-04-29T12:00:00Z"
     },
     {
         "code": "NTENANALLYGO",
         "rewards": "6k beetle coins, 100 annulith, five senior hunter guides, and five colorless dye",
-        "active": false
+        "active": false,
+        "addedAt": "2026-04-29T11:00:00Z"
     },
     {
         "code": "NTENOWTOENJOY",
         "rewards": "6k beetle coins, 100 annulith, five rising hunter guides, and five light dye",
-        "active": false
+        "active": false,
+        "addedAt": "2026-04-29T10:00:00Z"
     },
     {
         "code": "NTEHAVEFUN",
         "rewards": "three rising hunter guide, three light dyes, and three manhole thugs",
-        "active": false
+        "active": false,
+        "addedAt": "2026-04-29T09:00:00Z"
     }
 ]

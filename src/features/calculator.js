@@ -265,7 +265,7 @@ function renderCalculatorSetup() {
     }
 
     // Populate skills select options (1-10) with localized prefix
-    const skillPrefix = state.currentLang === 'uk' ? 'Рівень' : (state.currentLang === 'fr' ? 'Niv.' : 'Lvl');
+    const skillPrefix = state.currentLang === 'uk' ? 'Рів.' : (state.currentLang === 'fr' ? 'Niv.' : 'Lvl');
     for (let i = 0; i < 4; i++) {
         const startSelect = document.getElementById(`skillStart_${i}`);
         const endSelect = document.getElementById(`skillEnd_${i}`);
@@ -704,8 +704,10 @@ function calculateResources() {
             dye_med_name: "Colorless Dye (+2,500 Arc EXP)",
             dye_basic_name: "Light Dye (+500 Arc EXP)",
             dye_farm: "Houdinii's Magic Stage / Hunter Exchange / World Exploration",
-            crown_name: "Щотижневий матеріал навички",
+            crown_name: "Корона Аномалії",
             crown_farm: "Anomaly Pilgrimage",
+            weekly_name: "Матеріал тижневого боса",
+            weekly_farm: "Anomaly Pilgrimage",
             source_verified: "Точний total-cost підтверджено для цього пресету.",
             source_estimate: "Частина чисел є планувальною оцінкою; назви ресурсів і джерела взято з відкритих баз.",
             need_label: "Потрібно:",
@@ -728,8 +730,10 @@ function calculateResources() {
             dye_med_name: "Colorless Dye (+2,500 Arc EXP)",
             dye_basic_name: "Light Dye (+500 Arc EXP)",
             dye_farm: "Houdinii's Magic Stage / Hunter Exchange / World Exploration",
-            crown_name: "Weekly Skill Material",
+            crown_name: "Anomaly Crown",
             crown_farm: "Anomaly Pilgrimage",
+            weekly_name: "Weekly Boss Material",
+            weekly_farm: "Anomaly Pilgrimage",
             source_verified: "Exact total cost is verified for this preset.",
             source_estimate: "Some quantities are planning estimates; resource names and sources use public databases.",
             need_label: "Need:",
@@ -752,8 +756,10 @@ function calculateResources() {
             dye_med_name: "Colorless Dye (+2,500 Arc EXP)",
             dye_basic_name: "Light Dye (+500 Arc EXP)",
             dye_farm: "Houdinii's Magic Stage / Hunter Exchange / World Exploration",
-            crown_name: "Matériau de compétence hebdomadaire",
+            crown_name: "Couronne d'anomalie",
             crown_farm: "Anomaly Pilgrimage",
+            weekly_name: "Matériau de boss hebdomadaire",
+            weekly_farm: "Anomaly Pilgrimage",
             source_verified: "Le coût total exact est vérifié pour ce préréglage.",
             source_estimate: "Certaines quantités sont des estimations de planification ; les noms des ressources et les sources proviennent de bases de données publiques.",
             need_label: "Requis :",
@@ -845,7 +851,7 @@ function calculateResources() {
         addMaterialCard("scroll_t1", attrDetails.scrolls.T1, calculatedRequirements.scroll_t1, attrDetails.scrolls.farm);
         addMaterialCard("scroll_t2", attrDetails.scrolls.T2, calculatedRequirements.scroll_t2, attrDetails.scrolls.farm);
         addMaterialCard("scroll_t3", attrDetails.scrolls.T3, calculatedRequirements.scroll_t3, attrDetails.scrolls.farm);
-        addMaterialCard("weekly", profile.weekly || cLoc.crown_name, calculatedRequirements.weekly || 0, profile.weeklyFarm || cLoc.crown_farm);
+        addMaterialCard("weekly", profile.weekly || cLoc.weekly_name, calculatedRequirements.weekly || 0, profile.weeklyFarm || cLoc.weekly_farm);
         addMaterialCard("crown", cLoc.crown_name, calculatedRequirements.crown || 0, cLoc.crown_farm);
     }
 
@@ -989,10 +995,10 @@ function exportCalcReport() {
         else if (id === 'ore_t2') matName = weaponMats.T2;
         else if (id === 'ore_t3') matName = weaponMats.T3;
         else if (id === 'crown') {
-            matName = state.currentLang === 'uk' ? "Щотижневий матеріал навички" : (state.currentLang === 'fr' ? "Matériau de compétence hebdomadaire" : "Weekly Skill Material");
+            matName = state.currentLang === 'uk' ? "Корона Аномалії" : (state.currentLang === 'fr' ? "Couronne d'anomalie" : "Anomaly Crown");
         }
         else if (id === 'weekly') {
-            matName = profile.weekly || (state.currentLang === 'uk' ? "Щотижневий матеріал навички" : (state.currentLang === 'fr' ? "Matériau de compétence hebdomadaire" : "Weekly Skill Material"));
+            matName = profile.weekly || (state.currentLang === 'uk' ? "Матеріал тижневого боса" : (state.currentLang === 'fr' ? "Matériau de boss hebdomadaire" : "Weekly Boss Material"));
         }
         else {
             if (id === 'scroll_t1') matName = attrDetails.scrolls.T1;

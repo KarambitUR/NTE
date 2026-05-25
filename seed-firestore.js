@@ -78,24 +78,27 @@
 
     // ===== PROMO CODES =====
     const promoCodes = [
-        { code: "NTE429vtuber", rewards: "30,000 Beetle Coins, 30,000 Fons", active: true },
-        { code: "NTEWINFONS", rewards: "10,000 Fons", active: true },
-        { code: "NTEFUNGAME", rewards: "10,000 Fons", active: true },
-        { code: "NTENENE", rewards: "10,000 Clicky Fries, 10 DynamiK", active: true },
-        { code: "NTEFREE", rewards: "30,000 Fons", active: true },
-        { code: "NTEvtuber200", rewards: "10,000 Beetle Coins, 10,000 Fons", active: true },
-        { code: "NTEGIFT", rewards: "50 Annulith, 5 Rising Hunter Guides, 5 Light Dye", active: true },
-        { code: "504980102FKGOVNS", rewards: "30 Annulith, 1 Gubichi Flavor Chips, 20,000 Beetle Coins", active: true },
-        { code: "NTE0429", rewards: "Active Promo Code (Ресурси)", active: true },
-        { code: "NTENANALLYGO", rewards: "Active Promo Code (Ресурси)", active: true },
-        { code: "NTENOWTOENJOY", rewards: "Active Promo Code (Ресурси)", active: true },
-        { code: "NTEHAVEFUN", rewards: "Active Promo Code (Ресурси)", active: true }
+        { code: "DREAMWALK0603", rewards: "100 Annulith, 5 Rising Hunter Guides, 5 Light Dyes, 4,000 Beetle Coins", active: true, addedAt: "2026-05-25T12:00:00Z" },
+        { code: "TOMATO100", rewards: "100 Annulith, 5 Senior Hunter Guides, 5 Colorless Dyes, 6,000 Beetle Coins", active: true, addedAt: "2026-05-25T11:00:00Z" },
+        { code: "RACENOLIMIT", rewards: "100 Annulith, 2 Elite Hunter Guides, 2 Chaotic Dyes, 12,000 Beetle Coins", active: true, addedAt: "2026-05-25T10:00:00Z" },
+        { code: "NTE429vtuber", rewards: "30,000 Beetle Coins, 30,000 Fons", active: true, addedAt: "2026-05-23T09:00:00Z" },
+        { code: "NTEWINFONS", rewards: "10,000 Fons", active: true, addedAt: "2026-05-23T08:00:00Z" },
+        { code: "NTEFUNGAME", rewards: "10,000 Fons", active: true, addedAt: "2026-05-23T07:00:00Z" },
+        { code: "NTENENE", rewards: "10,000 Clicky Fries, 10 DynamiK", active: true, addedAt: "2026-05-23T06:00:00Z" },
+        { code: "NTEFREE", rewards: "30,000 Fons", active: true, addedAt: "2026-05-23T05:00:00Z" },
+        { code: "NTEvtuber200", rewards: "10,000 Beetle Coins, 10,000 Fons", active: true, addedAt: "2026-05-23T04:00:00Z" },
+        { code: "NTEGIFT", rewards: "50 Annulith, 5 Rising Hunter Guides, 5 Light Dye", active: true, addedAt: "2026-05-23T03:00:00Z" },
+        { code: "504980102FKGOVNS", rewards: "30 Annulith, 1 Gubichi Flavor Chips, 20,000 Beetle Coins", active: false, addedAt: "2026-05-23T02:00:00Z" },
+        { code: "NTE0429", rewards: "12k beetle coins, 100 annulith, five elite hunter guides, and two chaotic dye", active: false, addedAt: "2026-04-29T12:00:00Z" },
+        { code: "NTENANALLYGO", rewards: "6k beetle coins, 100 annulith, five senior hunter guides, and five colorless dye", active: false, addedAt: "2026-04-29T11:00:00Z" },
+        { code: "NTENOWTOENJOY", rewards: "6k beetle coins, 100 annulith, five rising hunter guides, and five light dye", active: false, addedAt: "2026-04-29T10:00:00Z" },
+        { code: "NTEHAVEFUN", rewards: "three rising hunter guide, three light dyes, and three manhole thugs", active: false, addedAt: "2026-04-29T09:00:00Z" }
     ];
 
     // ===== TIMELINE EVENTS =====
     const timelineEvents = [
         { order: 0, date: "29 Квітня 2026", title: "Глобальний Реліз Neverness to Everness (1.0)", desc: "Офіційний запуск гри на PC, iOS та Android. Доступні початкові розділи сюжету в місті Гетеро, перші баннери Наналлі та Сакірі, а також стартові події.", status: "Released", badgeClass: "badge-anima" },
-        { order: 1, date: "23 Травня 2026 (Сьогодні)", title: "Стрім Розробників: Презентація Версії 1.1", desc: "Спеціальна трансляція від Hotta Studio. Анонс нових персонажів Lacrimosa (Хаос ДПС) та Chaos, нових локацій міста, ігрових режимів та промокодів.", status: "Active", badgeClass: "badge-incant" },
+        { order: 1, date: "23 Травня 2026", title: "Стрім Розробників: Презентація Версії 1.1", desc: "Спеціальна трансляція від Hotta Studio. Анонс нових персонажів Lacrimosa (Хаос ДПС) та Chaos, нових локацій міста, ігрові режими та промокоди.", status: "Released", badgeClass: "badge-incant" },
         { order: 2, date: "3-4 Червня 2026", title: "Оновлення 1.1: 'Lacrimosa of Chaos'", desc: "Вихід першого великого патчу. Старт першої фази банера з Лакрімозою. Новий сюжетний епізод 'Театр Тіней'. Початок літнього івенту.", status: "Upcoming", badgeClass: "badge-chaos" },
         { order: 3, date: "Липень 2026 (Прогноз)", title: "Оновлення 1.2 та нові герої Shinku й Iroi", desc: "Очікуване оновлення на основі витоків інформації. Додавання нових аномальних зон на півночі Гетеро та вихід нових персонажів S-рангу.", status: "Upcoming", badgeClass: "badge-phase" }
     ];
@@ -1053,7 +1056,10 @@
     // Promo codes
     for (const code of promoCodes) {
         const ref = db.collection('promoCodes').doc(code.code);
-        batch.set(ref, { ...code, addedAt: firebase.firestore.FieldValue.serverTimestamp() });
+        batch.set(ref, { 
+            ...code, 
+            addedAt: code.addedAt ? new Date(code.addedAt) : firebase.firestore.FieldValue.serverTimestamp() 
+        });
     }
 
     // Timeline events
