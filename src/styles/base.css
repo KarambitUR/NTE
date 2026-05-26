@@ -47,6 +47,21 @@ body {
     position: relative;
 }
 
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(7, 6, 12, 0.88), rgba(7, 6, 12, 0.88)), url('../assets/cyberpunk_bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -2;
+    pointer-events: none;
+}
+
 /* Background Gradients */
 .glow-bg-1 {
     position: absolute;
