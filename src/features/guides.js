@@ -259,7 +259,11 @@ function renderGuidesGrid() {
                 ? `<img src="${item.avatarUrl}" alt="${title}">` 
                 : `<span class="guide-avatar-emoji">${item.avatarUrl}</span>`;
         } else {
-            avatarHtml = `<span class="guide-avatar-emoji">${item.avatar || "📖"}</span>`;
+            const avatar = item.avatar || "📖";
+            const isImgPath = avatar.includes("/") || avatar.includes(".");
+            avatarHtml = isImgPath 
+                ? `<img src="${avatar}" alt="${title}">` 
+                : `<span class="guide-avatar-emoji">${avatar}</span>`;
         }
 
         card.innerHTML = `

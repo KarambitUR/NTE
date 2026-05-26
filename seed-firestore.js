@@ -494,7 +494,7 @@
                         "Blossom",
                         "S-Tier"
                 ],
-                "avatar": "👥",
+                "avatar": "src/assets/team_comps_icon.png",
                 "content": {
                         "sections": [
                                 {
@@ -576,7 +576,7 @@
                         "Chaos",
                         "A-Tier"
                 ],
-                "avatar": "👥",
+                "avatar": "src/assets/team_comps_icon.png",
                 "content": {
                         "sections": [
                                 {
@@ -658,7 +658,7 @@
                         "Starter",
                         "Beginner"
                 ],
-                "avatar": "👥",
+                "avatar": "src/assets/team_comps_icon.png",
                 "content": {
                         "sections": [
                                 {
@@ -739,7 +739,7 @@
                         "Remora",
                         "Critical"
                 ],
-                "avatar": "👥",
+                "avatar": "src/assets/team_comps_icon.png",
                 "content": {
                         "sections": [
                                 {
@@ -821,7 +821,7 @@
                         "Incantation",
                         "Discord"
                 ],
-                "avatar": "👥",
+                "avatar": "src/assets/team_comps_icon.png",
                 "content": {
                         "sections": [
                                 {
@@ -903,7 +903,7 @@
                         "Cosmos",
                         "Cycle"
                 ],
-                "avatar": "👥",
+                "avatar": "src/assets/team_comps_icon.png",
                 "content": {
                         "sections": [
                                 {
@@ -985,7 +985,7 @@
                         "Psyche",
                         "Nova"
                 ],
-                "avatar": "👥",
+                "avatar": "src/assets/team_comps_icon.png",
                 "content": {
                         "sections": [
                                 {
@@ -1042,7 +1042,101 @@
                         "Le soutien de Fadia empêche les attaques ennemies d'interrompre les combos de chant d'Aurelia.",
                         "Nanally can act as a secondary damage dealer when Aurelia's Cadenza is on cooldown."
                 ]
-        }
+        },
+        {
+                "id": "guide-pink-paws-heist",
+                "title": "Пограбування Банку Рожевих Лапок (Pink Paws Heist)",
+                "titleEn": "Pink Paws Heist: Complete Bank Robbery Guide",
+                "titleFr": "Braquage des Pattes Roses : Guide Complet du Heist",
+                "description": "Як успішно пограбувати Банк Рожевих Лапок у Neverness to Everness. Вимоги, механіка сейфів, пріоритетні кімнати та фарм валюти Fons.",
+                "descriptionEn": "How to successfully complete the Pink Paws Bank Heist in Neverness to Everness. Requirements, vault card mechanics, priority loot rooms, and Fons farming.",
+                "descriptionFr": "Comment réussir le braquage de la Banque des Pattes Roses dans Neverness to Everness. Conditions, cartes d'accès, salles prioritaires et farm de Fons.",
+                "category": "farming",
+                "isFeatured": false,
+                "difficulty": "Medium",
+                "difficultyEn": "Medium",
+                "difficultyFr": "Moyen",
+                "updateDate": "2026-05-26",
+                "tags": [
+                    "Farming",
+                    "Mini-game",
+                    "Fons",
+                    "Heist"
+                ],
+                "tagsEn": [
+                    "Farming",
+                    "Mini-game",
+                    "Fons",
+                    "Heist"
+                ],
+                "tagsFr": [
+                    "Farming",
+                    "Mini-jeu",
+                    "Fons",
+                    "Braquage"
+                ],
+                "avatar": "src/assets/heist_icon.png",
+                "content": {
+                    "sections": [
+                        {
+                            "title": "1. Як розблокувати та почати (Unlock Requirements)",
+                            "titleEn": "1. How to Unlock & Initiate",
+                            "titleFr": "1. Conditions d'accès",
+                            "text": "Пограбування банку розблоковується після досягнення 10-го рангу City Tycoon та 3-го рівня колекції будинку. Знайдіть NPC Чіз (Chiz) у штаб-квартирі банку Рожевих Лапок у районі New Herland. Вона дозволить вам запустити симуляцію пограбування без витрат енергії міста.",
+                            "textEn": "The heist unlocks after reaching City Tycoon Rank 10 and House Collection level 3. Speak to Chiz at the Pink Paws Bank HQ in New Herland to initiate the simulated heist without consuming City Stamina.",
+                            "textFr": "Le braquage se débloque au rang 10 de City Tycoon et au niveau 3 de la collection de maison. Parlez à Chiz au QG de la Banque des Pattes Roses à New Herland pour lancer la simulation sans dépenser d'énergie."
+                        },
+                        {
+                            "title": "2. Час та виживання (Time Limit & Extraction)",
+                            "titleEn": "2. Time Limit & Extraction",
+                            "titleFr": "2. Temps et Extraction",
+                            "text": "У вас є рівно 12 хвилин, щоб зібрати якомога більше здобичі. Головне правило: ви повинні евакуюватися через телефонну будку Rerorero до завершення таймера. Якщо ви не встигнете або загинете, весь зібраний лут за цей раунд буде втрачено.",
+                            "textEn": "You have exactly 12 minutes to collect as much loot as possible. The golden rule: you must extract via a Rerorero telephone booth before the timer hits zero. Failing to do so or dying results in losing all collected loot.",
+                            "textFr": "Vous avez 12 minutes pour ramasser le plus de butin possible. La règle d'or : évacuez via une cabine téléphonique Rerorero avant la fin du temps, sinon tout le butin est perdu."
+                        },
+                        {
+                            "title": "3. Пріоритетні кімнати та ключі (Priority Rooms & Keycards)",
+                            "titleEn": "3. Priority Rooms & Keycards",
+                            "titleFr": "3. Salles prioritaires et Clés",
+                            "text": "Не витрачайте час на зачистку звичайних мобів. Шукайте 'золотих' супротивників та офіцерів охорони, з яких випадають ключ-карти від сховища (Vault Keycards). Використовуйте ці карти для відкриття зачинених кімнат із преміальними сейфами для отримання максимального прибутку.",
+                            "textEn": "Do not waste time clearing normal enemies. Target 'golden' defenders and guard officers who drop Vault Keycards. Use these cards to unlock high-security vault rooms containing premium chests for maximum earnings.",
+                            "textFr": "Ne perdez pas de temps avec les ennemis normaux. Ciblez les gardes 'dorés' pour obtenir des cartes d'accès au coffre-fort et ouvrir les zones hautement sécurisées."
+                        },
+                        {
+                            "title": "4. Нагороди та монети Paw-Paw (Rewards & Paw-Paw Coins)",
+                            "titleEn": "4. Rewards & Paw-Paw Coins",
+                            "titleFr": "4. Récompenses et Pièces Paw-Paw",
+                            "text": "Успішний запуск приносить велику кількість Fons (монет для бізнесу, ліміт становить 1 млн кожні 2 тижні). Крім того, ви отримаєте монети Paw-Paw, які можна обміняти на косметичні предмети у Chiz, включаючи легендарний інвалідний візок, скіни на планери та унікальні костюми персонажів.",
+                            "textEn": "A successful run yields high amounts of Fons (business currency, capped at 1 million every two weeks). You also earn Paw-Paw Coins, which can be traded with Chiz for cosmetic items, including the legendary wheelchair mount, glider skins, and character outfits.",
+                            "textFr": "Un braquage réussi rapporte beaucoup de Fons (max 1M toutes les 2 semaines) et des Pièces Paw-Paw pour acheter des skins et montures exclusives chez Chiz."
+                        }
+                    ]
+                },
+                "references": [
+                    "https://nevernesstoeverness.fandom.com"
+                ],
+                "recommendedTeams": [
+                    "chiz",
+                    "sakiri",
+                    "zero",
+                    "adler"
+                ],
+                "progressionTips": [
+                    "Використовуйте персонажів із високою мобільністю для швидкого переміщення між кімнатами.",
+                    "Завжди тримайте в голові розташування найближчої точки евакуації.",
+                    "Ігноруйте дрібних ворогів і фокусуйтеся лише на елітних цілях з картами."
+                ],
+                "progressionTipsEn": [
+                    "Use high-mobility characters to traverse rooms quickly.",
+                    "Always keep track of the closest extraction booth location.",
+                    "Ignore trash mobs and focus solely on elite keycard holders."
+                ],
+                "progressionTipsFr": [
+                    "Utilisez des personnages mobiles pour traverser les salles rapidement.",
+                    "Gardez toujours en tête l'emplacement de la cabine d'évacuation la plus proche.",
+                    "Ignorez les ennemis mineurs et concentrez-vous sur les élites détenant des clés."
+                ]
+            }
 ];
 
     const batch = db.batch();
