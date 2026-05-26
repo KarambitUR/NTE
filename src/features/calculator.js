@@ -51,12 +51,12 @@ const CHARACTER_WEAPON_TYPES = {
     adler: "synthesis",
     haniel: "solid",
     skia: "gas",
-    lacrimosa: "gas",
+    lacrimosa: "liquid",
     baicang: "synthesis",
     chiz: "gas",
     fadia: "synthesis",
     hathor: "plasma",
-    aurelia: "solid",
+    aurelia: "plasma",
     edgar: "liquid"
 };
 
