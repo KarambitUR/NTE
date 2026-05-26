@@ -839,7 +839,6 @@ function calculateResources() {
                 <span class="mat-need">
                     ${cLoc.remaining_label} <span class="mat-val">${remaining.toLocaleString()}</span> / ${needed.toLocaleString()}
                 </span>
-                <span class="mat-completed-badge">${cLoc.done_badge}</span>
                 <div class="mat-have-input-wrapper">
                     <span class="mat-have-label">${cLoc.have_label}</span>
                     <input type="number" class="mat-have-input" data-mat-id="${id}" min="0" value="${have}">
