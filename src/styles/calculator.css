@@ -452,8 +452,9 @@
 
 .mat-card-mid {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
     font-size: 0.8rem;
     border-top: 1px solid rgba(255, 255, 255, 0.04);
     padding-top: 0.4rem;
@@ -485,7 +486,9 @@
 .mat-have-input-wrapper {
     display: flex;
     align-items: center;
-    gap: 0.2rem;
+    justify-content: space-between;
+    width: 100%;
+    gap: 0.5rem;
 }
 
 .mat-have-label {
@@ -494,7 +497,9 @@
 }
 
 .mat-have-input {
-    width: 75px;
+    width: 90px;
+    min-width: 90px;
+    flex-shrink: 0;
     height: 22px;
     background: rgba(0, 0, 0, 0.4);
     border: 1px solid var(--border-glass);
