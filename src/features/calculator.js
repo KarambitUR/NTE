@@ -444,6 +444,43 @@ function saveInventory() {
     localStorage.setItem('nte_calc_inventory', JSON.stringify(calcInventory));
 }
 
+// Interpolate colors dynamically based on collection progress
+function updateCardProgressStyle(card, pct, isCompleted) {
+    const labelTextEl = card.querySelector(".mat-need");
+    if (isCompleted) {
+        card.classList.add("mat-completed");
+        card.style.borderColor = "";
+        card.style.backgroundColor = "";
+        if (labelTextEl) {
+            labelTextEl.style.color = "";
+        }
+    } else {
+        card.classList.remove("mat-completed");
+        
+        // 1. Interpolate border color: default rgba(255,255,255,0.06) -> completed rgba(57,255,20,0.25)
+        const borderR = Math.round(255 - (255 - 57) * pct);
+        const borderG = Math.round(255 - (255 - 255) * pct);
+        const borderB = Math.round(255 - (255 - 20) * pct);
+        const borderA = 0.06 + (0.25 - 0.06) * pct;
+        card.style.borderColor = `rgba(${borderR}, ${borderG}, ${borderB}, ${borderA})`;
+        
+        // 2. Interpolate background: default rgba(255,255,255,0.02) -> completed rgba(57,255,20,0.04)
+        const bgR = Math.round(255 - (255 - 57) * pct);
+        const bgG = Math.round(255 - (255 - 255) * pct);
+        const bgB = Math.round(255 - (255 - 20) * pct);
+        const bgA = 0.02 + (0.04 - 0.02) * pct;
+        card.style.backgroundColor = `rgba(${bgR}, ${bgG}, ${bgB}, ${bgA})`;
+        
+        // 3. Interpolate text color: default cyan (#00f2fe -> rgb(0,242,254)) -> completed green (#39ff14 -> rgb(57,255,20))
+        if (labelTextEl) {
+            const textR = Math.round(0 + (57 - 0) * pct);
+            const textG = Math.round(242 + (255 - 242) * pct);
+            const textB = Math.round(254 - (254 - 20) * pct);
+            labelTextEl.style.color = `rgb(${textR}, ${textG}, ${textB})`;
+        }
+    }
+}
+
 // Update deficit display in real-time without rebuild to keep input focus
 function updateSingleMaterialCard(matId, haveAmount) {
     const card = document.getElementById(`mat-card-${matId}`);
@@ -455,13 +492,17 @@ function updateSingleMaterialCard(matId, haveAmount) {
     const labelTextEl = card.querySelector(".mat-need");
     const remainingText = state.currentLang === 'uk' ? 'Залишилось' : (state.currentLang === 'fr' ? 'Restant' : 'Remaining');
 
-    if (remaining === 0) {
-        card.classList.add("mat-completed");
-    } else {
-        card.classList.remove("mat-completed");
-    }
+    const pct = needed > 0 ? Math.min(1, haveAmount / needed) : 0;
+
     if (labelTextEl) {
         labelTextEl.innerHTML = `${remainingText}: <span class="mat-val">${remaining.toLocaleString()}</span> / ${needed.toLocaleString()}`;
+    }
+
+    updateCardProgressStyle(card, pct, remaining === 0);
+
+    const progressFill = card.querySelector(".mat-progress-fill");
+    if (progressFill) {
+        progressFill.style.width = `${pct * 100}%`;
     }
 }
 
@@ -822,6 +863,7 @@ function calculateResources() {
         const have = calcInventory[id] || 0;
         const remaining = Math.max(0, needed - have);
         const isCompleted = remaining === 0;
+        const pct = needed > 0 ? Math.min(1, have / needed) : 0;
 
         const card = document.createElement("div");
         card.className = `material-card ${isCompleted ? 'mat-completed' : ''}`;
@@ -844,7 +886,12 @@ function calculateResources() {
                     <input type="number" class="mat-have-input" data-mat-id="${id}" min="0" value="${have}">
                 </div>
             </div>
+            <div class="mat-progress-bar">
+                <div class="mat-progress-fill" style="width: ${pct * 100}%"></div>
+            </div>
         `;
+
+        updateCardProgressStyle(card, pct, isCompleted);
         resultsGrid.appendChild(card);
     }
 

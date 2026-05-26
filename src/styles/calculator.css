@@ -463,6 +463,7 @@
 .mat-need {
     font-weight: 700;
     color: var(--color-cyan);
+    transition: color var(--transition-speed) ease;
 }
 
 .material-card.mat-completed .mat-need {
@@ -527,5 +528,23 @@
 .material-card.mat-completed .mat-have-input {
     border-color: rgba(57, 255, 20, 0.2);
     opacity: 0.8;
+}
+
+.mat-progress-bar {
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 0.6rem;
+    flex-shrink: 0;
+}
+
+.mat-progress-fill {
+    height: 100%;
+    background: var(--color-green);
+    box-shadow: 0 0 8px rgba(57, 255, 20, 0.4);
+    width: 0%;
+    transition: width 0.3s ease;
 }
 
