@@ -642,7 +642,7 @@ function calculateResources() {
     }
     const weaponType = profile.weaponType || CHARACTER_WEAPON_TYPES[char.id] || "synthesis";
     const weaponMatsGroup = LOCALIZED_WEAPON_MATERIALS[weaponType] || LOCALIZED_WEAPON_MATERIALS["synthesis"];
-    const weaponMats = weaponMatsGroup[state.currentLang] || weaponMatsGroup["uk"];
+    const weaponMats = weaponMatsGroup[state.currentLang] || weaponMatsGroup["en"];
 
     // Combine common materials
     const finalCommonT1 = totalCharCommonT1 + totalSkillCommonT1 + totalWeapCommonT1;
@@ -795,7 +795,7 @@ function calculateResources() {
             done_badge: "✓ Terminé"
         }
     };
-    const cLoc = calcLoc[state.currentLang] || calcLoc['uk'];
+    const cLoc = calcLoc[state.currentLang] || calcLoc['en'];
 
     // Render HTML Categories
     const resultsGrid = document.getElementById("calcMaterialsList");
@@ -986,7 +986,7 @@ function exportCalcReport() {
     const profile = CHARACTER_MATERIAL_PROFILES[char.id] || {};
     const weaponType = profile.weaponType || CHARACTER_WEAPON_TYPES[char.id] || "synthesis";
     const weaponMatsGroup = LOCALIZED_WEAPON_MATERIALS[weaponType] || LOCALIZED_WEAPON_MATERIALS["synthesis"];
-    const weaponMats = weaponMatsGroup[state.currentLang] || weaponMatsGroup["uk"];
+    const weaponMats = weaponMatsGroup[state.currentLang] || weaponMatsGroup["en"];
     if (profile.unique) {
         const uniqueData = LOCALIZED_UNIQUE_MATERIALS[profile.unique];
         if (uniqueData && uniqueData[state.currentLang]) {

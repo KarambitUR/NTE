@@ -5,7 +5,7 @@ export const state = {
     TIMELINE_EVENTS: [],
     GUIDES: [],
     dataSource: 'loading',
-    currentLang: localStorage.getItem('nte_lang') || 'uk',
+    currentLang: localStorage.getItem('nte_lang') || 'en',
     currentSquad: [null, null, null, null],
     activeSelectorSlot: null,
     activeGuideFilter: 'all',

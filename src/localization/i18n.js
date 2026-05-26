@@ -5,7 +5,7 @@ function translatePage(lang) {
     state.currentLang = lang;
     document.documentElement.lang = lang;
     
-    const dict = i18n[lang] || i18n['uk'];
+    const dict = i18n[lang] || i18n['en'];
     
     // Find all data-i18n tags and translate
     const elements = document.querySelectorAll("[data-i18n]");
@@ -54,7 +54,7 @@ function translatePage(lang) {
 function getLocalizedChar(char) {
     if (!char) return null;
     const trans = CHARACTER_TRANSLATIONS[char.id];
-    const lang = state.currentLang || 'uk';
+    const lang = state.currentLang || 'en';
     
     const locChar = { ...char };
     
