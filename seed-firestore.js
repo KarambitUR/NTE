@@ -126,7 +126,7 @@
                         "F2P",
                         "Progression"
                 ],
-                "avatar": "🚀",
+                "avatar": "src/assets/beginner_progression_icon.png",
                 "content": {
                         "sections": [
                                 {
@@ -218,7 +218,7 @@
                         "Resources",
                         "Dungeons"
                 ],
-                "avatar": "🔍",
+                "avatar": "src/assets/farming_routes_icon.png",
                 "content": {
                         "sections": [
                                 {
@@ -299,7 +299,7 @@
                         "Combat",
                         "Meta"
                 ],
-                "avatar": "⚔️",
+                "avatar": "src/assets/reactions_icon.png",
                 "content": {
                         "sections": [
                                 {
@@ -419,7 +419,7 @@
                         "Tier List",
                         "Analysis"
                 ],
-                "avatar": "📊",
+                "avatar": "src/assets/meta_analysis_icon.png",
                 "content": {
                         "sections": [
                                 {
