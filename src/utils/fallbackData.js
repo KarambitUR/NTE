@@ -279,7 +279,7 @@ export const FALLBACK_CHARACTERS = [
         attribute: "Lakshana",
         role: "Main DPS",
         tier: "S",
-        avatar: "https://static.wikia.nocookie.net/neverness-to-everness/images/d/df/Chaos_Card.png",
+        avatar: "https://static.wikia.nocookie.net/neverness-to-everness/images/9/99/Chaos_introduction.png/revision/latest/scale-to-width-down/200?cb=20260223163402",
         summary: "Потужний Main DPS стихії Lakshana. Використовує зброю, що трансформується у косу, великий меч та вогнепальну зброю. Здатний накопичувати стаки 'Crime' для потужних атак та телепортуватися.",
         weapon: "Pursuit Special (Сигнатурний Arc)",
         weaponF2p: "Raging Flames (Лють полум'я)",
