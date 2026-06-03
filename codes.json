@@ -88,5 +88,10 @@
         "rewards": "three rising hunter guide, three light dyes, and three manhole thugs",
         "active": false,
         "addedAt": "2026-04-29T09:00:00Z"
+    },
+    {
+        "code": "LACRIMOSA0603",
+        "rewards": "30 Annulith, 20,000 Fons",
+        "active": true
     }
 ]
