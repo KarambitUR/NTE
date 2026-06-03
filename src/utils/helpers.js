@@ -2,8 +2,8 @@ import { state } from '../scripts/state.js';
 
 // startBannerCountdown and updateTimer
 function startBannerCountdown() {
-    // Hotori's Misty Tipsy Style banner ends on June 3, 2026 at 05:59 UTC+8.
-    const bannerEndDate = new Date("2026-06-02T21:59:00Z").getTime();
+    // Lacrimosa's banner ends on June 24, 2026 at 05:59 UTC+8.
+    const bannerEndDate = new Date("2026-06-23T21:59:00Z").getTime();
     
     function updateTimer() {
         const now = new Date().getTime();

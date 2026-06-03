@@ -620,6 +620,38 @@ export const CHARACTER_TRANSLATIONS = {
             teamSynergy: "Zero (Cosmos), Sakiri (Incantation), Nanally (Anima)",
             lore: "Lieutenant de l'unité ETD-4 du Bureau de Contrôle des Anomalies. Un officier-loup silencieux avec une grande cicatrice à l'œil gauche qui sert fidèlement."
         }
+    },
+    chaos: {
+        uk: {
+            name: "Хаос",
+            summary: "Потужний Main DPS стихії Lakshana. Використовує зброю, що трансформується у косу, великий меч та вогнепальну зброю. Здатний накопичувати стаки 'Crime' для потужних атак та телепортуватися.",
+            weapon: "Pursuit Special (Сигнатурний Arc)",
+            weaponF2p: "Лють полум'я",
+            cartridge: "Вуличний боксер (4 частини)",
+            stats: ["Шанс криту", "Крит. шкода", "Лакшана шкода", "Сила атаки %"],
+            teamSynergy: "Зеро (Космос), Сакірі (Закляття), Хатор (Лакшана)",
+            lore: "Лейтенант 6-го взводу ETD Бюро контролю аномалій. Загадковий і небезпечний боєць, який використовує темний туман і здатний переміщатися крізь тіні."
+        },
+        en: {
+            name: "Chaos",
+            summary: "A powerful Lakshana element Main DPS character. Transforms his weapon into a scythe, greatsword, or firearm. Accumulates 'Crime' charges for follow-up attacks and teleports via anchor.",
+            weapon: "Pursuit Special (Signature Arc)",
+            weaponF2p: "Raging Flames",
+            cartridge: "Street Boxer (4-piece)",
+            stats: ["Crit Rate", "Crit DMG", "Lakshana DMG", "ATK%"],
+            teamSynergy: "Zero (Cosmos), Sakiri (Incantation), Hathor (Lakshana)",
+            lore: "Lieutenant of the ETD-6 unit of the Anomaly Control Bureau. A mysterious and dangerous combatant who manipulates dark fog and warps through shadows."
+        },
+        fr: {
+            name: "Chaos",
+            summary: "Un puissant DPS principal de l'élément Lakshana. Transforme son arme en faux, espadon ou arme à feu. Accumule des charges de 'Crime' pour des attaques de suivi et se téléporte via une ancre.",
+            weapon: "Pursuit Special (Arc Signature)",
+            weaponF2p: "Flammes déchaînées",
+            cartridge: "Boxeur de rue (4 pièces)",
+            stats: ["Taux Critique", "Dégâts Critique", "Dégâts Lakshana", "ATK %"],
+            teamSynergy: "Zero (Cosmos), Sakiri (Incantation), Hathor (Lakshana)",
+            lore: "Lieutenant de l'unité ETD-6 du Bureau de Contrôle des Anomalies. Un combattant mystérieux et dangereux qui manipule la brume noire et se déplace dans les ombres."
+        }
     }
 };
 
@@ -1210,7 +1242,8 @@ export const CHARACTER_MATERIAL_PROFILES = {
     fadia: { weaponType: "synthesis", unique: "Water Moon Pick", uniqueFarm: "Anomaly Hunt: Beat King / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Water-Moon-Pick.webp", weekly: "Dress Sleeves of Vanity", weeklyFarm: "Anomaly Pilgrimage: The Never-ending Arachne" },
     hathor: { weaponType: "plasma", unique: "Colorful Ticket Stub", uniqueFarm: "Anomaly Hunt: Swallowtail / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Colorful-Ticket-Stub.webp", weekly: "Good Boy Stamp", weeklyFarm: "Anomaly Pilgrimage: Morphix" },
     aurelia: { weaponType: "plasma", unique: "Nest Guard Fragment", uniqueFarm: "Anomaly Hunt: Nestbound Bird / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Nest-Guard-Fragment.webp", weekly: "Good Boy Stamp", weeklyFarm: "Anomaly Pilgrimage: Morphix" },
-    edgar: { weaponType: "liquid", unique: "Colorful Ticket Stub", uniqueFarm: "Anomaly Hunt: Swallowtail / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Colorful-Ticket-Stub.webp", weekly: "Good Boy Stamp", weeklyFarm: "Anomaly Pilgrimage: Morphix" }
+    edgar: { weaponType: "liquid", unique: "Colorful Ticket Stub", uniqueFarm: "Anomaly Hunt: Swallowtail / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Colorful-Ticket-Stub.webp", weekly: "Good Boy Stamp", weeklyFarm: "Anomaly Pilgrimage: Morphix" },
+    chaos: { weaponType: "solid", unique: "Confessional Flower Seed", uniqueFarm: "Anomaly Hunt: Serenetti / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Confessional-Flower-Seed.webp", weekly: "Good Boy Stamp", weeklyFarm: "Anomaly Pilgrimage: Morphix" }
 };
 
 export const TIMELINE_TRANSLATIONS = {
@@ -1280,6 +1313,23 @@ export const TIMELINE_TRANSLATIONS = {
             title: "Version 1.2 : Nouveaux héros Shinku & Iroi",
             date: "Juillet 2026 (Estimation)",
             desc: "Mise à jour anticipée basée sur les fuites. Ajout de nouvelles zones d'anomalies au nord de Hethereau et sortie de nouveaux personnages de rang S."
+        }
+    },
+    "Друга фаза 1.1: Банер Хаосу (Chaos)": {
+        uk: {
+            title: "Друга фаза 1.1: Банер Хаосу (Chaos)",
+            date: "24 Червня 2026",
+            desc: "Старт другої фази версії 1.1. Лімітований банер нового персонажа S-рангу Хаосу (Chaos), який володіє стихією Лакшана."
+        },
+        en: {
+            title: "Phase 2 of 1.1: Chaos Banner",
+            date: "June 24, 2026",
+            desc: "Start of the second phase of version 1.1. Limited banner for the new S-Rank character Chaos (Lakshana element)."
+        },
+        fr: {
+            title: "Phase 2 de la 1.1 : Bannière de Chaos",
+            date: "24 juin 2026",
+            desc: "Début de la deuxième phase de la version 1.1. Bannière limitée pour le nouveau personnage de rang S Chaos (élément Lakshana)."
         }
     }
 };
@@ -1418,7 +1468,7 @@ export const i18n = {
         hero_btn_tierlist: "Переглянути Тір-ліст",
         hero_btn_teambuilder: "Зібрати Загін",
         active_banner_badge: "АКТИВНИЙ БАНЕР",
-        active_banner_title: "Хоторі: Відлуння Вічності",
+        active_banner_title: "Лакрімоза: Відлуння Хаосу",
         banner_timer_label: "До завершення:",
         view_build_btn: "Оцінка та білд",
         feat_tierlist_title: "Інтерактивний Тір-ліст",
@@ -1431,12 +1481,12 @@ export const i18n = {
         widget_codes_badge: "ПЕРЕВІРЕНО",
         widget_codes_desc: "Натисніть на код, щоб миттєво скопіювати його.",
         widget_events_title: "Графік подій та оновлень",
-        widget_events_badge: "ВЕРСІЯ 1.0",
+        widget_events_badge: "ВЕРСІЯ 1.1",
         widget_loading: "Завантаження...",
         widget_copy_btn: "Копіювати",
         widget_copied: "Скопійовано!",
         tierlist_title: "Рейтинг Персонажів (Тір-ліст)",
-        tierlist_subtitle: "Оцінка ефективності мисливців на аномалії у версії 1.0 (Глобальний реліз)",
+        tierlist_subtitle: "Оцінка ефективності мисливців на аномалії у версії 1.1 (Dreamwalk Corridor)",
         sub_tab_official: "Офіційний Тір-ліст",
         sub_tab_community: "Тір-лісти спільноти",
         sub_tab_creator: "Створити свій",
@@ -1620,7 +1670,7 @@ export const i18n = {
         hero_btn_tierlist: "View Tier List",
         hero_btn_teambuilder: "Build Squad",
         active_banner_badge: "ACTIVE BANNER",
-        active_banner_title: "Hotori: Echoes of Eternity",
+        active_banner_title: "Lacrimosa: Echoes of Chaos",
         banner_timer_label: "Ends in:",
         view_build_btn: "Review & Build",
         feat_tierlist_title: "Interactive Tier List",
@@ -1633,12 +1683,12 @@ export const i18n = {
         widget_codes_badge: "VERIFIED",
         widget_codes_desc: "Click on any code to copy it instantly.",
         widget_events_title: "Events & Version Roadmap",
-        widget_events_badge: "VERSION 1.0",
+        widget_events_badge: "VERSION 1.1",
         widget_loading: "Loading...",
         widget_copy_btn: "Copy",
         widget_copied: "Copied!",
         tierlist_title: "Character Rating (Tier List)",
-        tierlist_subtitle: "Evaluation of anomaly hunters' effectiveness in version 1.0 (Global Release)",
+        tierlist_subtitle: "Evaluation of anomaly hunters' effectiveness in version 1.1 (Dreamwalk Corridor)",
         sub_tab_official: "Official Tier List",
         sub_tab_community: "Community Lists",
         sub_tab_creator: "Create Own",
@@ -1822,7 +1872,7 @@ export const i18n = {
         hero_btn_tierlist: "Voir la Tier List",
         hero_btn_teambuilder: "Créer une Équipe",
         active_banner_badge: "BANNIÈRE ACTIVE",
-        active_banner_title: "Hotori: Échos de l'Éternité",
+        active_banner_title: "Lacrimosa : Échos du Chaos",
         banner_timer_label: "Se termine dans :",
         view_build_btn: "Évaluation & Build",
         feat_tierlist_title: "Tier List Interactive",
@@ -1835,12 +1885,12 @@ export const i18n = {
         widget_codes_badge: "VÉRIFIÉ",
         widget_codes_desc: "Cliquez sur un code pour le copier instantanément.",
         widget_events_title: "Calendrier des Événements & Versions",
-        widget_events_badge: "VERSION 1.0",
+        widget_events_badge: "VERSION 1.1",
         widget_loading: "Chargement...",
         widget_copy_btn: "Copier",
         widget_copied: "Copié !",
         tierlist_title: "Classement des Personnages (Tier List)",
-        tierlist_subtitle: "Évaluation de l'efficacité des chasseurs d'anomalies dans la version 1.0 (Lancement Global)",
+        tierlist_subtitle: "Évaluation de l'efficacité des chasseurs d'anomalies dans la version 1.1 (Dreamwalk Corridor)",
         sub_tab_official: "Tier List Officielle",
         sub_tab_community: "Listes de la Communauté",
         sub_tab_creator: "Créer la Vôtre",

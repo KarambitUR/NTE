@@ -271,6 +271,22 @@ export const FALLBACK_CHARACTERS = [
         stats: ["Crit Rate", "Crit DMG", "Lakshana DMG", "ATK%"],
         teamSynergy: "Zero (Космос), Sakiri (Закляття), Nanally (Аніма)",
         lore: "Лейтенант підрозділу ETD-4 Бюро контролю аномалій. Мовчазний вовк-офіцер із великим шрамом на лівому оці, який вірно несе службу."
+    },
+    {
+        id: "chaos",
+        name: "Chaos (Хаос)",
+        rarity: 5,
+        attribute: "Lakshana",
+        role: "Main DPS",
+        tier: "S",
+        avatar: "https://static.wikia.nocookie.net/neverness-to-everness/images/d/df/Chaos_Card.png",
+        summary: "Потужний Main DPS стихії Lakshana. Використовує зброю, що трансформується у косу, великий меч та вогнепальну зброю. Здатний накопичувати стаки 'Crime' для потужних атак та телепортуватися.",
+        weapon: "Pursuit Special (Сигнатурний Arc)",
+        weaponF2p: "Raging Flames (Лють полум'я)",
+        cartridge: "Street Boxer (4-piece)",
+        stats: ["Crit Rate", "Crit DMG", "Lakshana DMG", "ATK%"],
+        teamSynergy: "Zero (Космос), Sakiri (Закляття), Hathor (Лакшана)",
+        lore: "Лейтенант 6-го взводу ETD Бюро контролю аномалій. Загадковий і небезпечний боєць, який використовує темний туман і здатний переміщатися крізь тіні."
     }
 ];
 
@@ -312,8 +328,15 @@ export const FALLBACK_TIMELINE_EVENTS = [
         date: "3-4 Червня 2026",
         title: "Оновлення 1.1: 'Lacrimosa of Chaos'",
         desc: "Вихід першого великого патчу. Старт першої фази банера з Лакрімозою. Новий сюжетний епізод 'Театр Тіней'. Початок літнього івенту.",
-        status: "Upcoming",
+        status: "Released",
         badgeClass: "badge-chaos"
+    },
+    {
+        date: "24 Червня 2026",
+        title: "Друга фаза 1.1: Банер Хаосу (Chaos)",
+        desc: "Старт другої фази версії 1.1. Лімітований банер нового персонажа S-рангу Хаосу (Chaos), який володіє стихією Лакшана.",
+        status: "Upcoming",
+        badgeClass: "badge-lakshana"
     },
     {
         date: "Липень 2026 (Прогноз)",
