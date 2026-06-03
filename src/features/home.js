@@ -40,7 +40,7 @@ function renderHomeWidgets() {
     const eventsContainer = document.getElementById("homeEventsRoadmap");
     if (eventsContainer) {
         eventsContainer.innerHTML = "";
-        const displayEvents = state.TIMELINE_EVENTS.slice(0, 3);
+        const displayEvents = state.TIMELINE_EVENTS.slice(-3);
         if (displayEvents.length === 0) {
             eventsContainer.innerHTML = `<div class="widget-loading">${state.currentLang === 'uk' ? 'Події відсутні' : 'No events scheduled'}</div>`;
         } else {
