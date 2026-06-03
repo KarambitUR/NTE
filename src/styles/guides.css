@@ -493,6 +493,7 @@
 
 /* Neon Glow Badges */
 .guide-badge-new {
+    position: relative;
     background: rgba(255, 0, 127, 0.15);
     border: 1px solid var(--color-pink);
     color: var(--color-pink);
@@ -500,16 +501,27 @@
     font-weight: 700;
     padding: 0.1rem 0.4rem;
     border-radius: 4px;
-    box-shadow: 0 0 8px rgba(255, 0, 127, 0.25);
+    z-index: 1;
+}
+
+.guide-badge-new::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: inherit;
+    box-shadow: 0 0 10px rgba(255, 0, 127, 0.5);
+    opacity: 0.3;
+    z-index: -1;
     animation: neonPulse 2s infinite alternate;
+    pointer-events: none;
 }
 
 @keyframes neonPulse {
     from {
-        box-shadow: 0 0 4px rgba(255, 0, 127, 0.2);
+        opacity: 0.2;
     }
     to {
-        box-shadow: 0 0 12px rgba(255, 0, 127, 0.4);
+        opacity: 0.8;
     }
 }
 

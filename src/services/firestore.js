@@ -128,11 +128,14 @@ function setupRealtimeListeners() {
             .where('active', '==', true)
             .onSnapshot((snapshot) => {
                 if (!snapshot.empty) {
-                    state.PROMO_CODES = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                    localStorage.setItem('nte_promoCodes', JSON.stringify(state.PROMO_CODES));
-                    renderPromoCodes();
-                    renderHomeWidgets();
-                    console.log('🔄 Promo codes updated in realtime');
+                    const newData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                    if (JSON.stringify(newData) !== JSON.stringify(state.PROMO_CODES)) {
+                        state.PROMO_CODES = newData;
+                        localStorage.setItem('nte_promoCodes', JSON.stringify(state.PROMO_CODES));
+                        renderPromoCodes();
+                        renderHomeWidgets();
+                        console.log('🔄 Promo codes updated in realtime');
+                    }
                 }
             }, (error) => {
                 console.warn('Promo codes realtime listener error:', error);
@@ -141,14 +144,17 @@ function setupRealtimeListeners() {
         // Realtime listener for characters (for tier changes, new chars)
         db.collection('characters').onSnapshot((snapshot) => {
             if (!snapshot.empty) {
-                state.CHARACTERS = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                localStorage.setItem('nte_characters', JSON.stringify(state.CHARACTERS));
-                renderTierList();
-                renderBuilds();
-                renderCalculatorSetup();
-                renderHomeWidgets();
-                if (window.renderGuides) window.renderGuides();
-                console.log('🔄 Characters updated in realtime');
+                const newData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                if (JSON.stringify(newData) !== JSON.stringify(state.CHARACTERS)) {
+                    state.CHARACTERS = newData;
+                    localStorage.setItem('nte_characters', JSON.stringify(state.CHARACTERS));
+                    renderTierList();
+                    renderBuilds();
+                    renderCalculatorSetup();
+                    renderHomeWidgets();
+                    if (window.renderGuides) window.renderGuides();
+                    console.log('🔄 Characters updated in realtime');
+                }
             }
         }, (error) => {
             console.warn('Characters realtime listener error:', error);
@@ -157,10 +163,13 @@ function setupRealtimeListeners() {
         // Realtime listener for guides
         db.collection('guides').onSnapshot((snapshot) => {
             if (!snapshot.empty) {
-                state.GUIDES = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                localStorage.setItem('nte_guides', JSON.stringify(state.GUIDES));
-                if (window.renderGuides) window.renderGuides();
-                console.log('🔄 Guides updated in realtime');
+                const newData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                if (JSON.stringify(newData) !== JSON.stringify(state.GUIDES)) {
+                    state.GUIDES = newData;
+                    localStorage.setItem('nte_guides', JSON.stringify(state.GUIDES));
+                    if (window.renderGuides) window.renderGuides();
+                    console.log('🔄 Guides updated in realtime');
+                }
             }
         }, (error) => {
             console.warn('Guides realtime listener error:', error);

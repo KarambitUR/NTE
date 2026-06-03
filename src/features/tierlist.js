@@ -3,7 +3,7 @@ import { state } from '../scripts/state.js';
 import { db } from '../firebase/firebase.js';
 import { getLocalizedChar, translatePage } from '../localization/i18n.js';
 import { i18n, ROLE_TRANSLATIONS, ATTR_TRANSLATIONS } from '../localization/translations.js';
-import { showToast, renderAvatarHtml, renderAvatarUrlOnly } from '../utils/helpers.js';
+import { showToast, renderAvatarHtml, renderAvatarUrlOnly, debounce } from '../utils/helpers.js';
 
 import { updateAuthUI } from './auth.js';
 import { openCharacterModal } from './builds.js';
@@ -88,7 +88,7 @@ roleBtns.forEach(btn => btn.addEventListener("click", (e) => {
     renderTierList();
 }));
 
-document.getElementById("charSearch").addEventListener("input", renderTierList);
+document.getElementById("charSearch").addEventListener("input", debounce(renderTierList, 150));
 
 
 function initTierlistEditor() {

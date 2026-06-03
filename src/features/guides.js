@@ -1,7 +1,7 @@
 import { state } from '../scripts/state.js';
 import { FALLBACK_CHARACTERS } from '../utils/fallbackData.js';
 import { FALLBACK_GUIDES } from '../utils/fallbackGuides.js';
-import { renderAvatarHtml, renderAvatarUrlOnly } from '../utils/helpers.js';
+import { renderAvatarHtml, renderAvatarUrlOnly, debounce } from '../utils/helpers.js';
 import { getLocalizedChar } from '../localization/i18n.js';
 import { i18n } from '../localization/translations.js';
 import { openCharacterModal } from './builds.js';
@@ -12,9 +12,12 @@ function initGuides() {
     // 1. Bind search input
     const searchInput = document.getElementById("guidesSearchInput");
     if (searchInput) {
+        const debouncedRender = debounce(() => {
+            renderGuidesGrid();
+        }, 150);
         searchInput.addEventListener("input", (e) => {
             state.guideSearchQuery = e.target.value.toLowerCase().trim();
-            renderGuidesGrid();
+            debouncedRender();
         });
     }
 
