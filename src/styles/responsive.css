@@ -239,21 +239,12 @@
         grid-column: 1 / -1;
         order: 4;
     }
-}
-
-@media (max-width: 480px) {
-    .selector-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .app-content {
-        padding: 0 1rem;
-    }
 
     /* Hide TERMINAL from logo to prevent header crowding */
     .logo-main {
         display: none;
     }
+    
     .logo {
         gap: 0.2rem;
     }
@@ -264,3 +255,12 @@
     }
 }
 
+@media (max-width: 480px) {
+    .selector-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .app-content {
+        padding: 0 1rem;
+    }
+}
