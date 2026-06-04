@@ -400,7 +400,7 @@
                         "Réduisez les résistances élémentaires avec les supports avant de déclencher des réactions majeures."
                 ]
         },
-        	{
+        		{
 		"id": "guide-meta-analysis",
 		"title": "Аналіз Мети Патчу 1.1: Рейтинг та Тренди",
 		"titleEn": "Patch 1.1 Meta Analysis: Rankings & Trends",
@@ -718,88 +718,88 @@
                         "Mint gagne des bonus d'ATK gratuits en effectuant des esquives parfaites."
                 ]
         },
-        {
-                "id": "guide-team-remora-crit",
-                "title": "Команда 'Критичний Шторм' (Remora Critical Setup)",
-                "titleEn": "Team 'Critical Storm' (Remora Crit Boost)",
-                "description": "Високопродуктивний загін, заснований на реакції Remora (Космос + Лакшана) для радикального підвищення шансу критичного удару.",
-                "descriptionEn": "High-performance team based on Remora reaction (Cosmos + Lakshana) to radically boost Crit Rate and physical damage.",
-                "category": "teams",
-                "isFeatured": false,
-                "difficulty": "Hard",
-                "difficultyEn": "Hard",
-                "updateDate": "2026-05-24",
-                "tags": [
-                        "Teams",
-                        "Meta",
-                        "Remora",
-                        "Critical"
-                ],
-                "tagsEn": [
-                        "Teams",
-                        "Meta",
-                        "Remora",
-                        "Critical"
-                ],
-                "avatar": "src/assets/team_comps_icon.png",
-                "content": {
-                        "sections": [
-                                {
-                                        "title": "Склад загону (Squad Composition)",
-                                        "titleEn": "Squad Composition",
-                                        "text": "• <strong>Хатор (Hathor):</strong> Головний ДПС стихії Лакшана, вибухова шкода.<br>• <strong>Скіа (Skia):</strong> Саб-ДПС, накладання міток тіні та швидкі атаки.<br>• <strong>Зеро (Zero):</strong> Саппорт/Космос, активатор реакції Ремора та прискорювач.<br>• <strong>Едгар (Edgar):</strong> Цілитель, стабільне виживання загону.",
-                                        "textEn": "• <strong>Hathor:</strong> Main DPS of Lakshana element, massive burst.<br>• <strong>Skia:</strong> Sub-DPS, shadow stealth and mark applications.<br>• <strong>Zero:</strong> Support/Cosmos, catalyst for Remora and CD acceleration.<br>• <strong>Edgar:</strong> Healer, reliable survival support.",
-                                        "titleFr": "Composition de l'Équipe",
-                                        "textFr": "• <strong>Hathor :</strong> DPS Principal de l'élément Lakshana, énorme burst.<br>• <strong>Skia :</strong> Sub-DPS, furtivité de l'ombre et application des marques.<br>• <strong>Zero :</strong> Support/Cosmos, catalyseur pour Rémora et accélération des compétences.<br>• <strong>Edgar :</strong> Soigneur, support de survie fiable."
-                                },
-                                {
-                                        "title": "Бойова ротація (Skill Rotation)",
-                                        "titleEn": "Combat Rotation",
-                                        "text": "1. Почніть зі <strong>Скіа</strong>: накладіть мітки Fang Thrust із прихованості.<br>2. Перейдіть на <strong>Зеро</strong> та активуйте його Космос-поле для запуску реакції Ремора.<br>3. Використовуйте ультимейт <strong>Едгара</strong> для баффу та лікування.<br>4. Переключіться на <strong>Хатор</strong>, накопичте стаки доставки та виконайте нищівний вибух стихій.",
-                                        "textEn": "1. Start with <strong>Skia</strong>: apply shadow Fang Thrust marks from stealth.<br>2. Swap to <strong>Zero</strong> and activate Cosmos field to trigger Remora reaction.<br>3. Deploy <strong>Edgar's</strong> ultimate zone for healing and energy buffs.<br>4. Switch to <strong>Hathor</strong>, stack up delivery power, and execute her devastating Ultimate Burst.",
-                                        "titleFr": "Rotation de Combat",
-                                        "textFr": "1. Commencez avec <strong>Skia</strong> : appliquez les marques Fang Thrust depuis la furtivité.<br>2. Passez à <strong>Zero</strong> et activez son champ Cosmos pour déclencher la réaction Rémora.<br>3. Déployez la zone ultime d'<strong>Edgar</strong> pour le soin et l'énergie.<br>4. Passez à <strong>Hathor</strong>, cumulez de la puissance de livraison et exécutez son Déchaînement Élémentaire."
-                                }
-                        ]
-                },
-                "references": [
-                        "https://reddit.com/r/NevernessToEverness",
-                        "https://nevernesstoeverness.fandom.com"
-                ],
-                "recommendedTeams": [
-                        "hathor",
-                        "skia",
-                        "zero",
-                        "edgar"
-                ],
-                "progressionTips": [
-                        "Реакція Ремора збільшує шанс критичного удару всього загону на 10%.",
-                        "Скіа наносить значно більше шкоди по ворогах, на яких є мітки від її тіней.",
-                        "Слідкуйте за накопиченням стаків Hathor перед перемиканням для максимального критичного удару.",
-                        "Намагайтеся координувати відкати навичок для синхронної активації Ремори."
-                ],
-                "progressionTipsEn": [
-                        "The Remora reaction grants a flat +10% Crit Rate boost to all team members.",
-                        "Skia deals significantly increased damage to targets marked by her shadow attacks.",
-                        "Monitor Hathor's delivery stacks carefully before switching to maximize critical burst.",
-                        "Coordinate skill cooldowns to ensure synchronized activation of the Remora reaction."
-                ],
-                "titleFr": "Équipe 'Tempête Critique' (Boost Critique Rémora)",
-                "descriptionFr": "Équipe haute performance basée sur la réaction Remora (Cosmos + Lakshana) pour augmenter radicalement le taux critique et les dégâts physiques.",
-                "difficultyFr": "Difficile",
-                "tagsFr": [
-                        "Équipes",
-                        "Méta",
-                        "Rémora",
-                        "Critique"
-                ],
-                "progressionTipsFr": [
-                        "La réaction Rémora offre un bonus fixe de +10% de Taux Critique à toute l'équipe.",
-                        "Skia inflige des dégâts accrus aux cibles marquées par ses ombres.",
-                        "Surveillez les cumuls de Hathor avant de changer de personnage pour maximiser le burst critique.",
-                        "Coordonnez les temps de recharge pour une activation synchronisée de Rémora."
-                ]
-        },
+        	{
+		"id": "guide-team-remora-crit",
+		"title": "Команда 'Тіньовий Шторм' (Remora Crit & Chaos)",
+		"titleEn": "Team 'Shadow Storm' (Remora Crit & Chaos)",
+		"description": "Високопродуктивний загін, заснований на реакції Remora (Космос + Лакшана) з Хаосом як головним ДПС для максимальної критичної шкоди.",
+		"descriptionEn": "High-performance team based on Remora reaction (Cosmos + Lakshana) featuring Chaos as main DPS for maximum critical burst.",
+		"category": "teams",
+		"isFeatured": false,
+		"difficulty": "Hard",
+		"difficultyEn": "Hard",
+		"updateDate": "2026-06-04",
+		"tags": [
+			"Teams",
+			"Meta",
+			"Remora",
+			"Critical"
+		],
+		"tagsEn": [
+			"Teams",
+			"Meta",
+			"Remora",
+			"Critical"
+		],
+		"avatar": "src/assets/team_comps_icon.png",
+		"content": {
+			"sections": [
+				{
+					"title": "Склад загону (Squad Composition)",
+					"titleEn": "Squad Composition",
+					"text": "• <strong>Хаос (Chaos):</strong> Головний ДПС стихії Лакшана, нанесення колосальної критичної шкоди косою.<br>• <strong>Хатор (Hathor) / Скіа (Skia):</strong> Саб-ДПС, накладання міток тіні та швидкі комбо-атаки.<br>• <strong>Зеро (Zero):</strong> Саппорт/Космос, активатор реакції Ремора та прискорювач ротацій.<br>• <strong>Едгар (Edgar):</strong> Цілитель, стабільне виживання загону.",
+					"textEn": "• <strong>Chaos:</strong> Main DPS of Lakshana element, dealing colossal critical scythe damage.<br>• <strong>Hathor / Skia:</strong> Sub-DPS, shadow mark applications and high attack speed.<br>• <strong>Zero:</strong> Support/Cosmos, catalyst for Remora reaction and CD acceleration.<br>• <strong>Edgar:</strong> Healer, reliable survival support.",
+					"titleFr": "Composition de l'Équipe",
+					"textFr": "• <strong>Chaos :</strong> DPS Principal de l'élément Lakshana, infligeant de colossaux dégâts de faux critiques.<br>• <strong>Hathor / Skia :</strong> Sub-DPS, application de marques d'ombre et vitesse d'attaque élevée.<br>• <strong>Zero :</strong> Support/Cosmos, catalyseur pour Rémora et accélération des compétences.<br>• <strong>Edgar :</strong> Soigneur, support de survie fiable."
+				},
+				{
+					"title": "Бойова ротація (Skill Rotation)",
+					"titleEn": "Combat Rotation",
+					"text": "1. Почніть зі <strong>Скіа</strong> або <strong>Хатор</strong>: накладіть мітки та підготуйте поле бою.<br>2. Перейдіть на <strong>Зеро</strong> та активуйте його Космос-поле для запуску реакції Ремора.<br>3. Використовуйте ультимейт <strong>Едгара</strong> для лікування та баффів.<br>4. Переключіться на <strong>Хаоса</strong>, накопичте стаки Crime та виконайте нищівні удари косою.",
+					"textEn": "1. Start with <strong>Skia</strong> or <strong>Hathor</strong>: apply shadow marks and prep the battlefield.<br>2. Swap to <strong>Zero</strong> and activate Cosmos field to trigger Remora reaction.<br>3. Deploy <strong>Edgar's</strong> ultimate zone for healing and energy buffs.<br>4. Switch to <strong>Chaos</strong>, stack up Crime, and execute his devastating scythe combos.",
+					"titleFr": "Rotation de Combat",
+					"textFr": "1. Commencez avec <strong>Skia</strong> ou <strong>Hathor</strong> : appliquez les marques et préparez le combat.<br>2. Passez à <strong>Zero</strong> et activez son champ Cosmos pour déclencher la réaction Rémora.<br>3. Déployez la zone ultime d'<strong>Edgar</strong> pour le soin et l'énergie.<br>4. Passez à <strong>Chaos</strong>, cumulez des charges de Crime et exécutez ses combos de faux dévastateurs."
+				}
+			]
+		},
+		"references": [
+			"https://reddit.com/r/NevernessToEverness",
+			"https://nevernesstoeverness.fandom.com"
+		],
+		"recommendedTeams": [
+			"chaos",
+			"hathor",
+			"zero",
+			"edgar"
+		],
+		"progressionTips": [
+			"Реакція Ремора збільшує шанс критичного удару всього загону на 10%.",
+			"Хаос наносить значно більше шкоди по ворогах у стані Break, тому координуйте його атаки з пробиттям щитів.",
+			"Накопичуйте стаки Crime на Хаосі для посилення його вибуху стихій.",
+			"Завжди тримайте поле Зеро активним перед виходом Хаоса."
+		],
+		"progressionTipsEn": [
+			"The Remora reaction grants a flat +10% Crit Rate boost to all team members.",
+			"Chaos deals significantly increased damage to targets in the Break state, so coordinate his strikes with shield breaks.",
+			"Stack Crime counters on Chaos to maximize his Ultimate Burst damage.",
+			"Always keep Zero's active field running before bringing in Chaos."
+		],
+		"titleFr": "Équipe 'Tempête d'Ombre' (Rémora Crit & Chaos)",
+		"descriptionFr": "Équipe haute performance basée sur la réaction Rémora (Cosmos + Lakshana) avec Chaos comme DPS principal pour un burst critique maximal.",
+		"difficultyFr": "Difficile",
+		"tagsFr": [
+			"Équipes",
+			"Méta",
+			"Rémora",
+			"Critique"
+		],
+		"progressionTipsFr": [
+			"La réaction Rémora offre un bonus fixe de +10% de Taux Critique à toute l'équipe.",
+			"Chaos inflige des dégâts accrus aux cibles en état de Rupture (Break).",
+			"Cumulez des charges de Crime sur Chaos pour maximiser les dégâts de son ultime.",
+			"Gardez le champ de Zero actif avant de faire entrer Chaos."
+		]
+	},
         {
                 "id": "guide-team-baicang-burn",
                 "title": "Команда 'Полум'яний Гнів' (Baicang Burn & Discord)",
