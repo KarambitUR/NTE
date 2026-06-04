@@ -295,15 +295,15 @@ export const FALLBACK_GUIDES = [
     },
     {
         "id": "guide-meta-analysis",
-        "title": "Аналіз Мети Патчу 1.0: Рейтинг та Тренди",
-        "titleEn": "Patch 1.0 Meta Analysis: Rankings & Trends",
-        "description": "Аналіз поточної ігрової мети. Чому Наналлі та Сакірі тримають першість, та які нові персонажі змінять баланс сил.",
-        "descriptionEn": "Current game meta analysis. Why Nanally and Sakiri hold the top spots, and which new characters will change the power balance.",
+        "title": "Аналіз Мети Патчу 1.1: Рейтинг та Тренди",
+        "titleEn": "Patch 1.1 Meta Analysis: Rankings & Trends",
+        "description": "Аналіз поточної ігрової мети версії 1.1. Чому Лакрімоза та нові реакції змістили Наналлі з першої позиції, та як Хаос вплине на майбутній баланс сил.",
+        "descriptionEn": "Analysis of the current version 1.1 game meta. Why Lacrimosa and new reactions shifted Nanally from the top spot, and how Chaos will impact the balance of power.",
         "category": "meta",
         "isFeatured": false,
         "difficulty": "Hard",
         "difficultyEn": "Hard",
-        "updateDate": "2026-05-24",
+        "updateDate": "2026-06-04",
         "tags": [
             "Meta",
             "Tier List",
@@ -318,20 +318,20 @@ export const FALLBACK_GUIDES = [
         "content": {
             "sections": [
                 {
-                    "title": "1. Абсолютне домінування Наналлі (Main DPS Meta)",
-                    "titleEn": "1. Absolute Domination of Nanally (Main DPS)",
-                    "text": "Наналлі є найкращим ДПС завдяки антигравітаційним механікам: її авто-атаки в повітрі безпечні від більшості наземних босів, а вибух стихій завдає величезної точкової шкоди.",
-                    "textEn": "Nanally is the premier DPS due to anti-gravity mechanics: her aerial auto-attacks are safe from most ground bosses, and her Ultimate deals massive single-target damage.",
-                    "titleFr": "1. Domination Absolue de Nanally (DPS Principal)",
-                    "textFr": "Nanally est le meilleur DPS grâce à ses mécaniques anti-gravité : ses auto-attaques aériennes la protègent de la plupart des boss terrestres, et son Déchaînement Élémentaire inflige d'énormes dégâts mono-cible."
+                    "title": "1. Нова домінуюча сила: Лакрімоза (Chaos DPS)",
+                    "titleEn": "1. New Dominating Force: Lacrimosa (Chaos DPS)",
+                    "text": "З виходом версії 1.1 Лакрімоза (Хаос) стала найсильнішим ДПС у грі. Її унікальна механіка атак масками та сумісність з реакцією Charged дозволяє миттєво знищувати босів.",
+                    "textEn": "With the release of version 1.1, Lacrimosa (Chaos) has become the strongest DPS in the game. Her unique mask-based combat mechanics and compatibility with the Charged reaction allow her to shred bosses instantly.",
+                    "titleFr": "1. Nouvelle Force Dominante : Lacrimosa (DPS Chaos)",
+                    "textFr": "Avec la sortie de la version 1.1, Lacrimosa (Chaos) est devenue le DPS le plus puissant du jeu. Ses mécaniques de combat uniques basées sur les masques et sa synergie avec la réaction Charged lui permettent de détruire les boss instantanément."
                 },
                 {
-                    "title": "2. Роль Сакірі як універсального саппорта",
-                    "titleEn": "2. Sakiri's Role as a Universal Support",
-                    "text": "Сакірі незамінна в будь-якій команді. Її стяжка є найсильнішою в грі, а пасивне зниження супротиву стихій на 30% збільшує шкоду будь-якого Main Carry.",
-                    "textEn": "Sakiri is indispensable in any team. Her crowd control pull is the strongest in the game, and her passive 30% elemental shred boosts any Main Carry's damage.",
-                    "titleFr": "2. Rôle de Sakiri comme Support Universel",
-                    "textFr": "Sakiri est indispensable dans toute équipe. Son aptitude d'attraction et de contrôle des foules est la plus forte du jeu, et sa réduction passive de 30% de résistance élémentaire booste les dégâts de n'importe quel carry."
+                    "title": "2. Зростання популярності реакцій Charged та Remora",
+                    "titleEn": "2. Rise of Charged and Remora Reactions",
+                    "text": "Реакція Charged (Хаос + Закляття) тепер є ключовою для пробиття стійкості (Break) босів. Водночас реакція Remora (Космос + Лакшана) суттєво підвищує шанс критичного удару загону, роблячи нових персонажів на кшталт Хаоса (Chaos) та Хатор надзвичайно ефективними.",
+                    "textEn": "The Charged reaction (Chaos + Incantation) is now key for shredding boss shields. Meanwhile, the Remora reaction (Cosmos + Lakshana) significantly boosts the team's Crit Rate, making new characters like Chaos and Hathor extremely effective.",
+                    "titleFr": "2. Montée en Puissance des Réactions Charged et Remora",
+                    "textFr": "La réaction Charged (Chaos + Incantation) is désormais essentielle pour briser la posture (Rupture) des boss. En parallèle, la réaction Remora (Cosmos + Lakshana) augmente considérablement le taux critique de l'équipe, rendant les nouveaux personnages comme Chaos et Hathor extrêmement efficaces."
                 }
             ]
         },
@@ -340,21 +340,21 @@ export const FALLBACK_GUIDES = [
             "https://keqingmains.com"
         ],
         "recommendedTeams": [
-            "nanally",
+            "lacrimosa",
+            "daffodil",
             "sakiri",
-            "zero",
-            "jiuyuan"
+            "chaos"
         ],
         "progressionTips": [
-            "Сфокусуйтеся на отриманні Сакірі, оскільки вона підходить під будь-який елемент.",
-            "Не ігноруйте А-ранг персонажів, таких як Чіз, які є чудовими F2P замінниками."
+            "Використовуйте реакцію Charged для швидкого пробиття стійкості супротивників.",
+            "Сфокусуйтеся на отриманні Лакрімози, оскільки вона є найсильнішим carry-персонажем у патчі 1.1."
         ],
         "progressionTipsEn": [
-            "Focus on getting Sakiri since she fits into any elemental composition.",
-            "Do not ignore A-rank characters like Chiz, who are excellent F2P substitutes."
+            "Use the Charged reaction to break enemy poise quickly.",
+            "Focus on pulling Lacrimosa, as she is the strongest carry character in patch 1.1."
         ],
-        "titleFr": "Analyse de la Méta du Patch 1.0 : Classements & Tendances",
-        "descriptionFr": "Analyse de la méta actuelle du jeu. Pourquoi Nanally et Sakiri dominent le classement et quels nouveaux personnages vont changer l'équilibre des forces.",
+        "titleFr": "Analyse de la Méta du Patch 1.1 : Classements & Tendances",
+        "descriptionFr": "Analyse de la méta du jeu en version 1.1. Pourquoi Lacrimosa et les nouvelles réactions ont détrôné Nanally, et comment Chaos va impacter l'équilibre des forces.",
         "difficultyFr": "Difficile",
         "tagsFr": [
             "Méta",
@@ -362,8 +362,8 @@ export const FALLBACK_GUIDES = [
             "Analyse"
         ],
         "progressionTipsFr": [
-            "Concentrez-vous sur l'obtention de Sakiri car elle s'adapte à n'importe quelle composition élémentaire.",
-            "N'ignorez pas les personnages de rang A comme Chiz, qui sont d'excellents substituts F2P."
+            "Utilisez la réaction Charged pour briser rapidement la posture des ennemis.",
+            "Concentrez-vous sur l'obtention de Lacrimosa, car elle est le carry le plus fort du patch 1.1."
         ]
     },
     {
