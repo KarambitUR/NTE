@@ -388,10 +388,11 @@ function initMap() {
                     const tileTopLeft = map.project(L.latLng(t.bounds.maxY, t.bounds.minX), coords.z);
                     const tileBottomRight = map.project(L.latLng(t.bounds.minY, t.bounds.maxX), coords.z);
 
-                    const tileLeft = tileTopLeft.x - coords.x * 256;
-                    const tileTop = tileTopLeft.y - coords.y * 256;
-                    const tileWidth = tileBottomRight.x - tileTopLeft.x;
-                    const tileHeight = tileBottomRight.y - tileTopLeft.y;
+                    // Symmetrically expand coordinates and dimensions by a tiny fraction of a pixel to cover subpixel seams
+                    const tileLeft = tileTopLeft.x - coords.x * 256 - 0.5;
+                    const tileTop = tileTopLeft.y - coords.y * 256 - 0.5;
+                    const tileWidth = tileBottomRight.x - tileTopLeft.x + 1.0;
+                    const tileHeight = tileBottomRight.y - tileTopLeft.y + 1.0;
 
                     // Smooth rendering using high quality image smoothing
                     ctx.imageSmoothingEnabled = true;

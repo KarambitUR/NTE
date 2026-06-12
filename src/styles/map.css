@@ -234,6 +234,11 @@
     font-family: 'Outfit', sans-serif !important;
 }
 
+.leaflet-tile {
+    /* Scale tiles slightly by 0.5% (approx 1.2px) to cover browser subpixel positioning seams */
+    scale: 1.005;
+}
+
 /* Translucent Dark Zoom Controls */
 .leaflet-bar {
     border: 1px solid rgba(255, 255, 255, 0.08) !important;
