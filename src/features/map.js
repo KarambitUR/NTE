@@ -329,7 +329,7 @@ function initMap() {
     // Create Map
     map = L.map('mapContainer', {
         crs: gameCRS,
-        minZoom: 1,
+        minZoom: 2,
         maxZoom: 8,
         zoomControl: true,
         attributionControl: false
@@ -338,10 +338,12 @@ function initMap() {
     // Center to frame the whole landmass at zoom 3
     map.setView([182, 289], 3);
 
-    // Lock bounds to Hethereau map boundaries
+    // Lock bounds to actual content area (marker extents + padding)
+    // Computed from marker range: X [-4015, 4594], Y [-4396, 2787]
+    const contentPad = 300; // Game-unit padding around marker extents
     const bounds = L.latLngBounds(
-        [-5632, -5632], // Southwest (yMin, xMin)
-        [5632, 4864]    // Northeast (yMax, xMax)
+        [-4400 - contentPad, -4100 - contentPad], // Southwest (yMin, xMin)
+        [2800 + contentPad, 4600 + contentPad]     // Northeast (yMax, xMax)
     );
     map.setMaxBounds(bounds);
 
@@ -406,7 +408,7 @@ function initMap() {
     });
 
     const tileLayer = new NteGridLayer({
-        minZoom: 1,
+        minZoom: 2,
         maxZoom: 8,
         tileSize: 256,
         noWrap: true,
