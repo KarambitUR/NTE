@@ -831,9 +831,9 @@ export const LOCALIZED_ATTRIBUTE_MATERIALS = {
             farmSpecialty: "Дослідження світу / Збір у місті / Material Selection Box",
             farmBoss: "Anomaly Hunt",
             common: {
-                T1: "Suspended Delusions",
-                T2: "Yearning Delusions",
-                T3: "Transcendent Delusions",
+                T1: "Призупинені ілюзії",
+                T2: "Жадані ілюзії",
+                T3: "Трансцендентні ілюзії",
                 farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
@@ -943,15 +943,15 @@ export const LOCALIZED_ATTRIBUTE_MATERIALS = {
             farmSpecialty: "Дослідження світу / Збір у місті / Material Selection Box",
             farmBoss: "Anomaly Hunt",
             common: {
-                T1: "Suspended Delusions",
-                T2: "Yearning Delusions",
-                T3: "Transcendent Delusions",
+                T1: "Призупинені ілюзії",
+                T2: "Жадані ілюзії",
+                T3: "Трансцендентні ілюзії",
                 farm: "Anomaly Drop / Hunter Exchange / Lost Exchange"
             },
             scrolls: {
-                T1: "Esper Ability Book I",
-                T2: "Esper Ability Book II",
-                T3: "Esper Ability Book III",
+                T1: "Книга здібностей еспера I",
+                T2: "Книга здібностей еспера II",
+                T3: "Книга здібностей еспера III",
                 farm: "Houdinii's Schemes / Hunter Exchange / Crafting"
             }
         },
@@ -1243,7 +1243,7 @@ export const CHARACTER_MATERIAL_PROFILES = {
     hathor: { weaponType: "plasma", unique: "Colorful Ticket Stub", uniqueFarm: "Anomaly Hunt: Swallowtail / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Colorful-Ticket-Stub.webp", weekly: "Good Boy Stamp", weeklyFarm: "Anomaly Pilgrimage: Morphix" },
     aurelia: { weaponType: "plasma", unique: "Nest Guard Fragment", uniqueFarm: "Anomaly Hunt: Nestbound Bird / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Nest-Guard-Fragment.webp", weekly: "Good Boy Stamp", weeklyFarm: "Anomaly Pilgrimage: Morphix" },
     edgar: { weaponType: "liquid", unique: "Colorful Ticket Stub", uniqueFarm: "Anomaly Hunt: Swallowtail / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Colorful-Ticket-Stub.webp", weekly: "Good Boy Stamp", weeklyFarm: "Anomaly Pilgrimage: Morphix" },
-    chaos: { weaponType: "solid", unique: "Confessional Flower Seed", uniqueFarm: "Anomaly Hunt: Serenetti / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Confessional-Flower-Seed.webp", weekly: "Good Boy Stamp", weeklyFarm: "Anomaly Pilgrimage: Morphix" }
+    chaos: { weaponType: "solid", unique: "Confessional Flower Seed", uniqueFarm: "Anomaly Hunt: Serenetti / Material Selection Box", uniqueIcon: "https://neverness.gg/wp-content/uploads/sites/88/2026/05/Confessional-Flower-Seed.webp", weekly: "Scepter Called Prestige", weeklyFarm: "Anomaly Pilgrimage: The Never-ending Arachne" }
 };
 
 export const TIMELINE_TRANSLATIONS = {
@@ -1457,6 +1457,14 @@ export const i18n = {
         nav_builds: "Білди",
         nav_teambuilder: "Команди",
         nav_calculator: "Калькулятор",
+        nav_map: "Карта",
+        map_title: "Інтерактивна Карта Фарму",
+        map_subtitle: "Візуальний путівник по локаціях Гетеро — натисніть на район або маркер, щоб переглянути деталі",
+        legend_unheard_shores: "Нечувані Береги",
+        legend_bridge_crossings: "Мостові Переходи",
+        legend_miguel_district: "Район Мігеля",
+        legend_new_herland: "Нью-Герланд",
+        legend_city_of_illusions: "Місто Ілюзій",
         nav_codes: "Промокоди",
         nav_guides: "Гайди",
         nav_calendar: "Календар",
@@ -1659,6 +1667,14 @@ export const i18n = {
         nav_builds: "Builds",
         nav_teambuilder: "Teams",
         nav_calculator: "Calculator",
+        nav_map: "Map",
+        map_title: "Interactive Farming Map",
+        map_subtitle: "Visual guide to Hethereau locations — click on a district or marker to view details",
+        legend_unheard_shores: "Unheard Shores",
+        legend_bridge_crossings: "Bridge Crossings",
+        legend_miguel_district: "Miguel District",
+        legend_new_herland: "New Herland",
+        legend_city_of_illusions: "Illusion Town",
         nav_codes: "Promo Codes",
         nav_guides: "Guides",
         nav_calendar: "Calendar",
@@ -1861,6 +1877,14 @@ export const i18n = {
         nav_builds: "Builds",
         nav_teambuilder: "Équipes",
         nav_calculator: "Calculateur",
+        nav_map: "Carte",
+        map_title: "Carte de Farming Interactive",
+        map_subtitle: "Guide visuel des zones d'Hethereau — cliquez sur un quartier ou un marqueur pour voir les détails",
+        legend_unheard_shores: "Rivages Inconnus",
+        legend_bridge_crossings: "Ponts et Passages",
+        legend_miguel_district: "Quartier Miguel",
+        legend_new_herland: "New Herland",
+        legend_city_of_illusions: "Ville d'Illusion",
         nav_codes: "Codes Promo",
         nav_guides: "Guides",
         nav_calendar: "Calendrier",

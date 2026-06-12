@@ -6,7 +6,7 @@ import { renderHomeWidgets, renderTimeline } from '../features/home.js';
 import { renderTierList, loadCommunityTierlists } from '../features/tierlist.js';
 import { openCharacterModal } from '../features/builds.js';
 import { evaluateTeamSynergy, updateTeamSlotsUI } from '../features/teambuilder.js';
-import { renderCalculatorSetup, setupCalculatorEvents } from '../features/calculator.js';
+import { renderMap, setupMapEvents, onMapTabActive } from '../features/map.js';
 import { renderPromoCodes } from '../features/codes.js';
 import { initAuthAndUserTierlists, updateAuthUI } from '../features/auth.js';
 import { initGuides, renderGuides } from '../features/guides.js';
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     renderTierList();
                     renderGuides();
                     renderTimeline();
-                    renderCalculatorSetup();
+                    renderMap();
                     renderHomeWidgets();
                     renderPromoCodes();
                     evaluateTeamSynergy();
@@ -91,9 +91,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         initNavigation();
         renderTierList();
         initGuides();
-        renderCalculatorSetup();
+        renderMap();
         renderTimeline();
-        setupCalculatorEvents();
+        setupMapEvents();
         renderPromoCodes();
         
         // Start active banner countdown & home widgets
@@ -179,6 +179,11 @@ function switchTab(tabId) {
 
     // Scroll to top
     window.scrollTo({ top: 0, behavior: "smooth" });
+
+    // Handle map dynamic initialization / sizing
+    if (tabId === 'map') {
+        onMapTabActive();
+    }
 }
 
 // Expose legacy global functions for inline HTML event handlers

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eibon Terminal | Neverness to Everness (NTE) Guides & Tier List</title>
-    <meta name="description" content="Best guides, interactive tier list, resource calculator, team builder and fresh promo codes for Neverness to Everness (NTE).">
+    <meta name="description" content="Best guides, interactive tier list, interactive farming map, team builder and fresh promo codes for Neverness to Everness (NTE).">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -15,6 +15,9 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="src/styles/main.css?v=1.0.3">
+    <!-- Leaflet Map CSS & JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
     <!-- Firebase SDK (compat mode for simplicity) -->
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
@@ -65,7 +68,7 @@
                     <li><button class="nav-btn active" data-tab="home" id="tabHome" data-i18n="nav_home">Головна</button></li>
                     <li><button class="nav-btn" data-tab="tierlist" id="tabTierList" data-i18n="nav_tierlist">Тір-ліст</button></li>
                     <li><button class="nav-btn" data-tab="guides" id="tabGuides" data-i18n="nav_guides">Гайди</button></li>
-                    <li><button class="nav-btn" data-tab="calculator" id="tabCalculator" data-i18n="nav_calculator">Калькулятор</button></li>
+                    <li><button class="nav-btn" data-tab="map" id="tabMap" data-i18n="nav_map">Карта</button></li>
                     <li><button class="nav-btn" data-tab="codes" id="tabCodes" data-i18n="nav_codes">Промокоди</button></li>
                     <li><button class="nav-btn" data-tab="calendar" id="tabCalendar" data-i18n="nav_calendar">Календар</button></li>
                 </ul>
@@ -314,188 +317,85 @@
 
 
 
-        <!-- SECTION: CALCULATOR -->
-        <section class="tab-pane" id="pane-calculator">
+        <!-- SECTION: INTERACTIVE MAP -->
+        <section class="tab-pane" id="pane-map">
             <div class="section-header">
-                <h2 data-i18n="calc_title">Калькулятор Прогресу та Ресурсів</h2>
-                <p data-i18n="calc_subtitle">Професійний планувальник для максимального розвитку вашого мисливця, навичок та зброї</p>
+                <h2 data-i18n="map_title">Інтерактивна Карта Фарму</h2>
+                <p data-i18n="map_subtitle">Візуальний путівник по локаціях Гетеро — натисніть на район або маркер, щоб переглянути деталі</p>
             </div>
 
-            <div class="calculator-layout">
-                <!-- Left panel: Inputs with tabs -->
-                <div class="calc-inputs-panel glass-panel">
-                    <!-- Character preview header -->
-                    <div class="calc-char-preview" id="calcCharPreview">
-                        <div class="calc-preview-avatar" id="calcPreviewAvatar">👤</div>
-                        <div class="calc-preview-info">
-                            <h3 id="calcPreviewName" data-i18n="widget_loading">Завантаження...</h3>
-                            <div class="calc-preview-badges" id="calcPreviewBadges">
-                                <span class="badge badge-anima" id="calcPreviewAttr">-</span>
-                                <span class="badge badge-incant" id="calcPreviewRarity">-</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Dropdown to change character -->
-                    <div class="form-group mt-3">
-                        <label for="calcCharacter" data-i18n="calc_char_label">Оберіть мисливця:</label>
-                        <select id="calcCharacter" class="form-control">
-                            <!-- Dynamic select -->
-                        </select>
-                    </div>
-
-                    <!-- Inner tab navigation -->
-                    <div class="calc-tab-nav">
-                        <button class="calc-tab-btn active" data-calc-tab="char" data-i18n="calc_tab_char">Персонаж</button>
-                        <button class="calc-tab-btn" data-calc-tab="skills" data-i18n="calc_tab_skills">Навички</button>
-                        <button class="calc-tab-btn" data-calc-tab="weapon" data-i18n="calc_tab_weapon">Зброя (Arc)</button>
-                    </div>
-
-                    <!-- TAB CONTENT: CHARACTER LEVEL -->
-                    <div class="calc-tab-content active" id="calc-tab-char">
-                        <h4 class="calc-sub-title" data-i18n="calc_level_title">Рівень Персонажа</h4>
-                        <div class="form-group">
-                            <div class="range-header">
-                                <label for="calcLevelStart" data-i18n="calc_level_start">Початковий рівень:</label>
-                                <span class="range-val" id="valLevelStart">1</span>
-                            </div>
-                            <div class="range-input-wrapper">
-                                <input type="range" id="calcLevelStart" min="1" max="80" value="1" class="slider-control">
-                                <input type="number" id="calcLevelStartNum" min="1" max="80" value="1" class="number-control">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="range-header">
-                                <label for="calcLevelEnd" data-i18n="calc_level_end">Цільовий рівень:</label>
-                                <span class="range-val" id="valLevelEnd">80</span>
-                            </div>
-                            <div class="range-input-wrapper">
-                                <input type="range" id="calcLevelEnd" min="1" max="80" value="80" class="slider-control">
-                                <input type="number" id="calcLevelEndNum" min="1" max="80" value="80" class="number-control">
-                            </div>
-                        </div>
-                        <div class="level-hints">
-                            <p data-i18n="calc_level_max_hint">* Максимальний рівень мисливця - 80. Прориви відбуваються на 20, 40, 50, 60 та 70 рівнях.</p>
-                        </div>
-                    </div>
-
-                    <!-- TAB CONTENT: SKILLS LEVEL -->
-                    <div class="calc-tab-content" id="calc-tab-skills">
-                        <h4 class="calc-sub-title" data-i18n="calc_skills_title">Рівні Навичок (1 - 10)</h4>
-                        
-                        <div class="skill-row">
-                            <div class="skill-name-col">
-                                <span class="skill-icon-placeholder">⚔️</span>
-                                <span class="skill-label" data-i18n="calc_skill_basic">Авто-атака</span>
-                            </div>
-                            <div class="skill-selects-col">
-                                <select id="skillStart_0" class="form-control form-control-sm skill-select"></select>
-                                <span class="skill-arrow">➔</span>
-                                <select id="skillEnd_0" class="form-control form-control-sm skill-select"></select>
-                            </div>
+            <!-- Map Layout Wrapper -->
+            <div class="map-layout" id="mapLayout">
+                <!-- Map Panel -->
+                <div class="map-panel glass-panel">
+                    <div class="map-container-relative">
+                        <div class="map-container" id="mapContainer">
+                            <!-- Leaflet map rendered by JS -->
                         </div>
                         
-                        <div class="skill-row">
-                            <div class="skill-name-col">
-                                <span class="skill-icon-placeholder">⚡</span>
-                                <span class="skill-label" data-i18n="calc_skill_active">Активна навичка</span>
-                            </div>
-                            <div class="skill-selects-col">
-                                <select id="skillStart_1" class="form-control form-control-sm skill-select"></select>
-                                <span class="skill-arrow">➔</span>
-                                <select id="skillEnd_1" class="form-control form-control-sm skill-select"></select>
-                            </div>
-                        </div>
-
-                        <div class="skill-row">
-                            <div class="skill-name-col">
-                                <span class="skill-icon-placeholder">🛡️</span>
-                                <span class="skill-label" data-i18n="calc_skill_passive">Пасивна навичка</span>
-                            </div>
-                            <div class="skill-selects-col">
-                                <select id="skillStart_2" class="form-control form-control-sm skill-select"></select>
-                                <span class="skill-arrow">➔</span>
-                                <select id="skillEnd_2" class="form-control form-control-sm skill-select"></select>
-                            </div>
-                        </div>
-
-                        <div class="skill-row">
-                            <div class="skill-name-col">
-                                <span class="skill-icon-placeholder">🔥</span>
-                                <span class="skill-label" data-i18n="calc_skill_ultimate">Вибух стихій</span>
-                            </div>
-                            <div class="skill-selects-col">
-                                <select id="skillStart_3" class="form-control form-control-sm skill-select"></select>
-                                <span class="skill-arrow">➔</span>
-                                <select id="skillEnd_3" class="form-control form-control-sm skill-select"></select>
-                            </div>
-                        </div>
-                        
-                        <div class="level-hints">
-                            <p data-i18n="calc_skills_hint">* Рівні навичок 8-10 потребують рідкісних ядер босів та матеріалів тижневого боса.</p>
+                        <!-- Floating Controls (Top Right) -->
+                        <div class="map-floating-controls">
+                            <button class="map-control-circle-btn" id="btnToggleSidebar" title="Toggle Sidebar">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="15 18 9 12 15 6"></polyline>
+                                </svg>
+                            </button>
+                            <button class="map-control-circle-btn" id="btnMapActionStar" title="Toggle All Filters">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                            </button>
+                            <button class="map-control-circle-btn" id="btnMapActionStats" title="Go to Tier List">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                                </svg>
+                            </button>
                         </div>
                     </div>
-
-                    <!-- TAB CONTENT: WEAPON LEVEL -->
-                    <div class="calc-tab-content" id="calc-tab-weapon">
-                        <div class="checkbox-control mb-3">
-                            <input type="checkbox" id="calcWeaponActive" checked>
-                            <label for="calcWeaponActive" class="label-large" data-i18n="calc_weapon_active">Прокачувати зброю (Arc)</label>
-                        </div>
-                        
-                        <div id="weaponSettingsBlock">
-                            <div class="form-group">
-                                <label for="calcWeaponRarity" data-i18n="calc_weapon_rarity">Рідкість зброї:</label>
-                                <select id="calcWeaponRarity" class="form-control">
-                                    <option value="5" data-i18n="calc_weapon_5star">S-Ранг (5★ Сигнатурна)</option>
-                                    <option value="4" selected data-i18n="calc_weapon_4star">A-Ранг (4★ F2P)</option>
-                                    <option value="3" data-i18n="calc_weapon_3star">B-Ранг (3★ Стартова)</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <div class="range-header">
-                                    <label for="calcWeaponLevelStart" data-i18n="calc_weapon_start">Початковий рівень:</label>
-                                    <span class="range-val" id="valWeaponLevelStart">1</span>
-                                </div>
-                                <div class="range-input-wrapper">
-                                    <input type="range" id="calcWeaponLevelStart" min="1" max="80" value="1" class="slider-control">
-                                    <input type="number" id="calcWeaponLevelStartNum" min="1" max="80" value="1" class="number-control">
-                                </div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <div class="range-header">
-                                    <label for="calcWeaponLevelEnd" data-i18n="calc_weapon_end">Цільовий рівень:</label>
-                                    <span class="range-val" id="valWeaponLevelEnd">80</span>
-                                </div>
-                                <div class="range-input-wrapper">
-                                    <input type="range" id="calcWeaponLevelEnd" min="1" max="80" value="80" class="slider-control">
-                                    <input type="number" id="calcWeaponLevelEndNum" min="1" max="80" value="80" class="number-control">
-                                </div>
-                            </div>
-                        </div>
+                    
+                    <div class="map-legend">
+                        <span class="legend-item"><span class="legend-dot" style="background: #3a7bd5;"></span> <span data-i18n="legend_unheard_shores">Нечувані Береги</span></span>
+                        <span class="legend-item"><span class="legend-dot" style="background: #00d2ff;"></span> <span data-i18n="legend_bridge_crossings">Мостові Переходи</span></span>
+                        <span class="legend-item"><span class="legend-dot" style="background: #f5af19;"></span> <span data-i18n="legend_miguel_district">Район Мігеля</span></span>
+                        <span class="legend-item"><span class="legend-dot" style="background: #f953c6;"></span> <span data-i18n="legend_new_herland">Нью-Герланд</span></span>
+                        <span class="legend-item"><span class="legend-dot" style="background: #b721ff;"></span> <span data-i18n="legend_city_of_illusions">Місто Ілюзій</span></span>
                     </div>
                 </div>
 
-                <!-- Right panel: Results with inventory planning -->
-                <div class="calc-results-panel glass-panel">
-                    <div class="results-header-row">
-                        <h3 data-i18n="calc_materials_title">Необхідні Матеріали</h3>
-                        <div class="results-actions">
-                            <button class="btn btn-secondary btn-xs" id="btnClearInventory" data-i18n="calc_clear_inv">Очистити склад</button>
-                            <button class="btn btn-accent btn-xs" id="btnExportReport" data-i18n="calc_copy_report">Скопіювати звіт</button>
+                <!-- Slide-out Sidebar Panel -->
+                <div class="map-sidebar glass-panel" id="mapSidebar">
+                    <!-- Sidebar Section: Filters -->
+                    <div class="sidebar-section">
+                        <div class="sidebar-section-header">
+                            <h3 data-i18n="map_filters_title">Фільтри Карти</h3>
+                            <div class="map-filter-controls">
+                                <button class="map-sidebar-control-btn" id="btnSidebarShowAll" data-i18n="show_all">Повністю</button>
+                                <button class="map-sidebar-control-btn" id="btnSidebarHideAll" data-i18n="hide_all">Сховати</button>
+                            </div>
+                        </div>
+                        <div class="map-sidebar-filters" id="mapFilterBar">
+                            <!-- Dynamic category filters list -->
                         </div>
                     </div>
                     
-                    <p class="results-subtitle" data-i18n="calc_inv_desc">Введіть ваші запаси в полі «Маю в наявності», щоб розрахувати чистий дефіцит.</p>
-                    
-                    <div class="materials-grid-new" id="calcMaterialsList">
-                        <!-- Dynamic items -->
+                    <!-- Divider -->
+                    <hr class="sidebar-divider">
+
+                    <!-- Sidebar Section: Detail Panel -->
+                    <div class="map-detail-panel-inline" id="mapDetailPanel">
+                        <div class="map-detail-empty">
+                            <div class="map-detail-empty-icon">🗺️</div>
+                            <h4 data-i18n="map_detail_title">Деталі Локації</h4>
+                            <p data-i18n="map_detail_placeholder">Натисніть на маркер на карті, щоб побачити інформацію про дропи та рекомендованих персонажів.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+
+
 
         <!-- SECTION: PROMO CODES -->
         <section class="tab-pane" id="pane-codes">

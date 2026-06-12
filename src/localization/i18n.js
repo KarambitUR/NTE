@@ -39,15 +39,15 @@ function translatePage(lang) {
     if (lang === 'en') {
         document.title = "Eibon Terminal | Neverness to Everness (NTE) Guides & Tier List";
         const meta = document.querySelector('meta[name="description"]');
-        if (meta) meta.content = "Best guides, interactive tier list, resource calculator, team builder and fresh promo codes for Neverness to Everness (NTE).";
+        if (meta) meta.content = "Best guides, interactive tier list, interactive farming map, team builder and fresh promo codes for Neverness to Everness (NTE).";
     } else if (lang === 'fr') {
         document.title = "Eibon Terminal | Guides & Tier List Neverness to Everness (NTE)";
         const meta = document.querySelector('meta[name="description"]');
-        if (meta) meta.content = "Les meilleurs guides, tier list interactive, calculateur de ressources, constructeur d'équipe et codes promo frais pour Neverness to Everness (NTE).";
+        if (meta) meta.content = "Les meilleurs guides, tier list interactive, carte de farming interactive, constructeur d'équipe et codes promo frais pour Neverness to Everness (NTE).";
     } else {
         document.title = "Eibon Terminal | Neverness to Everness (NTE) Гайди та Тір-ліст";
         const meta = document.querySelector('meta[name="description"]');
-        if (meta) meta.content = "Найкращі гайди, інтерактивний тір-ліст, калькулятор ресурсів, конструктор команд та завжди свіжі промокоди для гри Neverness to Everness (NTE).";
+        if (meta) meta.content = "Найкращі гайди, інтерактивний тір-ліст, інтерактивна карта фарму, конструктор команд та завжди свіжі промокоди для гри Neverness to Everness (NTE).";
     }
 }
 
