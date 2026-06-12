@@ -235,8 +235,9 @@
 }
 
 .leaflet-tile {
-    /* Scale tiles slightly by 0.5% (approx 1.2px) to cover browser subpixel positioning seams */
-    scale: 1.005;
+    /* Force each 256px tile 1px wider/taller so adjacent tiles overlap, eliminating subpixel seams */
+    width: 257px !important;
+    height: 257px !important;
 }
 
 /* Translucent Dark Zoom Controls */
