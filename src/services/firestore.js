@@ -40,9 +40,13 @@ async function loadFromFirestore() {
             // Load timeline events
             const timelineSnapshot = await db.collection('timelineEvents').orderBy('order', 'asc').get();
             if (!timelineSnapshot.empty) {
-                state.TIMELINE_EVENTS = timelineSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                const rawEvents = timelineSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                // Filter out invalid entries (e.g. non-NTE data like "Subnautica 2", "GTA 6")
+                state.TIMELINE_EVENTS = rawEvents.filter(e =>
+                    e.order !== undefined && e.badgeClass && e.status && e.desc
+                );
                 localStorage.setItem('nte_timelineEvents', JSON.stringify(state.TIMELINE_EVENTS));
-                console.log(`✅ Loaded ${state.TIMELINE_EVENTS.length} timeline events from Firestore`);
+                console.log(`✅ Loaded ${state.TIMELINE_EVENTS.length} timeline events from Firestore (${rawEvents.length - state.TIMELINE_EVENTS.length} invalid filtered)`);
             }
 
             // Load guides
@@ -86,7 +90,11 @@ function loadFromCache() {
 
         if (cachedChars) state.CHARACTERS = JSON.parse(cachedChars);
         if (cachedCodes) state.PROMO_CODES = JSON.parse(cachedCodes);
-        if (cachedTimeline) state.TIMELINE_EVENTS = JSON.parse(cachedTimeline);
+        if (cachedTimeline) {
+            const parsed = JSON.parse(cachedTimeline);
+            // Filter out invalid/corrupted cached entries
+            state.TIMELINE_EVENTS = parsed.filter(e => e.order !== undefined && e.badgeClass && e.status && e.desc);
+        }
         if (cachedGuides) state.GUIDES = JSON.parse(cachedGuides);
 
         // Fill in missing parts from fallback data to ensure no empty screens
