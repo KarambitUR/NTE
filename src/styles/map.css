@@ -138,6 +138,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 .sidebar-section-header h3 {
@@ -151,6 +153,7 @@
 .map-filter-controls {
     display: flex;
     gap: 0.35rem;
+    flex-shrink: 0;
 }
 
 .map-sidebar-control-btn {
@@ -164,6 +167,7 @@
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
+    white-space: nowrap;
 }
 
 .map-sidebar-control-btn:hover {

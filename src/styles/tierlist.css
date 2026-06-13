@@ -115,6 +115,32 @@
     white-space: nowrap;
 }
 
+/* Style for Logout button inside user profile capsule */
+.user-profile #btnLogoutGoogle.btn-secondary {
+    padding: 0.25rem 0.6rem !important;
+    font-size: 0.72rem !important;
+    line-height: 1 !important;
+    height: auto !important;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+    font-family: var(--font-ui);
+    font-weight: 600;
+    transition: all var(--transition-speed) ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.user-profile #btnLogoutGoogle.btn-secondary:hover {
+    background: rgba(255, 42, 122, 0.1) !important;
+    border-color: rgba(255, 42, 122, 0.3) !important;
+    color: var(--color-pink) !important;
+    transform: none !important; /* Prevent vertical displacement */
+}
+
 
 /* TIERLIST SUB-NAV */
 .tierlist-sub-nav {

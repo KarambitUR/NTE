@@ -2,6 +2,7 @@ import { state } from '../scripts/state.js';
 import { auth, googleProvider } from '../firebase/firebase.js';
 import { showToast } from '../utils/helpers.js';
 import { loadCommunityTierlists, initTierlistEditor, saveUserTierlist, moveCharInEditor } from './tierlist.js';
+import { i18n } from '../localization/translations.js';
 
 
 // 14. AUTH & CUSTOM USER TIERLISTS LOGIC
@@ -117,27 +118,31 @@ function initAuthAndUserTierlists() {
 
 // Google Login / Logout Functions
 function loginWithGoogle() {
+    const lang = state.currentLang || 'en';
+    const dict = i18n[lang] || i18n.en;
     if (typeof firebase === "undefined" || !firebase.auth) {
-        showToast(state.currentLang === 'uk' ? "Firebase Auth не підключений!" : "Firebase Auth not connected!");
+        showToast(dict.toast_firebase_error || "Firebase Auth not connected!");
         return;
     }
     const provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider)
         .then((result) => {
-            const welcomeText = state.currentLang === 'uk' ? `Вітаємо, ${result.user.displayName}! 🎉` : `Welcome, ${result.user.displayName}! 🎉`;
+            const welcomeText = `${dict.toast_welcome || "Welcome, "}${result.user.displayName}! 🎉`;
             showToast(welcomeText);
         })
         .catch((error) => {
             console.error("Login failed:", error);
-            const errText = state.currentLang === 'uk' ? `Помилка входу: ${error.message}` : `Login failed: ${error.message}`;
+            const errText = lang === 'uk' ? `Помилка входу: ${error.message}` : (lang === 'fr' ? `Échec de la connexion : ${error.message}` : `Login failed: ${error.message}`);
             showToast(errText);
         });
 }
 
 function logout() {
+    const lang = state.currentLang || 'en';
+    const dict = i18n[lang] || i18n.en;
     if (typeof firebase === "undefined" || !firebase.auth) return;
     firebase.auth().signOut().then(() => {
-        showToast(state.currentLang === 'uk' ? "Ви вийшли з акаунта." : "Logged out successfully.");
+        showToast(dict.toast_logged_out || "Logged out successfully.");
     });
 }
 
@@ -146,21 +151,24 @@ function updateAuthUI(user) {
     const authBox = document.getElementById("headerAuth");
     if (!authBox) return;
 
+    const lang = state.currentLang || 'en';
+    const dict = i18n[lang] || i18n.en;
+
     if (user) {
-        const logoutLabel = state.currentLang === 'uk' ? 'Вийти' : 'Logout';
-        const userFallbackName = state.currentLang === 'uk' ? 'Користувач' : 'User';
+        const logoutLabel = dict.btn_logout || 'Logout';
+        const userFallbackName = dict.user_fallback || 'User';
         authBox.innerHTML = `
             <div class="user-profile">
                 <img src="${user.photoURL || ''}" class="user-avatar" referrerpolicy="no-referrer" alt="${user.displayName}">
                 <span class="user-name">${(user.displayName || userFallbackName).split(" ")[0]}</span>
-                <button class="btn btn-secondary btn-xs" id="btnLogoutGoogle">${logoutLabel}</button>
+                <button class="btn btn-secondary btn-xs" id="btnLogoutGoogle" data-i18n="btn_logout">${logoutLabel}</button>
             </div>
         `;
         document.getElementById("btnLogoutGoogle").addEventListener("click", logout);
     } else {
-        const loginLabel = state.currentLang === 'uk' ? 'Увійти' : 'Login';
+        const loginLabel = dict.btn_login || 'Login';
         authBox.innerHTML = `
-            <button class="btn btn-primary btn-sm" id="btnLoginGoogle">
+            <button class="btn btn-primary btn-sm" id="btnLoginGoogle" data-i18n="btn_login">
                 ${loginLabel}
             </button>
         `;
