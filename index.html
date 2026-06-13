@@ -37,9 +37,16 @@
     <div class="loading-overlay" id="loadingOverlay">
         <div class="loading-spinner">
             <div class="spinner-ring"></div>
-            <span class="loading-text" data-i18n="loading_text">Завантаження даних...</span>
+            <span class="loading-text" data-i18n="loading_text">Loading data...</span>
         </div>
     </div>
+    <script>
+        // Early i18n for loading screen - runs before main scripts load
+        (function() {
+            var el = document.querySelector('.loading-text');
+            if (el) el.textContent = 'Loading data...';
+        })();
+    </script>
 
     <!-- Background Elements -->
     <div class="bg-decorations-wrapper">

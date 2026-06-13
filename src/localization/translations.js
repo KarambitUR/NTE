@@ -1630,7 +1630,7 @@ export const i18n = {
         attr_chaos: "Хаос",
         attr_psyche: "Психея",
         attr_lakshana: "Лакшана",
-        loading_text: "Завантаження даних...",
+        loading_text: "Loading data...",
         teams_no_synergy: "Виберіть персонажів для початку розрахунку.",
         teams_synergy_placeholder: "Додайте мисливців у слоти вище. Система автоматично проаналізує їхні класи, стихії та виведе оптимальну послідовність навичок (ротацію) для бою.",
         teams_slot_2: "Слот 2",
@@ -1658,7 +1658,18 @@ export const i18n = {
         guides_difficulty_medium: "Середньо",
         guides_difficulty_hard: "Складно",
         guides_custom_builder_btn: "Конструктор загону",
-        guides_view_presets_btn: "Готові збірки команд"
+        guides_view_presets_btn: "Готові збірки команд",
+        map_filters_title: "Фільтри Карти",
+        show_all: "Повністю",
+        hide_all: "Сховати",
+        map_detail_title: "Деталі Локації",
+        map_detail_placeholder: "Натисніть на маркер на карті, щоб побачити інформацію про дропи та рекомендованих персонажів.",
+        guides_no_found: "Гайди не знайдено.",
+        guides_view_build: "Дивитись білд",
+        guides_customize_team: "Налаштувати цю команду в Конструкторі",
+        guides_build_title_prefix: "Гайд на білд: ",
+        guides_build_subtitle_prefix: "Білди та напарники: ",
+        guides_build_default_desc: "Повний аналіз характеристик, зброї та картриджів."
     },
     en: {
         logo_badge: "WIKI",
@@ -1868,7 +1879,18 @@ export const i18n = {
         guides_difficulty_medium: "Medium",
         guides_difficulty_hard: "Hard",
         guides_custom_builder_btn: "Squad Constructor",
-        guides_view_presets_btn: "Preset Team Comps"
+        guides_view_presets_btn: "Preset Team Comps",
+        map_filters_title: "Map Filters",
+        show_all: "Show All",
+        hide_all: "Hide All",
+        map_detail_title: "Location Details",
+        map_detail_placeholder: "Click on a marker on the map to see drop information and recommended characters.",
+        guides_no_found: "No guides found.",
+        guides_view_build: "View Build",
+        guides_customize_team: "Customize this Team in Constructor",
+        guides_build_title_prefix: "Character Build: ",
+        guides_build_subtitle_prefix: "Build Guide: ",
+        guides_build_default_desc: "Full analysis of stats, weapons, and cartridge configurations."
     },
     fr: {
         logo_badge: "WIKI",
@@ -2050,7 +2072,7 @@ export const i18n = {
         attr_chaos: "Chaos",
         attr_psyche: "Psyché",
         attr_lakshana: "Lakshana",
-        loading_text: "Chargement des données...",
+        loading_text: "Loading data...",
         teams_no_synergy: "Sélectionnez des personnages pour démarrer l'analyse de synergie.",
         teams_synergy_placeholder: "Ajoutez des chasseurs dans les emplacements ci-dessus. Le système analysera automatiquement leurs classes, éléments et suggérera une rotation optimale des compétences pour le combat.",
         teams_slot_2: "Slot 2",
@@ -2078,6 +2100,17 @@ export const i18n = {
         guides_difficulty_medium: "Moyen",
         guides_difficulty_hard: "Difficile",
         guides_custom_builder_btn: "Constructeur d'Équipe",
-        guides_view_presets_btn: "Compositions d'Équipe Prédéfinies"
+        guides_view_presets_btn: "Compositions d'Équipe Prédéfinies",
+        map_filters_title: "Filtres de Carte",
+        show_all: "Tout afficher",
+        hide_all: "Tout masquer",
+        map_detail_title: "Détails du Lieu",
+        map_detail_placeholder: "Cliquez sur un marqueur sur la carte pour voir les informations de butin et les personnages recommandés.",
+        guides_no_found: "Aucun guide trouvé.",
+        guides_view_build: "Voir le Build",
+        guides_customize_team: "Personnaliser cette équipe dans le constructeur",
+        guides_build_title_prefix: "Build de Personnage : ",
+        guides_build_subtitle_prefix: "Guide de Build : ",
+        guides_build_default_desc: "Analyse complète des statistiques, armes et configurations de cartouches."
     }
 };

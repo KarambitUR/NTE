@@ -13,7 +13,8 @@ function startBannerCountdown() {
         if (!timerEl) return;
         
         if (distance < 0) {
-            timerEl.innerText = state.currentLang === 'uk' ? "Завершено" : "Ended";
+            const endedTexts = { uk: 'Завершено', en: 'Ended', fr: 'Terminé' };
+            timerEl.innerText = endedTexts[state.currentLang] || endedTexts.en;
             return;
         }
         
@@ -24,6 +25,8 @@ function startBannerCountdown() {
         
         if (state.currentLang === 'uk') {
             timerEl.innerText = `${days}д ${hours}г ${minutes}хв ${seconds}с`;
+        } else if (state.currentLang === 'fr') {
+            timerEl.innerText = `${days}j ${hours}h ${minutes}m ${seconds}s`;
         } else {
             timerEl.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
         }
@@ -53,8 +56,10 @@ function parseFirebaseDate(val) {
 
 // copyToClipboard
 function copyToClipboard(text) {
-    const successMsg = state.currentLang === 'uk' ? `Код "${text}" скопійовано у буфер обміну!` : `Code "${text}" copied to clipboard!`;
-    const errorMsg = state.currentLang === 'uk' ? "Не вдалося скопіювати код." : "Failed to copy code.";
+    const successMsgs = { uk: `Код "${text}" скопійовано у буфер обміну!`, en: `Code "${text}" copied to clipboard!`, fr: `Code "${text}" copié dans le presse-papiers !` };
+    const errorMsgs = { uk: 'Не вдалося скопіювати код.', en: 'Failed to copy code.', fr: 'Échec de la copie du code.' };
+    const successMsg = successMsgs[state.currentLang] || successMsgs.en;
+    const errorMsg = errorMsgs[state.currentLang] || errorMsgs.en;
     navigator.clipboard.writeText(text).then(() => {
         showToast(successMsg);
     }).catch(err => {

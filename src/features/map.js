@@ -19,8 +19,8 @@ const CONTENT_TILES = new Set(["40,0","38,0","36,0","37,0","38,1","36,2","41,0",
 
 /** Check if a game-world coordinate falls on a tile with visible map content */
 function isOnVisibleTile(gameX, gameY) {
-    const col = Math.floor((gameX + 5632) / 256);
-    const row = Math.floor((5632 - gameY) / 256);
+    const col = Math.floor((gameX + 5888) / 256);
+    const row = Math.floor((5376 - gameY) / 256);
     return CONTENT_TILES.has(col + ',' + row);
 }
 
@@ -264,9 +264,16 @@ function updateVisibleMarkers() {
             minZoomToShow = 4;
         }
 
-        // 3. Hide markers on empty/black tiles at low zoom (show only at zoom >= 6)
-        if (!isOnVisibleTile(marker.x, marker.y) && zoom < 6) {
-            minZoomToShow = 6;
+        // 3. Hide markers on empty/black tiles completely (outside map boundaries)
+        if (!isOnVisibleTile(marker.x, marker.y)) {
+            if (marker.leafletMarker) {
+                if (marker.leafletMarker.isPopupOpen()) {
+                    return;
+                }
+                marker.leafletMarker.remove();
+                marker.leafletMarker = null;
+            }
+            return;
         }
 
         if (zoom < minZoomToShow) {

@@ -179,7 +179,8 @@ function renderGuidesGrid() {
     if (state.activeGuideFilter === "all" || state.activeGuideFilter === "builds") {
         characterBuildCards = activeChars.filter(c => {
             const locC = getLocalizedChar(c);
-            const title = (state.currentLang === "uk" ? `Гайд на білд: ${locC.name}` : `Character Build: ${locC.name}`).toLowerCase();
+            const prefix = i18n[state.currentLang].guides_build_title_prefix || "Character Build: ";
+            const title = `${prefix}${locC.name}`.toLowerCase();
             const desc = (locC.summary || "").toLowerCase();
             const tags = `${locC.role} ${locC.attribute} F2P Build Meta`.toLowerCase();
 
@@ -191,8 +192,8 @@ function renderGuidesGrid() {
                 id: `build-${c.id}`,
                 isCharacterBuild: true,
                 charId: c.id,
-                title: state.currentLang === "uk" ? `Білди та напарники: ${locC.name}` : `Build Guide: ${locC.name}`,
-                description: locC.summary || (state.currentLang === "uk" ? "Повний аналіз характеристик, зброї та картриджів." : "Full analysis of stats, weapons, and cartridge configurations."),
+                title: (i18n[state.currentLang].guides_build_subtitle_prefix || "Build Guide: ") + locC.name,
+                description: locC.summary || (i18n[state.currentLang].guides_build_default_desc || "Full analysis of stats, weapons, and cartridge configurations."),
                 category: "builds",
                 difficulty: c.rarity === 5 ? "Medium" : "Easy",
                 updateDate: "2026-05-24",
@@ -207,7 +208,7 @@ function renderGuidesGrid() {
     const combined = [...filteredGuides, ...characterBuildCards];
 
     if (combined.length === 0) {
-        grid.innerHTML = `<div class="widget-loading" style="grid-column: 1/-1;">${state.currentLang === 'uk' ? 'Гайди не знайдено.' : 'No guides found.'}</div>`;
+        grid.innerHTML = `<div class="widget-loading" style="grid-column: 1/-1;">${i18n[state.currentLang].guides_no_found || "No guides found."}</div>`;
         return;
     }
 
@@ -220,7 +221,7 @@ function renderGuidesGrid() {
 
         const categoryLabel = i18n[state.currentLang][`guides_filter_${item.category}`] || item.category;
         const readBtnLabel = item.isCharacterBuild 
-            ? (state.currentLang === "uk" ? "Дивитись білд" : "View Build") 
+            ? (i18n[state.currentLang].guides_view_build || "View Build") 
             : i18n[state.currentLang].guides_read_btn;
 
         let title = item.title;
@@ -369,7 +370,7 @@ function openGuideDetailModal(guide) {
         customizeBtnHtml = `
             <div style="margin-top: 1.5rem; display: flex; justify-content: center;">
                 <button class="btn btn-primary" onclick="window.loadPresetToBuilder('${guide.id}')" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.8rem; font-weight: bold; border-radius: 8px; box-shadow: 0 0 15px rgba(0, 242, 254, 0.4); text-transform: uppercase; font-size: 0.85rem;">
-                    <i class="emoji">🛠️</i> ${state.currentLang === 'uk' ? 'Налаштувати цю команду в Конструкторі' : 'Customize this Team in Constructor'}
+                    <i class="emoji">🛠️</i> ${i18n[state.currentLang].guides_customize_team || "Customize this Team in Constructor"}
                 </button>
             </div>
         `;
