@@ -1,6 +1,6 @@
 import { FALLBACK_CHARACTERS } from '../utils/fallbackData.js';
 import { state } from '../scripts/state.js';
-import { db } from '../firebase/firebase.js';
+import { auth, db } from '../firebase/firebase.js';
 import { getLocalizedChar, translatePage } from '../localization/i18n.js';
 import { i18n, ROLE_TRANSLATIONS, ATTR_TRANSLATIONS } from '../localization/translations.js';
 import { showToast, renderAvatarHtml, renderAvatarUrlOnly, debounce } from '../utils/helpers.js';
@@ -263,7 +263,7 @@ function moveCharInEditor(charId, targetTier) {
 
 // Save Custom Tier List to Firestore
 async function saveUserTierlist() {
-    const user = firebase.auth && firebase.auth().currentUser;
+    const user = auth ? auth.currentUser : null;
     if (!user) {
         showToast(i18n[state.currentLang].creator_auth_error || "Будь ласка, спочатку авторизуйтеся!");
         return;
@@ -294,7 +294,7 @@ async function saveUserTierlist() {
                 "A": state.editorState["A"],
                 "B": state.editorState["B"]
             },
-            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            createdAt: window.firebase.firestore.FieldValue.serverTimestamp()
         };
 
         if (!db) {
@@ -349,7 +349,7 @@ async function loadCommunityTierlists() {
                 dateStr = state.currentLang === 'uk' ? "Нещодавно" : (state.currentLang === 'fr' ? "Récemment" : "Recently");
             }
 
-            const currentUser = firebase.auth && firebase.auth().currentUser;
+            const currentUser = auth ? auth.currentUser : null;
             const isOwner = currentUser && currentUser.uid === data.userId;
 
             const card = document.createElement("div");

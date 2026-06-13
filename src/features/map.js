@@ -337,6 +337,13 @@ function initMap() {
 
     const container = document.getElementById('mapContainer');
     if (!container) return;
+
+    if (!window.L) {
+        container.innerHTML = '<div class="map-placeholder"><span class="map-placeholder-icon">🗺️</span><p>Map library failed to load. Please check your connection and reload the page.</p></div>';
+        console.warn('Leaflet is not available; map initialization skipped.');
+        return;
+    }
+
     container.innerHTML = ''; // Clear placeholder
 
     console.log('🗺️ Initializing Leaflet farming map...');

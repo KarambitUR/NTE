@@ -33,7 +33,7 @@ function initAuthAndUserTierlists() {
             if (targetTab === "community") {
                 loadCommunityTierlists();
             } else if (targetTab === "creator") {
-                const user = firebase.auth && firebase.auth().currentUser;
+                const user = auth ? auth.currentUser : null;
                 if (user) {
                     initTierlistEditor();
                 }
@@ -42,13 +42,13 @@ function initAuthAndUserTierlists() {
     });
 
     // Check if Firebase is available
-    if (typeof firebase === "undefined") {
+    if (!auth) {
         console.warn("Firebase Auth not available, disabling user tier lists.");
         return;
     }
 
     // Listen to Firebase Auth state changes
-    firebase.auth().onAuthStateChanged((user) => {
+    auth.onAuthStateChanged((user) => {
         updateAuthUI(user);
         
         const authPrompt = document.getElementById("editorAuthPrompt");
@@ -120,12 +120,11 @@ function initAuthAndUserTierlists() {
 function loginWithGoogle() {
     const lang = state.currentLang || 'en';
     const dict = i18n[lang] || i18n.en;
-    if (typeof firebase === "undefined" || !firebase.auth) {
+    if (!auth || !googleProvider) {
         showToast(dict.toast_firebase_error || "Firebase Auth not connected!");
         return;
     }
-    const provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider)
+    auth.signInWithPopup(googleProvider)
         .then((result) => {
             const welcomeText = `${dict.toast_welcome || "Welcome, "}${result.user.displayName}! 🎉`;
             showToast(welcomeText);
@@ -140,8 +139,8 @@ function loginWithGoogle() {
 function logout() {
     const lang = state.currentLang || 'en';
     const dict = i18n[lang] || i18n.en;
-    if (typeof firebase === "undefined" || !firebase.auth) return;
-    firebase.auth().signOut().then(() => {
+    if (!auth) return;
+    auth.signOut().then(() => {
         showToast(dict.toast_logged_out || "Logged out successfully.");
     });
 }

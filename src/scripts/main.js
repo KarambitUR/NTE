@@ -1,16 +1,17 @@
-import { state } from './state.js?v=1.0.4';
-import { loadFromFirestore, loadFromCache, loadFallbackData, setupRealtimeListeners } from '../services/firestore.js?v=1.0.4';
-import { translatePage } from '../localization/i18n.js?v=1.0.4';
-import { startBannerCountdown } from '../utils/helpers.js?v=1.0.4';
-import { renderHomeWidgets, renderTimeline } from '../features/home.js?v=1.0.4';
-import { renderTierList, loadCommunityTierlists } from '../features/tierlist.js?v=1.0.4';
-import { openCharacterModal } from '../features/builds.js?v=1.0.4';
-import { evaluateTeamSynergy, updateTeamSlotsUI } from '../features/teambuilder.js?v=1.0.4';
-import { renderMap, setupMapEvents, onMapTabActive } from '../features/map.js?v=1.0.4';
-import { renderPromoCodes } from '../features/codes.js?v=1.0.4';
-import { initAuthAndUserTierlists, updateAuthUI } from '../features/auth.js?v=1.0.4';
-import { initGuides, renderGuides } from '../features/guides.js?v=1.0.4';
-import { FALLBACK_PROMO_CODES } from '../utils/fallbackData.js?v=1.0.4';
+import { state } from './state.js';
+import { loadFromFirestore, loadFromCache, loadFallbackData, setupRealtimeListeners } from '../services/firestore.js';
+import { translatePage } from '../localization/i18n.js';
+import { startBannerCountdown } from '../utils/helpers.js';
+import { renderHomeWidgets, renderTimeline } from '../features/home.js';
+import { renderTierList, loadCommunityTierlists } from '../features/tierlist.js';
+import { openCharacterModal } from '../features/builds.js';
+import { evaluateTeamSynergy, updateTeamSlotsUI } from '../features/teambuilder.js';
+import { renderMap, setupMapEvents, onMapTabActive } from '../features/map.js';
+import { renderPromoCodes } from '../features/codes.js';
+import { initAuthAndUserTierlists, updateAuthUI } from '../features/auth.js';
+import { initGuides, renderGuides } from '../features/guides.js';
+import { FALLBACK_PROMO_CODES } from '../utils/fallbackData.js';
+import { auth } from '../firebase/firebase.js';
 
 // 5. INITIALIZATION & ROUTING
 document.addEventListener("DOMContentLoaded", async () => {
@@ -71,8 +72,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                     evaluateTeamSynergy();
                     updateTeamSlotsUI();
                     // Re-render auth UI and community lists for the new language
-                    if (typeof firebase !== 'undefined' && firebase.auth && firebase.auth().currentUser) {
-                        updateAuthUI(firebase.auth().currentUser);
+                    if (auth && auth.currentUser) {
+                        updateAuthUI(auth.currentUser);
                     } else {
                         updateAuthUI(null);
                     }
