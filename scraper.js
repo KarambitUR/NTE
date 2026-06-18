@@ -310,7 +310,6 @@ async function run() {
     // ===== TIMELINE AUTO-UPDATE =====
     if (firestoreDb) {
         await updateTimelineStatuses();
-        await scrapeTimelineEvents();
     }
 }
 
@@ -386,75 +385,5 @@ async function updateTimelineStatuses() {
     }
 }
 
-// Scrape for new NTE game events/updates
-async function scrapeTimelineEvents() {
-    if (!firestoreDb) return;
-
-    const eventSources = [
-        { url: 'https://www.eurogamer.net/neverness-to-everness-nte-codes', name: 'Eurogamer' },
-        { url: 'https://www.pcgamesn.com/neverness-to-everness/codes', name: 'PCGamesN' }
-    ];
-
-    let foundEvents = [];
-
-    for (const source of eventSources) {
-        try {
-            const html = await fetchPage(source.url);
-
-            // Look for update/version mentions with dates
-            // Pattern: "Version X.X" or "Update X.X" with nearby dates
-            const versionPattern = /(?:version|update|patch)\s*(\d+\.\d+)[^<]*?(?:(\w+\s+\d{1,2})|(\d{1,2}\s+\w+))\s*,?\s*(\d{4})?/gi;
-            let match;
-            while ((match = versionPattern.exec(html)) !== null) {
-                const version = match[1];
-                const dateStr = (match[2] || match[3] || '').trim();
-                if (version && dateStr) {
-                    foundEvents.push({
-                        version,
-                        dateStr,
-                        source: source.name
-                    });
-                }
-            }
-        } catch (err) {
-            // Silently skip failed sources for events
-        }
-    }
-
-    if (foundEvents.length > 0) {
-        console.log(`📅 Found ${foundEvents.length} potential timeline events from web`);
-        
-        // Check which events are already in Firestore
-        const existing = await firestoreDb.collection('timelineEvents').get();
-        const existingTitles = existing.docs.map(d => d.data().title?.toLowerCase() || '');
-
-        const batch = firestoreDb.batch();
-        let addedCount = 0;
-
-        for (const event of foundEvents) {
-            const title = `Оновлення ${event.version}`;
-            if (!existingTitles.some(t => t.includes(event.version))) {
-                const ref = firestoreDb.collection('timelineEvents').doc(`event_auto_${event.version.replace('.', '_')}`);
-                batch.set(ref, {
-                    date: event.dateStr,
-                    title: title,
-                    desc: `Нове оновлення версії ${event.version}. Інформація отримана автоматично з ${event.source}.`,
-                    status: 'Upcoming',
-                    badgeClass: 'badge-phase',
-                    order: 100 + addedCount,
-                    autoAdded: true,
-                    source: event.source
-                });
-                addedCount++;
-                console.log(`📅 [NEW EVENT]: ${title} (${event.dateStr})`);
-            }
-        }
-
-        if (addedCount > 0) {
-            await batch.commit();
-            console.log(`📅 Added ${addedCount} new timeline events`);
-        }
-    }
-}
-
 run();
+
