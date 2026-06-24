@@ -335,7 +335,7 @@ export const FALLBACK_TIMELINE_EVENTS = [
         date: "24 Червня 2026",
         title: "Друга фаза 1.1: Банер Хаосу (Chaos)",
         desc: "Старт другої фази версії 1.1. Лімітований банер нового персонажа S-рангу Хаосу (Chaos), який володіє стихією Лакшана.",
-        status: "Upcoming",
+        status: "Active",
         badgeClass: "badge-lakshana"
     },
     {
