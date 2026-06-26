@@ -297,13 +297,13 @@ export const FALLBACK_GUIDES = [
         "id": "guide-meta-analysis",
         "title": "Аналіз Мети Патчу 1.1: Рейтинг та Тренди",
         "titleEn": "Patch 1.1 Meta Analysis: Rankings & Trends",
-        "description": "Аналіз поточної ігрової мети версії 1.1. Чому Лакрімоза та нові реакції змістили Наналлі з першої позиції, та як Хаос вплине на майбутній баланс сил.",
-        "descriptionEn": "Analysis of the current version 1.1 game meta. Why Lacrimosa and new reactions shifted Nanally from the top spot, and how Chaos will impact the balance of power.",
+        "description": "Аналіз поточної ігрової мети версії 1.1. Чому Лакрімоза та нові реакції змістили Наналлі з першої позиції, та як Хаос домінує в поточному балансі сил.",
+        "descriptionEn": "Analysis of the current version 1.1 game meta. Why Lacrimosa and new reactions shifted Nanally from the top spot, and how Chaos dominates the current balance of power.",
         "category": "meta",
         "isFeatured": false,
         "difficulty": "Hard",
         "difficultyEn": "Hard",
-        "updateDate": "2026-06-04",
+        "updateDate": "2026-06-24",
         "tags": [
             "Meta",
             "Tier List",
@@ -318,12 +318,12 @@ export const FALLBACK_GUIDES = [
         "content": {
             "sections": [
                 {
-                    "title": "1. Нова домінуюча сила: Лакрімоза (Chaos DPS)",
-                    "titleEn": "1. New Dominating Force: Lacrimosa (Chaos DPS)",
-                    "text": "З виходом версії 1.1 Лакрімоза (Хаос) стала найсильнішим ДПС у грі. Її унікальна механіка атак масками та сумісність з реакцією Charged дозволяє миттєво знищувати босів.",
-                    "textEn": "With the release of version 1.1, Lacrimosa (Chaos) has become the strongest DPS in the game. Her unique mask-based combat mechanics and compatibility with the Charged reaction allow her to shred bosses instantly.",
-                    "titleFr": "1. Nouvelle Force Dominante : Lacrimosa (DPS Chaos)",
-                    "textFr": "Avec la sortie de la version 1.1, Lacrimosa (Chaos) est devenue le DPS le plus puissant du jeu. Ses mécaniques de combat uniques basées sur les masques et sa synergie avec la réaction Charged lui permettent de détruire les boss instantanément."
+                    "title": "1. Активний банер та домінуюча сила: Хаос (Lakshana DPS)",
+                    "titleEn": "1. Active Banner & Dominating Force: Chaos (Lakshana DPS)",
+                    "text": "З початком другої фази версії 1.1 Хаос (Chaos) став головним об'єктом уваги. Як лімітований DPS стихії Лакшана, він володіє колосальним потенціалом критичної шкоди та ідеально взаємодіє з реакцією Remora, витісняючи колишніх лідерів.",
+                    "textEn": "With the start of version 1.1 second phase, Chaos has become the primary focus. As a limited Lakshana DPS, he possesses colossal critical damage potential and synergizes perfectly with the Remora reaction, pushing out previous top tier carries.",
+                    "titleFr": "1. Bannière Active & Force Dominante : Chaos (DPS Lakshana)",
+                    "textFr": "Avec le début de la deuxième phase de la version 1.1, Chaos est devenu le point de mire principal. En tant que DPS Lakshana limité, il possède un potentiel de dégâts critiques colossal et se marie parfaitement avec la réaction Remora, détrônant les anciens carries."
                 },
                 {
                     "title": "2. Зростання популярності реакцій Charged та Remora",
@@ -340,21 +340,21 @@ export const FALLBACK_GUIDES = [
             "https://keqingmains.com"
         ],
         "recommendedTeams": [
-            "lacrimosa",
-            "daffodil",
-            "sakiri",
-            "chaos"
+            "chaos",
+            "hathor",
+            "zero",
+            "sakiri"
         ],
         "progressionTips": [
             "Використовуйте реакцію Charged для швидкого пробиття стійкості супротивників.",
-            "Сфокусуйтеся на отриманні Лакрімози, оскільки вона є найсильнішим carry-персонажем у патчі 1.1."
+            "Сфокусуйтеся на отриманні Хаоса (Chaos), оскільки його банер зараз активний і він є найсильнішим carry-персонажем другої фази патчу 1.1."
         ],
         "progressionTipsEn": [
             "Use the Charged reaction to break enemy poise quickly.",
-            "Focus on pulling Lacrimosa, as she is the strongest carry character in patch 1.1."
+            "Focus on pulling Chaos, as his banner is currently active and he is the strongest carry character in patch 1.1 second phase."
         ],
         "titleFr": "Analyse de la Méta du Patch 1.1 : Classements & Tendances",
-        "descriptionFr": "Analyse de la méta du jeu en version 1.1. Pourquoi Lacrimosa et les nouvelles réactions ont détrôné Nanally, et comment Chaos va impacter l'équilibre des forces.",
+        "descriptionFr": "Analyse de la méta du jeu en version 1.1. Pourquoi Lacrimosa et les nouvelles réactions ont détrôné Nanally, et comment Chaos domine la méta actuelle.",
         "difficultyFr": "Difficile",
         "tagsFr": [
             "Méta",
@@ -363,7 +363,7 @@ export const FALLBACK_GUIDES = [
         ],
         "progressionTipsFr": [
             "Utilisez la réaction Charged pour briser rapidement la posture des ennemis.",
-            "Concentrez-vous sur l'obtention de Lacrimosa, car elle est le carry le plus fort du patch 1.1."
+            "Concentrez-vous sur l'obtention de Chaos, car sa bannière est actuellement active et il est le carry le plus fort de la deuxième phase du patch 1.1."
         ]
     },
     {

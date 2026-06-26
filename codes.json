@@ -92,11 +92,11 @@
     {
         "code": "LACRIMOSA0603",
         "rewards": "30 Annulith, 20,000 Fons",
-        "active": true
+        "active": false
     },
     {
         "code": "NTEvtuber",
         "rewards": "50k fons and 50k beetle coins",
-        "active": true
+        "active": false
     }
 ]
