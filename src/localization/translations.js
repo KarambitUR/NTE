@@ -1298,21 +1298,55 @@ export const TIMELINE_TRANSLATIONS = {
             desc: "Lancement de la première mise à jour majeure. Début de la première phase de la bannière avec Lacrimosa. Nouveau chapitre d'histoire 'Théâtre des Ombres'. Lancement de l'événement estival."
         }
     },
-    "Оновлення 1.2 та нові герої Shinku й Iroi": {
+    "Стрім Розробників: Презентація Версії 1.2 '999 Nights'": {
         uk: {
-            title: "Оновлення 1.2 та нові герої Shinku й Iroi",
-            date: "Липень 2026 (Прогноз)",
-            desc: "Очікуване оновлення на основі витоків інформації. Додавання нових аномальних зон на півночі Гетеро та вихід нових персонажів S-рангу."
+            title: "Стрім Розробників: Презентація Версії 1.2 '999 Nights'",
+            date: "27 Червня 2026",
+            desc: "Спеціальна трансляція від Hotta Studio. Детальна презентація оновлення 1.2, анонс нових героїв Шінку (Shinku) та Іроі (Iroi), демонстрація геймплею, нових ігрових зон та нові промокоди."
         },
         en: {
-            title: "Version 1.2: New Heroes Shinku & Iroi",
-            date: "July 2026 (Estimate)",
-            desc: "Anticipated update based on leaks. Addition of new anomaly zones in north Hethereau and release of new S-rank characters."
+            title: "Developer Stream: Version 1.2 '999 Nights' Showcase",
+            date: "June 27, 2026",
+            desc: "Special live broadcast by Hotta Studio. In-depth presentation of the 1.2 update, announcement of new heroes Shinku and Iroi, gameplay showcases, new districts, and new promo codes."
         },
         fr: {
-            title: "Version 1.2 : Nouveaux héros Shinku & Iroi",
-            date: "Juillet 2026 (Estimation)",
-            desc: "Mise à jour anticipée basée sur les fuites. Ajout de nouvelles zones d'anomalies au nord de Hethereau et sortie de nouveaux personnages de rang S."
+            title: "Stream des développeurs : Présentation de la Version 1.2 '999 Nights'",
+            date: "27 juin 2026",
+            desc: "Diffusion en direct spéciale de Hotta Studio. Présentation détaillée de la mise à jour 1.2, annonce des nouveaux héros Shinku et Iroi, démonstrations de gameplay, nouveaux quartiers et codes promo."
+        }
+    },
+    "Оновлення 1.2 '999 Nights': Банер Шінку (Shinku)": {
+        uk: {
+            title: "Оновлення 1.2 '999 Nights': Банер Шінку (Shinku)",
+            date: "8 Липня 2026",
+            desc: "Офіційний запуск версії 1.2. Старт першої фази з банером Шінку (S-ранг, стихія Космос, атакуючий DPS з механікою берсерка). Новий сюжетний розділ, розширення карти та літні події."
+        },
+        en: {
+            title: "Version 1.2 '999 Nights': Shinku Banner",
+            date: "July 8, 2026",
+            desc: "Official release of Version 1.2. Start of Phase 1 featuring S-Rank Shinku (Cosmos attribute, burst DPS with a berserk mechanic). Includes new story acts, map expansions, and summer events."
+        },
+        fr: {
+            title: "Version 1.2 '999 Nights' : Bannière de Shinku",
+            date: "8 juillet 2026",
+            desc: "Sortie officielle de la Version 1.2. Début de la Phase 1 avec Shinku (rang S, attribut Cosmos, DPS de type burst avec mécanique de berserk). Comprend de nouveaux chapitres d'histoire, extensions de carte et événements estivaux."
+        }
+    },
+    "Друга фаза 1.2: Банер Іроі (Iroi)": {
+        uk: {
+            title: "Друга фаза 1.2: Банер Іроі (Iroi)",
+            date: "29 Липня 2026 (Прогноз)",
+            desc: "Старт другої фази оновлення 1.2. Лімітований банер нового персонажа підтримки S-рангу Іроі (Iroi), яка володіє стихією Аніма та спеціалізується на лікуванні команди."
+        },
+        en: {
+            title: "Phase 2 of 1.2: Iroi Banner",
+            date: "July 29, 2026 (Estimate)",
+            desc: "Start of the second phase of version 1.2. Limited banner for the new S-Rank support character Iroi (Anima attribute, healer/support)."
+        },
+        fr: {
+            title: "Phase 2 de la 1.2 : Bannière d'Iroi",
+            date: "29 juillet 2026 (Estimation)",
+            desc: "Début de la deuxième phase de la version 1.2. Bannière limitée pour le nouveau personnage de soutien de rang S Iroi (attribut Anima, spécialisé dans les soins)."
         }
     },
     "Друга фаза 1.1: Банер Хаосу (Chaos)": {
