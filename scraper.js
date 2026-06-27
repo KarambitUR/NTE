@@ -45,7 +45,7 @@ async function initFirebaseAdmin() {
         const serviceAccount = JSON.parse(serviceAccountJson);
         
         admin.initializeApp({
-            credential: admin.credential.cert(serviceAccount)
+            credential: (admin.credential && admin.credential.cert) ? admin.credential.cert(serviceAccount) : admin.cert(serviceAccount)
         });
         
         firestoreDb = admin.firestore();
