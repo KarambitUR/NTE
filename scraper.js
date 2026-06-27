@@ -41,18 +41,19 @@ async function initFirebaseAdmin() {
             return false;
         }
 
-        const admin = require('firebase-admin');
+        const { initializeApp, cert } = require('firebase-admin/app');
+        const { getFirestore } = require('firebase-admin/firestore');
         const serviceAccount = JSON.parse(serviceAccountJson);
         
-        admin.initializeApp({
-            credential: (admin.credential && admin.credential.cert) ? admin.credential.cert(serviceAccount) : admin.cert(serviceAccount)
+        const app = initializeApp({
+            credential: cert(serviceAccount)
         });
         
-        firestoreDb = admin.firestore();
+        firestoreDb = getFirestore(app);
         console.log('🔥 Firebase Admin SDK initialized');
         return true;
     } catch (err) {
-        console.warn('Firebase Admin init failed (this is OK for local dev):', err.message);
+        console.warn('Firebase Admin init failed (this is OK for local dev):', err.stack || err.message);
         return false;
     }
 }
