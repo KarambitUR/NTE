@@ -75,11 +75,8 @@ async function writeToFirestore(codes, existingCodes = []) {
                 source: 'scraper'
             };
 
-            // Only set addedAt if the code is brand new (not in existingCodes)
-            const isExisting = existingCodes.some(c => c.code.toLowerCase() === code.code.toLowerCase());
-            if (!isExisting) {
-                dataToSet.addedAt = new Date().toISOString();
-            }
+            // Set addedAt from codes.json or fallback to current date
+            dataToSet.addedAt = code.addedAt || new Date().toISOString();
 
             batch.set(ref, dataToSet, { merge: true }); // merge: true preserves existing fields
             count++;
@@ -269,7 +266,11 @@ async function run() {
         const index = updatedCodes.findIndex(c => c.code.toLowerCase() === newCode.code.toLowerCase());
         if (index === -1) {
             // New code found!
-            updatedCodes.push(newCode);
+            const codeWithDate = {
+                ...newCode,
+                addedAt: new Date().toISOString()
+            };
+            updatedCodes.push(codeWithDate);
             addedCount++;
             console.log(`[NEW CODE ADDED]: ${newCode.code} - ${newCode.rewards}`);
         } else {
