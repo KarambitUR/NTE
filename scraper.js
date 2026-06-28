@@ -386,5 +386,13 @@ async function updateTimelineStatuses() {
     }
 }
 
-run();
+run()
+    .then(() => {
+        console.log('✅ Scraper run finished successfully. Exiting.');
+        process.exit(0);
+    })
+    .catch(err => {
+        console.error('❌ Scraper run failed:', err);
+        process.exit(1);
+    });
 
