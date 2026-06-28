@@ -165,9 +165,9 @@ function extractCodes(html) {
     
     // Regular expression to look for codes and potential rewards
     // Matches common formats like: **CODE** - Reward, CODE: Reward, CODE – Reward
-    // We search for NTE codes (case-insensitive for nte), general uppercase codes starting with a letter (e.g. DREAMWALK0603), or numeric-first codes (e.g. 504980102FKGOVNS)
+    // We search for NTE codes (case-insensitive for nte), general uppercase codes starting with a letter or digit (e.g. DREAMWALK0603, 999NIGHTS), or numeric-first codes (e.g. 504980102FKGOVNS)
     // Note: We run without the /i flag to force general codes to be strictly uppercase, avoiding matching lowercase page content.
-    const pattern = /(?:<strong>|<b>|\b)([nN][tT][eE][A-Za-z0-9_]{3,20}|[A-Z][A-Z0-9_]{5,24}|[0-9]{5,}[A-Za-z0-9]+)(?:<\/strong>|<\/b>|\b)(?:\s*[-–—:]\s*|\s+-\s+)([^\n<•]+)/g;
+    const pattern = /(?:<strong>|<b>|\b)([nN][tT][eE][A-Za-z0-9_]{3,20}|[A-Z0-9][A-Z0-9_]{5,24}|[0-9]{5,}[A-Za-z0-9]+)(?:<\/strong>|<\/b>|\b)(?:\s*[-–—:]\s*|\s+-\s+)([^\n<•]+)/g;
     
     let match;
     while ((match = pattern.exec(activeHtml)) !== null) {
@@ -182,27 +182,27 @@ function extractCodes(html) {
 
         // Validate code length and pattern to avoid false positives
         if (code && code.length >= 6 && code.length <= 30 && rewards.length > 3 && rewards.length < 150) {
-            // Avoid false positives like "NTE Wiki" or "Neverness to Everness"
-            if (!/^(wiki|guide|game|release|trailer|beta|play|alpha|forum|reddit|discord|official|download)$/i.test(code)) {
+            // Avoid false positives like "NTE Wiki" or "Neverness to Everness", and reject pure numeric strings
+            if (!/^(wiki|guide|game|release|trailer|beta|play|alpha|forum|reddit|discord|official|download)$/i.test(code) && !/^\d+$/.test(code)) {
                 foundCodes.push({ code, rewards, active: true });
             }
         }
     }
     
     // Fallback: search for codes written standalone in <li> tags
-    const listPattern = /<li>\s*(?:<strong>)?([nN][tT][eE][A-Za-z0-9_]{3,20}|[A-Z][A-Z0-9_]{5,24})\s*(?:<\/strong>)?\s*<\/li>/g;
+    const listPattern = /<li>\s*(?:<strong>)?([nN][tT][eE][A-Za-z0-9_]{3,20}|[A-Z0-9][A-Z0-9_]{5,24})\s*(?:<\/strong>)?\s*<\/li>/g;
     while ((match = listPattern.exec(activeHtml)) !== null) {
         let code = match[1].trim();
-        if (!foundCodes.some(c => c.code.toLowerCase() === code.toLowerCase())) {
+        if (!/^\d+$/.test(code) && !foundCodes.some(c => c.code.toLowerCase() === code.toLowerCase())) {
             foundCodes.push({ code, rewards: "Active Promo Code (Ресурси)", active: true });
         }
     }
 
     // Additional pattern: codes in <code> or <kbd> tags  
-    const codeTagPattern = /(?:<code>|<kbd>)\s*([nN][tT][eE][A-Za-z0-9_]{3,20}|[A-Z][A-Z0-9_]{5,24}|[0-9]{5,}[A-Za-z0-9]+)\s*(?:<\/code>|<\/kbd>)/g;
+    const codeTagPattern = /(?:<code>|<kbd>)\s*([nN][tT][eE][A-Za-z0-9_]{3,20}|[A-Z0-9][A-Z0-9_]{5,24}|[0-9]{5,}[A-Za-z0-9]+)\s*(?:<\/code>|<\/kbd>)/g;
     while ((match = codeTagPattern.exec(activeHtml)) !== null) {
         let code = match[1].trim();
-        if (!foundCodes.some(c => c.code.toLowerCase() === code.toLowerCase())) {
+        if (!/^\d+$/.test(code) && !foundCodes.some(c => c.code.toLowerCase() === code.toLowerCase())) {
             foundCodes.push({ code, rewards: "Active Promo Code (Ресурси)", active: true });
         }
     }

@@ -108,5 +108,10 @@
         "code": "IROI0729",
         "rewards": "100 Annulith and other rewards",
         "active": true
+    },
+    {
+        "code": "999NIGHTS",
+        "rewards": "100 Annulith and other rewards",
+        "active": true
     }
 ]
