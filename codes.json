@@ -116,5 +116,17 @@
         "rewards": "100 Annulith and other rewards",
         "active": true,
         "addedAt": "2026-06-27T13:42:59.670Z"
+    },
+    {
+        "code": "DRAGONGIRL",
+        "rewards": "30 Annulith, 20,000 Fons, 1 Puka Chocoa Ellie Tour Special",
+        "active": true,
+        "addedAt": "2026-07-08T13:58:43.599Z"
+    },
+    {
+        "code": "WELCOMETONTE",
+        "rewards": "Celebration Fireworks Avatar Frame",
+        "active": true,
+        "addedAt": "2026-07-08T13:58:43.600Z"
     }
 ]
