@@ -118,7 +118,7 @@ const BOSS_METADATA = {
             en: ['Dress Sleeves of Vanity', 'Crown Called Nobility', 'Scepter Called Prestige'],
             fr: ['Manches de robe de vanité', 'Couronne de noblesse', 'Sceptre de prestige']
         },
-        characters: ['hotori', 'daffodil', 'jiuyuan', 'adler', 'haniel', 'lacrimosa', 'fadia', 'chaos'],
+        characters: ['hotori', 'daffodil', 'jiuyuan', 'adler', 'haniel', 'lacrimosa', 'fadia', 'chaos', 'shinku', 'iroi'],
         cost: 60,
         weekly: true
     },
@@ -138,7 +138,7 @@ const BOSS_METADATA = {
             en: ['Charging Knight Spark Plug'],
             fr: ['Bougie d\'allumage du chevalier chargeant']
         },
-        characters: ['hotori', 'zero', 'sakiri', 'daffodil'],
+        characters: ['hotori', 'zero', 'sakiri', 'daffodil', 'shinku'],
         cost: 60,
         weekly: false
     },
@@ -148,7 +148,7 @@ const BOSS_METADATA = {
             en: ['A Page from Delusion\'s Shore'],
             fr: ['Une page du rivage de l\'illusion']
         },
-        characters: ['nanally', 'mint'],
+        characters: ['nanally', 'mint', 'iroi'],
         cost: 60,
         weekly: false
     },
