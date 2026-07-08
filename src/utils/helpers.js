@@ -2,8 +2,8 @@ import { state } from '../scripts/state.js';
 
 // startBannerCountdown and updateTimer
 function startBannerCountdown() {
-    // Chaos's banner ends on July 8, 2026 at 05:59 UTC+8.
-    const bannerEndDate = new Date("2026-07-07T21:59:00Z").getTime();
+    // Shinku's banner ends on July 29, 2026 at 05:59 UTC+8.
+    const bannerEndDate = new Date("2026-07-28T21:59:00Z").getTime();
     
     function updateTimer() {
         const now = new Date().getTime();

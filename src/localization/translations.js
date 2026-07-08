@@ -652,6 +652,70 @@ export const CHARACTER_TRANSLATIONS = {
             teamSynergy: "Zero (Cosmos), Sakiri (Incantation), Hathor (Lakshana)",
             lore: "Lieutenant de l'unité ETD-6 du Bureau de Contrôle des Anomalies. Un combattant mystérieux et dangereux qui manipule la brume noire et se déplace dans les ombres."
         }
+    },
+    shinku: {
+        uk: {
+            name: "Шінку",
+            summary: "Потужний атакуючий персонаж стихії Космос. Спеціалізується на швидкій вибуховій шкоді завдяки унікальній механіці стану берсерка, який значно підвищує швидкість та силу атак.",
+            weapon: "Сльози затемнення (Сигнатурний Arc)",
+            weaponF2p: "Дика мрія",
+            cartridge: "Втрачене сяйво (4 частини)",
+            stats: ["Шанс криту", "Крит. шкода", "Космос шкода", "Сила атаки %"],
+            teamSynergy: "Зеро (Космос), Сакірі (Закляття), Хоторі (Космос)",
+            lore: "Загадкова дівчина з таємничої організації, яка здатна маніпулювати енергією порожнечі. Завжди спокійна зовні, але приховує руйнівну силу всередині."
+        },
+        en: {
+            name: "Shinku",
+            summary: "A powerful Cosmos attribute Main DPS. Specializes in rapid burst damage thanks to a unique berserk state mechanic that significantly increases attack speed and power.",
+            weapon: "Tears of the Eclipse (Signature Arc)",
+            weaponF2p: "Wild Reverie",
+            cartridge: "Lost Radiance (4-piece)",
+            stats: ["Crit Rate", "Crit DMG", "Cosmos DMG", "ATK%"],
+            teamSynergy: "Zero (Cosmos), Sakiri (Incantation), Hotori (Cosmos)",
+            lore: "A mysterious girl from a secret organization capable of manipulating void energy. Always calm on the outside, but harbors destructive power within."
+        },
+        fr: {
+            name: "Shinku",
+            summary: "Un puissant DPS principal de l'attribut Cosmos. Spécialisé dans les dégâts de burst rapides grâce à une mécanique d'état berserk unique qui augmente considérablement la vitesse et la puissance d'attaque.",
+            weapon: "Larmes de l'éclipse (Arc Signature)",
+            weaponF2p: "Rêverie sauvage",
+            cartridge: "Éclat perdu (4 pièces)",
+            stats: ["Taux Critique", "Dégâts Critique", "Dégâts Cosmos", "ATK %"],
+            teamSynergy: "Zero (Cosmos), Sakiri (Incantation), Hotori (Cosmos)",
+            lore: "Une fille mystérieuse d'une organisation secrète capable de manipuler l'énergie du vide. Toujours calme à l'extérieur, mais abritant un pouvoir destructeur à l'intérieur."
+        }
+    },
+    iroi: {
+        uk: {
+            name: "Іроі",
+            summary: "Найкращий цілитель та бустер стихії Аніма. Здатна відновлювати велику кількість здоров'я всій команді та накладати баффи, які збільшують шкоду від реакцій Blossom.",
+            weapon: "Весняна мелодія (Сигнатурний Arc)",
+            weaponF2p: "Спадщина Ейбона",
+            cartridge: "Маленька велика пригода (4 частини)",
+            stats: ["Здоров'я %", "Бонус лікування", "Відновлення енергії", "Здоров'я (фікс.)"],
+            teamSynergy: "Наналлі (Аніма), Зеро (Космос), Цзююань (Аніма)",
+            lore: "Життєрадісна травниця, яка подорожує районами Гетеро в пошуках рідкісних аномальних рослин для створення ліків."
+        },
+        en: {
+            name: "Iroi",
+            summary: "The best healer and buffer of the Anima attribute. Capable of restoring large amounts of health to the entire team and applying buffs that increase damage from Blossom reactions.",
+            weapon: "Spring Melody (Signature Arc)",
+            weaponF2p: "Eibon Legacy",
+            cartridge: "Tiny Big Adventure (4-piece)",
+            stats: ["HP%", "Healing Bonus", "Energy Charge Efficiency", "Flat HP"],
+            teamSynergy: "Nanally (Anima), Zero (Cosmos), Jiuyuan (Anima)",
+            lore: "A cheerful herbalist traveling Hethereau districts in search of rare anomalous plants to craft medicines."
+        },
+        fr: {
+            name: "Iroi",
+            summary: "Le meilleur soigneur et booster de l'attribut Anima. Capable de restaurer de grandes quantités de PV à toute l'équipe et d'appliquer des buffs qui augmentent les dégâts des réactions Blossom.",
+            weapon: "Mélodie du printemps (Arc Signature)",
+            weaponF2p: "Héritage d'Eibon",
+            cartridge: "Petite grande aventure (4 pièces)",
+            stats: ["PV %", "Bonus de Soin", "Recharge d'Énergie", "PV (Plat)"],
+            teamSynergy: "Nanally (Anima), Zero (Cosmos), Jiuyuan (Anima)",
+            lore: "Une herboriste joyeuse voyageant dans les quartiers de Hethereau à la recherche de plantes anormales rares pour fabriquer des remèdes."
+        }
     }
 };
 
@@ -1512,7 +1576,7 @@ export const i18n = {
         hero_btn_tierlist: "Переглянути Тір-ліст",
         hero_btn_teambuilder: "Зібрати Загін",
         active_banner_badge: "АКТИВНИЙ БАНЕР",
-        active_banner_title: "Хаос: Погоня в Тінях",
+        active_banner_title: "Шінку: 999 Ночей",
         banner_timer_label: "До завершення:",
         view_build_btn: "Оцінка та білд",
         feat_tierlist_title: "Інтерактивний Тір-ліст",
@@ -1525,12 +1589,12 @@ export const i18n = {
         widget_codes_badge: "ПЕРЕВІРЕНО",
         widget_codes_desc: "Натисніть на код, щоб миттєво скопіювати його.",
         widget_events_title: "Графік подій та оновлень",
-        widget_events_badge: "ВЕРСІЯ 1.1",
+        widget_events_badge: "ВЕРСІЯ 1.2",
         widget_loading: "Завантаження...",
         widget_copy_btn: "Копіювати",
         widget_copied: "Скопійовано!",
         tierlist_title: "Рейтинг Персонажів (Тір-ліст)",
-        tierlist_subtitle: "Оцінка ефективності мисливців на аномалії у версії 1.1 (Dreamwalk Corridor)",
+        tierlist_subtitle: "Оцінка ефективності мисливців на аномалії у версії 1.2 (999 Nights)",
         sub_tab_official: "Офіційний Тір-ліст",
         sub_tab_community: "Тір-лісти спільноти",
         sub_tab_creator: "Створити свій",
@@ -1735,7 +1799,7 @@ export const i18n = {
         hero_btn_tierlist: "View Tier List",
         hero_btn_teambuilder: "Build Squad",
         active_banner_badge: "ACTIVE BANNER",
-        active_banner_title: "Chaos: Shadow Pursuit",
+        active_banner_title: "Shinku: 999 Nights",
         banner_timer_label: "Ends in:",
         view_build_btn: "Review & Build",
         feat_tierlist_title: "Interactive Tier List",
@@ -1748,12 +1812,12 @@ export const i18n = {
         widget_codes_badge: "VERIFIED",
         widget_codes_desc: "Click on any code to copy it instantly.",
         widget_events_title: "Events & Version Roadmap",
-        widget_events_badge: "VERSION 1.1",
+        widget_events_badge: "VERSION 1.2",
         widget_loading: "Loading...",
         widget_copy_btn: "Copy",
         widget_copied: "Copied!",
         tierlist_title: "Character Rating (Tier List)",
-        tierlist_subtitle: "Evaluation of anomaly hunters' effectiveness in version 1.1 (Dreamwalk Corridor)",
+        tierlist_subtitle: "Evaluation of anomaly hunters' effectiveness in version 1.2 (999 Nights)",
         sub_tab_official: "Official Tier List",
         sub_tab_community: "Community Lists",
         sub_tab_creator: "Create Own",
@@ -1958,7 +2022,7 @@ export const i18n = {
         hero_btn_tierlist: "Voir la Tier List",
         hero_btn_teambuilder: "Créer une Équipe",
         active_banner_badge: "BANNIÈRE ACTIVE",
-        active_banner_title: "Chaos : Poursuite des Ombres",
+        active_banner_title: "Shinku : 999 Nights",
         banner_timer_label: "Se termine dans :",
         view_build_btn: "Évaluation & Build",
         feat_tierlist_title: "Tier List Interactive",
@@ -1971,12 +2035,12 @@ export const i18n = {
         widget_codes_badge: "VÉRIFIÉ",
         widget_codes_desc: "Cliquez sur un code pour le copier instantanément.",
         widget_events_title: "Calendrier des Événements & Versions",
-        widget_events_badge: "VERSION 1.1",
+        widget_events_badge: "VERSION 1.2",
         widget_loading: "Chargement...",
         widget_copy_btn: "Copier",
         widget_copied: "Copié !",
         tierlist_title: "Classement des Personnages (Tier List)",
-        tierlist_subtitle: "Évaluation de l'efficacité des chasseurs d'anomalies dans la version 1.1 (Dreamwalk Corridor)",
+        tierlist_subtitle: "Évaluation de l'efficacité des chasseurs d'anomalies dans la version 1.2 (999 Nights)",
         sub_tab_official: "Tier List Officielle",
         sub_tab_community: "Listes de la Communauté",
         sub_tab_creator: "Créer la Vôtre",

@@ -287,6 +287,38 @@ export const FALLBACK_CHARACTERS = [
         stats: ["Crit Rate", "Crit DMG", "Lakshana DMG", "ATK%"],
         teamSynergy: "Zero (Космос), Sakiri (Закляття), Hathor (Лакшана)",
         lore: "Лейтенант 6-го взводу ETD Бюро контролю аномалій. Загадковий і небезпечний боєць, який використовує темний туман і здатний переміщатися крізь тіні."
+    },
+    {
+        id: "shinku",
+        name: "Shinku (Шінку)",
+        rarity: 5,
+        attribute: "Cosmos",
+        role: "Main DPS",
+        tier: "S+",
+        avatar: "https://static.wikia.nocookie.net/neverness-to-everness/images/d/df/Shinku_Card.png/revision/latest/scale-to-width-down/200?cb=20260708000000",
+        summary: "Потужний атакуючий персонаж стихії Космос. Спеціалізується на швидкій вибуховій шкоді завдяки унікальній механіці стану берсерка, який значно підвищує швидкість та силу атак.",
+        weapon: "Tears of the Eclipse (Сльози Затемнення)",
+        weaponF2p: "Wild Reverie (Дика мрія)",
+        cartridge: "Lost Radiance (4-piece)",
+        stats: ["Crit Rate", "Crit DMG", "Cosmos DMG", "ATK%"],
+        teamSynergy: "Zero (Космос), Sakiri (Закляття), Hotori (Космос)",
+        lore: "Загадкова дівчина з таємничої організації, яка здатна маніпулювати енергією порожнечі. Завжди спокійна зовні, але приховує руйнівну силу всередині."
+    },
+    {
+        id: "iroi",
+        name: "Iroi (Іроі)",
+        rarity: 5,
+        attribute: "Anima",
+        role: "Support",
+        tier: "S",
+        avatar: "https://static.wikia.nocookie.net/neverness-to-everness/images/b/b3/Iroi_Card.png/revision/latest/scale-to-width-down/200?cb=20260708000000",
+        summary: "Найкращий цілитель та бустер стихії Аніма. Здатна відновлювати велику кількість здоров'я всій команді та накладати баффи, які збільшують шкоду від реакцій Blossom.",
+        weapon: "Spring Melody (Весняна Мелодія)",
+        weaponF2p: "Eibon Legacy (Спадщина Ейбона)",
+        cartridge: "Tiny Big Adventure (4-piece)",
+        stats: ["HP%", "Healing Bonus", "Energy Charge Efficiency", "Flat HP"],
+        teamSynergy: "Nanally (Аніма), Zero (Космос), Jiuyuan (Аніма)",
+        lore: "Життєрадісна травниця, яка подорожує районами Гетеро в пошуках рідкісних аномальних рослин для створення ліків."
     }
 ];
 
@@ -335,7 +367,7 @@ export const FALLBACK_TIMELINE_EVENTS = [
         date: "24 Червня 2026",
         title: "Друга фаза 1.1: Банер Хаосу (Chaos)",
         desc: "Старт другої фази версії 1.1. Лімітований банер нового персонажа S-рангу Хаосу (Chaos), який володіє стихією Лакшана.",
-        status: "Active",
+        status: "Released",
         badgeClass: "badge-lakshana"
     },
     {
@@ -349,7 +381,7 @@ export const FALLBACK_TIMELINE_EVENTS = [
         date: "8 Липня 2026",
         title: "Оновлення 1.2 '999 Nights': Банер Шінку (Shinku)",
         desc: "Офіційний запуск версії 1.2. Старт першої фази з банером Шінку (S-ранг, стихія Космос, атакуючий DPS з механікою берсерка). Новий сюжетний розділ, розширення карти та літні події.",
-        status: "Upcoming",
+        status: "Active",
         badgeClass: "badge-cosmos"
     },
     {
