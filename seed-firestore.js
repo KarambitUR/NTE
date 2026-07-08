@@ -1142,8 +1142,95 @@
                     "Gardez toujours en tête l'emplacement de la cabine d'évacuation la plus proche.",
                     "Ignorez les ennemis mineurs et concentrez-vous sur les élites détenant des clés."
                 ]
+            },
+            {
+                "id": "guide-999-nights",
+                "title": "Івент 999 Ночей (999 Nights): Табличний RPG-Режим",
+                "titleEn": "999 Nights Event Guide: Tabletop RPG Mode",
+                "titleFr": "Guide de l'Événement 999 Nights : Mode RPG sur Plateau",
+                "description": "Повний гайд по головному івенту оновлення 1.2 '999 Ночей'. Як розблокувати режим Warren Continent, бойова система, прогресія та нагороди івенту.",
+                "descriptionEn": "Complete guide to the main Version 1.2 event '999 Nights'. How to unlock Warren Continent, combat mechanics, progression, and event rewards.",
+                "descriptionFr": "Guide complet de l'événement principal de la version 1.2 '999 Nights'. Comment débloquer le continent de Warren, mécaniques de combat, progression et récompenses.",
+                "category": "systems",
+                "isFeatured": true,
+                "difficulty": "Medium",
+                "difficultyEn": "Medium",
+                "difficultyFr": "Moyen",
+                "updateDate": "2026-07-08",
+                "tags": [
+                    "Event",
+                    "1.2",
+                    "999 Nights",
+                    "RPG"
+                ],
+                "tagsEn": [
+                    "Event",
+                    "1.2",
+                    "999 Nights",
+                    "RPG"
+                ],
+                "tagsFr": [
+                    "Événement",
+                    "1.2",
+                    "999 Nights",
+                    "RPG"
+                ],
+                "avatar": "src/assets/meta_analysis_icon.png",
+                "content": {
+                    "sections": [
+                        {
+                            "title": "1. Що таке режим 999 Ночей (Introduction & Warren Continent)",
+                            "titleEn": "1. Introduction & Warren Continent",
+                            "titleFr": "1. Introduction & Warren Continent",
+                            "text": "Режим «999 Ночей» переносить гравців з мегаполісу Гетеро на фантастичний континент Воррен (Warren Continent). Це окремий ігровий режим із настільною RPG-механікою (на кшталт D&D), де ви керуєте загоном, прокачуєте рівні окремо від основної гри, шукаєте випадкове спорядження, торгуєте та відпочиваєте біля багать. Також є міні-гра, яка приносить «Загадкові Ґудзики» (Mystery Buttons).",
+                            "textEn": "The '999 Nights' mode transports players from urban Hethereau to the fantasy Warren Continent. It is a standalone mode featuring tabletop RPG mechanics (similar to D&D), where you manage a party, level up independently of the main game, farm randomized gear, trade with merchants, and rest at campfires. It also includes a mini-game to earn 'Mystery Buttons'.",
+                            "textFr": "Le mode '999 Nights' transporte les joueurs d'Hethereau vers le continent fantastique de Warren. Il s'agit d'un mode autonome avec des mécaniques de RPG sur table (style D&D), où vous gérez un groupe, montez de niveau indépendamment du jeu principal, obtenez des équipements aléatoires, commercez et vous reposez près des feux de camp."
+                        },
+                        {
+                            "title": "2. Як розблокувати та почати (Unlock Requirements)",
+                            "titleEn": "2. Unlock Requirements",
+                            "titleFr": "2. Conditions d'accès",
+                            "text": "Щоб розпочати івент, вам потрібно оновити гру до версії 1.2, досягти Рівня Мисливця (Hunter Level) 26+ та завершити розділ сюжету «Dreamwalk Corridor» (конкретно після епізоду «Fighting with a Dragon»). Івент триває з 8 липня до 19 серпня 2026 року.",
+                            "textEn": "To unlock the event, you must update the game to Version 1.2, reach Hunter Level 26+, and complete the 'Dreamwalk Corridor' story chapter (specifically after the 'Fighting with a Dragon' episode). The event runs from July 8 to August 19, 2026.",
+                            "textFr": "Pour débloquer l'événement, vous devez mettre à jour le jeu en version 1.2, atteindre le Niveau de Chasseur 26+ et terminer le chapitre de l'histoire 'Dreamwalk Corridor' (après l'épisode 'Fighting with a Dragon'). L'événement se déroule du 8 juillet au 19 août 2026."
+                        },
+                        {
+                            "title": "3. Нагороди івенту (Button Shop & Rewards)",
+                            "titleEn": "3. Button Shop & Rewards",
+                            "titleFr": "3. Boutique & Récompenses",
+                            "text": "Це найбагатший івент патчу 1.2! Повне завершення приносить понад 1,350 Annulith, 5 Fabricated Dice, Fons, Floe Cinema Tickets, Elite Hunter Guides та Chaotic Dye. Обмінюйте «Загадкові Ґудзики» у Button Shop на цінні лімітовані предмети.",
+                            "textEn": "This is the most rewarding event of patch 1.2! Full completion yields over 1,350 Annulith, 5 Fabricated Dice, Fons, Floe Cinema Tickets, Elite Hunter Guides, and Chaotic Dye. Trade 'Mystery Buttons' in the Button Shop for valuable limited items.",
+                            "textFr": "C'est l'événement le plus rentable de la version 1.2 ! Le terminer entièrement rapporte plus de 1 350 Annuliths, 5 Fabricated Dice, Fons, Floe Cinema Tickets, Elite Hunter Guides et Chaotic Dye. Échangez les 'Mystery Buttons' dans la boutique de l'événement."
+                        }
+                    ]
+                },
+                "references": [
+                    "https://neverness-to-everness.fandom.com/wiki/Shinku",
+                    "https://reddit.com/r/NevernessToEverness"
+                ],
+                "recommendedTeams": [
+                    "shinku",
+                    "zero",
+                    "sakiri",
+                    "iroi"
+                ],
+                "progressionTips": [
+                    "Обов'язково збирайте всі кидки кубиків (Fabricated Dice) — вони дають унікальні баффи.",
+                    "Використовуйте Шінку як головного ДПС у цьому режимі, оскільки її берсерк-режим ідеальний проти босів континенту Воррен.",
+                    "Не пропускайте табори відпочинку для відновлення HP загону перед складними елітними ворогами."
+                ],
+                "progressionTipsEn": [
+                    "Always collect all Fabricated Dice rolls — they provide powerful unique buffs.",
+                    "Use Shinku as your primary DPS in this mode; her berserk status excels against Warren boss fights.",
+                    "Don't skip campfire rest sites to restore party HP before fighting elite targets."
+                ],
+                "progressionTipsFr": [
+                    "Collectez tous les dés fabriqués (Fabricated Dice) — ils fournissent des buffs uniques et puissants.",
+                    "Utilisez Shinku comme DPS principal; son mode berserk est idéal contre les boss du continent de Warren.",
+                    "Ne manquez pas les camps de repos pour restaurer les PV de votre équipe avant les combats d'élites."
+                ]
             }
-];
+        ];
 
     const batch = db.batch();
 
