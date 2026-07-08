@@ -406,15 +406,15 @@
         },
         		{
 		"id": "guide-meta-analysis",
-		"title": "Аналіз Мети Патчу 1.1: Рейтинг та Тренди",
-		"titleEn": "Patch 1.1 Meta Analysis: Rankings & Trends",
-		"description": "Аналіз поточної ігрової мети версії 1.1. Чому Лакрімоза та нові реакції змістили Наналлі з першої позиції, та як Хаос домінує в поточному балансі сил.",
-		"descriptionEn": "Analysis of the current version 1.1 game meta. Why Lacrimosa and new reactions shifted Nanally from the top spot, and how Chaos dominates the current balance of power.",
+		"title": "Аналіз Мети Патчу 1.2: Рейтинг та Тренди",
+		"titleEn": "Patch 1.2 Meta Analysis: Rankings & Trends",
+		"description": "Аналіз поточної ігрової мети версії 1.2. Чому Шінку та нові реакції змістили Хаоса з першої позиції, та як Cosmos домінує в поточному балансі сил.",
+		"descriptionEn": "Analysis of the current version 1.2 game meta. Why Shinku and new reactions shifted Chaos from the top spot, and how Cosmos dominates the current balance of power.",
 		"category": "meta",
 		"isFeatured": false,
 		"difficulty": "Hard",
 		"difficultyEn": "Hard",
-		"updateDate": "2026-06-24",
+		"updateDate": "2026-07-08",
 		"tags": [
 			"Meta",
 			"Tier List",
@@ -429,20 +429,20 @@
 		"content": {
 			"sections": [
 				{
-					"title": "1. Активний банер та домінуюча сила: Хаос (Lakshana DPS)",
-					"titleEn": "1. Active Banner & Dominating Force: Chaos (Lakshana DPS)",
-					"text": "З початком другої фази версії 1.1 Хаос (Chaos) став головним об'єктом уваги. Як лімітований DPS стихії Лакшана, він володіє колосальним потенціалом критичної шкоди та ідеально взаємодіє з реакцією Remora, витісняючи колишніх лідерів.",
-					"textEn": "With the start of version 1.1 second phase, Chaos has become the primary focus. As a limited Lakshana DPS, he possesses colossal critical damage potential and synergizes perfectly with the Remora reaction, pushing out previous top tier carries.",
-					"titleFr": "1. Bannière Active & Force Dominante : Chaos (DPS Lakshana)",
-					"textFr": "Avec le début de la deuxième phase de la version 1.1, Chaos est devenu le point de mire principal. En tant que DPS Lakshana limité, il possède un potentiel de dégâts critiques colossal et se marie parfaitement avec la réaction Remora, détrônant les anciens carries."
+					"title": "1. Активний банер та домінуюча сила: Шінку (Cosmos DPS)",
+					"titleEn": "1. Active Banner & Dominating Force: Shinku (Cosmos DPS)",
+					"text": "З початком першої фази версії 1.2 Шінку (Shinku) стала головним об'єктом уваги. Як лімітований DPS стихії Космос, вона володіє колосальним потенціалом критичної шкоди у стані берсерка та витісняє колишніх лідерів на кшталт Хаоса.",
+					"textEn": "With the start of version 1.2 first phase, Shinku has become the primary focus. As a limited Cosmos DPS, she possesses colossal critical damage potential in berserk state, pushing out previous top tier carries like Chaos.",
+					"titleFr": "1. Bannière Active & Force Dominante : Shinku (DPS Cosmos)",
+					"textFr": "Avec le début de la première phase de la version 1.2, Shinku est devenue le point de mire principal. En tant que DPS Cosmos limité, elle possède un potentiel de dégâts critiques colossal en mode berserk, détrônant les anciens carries comme Chaos."
 				},
 				{
-					"title": "2. Зростання популярності реакцій Charged та Remora",
-					"titleEn": "2. Rise of Charged and Remora Reactions",
-					"text": "Реакція Charged (Хаос + Закляття) тепер є ключовою для пробиття стійкості (Break) босів. Водночас реакція Remora (Космос + Лакшана) суттєво підвищує шанс критичного удару загону, роблячи нових персонажів на кшталт Хаоса (Chaos) та Хатор надзвичайно ефективними.",
-					"textEn": "The Charged reaction (Chaos + Incantation) is now key for shredding boss shields. Meanwhile, the Remora reaction (Cosmos + Lakshana) significantly boosts the team's Crit Rate, making new characters like Chaos and Hathor extremely effective.",
-					"titleFr": "2. Montée en Puissance des Réactions Charged et Remora",
-					"textFr": "La réaction Charged (Chaos + Incantation) is désormais essentielle pour briser la posture (Rupture) des boss. En parallèle, la réaction Remora (Cosmos + Lakshana) augmente considérablement le taux critique de l'équipe, rendant les nouveaux personnages comme Chaos et Hathor extrêmement efficaces."
+					"title": "2. Зростання популярності реакції Blossom та ефекту Cycle",
+					"titleEn": "2. Rise of Blossom Reaction and Cycle Effects",
+					"text": "Новий цілитель і бустер Іроі (Iroi) стихії Аніма вивів реакцію Blossom (Аніма + Аніма) на абсолютно новий рівень. Водночас ефект Циклу Есперів (Esper Cycle) з персонажами Космосу (Шінку, Зеро) залишається невід'ємною частиною будь-якого мета-загону.",
+					"textEn": "The new Anima healer and buffer Iroi has brought the Blossom reaction (Anima + Anima) to a whole new level. Meanwhile, the Esper Cycle effect using Cosmos characters (Shinku, Zero) remains an indispensable part of any meta squad.",
+					"titleFr": "2. Montée en Puissance de la Réaction Blossom et des Effets Cycle",
+					"textFr": "Le nouveau soigneur et buffer Anima Iroi a porté la réaction Blossom (Anima + Anima) à un tout autre niveau. En parallèle, l'effet Cycle d'Espers avec les personnages Cosmos (Shinku, Zero) reste indispensable."
 				}
 			]
 		},
@@ -451,21 +451,21 @@
 			"https://keqingmains.com"
 		],
 		"recommendedTeams": [
-			"chaos",
-			"hathor",
+			"shinku",
+			"iroi",
 			"zero",
 			"sakiri"
 		],
 		"progressionTips": [
-			"Використовуйте реакцію Charged для швидкого пробиття стійкості супротивників.",
-			"Сфокусуйтеся на отриманні Хаоса (Chaos), оскільки його банер зараз активний і він є найсильнішим carry-персонажем другої фази патчу 1.1."
+			"Використовуйте персонажів Космосу для активації ефекту Циклу Есперів та прискорення ротації навичок.",
+			"Сфокусуйтеся на отриманні Шінку (Shinku), оскільки її банер зараз активний і вона є найсильнішим carry-персонажем версії 1.2."
 		],
 		"progressionTipsEn": [
-			"Use the Charged reaction to break enemy poise quickly.",
-			"Focus on pulling Chaos, as his banner is currently active and he is the strongest carry character in patch 1.1 second phase."
+			"Use Cosmos characters to trigger the Esper Cycle effect and accelerate skill rotations.",
+			"Focus on pulling Shinku, as her banner is currently active and she is the strongest carry character in patch 1.2."
 		],
-		"titleFr": "Analyse de la Méta du Patch 1.1 : Classements & Tendances",
-		"descriptionFr": "Analyse de la méta du jeu en version 1.1. Pourquoi Lacrimosa et les nouvelles réactions ont détrôné Nanally, et comment Chaos domine la méta actuelle.",
+		"titleFr": "Analyse de la Méta du Patch 1.2 : Classements & Tendances",
+		"descriptionFr": "Analyse de la méta du jeu en version 1.2. Pourquoi Shinku et les nouvelles réactions ont détrôné Chaos, et comment Cosmos domine la méta actuelle.",
 		"difficultyFr": "Difficile",
 		"tagsFr": [
 			"Méta",
@@ -473,8 +473,8 @@
 			"Analyse"
 		],
 		"progressionTipsFr": [
-			"Utilisez la réaction Charged pour briser rapidement la posture des ennemis.",
-			"Concentrez-vous sur l'obtention de Chaos, car sa bannière est actuellement active et il est le carry le plus fort de la deuxième phase du patch 1.1."
+			"Utilisez des personnages Cosmos pour déclencher l'effet Cycle d'Espers et accélérer les rotations de compétences.",
+			"Concentrez-vous sur l'obtention de Shinku, car sa bannière est actuellement active et elle est le carry le plus fort du patch 1.2."
 		]
 	},
         {

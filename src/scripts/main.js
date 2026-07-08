@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (bannerBtn) {
             bannerBtn.addEventListener("click", () => {
                 switchTab("guides");
-                openCharacterModal("chaos");
+                openCharacterModal("shinku");
             });
         }
 
