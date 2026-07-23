@@ -144,13 +144,23 @@ export default function HomePage() {
               {activeCodes.map((c) => {
                 const isCopied = copiedCode === c.code;
                 return (
-                  <div key={c.code} class="code-card" style={{ padding: '10px 14px' }}>
+                  <div key={c.code} class="code-card" style={{ padding: '12px 16px' }}>
                     <div class="code-info">
                       <span class="code-string" style={{ fontSize: '1rem' }}>{c.code}</span>
                       <span class="code-rewards" style={{ fontSize: '0.8rem' }}>{c.rewards}</span>
                     </div>
                     <button class="btn-copy" onClick={() => handleCopy(c.code)}>
-                      {isCopied ? '✓' : '📋'}
+                      {isCopied ? (
+                        <span>✓ {lang === 'en' ? 'Copied' : 'Скопійовано'}</span>
+                      ) : (
+                        <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                          </svg>
+                          {lang === 'en' ? 'Copy' : 'Копіювати'}
+                        </span>
+                      )}
                     </button>
                   </div>
                 );
