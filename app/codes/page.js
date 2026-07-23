@@ -66,16 +66,30 @@ export default function PromoCodesPage() {
           {activeCodes.map((item) => {
             const isCopied = copiedCode === item.code;
             return (
-              <div key={item.code} class="promo-code-card glass-panel" style={{ padding: '16px 20px', borderRadius: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px', border: '1px solid rgba(0, 230, 118, 0.3)' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <div
+                key={item.code}
+                class="promo-code-card glass-panel"
+                style={{
+                  padding: '16px 20px',
+                  borderRadius: '12px',
+                  display: 'flex',
+                  justify: 'space-between',
+                  alignItems: 'center',
+                  flexWrap: 'wrap',
+                  gap: '12px',
+                  border: '1px solid rgba(0, 230, 118, 0.3)',
+                }}
+              >
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', flex: 1, minWidth: '220px' }}>
                   <span style={{ fontSize: '18px', fontWeight: '800', fontFamily: 'monospace', letterSpacing: '1px', color: '#fff' }}>
                     {item.code}
                   </span>
-                  <span style={{ fontSize: '13px', opacity: 0.85 }}>{item.rewards}</span>
+                  <span style={{ fontSize: '13px', opacity: 0.85, lineHeight: '1.4' }}>{item.rewards}</span>
                 </div>
                 <button
                   class={`btn btn-sm ${isCopied ? 'btn-accent' : 'btn-primary'}`}
                   onClick={() => handleCopy(item.code)}
+                  style={{ minWidth: '120px' }}
                 >
                   {isCopied ? (pageTexts.copiedBtn[lang] || pageTexts.copiedBtn.uk) : (pageTexts.copyBtn[lang] || pageTexts.copyBtn.uk)}
                 </button>

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { useApp } from '../providers';
+import { formatImgUrl } from '../utils';
 import { CHARACTER_TRANSLATIONS, ROLE_TRANSLATIONS, ATTR_TRANSLATIONS } from '../../src/localization/translations';
 
 export default function TierListPage() {
@@ -122,7 +123,7 @@ export default function TierListPage() {
                         style={{ width: '130px', cursor: 'pointer', textAlign: 'center', padding: '10px', borderRadius: '10px', transition: 'transform 0.2s', border: '1px solid rgba(255,255,255,0.15)' }}
                       >
                         <div style={{ width: '100%', height: '110px', borderRadius: '8px', overflow: 'hidden', marginBottom: '8px' }}>
-                          <img src={char.avatar} alt={name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                          <img src={formatImgUrl(char.avatar)} alt={name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         </div>
                         <strong style={{ fontSize: '13px', display: 'block', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{name}</strong>
                         <div style={{ display: 'flex', justifyContent: 'center', gap: '4px', marginTop: '6px', fontSize: '10px' }}>

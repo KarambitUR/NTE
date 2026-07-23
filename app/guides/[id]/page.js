@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { useApp } from '../../providers';
+import { formatImgUrl } from '../../utils';
 import { CHARACTER_TRANSLATIONS } from '../../../src/localization/translations';
 
 function getGuideText(guide, field, lang) {
@@ -51,6 +52,8 @@ export default function GuideDetailPage() {
   const sections = guide.content?.sections || guide.sections || [];
   const recChars = guide.recommendedChars || [];
 
+  const banner = guide.bannerImage || guide.avatar || 'src/assets/shinku_banner.png';
+
   return (
     <div class="tab-pane active" id="pane-guide-detail" style={{ maxWidth: '900px', margin: '0 auto' }}>
       <Link href="/guides" class="btn btn-secondary btn-sm" style={{ marginBottom: '20px', display: 'inline-block' }}>
@@ -59,7 +62,7 @@ export default function GuideDetailPage() {
 
       <div class="guide-detail-container glass-panel" style={{ padding: '30px', borderRadius: '16px' }}>
         <div style={{ position: 'relative', width: '100%', height: '260px', borderRadius: '12px', overflow: 'hidden', marginBottom: '24px' }}>
-          <img src={guide.bannerImage || guide.avatar || '/src/assets/shinku_banner.png'} alt={title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          <img src={formatImgUrl(banner)} alt={title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.9), transparent)' }} />
           <div style={{ position: 'absolute', bottom: '20px', left: '20px', right: '20px' }}>
             <span class="badge badge-accent" style={{ marginBottom: '8px', display: 'inline-block' }}>
@@ -107,7 +110,7 @@ export default function GuideDetailPage() {
                     onClick={() => openCharacterModal(charId)}
                     style={{ cursor: 'pointer', padding: '10px', borderRadius: '10px', display: 'flex', alignItems: 'center', gap: '10px', border: '1px solid rgba(255,255,255,0.15)' }}
                   >
-                    <img src={charObj.avatar} alt={name} style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover' }} />
+                    <img src={formatImgUrl(charObj.avatar)} alt={name} style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover' }} />
                     <span style={{ fontWeight: '600', fontSize: '14px' }}>{name}</span>
                   </div>
                 );

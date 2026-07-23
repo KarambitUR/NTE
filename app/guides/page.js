@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useApp } from '../providers';
+import { formatImgUrl } from '../utils';
 
 function getGuideText(guide, field, lang) {
   if (!guide) return '';
@@ -104,14 +105,14 @@ export default function GuidesPage() {
           filteredGuides.map((g) => {
             const title = getGuideText(g, 'title', lang);
             const desc = getGuideText(g, 'description', lang) || getGuideText(g, 'summary', lang);
-            const banner = g.bannerImage || g.avatar || '/src/assets/shinku_banner.png';
+            const banner = g.bannerImage || g.avatar || 'src/assets/shinku_banner.png';
             const readTime = g.readTime || '5 min';
 
             return (
               <Link key={g.id} href={`/guides/${g.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                 <div class="guide-card glass-panel" style={{ borderRadius: '12px', overflow: 'hidden', height: '100%', display: 'flex', flexDirection: 'column', transition: 'transform 0.2s', border: '1px solid rgba(255,255,255,0.15)' }}>
                   <div style={{ position: 'relative', width: '100%', height: '160px' }}>
-                    <img src={banner} alt={title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <img src={formatImgUrl(banner)} alt={title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     <span class="badge badge-accent" style={{ position: 'absolute', top: 12, right: 12, fontSize: '11px' }}>
                       {readTime}
                     </span>

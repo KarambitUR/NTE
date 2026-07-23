@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useApp } from './providers';
+import { formatImgUrl } from './utils';
 import { CHARACTER_TRANSLATIONS } from '../src/localization/translations';
 
 function getGuideText(guide, field, lang) {
@@ -17,7 +18,7 @@ function getGuideText(guide, field, lang) {
 }
 
 export default function HomePage() {
-  const { lang, promoCodes, characters, guides, timelineEvents, openCharacterModal } = useApp();
+  const { lang, promoCodes, characters, guides, openCharacterModal } = useApp();
   const [timeLeft, setTimeLeft] = useState('00d 00h 00m');
 
   useEffect(() => {
@@ -92,7 +93,7 @@ export default function HomePage() {
       {/* Hero Banner */}
       <div class="hero-banner-container">
         <div class="banner-showcase">
-          <img src="/src/assets/shinku_banner.png" alt="Shinku Banner" class="banner-image" />
+          <img src={formatImgUrl('src/assets/shinku_banner.png')} alt="Shinku Banner" class="banner-image" />
           <div class="banner-overlay">
             <div class="banner-text-content">
               <span class="banner-welcome">{heroTexts.tagline[lang] || heroTexts.tagline.uk}</span>
@@ -139,10 +140,10 @@ export default function HomePage() {
             </p>
             <div class="home-codes-list">
               {activeCodes.map((c) => (
-                <div key={c.code} class="code-quick-item" onClick={() => copyCode(c.code)}>
-                  <div class="code-quick-left">
-                    <span class="code-quick-val">{c.code}</span>
-                    <span class="code-quick-rewards">{c.rewards}</span>
+                <div key={c.code} class="code-quick-item" onClick={() => copyCode(c.code)} style={{ padding: '10px 14px', marginBottom: '8px' }}>
+                  <div class="code-quick-left" style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                    <span class="code-quick-val" style={{ fontWeight: '700', fontSize: '15px' }}>{c.code}</span>
+                    <span class="code-quick-rewards" style={{ fontSize: '12px', opacity: 0.8 }}>{c.rewards}</span>
                   </div>
                   <button class="btn-copy-code btn-sm">📋</button>
                 </div>
@@ -173,8 +174,8 @@ export default function HomePage() {
                     onClick={() => openCharacterModal(char.id)}
                     style={{ cursor: 'pointer', textAlign: 'center' }}
                   >
-                    <div style={{ position: 'relative', borderRadius: '8px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.2)' }}>
-                      <img src={char.avatar} alt={name} style={{ width: '100%', height: '85px', objectFit: 'cover' }} />
+                    <div style={{ position: 'relative', borderRadius: '8px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.2)', height: '85px' }}>
+                      <img src={formatImgUrl(char.avatar)} alt={name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                       <span class={`tier-badge-mini tier-${char.tier.toLowerCase().replace('+', '-plus')}`} style={{ position: 'absolute', top: 2, right: 2, fontSize: '10px', padding: '2px 4px', borderRadius: '4px', background: 'rgba(0,0,0,0.8)', fontWeight: 'bold' }}>
                         {char.tier}
                       </span>
@@ -204,7 +205,7 @@ export default function HomePage() {
                 const title = getGuideText(g, 'title', lang);
                 return (
                   <Link key={g.id} href={`/guides/${g.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                    <div class="guide-quick-item glass-panel" style={{ padding: '10px', borderRadius: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div class="guide-quick-item glass-panel" style={{ padding: '10px 14px', borderRadius: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <span style={{ fontWeight: '600', fontSize: '14px' }}>{title}</span>
                       <span style={{ fontSize: '12px', opacity: 0.7 }}>➔</span>
                     </div>

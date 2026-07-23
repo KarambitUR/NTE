@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useApp } from '../providers';
+import { formatImgUrl } from '../utils';
 import { CHARACTER_TRANSLATIONS } from '../../src/localization/translations';
 
 export default function CharacterModal() {
@@ -85,7 +86,7 @@ export default function CharacterModal() {
         {/* Modal Header */}
         <div style={{ display: 'flex', gap: '20px', alignItems: 'center', marginBottom: '24px' }}>
           <img
-            src={char.avatar}
+            src={formatImgUrl(char.avatar)}
             alt={name}
             style={{ width: '90px', height: '90px', borderRadius: '12px', objectFit: 'cover', border: '2px solid #ff4081' }}
           />

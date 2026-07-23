@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 import { useApp } from '../providers';
 import { nteMapData } from '../../src/features/nte-map-data';
 
@@ -16,13 +18,9 @@ export default function MapClient() {
   const categories = nteMapData.categories;
 
   useEffect(() => {
-    if (typeof window === 'undefined' || !window.L) return;
+    if (!mapRef.current || leafletMapRef.current) return;
 
-    if (leafletMapRef.current) return; // Prevent double init
-
-    const L = window.L;
-
-    // Custom CRS
+    // Custom CRS matching game coordinates
     const gameCRS = L.extend({}, L.CRS.Simple, {
       transformation: new L.Transformation(
         0.01639272689169798,
@@ -49,7 +47,7 @@ export default function MapClient() {
     );
     map.setMaxBounds(bounds);
 
-    // Custom tile layer
+    // Custom dynamic GridLayer mapping to CDN tiles
     const NteGridLayer = L.GridLayer.extend({
       createTile: function (coords, done) {
         const tile = document.createElement('canvas');
@@ -149,6 +147,10 @@ export default function MapClient() {
     map.on('zoomend moveend', updateMarkers);
     updateMarkers();
 
+    setTimeout(() => {
+      map.invalidateSize();
+    }, 200);
+
     return () => {
       map.remove();
       leafletMapRef.current = null;
@@ -163,9 +165,9 @@ export default function MapClient() {
   };
 
   return (
-    <div class="map-layout-container" style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: '20px', height: 'calc(100vh - 160px)', minHeight: '600px' }}>
-      <div style={{ position: 'relative', width: '100%', height: '100%', borderRadius: '12px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.15)' }}>
-        <div ref={mapRef} style={{ width: '100%', height: '100%', background: '#0a0b10' }} />
+    <div class="map-layout-container" style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: '20px', height: 'calc(100vh - 180px)', minHeight: '600px' }}>
+      <div style={{ position: 'relative', width: '100%', height: '100%', minHeight: '550px', borderRadius: '12px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.15)' }}>
+        <div ref={mapRef} style={{ width: '100%', height: '100%', minHeight: '550px', background: '#0a0b10' }} />
       </div>
 
       {/* Category Sidebar */}
