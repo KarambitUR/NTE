@@ -71,7 +71,7 @@ export const FALLBACK_CHARACTERS = [
         attribute: "Cosmos",
         role: "Support",
         tier: "S",
-        avatar: "https://static.wikia.nocookie.net/neverness-to-everness/images/c/c2/Esper_Zero_Male_Card.png/revision/latest/scale-to-width-down/200?cb=20260315121329",
+        avatar: "https://static.wikia.nocookie.net/neverness-to-everness/images/c/c2/Esper_Zero_Male_Card.png",
         summary: "Головний герой. Володіє Cosmos атрибутом, що є універсальним каталізатором для активації ефекту Esper Cycle для будь-якої іншої стихії.",
         weapon: "Eibon Legacy (Спадщина Ейбона)",
         weaponF2p: "Hunter's Resolve (Рішучість Мисливця)",

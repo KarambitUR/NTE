@@ -71,32 +71,35 @@ export default function GuidesPage() {
         <p class="section-desc">{pageTexts.subtitle[lang] || pageTexts.subtitle.uk}</p>
       </div>
 
-      {/* Search & Category Filter */}
-      <div class="guides-controls-bar glass-panel" style={{ padding: '16px', marginBottom: '24px', borderRadius: '12px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-        <input
-          type="text"
-          class="guide-search-input"
-          placeholder={pageTexts.searchPlaceholder[lang] || pageTexts.searchPlaceholder.uk}
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          style={{ width: '100%', padding: '12px 16px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)', background: 'rgba(0,0,0,0.4)', color: '#fff', fontSize: '14px' }}
-        />
+      {/* Toolbar: Search & Category Filter */}
+      <div class="guides-toolbar">
+        <div class="guides-search-wrapper">
+          <input
+            type="text"
+            class="guides-search-input"
+            placeholder={pageTexts.searchPlaceholder[lang] || pageTexts.searchPlaceholder.uk}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </div>
 
-        <div class="guides-category-tabs" style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-          {categories.map((c) => (
-            <button
-              key={c.key}
-              class={`btn btn-sm ${activeCategory === c.key ? 'btn-primary' : 'btn-secondary'}`}
-              onClick={() => setActiveCategory(c.key)}
-            >
-              {c[lang] || c.uk}
-            </button>
-          ))}
+        <div class="guides-filters-wrapper">
+          <div class="guides-filters">
+            {categories.map((c) => (
+              <button
+                key={c.key}
+                class={`filter-btn ${activeCategory === c.key ? 'active' : ''}`}
+                onClick={() => setActiveCategory(c.key)}
+              >
+                {c[lang] || c.uk}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Guides Grid */}
-      <div class="guides-cards-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '20px' }}>
+      <div class="guides-grid-new">
         {filteredGuides.length === 0 ? (
           <div class="glass-panel" style={{ padding: '30px', gridColumn: '1 / -1', textAlign: 'center', opacity: 0.7 }}>
             {lang === 'en' ? 'No guides match your search criteria.' : 'За вашим запитом гайдів не знайдено.'}
@@ -105,22 +108,29 @@ export default function GuidesPage() {
           filteredGuides.map((g) => {
             const title = getGuideText(g, 'title', lang);
             const desc = getGuideText(g, 'description', lang) || getGuideText(g, 'summary', lang);
-            const banner = g.bannerImage || g.avatar || 'src/assets/shinku_banner.png';
+            const avatar = g.avatar || g.bannerImage || 'src/assets/meta_analysis_icon.png';
             const readTime = g.readTime || '5 min';
 
             return (
               <Link key={g.id} href={`/guides/${g.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                <div class="guide-card glass-panel" style={{ borderRadius: '12px', overflow: 'hidden', height: '100%', display: 'flex', flexDirection: 'column', transition: 'transform 0.2s', border: '1px solid rgba(255,255,255,0.15)' }}>
-                  <div style={{ position: 'relative', width: '100%', height: '160px' }}>
-                    <img src={formatImgUrl(banner)} alt={title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                    <span class="badge badge-accent" style={{ position: 'absolute', top: 12, right: 12, fontSize: '11px' }}>
+                <div class="guide-card-new glass-panel">
+                  <div class="guide-card-header-new">
+                    <div class="guide-card-avatar">
+                      <img src={formatImgUrl(avatar)} alt={title} />
+                    </div>
+                    <div class="guide-card-header-text">
+                      <span class="guide-card-category">{(g.category || 'GUIDE').toUpperCase()}</span>
+                      <h3>{title}</h3>
+                    </div>
+                    <span class="badge badge-accent" style={{ position: 'absolute', top: 12, right: 12, fontSize: '11px', zIndex: 3 }}>
                       {readTime}
                     </span>
                   </div>
-                  <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                    <h3 style={{ fontSize: '18px', fontWeight: '700', marginBottom: '8px', lineHeight: '1.3' }}>{title}</h3>
-                    <p style={{ fontSize: '13px', opacity: 0.8, lineHeight: '1.5', flex: 1, marginBottom: '16px' }}>{desc}</p>
-                    <span style={{ fontSize: '13px', color: '#ff4081', fontWeight: '600' }}>
+                  <div class="guide-card-body-new">
+                    <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: '1.5', flex: 1, margin: 0 }}>
+                      {desc}
+                    </p>
+                    <span style={{ fontSize: '0.85rem', color: 'var(--color-pink)', fontWeight: '600', marginTop: '10px' }}>
                       {pageTexts.readMore[lang] || pageTexts.readMore.uk}
                     </span>
                   </div>
