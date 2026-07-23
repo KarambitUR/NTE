@@ -2,16 +2,17 @@
 
 import React, { useState, useEffect } from 'react';
 import { useApp } from '../providers';
+import { auth, googleProvider, signInWithPopup, signOut, onAuthStateChanged } from '../firebase';
 
 export default function AuthModal() {
   const { lang, isAuthModalOpen, setIsAuthModalOpen } = useApp();
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    if (typeof window === 'undefined' || typeof firebase === 'undefined') return;
+    if (!auth) return;
 
     try {
-      const unsubscribe = firebase.auth().onAuthStateChanged((u) => {
+      const unsubscribe = onAuthStateChanged(auth, (u) => {
         setUser(u);
       });
       return () => unsubscribe();
@@ -23,13 +24,8 @@ export default function AuthModal() {
   if (!isAuthModalOpen) return null;
 
   const handleGoogleLogin = async () => {
-    if (typeof firebase === 'undefined') {
-      alert('Firebase is not initialized.');
-      return;
-    }
     try {
-      const provider = new firebase.auth.GoogleAuthProvider();
-      await firebase.auth().signInWithPopup(provider);
+      await signInWithPopup(auth, googleProvider);
       setIsAuthModalOpen(false);
     } catch (error) {
       console.error('Google Auth Error:', error);
@@ -38,9 +34,8 @@ export default function AuthModal() {
   };
 
   const handleLogout = async () => {
-    if (typeof firebase === 'undefined') return;
     try {
-      await firebase.auth().signOut();
+      await signOut(auth);
       setUser(null);
       setIsAuthModalOpen(false);
     } catch (error) {
@@ -120,11 +115,11 @@ export default function AuthModal() {
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
             <img
               src={user.photoURL || '/src/assets/zero_avatar.png'}
-              alt={user.displayName}
+              alt={user.displayName || 'User'}
               style={{ width: '80px', height: '80px', borderRadius: '50%', border: '2px solid #00e676' }}
             />
             <div>
-              <strong style={{ fontSize: '16px', display: 'block' }}>{user.displayName}</strong>
+              <strong style={{ fontSize: '16px', display: 'block' }}>{user.displayName || 'User'}</strong>
               <span style={{ fontSize: '13px', opacity: 0.7 }}>{user.email}</span>
             </div>
             <button class="btn btn-secondary" onClick={handleLogout} style={{ width: '100%', marginTop: '10px' }}>
