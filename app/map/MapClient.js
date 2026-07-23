@@ -16,7 +16,58 @@ export default function MapClient() {
     new Set(['fast-travel', 'taxi', 'oracle-stone', 'currencies', 'locker', 'collectible', 'stealable-loot', 'monsters', 'anomaly-vision', 'arc-locations'])
   );
 
+  const enabledCategoriesRef = useRef(enabledCategories);
+
+  useEffect(() => {
+    enabledCategoriesRef.current = enabledCategories;
+  }, [enabledCategories]);
+
   const categories = nteMapData.categories;
+
+  // Function to render markers based on zoom and active categories
+  const updateMarkerVisibility = () => {
+    if (!leafletMapRef.current || !markerGroupRef.current) return;
+
+    const map = leafletMapRef.current;
+    const markerGroup = markerGroupRef.current;
+    const zoom = map.getZoom();
+
+    markerGroup.clearLayers();
+
+    const currentEnabled = enabledCategoriesRef.current;
+
+    nteMapData.markers.forEach((marker) => {
+      const cat = marker.cat || 'unknown';
+      if (!currentEnabled.has(cat)) return;
+
+      let minZoom = 2;
+      if (['stealable-loot', 'monsters', 'collectible', 'currencies', 'locker'].includes(cat)) minZoom = 5;
+
+      if (zoom < minZoom) return;
+
+      let iconUrl = marker.icon || 'https://cdn-zeroluck-gg.b-cdn.net/nte/Assets/UI/UI/MiniMap/minimapicon/Normal/small/YH_UI_Mapicon_098.png';
+
+      // Fix broken relative paths like /nte/icons/custom/magicians-dove_256.png
+      if (!iconUrl.startsWith('http://') && !iconUrl.startsWith('https://')) {
+        iconUrl = 'https://cdn-zeroluck-gg.b-cdn.net/nte/Assets/UI/UI/MiniMap/minimapicon/Normal/small/YH_UI_Mapicon_098.png';
+      }
+
+      const customIcon = L.icon({
+        iconUrl: iconUrl,
+        iconSize: [28, 28],
+        iconAnchor: [14, 14],
+        popupAnchor: [0, -14],
+      });
+
+      const m = L.marker([marker.y, marker.x], { icon: customIcon });
+      m.bindPopup(`<strong style="color:#fff; font-family:sans-serif;">${marker.title}</strong>`);
+      m.on('click', () => {
+        setSelectedMarker(marker);
+      });
+
+      markerGroup.addLayer(m);
+    });
+  };
 
   // Initialize Leaflet map ONCE on mount
   useEffect(() => {
@@ -116,7 +167,9 @@ export default function MapClient() {
     const markerGroup = L.layerGroup().addTo(map);
     markerGroupRef.current = markerGroup;
 
-    map.on('zoomend moveend', updateMarkerVisibility);
+    map.on('zoomend moveend', () => {
+      updateMarkerVisibility();
+    });
 
     setTimeout(() => {
       map.invalidateSize();
@@ -129,50 +182,7 @@ export default function MapClient() {
     };
   }, []); // Run ONLY ONCE on mount!
 
-  // Update marker icons on map without re-creating Leaflet instance
-  const updateMarkerVisibility = () => {
-    if (!leafletMapRef.current || !markerGroupRef.current) return;
-
-    const map = leafletMapRef.current;
-    const markerGroup = markerGroupRef.current;
-    const zoom = map.getZoom();
-
-    markerGroup.clearLayers();
-
-    nteMapData.markers.forEach((marker) => {
-      const cat = marker.cat || 'unknown';
-      if (!enabledCategories.has(cat)) return;
-
-      let minZoom = 2;
-      if (['stealable-loot', 'monsters', 'collectible', 'currencies', 'locker'].includes(cat)) minZoom = 5;
-
-      if (zoom < minZoom) return;
-
-      let iconUrl = marker.icon || 'https://cdn-zeroluck-gg.b-cdn.net/nte/Assets/UI/UI/MiniMap/minimapicon/Normal/small/YH_UI_Mapicon_098.png';
-
-      // Fix broken relative paths like /nte/icons/custom/magicians-dove_256.png
-      if (!iconUrl.startsWith('http://') && !iconUrl.startsWith('https://')) {
-        iconUrl = 'https://cdn-zeroluck-gg.b-cdn.net/nte/Assets/UI/UI/MiniMap/minimapicon/Normal/small/YH_UI_Mapicon_098.png';
-      }
-
-      const customIcon = L.icon({
-        iconUrl: iconUrl,
-        iconSize: [28, 28],
-        iconAnchor: [14, 14],
-        popupAnchor: [0, -14],
-      });
-
-      const m = L.marker([marker.y, marker.x], { icon: customIcon });
-      m.bindPopup(`<strong style="color:#fff; font-family:sans-serif;">${marker.title}</strong>`);
-      m.on('click', () => {
-        setSelectedMarker(marker);
-      });
-
-      markerGroup.addLayer(m);
-    });
-  };
-
-  // Update markers when enabledCategories changes without re-creating Leaflet map
+  // Update markers when enabledCategories state changes
   useEffect(() => {
     updateMarkerVisibility();
   }, [enabledCategories]);
