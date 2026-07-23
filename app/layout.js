@@ -1,18 +1,9 @@
-import '../src/styles/base.css';
-import '../src/styles/components.css';
-import '../src/styles/home.css';
-import '../src/styles/tierlist.css';
-import '../src/styles/builds.css';
-import '../src/styles/teambuilder.css';
-import '../src/styles/map.css';
-import '../src/styles/codes.css';
-import '../src/styles/guides.css';
-import '../src/styles/responsive.css';
-
+import './globals.css';
 import { AppProviders } from './providers';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import CharacterModal from './components/CharacterModal';
+import AuthModal from './components/AuthModal';
 
 export const metadata = {
   title: 'Eibon Terminal | Neverness to Everness (NTE) Гайди та Тір-ліст',
@@ -50,6 +41,7 @@ export default function RootLayout({ children }) {
           <main class="app-content">{children}</main>
           <Footer />
           <CharacterModal />
+          <AuthModal />
         </AppProviders>
       </body>
     </html>
