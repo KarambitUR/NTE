@@ -43,7 +43,7 @@ export default function CharacterModal() {
 
   return (
     <div
-      class="modal-overlay"
+      class="modal-overlay active"
       style={{
         display: 'flex',
         position: 'fixed',
@@ -53,6 +53,8 @@ export default function CharacterModal() {
         bottom: 0,
         background: 'rgba(0,0,0,0.85)',
         zIndex: 999999,
+        opacity: 1,
+        pointerEvents: 'auto',
         alignItems: 'center',
         justifyContent: 'center',
         padding: '20px',

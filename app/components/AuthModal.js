@@ -38,7 +38,6 @@ export default function AuthModal() {
   if (!isAuthModalOpen) return null;
 
   const handleGoogleLogin = async () => {
-    console.log('Initiating Google Sign-In...');
     if (auth && googleProvider) {
       try {
         const res = await signInWithPopup(auth, googleProvider);
@@ -101,7 +100,7 @@ export default function AuthModal() {
 
   return (
     <div
-      class="modal-overlay"
+      class="modal-overlay active"
       style={{
         display: 'flex',
         position: 'fixed',
@@ -111,6 +110,8 @@ export default function AuthModal() {
         bottom: 0,
         background: 'rgba(0,0,0,0.85)',
         zIndex: 999999,
+        opacity: 1,
+        pointerEvents: 'auto',
         alignItems: 'center',
         justifyContent: 'center',
         padding: '20px',
