@@ -52,7 +52,8 @@ export default function GuideDetailPage() {
   const sections = guide.content?.sections || guide.sections || [];
   const recChars = guide.recommendedChars || [];
 
-  const banner = guide.bannerImage || guide.avatar || 'src/assets/shinku_banner.png';
+  const rawImage = guide.bannerImage || guide.avatar || 'src/assets/shinku_banner.png';
+  const isWideBanner = rawImage.includes('banner') || rawImage.includes('bg');
 
   return (
     <div class="tab-pane active" id="pane-guide-detail" style={{ maxWidth: '900px', margin: '0 auto' }}>
@@ -61,16 +62,31 @@ export default function GuideDetailPage() {
       </Link>
 
       <div class="guide-detail-container glass-panel" style={{ padding: '30px', borderRadius: '16px' }}>
-        <div style={{ position: 'relative', width: '100%', height: '260px', borderRadius: '12px', overflow: 'hidden', marginBottom: '24px' }}>
-          <img src={formatImgUrl(banner)} alt={title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.9), transparent)' }} />
-          <div style={{ position: 'absolute', bottom: '20px', left: '20px', right: '20px' }}>
-            <span class="badge badge-accent" style={{ marginBottom: '8px', display: 'inline-block' }}>
-              {(guide.category || 'GUIDE').toUpperCase()}
-            </span>
-            <h1 style={{ fontSize: '28px', fontWeight: '800', margin: 0 }}>{title}</h1>
+        {/* Header Showcase: Wide Banner vs Icon Header */}
+        {isWideBanner ? (
+          <div style={{ position: 'relative', width: '100%', height: '240px', borderRadius: '12px', overflow: 'hidden', marginBottom: '24px' }}>
+            <img src={formatImgUrl(rawImage)} alt={title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.9), transparent)' }} />
+            <div style={{ position: 'absolute', bottom: '20px', left: '20px', right: '20px' }}>
+              <span class="badge badge-accent" style={{ marginBottom: '8px', display: 'inline-block' }}>
+                {(guide.category || 'GUIDE').toUpperCase()}
+              </span>
+              <h1 style={{ fontSize: '28px', fontWeight: '800', margin: 0 }}>{title}</h1>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div class="glass-panel" style={{ display: 'flex', gap: '20px', alignItems: 'center', padding: '20px', borderRadius: '12px', marginBottom: '24px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.15)' }}>
+            <div style={{ width: '70px', height: '70px', borderRadius: '12px', background: 'rgba(0,0,0,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, padding: '10px' }}>
+              <img src={formatImgUrl(rawImage)} alt={title} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+            </div>
+            <div>
+              <span class="badge badge-accent" style={{ marginBottom: '6px', display: 'inline-block', fontSize: '11px' }}>
+                {(guide.category || 'GUIDE').toUpperCase()}
+              </span>
+              <h1 style={{ fontSize: '24px', fontWeight: '800', margin: 0, lineHeight: '1.2' }}>{title}</h1>
+            </div>
+          </div>
+        )}
 
         <p style={{ fontSize: '16px', lineHeight: '1.6', opacity: 0.9, marginBottom: '30px', borderLeft: '4px solid #ff4081', paddingLeft: '16px' }}>
           {summary}
