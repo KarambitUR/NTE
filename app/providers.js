@@ -8,12 +8,19 @@ const AppContext = createContext();
 
 export function AppProviders({ children }) {
   const [lang, setLangState] = useState('uk');
-  const [characters, setCharacters] = useState(FALLBACK_CHARACTERS);
+
+  // Normalize all character avatars to local asset images
+  const normalizedFallbackChars = FALLBACK_CHARACTERS.map((c) => ({
+    ...c,
+    avatar: `src/assets/${c.id}_avatar.png`,
+  }));
+
+  const [characters, setCharacters] = useState(normalizedFallbackChars);
   const [promoCodes, setPromoCodes] = useState(FALLBACK_PROMO_CODES);
   const [timelineEvents, setTimelineEvents] = useState(FALLBACK_TIMELINE_EVENTS);
   const [guides, setGuides] = useState(FALLBACK_GUIDES);
   const [dataSource, setDataSource] = useState('hardcoded');
-  
+
   // Modals state
   const [activeCharId, setActiveCharId] = useState(null);
   const [activeGuideId, setActiveGuideId] = useState(null);
@@ -26,18 +33,30 @@ export function AppProviders({ children }) {
       setLangState(storedLang);
     }
 
-    // Try loading from localStorage cache first
+    // Clear stale localStorage character cache if it contains old Wikia links
     try {
       const cChars = localStorage.getItem('nte_characters');
+      if (cChars) {
+        if (cChars.includes('wikia.nocookie.net')) {
+          localStorage.removeItem('nte_characters');
+        } else {
+          const parsed = JSON.parse(cChars);
+          setCharacters(
+            parsed.map((c) => ({
+              ...c,
+              avatar: `src/assets/${c.id}_avatar.png`,
+            }))
+          );
+        }
+      }
       const cCodes = localStorage.getItem('nte_promoCodes');
       const cTime = localStorage.getItem('nte_timelineEvents');
       const cGuides = localStorage.getItem('nte_guides');
 
-      if (cChars) setCharacters(JSON.parse(cChars));
       if (cCodes) setPromoCodes(JSON.parse(cCodes));
       if (cTime) {
         const parsed = JSON.parse(cTime);
-        setTimelineEvents(parsed.filter(e => e.order !== undefined && e.badgeClass && e.status && e.desc));
+        setTimelineEvents(parsed.filter((e) => e.order !== undefined && e.badgeClass && e.status && e.desc));
       }
       if (cGuides) setGuides(JSON.parse(cGuides));
     } catch (e) {
