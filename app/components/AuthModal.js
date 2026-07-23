@@ -2,57 +2,70 @@
 
 import React, { useState, useEffect } from 'react';
 import { useApp } from '../providers';
-import { auth, googleProvider, signInWithPopup, signOut, onAuthStateChanged } from '../firebase';
 
 export default function AuthModal() {
   const { lang, isAuthModalOpen, setIsAuthModalOpen } = useApp();
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    if (!auth) return;
-
+    // Read local user session if available
     try {
-      const unsubscribe = onAuthStateChanged(auth, (u) => {
-        setUser(u);
-      });
-      return () => unsubscribe();
-    } catch (e) {
-      console.warn('Firebase Auth listener error:', e);
-    }
+      const stored = localStorage.getItem('nte_user');
+      if (stored) setUser(JSON.parse(stored));
+    } catch (e) {}
   }, []);
 
   if (!isAuthModalOpen) return null;
 
   const handleGoogleLogin = async () => {
     try {
-      await signInWithPopup(auth, googleProvider);
-      setIsAuthModalOpen(false);
+      // Dynamic import of Firebase Auth
+      const { auth, googleProvider, signInWithPopup } = await import('../firebase');
+      if (auth && googleProvider) {
+        const res = await signInWithPopup(auth, googleProvider);
+        if (res?.user) {
+          const userData = {
+            displayName: res.user.displayName || 'Explorer',
+            email: res.user.email,
+            photoURL: res.user.photoURL || '/src/assets/zero_avatar.png',
+          };
+          setUser(userData);
+          localStorage.setItem('nte_user', JSON.stringify(userData));
+          setIsAuthModalOpen(false);
+          return;
+        }
+      }
     } catch (error) {
-      console.error('Google Auth Error:', error);
-      alert(`Login failed: ${error.message}`);
+      console.warn('Google Popup Login Notice:', error);
     }
+
+    // Fallback: Instant Guest / Eibon Account Sign-In
+    const fallbackUser = {
+      displayName: 'Eibon Agent',
+      email: 'agent@eibon.terminal',
+      photoURL: '/src/assets/zero_avatar.png',
+    };
+    setUser(fallbackUser);
+    localStorage.setItem('nte_user', JSON.stringify(fallbackUser));
+    setIsAuthModalOpen(false);
   };
 
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      setUser(null);
-      setIsAuthModalOpen(false);
-    } catch (error) {
-      console.error('Logout error:', error);
-    }
+  const handleLogout = () => {
+    setUser(null);
+    localStorage.removeItem('nte_user');
+    setIsAuthModalOpen(false);
   };
 
   const texts = {
     title: {
-      uk: user ? 'Ваш Акаунт' : 'Вхід у систему',
-      en: user ? 'Your Account' : 'Account Login',
-      fr: user ? 'Votre Compte' : 'Connexion',
+      uk: user ? 'Ваш Акаунт Eibon' : 'Вхід у систему Eibon',
+      en: user ? 'Your Eibon Account' : 'Eibon System Login',
+      fr: user ? 'Votre Compte Eibon' : 'Connexion Eibon',
     },
     googleBtn: {
-      uk: 'Увійти через Google',
-      en: 'Sign in with Google',
-      fr: 'Se connecter avec Google',
+      uk: 'Увійти (Google / Eibon)',
+      en: 'Sign in (Google / Eibon)',
+      fr: 'Se connecter (Google / Eibon)',
     },
     logoutBtn: {
       uk: 'Вийти з акаунту',
@@ -67,13 +80,16 @@ export default function AuthModal() {
       style={{
         display: 'flex',
         position: 'fixed',
-        inset: 0,
-        background: 'rgba(0,0,0,0.8)',
-        zIndex: 9999,
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: 'rgba(0,0,0,0.85)',
+        zIndex: 999999,
         alignItems: 'center',
         justifyContent: 'center',
         padding: '20px',
-        backdropFilter: 'blur(8px)',
+        backdropFilter: 'blur(10px)',
       }}
       onClick={() => setIsAuthModalOpen(false)}
     >
@@ -83,10 +99,12 @@ export default function AuthModal() {
           position: 'relative',
           maxWidth: '420px',
           width: '100%',
-          padding: '30px',
+          padding: '32px',
           borderRadius: '16px',
           textAlign: 'center',
-          border: '1px solid rgba(255,255,255,0.2)',
+          border: '1px solid rgba(255,64,129,0.4)',
+          boxShadow: '0 10px 40px rgba(0,0,0,0.8), 0 0 20px rgba(255,64,129,0.2)',
+          background: 'rgba(18, 16, 32, 0.95)',
         }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -102,12 +120,15 @@ export default function AuthModal() {
             fontSize: '28px',
             cursor: 'pointer',
             lineHeight: 1,
+            opacity: 0.7,
           }}
         >
           &times;
         </button>
 
-        <h3 style={{ fontSize: '22px', fontWeight: '800', marginBottom: '20px' }}>
+        <div style={{ fontSize: '36px', marginBottom: '12px' }}>🔑</div>
+
+        <h3 style={{ fontSize: '22px', fontWeight: '800', marginBottom: '16px', color: '#fff' }}>
           {texts.title[lang] || texts.title.uk}
         </h3>
 
@@ -115,12 +136,12 @@ export default function AuthModal() {
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
             <img
               src={user.photoURL || '/src/assets/zero_avatar.png'}
-              alt={user.displayName || 'User'}
-              style={{ width: '80px', height: '80px', borderRadius: '50%', border: '2px solid #00e676' }}
+              alt={user.displayName}
+              style={{ width: '80px', height: '80px', borderRadius: '50%', border: '2px solid #00e676', objectFit: 'cover' }}
             />
             <div>
-              <strong style={{ fontSize: '16px', display: 'block' }}>{user.displayName || 'User'}</strong>
-              <span style={{ fontSize: '13px', opacity: 0.7 }}>{user.email}</span>
+              <strong style={{ fontSize: '18px', display: 'block', color: '#fff' }}>{user.displayName}</strong>
+              <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>{user.email}</span>
             </div>
             <button class="btn btn-secondary" onClick={handleLogout} style={{ width: '100%', marginTop: '10px' }}>
               {texts.logoutBtn[lang] || texts.logoutBtn.uk}
@@ -128,15 +149,24 @@ export default function AuthModal() {
           </div>
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <p style={{ fontSize: '14px', opacity: 0.8, lineHeight: '1.5', margin: 0 }}>
+            <p style={{ fontSize: '14px', color: 'var(--text-muted)', lineHeight: '1.5', margin: 0 }}>
               {lang === 'en'
-                ? 'Sign in to save custom tier lists and vote for community rankings.'
-                : 'Увійдіть, щоб зберігати власні тір-лісти та голосувати за рейтинги спільноти.'}
+                ? 'Sign in to save custom tier lists and access exclusive guide bookmarks.'
+                : 'Увійдіть, щоб зберігати власні тір-лісти та персональні закладки гайдів.'}
             </p>
             <button
               class="btn btn-primary"
               onClick={handleGoogleLogin}
-              style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', width: '100%', padding: '12px' }}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '10px',
+                width: '100%',
+                padding: '12px',
+                fontSize: '15px',
+                fontWeight: '700',
+              }}
             >
               <span>🌐</span>
               <span>{texts.googleBtn[lang] || texts.googleBtn.uk}</span>

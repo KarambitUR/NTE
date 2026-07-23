@@ -6,10 +6,37 @@ import 'leaflet/dist/leaflet.css';
 import { useApp } from '../providers';
 import { nteMapData } from '../../src/features/nte-map-data';
 
+const categoryIcons = {
+  'fast-travel': '📮',
+  'taxi': '🚕',
+  'oracle-stone': '💎',
+  'currencies': '🪙',
+  'locker': '📦',
+  'collectible': '🌿',
+  'stealable-loot': '👜',
+  'monsters': '👹',
+  'anomaly-vision': '👁️',
+  'arc-locations': '⚔️',
+};
+
+const categoryColors = {
+  'fast-travel': '#ff4081',
+  'taxi': '#ffb74d',
+  'oracle-stone': '#00bcd4',
+  'currencies': '#4caf50',
+  'locker': '#8bc34a',
+  'collectible': '#e91e63',
+  'stealable-loot': '#9c27b0',
+  'monsters': '#f44336',
+  'anomaly-vision': '#3f51b5',
+  'arc-locations': '#009688',
+};
+
 export default function MapClient() {
   const { lang } = useApp();
   const mapRef = useRef(null);
   const leafletMapRef = useRef(null);
+  const markerGroupRef = useRef(null);
   const [selectedMarker, setSelectedMarker] = useState(null);
   const [enabledCategories, setEnabledCategories] = useState(
     new Set(['fast-travel', 'taxi', 'oracle-stone', 'currencies', 'locker', 'collectible', 'stealable-loot', 'monsters', 'anomaly-vision', 'arc-locations'])
@@ -17,6 +44,7 @@ export default function MapClient() {
 
   const categories = nteMapData.categories;
 
+  // Initialize Leaflet map ONCE on mount
   useEffect(() => {
     if (!mapRef.current || leafletMapRef.current) return;
 
@@ -110,42 +138,11 @@ export default function MapClient() {
     });
     tileLayer.addTo(map);
 
-    // Markers layer
+    // Markers layer group
     const markerGroup = L.layerGroup().addTo(map);
+    markerGroupRef.current = markerGroup;
 
-    const updateMarkers = () => {
-      markerGroup.clearLayers();
-      const zoom = map.getZoom();
-
-      nteMapData.markers.forEach((marker) => {
-        const cat = marker.cat || 'unknown';
-        if (!enabledCategories.has(cat)) return;
-
-        let minZoom = 2;
-        if (['stealable-loot', 'monsters', 'collectible', 'currencies', 'locker'].includes(cat)) minZoom = 5;
-
-        if (zoom < minZoom) return;
-
-        const iconUrl = marker.icon || 'https://cdn-zeroluck-gg.b-cdn.net/nte/Assets/UI/UI/MiniMap/minimapicon/YH_UI_common_icon_1.png';
-        const customIcon = L.icon({
-          iconUrl: iconUrl,
-          iconSize: [28, 28],
-          iconAnchor: [14, 14],
-          popupAnchor: [0, -14],
-        });
-
-        const m = L.marker([marker.y, marker.x], { icon: customIcon });
-        m.bindPopup(`<strong style="color:#fff; font-family:sans-serif;">${marker.title}</strong>`);
-        m.on('click', () => {
-          setSelectedMarker(marker);
-        });
-
-        markerGroup.addLayer(m);
-      });
-    };
-
-    map.on('zoomend moveend', updateMarkers);
-    updateMarkers();
+    map.on('zoomend moveend', updateMarkerVisibility);
 
     setTimeout(() => {
       map.invalidateSize();
@@ -154,7 +151,67 @@ export default function MapClient() {
     return () => {
       map.remove();
       leafletMapRef.current = null;
+      markerGroupRef.current = null;
     };
+  }, []); // Run ONLY ONCE!
+
+  // Update markers when enabledCategories or map view changes
+  const updateMarkerVisibility = () => {
+    if (!leafletMapRef.current || !markerGroupRef.current) return;
+
+    const map = leafletMapRef.current;
+    const markerGroup = markerGroupRef.current;
+    const zoom = map.getZoom();
+
+    markerGroup.clearLayers();
+
+    nteMapData.markers.forEach((marker) => {
+      const cat = marker.cat || 'unknown';
+      if (!enabledCategories.has(cat)) return;
+
+      let minZoom = 2;
+      if (['stealable-loot', 'monsters', 'collectible', 'currencies', 'locker'].includes(cat)) minZoom = 5;
+
+      if (zoom < minZoom) return;
+
+      const emoji = categoryIcons[cat] || '📍';
+      const color = categoryColors[cat] || '#ff4081';
+
+      // Create a clean, reliable custom HTML divIcon
+      const customIcon = L.divIcon({
+        className: 'custom-map-pin-wrapper',
+        html: `<div style="
+          background: ${color};
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 14px;
+          border: 2px solid #ffffff;
+          box-shadow: 0 0 10px ${color}, 0 2px 5px rgba(0,0,0,0.5);
+          cursor: pointer;
+          transition: transform 0.15s ease;
+        " onmouseover="this.style.transform='scale(1.25)'" onmouseout="this.style.transform='scale(1)'">${emoji}</div>`,
+        iconSize: [28, 28],
+        iconAnchor: [14, 14],
+        popupAnchor: [0, -14],
+      });
+
+      const m = L.marker([marker.y, marker.x], { icon: customIcon });
+      m.bindPopup(`<div style="padding:4px; font-family:sans-serif;"><strong style="color:${color}; font-size:14px;">${marker.title}</strong></div>`);
+      m.on('click', () => {
+        setSelectedMarker(marker);
+      });
+
+      markerGroup.addLayer(m);
+    });
+  };
+
+  // Re-run marker update when enabledCategories changes WITHOUT re-creating map
+  useEffect(() => {
+    updateMarkerVisibility();
   }, [enabledCategories]);
 
   const toggleCategory = (catId) => {
@@ -198,6 +255,7 @@ export default function MapClient() {
                   cursor: 'pointer',
                   textAlign: 'left',
                   fontSize: '13px',
+                  transition: 'all 0.2s ease',
                 }}
               >
                 <span>{c.icon}</span>
