@@ -1,0 +1,10 @@
+@import "../src/styles/base.css";
+@import "../src/styles/components.css";
+@import "../src/styles/home.css";
+@import "../src/styles/tierlist.css";
+@import "../src/styles/builds.css";
+@import "../src/styles/teambuilder.css";
+@import "../src/styles/map.css";
+@import "../src/styles/codes.css";
+@import "../src/styles/guides.css";
+@import "../src/styles/responsive.css";
