@@ -13,7 +13,7 @@ export const FALLBACK_CHARACTERS = [
         weaponF2p: "Raging Flames (Лють Полум'я)",
         cartridge: "Fireflies and the Forest (4-piece)",
         stats: ["Crit Rate (75%+)", "Crit DMG", "Anima DMG", "ATK%"],
-        teamSynergy: "Zero (Космос), Sakiri (Закляття), Jiuyuan (Аніма)",
+        teamSynergy: "Хоторі (Космос), Зеро (Космос), Сакірі (Закляття), Цзююань (Аніма)",
         lore: "Загадкова дівчина з лисячими вушками, яка обожнює грати з гравітацією. Працює незалежним детективом аномалій у Hethereau."
     },
     {
@@ -29,7 +29,7 @@ export const FALLBACK_CHARACTERS = [
         weaponF2p: "Failing You, Heavy in My Heart",
         cartridge: "Speedy Hedgehog (4-piece)",
         stats: ["Cycle Intensity", "Break Effect", "Energy Charge Efficiency", "ATK%"],
-        teamSynergy: "Nanally (Аніма), Zero (Космос), Daffodil (Хаос)",
+        teamSynergy: "Лакрімоза (Хаос), Наналлі (Аніма), Шінку (Космос), Хаос (Лакшана)",
         lore: "Весела та енергійна дівчина, яка завжди носить із собою іграшкового кролика. Здатна бачити приховані нитки долі за допомогою заклять."
     },
     {
@@ -45,7 +45,7 @@ export const FALLBACK_CHARACTERS = [
         weaponF2p: "Rising Wind (Порив Вітру)",
         cartridge: "Fireflies and the Forest (4-piece)",
         stats: ["Crit Rate", "Crit DMG", "Anima DMG", "Energy Charge Efficiency"],
-        teamSynergy: "Nanally (Аніма), Sakiri (Закляття), Zero (Космос)",
+        teamSynergy: "Наналлі (Аніма), Іроі (Аніма), Шінку (Космос), Зеро (Космос)",
         lore: "Мисливиця на аномалії стародавнього роду з витонченими манерами. Використовує віяло для виклику аномальних повітряних потоків."
     },
     {
@@ -61,7 +61,7 @@ export const FALLBACK_CHARACTERS = [
         weaponF2p: "Appraiser's Notebook",
         cartridge: "Speedy Hedgehog (4-piece)",
         stats: ["Energy Charge Efficiency", "Cycle Intensity", "ATK%", "HP%"],
-        teamSynergy: "Nanally (Аніма), Adler (Хаос), Haniel (Закляття)",
+        teamSynergy: "Наналлі (Аніма), Зеро (Космос), Цзююань (Аніма), Сакірі (Закляття)",
         lore: "Тихий оцінювач аномальних предметів, який проводить більшу частину часу в бібліотеці антикварної крамниці Eibon."
     },
     {
@@ -77,7 +77,7 @@ export const FALLBACK_CHARACTERS = [
         weaponF2p: "Hunter's Resolve (Рішучість Мисливця)",
         cartridge: "Speedy Hedgehog (4-piece)",
         stats: ["ATK%", "Crit Rate", "Cycle Intensity", "Energy Charge Efficiency"],
-        teamSynergy: "Будь-який ДПС персонаж стихії Anima або Incantation",
+        teamSynergy: "Шінку (Космос), Наналлі (Аніма), Хоторі (Космос), Мінт (Аніма)",
         lore: "Новий володар антикварної крамниці Eibon, що втратив спогади про своє минуле, але володіє дивним даром бачити сутність аномалій."
     },
     {
@@ -93,7 +93,7 @@ export const FALLBACK_CHARACTERS = [
         weaponF2p: "Rusty Alloy Shield",
         cartridge: "Speedy Hedgehog (4-piece) або Guard Set",
         stats: ["DEF%", "Flat DEF", "Break Effect", "Energy Charge Efficiency"],
-        teamSynergy: "Nanally (Аніма), Sakiri (Закляття), Zero (Космос)",
+        teamSynergy: "Байканг (Закляття), Сакірі (Закляття), Лакрімоза (Хаос)",
         lore: "Колишній охоронець, який тепер допомагає крамниці Eibon із важкими замовленнями у небезпечних зонах Hethereau."
     },
     {
@@ -109,7 +109,7 @@ export const FALLBACK_CHARACTERS = [
         weaponF2p: "Steel Rapier",
         cartridge: "Fireflies and the Forest (4-piece)",
         stats: ["ATK%", "Crit Rate", "Crit DMG", "Anima DMG"],
-        teamSynergy: "Zero (Космос), Haniel (Закляття), Adler (Хаос)",
+        teamSynergy: "Зеро (Космос), Едгар (Космос), Ханіель (Психея)",
         lore: "Молода стажерка в Eibon, яка прагне стати найкращим оцінювачем аномалій у місті."
     },
     {
@@ -125,7 +125,7 @@ export const FALLBACK_CHARACTERS = [
         weaponF2p: "Ready-Ready (Реді-Реді)",
         cartridge: "Tiny Big Adventure (4-piece)",
         stats: ["ATK%", "Crit Rate", "Psyche DMG", "Energy Charge Efficiency"],
-        teamSynergy: "Mint (Аніма), Zero (Космос), Adler (Закляття)",
+        teamSynergy: "Фадія (Психея), Аурелія (Психея), Лакрімоза (Хаос)",
         lore: "Турботлива та мила дівчина, яка завжди носить із собою іграшкового сову-помічника Hootie, здатного надихати союзників під час бою."
     },
     {
@@ -141,7 +141,7 @@ export const FALLBACK_CHARACTERS = [
         weaponF2p: "Failing You, Heavy in My Heart",
         cartridge: "Chaos Eclipse (4-piece)",
         stats: ["Crit Rate", "Crit DMG", "Chaos DMG", "ATK%"],
-        teamSynergy: "Sakiri (Закляття), Zero (Космос), Hotori (Космос)",
+        teamSynergy: "Сакірі (Закляття), Адлер (Закляття), Фадія (Психея)",
         lore: "Театральна акторка, чиї вистави зачаровують глядачів Гетеро. Кажуть, що її маски мають власне аномальне життя."
     },
     {
@@ -157,7 +157,7 @@ export const FALLBACK_CHARACTERS = [
         weaponF2p: "Shiny Days (Світлі Дні)",
         cartridge: "Chaos Eclipse (4-piece)",
         stats: ["Break Intensity", "Crit Rate", "Crit DMG", "ATK%"],
-        teamSynergy: "Nanally (Аніма), Zero (Космос), Sakiri (Закляття)",
+        teamSynergy: "Лакрімоза (Хаос), Фадія (Психея), Адлер (Закляття)",
         lore: "Мовчазна та загадкова охоронниця антикварної крамниці Eibon. Володіє калейдоскопічними очима і приховує під холодною маскою відданість друзям."
     },
     {
@@ -173,7 +173,7 @@ export const FALLBACK_CHARACTERS = [
         weaponF2p: "A Time Will Come (Час прийде)",
         cartridge: "Crimson: Twin Butterflies (4-piece)",
         stats: ["Crit Rate", "Crit DMG", "Incantation DMG", "ATK%"],
-        teamSynergy: "Haniel (Закляття), Sakiri (Закляття), Adler (Хаос)",
+        teamSynergy: "Сакірі (Закляття), Адлер (Закляття), Зеро (Космос)",
         lore: "Капітан підрозділу ETD-4 Бюро контролю аномалій. Досвідчений ветеран з невимушеним характером, який піклується про своїх підлеглих як старший брат."
     },
     {
@@ -189,7 +189,7 @@ export const FALLBACK_CHARACTERS = [
         weaponF2p: "Wild Reverie (Дика мрія)",
         cartridge: "Lost Radiance (4-piece)",
         stats: ["Crit Rate", "Crit DMG", "Cosmos DMG", "ATK%"],
-        teamSynergy: "Zero (Космос), Sakiri (Закляття), Hotori (Космос)",
+        teamSynergy: "Хоторі (Космос), Зеро (Космос), Едгар (Космос)",
         lore: "Персонаж, пов'язаний із Безіменним Банком. Має ділову жилку та користується важким молотом-йокай для вибивання боргів та аномалій."
     },
     {
@@ -205,7 +205,7 @@ export const FALLBACK_CHARACTERS = [
         weaponF2p: "Medic's Flask (Флакон медика)",
         cartridge: "Tiny Big Adventure (4-piece)",
         stats: ["HP%", "Flat HP", "Psyche DMG", "Energy Charge Efficiency"],
-        teamSynergy: "Baicang (Закляття), Nanally (Аніма), Zero (Космос)",
+        teamSynergy: "Лакрімоза (Хаос), Ханіель (Психея), Аурелія (Психея)",
         lore: "Дивовижна дівчина-вампір з Бюро контролю аномалій, яка носить із собою гігантський надгробок як щит та зброю."
     },
     {
@@ -221,7 +221,7 @@ export const FALLBACK_CHARACTERS = [
         weaponF2p: "Sentinel's Barrier (Бар'єр Вартового)",
         cartridge: "Street Boxer (4-piece)",
         stats: ["Crit Rate", "Crit DMG", "Lakshana DMG", "ATK%"],
-        teamSynergy: "Zero (Космос), Sakiri (Закляття), Daffodil (Хаос)",
+        teamSynergy: "Хаос (Лакшана), Шінку (Космос), Скіа (Лакшана)",
         lore: "Впливова дівчина-фіксер з елітних кіл Гетеро, яка тісно співпрацює зі Sterry Express. Її витонченість приховує неперевершені бойові вміння."
     },
     {
@@ -237,7 +237,7 @@ export const FALLBACK_CHARACTERS = [
         weaponF2p: "Oraora! (Ораора!)",
         cartridge: "Devil's Blood: Curse (4-piece)",
         stats: ["Crit Rate", "Crit DMG", "Psyche DMG", "ATK%"],
-        teamSynergy: "Zero (Космос), Fadia (Психея), Sakiri (Закляття)",
+        teamSynergy: "Ханіель (Психея), Фадія (Психея), Зеро (Космос)",
         lore: "Студентка-музикант у Гетеро, яка виявила в собі аномальні здібності під час одного з вуличних виступів. Керує аномальними медузами."
     },
     {
@@ -253,7 +253,7 @@ export const FALLBACK_CHARACTERS = [
         weaponF2p: "Mind Royale (Рояль Розуму)",
         cartridge: "Thea's Night Tavern (4-piece)",
         stats: ["HP%", "Healing Bonus", "Flat HP", "Energy Charge Efficiency"],
-        teamSynergy: "Zero (Космос), Hotori (Космос), Jiuyuan (Аніма)",
+        teamSynergy: "Мінт (Аніма), Зеро (Космос), Чіз (Космос)",
         lore: "Співробітник антикварної крамниці Eibon. Спокійний та врівноважений юнак, який завжди готовий надати першу допомогу та смачний гарячий чай."
     },
     {
@@ -269,7 +269,7 @@ export const FALLBACK_CHARACTERS = [
         weaponF2p: "Good Boy's Grand Adventure (Велика пригода хорошого хлопчика)",
         cartridge: "Street Boxer (4-piece)",
         stats: ["Crit Rate", "Crit DMG", "Lakshana DMG", "ATK%"],
-        teamSynergy: "Zero (Космос), Sakiri (Закляття), Nanally (Аніма)",
+        teamSynergy: "Хаос (Лакшана), Хатор (Лакшана), Шінку (Космос)",
         lore: "Лейтенант підрозділу ETD-4 Бюро контролю аномалій. Мовчазний вовк-офіцер із великим шрамом на лівому оці, який вірно несе службу."
     },
     {
@@ -285,7 +285,7 @@ export const FALLBACK_CHARACTERS = [
         weaponF2p: "A Time Will Come (Час прийде)",
         cartridge: "Street Boxer (4-piece)",
         stats: ["Crit Rate", "Crit DMG", "Lakshana DMG", "ATK%"],
-        teamSynergy: "Zero (Космос), Sakiri (Закляття), Hathor (Лакшана)",
+        teamSynergy: "Хатор (Лакшана), Скіа (Лакшана), Зеро (Космос), Сакірі (Закляття)",
         lore: "Лейтенант 6-го взводу ETD Бюро контролю аномалій. Загадковий і небезпечний боєць, який використовує темний туман і здатний переміщатися крізь тіні."
     },
     {
@@ -301,7 +301,7 @@ export const FALLBACK_CHARACTERS = [
         weaponF2p: "Wild Reverie (Дика мрія)",
         cartridge: "Lost Radiance (4-piece)",
         stats: ["Crit Rate", "Crit DMG", "Cosmos DMG", "ATK%"],
-        teamSynergy: "Zero (Космос), Sakiri (Закляття), Hotori (Космос)",
+        teamSynergy: "Зеро (Космос), Хатор (Лакшана), Скіа (Лакшана), Цзююань (Аніма)",
         lore: "Загадкова дівчина з таємничої організації, яка здатна маніпулювати енергією порожнечі. Завжди спокійна зовні, але приховує руйнівну силу всередині."
     },
     {
@@ -317,7 +317,7 @@ export const FALLBACK_CHARACTERS = [
         weaponF2p: "Eibon Legacy (Спадщина Ейбона)",
         cartridge: "Tiny Big Adventure (4-piece)",
         stats: ["HP%", "Healing Bonus", "Energy Charge Efficiency", "Flat HP"],
-        teamSynergy: "Nanally (Аніма), Zero (Космос), Jiuyuan (Аніма)",
+        teamSynergy: "Наналлі (Аніма), Цзююань (Аніма), Мінт (Аніма)",
         lore: "Життєрадісна травниця, яка подорожує районами Гетеро в пошуках рідкісних аномальних рослин для створення ліків."
     }
 ];

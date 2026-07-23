@@ -85,7 +85,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Лють полум'я",
             cartridge: "Світлячки та ліс (4 частини)",
             stats: ["Шанс криту (75%+)", "Крит. шкода", "Аніма шкода", "Сила атаки %"],
-            teamSynergy: "Зеро (Космос), Сакірі (Закляття), Цзююань (Аніма)",
+            teamSynergy: "Хоторі (Космос), Зеро (Космос), Сакірі (Закляття), Цзююань (Аніма)",
             lore: "Загадкова дівчина з лисячими вушками, яка обожнює грати з гравітацією. Працює незалежним детективом аномалій у Hethereau."
         },
         en: {
@@ -95,7 +95,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Raging Flames",
             cartridge: "Fireflies and the Forest (4-piece)",
             stats: ["Crit Rate (75%+)", "Crit DMG", "Anima DMG", "ATK%"],
-            teamSynergy: "Zero (Cosmos), Sakiri (Incantation), Jiuyuan (Anima)",
+            teamSynergy: "Hotori (Cosmos), Zero (Cosmos), Sakiri (Incantation), Jiuyuan (Anima)",
             lore: "A mysterious girl with fox ears who loves playing with gravity. Works as an independent anomaly detective in Hethereau."
         },
         fr: {
@@ -105,7 +105,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Flammes déchaînées",
             cartridge: "Lucioles et la Forêt (4 pièces)",
             stats: ["Taux Critique (75%+)", "Dégâts Critique", "Dégâts Anima", "ATK %"],
-            teamSynergy: "Zero (Cosmos), Sakiri (Incantation), Jiuyuan (Anima)",
+            teamSynergy: "Hotori (Cosmos), Zero (Cosmos), Sakiri (Incantation), Jiuyuan (Anima)",
             lore: "Une fille mystérieuse avec des oreilles de renard qui adore jouer avec la gravité. Travaille comme détective d'anomalies indépendante à Hethereau."
         }
     },
@@ -117,7 +117,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Смуток у моєму серці",
             cartridge: "Швидкий їжак (4 частини)",
             stats: ["Інтенсивність циклу", "Ефект пробиття", "Відновлення енергії", "Сила атаки %"],
-            teamSynergy: "Наналлі (Аніма), Зеро (Космос), Даффоділ (Хаос)",
+            teamSynergy: "Лакрімоза (Хаос), Наналлі (Аніма), Шінку (Космос), Хаос (Лакшана)",
             lore: "Весела та енергійна дівчина, яка завжди носить із собою іграшкового кролика. Здатна бачити приховані нитки долі за допомогою заклять."
         },
         en: {
@@ -127,7 +127,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Failing You, Heavy in My Heart",
             cartridge: "Speedy Hedgehog (4-piece)",
             stats: ["Cycle Intensity", "Break Effect", "Energy Recharge Efficiency", "ATK%"],
-            teamSynergy: "Nanally (Anima), Zero (Cosmos), Daffodil (Chaos)",
+            teamSynergy: "Lacrimosa (Chaos), Nanally (Anima), Shinku (Cosmos), Chaos (Lakshana)",
             lore: "A cheerful and energetic girl who always carries a toy rabbit. Able to see hidden threads of fate using incantations."
         },
         fr: {
@@ -137,7 +137,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "La tristesse dans mon cœur",
             cartridge: "Hérisson rapide (4 pièces)",
             stats: ["Intensité de Cycle", "Effet de Rupture", "Recharge d'Énergie", "ATK %"],
-            teamSynergy: "Nanally (Anima), Zero (Cosmos), Daffodil (Chaos)",
+            teamSynergy: "Lacrimosa (Chaos), Nanally (Anima), Shinku (Cosmos), Chaos (Lakshana)",
             lore: "Une fille joyeuse et énergétique qui porte toujours un lapin en peluche. Capable de voir les fils cachés du destin en utilisant des incantations."
         }
     },
@@ -149,7 +149,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Порив вітру",
             cartridge: "Світлячки та ліс (4 частини)",
             stats: ["Шанс криту", "Крит. шкода", "Аніма шкода", "Відновлення енергії"],
-            teamSynergy: "Наналлі (Аніма), Сакірі (Закляття), Зеро (Космос)",
+            teamSynergy: "Наналлі (Аніма), Іроі (Аніма), Шінку (Космос), Зеро (Космос)",
             lore: "Мисливиця на аномалії стародавнього роду з витонченими манерами. Використовує віяло для виклику аномальних повітряних потоків."
         },
         en: {
@@ -159,7 +159,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Rising Wind",
             cartridge: "Fireflies and the Forest (4-piece)",
             stats: ["Crit Rate", "Crit DMG", "Anima DMG", "Energy Recharge Efficiency"],
-            teamSynergy: "Nanally (Anima), Sakiri (Incantation), Zero (Cosmos)",
+            teamSynergy: "Nanally (Anima), Iroi (Anima), Shinku (Cosmos), Zero (Cosmos)",
             lore: "An anomaly hunter of an ancient lineage with refined manners. Uses a fan to summon anomalous air currents."
         },
         fr: {
@@ -169,7 +169,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Vent levant",
             cartridge: "Lucioles et la Forêt (4 pièces)",
             stats: ["Taux Critique", "Dégâts Critique", "Dégâts Anima", "Recharge d'Énergie"],
-            teamSynergy: "Nanally (Anima), Sakiri (Incantation), Zero (Cosmos)",
+            teamSynergy: "Nanally (Anima), Iroi (Anima), Shinku (Cosmos), Zero (Cosmos)",
             lore: "Une chasseuse d'anomalies d'une lignée ancienne aux manières raffinées. Utilise un éventail pour invoquer des courants d'air anormaux."
         }
     },
@@ -181,7 +181,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Блокнот оцінювача",
             cartridge: "Швидкий їжак (4 частини)",
             stats: ["Відновлення енергії", "Інтенсивність циклу", "Сила атаки %", "Здоров'я %"],
-            teamSynergy: "Наналлі (Аніма), Адлер (Хаос), Ханіель (Закляття)",
+            teamSynergy: "Наналлі (Аніма), Зеро (Космос), Цзююань (Аніма), Сакірі (Закляття)",
             lore: "Тихий оцінювач аномальних предметів, який проводить більшу частину часу в бібліотеці антикварної крамниці Eibon."
         },
         en: {
@@ -191,7 +191,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Appraiser's Notebook",
             cartridge: "Speedy Hedgehog (4-piece)",
             stats: ["Energy Recharge Efficiency", "Cycle Intensity", "ATK%", "HP%"],
-            teamSynergy: "Nanally (Anima), Adler (Chaos), Haniel (Incantation)",
+            teamSynergy: "Nanally (Anima), Zero (Cosmos), Jiuyuan (Anima), Sakiri (Incantation)",
             lore: "A quiet appraiser of anomalous items who spends most of her time in the library of the Eibon antique shop."
         },
         fr: {
@@ -201,7 +201,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Carnet de l'évaluateur",
             cartridge: "Hérisson rapide (4 pièces)",
             stats: ["Recharge d'Énergie", "Intensité de Cycle", "ATK %", "PV %"],
-            teamSynergy: "Nanally (Anima), Adler (Chaos), Haniel (Incantation)",
+            teamSynergy: "Nanally (Anima), Zero (Cosmos), Jiuyuan (Anima), Sakiri (Incantation)",
             lore: "Une évalueuse discrète d'objets anormaux qui passe la majeure partie de son temps dans la bibliothèque de la boutique d'antiquités Eibon."
         }
     },
@@ -213,7 +213,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Рішучість мисливця",
             cartridge: "Швидкий їжак (4 частини)",
             stats: ["Сила атаки %", "Шанс криту", "Інтенсивність циклу", "Відновлення енергії"],
-            teamSynergy: "Будь-який ДПС персонаж стихії Аніма або Закляття",
+            teamSynergy: "Шінку (Космос), Наналлі (Аніма), Хоторі (Космос), Мінт (Аніма)",
             lore: "Новий володар антикварної крамниці Eibon, що втратив спогади про своє минуле, але володіє дивним даром бачити сутність аномалій."
         },
         en: {
@@ -223,7 +223,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Hunter's Resolve",
             cartridge: "Speedy Hedgehog (4-piece)",
             stats: ["ATK%", "Crit Rate", "Cycle Intensity", "Energy Recharge Efficiency"],
-            teamSynergy: "Any Anima or Incantation DPS character",
+            teamSynergy: "Shinku (Cosmos), Nanally (Anima), Hotori (Cosmos), Mint (Anima)",
             lore: "The new owner of the Eibon antique shop, who lost his memories of the past but possesses a strange gift of seeing the core of anomalies."
         },
         fr: {
@@ -233,7 +233,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Résolution du chasseur",
             cartridge: "Hérisson rapide (4 pièces)",
             stats: ["ATK %", "Taux Critique", "Intensité de Cycle", "Recharge d'Énergie"],
-            teamSynergy: "Tout personnage DPS Anima ou Incantation",
+            teamSynergy: "Shinku (Cosmos), Nanally (Anima), Hotori (Cosmos), Mint (Anima)",
             lore: "Le nouveau propriétaire de la boutique d'antiquités Eibon, qui a perdu ses souvenirs du passé mais possède le don étrange de voir le cœur des anomalies."
         }
     },
@@ -245,7 +245,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Іржавий щит із сплаву",
             cartridge: "Швидкий їжак (4 частини) або Захисний набір",
             stats: ["Захист %", "Захист", "Ефект пробиття", "Відновлення енергії"],
-            teamSynergy: "Наналлі (Аніма), Сакірі (Закляття), Зеро (Космос)",
+            teamSynergy: "Байканг (Закляття), Сакірі (Закляття), Лакрімоза (Хаос)",
             lore: "Колишній охоронець, який тепер допомагає крамниці Eibon із важкими замовленнями у небезпечних зонах Hethereau."
         },
         en: {
@@ -255,7 +255,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Rusty Alloy Shield",
             cartridge: "Speedy Hedgehog (4-piece) or Guard Set",
             stats: ["DEF%", "Flat DEF", "Break Effect", "Energy Recharge Efficiency"],
-            teamSynergy: "Nanally (Anima), Sakiri (Incantation), Zero (Cosmos)",
+            teamSynergy: "Baicang (Incantation), Sakiri (Incantation), Lacrimosa (Chaos)",
             lore: "A former security guard who now helps the Eibon shop with heavy commissions in the dangerous zones of Hethereau."
         },
         fr: {
@@ -265,7 +265,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Bouclier en alliage rouillé",
             cartridge: "Hérisson rapide (4 pièces) ou Set de Garde",
             stats: ["Défense %", "Défense (Plat)", "Effet de Rupture", "Recharge d'Énergie"],
-            teamSynergy: "Nanally (Anima), Sakiri (Incantation), Zero (Cosmos)",
+            teamSynergy: "Baicang (Incantation), Sakiri (Incantation), Lacrimosa (Chaos)",
             lore: "Un ancien garde de sécurité qui aide maintenant la boutique Eibon avec des commissions difficiles dans les zones dangereuses de Hethereau."
         }
     },
@@ -277,7 +277,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Сталева рапіра",
             cartridge: "Світлячки та ліс (4 частини)",
             stats: ["Сила атаки %", "Шанс криту", "Крит. шкода", "Аніма шкода"],
-            teamSynergy: "Зеро (Космос), Ханіель (Закляття), Адлер (Хаос)",
+            teamSynergy: "Зеро (Космос), Едгар (Космос), Ханіель (Психея)",
             lore: "Молода стажерка в Eibon, яка прагне стати найкращим оцінювачем аномалій у місті."
         },
         en: {
@@ -287,7 +287,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Steel Rapier",
             cartridge: "Fireflies and the Forest (4-piece)",
             stats: ["ATK%", "Crit Rate", "Crit DMG", "Anima DMG"],
-            teamSynergy: "Zero (Cosmos), Haniel (Incantation), Adler (Chaos)",
+            teamSynergy: "Zero (Cosmos), Edgar (Cosmos), Haniel (Psyche)",
             lore: "A young intern at Eibon who aspires to become the best anomaly appraiser in the city."
         },
         fr: {
@@ -297,7 +297,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Rapière en acier",
             cartridge: "Lucioles et la Forêt (4 pièces)",
             stats: ["ATK %", "Taux Critique", "Dégâts Critique", "Dégâts Anima"],
-            teamSynergy: "Zero (Cosmos), Haniel (Incantation), Adler (Chaos)",
+            teamSynergy: "Zero (Cosmos), Edgar (Cosmos), Haniel (Psyche)",
             lore: "Une jeune stagiaire chez Eibon qui aspire à devenir la meilleure évalueuse d'anomalies de la ville."
         }
     },
@@ -309,7 +309,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Готовий-Готовий",
             cartridge: "Велика маленька пригода (4 частини)",
             stats: ["Сила атаки %", "Шанс криту", "Психея шкода", "Відновлення енергії"],
-            teamSynergy: "Мінт (Аніма), Зеро (Космос), Адлер (Закляття)",
+            teamSynergy: "Фадія (Психея), Аурелія (Психея), Лакрімоза (Хаос)",
             lore: "Турботлива та мила дівчина, яка завжди носить із собою іграшкового сову-помічника Hootie, здатного надихати союзників під час бою."
         },
         en: {
@@ -319,7 +319,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Ready-Ready",
             cartridge: "Tiny Big Adventure (4-piece)",
             stats: ["ATK%", "Crit Rate", "Psyche DMG", "Energy Recharge Efficiency"],
-            teamSynergy: "Mint (Anima), Zero (Cosmos), Adler (Incantation)",
+            teamSynergy: "Fadia (Psyche), Aurelia (Psyche), Lacrimosa (Chaos)",
             lore: "A caring and sweet girl who always carries a toy owl assistant Hootie, capable of inspiring allies during battle."
         },
         fr: {
@@ -329,7 +329,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Prêt-Prêt",
             cartridge: "Petite grande aventure (4 pièces)",
             stats: ["ATK %", "Taux Critique", "Dégâts Psyché", "Recharge d'Énergie"],
-            teamSynergy: "Mint (Anima), Zero (Cosmos), Adler (Incantation)",
+            teamSynergy: "Fadia (Psyche), Aurelia (Psyche), Lacrimosa (Chaos)",
             lore: "Une fille attentionnée et douce qui porte toujours un hibou en peluche assistant, Hootie, capable d'inspirer les alliés pendant le combat."
         }
     },
@@ -341,7 +341,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Смуток у моєму серці",
             cartridge: "Затемнення хаосу (4 частини)",
             stats: ["Шанс криту", "Крит. шкода", "Хаос шкода", "Сила атаки %"],
-            teamSynergy: "Сакірі (Закляття), Зеро (Космос), Хоторі (Космос)",
+            teamSynergy: "Сакірі (Закляття), Адлер (Закляття), Фадія (Психея)",
             lore: "Театральна акторка, чиї вистави зачаровують глядачів Гетеро. Кажуть, що її маски мають власне аномальне життя."
         },
         en: {
@@ -351,7 +351,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Failing You, Heavy in My Heart",
             cartridge: "Chaos Eclipse (4-piece)",
             stats: ["Crit Rate", "Crit DMG", "Chaos DMG", "ATK%"],
-            teamSynergy: "Sakiri (Incantation), Zero (Cosmos), Hotori (Cosmos)",
+            teamSynergy: "Sakiri (Incantation), Adler (Incantation), Fadia (Psyche)",
             lore: "A theatrical actress whose performances enchant the audience of Hethereau. It is said that her masks have their own anomalous life."
         },
         fr: {
@@ -361,7 +361,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "La tristesse dans mon cœur",
             cartridge: "Éclipse du Chaos (4 pièces)",
             stats: ["Taux Critique", "Dégâts Critique", "Dégâts Chaos", "ATK %"],
-            teamSynergy: "Sakiri (Incantation), Zero (Cosmos), Hotori (Cosmos)",
+            teamSynergy: "Sakiri (Incantation), Adler (Incantation), Fadia (Psyche)",
             lore: "Une actrice de théâtre dont les performances enchantent le public de Hethereau. On dit que ses masques ont leur propre vie anormale."
         }
     },
@@ -373,7 +373,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Світлі дні",
             cartridge: "Затемнення хаосу (4 частини)",
             stats: ["Інтенсивність пробиття", "Шанс криту", "Крит. шкода", "Сила атаки %"],
-            teamSynergy: "Наналлі (Аніма), Зеро (Космос), Сакірі (Закляття)",
+            teamSynergy: "Лакрімоза (Хаос), Фадія (Психея), Адлер (Закляття)",
             lore: "Мовчазна та загадкова охоронниця антикварної крамниці Eibon. Володіє калейдоскопічними очима і приховує под холодною маскою відданість друзям."
         },
         en: {
@@ -383,7 +383,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Shiny Days",
             cartridge: "Chaos Eclipse (4-piece)",
             stats: ["Break Intensity", "Crit Rate", "Crit DMG", "ATK%"],
-            teamSynergy: "Nanally (Anima), Zero (Cosmos), Sakiri (Incantation)",
+            teamSynergy: "Lacrimosa (Chaos), Fadia (Psyche), Adler (Incantation)",
             lore: "A quiet and mysterious guardian of the Eibon antique shop. Possesses kaleidoscopic eyes and hides her devotion to friends under a cold mask."
         },
         fr: {
@@ -393,7 +393,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Jours ensoleillés",
             cartridge: "Éclipse du Chaos (4 pièces)",
             stats: ["Intensité de Rupture", "Taux Critique", "Dégâts Critique", "ATK %"],
-            teamSynergy: "Nanally (Anima), Zero (Cosmos), Sakiri (Incantation)",
+            teamSynergy: "Lacrimosa (Chaos), Fadia (Psyche), Adler (Incantation)",
             lore: "Une gardienne discrète et mystérieuse de la boutique d'antiquités Eibon. Possède des yeux kaléidoscopiques et cache son dévouement envers ses amis sous un masque froid."
         }
     },
@@ -405,7 +405,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Час прийде",
             cartridge: "Багряні метелики-близнята (4 частини)",
             stats: ["Шанс криту", "Крит. шкода", "Шкода закляття", "Сила атаки %"],
-            teamSynergy: "Ханіель (Закляття), Сакірі (Закляття), Адлер (Хаос)",
+            teamSynergy: "Сакірі (Закляття), Адлер (Закляття), Зеро (Космос)",
             lore: "Капітан підрозділу ETD-4 Бюро контролю аномалій. Досвідчений ветеран з невимушеним характером, який піклується про своїх підлеглих як старший брат."
         },
         en: {
@@ -415,7 +415,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "A Time Will Come",
             cartridge: "Crimson: Twin Butterflies (4-piece)",
             stats: ["Crit Rate", "Crit DMG", "Incantation DMG", "ATK%"],
-            teamSynergy: "Haniel (Incantation), Sakiri (Incantation), Adler (Chaos)",
+            teamSynergy: "Sakiri (Incantation), Adler (Incantation), Zero (Cosmos)",
             lore: "Captain of the ETD-4 unit of the Anomaly Control Bureau. An experienced veteran with an easygoing personality who cares for his subordinates like a big brother."
         },
         fr: {
@@ -425,7 +425,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Le moment viendra",
             cartridge: "Crimson: Papillons jumeaux (4 pièces)",
             stats: ["Taux Critique", "Dégâts Critique", "Dégâts Incantation", "ATK %"],
-            teamSynergy: "Haniel (Incantation), Sakiri (Incantation), Adler (Chaos)",
+            teamSynergy: "Sakiri (Incantation), Adler (Incantation), Zero (Cosmos)",
             lore: "Capitaine de l'unité ETD-4 du Bureau de Contrôle des Anomalies. Un vétéran expérimenté à la personnalité facile à vivre qui s'occupe de ses subordonnés comme un grand frère."
         }
     },
@@ -437,7 +437,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Дика мрія",
             cartridge: "Втрачене сяйво (4 частини)",
             stats: ["Шанс криту", "Крит. шкода", "Космос шкода", "Сила атаки %"],
-            teamSynergy: "Зеро (Космос), Сакірі (Закляття), Хоторі (Космос)",
+            teamSynergy: "Хоторі (Космос), Зеро (Космос), Едгар (Космос)",
             lore: "Персонаж, пов'язаний із Безіменним Банком. Має ділову жилку та користується важким молотом-йокай для вибивання боргів та аномалій."
         },
         en: {
@@ -447,7 +447,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Wild Reverie",
             cartridge: "Lost Radiance (4-piece)",
             stats: ["Crit Rate", "Crit DMG", "Cosmos DMG", "ATK%"],
-            teamSynergy: "Zero (Cosmos), Sakiri (Incantation), Hotori (Cosmos)",
+            teamSynergy: "Hotori (Cosmos), Zero (Cosmos), Edgar (Cosmos)",
             lore: "A character connected to the Nameless Bank. Has a business mind and uses a heavy yokai hammer to beat out debts and anomalies."
         },
         fr: {
@@ -457,7 +457,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Rêverie sauvage",
             cartridge: "Éclat perdu (4 pièces)",
             stats: ["Taux Critique", "Dégâts Critique", "Dégâts Cosmos", "ATK %"],
-            teamSynergy: "Zero (Cosmos), Sakiri (Incantation), Hotori (Cosmos)",
+            teamSynergy: "Hotori (Cosmos), Zero (Cosmos), Edgar (Cosmos)",
             lore: "Un personnage lié à la Banque Sans Nom. Possède un esprit d'entreprise et utilise un lourd marteau yokai pour récupérer les dettes et éliminer les anomalies."
         }
     },
@@ -469,7 +469,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Флакон медика",
             cartridge: "Велика маленька пригода (4 частини)",
             stats: ["Здоров'я %", "Здоров'я", "Психея шкода", "Відновлення енергії"],
-            teamSynergy: "Байканг (Закляття), Наналлі (Аніма), Зеро (Космос)",
+            teamSynergy: "Лакрімоза (Хаос), Ханіель (Психея), Аурелія (Психея)",
             lore: "Дивовижна дівчина-вампір з Бюро контролю аномалій, яка носить із собою гігантський надгробок як щит та зброю."
         },
         en: {
@@ -479,7 +479,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Medic's Flask",
             cartridge: "Tiny Big Adventure (4-piece)",
             stats: ["HP%", "Flat HP", "Psyche DMG", "Energy Recharge Efficiency"],
-            teamSynergy: "Baicang (Incantation), Nanally (Anima), Zero (Cosmos)",
+            teamSynergy: "Lacrimosa (Chaos), Haniel (Psyche), Aurelia (Psyche)",
             lore: "An amazing vampire girl from the Anomaly Control Bureau who carries a giant tombstone as a shield and weapon."
         },
         fr: {
@@ -489,7 +489,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Flacon du médecin",
             cartridge: "Petite grande aventure (4 pièces)",
             stats: ["PV %", "PV (Plat)", "Dégâts Psyché", "Recharge d'Énergie"],
-            teamSynergy: "Baicang (Incantation), Nanally (Anima), Zero (Cosmos)",
+            teamSynergy: "Lacrimosa (Chaos), Haniel (Psyche), Aurelia (Psyche)",
             lore: "Une incroyable fille vampire du Bureau de Contrôle des Anomalies qui porte une pierre tombale géante comme bouclier et arme."
         }
     },
@@ -501,7 +501,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Бар'єр вартового",
             cartridge: "Вуличний боксер (4 частини)",
             stats: ["Шанс криту", "Крит. шкода", "Лакшана шкода", "Сила атаки %"],
-            teamSynergy: "Зеро (Космос), Сакірі (Закляття), Даффоділ (Хаос)",
+            teamSynergy: "Хаос (Лакшана), Шінку (Космос), Скіа (Лакшана)",
             lore: "Впливова дівчина-фіксер з елітних кіл Гетеро, яка тісно співпрацює зі Sterry Express. Її витонченість приховує неперевершені бойові вміння."
         },
         en: {
@@ -511,7 +511,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Sentinel's Barrier",
             cartridge: "Street Boxer (4-piece)",
             stats: ["Crit Rate", "Crit DMG", "Lakshana DMG", "ATK%"],
-            teamSynergy: "Zero (Cosmos), Sakiri (Incantation), Daffodil (Chaos)",
+            teamSynergy: "Chaos (Lakshana), Shinku (Cosmos), Skia (Lakshana)",
             lore: "An influential fixer girl from the elite circles of Hethereau, who works closely with Sterry Express. Her elegance hides unmatched combat skills."
         },
         fr: {
@@ -521,7 +521,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Barrière de la sentinelle",
             cartridge: "Boxeur de rue (4 pièces)",
             stats: ["Taux Critique", "Dégâts Critique", "Dégâts Lakshana", "ATK %"],
-            teamSynergy: "Zero (Cosmos), Sakiri (Incantation), Daffodil (Chaos)",
+            teamSynergy: "Chaos (Lakshana), Shinku (Cosmos), Skia (Lakshana)",
             lore: "Une fille fixatrice influente des cercles d'élite de Hethereau, qui travaille en étroite collaboration avec Sterry Express. Son élégance cache des compétences de combat inégalées."
         }
     },
@@ -533,7 +533,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Ораора!",
             cartridge: "Прокляття крові диявола (4 частини)",
             stats: ["Шанс криту", "Крит. шкода", "Психея шкода", "Сила атаки %"],
-            teamSynergy: "Зеро (Космос), Фадія (Психея), Сакірі (Закляття)",
+            teamSynergy: "Ханіель (Психея), Фадія (Психея), Зеро (Космос)",
             lore: "Студентка-музикант у Гетеро, яка виявила в собі аномальні здібності під час одного з вуличних виступів. Керує аномальними медузами."
         },
         en: {
@@ -543,7 +543,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Oraora!",
             cartridge: "Devil's Blood: Curse (4-piece)",
             stats: ["Crit Rate", "Crit DMG", "Psyche DMG", "ATK%"],
-            teamSynergy: "Zero (Cosmos), Fadia (Psyche), Sakiri (Incantation)",
+            teamSynergy: "Haniel (Psyche), Fadia (Psyche), Zero (Cosmos)",
             lore: "A music student in Hethereau who discovered her anomalous abilities during one of her street performances. Controls anomalous jellyfish."
         },
         fr: {
@@ -553,7 +553,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Oraora!",
             cartridge: "Sang du démon: Malédiction (4 pièces)",
             stats: ["Taux Critique", "Dégâts Critique", "Dégâts Psyché", "ATK %"],
-            teamSynergy: "Zero (Cosmos), Fadia (Psyché), Sakiri (Incantation)",
+            teamSynergy: "Haniel (Psyche), Fadia (Psyche), Zero (Cosmos)",
             lore: "Une étudiante en musique à Hethereau qui a découvert ses capacités anormales lors de l'une de ses représentations de rue. Contrôle des méduses anormales."
         }
     },
@@ -565,7 +565,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Королівський розум",
             cartridge: "Нічна таверна Теї (4 частини)",
             stats: ["Здоров'я %", "Бонус лікування", "Здоров'я", "Відновлення енергії"],
-            teamSynergy: "Зеро (Космос), Хоторі (Космос), Цзююань (Аніма)",
+            teamSynergy: "Мінт (Аніма), Зеро (Космос), Чіз (Космос)",
             lore: "Співробітник антикварної крамниці Eibon. Спокійний та врівноважений юнак, який завжди готовий надати першу допомогу та смачний гарячий чай."
         },
         en: {
@@ -575,7 +575,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Mind Royale",
             cartridge: "Thea's Night Tavern (4-piece)",
             stats: ["HP%", "Healing Bonus", "Flat HP", "Energy Recharge Efficiency"],
-            teamSynergy: "Zero (Cosmos), Hotori (Cosmos), Jiuyuan (Anima)",
+            teamSynergy: "Mint (Anima), Zero (Cosmos), Chiz (Cosmos)",
             lore: "An employee of the Eibon antique shop. A calm and balanced youth who is always ready to provide first aid and delicious hot tea."
         },
         fr: {
@@ -585,7 +585,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Esprit Royal",
             cartridge: "Taverne nocturne de Thea (4 pièces)",
             stats: ["PV %", "Bonus de Soin", "PV (Plat)", "Recharge d'Énergie"],
-            teamSynergy: "Zero (Cosmos), Hotori (Cosmos), Jiuyuan (Anima)",
+            teamSynergy: "Mint (Anima), Zero (Cosmos), Chiz (Cosmos)",
             lore: "Un employé de la boutique d'antiquités Eibon. Un jeune homme calme et équilibré qui est toujours prêt à prodiguer les premiers soins et à servir un délicieux thé chaud."
         }
     },
@@ -597,7 +597,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Велика пригода хорошого хлопчика",
             cartridge: "Вуличний боксер (4 частини)",
             stats: ["Шанс криту", "Крит. шкода", "Лакшана шкода", "Сила атаки %"],
-            teamSynergy: "Зеро (Космос), Сакірі (Закляття), Наналлі (Аніма)",
+            teamSynergy: "Хаос (Лакшана), Хатор (Лакшана), Шінку (Космос)",
             lore: "Лейтенант підрозділу ETD-4 Бюро контролю аномалій. Мовчазний вовк-офіцер із великим шрамом на лівому оці, який вірно несе службу."
         },
         en: {
@@ -607,7 +607,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Good Boy's Grand Adventure",
             cartridge: "Street Boxer (4-piece)",
             stats: ["Crit Rate", "Crit DMG", "Lakshana DMG", "ATK%"],
-            teamSynergy: "Zero (Cosmos), Sakiri (Incantation), Nanally (Anima)",
+            teamSynergy: "Chaos (Lakshana), Hathor (Lakshana), Shinku (Cosmos)",
             lore: "Lieutenant of the ETD-4 unit of the Anomaly Control Bureau. A silent wolf-officer with a large scar on his left eye who serves faithfully."
         },
         fr: {
@@ -617,7 +617,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "La grande aventure du bon garçon",
             cartridge: "Boxeur de rue (4 pièces)",
             stats: ["Taux Critique", "Dégâts Critique", "Dégâts Lakshana", "ATK %"],
-            teamSynergy: "Zero (Cosmos), Sakiri (Incantation), Nanally (Anima)",
+            teamSynergy: "Chaos (Lakshana), Hathor (Lakshana), Shinku (Cosmos)",
             lore: "Lieutenant de l'unité ETD-4 du Bureau de Contrôle des Anomalies. Un officier-loup silencieux avec une grande cicatrice à l'œil gauche qui sert fidèlement."
         }
     },
@@ -629,7 +629,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Лють полум'я",
             cartridge: "Вуличний боксер (4 частини)",
             stats: ["Шанс криту", "Крит. шкода", "Лакшана шкода", "Сила атаки %"],
-            teamSynergy: "Зеро (Космос), Сакірі (Закляття), Хатор (Лакшана)",
+            teamSynergy: "Хатор (Лакшана), Скіа (Лакшана), Зеро (Космос), Сакірі (Закляття)",
             lore: "Лейтенант 6-го взводу ETD Бюро контролю аномалій. Загадковий і небезпечний боєць, який використовує темний туман і здатний переміщатися крізь тіні."
         },
         en: {
@@ -639,7 +639,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Raging Flames",
             cartridge: "Street Boxer (4-piece)",
             stats: ["Crit Rate", "Crit DMG", "Lakshana DMG", "ATK%"],
-            teamSynergy: "Zero (Cosmos), Sakiri (Incantation), Hathor (Lakshana)",
+            teamSynergy: "Hathor (Lakshana), Skia (Lakshana), Zero (Cosmos), Sakiri (Incantation)",
             lore: "Lieutenant of the ETD-6 unit of the Anomaly Control Bureau. A mysterious and dangerous combatant who manipulates dark fog and warps through shadows."
         },
         fr: {
@@ -649,7 +649,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Flammes déchaînées",
             cartridge: "Boxeur de rue (4 pièces)",
             stats: ["Taux Critique", "Dégâts Critique", "Dégâts Lakshana", "ATK %"],
-            teamSynergy: "Zero (Cosmos), Sakiri (Incantation), Hathor (Lakshana)",
+            teamSynergy: "Hathor (Lakshana), Skia (Lakshana), Zero (Cosmos), Sakiri (Incantation)",
             lore: "Lieutenant de l'unité ETD-6 du Bureau de Contrôle des Anomalies. Un combattant mystérieux et dangereux qui manipule la brume noire et se déplace dans les ombres."
         }
     },
@@ -661,7 +661,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Дика мрія",
             cartridge: "Втрачене сяйво (4 частини)",
             stats: ["Шанс криту", "Крит. шкода", "Космос шкода", "Сила атаки %"],
-            teamSynergy: "Зеро (Космос), Сакірі (Закляття), Хоторі (Космос)",
+            teamSynergy: "Зеро (Космос), Хатор (Лакшана), Скіа (Лакшана), Цзююань (Аніма)",
             lore: "Загадкова дівчина з таємничої організації, яка здатна маніпулювати енергією порожнечі. Завжди спокійна зовні, але приховує руйнівну силу всередині."
         },
         en: {
@@ -671,7 +671,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Wild Reverie",
             cartridge: "Lost Radiance (4-piece)",
             stats: ["Crit Rate", "Crit DMG", "Cosmos DMG", "ATK%"],
-            teamSynergy: "Zero (Cosmos), Sakiri (Incantation), Hotori (Cosmos)",
+            teamSynergy: "Esper Zero (Cosmos), Hathor (Lakshana), Skia (Lakshana), Jiuyuan (Anima)",
             lore: "A mysterious girl from a secret organization capable of manipulating void energy. Always calm on the outside, but harbors destructive power within."
         },
         fr: {
@@ -681,7 +681,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Rêverie sauvage",
             cartridge: "Éclat perdu (4 pièces)",
             stats: ["Taux Critique", "Dégâts Critique", "Dégâts Cosmos", "ATK %"],
-            teamSynergy: "Zero (Cosmos), Sakiri (Incantation), Hotori (Cosmos)",
+            teamSynergy: "Esper Zero (Cosmos), Hathor (Lakshana), Skia (Lakshana), Jiuyuan (Anima)",
             lore: "Une fille mystérieuse d'une organisation secrète capable de manipuler l'énergie du vide. Toujours calme à l'extérieur, mais abritant un pouvoir destructeur à l'intérieur."
         }
     },
@@ -693,7 +693,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Спадщина Ейбона",
             cartridge: "Маленька велика пригода (4 частини)",
             stats: ["Здоров'я %", "Бонус лікування", "Відновлення енергії", "Здоров'я (фікс.)"],
-            teamSynergy: "Наналлі (Аніма), Зеро (Космос), Цзююань (Аніма)",
+            teamSynergy: "Наналлі (Аніма), Цзююань (Аніма), Мінт (Аніма)",
             lore: "Життєрадісна травниця, яка подорожує районами Гетеро в пошуках рідкісних аномальних рослин для створення ліків."
         },
         en: {
@@ -703,7 +703,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Eibon Legacy",
             cartridge: "Tiny Big Adventure (4-piece)",
             stats: ["HP%", "Healing Bonus", "Energy Charge Efficiency", "Flat HP"],
-            teamSynergy: "Nanally (Anima), Zero (Cosmos), Jiuyuan (Anima)",
+            teamSynergy: "Nanally (Anima), Jiuyuan (Anima), Mint (Anima)",
             lore: "A cheerful herbalist traveling Hethereau districts in search of rare anomalous plants to craft medicines."
         },
         fr: {
@@ -713,7 +713,7 @@ export const CHARACTER_TRANSLATIONS = {
             weaponF2p: "Héritage d'Eibon",
             cartridge: "Petite grande aventure (4 pièces)",
             stats: ["PV %", "Bonus de Soin", "Recharge d'Énergie", "PV (Plat)"],
-            teamSynergy: "Nanally (Anima), Zero (Cosmos), Jiuyuan (Anima)",
+            teamSynergy: "Nanally (Anima), Jiuyuan (Anima), Mint (Anima)",
             lore: "Une herboriste joyeuse voyageant dans les quartiers de Hethereau à la recherche de plantes anormales rares pour fabriquer des remèdes."
         }
     }
@@ -2217,4 +2217,4 @@ export const i18n = {
         guides_build_subtitle_prefix: "Guide de Build : ",
         guides_build_default_desc: "Analyse complète des statistiques, armes et configurations de cartouches."
     }
-};
+};
