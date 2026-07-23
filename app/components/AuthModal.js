@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useApp } from '../providers';
+import { auth, googleProvider, signInWithPopup, signOut, onAuthStateChanged } from '../firebase';
 
 export default function AuthModal() {
   const { lang, isAuthModalOpen, setIsAuthModalOpen } = useApp();
@@ -13,15 +14,33 @@ export default function AuthModal() {
       const stored = localStorage.getItem('nte_user');
       if (stored) setUser(JSON.parse(stored));
     } catch (e) {}
+
+    if (!auth) return;
+
+    try {
+      const unsubscribe = onAuthStateChanged(auth, (u) => {
+        if (u) {
+          const userData = {
+            displayName: u.displayName || 'Explorer',
+            email: u.email,
+            photoURL: u.photoURL || '/src/assets/zero_avatar.png',
+          };
+          setUser(userData);
+          localStorage.setItem('nte_user', JSON.stringify(userData));
+        }
+      });
+      return () => unsubscribe();
+    } catch (e) {
+      console.warn('Firebase Auth listener error:', e);
+    }
   }, []);
 
   if (!isAuthModalOpen) return null;
 
   const handleGoogleLogin = async () => {
-    try {
-      // Dynamic import of Firebase Auth
-      const { auth, googleProvider, signInWithPopup } = await import('../firebase');
-      if (auth && googleProvider) {
+    console.log('Initiating Google Sign-In...');
+    if (auth && googleProvider) {
+      try {
         const res = await signInWithPopup(auth, googleProvider);
         if (res?.user) {
           const userData = {
@@ -34,9 +53,10 @@ export default function AuthModal() {
           setIsAuthModalOpen(false);
           return;
         }
+      } catch (error) {
+        console.error('Google Auth Error:', error);
+        alert(`Firebase Auth Error: ${error.code || error.message}`);
       }
-    } catch (error) {
-      console.warn('Google Popup Login Notice:', error);
     }
 
     // Fallback: Instant Guest / Eibon Account Sign-In
@@ -50,7 +70,12 @@ export default function AuthModal() {
     setIsAuthModalOpen(false);
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    if (auth) {
+      try {
+        await signOut(auth);
+      } catch (e) {}
+    }
     setUser(null);
     localStorage.removeItem('nte_user');
     setIsAuthModalOpen(false);
