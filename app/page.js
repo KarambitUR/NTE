@@ -20,6 +20,7 @@ function getGuideText(guide, field, lang) {
 export default function HomePage() {
   const { lang, promoCodes, characters, guides, openCharacterModal } = useApp();
   const [timeLeft, setTimeLeft] = useState('00d 00h 00m');
+  const [copiedCode, setCopiedCode] = useState(null);
 
   useEffect(() => {
     // Banner target date: July 29, 2026 UTC+8
@@ -83,9 +84,10 @@ export default function HomePage() {
     },
   };
 
-  const copyCode = (code) => {
+  const handleCopy = (code) => {
     navigator.clipboard.writeText(code);
-    alert(`Copied code: ${code}`);
+    setCopiedCode(code);
+    setTimeout(() => setCopiedCode(null), 2000);
   };
 
   return (
@@ -138,16 +140,21 @@ export default function HomePage() {
             <p class="widget-desc">
               {lang === 'en' ? 'Click on any code to copy instantly.' : lang === 'fr' ? 'Cliquez sur un code pour le copier.' : 'Натисніть на код, щоб миттєво скопіювати його.'}
             </p>
-            <div class="home-codes-list">
-              {activeCodes.map((c) => (
-                <div key={c.code} class="code-quick-item" onClick={() => copyCode(c.code)} style={{ padding: '10px 14px', marginBottom: '8px' }}>
-                  <div class="code-quick-left" style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                    <span class="code-quick-val" style={{ fontWeight: '700', fontSize: '15px' }}>{c.code}</span>
-                    <span class="code-quick-rewards" style={{ fontSize: '12px', opacity: 0.8 }}>{c.rewards}</span>
+            <div class="codes-list" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {activeCodes.map((c) => {
+                const isCopied = copiedCode === c.code;
+                return (
+                  <div key={c.code} class="code-card" style={{ padding: '10px 14px' }}>
+                    <div class="code-info">
+                      <span class="code-string" style={{ fontSize: '1rem' }}>{c.code}</span>
+                      <span class="code-rewards" style={{ fontSize: '0.8rem' }}>{c.rewards}</span>
+                    </div>
+                    <button class="btn-copy" onClick={() => handleCopy(c.code)}>
+                      {isCopied ? '✓' : '📋'}
+                    </button>
                   </div>
-                  <button class="btn-copy-code btn-sm">📋</button>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
