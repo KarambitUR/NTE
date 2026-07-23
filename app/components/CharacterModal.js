@@ -3,6 +3,7 @@
 import React from 'react';
 import { useApp } from '../providers';
 import { formatImgUrl } from '../utils';
+import { FALLBACK_CHARACTERS } from '../../src/utils/fallbackData';
 import { CHARACTER_TRANSLATIONS } from '../../src/localization/translations';
 
 export default function CharacterModal() {
@@ -10,10 +11,14 @@ export default function CharacterModal() {
 
   if (!activeCharId) return null;
 
-  const char = characters.find((c) => c.id === activeCharId);
+  const targetId = String(activeCharId).toLowerCase();
+  const char =
+    characters.find((c) => String(c.id).toLowerCase() === targetId) ||
+    FALLBACK_CHARACTERS.find((c) => String(c.id).toLowerCase() === targetId);
+
   if (!char) return null;
 
-  const trans = CHARACTER_TRANSLATIONS[char.id];
+  const trans = CHARACTER_TRANSLATIONS[char.id] || CHARACTER_TRANSLATIONS[targetId];
   const lData = trans && trans[lang] ? trans[lang] : {};
 
   const name = lData.name || char.name;
@@ -42,13 +47,16 @@ export default function CharacterModal() {
       style={{
         display: 'flex',
         position: 'fixed',
-        inset: 0,
-        background: 'rgba(0,0,0,0.8)',
-        zIndex: 9999,
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: 'rgba(0,0,0,0.85)',
+        zIndex: 999999,
         alignItems: 'center',
         justifyContent: 'center',
         padding: '20px',
-        backdropFilter: 'blur(8px)',
+        backdropFilter: 'blur(10px)',
       }}
       onClick={closeCharacterModal}
     >
@@ -62,7 +70,9 @@ export default function CharacterModal() {
           overflowY: 'auto',
           padding: '30px',
           borderRadius: '16px',
-          border: '1px solid rgba(255,255,255,0.2)',
+          border: '1px solid rgba(255,64,129,0.4)',
+          boxShadow: '0 10px 40px rgba(0,0,0,0.8), 0 0 20px rgba(255,64,129,0.2)',
+          background: 'rgba(18, 16, 32, 0.95)',
         }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -78,6 +88,7 @@ export default function CharacterModal() {
             fontSize: '28px',
             cursor: 'pointer',
             lineHeight: 1,
+            opacity: 0.7,
           }}
         >
           &times;
@@ -86,15 +97,15 @@ export default function CharacterModal() {
         {/* Modal Header */}
         <div style={{ display: 'flex', gap: '20px', alignItems: 'center', marginBottom: '24px' }}>
           <img
-            src={formatImgUrl(char.avatar)}
+            src={formatImgUrl(char.avatar || `src/assets/${char.id}_avatar.png`)}
             alt={name}
             style={{ width: '90px', height: '90px', borderRadius: '12px', objectFit: 'cover', border: '2px solid #ff4081' }}
           />
           <div>
-            <h2 style={{ fontSize: '26px', fontWeight: '800', margin: '0 0 8px 0' }}>{name}</h2>
+            <h2 style={{ fontSize: '26px', fontWeight: '800', margin: '0 0 8px 0', color: '#fff' }}>{name}</h2>
             <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
               <span class={`badge badge-${char.rarity === 5 ? 'hot' : 'cosmos'}`}>{char.rarity}★</span>
-              <span class={`badge badge-${char.attribute.toLowerCase()}`}>{char.attribute}</span>
+              <span class={`badge badge-${String(char.attribute).toLowerCase()}`}>{char.attribute}</span>
               <span class="badge badge-anima">{char.role}</span>
               <span class="badge badge-incant">Tier {char.tier}</span>
             </div>
@@ -107,7 +118,7 @@ export default function CharacterModal() {
             <h4 style={{ fontSize: '14px', textTransform: 'uppercase', letterSpacing: '1px', color: '#ff4081', margin: '0 0 6px 0' }}>
               {labels.desc[lang] || labels.desc.uk}
             </h4>
-            <p style={{ fontSize: '14px', lineHeight: '1.6', opacity: 0.9, margin: 0 }}>{summary}</p>
+            <p style={{ fontSize: '14px', lineHeight: '1.6', opacity: 0.9, margin: 0, color: '#fff' }}>{summary}</p>
           </div>
 
           <div>
@@ -147,7 +158,7 @@ export default function CharacterModal() {
             <h4 style={{ fontSize: '14px', textTransform: 'uppercase', letterSpacing: '1px', color: '#ff4081', margin: '0 0 6px 0' }}>
               {labels.teams[lang] || labels.teams.uk}
             </h4>
-            <p style={{ fontSize: '14px', opacity: 0.9, margin: 0 }}>{teamSynergy}</p>
+            <p style={{ fontSize: '14px', opacity: 0.9, margin: 0, color: '#fff' }}>{teamSynergy}</p>
           </div>
 
           {lore && (
@@ -155,7 +166,7 @@ export default function CharacterModal() {
               <h4 style={{ fontSize: '14px', textTransform: 'uppercase', letterSpacing: '1px', color: '#ff4081', margin: '0 0 6px 0' }}>
                 {labels.lore[lang] || labels.lore.uk}
               </h4>
-              <p style={{ fontSize: '13px', fontStyle: 'italic', opacity: 0.8, lineHeight: '1.5', margin: 0 }}>{lore}</p>
+              <p style={{ fontSize: '13px', fontStyle: 'italic', opacity: 0.8, lineHeight: '1.5', margin: 0, color: '#fff' }}>{lore}</p>
             </div>
           )}
         </div>
