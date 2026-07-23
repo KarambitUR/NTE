@@ -761,17 +761,18 @@ body::before {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--border-glass);
     border-radius: 8px;
-    width: 120px;
-    height: 155px;
+    width: 138px;
+    min-height: 175px;
+    height: auto;
     padding: 0.6rem;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     transition: all var(--transition-speed) ease;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .char-card:hover {

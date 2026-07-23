@@ -100,7 +100,7 @@ export default function TierListPage() {
 
           return (
             <div key={tier} class="tier-row glass-panel" style={{ display: 'flex', borderRadius: '12px', overflow: 'hidden' }}>
-              <div class={`tier-badge-column tier-${tierClass}`} style={{ width: '80px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '800', fontSize: '24px', minHeight: '120px' }}>
+              <div class={`tier-badge-column tier-${tierClass}`} style={{ width: '80px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '800', fontSize: '24px', minHeight: '140px' }}>
                 {tier}
               </div>
               <div class="tier-cards-container" style={{ padding: '16px', display: 'flex', gap: '16px', flexWrap: 'wrap', flex: 1, alignItems: 'center' }}>
@@ -120,15 +120,34 @@ export default function TierListPage() {
                         key={char.id}
                         class="char-card glass-panel"
                         onClick={() => openCharacterModal(char.id)}
-                        style={{ width: '130px', cursor: 'pointer', textAlign: 'center', padding: '10px', borderRadius: '10px', transition: 'transform 0.2s', border: '1px solid rgba(255,255,255,0.15)' }}
+                        style={{
+                          width: '138px',
+                          minHeight: '175px',
+                          height: 'auto',
+                          cursor: 'pointer',
+                          textAlign: 'center',
+                          padding: '10px 6px',
+                          borderRadius: '10px',
+                          transition: 'transform 0.2s',
+                          border: '1px solid rgba(255,255,255,0.15)',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          alignItems: 'center',
+                        }}
                       >
-                        <div style={{ width: '100%', height: '110px', borderRadius: '8px', overflow: 'hidden', marginBottom: '8px' }}>
+                        <div style={{ width: '100%', height: '105px', borderRadius: '8px', overflow: 'hidden', marginBottom: '6px' }}>
                           <img src={formatImgUrl(char.avatar)} alt={name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         </div>
-                        <strong style={{ fontSize: '13px', display: 'block', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{name}</strong>
-                        <div style={{ display: 'flex', justifyContent: 'center', gap: '4px', marginTop: '6px', fontSize: '10px' }}>
-                          <span class={`badge badge-${char.attribute.toLowerCase()}`}>{attr}</span>
-                          <span class="badge badge-secondary">{role}</span>
+                        <strong style={{ fontSize: '13px', display: 'block', width: '100%', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', color: '#fff' }}>
+                          {name}
+                        </strong>
+                        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '3px', marginTop: '6px', width: '100%' }}>
+                          <span class={`badge badge-${char.attribute.toLowerCase()}`} style={{ fontSize: '9px', padding: '2px 5px', whiteSpace: 'nowrap' }}>
+                            {attr}
+                          </span>
+                          <span class="badge badge-secondary" style={{ fontSize: '9px', padding: '2px 5px', whiteSpace: 'nowrap' }}>
+                            {role}
+                          </span>
                         </div>
                       </div>
                     );

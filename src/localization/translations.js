@@ -1,7 +1,7 @@
 export const ROLE_TRANSLATIONS = {
-    uk: { "Main DPS": "Атакуючий", "Sub-DPS": "Допоміжний ДПС", "Support": "Підтримка" },
+    uk: { "Main DPS": "Атакуючий", "Sub-DPS": "Саб-ДПС", "Support": "Підтримка" },
     en: { "Main DPS": "Main DPS", "Sub-DPS": "Sub-DPS", "Support": "Support" },
-    fr: { "Main DPS": "DPS Principal", "Sub-DPS": "Sub-DPS", "Support": "Soutien" }
+    fr: { "Main DPS": "DPS Main", "Sub-DPS": "Sub-DPS", "Support": "Soutien" }
 };
 
 export const ATTR_TRANSLATIONS = {
