@@ -1,12 +1,11 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useApp } from '../providers';
 import { auth, googleProvider, signInWithPopup, signOut, onAuthStateChanged } from '../firebase';
 
 export default function AuthModal() {
-  const { lang, isAuthModalOpen, setIsAuthModalOpen } = useApp();
-  const [user, setUser] = useState(null);
+  const { lang, isAuthModalOpen, setIsAuthModalOpen, user, setUser } = useApp();
 
   useEffect(() => {
     // Read local user session if available
@@ -33,7 +32,7 @@ export default function AuthModal() {
     } catch (e) {
       console.warn('Firebase Auth listener error:', e);
     }
-  }, []);
+  }, [setUser]);
 
   if (!isAuthModalOpen) return null;
 
@@ -152,9 +151,7 @@ export default function AuthModal() {
           &times;
         </button>
 
-        <div style={{ fontSize: '36px', marginBottom: '12px' }}>🔑</div>
-
-        <h3 style={{ fontSize: '22px', fontWeight: '800', marginBottom: '16px', color: '#fff' }}>
+        <h3 style={{ fontSize: '22px', fontWeight: '800', marginBottom: '20px', color: '#fff' }}>
           {texts.title[lang] || texts.title.uk}
         </h3>
 

@@ -8,6 +8,7 @@ const AppContext = createContext();
 
 export function AppProviders({ children }) {
   const [lang, setLangState] = useState('uk');
+  const [user, setUser] = useState(null);
 
   // Normalize all character avatars to local asset images
   const normalizedFallbackChars = FALLBACK_CHARACTERS.map((c) => ({
@@ -32,6 +33,12 @@ export function AppProviders({ children }) {
     if (storedLang && ['uk', 'en', 'fr'].includes(storedLang)) {
       setLangState(storedLang);
     }
+
+    // Read stored user session
+    try {
+      const storedUser = localStorage.getItem('nte_user');
+      if (storedUser) setUser(JSON.parse(storedUser));
+    } catch (e) {}
 
     // Clear stale localStorage character cache if it contains old Wikia links
     try {
@@ -90,6 +97,8 @@ export function AppProviders({ children }) {
       value={{
         lang,
         setLang,
+        user,
+        setUser,
         characters,
         promoCodes,
         timelineEvents,

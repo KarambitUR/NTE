@@ -100,9 +100,10 @@ export default function GuideDetailPage() {
           return (
             <div key={idx} style={{ marginBottom: '28px' }}>
               <h2 style={{ fontSize: '20px', fontWeight: '700', marginBottom: '12px', color: '#ff4081' }}>{secTitle}</h2>
-              <div style={{ fontSize: '15px', lineHeight: '1.7', whiteSpace: 'pre-line', opacity: 0.9 }}>
-                {secContent}
-              </div>
+              <div
+                style={{ fontSize: '15px', lineHeight: '1.7', opacity: 0.9 }}
+                dangerouslySetInnerHTML={{ __html: secContent }}
+              />
             </div>
           );
         })}

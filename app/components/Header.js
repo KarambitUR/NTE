@@ -7,7 +7,7 @@ import { useApp } from '../providers';
 
 export default function Header() {
   const pathname = usePathname();
-  const { lang, setLang, setIsAuthModalOpen } = useApp();
+  const { lang, setLang, setIsAuthModalOpen, user } = useApp();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
@@ -82,13 +82,39 @@ export default function Header() {
               FR
             </button>
           </div>
+
           <div class="header-auth">
-            <button
-              class="btn btn-primary btn-sm"
-              onClick={() => setIsAuthModalOpen(true)}
-            >
-              <span>{lang === 'en' ? 'Login' : lang === 'fr' ? 'Connexion' : 'Увійти'}</span>
-            </button>
+            {user ? (
+              <button
+                class="btn btn-secondary btn-sm"
+                onClick={() => setIsAuthModalOpen(true)}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '4px 12px 4px 6px',
+                  borderRadius: '20px',
+                  border: '1px solid rgba(0, 230, 118, 0.5)',
+                  background: 'rgba(0, 230, 118, 0.1)',
+                }}
+              >
+                <img
+                  src={user.photoURL || '/src/assets/zero_avatar.png'}
+                  alt={user.displayName}
+                  style={{ width: '26px', height: '26px', borderRadius: '50%', objectFit: 'cover' }}
+                />
+                <span style={{ fontSize: '13px', fontWeight: '600', color: '#fff' }}>
+                  {user.displayName ? user.displayName.split(' ')[0] : 'Agent'}
+                </span>
+              </button>
+            ) : (
+              <button
+                class="btn btn-primary btn-sm"
+                onClick={() => setIsAuthModalOpen(true)}
+              >
+                <span>{lang === 'en' ? 'Login' : lang === 'fr' ? 'Connexion' : 'Увійти'}</span>
+              </button>
+            )}
           </div>
         </div>
       </div>
