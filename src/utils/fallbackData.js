@@ -118,7 +118,7 @@ export const FALLBACK_CHARACTERS = [
         rarity: 4,
         attribute: "Psyche",
         role: "Support",
-        tier: "S",
+        tier: "A",
         avatar: "src/assets/haniel_avatar.png",
         summary: "Потужний саппорт стихії Psyche. Баффає силу атаки загону та викликає помічника Hootie, який допомагає наносити шкоду та підтримувати союзників.",
         weapon: "Mind Royale (Рояль Розуму)",

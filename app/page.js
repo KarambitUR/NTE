@@ -48,7 +48,10 @@ export default function HomePage() {
   }, []);
 
   const activeCodes = promoCodes.filter((c) => c.active !== false).slice(0, 3);
-  const topTierChars = characters.filter((c) => c.tier === 'S+' || c.tier === 'S').slice(0, 6);
+  const tierRank = { 'S+': 1, 'S': 2, 'A': 3, 'B': 4 };
+  const topTierChars = [...characters]
+    .sort((a, b) => (tierRank[a.tier] || 99) - (tierRank[b.tier] || 99))
+    .slice(0, 6);
   const latestGuides = guides.slice(0, 3);
 
   const heroTexts = {
