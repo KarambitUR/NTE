@@ -23,8 +23,8 @@ export default function HomePage() {
   const [copiedCode, setCopiedCode] = useState(null);
 
   useEffect(() => {
-    // Banner target date: July 29, 2026 UTC+8
-    const targetDate = new Date('2026-07-28T21:59:00Z').getTime();
+    // Banner target date for Iroi (Patch 1.2 Phase 2): August 19, 2026
+    const targetDate = new Date('2026-08-19T04:00:00Z').getTime();
 
     const updateTimer = () => {
       const now = new Date().getTime();
