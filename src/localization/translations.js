@@ -688,33 +688,33 @@ export const CHARACTER_TRANSLATIONS = {
     iroi: {
         uk: {
             name: "Іроі",
-            summary: "Найкращий цілитель та бустер стихії Аніма. Здатна відновлювати велику кількість здоров'я всій команді та накладати баффи, які збільшують шкоду від реакцій Blossom.",
-            weapon: "Весняна мелодія (Сигнатурний Arc)",
-            weaponF2p: "Спадщина Ейбона",
-            cartridge: "Маленька велика пригода (4 частини)",
-            stats: ["Здоров'я %", "Бонус лікування", "Відновлення енергії", "Здоров'я (фікс.)"],
-            teamSynergy: "Наналлі (Аніма), Цзююань (Аніма), Мінт (Аніма)",
-            lore: "Життєрадісна травниця, яка подорожує районами Гетеро в пошуках рідкісних аномальних рослин для створення ліків."
+            summary: "Найкращий цілитель та бустер стихії Аніма. Відновлює масове здоров'я всій команді, підсилює шкоду Аніма-реакцій та є незамінним саппортом для Шінку.",
+            weapon: "The Wrong Gate (Хибна брама)",
+            weaponF2p: "Clear Skies (Чисте небо)",
+            cartridge: "Speedy Hedgehog (4 частини)",
+            stats: ["ATK%", "Шанс криту", "Аніма шкода", "Відновлення енергії"],
+            teamSynergy: "Shinku (Космос), Zero (Космос), Nanally (Аніма), Hathor (Лакшана)",
+            lore: "Життєрадісна травниця та вівчарка, яка мандрує районами Гетеро із милими аномальними овечками та допомагає зцілювати мисливців."
         },
         en: {
             name: "Iroi",
-            summary: "The best healer and buffer of the Anima attribute. Capable of restoring large amounts of health to the entire team and applying buffs that increase damage from Blossom reactions.",
-            weapon: "Spring Melody (Signature Arc)",
-            weaponF2p: "Eibon Legacy",
-            cartridge: "Tiny Big Adventure (4-piece)",
-            stats: ["HP%", "Healing Bonus", "Energy Charge Efficiency", "Flat HP"],
-            teamSynergy: "Nanally (Anima), Jiuyuan (Anima), Mint (Anima)",
-            lore: "A cheerful herbalist traveling Hethereau districts in search of rare anomalous plants to craft medicines."
+            summary: "The best Anima support and healer. Restores mass health to the entire team, amplifies Anima reaction DMG, and serves as an indispensable support for Shinku.",
+            weapon: "The Wrong Gate (Signature Arc)",
+            weaponF2p: "Clear Skies (A-Rank)",
+            cartridge: "Speedy Hedgehog (4-piece)",
+            stats: ["ATK%", "Crit Rate", "Anima DMG", "Energy Recharge Efficiency"],
+            teamSynergy: "Shinku (Cosmos), Zero (Cosmos), Nanally (Anima), Hathor (Lakshana)",
+            lore: "A cheerful herbalist and shepherd who travels Hethereau with cute anomalous sheep, helping heal fellow hunters."
         },
         fr: {
             name: "Iroi",
-            summary: "Le meilleur soigneur et booster de l'attribut Anima. Capable de restaurer de grandes quantités de PV à toute l'équipe et d'appliquer des buffs qui augmentent les dégâts des réactions Blossom.",
-            weapon: "Mélodie du printemps (Arc Signature)",
-            weaponF2p: "Héritage d'Eibon",
-            cartridge: "Petite grande aventure (4 pièces)",
-            stats: ["PV %", "Bonus de Soin", "Recharge d'Énergie", "PV (Plat)"],
-            teamSynergy: "Nanally (Anima), Jiuyuan (Anima), Mint (Anima)",
-            lore: "Une herboriste joyeuse voyageant dans les quartiers de Hethereau à la recherche de plantes anormales rares pour fabriquer des remèdes."
+            summary: "Le meilleur soutien et soigneur Anima. Restaure les PV de toute l'équipe, augmente les dégâts des réactions Anima et sert de soutien indispensable pour Shinku.",
+            weapon: "La fausse porte (Arc Signature)",
+            weaponF2p: "Ciel dégagé (A-Rang)",
+            cartridge: "Hérisson rapide (4 pièces)",
+            stats: ["ATK %", "Taux Critique", "Dégâts Anima", "Recharge d'Énergie"],
+            teamSynergy: "Shinku (Cosmos), Zero (Cosmos), Nanally (Anima), Hathor (Lakshana)",
+            lore: "Une herboriste et bergère joyeuse qui parcourt Hethereau avec de mignons moutons anormaux, aidant à soigner les chasseurs."
         }
     }
 };

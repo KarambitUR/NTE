@@ -61,14 +61,14 @@ export default function HomePage() {
       fr: 'RPG URBAIN SURNATUREL PAR HOTTA STUDIO',
     },
     title: {
-      uk: 'Шінку: 999 Ночей',
-      en: 'Shinku: 999 Nights',
-      fr: 'Shinku : 999 Nuits',
+      uk: 'Іроі: Вівчарська Мрія',
+      en: 'Iroi: Pastoral Dream',
+      fr: 'Iroi : Rêve Pastoral',
     },
     desc: {
-      uk: 'Ласкаво просимо до Eibon Terminal — вашого особистого гайду містом Гетеро для відстеження аномалій, побудови команд та свіжих оновлень.',
-      en: 'Welcome to Eibon Terminal — your personal guide for exploring Hethereau, tracking anomalies, building teams, and following the latest updates.',
-      fr: 'Bienvenue sur Eibon Terminal — votre guide personnel pour explorer Hethereau, suivre les anomalies et créer des équipes.',
+      uk: 'Новий S-ранг цілитель та підтримка стихії Аніма — Іроі (Iroi)! Збільшена ймовірність випадання її сигнатурної зброї "Хибна брама" та підтримки Аніма-реакцій.',
+      en: 'New S-rank Anima support & healer — Iroi! Rate-up active for her signature Arc "The Wrong Gate" and supporting cartridges.',
+      fr: 'Nouveau soutien & soigneur S-rang Anima — Iroi ! Taux d\'obtention accru pour son Arc signature "La fausse porte".',
     },
     timerLabel: {
       uk: 'До завершення:',
@@ -98,7 +98,7 @@ export default function HomePage() {
       {/* Hero Banner */}
       <div class="hero-banner-container">
         <div class="banner-showcase">
-          <img src={formatImgUrl('src/assets/shinku_banner.png')} alt="Shinku Banner" class="banner-image" />
+          <img src={formatImgUrl('src/assets/iroi_banner.png')} alt="Iroi Banner" class="banner-image" />
           <div class="banner-overlay">
             <div class="banner-text-content">
               <span class="banner-welcome">{heroTexts.tagline[lang] || heroTexts.tagline.uk}</span>
@@ -113,7 +113,7 @@ export default function HomePage() {
                   <span class="timer-value">{timeLeft}</span>
                 </div>
                 <div class="banner-actions">
-                  <button class="btn btn-accent btn-sm" onClick={() => openCharacterModal('shinku')}>
+                  <button class="btn btn-accent btn-sm" onClick={() => openCharacterModal('iroi')}>
                     {heroTexts.buildBtn[lang] || heroTexts.buildBtn.uk}
                   </button>
                   <Link href="/tierlist" class="btn btn-secondary btn-sm">

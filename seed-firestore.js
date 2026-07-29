@@ -76,7 +76,20 @@
         { id: "skia", name: "Skia (Скіа)", rarity: 4, attribute: "Lakshana", role: "Sub-DPS", tier: "B", avatar: "src/assets/skia_avatar.png", summary: "Потужний суб-ДПС стихії Lakshana, який спеціалізується на мітках Fang Thrust та унікальних навичках прихованості в тіні. Чудово доповнює команди на реакції Remora.", weapon: "Watch Your Heads! (Стережись голів!)", weaponF2p: "Good Boy's Grand Adventure (Велика пригода хорошого хлопчика)", cartridge: "Street Boxer (4-piece)", stats: ["Crit Rate", "Crit DMG", "Lakshana DMG", "ATK%"], teamSynergy: "Хаос (Лакшана), Хатор (Лакшана), Шінку (Космос)", lore: "Лейтенант підрозділу ETD-4 Бюро контролю аномалій. Мовчазний вовк-офіцер із великим шрамом на лівому оці, який вірно несе службу." },
         { id: "chaos", name: "Chaos (Хаос)", rarity: 5, attribute: "Lakshana", role: "Main DPS", tier: "S+", avatar: "src/assets/chaos_avatar.png", summary: "Потужний Main DPS стихії Lakshana. Використовує зброю, що трансформується у косу, великий меч та вогнепальну зброю. Здатний накопичувати стаки 'Crime' для потужних атак та телепортуватися.", weapon: "Pursuit Special (Сигнатурний Arc)", weaponF2p: "A Time Will Come (Час прийде)", cartridge: "Street Boxer (4-piece)", stats: ["Crit Rate", "Crit DMG", "Lakshana DMG", "ATK%"], teamSynergy: "Хатор (Лакшана), Скіа (Лакшана), Зеро (Космос), Сакірі (Закляття)", lore: "Лейтенант 6-го взводу ETD Бюро контролю аномалій. Загадковий і небезпечний боєць, який використовує темний туман і здатний переміщатися крізь тіні." },
         { id: "shinku", name: "Shinku (Шінку)", rarity: 5, attribute: "Cosmos", role: "Main DPS", tier: "S+", avatar: "src/assets/shinku_avatar.png", summary: "Потужний атакуючий персонаж стихії Космос. Спеціалізується на швидкій вибуховій шкоді завдяки унікальній механіці стану берсерка, який значно підвищує швидкість та силу атак.", weapon: "Tears of the Eclipse (Сльози Затемнення)", weaponF2p: "Wild Reverie (Дика мрія)", cartridge: "Lost Radiance (4-piece)", stats: ["Crit Rate", "Crit DMG", "Cosmos DMG", "ATK%"], teamSynergy: "Зеро (Космос), Хатор (Лакшана), Скіа (Лакшана), Цзююань (Аніма)", lore: "Загадкова дівчина з таємничої організації, яка здатна маніпулювати енергією порожнечі. Завжди спокійна зовні, але приховує руйнівну силу всередині." },
-        { id: "iroi", name: "Iroi (Іроі)", rarity: 5, attribute: "Anima", role: "Support", tier: "S", avatar: "src/assets/iroi_avatar.png", summary: "Найкращий цілитель та бустер стихії Аніма. Здатна відновлювати велику кількість здоров'я всій команді та накладати баффи, які збільшують шкоду від реакцій Blossom.", weapon: "Spring Melody (Весняна Мелодія)", weaponF2p: "Eibon Legacy (Спадщина Ейбона)", cartridge: "Tiny Big Adventure (4-piece)", stats: ["HP%", "Healing Bonus", "Energy Charge Efficiency", "Flat HP"], teamSynergy: "Наналлі (Аніма), Цзююань (Аніма), Мінт (Аніма)", lore: "Життєрадісна травниця, яка подорожує районами Гетеро в пошуках рідкісних аномальних рослин для створення ліків." }
+        { id: "iroi",
+        name: "Iroi (Іроі)",
+        rarity: 5,
+        attribute: "Anima",
+        role: "Support",
+        tier: "S",
+        avatar: "src/assets/iroi_avatar.png",
+        summary: "Найкращий цілитель та бустер стихії Аніма. Відновлює масове здоров'я всій команді, підсилює шкоду Аніма-реакцій та є незамінним саппортом для Шінку.",
+        weapon: "The Wrong Gate (Хибна брама)",
+        weaponF2p: "Clear Skies (Чисте небо)",
+        cartridge: "Speedy Hedgehog (4 частини)",
+        stats: ["ATK%", "Шанс криту", "Аніма шкода", "Відновлення енергії"],
+        teamSynergy: "Shinku (Космос), Zero (Космос), Nanally (Аніма), Hathor (Лакшана)",
+        lore: "Життєрадісна травниця та вівчарка, яка мандрує районами Гетеро із милими аномальними овечками та допомагає зцілювати мисливців." }
     ];
 
     // ===== PROMO CODES =====
