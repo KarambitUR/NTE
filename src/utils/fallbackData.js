@@ -385,10 +385,10 @@ export const FALLBACK_TIMELINE_EVENTS = [
         badgeClass: "badge-cosmos"
     },
     {
-        date: "29 Липня 2026 (Прогноз)",
+        date: "29 Липня 2026",
         title: "Друга фаза 1.2: Банер Іроі (Iroi)",
         desc: "Старт другої фази оновлення 1.2. Лімітований банер нового персонажа підтримки S-рангу Іроі (Iroi), яка володіє стихією Аніма та спеціалізується на лікуванні команди.",
-        status: "Upcoming",
+        status: "Active",
         badgeClass: "badge-anima"
     }
 ];
