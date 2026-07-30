@@ -140,5 +140,11 @@
         "rewards": "10,000 Fons, 10,000 Beetle Coins",
         "active": true,
         "addedAt": "2026-07-16T13:44:31.420Z"
+    },
+    {
+        "code": "COMEBACK",
+        "rewards": "1 Fabricated Dice",
+        "active": true,
+        "addedAt": "2026-07-30T08:22:53.592Z"
     }
 ]
