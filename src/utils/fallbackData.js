@@ -323,6 +323,10 @@ export const FALLBACK_CHARACTERS = [
 ];
 
 export const FALLBACK_PROMO_CODES = [
+    { code: "WELCOMETONTE", rewards: "Celebration Fireworks Avatar Frame, 100 Annulith", active: true, addedAt: "2026-08-01T12:00:00Z" },
+    { code: "NTEKokushi", rewards: "30,000 Fons, 30,000 Beetle Coins", active: true, addedAt: "2026-08-01T11:00:00Z" },
+    { code: "NTEMusou", rewards: "10,000 Fons, 10,000 Beetle Coins", active: true, addedAt: "2026-08-01T10:00:00Z" },
+    { code: "COMEBACK", rewards: "1 Fabricated Blue Dice", active: true, addedAt: "2026-08-01T09:00:00Z" },
     { code: "DREAMWALK0603", rewards: "100 Annulith, 5 Rising Hunter Guides, 5 Light Dyes, 4,000 Beetle Coins", active: true, addedAt: "2026-05-25T12:00:00Z" },
     { code: "TOMATO100", rewards: "100 Annulith, 5 Senior Hunter Guides, 5 Colorless Dyes, 6,000 Beetle Coins", active: true, addedAt: "2026-05-25T11:00:00Z" },
     { code: "RACENOLIMIT", rewards: "100 Annulith, 2 Elite Hunter Guides, 2 Chaotic Dyes, 12,000 Beetle Coins", active: true, addedAt: "2026-05-25T10:00:00Z" },

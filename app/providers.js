@@ -40,8 +40,10 @@ export function AppProviders({ children }) {
       if (storedUser) setUser(JSON.parse(storedUser));
     } catch (e) {}
 
-    // Clear stale localStorage character cache if it contains old Wikia links
+    // Purge stale promo codes cache to ensure new codes load automatically
     try {
+      localStorage.removeItem('nte_promoCodes');
+
       const cChars = localStorage.getItem('nte_characters');
       if (cChars) {
         if (cChars.includes('wikia.nocookie.net')) {
@@ -56,11 +58,9 @@ export function AppProviders({ children }) {
           );
         }
       }
-      const cCodes = localStorage.getItem('nte_promoCodes');
+
       const cTime = localStorage.getItem('nte_timelineEvents');
       const cGuides = localStorage.getItem('nte_guides');
-
-      if (cCodes) setPromoCodes(JSON.parse(cCodes));
       if (cTime) {
         const parsed = JSON.parse(cTime);
         setTimelineEvents(parsed.filter((e) => e.order !== undefined && e.badgeClass && e.status && e.desc));
