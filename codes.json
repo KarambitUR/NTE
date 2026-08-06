@@ -146,5 +146,17 @@
         "rewards": "1 Fabricated Dice",
         "active": true,
         "addedAt": "2026-07-30T08:22:53.592Z"
+    },
+    {
+        "code": "FEATURED",
+        "rewards": "WISHLIST STACKMON ON STEAM\">",
+        "active": true,
+        "addedAt": "2026-08-06T14:02:03.728Z"
+    },
+    {
+        "code": "AD_MOBILE_ID",
+        "rewards": "AD_DESKTOP_ID;",
+        "active": true,
+        "addedAt": "2026-08-06T14:02:03.729Z"
     }
 ]
