@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import CharacterModal from './components/CharacterModal';
 import AuthModal from './components/AuthModal';
+import MaintenanceScreen from './components/MaintenanceModal';
 
 export const metadata = {
   title: 'Eibon Terminal | Neverness to Everness (NTE) Гайди та Тір-ліст',
@@ -31,6 +32,8 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
+        <MaintenanceScreen />
+
         <div class="bg-decorations-wrapper">
           <div class="glow-bg-1"></div>
           <div class="glow-bg-2"></div>
