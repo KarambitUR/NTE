@@ -82,7 +82,7 @@ export default function MaintenanceScreen() {
             marginBottom: '16px',
           }}
         >
-          SYSTEM PAUSED / ТЕХНІЧНА ПАУЗА
+          SYSTEM PAUSED / UNDER MAINTENANCE
         </span>
 
         <h1 style={{ fontSize: '28px', fontWeight: '800', margin: '0 0 12px 0', lineHeight: 1.2 }}>
@@ -90,7 +90,7 @@ export default function MaintenanceScreen() {
         </h1>
 
         <p style={{ fontSize: '15px', lineHeight: '1.6', color: 'rgba(255,255,255,0.8)', margin: '0 0 24px 0' }}>
-          Роботу сайту тимчасово призупинено для проведення технічного обслуговування та оновлення систем. Ми відновлюємо роботу і повернемося зовсім скоро!
+          The website is temporarily paused for scheduled system maintenance and infrastructure upgrades. We are working to enhance your experience and will be back online shortly!
         </p>
 
         <div
@@ -103,7 +103,7 @@ export default function MaintenanceScreen() {
             color: 'rgba(255,255,255,0.6)',
           }}
         >
-          ⏱️ Очікуваний час повернення: незабаром. Дякуємо за терпіння!
+          ⏱️ Estimated return time: Coming Soon. Thank you for your patience!
         </div>
       </div>
     </div>
