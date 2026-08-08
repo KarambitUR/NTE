@@ -158,5 +158,29 @@
         "rewards": "AD_DESKTOP_ID;",
         "active": true,
         "addedAt": "2026-08-06T14:02:03.729Z"
+    },
+    {
+        "code": "FOGDENGAME",
+        "rewards": "100 Anulith, 5 Light Dyes, 5 Rising Hunter Guides, 4,000 Beetle Coins",
+        "active": true,
+        "addedAt": "2026-08-08T18:34:31.237Z"
+    },
+    {
+        "code": "EYEOFDELUSION",
+        "rewards": "100 Annulith, 5 Light Dyes, 5 Rising Hunter Guides, 6,000 Beetle Coins",
+        "active": true,
+        "addedAt": "2026-08-08T18:34:31.237Z"
+    },
+    {
+        "code": "SUMMERTIME",
+        "rewards": "100 Annulith, 2 Light Dyes, 2 Rising Hunter Guides, 12,000 Beetle Coins",
+        "active": true,
+        "addedAt": "2026-08-08T18:34:31.237Z"
+    },
+    {
+        "code": "ZANKOU0819",
+        "rewards": "30 Annulith, 50,000 Fons, 30,000 Beetle Coins",
+        "active": true,
+        "addedAt": "2026-08-08T18:34:31.237Z"
     }
 ]
