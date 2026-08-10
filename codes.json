@@ -102,19 +102,19 @@
     {
         "code": "SHINKU0708",
         "rewards": "100 Annulith and other rewards",
-        "active": true,
+        "active": false,
         "addedAt": "2026-06-27T13:42:59.670Z"
     },
     {
         "code": "IROI0729",
         "rewards": "100 Annulith and other rewards",
-        "active": true,
+        "active": false,
         "addedAt": "2026-06-27T13:42:59.670Z"
     },
     {
         "code": "999NIGHTS",
         "rewards": "100 Annulith and other rewards",
-        "active": true,
+        "active": false,
         "addedAt": "2026-06-27T13:42:59.670Z"
     },
     {
