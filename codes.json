@@ -182,5 +182,11 @@
         "rewards": "30 Annulith, 50,000 Fons, 30,000 Beetle Coins",
         "active": true,
         "addedAt": "2026-08-08T18:34:31.237Z"
+    },
+    {
+        "code": "VETERANS",
+        "rewards": "NAPOLEONIC WARS ON STEAM\">",
+        "active": true,
+        "addedAt": "2026-08-18T12:39:50.413Z"
     }
 ]
