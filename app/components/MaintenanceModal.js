@@ -3,7 +3,7 @@
 import React from 'react';
 
 // SET THIS TO true TO TEMPORARILY PAUSE THE SITE WITH A STYLISH MAINTENANCE SCREEN
-export const IS_MAINTENANCE = true;
+export const IS_MAINTENANCE = false;
 
 export default function MaintenanceScreen() {
   if (!IS_MAINTENANCE) return null;
