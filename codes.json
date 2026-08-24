@@ -186,7 +186,7 @@
     {
         "code": "VETERANS",
         "rewards": "NAPOLEONIC WARS ON STEAM\">",
-        "active": true,
+        "active": false,
         "addedAt": "2026-08-18T12:39:50.413Z"
     }
 ]
