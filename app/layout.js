@@ -12,6 +12,9 @@ export const metadata = {
   icons: {
     icon: '/favicon.svg',
   },
+  verification: {
+    google: 'google0bdeb4d27094a8c4',
+  },
 };
 
 export default function RootLayout({ children }) {
