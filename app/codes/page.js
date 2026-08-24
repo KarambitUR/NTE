@@ -67,7 +67,7 @@ export default function PromoCodesPage() {
           <div class="panel-header-row">
             <h3>{pageTexts.activeHeader[lang] || pageTexts.activeHeader.uk}</h3>
             <span class="update-indicator pulse-green">
-              ● {activeCodes.length} {lang === 'en' ? 'Active' : 'Активних'}
+              ● {activeCodes.length} {lang === 'en' ? 'Active' : lang === 'fr' ? 'Actifs' : 'Активних'}
             </span>
           </div>
 
@@ -85,7 +85,7 @@ export default function PromoCodesPage() {
                     onClick={() => handleCopy(item.code)}
                   >
                     {isCopied ? (
-                      <span>✓ {lang === 'en' ? 'Copied' : 'Скопійовано'}</span>
+                      <span>✓ {pageTexts.copiedBtn[lang] || pageTexts.copiedBtn.uk}</span>
                     ) : (
                       <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -125,16 +125,20 @@ export default function PromoCodesPage() {
           <h3>{pageTexts.howToRedeemTitle[lang] || pageTexts.howToRedeemTitle.uk}</h3>
           <ol class="guide-steps">
             <li>
-              <strong>{lang === 'en' ? 'Step 1:' : 'Крок 1:'}</strong> {lang === 'en' ? 'Open the game menu in Neverness to Everness.' : 'Відкрийте головне меню гри у Neverness to Everness.'}
+              <strong>{lang === 'en' ? 'Step 1:' : lang === 'fr' ? 'Étape 1 :' : 'Крок 1:'}</strong>{' '}
+              {lang === 'en' ? 'Open the game menu in Neverness to Everness.' : lang === 'fr' ? 'Ouvrez le menu principal dans Neverness to Everness.' : 'Відкрийте головне меню гри у Neverness to Everness.'}
             </li>
             <li>
-              <strong>{lang === 'en' ? 'Step 2:' : 'Крок 2:'}</strong> {lang === 'en' ? 'Go to Settings (⚙️) ➔ Account / System.' : 'Перейдіть у Налаштування (⚙️) ➔ Акаунт / Система.'}
+              <strong>{lang === 'en' ? 'Step 2:' : lang === 'fr' ? 'Étape 2 :' : 'Крок 2:'}</strong>{' '}
+              {lang === 'en' ? 'Go to Settings (⚙️) ➔ Account / System.' : lang === 'fr' ? 'Allez dans Paramètres (⚙️) ➔ Compte / Système.' : 'Перейдіть у Налаштування (⚙️) ➔ Акаунт / Система.'}
             </li>
             <li>
-              <strong>{lang === 'en' ? 'Step 3:' : 'Крок 3:'}</strong> {lang === 'en' ? 'Click "Redeem Code" and paste the code.' : 'Натисніть "Активувати код" (Redeem Code) та вставте код.'}
+              <strong>{lang === 'en' ? 'Step 3:' : lang === 'fr' ? 'Étape 3 :' : 'Крок 3:'}</strong>{' '}
+              {lang === 'en' ? 'Click "Redeem Code" and paste the code.' : lang === 'fr' ? 'Cliquez sur "Utiliser un code" et collez le code.' : 'Натисніть "Активувати код" (Redeem Code) та вставте код.'}
             </li>
             <li>
-              <strong>{lang === 'en' ? 'Step 4:' : 'Крок 4:'}</strong> {lang === 'en' ? 'Check your in-game mailbox to collect rewards!' : 'Заберіть свої нагороди у внутрішньоігровій пошті!'}
+              <strong>{lang === 'en' ? 'Step 4:' : lang === 'fr' ? 'Étape 4 :' : 'Крок 4:'}</strong>{' '}
+              {lang === 'en' ? 'Check your in-game mailbox to collect rewards!' : lang === 'fr' ? 'Vérifiez votre boîte aux lettres en jeu pour récupérer vos récompenses !' : 'Заберіть свої нагороди у внутрішньоігровій пошті!'}
             </li>
           </ol>
         </div>

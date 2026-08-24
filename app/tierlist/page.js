@@ -25,9 +25,9 @@ export default function TierListPage() {
       fr: 'Tier List Interactive des Personnages',
     },
     subtitle: {
-      uk: 'Рейтинг героїв для патчу 1.2 "999 Ночей". Натисніть на картку персонажа, щоб переглянути детальний білд.',
-      en: 'Character rankings for patch 1.2 "999 Nights". Click any character card to view their detailed build.',
-      fr: 'Classement des personnages pour le patch 1.2 "999 Nuits". Cliquez sur une carte pour voir son build.',
+      uk: 'Рейтинг героїв для актуального патчу 1.3 "Rising from the Moonlit Fog". Натисніть на картку персонажа, щоб переглянути детальний білд.',
+      en: 'Character rankings for the current patch 1.3 "Rising from the Moonlit Fog". Click any character card to view their detailed build.',
+      fr: 'Classement des personnages pour le patch 1.3 "Rising from the Moonlit Fog". Cliquez sur une carte pour voir son build.',
     },
   };
 

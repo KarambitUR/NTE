@@ -154,7 +154,7 @@ export default function HomePage() {
                     </div>
                     <button class="btn-copy" onClick={() => handleCopy(c.code)}>
                       {isCopied ? (
-                        <span>✓ {lang === 'en' ? 'Copied' : 'Скопійовано'}</span>
+                        <span>✓ {lang === 'en' ? 'Copied' : lang === 'fr' ? 'Copié !' : 'Скопійовано'}</span>
                       ) : (
                         <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

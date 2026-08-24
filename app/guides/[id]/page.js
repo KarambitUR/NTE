@@ -38,10 +38,12 @@ export default function GuideDetailPage() {
   if (!guide) {
     return (
       <div class="tab-pane active" style={{ textAlign: 'center', padding: '60px 20px' }}>
-        <h2>Guide not found</h2>
-        <p style={{ margin: '20px 0' }}>The guide you requested does not exist or has been removed.</p>
+        <h2>{lang === 'en' ? 'Guide not found' : lang === 'fr' ? 'Guide introuvable' : 'Гайд не знайдено'}</h2>
+        <p style={{ margin: '20px 0' }}>
+          {lang === 'en' ? 'The guide you requested does not exist or has been removed.' : lang === 'fr' ? 'Le guide demandé n\'existe pas ou a été supprimé.' : 'Гайд, який ви шукаєте, не знайдено або було переміщено.'}
+        </p>
         <Link href="/guides" class="btn btn-primary">
-          Back to Guides
+          {lang === 'en' ? 'Back to Guides' : lang === 'fr' ? 'Retour aux guides' : 'Назад до гайдів'}
         </Link>
       </div>
     );
@@ -112,7 +114,7 @@ export default function GuideDetailPage() {
         {recChars.length > 0 && (
           <div style={{ marginTop: '36px', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '24px' }}>
             <h3 style={{ fontSize: '18px', fontWeight: '700', marginBottom: '16px' }}>
-              {lang === 'en' ? 'Recommended Characters' : 'Рекомендовані персонажі'}
+              {lang === 'en' ? 'Recommended Characters' : lang === 'fr' ? 'Personnages recommandés' : 'Рекомендовані персонажі'}
             </h3>
             <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
               {recChars.map((charId) => {
