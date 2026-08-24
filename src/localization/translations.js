@@ -716,6 +716,70 @@ export const CHARACTER_TRANSLATIONS = {
             teamSynergy: "Shinku (Cosmos), Zero (Cosmos), Nanally (Anima), Hathor (Lakshana)",
             lore: "Une herboriste et bergère joyeuse qui parcourt Hethereau avec de mignons moutons anormaux, aidant à soigner les chasseurs."
         }
+    },
+    zankou: {
+        uk: {
+            name: "Занкоу",
+            summary: "Новий S-ранг атакуючий персонаж стихії Заклинання. Володіє унікальною механікою чергування режимів Реальності та Ілюзії, накладає ефекти Heartwrench DoT та завдає колосальної шкоди босам.",
+            weapon: "Ravenous Blade (Ненаситний Клинок)",
+            weaponF2p: "Crimson Edge (Багряне лезо)",
+            cartridge: "Scarlet Omen (4 частини)",
+            stats: ["Шанс криту", "Крит. шкода", "Шкода Заклинання", "ATK%"],
+            teamSynergy: "Сакірі (Заклинання), Зеро (Космос), Фадія (Психіка), Лінко (Аніма)",
+            lore: "Дочка Інанни та сестра Даффоділ. Член фракції 'The Scarlet Letter', яка майстерно керує клинками та кривавими ілюзіями."
+        },
+        en: {
+            name: "Zankou",
+            summary: "New S-rank Incantation Main DPS. Master of switching between Reality and Illusion combat stances, inflicting Heartwrench DoT and dealing explosive damage to bosses.",
+            weapon: "Ravenous Blade (Signature Arc)",
+            weaponF2p: "Crimson Edge (A-Rank)",
+            cartridge: "Scarlet Omen (4-piece)",
+            stats: ["CRIT Rate", "CRIT DMG", "Incantation DMG", "ATK%"],
+            teamSynergy: "Sakiri (Incantation), Zero (Cosmos), Fadia (Psyche), Lingko (Anima)",
+            lore: "Daughter of Inanna and sister of Daffodil. A core member of 'The Scarlet Letter' who wields cursed crimson blades and illusions."
+        },
+        fr: {
+            name: "Zankou",
+            summary: "Nouveau DPS Principal Incantation S-Rang. Maîtrise l'alternance entre Réalité et Illusion, infligeant des DoT Heartwrench et des dégâts dévastateurs aux boss.",
+            weapon: "Lame Vorace (Arc Signature)",
+            weaponF2p: "Lame Pourpre (A-Rang)",
+            cartridge: "Présage Écarlate (4 pièces)",
+            stats: ["Taux CRIT", "Dégâts CRIT", "Dégâts Incantation", "ATK%"],
+            teamSynergy: "Sakiri (Incantation), Zero (Cosmos), Fadia (Psyche), Lingko (Anima)",
+            lore: "Fille d'Inanna et sœur de Daffodil. Membre de 'The Scarlet Letter' maniant des lames écarlates et des illusions."
+        }
+    },
+    lingko: {
+        uk: {
+            name: "Лінко",
+            summary: "Новий S-ранг персонаж підтримки стихії Аніма. Створює резонансні поля, викликає синхронні комбо-атаки (Synced Strikes), забезпечує щити та швидке відновлення енергії для всієї команди.",
+            weapon: "Resonance Bell (Дзвін Резонансу)",
+            weaponF2p: "Clear Skies (Чисте небо)",
+            cartridge: "Speedy Hedgehog (4 частини)",
+            stats: ["Відновлення енергії", "ATK%", "Аніма шкода", "Шанс криту"],
+            teamSynergy: "Занкоу (Заклинання), Наналлі (Аніма), Іроі (Аніма), Байканг (Заклинання)",
+            lore: "Енергійний оперативник Бюро контролю аномалій (ETD-6), яка завжди працює у зв'язці зі своїм надійним аномальним компаньйоном Сяочженем."
+        },
+        en: {
+            name: "Lingko",
+            summary: "New S-rank Anima Support. Creates Resonance Fields, triggers Synced Strikes with teammates, provides durable shields and team-wide energy recharge.",
+            weapon: "Resonance Bell (Signature Arc)",
+            weaponF2p: "Clear Skies (A-Rank)",
+            cartridge: "Speedy Hedgehog (4-piece)",
+            stats: ["Energy Recharge", "ATK%", "Anima DMG", "CRIT Rate"],
+            teamSynergy: "Zankou (Incantation), Nanally (Anima), Iroi (Anima), Baicang (Incantation)",
+            lore: "An energetic ETD-6 operative from the Bureau of Anomaly Control, fighting alongside her anomaly companion Xiaozhen."
+        },
+        fr: {
+            name: "Lingko",
+            summary: "Nouveau Soutien Anima S-Rang. Génère des Champs de Résonance, déclenche des Frappes Synchronisées et régénère l'énergie de l'équipe.",
+            weapon: "Cloche de Résonance (Arc Signature)",
+            weaponF2p: "Ciel Dégagé (A-Rang)",
+            cartridge: "Hérisson Rapide (4 pièces)",
+            stats: ["Recharge d'Énergie", "ATK%", "Dégâts Anima", "Taux CRIT"],
+            teamSynergy: "Zankou (Incantation), Nanally (Anima), Iroi (Anima), Baicang (Incantation)",
+            lore: "Opératrice énergique de l'ETD-6 du Bureau de Contrôle des Anomalies, combattant aux côtés de son compagnon Xiaozhen."
+        }
     }
 };
 

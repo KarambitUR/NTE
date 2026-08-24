@@ -23,8 +23,8 @@ export default function HomePage() {
   const [copiedCode, setCopiedCode] = useState(null);
 
   useEffect(() => {
-    // Banner target date for Iroi (Patch 1.2 Phase 2): August 19, 2026
-    const targetDate = new Date('2026-08-19T04:00:00Z').getTime();
+    // Banner target date for Zankou (Patch 1.3 Phase 1): September 9, 2026
+    const targetDate = new Date('2026-09-09T21:59:00Z').getTime();
 
     const updateTimer = () => {
       const now = new Date().getTime();
@@ -61,14 +61,14 @@ export default function HomePage() {
       fr: 'RPG URBAIN SURNATUREL PAR HOTTA STUDIO',
     },
     title: {
-      uk: 'Іроі: Вівчарська Мрія',
-      en: 'Iroi: Pastoral Dream',
-      fr: 'Iroi : Rêve Pastoral',
+      uk: 'Занкоу: Схід з Туману',
+      en: 'Zankou: Moonlit Fog',
+      fr: 'Zankou : Brume Lunaire',
     },
     desc: {
-      uk: 'Новий S-ранг цілитель та підтримка стихії Аніма — Іроі (Iroi)! Збільшена ймовірність випадання її сигнатурної зброї "Хибна брама" та підтримки Аніма-реакцій.',
-      en: 'New S-rank Anima support & healer — Iroi! Rate-up active for her signature Arc "The Wrong Gate" and supporting cartridges.',
-      fr: 'Nouveau soutien & soigneur S-rang Anima — Iroi ! Taux d\'obtention accru pour son Arc signature "La fausse porte".',
+      uk: 'Оновлення 1.3 вже доступне! Новий S+ атакуючий персонаж стихії Заклинання — Занкоу (Zankou)! Збільшена ймовірність випадання її сигнатурної зброї "Ненаситний Клинок" (Ravenous Blade).',
+      en: 'Version 1.3 is now live! New S+ Incantation Main DPS — Zankou! Rate-up active for her signature Arc "Ravenous Blade" and exclusive cartridges.',
+      fr: 'La version 1.3 est disponible ! Nouveau DPS Principal Incantation S+ — Zankou ! Taux d\'obtention accru pour son Arc signature "Lame Vorace".',
     },
     timerLabel: {
       uk: 'До завершення:',
@@ -98,7 +98,7 @@ export default function HomePage() {
       {/* Hero Banner */}
       <div class="hero-banner-container">
         <div class="banner-showcase">
-          <img src={formatImgUrl('src/assets/iroi_banner.png')} alt="Iroi Banner" class="banner-image" />
+          <img src={formatImgUrl('src/assets/zankou_banner.png')} alt="Zankou Banner" class="banner-image" />
           <div class="banner-overlay">
             <div class="banner-text-content">
               <span class="banner-welcome">{heroTexts.tagline[lang] || heroTexts.tagline.uk}</span>
@@ -113,7 +113,7 @@ export default function HomePage() {
                   <span class="timer-value">{timeLeft}</span>
                 </div>
                 <div class="banner-actions">
-                  <button class="btn btn-accent btn-sm" onClick={() => openCharacterModal('iroi')}>
+                  <button class="btn btn-accent btn-sm" onClick={() => openCharacterModal('zankou')}>
                     {heroTexts.buildBtn[lang] || heroTexts.buildBtn.uk}
                   </button>
                   <Link href="/tierlist" class="btn btn-secondary btn-sm">
@@ -161,7 +161,7 @@ export default function HomePage() {
                             <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                             <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                           </svg>
-                          {lang === 'en' ? 'Copy' : 'Копіювати'}
+                          {lang === 'en' ? 'Copy' : lang === 'fr' ? 'Copier' : 'Копіювати'}
                         </span>
                       )}
                     </button>
@@ -177,7 +177,7 @@ export default function HomePage() {
           <div class="widget-header">
             <div class="widget-title-group">
               <span class="widget-icon">📊</span>
-              <h3>{lang === 'en' ? 'Meta Tier List (v1.2)' : lang === 'fr' ? 'Tier List Méta (v1.2)' : 'Топ Персонажі Патчу 1.2'}</h3>
+              <h3>{lang === 'en' ? 'Meta Tier List (v1.3)' : lang === 'fr' ? 'Tier List Méta (v1.3)' : 'Топ Персонажі Патчу 1.3'}</h3>
             </div>
             <Link href="/tierlist" class="widget-badge badge-purple">
               S+ / S TIER

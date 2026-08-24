@@ -1,5 +1,57 @@
-// 2. HARDCODED FALLBACK GUIDES (used when Firestore and cache are unavailable)
 export const FALLBACK_GUIDES = [
+    {
+        "id": "guide-zankou-build",
+        "title": "Занко (Zankou) — Повний Білд, Лезо Ілюзій та Механіка DoT",
+        "titleEn": "Zankou Master Build: Reality-Illusion Swap & DoT Meta",
+        "description": "Повний детальний гайд на нового S-ранг атакуючого персонажа Занко (Zankou) версії 1.3. Сигнатурна зброя, картриджі, механіка невидимості та найкращі загони.",
+        "descriptionEn": "Complete detailed build guide for new S-rank Incantation Main DPS Zankou in Patch 1.3. Signature Arc, Cartridges, Reality/Illusion mechanics, and best teams.",
+        "category": "character",
+        "isFeatured": true,
+        "difficulty": "Hard",
+        "difficultyEn": "Hard",
+        "updateDate": "2026-08-19",
+        "tags": [
+            "Zankou",
+            "Build",
+            "Patch 1.3",
+            "Incantation"
+        ],
+        "tagsEn": [
+            "Zankou",
+            "Build",
+            "Patch 1.3",
+            "Incantation"
+        ],
+        "avatar": "src/assets/zankou_avatar.png",
+        "content": {
+            "sections": [
+                {
+                    "title": "1. Огляд персонажа та роль у загоні",
+                    "titleEn": "1. Character Overview & Team Role",
+                    "text": "Занко (Zankou) — новий S-ранг атакуючий д'явол (Main DPS) стихії Incantation з версії 1.3 'Rising from the Moonlit Fog'. Вона маніпулює двома станами: Реальністю (для накопичення стаків 'Hunt') та Ілюзією (для масового поширення смертоносного періодичного урону DoT 'Heartwrench'). Також Занко має унікальну невидимість у відкритому світі Гетеро.",
+                    "textEn": "Zankou is a new S-rank Incantation Main DPS in Patch 1.3 'Rising from the Moonlit Fog'. She toggles between Reality (building 'Hunt' stacks) and Illusion (spreading massive 'Heartwrench' DoT DMG). She also possesses unique open-world stealth in Hethereau."
+                },
+                {
+                    "title": "2. Найкраща зброя (Arc Compatibility)",
+                    "titleEn": "2. Best Weapons (Arc Compatibility)",
+                    "text": "1. Ravenous Blade (Сигнатурне 5★ лезо) — дає колосальний буст Крит. Шкоди, Крит. Шансу та стаки урон-модифікаторів під час виходу з невидимості.\n2. Infernal Spike (4★ F2P альтернатива) — відмінно збільшує Incantation DMG та періодичний урон.",
+                    "textEn": "1. Ravenous Blade (5★ Signature Arc) — provides massive Crit DMG, Crit Rate, and stacking damage multipliers upon exiting stealth.\n2. Infernal Spike (4★ F2P Alternative) — boosts Incantation DMG and DoT scaling."
+                },
+                {
+                    "title": "3. Комплекти картриджів та характеристики",
+                    "titleEn": "3. Cartridge Sets & Stat Priority",
+                    "text": "Найкращий сет: Crimson: Twin Butterflies (4 частини).\nПріоритет статів: Крит. Шкода > Крит. Шанс > Incantation шкода% > Сила атаки (ATK%).",
+                    "textEn": "Best Set: Crimson: Twin Butterflies (4-piece).\nStat Priority: CRIT DMG > CRIT Rate > Incantation DMG% > ATK%."
+                }
+            ]
+        },
+        "recommendedTeams": [
+            "zankou",
+            "baicang",
+            "sakiri",
+            "iroi"
+        ]
+    },
     {
         "id": "guide-beginner-progression",
         "title": "Навігатор Новачка: Стартовий Гайд & Пріоритети",
@@ -1118,5 +1170,95 @@ export const FALLBACK_GUIDES = [
             "Utilisez Shinku comme DPS principal; son mode berserk est idéal contre les boss du continent de Warren.",
             "Ne manquez pas les camps de repos pour restaurer les PV de votre équipe avant les combats d'élites."
         ]
-    }
+    },
+{
+    "id": "guide-zankou-fogden",
+    "title": "Занкоу (Zankou) & Івент Fogden Game: Повний Гайд 1.3",
+    "titleEn": "Zankou Character Build & Fogden Game: 1.3 Guide",
+    "titleFr": "Guide de Zankou & Événement Fogden Game : Version 1.3",
+    "description": "Повний посібник з прокачки нової S+ атакуючої героїні Занкоу (стихія Заклинання). Механіки стійок Реальності/Ілюзії, артефакти, сигнатурний клинок Ravenous Blade та проходження сюжету в Duskmoor.",
+    "descriptionEn": "Complete build guide for the new S+ Incantation Main DPS Zankou. Reality/Illusion stance switching, best cartridges, signature Ravenous Blade Arc, and Fogden Game walkthrough.",
+    "descriptionFr": "Guide de build complet pour le nouveau DPS S+ Incantation Zankou. Alternance Réalité/Illusion, meilleures cartouches, arme signature Lame Vorace et exploration de Duskmoor.",
+    "category": "character",
+    "isFeatured": true,
+    "difficulty": "Hard",
+    "difficultyEn": "Hard",
+    "difficultyFr": "Difficile",
+    "updateDate": "2026-08-19",
+    "tags": [
+        "Zankou",
+        "1.3",
+        "Build",
+        "Incantation",
+        "DPS"
+    ],
+    "tagsEn": [
+        "Zankou",
+        "1.3",
+        "Build",
+        "Incantation",
+        "DPS"
+    ],
+    "tagsFr": [
+        "Zankou",
+        "1.3",
+        "Build",
+        "Incantation",
+        "DPS"
+    ],
+    "avatar": "src/assets/zankou_avatar.png",
+    "content": {
+        "sections": [
+            {
+                "title": "1. Механіка бойових стійок (Reality vs Illusion Stances)",
+                "titleEn": "1. Reality vs Illusion Stances",
+                "titleFr": "1. Postures de Réalité vs Illusion",
+                "text": "Занкоу володіє двома режимами бою: 'Реальність' (Reality) завдає швидких комбо-ударів та накладає стаки Heartwrench DoT, а активація 'Ілюзії' (Illusion) споживає ці стаки, створюючи вибуховий кривавий сплеск із подвоєним шансом критичного удару.",
+                "textEn": "Zankou features dual combat stances: 'Reality' delivers rapid sword slashes applying Heartwrench DoT stacks, while 'Illusion' consumes stacks for explosive crimson burst damage with amplified CRIT Rate.",
+                "textFr": "Zankou possède deux modes de combat : 'Réalité' inflige des attaques rapides appliquant des effets Heartwrench DoT, et 'Illusion' consomme ces cumuls pour un burst écarlate dévastateur."
+            },
+            {
+                "title": "2. Найкраще спорядження (BiS Weapon & Cartridges)",
+                "titleEn": "2. Best-in-Slot Equipment",
+                "titleFr": "2. Équipement Optimal",
+                "text": "Сигнатурна зброя: Ravenous Blade (Ненаситний Клинок) — дає високий базовий ATK, Crit Rate та +35% до шкоди стихії Заклинання під час виходу з туману. F2P Альтернатива: Crimson Edge (Багряне лезо). Найкращий набір картриджів: Scarlet Omen (4 частини).",
+                "textEn": "Signature Arc: Ravenous Blade — grants massive Base ATK, Crit Rate, and +35% Incantation DMG upon fog stance exit. F2P Option: Crimson Edge. Best Cartridge Set: Scarlet Omen (4-piece).",
+                "textFr": "Arme Signature : Lame Vorace — confère une haute ATK de base, Taux CRIT et +35% de dégâts d'Incantation. Option F2P : Lame Pourpre. Meilleur set de cartouches : Présage Écarlate (4 pièces)."
+            },
+            {
+                "title": "3. Нова зона Duskmoor та івент Fogden Game",
+                "titleEn": "3. Duskmoor Region & Fogden Game",
+                "titleFr": "3. Région de Duskmoor & Jeu de Fogden",
+                "text": "Досліджуйте новий туманний район Даскмур (Duskmoor), проходьте сюжетні випробування 'Fogden Game' та збирайте ексклюзивні нагороди (Annulith, матеріали вознесіння зброї та костюм Twilight Noir).",
+                "textEn": "Explore the new foggy Duskmoor district, conquer 'Fogden Game' story challenges, and earn exclusive rewards including Annulith, Arc breakthrough materials, and the Twilight Noir outfit.",
+                "textFr": "Explorez le nouveau quartier brumeux de Duskmoor, relevez les défis de 'Fogden Game' et gagnez des récompenses exclusives comme des Annuliths et la tenue Twilight Noir."
+            }
+        ]
+    },
+    "references": [
+        "https://neverness.gg/characters/zankou",
+        "https://reddit.com/r/NevernessToEverness"
+    ],
+    "recommendedTeams": [
+        "zankou",
+        "sakiri",
+        "zero",
+        "lingko"
+    ],
+    "progressionTips": [
+        "Накопичуйте максимум 5 стаків Heartwrench перед активацією ультимейту в режимі Ілюзії.",
+        "Поєднуйте Занкоу з Сакірі для максимального зрізу опору до стихії Заклинання.",
+        "Пріоритет прокачки навичок: Ультимейт > Навичка (E) > Базова атака."
+    ],
+    "progressionTipsEn": [
+        "Stack up to 5 Heartwrench debuffs before unleashing Ultimate in Illusion stance.",
+        "Pair Zankou with Sakiri for maximum Incantation elemental resistance shred.",
+        "Skill leveling priority: Ultimate > Skill (E) > Normal Attack."
+    ],
+    "progressionTipsFr": [
+        "Accumulez 5 charges de Heartwrench avant d'activer l'Ultime en posture d'Illusion.",
+        "Associez Zankou à Sakiri pour maximiser la réduction de résistance élémentaire d'Incantation.",
+        "Priorité des compétences : Ultime > Compétence (E) > Attaque normale."
+    ]
+}
 ];

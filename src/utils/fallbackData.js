@@ -319,24 +319,58 @@ export const FALLBACK_CHARACTERS = [
         stats: ["ATK%", "Шанс криту", "Аніма шкода", "Відновлення енергії"],
         teamSynergy: "Shinku (Космос), Zero (Космос), Nanally (Аніма), Hathor (Лакшана)",
         lore: "Життєрадісна травниця та вівчарка, яка мандрує районами Гетеро із милими аномальними овечками та допомагає зцілювати мисливців."
+    },
+    {
+        id: "zankou",
+        name: "Zankou (Занкоу)",
+        rarity: 5,
+        attribute: "Incantation",
+        role: "Main DPS",
+        tier: "S+",
+        avatar: "src/assets/zankou_avatar.png",
+        summary: "Новий S-ранг атакуючий персонаж стихії Заклинання. Володіє унікальною механікою чергування режимів Реальності та Ілюзії, накладає ефекти Heartwrench DoT та завдає колосальної шкоди босам.",
+        weapon: "Ravenous Blade (Ненаситний Клинок)",
+        weaponF2p: "Crimson Edge (Багряне лезо)",
+        cartridge: "Scarlet Omen (4 частини)",
+        stats: ["Шанс криту", "Крит. шкода", "Шкода Заклинання", "ATK%"],
+        teamSynergy: "Сакірі (Заклинання), Зеро (Космос), Фадія (Психіка), Лінко (Аніма)",
+        lore: "Дочка Інанни та сестра Даффоділ. Член фракції 'The Scarlet Letter', яка майстерно керує клинками та кривавими ілюзіями."
+    },
+    {
+        id: "lingko",
+        name: "Lingko (Лінко)",
+        rarity: 5,
+        attribute: "Anima",
+        role: "Support",
+        tier: "S",
+        avatar: "src/assets/lingko_avatar.png",
+        summary: "Новий S-ранг персонаж підтримки стихії Аніма. Створює резонансні поля, викликає синхронні комбо-атаки (Synced Strikes), забезпечує щити та швидке відновлення енергії для всієї команди.",
+        weapon: "Resonance Bell (Дзвін Резонансу)",
+        weaponF2p: "Clear Skies (Чисте небо)",
+        cartridge: "Speedy Hedgehog (4 частини)",
+        stats: ["Відновлення енергії", "ATK%", "Аніма шкода", "Шанс криту"],
+        teamSynergy: "Занкоу (Заклинання), Наналлі (Аніма), Іроі (Аніма), Байканг (Заклинання)",
+        lore: "Енергійний оперативник Бюро контролю аномалій (ETD-6), яка завжди працює у зв'язці зі своїм надійним аномальним компаньйоном Сяочженем."
     }
 ];
 
 export const FALLBACK_PROMO_CODES = [
+    { code: "ZANKOU0819", rewards: "30 Annulith, 50,000 Fons, 30,000 Beetle Coins", active: true, addedAt: "2026-08-19T12:00:00Z" },
+    { code: "COMEBACK", rewards: "1 Fabricated Blue Dice", active: true, addedAt: "2026-08-19T11:00:00Z" },
     { code: "WELCOMETONTE", rewards: "Celebration Fireworks Avatar Frame, 100 Annulith", active: true, addedAt: "2026-08-01T12:00:00Z" },
     { code: "NTEKokushi", rewards: "30,000 Fons, 30,000 Beetle Coins", active: true, addedAt: "2026-08-01T11:00:00Z" },
     { code: "NTEMusou", rewards: "10,000 Fons, 10,000 Beetle Coins", active: true, addedAt: "2026-08-01T10:00:00Z" },
-    { code: "COMEBACK", rewards: "1 Fabricated Blue Dice", active: true, addedAt: "2026-08-01T09:00:00Z" },
-    { code: "DREAMWALK0603", rewards: "100 Annulith, 5 Rising Hunter Guides, 5 Light Dyes, 4,000 Beetle Coins", active: true, addedAt: "2026-05-25T12:00:00Z" },
-    { code: "TOMATO100", rewards: "100 Annulith, 5 Senior Hunter Guides, 5 Colorless Dyes, 6,000 Beetle Coins", active: true, addedAt: "2026-05-25T11:00:00Z" },
-    { code: "RACENOLIMIT", rewards: "100 Annulith, 2 Elite Hunter Guides, 2 Chaotic Dyes, 12,000 Beetle Coins", active: true, addedAt: "2026-05-25T10:00:00Z" },
-    { code: "NTE429vtuber", rewards: "30,000 Beetle Coins, 30,000 Fons", active: true, addedAt: "2026-05-23T09:00:00Z" },
-    { code: "NTEWINFONS", rewards: "10,000 Fons", active: true, addedAt: "2026-05-23T08:00:00Z" },
-    { code: "NTEFUNGAME", rewards: "10,000 Fons", active: true, addedAt: "2026-05-23T07:00:00Z" },
+    { code: "DRAGONGIRL", rewards: "30 Annulith, 20,000 Fons, 1 Puka Chocoa Ellie Tour Special", active: true, addedAt: "2026-08-01T09:00:00Z" },
     { code: "NTENENE", rewards: "10,000 Clicky Fries, 10 DynamiK", active: true, addedAt: "2026-05-23T06:00:00Z" },
-    { code: "NTEFREE", rewards: "30,000 Fons", active: true, addedAt: "2026-05-23T05:00:00Z" },
-    { code: "NTEvtuber200", rewards: "10,000 Beetle Coins, 10,000 Fons", active: true, addedAt: "2026-05-23T04:00:00Z" },
     { code: "NTEGIFT", rewards: "50 Annulith, 5 Rising Hunter Guides, 5 Light Dye", active: true, addedAt: "2026-05-23T03:00:00Z" },
+    { code: "DREAMWALK0603", rewards: "100 Annulith, 5 Rising Hunter Guides, 5 Light Dyes, 4,000 Beetle Coins", active: false, addedAt: "2026-05-25T12:00:00Z" },
+    { code: "TOMATO100", rewards: "100 Annulith, 5 Senior Hunter Guides, 5 Colorless Dyes, 6,000 Beetle Coins", active: false, addedAt: "2026-05-25T11:00:00Z" },
+    { code: "RACENOLIMIT", rewards: "100 Annulith, 2 Elite Hunter Guides, 2 Chaotic Dyes, 12,000 Beetle Coins", active: false, addedAt: "2026-05-25T10:00:00Z" },
+    { code: "NTE429vtuber", rewards: "30,000 Beetle Coins, 30,000 Fons", active: false, addedAt: "2026-05-23T09:00:00Z" },
+    { code: "NTEWINFONS", rewards: "10,000 Fons", active: false, addedAt: "2026-05-23T08:00:00Z" },
+    { code: "NTEFUNGAME", rewards: "10,000 Fons", active: false, addedAt: "2026-05-23T07:00:00Z" },
+    { code: "NTEFREE", rewards: "30,000 Fons", active: false, addedAt: "2026-05-23T05:00:00Z" },
+    { code: "NTEvtuber200", rewards: "10,000 Beetle Coins, 10,000 Fons", active: false, addedAt: "2026-05-23T04:00:00Z" },
     { code: "504980102FKGOVNS", rewards: "30 Annulith, 1 Gubichi Flavor Chips, 20,000 Beetle Coins", active: false, addedAt: "2026-05-23T02:00:00Z" },
     { code: "NTE0429", rewards: "12k beetle coins, 100 annulith, five elite hunter guides, and two chaotic dye", active: false, addedAt: "2026-04-29T12:00:00Z" },
     { code: "NTENANALLYGO", rewards: "6k beetle coins, 100 annulith, five senior hunter guides, and five colorless dye", active: false, addedAt: "2026-04-29T11:00:00Z" },
@@ -354,45 +388,38 @@ export const FALLBACK_TIMELINE_EVENTS = [
         badgeClass: "badge-anima"
     },
     {
-        date: "23 Травня 2026",
-        title: "Стрім Розробників: Презентація Версії 1.1",
-        desc: "Спеціальна трансляція від Hotta Studio. Анонсовано нових персонажів Lacrimosa (Хаос ДПС), нові локації міста, ігрові режими та промокоди.",
-        status: "Released",
-        badgeClass: "badge-incant"
-    },
-    {
         date: "3-4 Червня 2026",
         title: "Оновлення 1.1: 'Lacrimosa of Chaos'",
-        desc: "Вихід першого великого патчу. Старт першої фази банера з Лакрімозою. Новий сюжетний епізод 'Театр Тіней'. Початок літнього івенту.",
+        desc: "Вихід першого великого патчу. Старт першої фази банера з Лакрімозою. Новий сюжетний епізод 'Театр Тіней'.",
         status: "Released",
         badgeClass: "badge-chaos"
     },
     {
-        date: "24 Червня 2026",
-        title: "Друга фаза 1.1: Банер Хаосу (Chaos)",
-        desc: "Старт другої фази версії 1.1. Лімітований банер нового персонажа S-рангу Хаосу (Chaos), який володіє стихією Лакшана.",
-        status: "Released",
-        badgeClass: "badge-lakshana"
-    },
-    {
-        date: "27 Червня 2026",
-        title: "Стрім Розробників: Презентація Версії 1.2 '999 Nights'",
-        desc: "Спеціальна трансляція від Hotta Studio. Детальна презентація оновлення 1.2, анонс нових героїв Шінку (Shinku) та Іроі (Iroi), демонстрація геймплею, нових ігрових зон та нові промокоди.",
-        status: "Released",
-        badgeClass: "badge-incant"
-    },
-    {
         date: "8 Липня 2026",
         title: "Оновлення 1.2 '999 Nights': Банер Шінку (Shinku)",
-        desc: "Офіційний запуск версії 1.2. Старт першої фази з банером Шінку (S-ранг, стихія Космос, атакуючий DPS з механікою берсерка). Новий сюжетний розділ, розширення карти та літні події.",
+        desc: "Офіційний запуск версії 1.2. Старт першої фази з банером Шінку (S-ранг, стихія Космос). Новий розділ сюжету та розширення карти.",
         status: "Released",
         badgeClass: "badge-cosmos"
     },
     {
         date: "29 Липня 2026",
         title: "Друга фаза 1.2: Банер Іроі (Iroi)",
-        desc: "Старт другої фази оновлення 1.2. Лімітований банер нового персонажа підтримки S-рангу Іроі (Iroi), яка володіє стихією Аніма та спеціалізується на лікуванні команди.",
+        desc: "Старт другої фази 1.2. Лімітований банер нового цілителя та саппорта S-рангу Іроі (Iroi) стихії Аніма.",
+        status: "Released",
+        badgeClass: "badge-anima"
+    },
+    {
+        date: "19 Серпня 2026",
+        title: "Оновлення 1.3 'Rising from the Moonlit Fog': Банер Занкоу (Zankou)",
+        desc: "Офіційний реліз версії 1.3! Новий сюжет 'Fogden Game', локація Duskmoor та лімітований банер нової S+ атакуючої героїні Занкоу (стихія Заклинання, чергування режимів Реальності/Ілюзії).",
         status: "Active",
+        badgeClass: "badge-incant"
+    },
+    {
+        date: "10 Вересня 2026",
+        title: "Друга фаза 1.3: Банер Лінко (Linko)",
+        desc: "Старт другої фази оновлення 1.3. Лімітований банер нового персонажа підтримки S-рангу Лінко (стихія Аніма, резонансні поля та Synced Strikes).",
+        status: "Upcoming",
         badgeClass: "badge-anima"
     }
 ];

@@ -83,14 +83,79 @@
         role: "Support",
         tier: "S",
         avatar: "src/assets/iroi_avatar.png",
-        summary: "Найкращий цілитель та бустер стихії Аніма. Відновлює масове здоров'я всій команді, підсилює шкоду Аніма-реакцій та є незамінним саппортом для Шінку.",
+        summary: "Найкращий цілитель та бустер стихії Аніма. Відновлює масове здоров\'я всій команді, підсилює шкоду Аніма-реакцій та є незамінним саппортом для Шінку.",
         weapon: "The Wrong Gate (Хибна брама)",
         weaponF2p: "Clear Skies (Чисте небо)",
         cartridge: "Speedy Hedgehog (4 частини)",
         stats: ["ATK%", "Шанс криту", "Аніма шкода", "Відновлення енергії"],
         teamSynergy: "Shinku (Космос), Zero (Космос), Nanally (Аніма), Hathor (Лакшана)",
-        lore: "Життєрадісна травниця та вівчарка, яка мандрує районами Гетеро із милими аномальними овечками та допомагає зцілювати мисливців." }
-    ];
+        lore: "Життєрадісна травниця та вівчарка, яка мандрує районами Гетеро із милими аномальними овечками та допомагає зцілювати мисливців."
+    },
+    {
+        id: "zankou",
+        name: "Zankou (Занкоу)",
+        rarity: 5,
+        attribute: "Incantation",
+        role: "Main DPS",
+        tier: "S+",
+        avatar: "src/assets/zankou_avatar.png",
+        summary: "Новий S-ранг атакуючий персонаж стихії Заклинання. Володіє унікальною механікою чергування режимів Реальності та Ілюзії, накладає ефекти Heartwrench DoT та завдає колосальної шкоди босам.",
+        weapon: "Ravenous Blade (Ненаситний Клинок)",
+        weaponF2p: "Crimson Edge (Багряне лезо)",
+        cartridge: "Scarlet Omen (4 частини)",
+        stats: ["Шанс криту", "Крит. шкода", "Шкода Заклинання", "ATK%"],
+        teamSynergy: "Сакірі (Заклинання), Зеро (Космос), Фадія (Психіка), Лінко (Аніма)",
+        lore: "Дочка Інанни та сестра Даффоділ. Член фракції 'The Scarlet Letter', яка майстерно керує клинками та кривавими ілюзіями."
+    },
+    {
+        id: "lingko",
+        name: "Lingko (Лінко)",
+        rarity: 5,
+        attribute: "Anima",
+        role: "Support",
+        tier: "S",
+        avatar: "src/assets/lingko_avatar.png",
+        summary: "Новий S-ранг персонаж підтримки стихії Аніма. Створює резонансні поля, викликає синхронні комбо-атаки (Synced Strikes), забезпечує щити та швидке відновлення енергії для всієї команди.",
+        weapon: "Resonance Bell (Дзвін Резонансу)",
+        weaponF2p: "Clear Skies (Чисте небо)",
+        cartridge: "Speedy Hedgehog (4 частини)",
+        stats: ["Відновлення енергії", "ATK%", "Аніма шкода", "Шанс криту"],
+        teamSynergy: "Занкоу (Заклинання), Наналлі (Аніма), Іроі (Аніма), Байканг (Заклинання)",
+        lore: "Енергійний оперативник Бюро контролю аномалій (ETD-6), яка завжди працює у зв'язці зі своїм надійним аномальним компаньйоном Сяочженем."
+    },
+    {
+        id: "zankou",
+        name: "Zankou (Занко)",
+        rarity: 5,
+        attribute: "Incantation",
+        role: "Main DPS",
+        tier: "S+",
+        avatar: "src/assets/zankou_avatar.png",
+        summary: "Найсильніший атакуючий д'явол стихії Incantation. Перемикається між станами Реальності та Ілюзії, накладає смертоносну шкоду з часом (DoT) та невидимість у відкритому світі.",
+        weapon: "Ravenous Blade (Кровожерливе лезо)",
+        weaponF2p: "Infernal Spike (Пекельний шип)",
+        cartridge: "Crimson: Twin Butterflies (4 частини)",
+        stats: ["Crit DMG", "Crit Rate", "Incantation DMG", "ATK%"],
+        teamSynergy: "Baicang (Incantation), Sakiri (Incantation), Zero (Cosmos), Iroi (Anima)",
+        lore: "Таємнича оперативниця організації 'The Scarlet Letter'. Здатна миттєво зникати у тумані та завдавати смертоносних ударів лезом ілюзій."
+    },
+    {
+        id: "linko",
+        name: "Linko (Лінко)",
+        rarity: 5,
+        attribute: "Anima",
+        role: "Sub-DPS",
+        tier: "S",
+        avatar: "src/assets/linko_avatar.png",
+        summary: "Мобильна Аніма підтримка та off-field ДПС із Бюро Контролю Аномалій. Володіє унікальними здібностями для надшвидкого переміщення у місті Гетеро.",
+        weapon: "Gilded Breeze (Позолочений бриз)",
+        weaponF2p: "Wind Chaser (Ловець вітру)",
+        cartridge: "Speedy Hedgehog (4 частини)",
+        stats: ["Anima DMG", "ATK%", "Crit Rate", "Energy Charge Efficiency"],
+        teamSynergy: "Nanally (Anima), Iroi (Anima), Zero (Cosmos), Sakiri (Incantation)",
+        lore: "Енергійна оперативниця Бюро Контролю Аномалій (BAC), яка використовує тактичний візор та високотехнологічні гаджети для розвідувальних місій."
+    },
+];
 
     // ===== PROMO CODES =====
     const promoCodes = [
