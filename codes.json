@@ -162,19 +162,19 @@
     {
         "code": "FOGDENGAME",
         "rewards": "100 Anulith, 5 Light Dyes, 5 Rising Hunter Guides, 4,000 Beetle Coins",
-        "active": true,
+        "active": false,
         "addedAt": "2026-08-08T18:34:31.237Z"
     },
     {
         "code": "EYEOFDELUSION",
         "rewards": "100 Annulith, 5 Light Dyes, 5 Rising Hunter Guides, 6,000 Beetle Coins",
-        "active": true,
+        "active": false,
         "addedAt": "2026-08-08T18:34:31.237Z"
     },
     {
         "code": "SUMMERTIME",
         "rewards": "100 Annulith, 2 Light Dyes, 2 Rising Hunter Guides, 12,000 Beetle Coins",
-        "active": true,
+        "active": false,
         "addedAt": "2026-08-08T18:34:31.237Z"
     },
     {
@@ -188,5 +188,23 @@
         "rewards": "NAPOLEONIC WARS ON STEAM\">",
         "active": false,
         "addedAt": "2026-08-18T12:39:50.413Z"
+    },
+    {
+        "code": "WITCHHOUSE",
+        "rewards": "100 Anulith, 5 Light Dyes, 5 Rising Hunter Guides, 4,000 Beetle Coins",
+        "active": true,
+        "addedAt": "2026-09-20T15:26:10.512Z"
+    },
+    {
+        "code": "THEWHOOTS",
+        "rewards": "100 Annulith, 5 Colorless Dyes, 5 Senior Hunter Guides, 6,000 Beetle Coins",
+        "active": true,
+        "addedAt": "2026-09-20T15:26:10.512Z"
+    },
+    {
+        "code": "PUKALANDGOGO",
+        "rewards": "100 Annulith, 2 Chaotic Dyes, 2 Elite Hunter Guides, 12,000 Beetle Coins",
+        "active": true,
+        "addedAt": "2026-09-20T15:26:10.513Z"
     }
 ]
