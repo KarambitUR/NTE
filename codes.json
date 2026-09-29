@@ -206,5 +206,11 @@
         "rewards": "100 Annulith, 2 Chaotic Dyes, 2 Elite Hunter Guides, 12,000 Beetle Coins",
         "active": true,
         "addedAt": "2026-09-20T15:26:10.513Z"
+    },
+    {
+        "code": "BLACKBIRDINNTE",
+        "rewards": "20 Heterogeneous Units, 30,000 Beetle Coins, 10,000 Fons",
+        "active": true,
+        "addedAt": "2026-09-29T17:44:58.664Z"
     }
 ]
