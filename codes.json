@@ -212,5 +212,17 @@
         "rewards": "20 Heterogeneous Units, 30,000 Beetle Coins, 10,000 Fons",
         "active": true,
         "addedAt": "2026-09-29T17:44:58.664Z"
+    },
+    {
+        "code": "WONDERLOGGIFT",
+        "rewards": "30 Annulith, 3 Senior Hunter Guides, 20,000 Fons",
+        "active": true,
+        "addedAt": "2026-10-04T16:31:29.743Z"
+    },
+    {
+        "code": "BLACKBIRDHERE",
+        "rewards": "1 Exclusive Avatar Frame",
+        "active": true,
+        "addedAt": "2026-10-04T16:31:29.743Z"
     }
 ]
