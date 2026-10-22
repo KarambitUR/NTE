@@ -15,9 +15,9 @@ export default function MapClient() {
   const [currentZoom, setCurrentZoom] = useState(3);
   const [visibleCount, setVisibleCount] = useState(0);
 
-  // Default: Clean view with fast travel, taxi and v1.4 landmarks (avoids 2000+ marker blob)
+  // Default: Clean view with fast travel, taxi and authentic flagship landmarks (avoids 2000+ marker blob)
   const [enabledCategories, setEnabledCategories] = useState(
-    new Set(['fast-travel', 'v14-poi', 'taxi'])
+    new Set(['fast-travel', 'special-poi', 'v14-poi', 'taxi'])
   );
 
   const enabledCategoriesRef = useRef(enabledCategories);
@@ -28,12 +28,14 @@ export default function MapClient() {
 
   const categories = nteMapData.categories;
 
-  // Regions for instant tactical navigation
+  // Authentic in-game regions for instant tactical navigation
   const REGIONS = [
     { id: 'hetero-center', icon: '🏙️', name: { uk: 'Центр Гетеро', en: 'Hethereau Center', fr: 'Centre Hethereau' }, y: 182, x: 289, zoom: 4 },
-    { id: 'puka-park', icon: '🎡', name: { uk: 'Пукаленд (v1.4)', en: 'Pukaland (v1.4)', fr: 'Pukaland (v1.4)' }, y: 950, x: 1240, zoom: 5 },
-    { id: 'starsign', icon: '🎸', name: { uk: 'Клуб StarSign', en: 'StarSign Club', fr: 'Club StarSign' }, y: 580, x: -320, zoom: 5 },
-    { id: 'witch-domain', icon: '🔮', name: { uk: 'Маєток Відьми', en: "Witch's Manor", fr: 'Manoir Sorcière' }, y: 1120, x: -750, zoom: 5 },
+    { id: 'duskmoor', icon: '🌫️', name: { uk: 'Даскмур / Фогден (v1.3)', en: 'Duskmoor / Fogden (v1.3)', fr: 'Duskmoor (v1.3)' }, y: -3650, x: -3650, zoom: 4 },
+    { id: 'witch-domain', icon: '🔮', name: { uk: 'Дім Відьми (Блекберд)', en: "The Witch's House", fr: 'Manoir Sorcière' }, y: -695.36, x: -987.96, zoom: 5 },
+    { id: 'eibon-hq', icon: '🌆', name: { uk: 'Крамниця Eibon', en: 'Eibon Shop', fr: 'Boutique Eibon' }, y: -354.14, x: -819.11, zoom: 5 },
+    { id: 'cadenza-puka', icon: '🎡', name: { uk: 'Парк Пукаленд (v1.4)', en: 'Pukaland Park (v1.4)', fr: 'Parc Pukaland' }, y: 985.06, x: 1065.72, zoom: 5 },
+    { id: 'heist-abyss', icon: '💎', name: { uk: 'Рейд Аномалій & Безодня', en: 'Anomaly Raid & Abyss', fr: 'Raid Anomalie' }, y: 2432.09, x: 127.17, zoom: 5 },
     { id: 'illusions', icon: '⛩️', name: { uk: 'Місто Ілюзій', en: 'Illusion Town', fr: 'Ville Illusions' }, y: 414, x: -1705, zoom: 4 },
     { id: 'bridges', icon: '🌉', name: { uk: 'Мостові Переходи', en: 'Bridge Crossings', fr: 'Ponts' }, y: -544, x: -1164, zoom: 4 },
     { id: 'unheard', icon: '🌊', name: { uk: 'Нечувані Береги', en: 'Unheard Shores', fr: 'Rivages Inouïs' }, y: -2135, x: -2657, zoom: 3 },
@@ -71,9 +73,9 @@ export default function MapClient() {
 
       renderedCount++;
 
-      // Custom pulsing neon badge for v1.4 POIs
-      if (cat === 'v14-poi') {
-        const emoji = marker.emoji || '✨';
+      // Custom pulsing neon badge for special landmarks & v1.4 POIs
+      if (cat === 'special-poi' || cat === 'v14-poi') {
+        const emoji = marker.emoji || '⭐';
         const customDivIcon = L.divIcon({
           className: 'v14-map-pin',
           html: `
@@ -268,9 +270,9 @@ export default function MapClient() {
 
   const applyPreset = (preset) => {
     if (preset === 'main') {
-      setEnabledCategories(new Set(['fast-travel', 'v14-poi', 'taxi']));
+      setEnabledCategories(new Set(['fast-travel', 'special-poi', 'v14-poi', 'taxi']));
     } else if (preset === 'combat') {
-      setEnabledCategories(new Set(['fast-travel', 'monsters', 'anomaly-vision', 'arc-locations', 'v14-poi']));
+      setEnabledCategories(new Set(['fast-travel', 'monsters', 'anomaly-vision', 'arc-locations', 'special-poi', 'v14-poi']));
     } else if (preset === 'farming') {
       setEnabledCategories(new Set(['oracle-stone', 'currencies', 'locker', 'stealable-loot', 'collectible']));
     } else if (preset === 'all') {
