@@ -1,5 +1,275 @@
 export const FALLBACK_GUIDES = [
     {
+        "id": "guide-pukaland-park",
+        "title": "Тематичний Парк 'Пукаленд' (Pukaland) — Атракціони, Міні-ігри та Секретні Нагороди",
+        "titleEn": "Pukaland Theme Park: Attractions, Mini-Games & Secret Rewards Guide",
+        "titleFr": "Parc à Thème Pukaland : Attractions, Mini-Jeux & Récompenses Secrètes",
+        "description": "Повний детальний посібник з нової локації та ігрового режиму парку 'Пукаленд' у патчі 1.4. Проходження атракціонів, кран-машини, обмін жетонів Puka Tokens та фарм понад 1200+ Annulith.",
+        "descriptionEn": "Complete walkthrough of the new Pukaland theme park area & game mode in Patch 1.4. Attractions, claw machines, Puka Token prize exchange, and 1200+ Annulith farming.",
+        "descriptionFr": "Guide complet de la nouvelle zone du parc Pukaland et son mode de jeu du Patch 1.4. Attractions, mini-jeux de pinces, boutique de jetons Puka et farm de 1200+ Annuliths.",
+        "category": "modes",
+        "isFeatured": true,
+        "difficulty": "Easy",
+        "difficultyEn": "Easy",
+        "difficultyFr": "Facile",
+        "updateDate": "2026-10-21",
+        "tags": [
+            "Pukaland",
+            "Patch 1.4",
+            "Theme Park",
+            "Mini-Games",
+            "Annulith"
+        ],
+        "tagsEn": [
+            "Pukaland",
+            "Patch 1.4",
+            "Theme Park",
+            "Mini-Games",
+            "Annulith"
+        ],
+        "tagsFr": [
+            "Pukaland",
+            "Patch 1.4",
+            "Parc à Thème",
+            "Mini-Jeux",
+            "Annulith"
+        ],
+        "avatar": "src/assets/meta_analysis_icon.png",
+        "content": {
+            "sections": [
+                {
+                    "title": "1. Як потрапити в Пукаленд та розблокування режиму",
+                    "titleEn": "1. Accessing Pukaland & Mode Unlock",
+                    "titleFr": "1. Accès à Pukaland & Déblocage du Mode",
+                    "text": "Парк Пукаленд (Pukaland) розташований у північно-східній частині мегаполісу Гетеро. Доступ відкривається автоматично після завершення 4-го розділу сюжету 'For Whom the Verses Mourn' або через швидкий трамвай 'Puka Express' біля центральної станції.",
+                    "textEn": "Pukaland is situated in the north-eastern district of Hethereau. Unlocked automatically after completing Chapter 4 of 'For Whom the Verses Mourn' or via the Puka Express tram at Central Station.",
+                    "textFr": "Pukaland est situé dans la partie nord-est de Hethereau. Accessible dès le Chapitre 4 de l'histoire ou via le tram Puka Express."
+                },
+                {
+                    "title": "2. Головні атракціони та щоденні міні-ігри",
+                    "titleEn": "2. Core Attractions & Daily Mini-Games",
+                    "titleFr": "2. Attractions Principales & Mini-Jeux Quotidiens",
+                    "text": "• Колесо Огляду 'Puka Eye': Мальовничий огляд усього Гетеро, на вершині якого заховано оракульський камінь та скриню рангу S.\\n• Божевільні Гірки 'Hyper Rollercoaster': Швидкісний тайм-трайал із проходженням контрольних кілець на час.\\n• Кран-машина 'Puka Claw': Аркадний автомат для виловлювання плюшевих маскотів Пука, золотих жетонів та матеріалів покращення зброї.\\n• Кімната Аномальних Жахів: Кооперативний лабіринт із головоломками просторового викривлення.",
+                    "textEn": "• Puka Eye Ferris Wheel: Panoramic viewpoint with a hidden S-rank chest at the apex.\\n• Hyper Rollercoaster: High-speed ring checkpoint time-trial challenge.\\n• Puka Claw Machine: Arcade claw grabber awarding rare plushies, Golden Puka Tokens, and Arc breakthrough materials.\\n• Anomaly Horror House: Puzzle-solving labyrinth with spatial distortions.",
+                    "textFr": "• Grande Roue Puka Eye : Vue panoramique et coffre de rang S.\\n• Hyper Rollercoaster : Défi contre la montre sur rails.\\n• Puka Claw : Machine à pinces arcade pour peluches et jetons.\\n• Maison Hantée d'Anomalie : Labyrinthe à énigmes coopératif."
+                },
+                {
+                    "title": "3. Магазин Жетонів (Puka Exchange Shop) та пріоритети обміну",
+                    "titleEn": "3. Puka Token Exchange Shop Priority",
+                    "titleFr": "3. Boutique d'Échange de Jetons Puka",
+                    "text": "Зароблені жетони Puka Tokens витрачайте у спеціальному автоматі обміну:\\n1. 10 лімітованих круток банера (Annulith & Fabricated Dice) — абсолютний пріоритет!\\n2. Ексклюзивна рамка профілю 'Puka Park Master' та аватарка.\\n3. Легендарні коробки вибору картриджів (Dazzling Rhythm / Shadow Aria).\\n4. Матеріали прокачки та Beetle Coins.",
+                    "textEn": "Redeem Puka Tokens at the Exchange Kiosk:\\n1. 10 Limited Banner Pulls (Annulith & Fabricated Dice) — Top priority!\\n2. Exclusive 'Puka Park Master' Avatar Frame.\\n3. Legendary Cartridge Selection Chests (Dazzling Rhythm / Shadow Aria).\\n4. Enhancement materials & Beetle Coins.",
+                    "textFr": "Échangez vos jetons Puka contre :\\n1. 10 invocations limitées (Annuliths).\\n2. Cadre d'avatar exclusif 'Puka Park Master'.\\n3. Coffres de cartouches légendaires."
+                }
+            ]
+        },
+        "references": [
+            "https://neverness.gg/modes/pukaland",
+            "https://reddit.com/r/NevernessToEverness"
+        ],
+        "recommendedTeams": [
+            "akane",
+            "blackbird",
+            "lingko",
+            "sakiri"
+        ],
+        "progressionTips": [
+            "Грайте в кран-машину щодня — перші 3 спроби на день безкоштовні!",
+            "Використовуйте персонажів із високою мобільністю (Наналлі, Лінко) для збору ширяючих балонів Пука над парком.",
+            "Знайдіть таємного торговця під американськими гірками опівночі за ігровим часом."
+        ],
+        "progressionTipsEn": [
+            "Play the claw machine daily — the first 3 attempts each day are free!",
+            "Use high-mobility characters (Nanally, Linko) to grab floating Puka balloons above the park.",
+            "Seek out the secret vendor beneath the rollercoaster at in-game midnight."
+        ],
+        "progressionTipsFr": [
+            "Jouez à la machine à pinces chaque jour : les 3 premiers essais sont gratuits !",
+            "Utilisez des personnages agiles (Nanally, Linko) pour attraper les ballons flottants.",
+            "Trouvez le marchand secret sous les montagnes russes à minuit (heure du jeu)."
+        ]
+    },
+    {
+        "id": "guide-akane-build",
+        "title": "Акане Рін (Akane Rin) — Повний Білд, Зворотний бік Місяця та Ротації",
+        "titleEn": "Akane Rin Master Build: 'Far Side of the Moon' Arc & Rhythm Combos",
+        "titleFr": "Guide Complet d'Akane Rin : Arc 'Far Side of the Moon' & Rotations",
+        "description": "Вичерпний посібник для головного банерного героя 1.4 Фази 2: Акане Рін (Akane Rin, Лакшана). Аналіз сигнатурного Арку, картриджів Dazzling Rhythm, ротацій гітарних акордів та найкращих команд.",
+        "descriptionEn": "Definitive build guide for current 1.4 Phase 2 rate-up character Akane Rin (Lakshana). Arc analysis, Dazzling Rhythm cartridges, electric guitar chord rotations, and meta teams.",
+        "descriptionFr": "Guide de build ultime pour le personnage en vedette de la Phase 2 du patch 1.4 : Akane Rin (Lakshana). Analyse d'arme signature, cartouches et rotations d'équipe.",
+        "category": "character",
+        "isFeatured": true,
+        "difficulty": "Hard",
+        "difficultyEn": "Hard",
+        "difficultyFr": "Difficile",
+        "updateDate": "2026-10-21",
+        "tags": [
+            "Akane Rin",
+            "Build",
+            "Patch 1.4",
+            "Lakshana",
+            "Sub-DPS"
+        ],
+        "tagsEn": [
+            "Akane Rin",
+            "Build",
+            "Patch 1.4",
+            "Lakshana",
+            "Sub-DPS"
+        ],
+        "tagsFr": [
+            "Akane Rin",
+            "Build",
+            "Patch 1.4",
+            "Lakshana",
+            "Sub-DPS"
+        ],
+        "avatar": "src/assets/akane_avatar.png",
+        "content": {
+            "sections": [
+                {
+                    "title": "1. Бойовий стиль та механіка 'Resonance Riff'",
+                    "titleEn": "1. Combat Mechanics & Resonance Riff",
+                    "titleFr": "1. Mécaniques de Combat & Riff Résonant",
+                    "text": "Акане Рін грає на електрогітарі, створюючи звукові хвилі стихії Лакшана. Її навичка (E) накладає на всіх союзників ауру 'Electric Amp', що дарує +25% швидкості атаки та додає ланцюговий розряд до кожної звичайної атаки активного персонажа. Її ультимейт наносить масовану площинну шкоду та подовжує дію всіх елементальних статусів ворогів на 6 секунд.",
+                    "textEn": "Akane Rin plays her electric guitar, unleashing Lakshana sonic waves. Her Skill (E) applies an 'Electric Amp' aura granting +25% ATK SPD and chain lightning to every normal attack. Her Ultimate deals massive AoE Lakshana burst and extends enemy elemental debuffs by 6 seconds.",
+                    "textFr": "Akane Rin manie sa guitare électrique en infligeant des ondes sonores Lakshana. Sa compétence confère +25% de vitesse d'attaque et des éclairs en chaîne à toute l'équipe."
+                },
+                {
+                    "title": "2. Зброя та сигнатурний Arc",
+                    "titleEn": "2. Weapon & Signature Arc Selection",
+                    "titleFr": "2. Choix d'Arme & Arc Signature",
+                    "text": "• 5★ Far Side of the Moon (Сигнатурний Arc): Дає 44.1% Крит. Шкоди, генерує 15 енергії при перемиканні та підсилює шкоду Лакшани на 40% на 12 сек.\\n• 4★ Amplifier Rhapsody (F2P альтернатива): Чудово підвищує Відновлення енергії та дає бонусний ATK% всьому загону.",
+                    "textEn": "• 5★ Far Side of the Moon (Signature Arc): Provides 44.1% CRIT DMG, refunds 15 energy on swap, and boosts team Lakshana DMG by 40% for 12s.\\n• 4★ Amplifier Rhapsody (F2P Best): Excellent Energy Recharge and team ATK% buff.",
+                    "textFr": "• 5★ Far Side of the Moon (Signature) : +44.1% Dégâts CRIT et +40% de dégâts Lakshana d'équipe.\\n• 4★ Amplifier Rhapsody (F2P) : Recharge d'Énergie et bonus ATK%."
+                },
+                {
+                    "title": "3. Комплект картриджів та пріоритет характеристик",
+                    "titleEn": "3. Cartridge Sets & Stat Priority",
+                    "titleFr": "3. Ensembles de Cartouches & Statistiques",
+                    "text": "Найкращий набір: Dazzling Rhythm (4 частини). 2 частини дають +15% Лакшана шкоди, 4 частини збільшують шкоду всіх наступних персонажів у ротації на 30%.\\nПріоритет статів: Відновлення енергії (до 160%) > Шанс криту (65%+) > Крит. шкода > Сила атаки (ATK%).",
+                    "textEn": "Best Set: Dazzling Rhythm (4-piece). 2pc: +15% Lakshana DMG, 4pc: grants +30% total DMG buff to the next character in rotation.\\nStat Priority: Energy Recharge (up to 160%) > CRIT Rate (65%+) > CRIT DMG > ATK%.",
+                    "textFr": "Meilleur set : Dazzling Rhythm (4 pièces).\\nPriorité des stats : Recharge d'Énergie (160%) > Taux CRIT (65%+) > Dégâts CRIT > ATK%."
+                }
+            ]
+        },
+        "references": [
+            "https://neverness.gg/characters/akane",
+            "https://reddit.com/r/NevernessToEverness"
+        ],
+        "recommendedTeams": [
+            "akane",
+            "chaos",
+            "sakiri",
+            "nanally"
+        ],
+        "progressionTips": [
+            "Завжди активуйте навичку Акане (E) перед перемиканням на вашого Main DPS (Хаос або Наналлі).",
+            "Ультимейт Акане має кадри невразливості під час гітарного соло — використовуйте це, щоб уникати летальних атак босів.",
+            "Пріоритет прокачки талантів: Навичка (E) > Ультимейт > Пасивні таланти."
+        ],
+        "progressionTipsEn": [
+            "Always trigger Akane's Skill (E) immediately before swapping to your Main DPS (Chaos or Nanally).",
+            "Akane's Ultimate features invincible frames during her guitar solo — use it to iframe deadly boss attacks.",
+            "Talent Level Priority: Skill (E) > Ultimate > Passive Talents."
+        ],
+        "progressionTipsFr": [
+            "Activez toujours la compétence d'Akane avant de passer à votre DPS principal (Chaos ou Nanally).",
+            "L'Ultime d'Akane possède des frames d'invincibilité pendant son solo de guitare.",
+            "Priorité d'amélioration : Compétence (E) > Ultime > Passifs."
+        ]
+    },
+    {
+        "id": "guide-starsign-heist",
+        "title": "Нічне Життя StarSign & Рейди Аномалій — Кооперативні Випробування 1.4",
+        "titleEn": "StarSign Nightlife & Anomaly Heists: Co-op Raid Strategy",
+        "titleFr": "Vie Nocturne StarSign & Raids d'Anomalie : Stratégie Coopérative 1.4",
+        "description": "Посібник із нового кооперативного режиму 'Anomaly Heist' та клубу StarSign. Тактика проникнення, стелс з Занкоу, подолання лазерних пасток та командні битви з Вартовими Матриці.",
+        "descriptionEn": "Walkthrough for the new 'Anomaly Heist' co-op endgame raid mode and StarSign district. Infiltration tactics, Zankou stealth routes, laser puzzle bypasses, and Matrix Warden boss battles.",
+        "descriptionFr": "Guide du nouveau mode de raid coopératif 'Anomaly Heist' et du club StarSign. Tactiques d'infiltration, furtivité avec Zankou et affrontements de boss de matrice.",
+        "category": "modes",
+        "isFeatured": false,
+        "difficulty": "Hard",
+        "difficultyEn": "Hard",
+        "difficultyFr": "Difficile",
+        "updateDate": "2026-10-21",
+        "tags": [
+            "StarSign",
+            "Heist",
+            "Co-op",
+            "Raid",
+            "Patch 1.4"
+        ],
+        "tagsEn": [
+            "StarSign",
+            "Heist",
+            "Co-op",
+            "Raid",
+            "Patch 1.4"
+        ],
+        "tagsFr": [
+            "StarSign",
+            "Braquage",
+            "Coop",
+            "Raid",
+            "Patch 1.4"
+        ],
+        "avatar": "src/assets/heist_icon.png",
+        "content": {
+            "sections": [
+                {
+                    "title": "1. Структура рейду 'Anomaly Heist'",
+                    "titleEn": "1. Anomaly Heist Raid Structure",
+                    "titleFr": "1. Structure du Raid de Braquage d'Anomalie",
+                    "text": "Рейд складається з 3 динамічних фаз: Стелс-проникнення (Phase 1), Хакінг терміналів даних під хвилями охорони (Phase 2), та фінальна дуель із Вартовим Матриці (Matrix Warden, Phase 3). Проходження доступне як у соло, так і в кооперативі до 4 гравців.",
+                    "textEn": "The raid comprises 3 dynamic phases: Stealth Infiltration (Phase 1), Data Terminal Hacking under waves of security (Phase 2), and a climatic showdown against the Matrix Warden (Phase 3). Playable solo or in 4-player co-op.",
+                    "textFr": "Le raid se divise en 3 phases : Infiltration furtive (Phase 1), Piratage de terminaux sous le feu ennemi (Phase 2) et combat contre le Gardien de Matrice (Phase 3)."
+                },
+                {
+                    "title": "2. Найкращі ролі та персонажі для рейду",
+                    "titleEn": "2. Best Roles & Recommended Operators",
+                    "titleFr": "2. Meilleurs Rôles & Opérateurs Recommandés",
+                    "text": "• Стелс-агент: Занкоу (Zankou) або Скіа (Skia) — здатність зникати у тумані дозволяє обходити лазери та знешкоджувати сигналізації без бою.\\n• Буфер команди: Акане Рін (Akane Rin) — розганяє шкоду всієї групи під час фази захисту терміналу.\\n• Масовий ДПС: Блекберд (Blackbird) або Хаос (Chaos) — миттєве зачищення елітних охоронців.",
+                    "textEn": "• Stealth Scout: Zankou or Skia — stealth abilities allow bypassing security grids without triggering alarms.\\n• Team Buffer: Akane Rin — massively accelerates party DPS during the terminal defense wave.\\n• Burst Carry: Blackbird or Chaos — shreds elite security enforcers instantaneously.",
+                    "textFr": "• Éclaireur Furtif : Zankou ou Skia.\\n• Buffer d'Équipe : Akane Rin.\\n• Carry de Burst : Blackbird ou Chaos."
+                },
+                {
+                    "title": "3. Щотижневі нагороди та Крафт Модифікаторів",
+                    "titleEn": "3. Weekly Rewards & Modifier Crafting",
+                    "titleFr": "3. Récompenses Hebdomadaires & Artisanat",
+                    "text": "Успішне пограбування приносить Ядра Матриці (Matrix Cores), за які можна перековувати додаткові підстати на золотих картриджах, а також щотижневі 300 Annulith та унікальні скіни для автомобілів у Гетеро.",
+                    "textEn": "Completing the heist rewards Matrix Cores used to reroll substats on golden cartridges, along with 300 weekly Annulith and custom vehicle paintjobs in Hethereau.",
+                    "textFr": "Terminer le braquage rapporte des Cœurs de Matrice pour relancer les sous-statistiques des cartouches, ainsi que 300 Annuliths hebdomadaires."
+                }
+            ]
+        },
+        "references": [
+            "https://neverness.gg/modes/heist",
+            "https://reddit.com/r/NevernessToEverness"
+        ],
+        "recommendedTeams": [
+            "zankou",
+            "akane",
+            "blackbird",
+            "sakiri"
+        ],
+        "progressionTips": [
+            "Не вступайте у бій на фазі 1: спрацювання тривоги посилює фінального боса на 40%!",
+            "Використовуйте стелс Занкоу, щоб вимикати генератори струму позаду охоронців.",
+            "Координуйте ультимейти Акане та Блекберд для одночасного вибуху в зоні терміналу."
+        ],
+        "progressionTipsEn": [
+            "Avoid direct combat in Phase 1: triggering alarms buffs the final boss by 40%!",
+            "Utilize Zankou's stealth to deactivate power generators behind patrol guards.",
+            "Synchronize Akane and Blackbird Ultimates for simultaneous burst on terminal waves."
+        ],
+        "progressionTipsFr": [
+            "Évitez le combat en Phase 1 : déclencher l'alarme renforce le boss de 40% !",
+            "Utilisez la furtivité de Zankou pour désactiver les générateurs d'énergie.",
+            "Synchronisez les Ultimes d'Akane et Blackbird pour un burst simultané."
+        ]
+    },
+    {
         "id": "guide-zankou-build",
         "title": "Занко (Zankou) — Повний Білд, Лезо Ілюзій та Механіка DoT",
         "titleEn": "Zankou Master Build: Reality-Illusion Swap & DoT Meta",
@@ -347,75 +617,93 @@ export const FALLBACK_GUIDES = [
     },
     {
         "id": "guide-meta-analysis",
-        "title": "Аналіз Мети Патчу 1.2: Рейтинг та Тренди",
-        "titleEn": "Patch 1.2 Meta Analysis: Rankings & Trends",
-        "description": "Аналіз поточної ігрової мети версії 1.2. Чому Шінку та нові реакції змістили Хаоса з першої позиції, та як Cosmos домінує в поточному балансі сил.",
-        "descriptionEn": "Analysis of the current version 1.2 game meta. Why Shinku and new reactions shifted Chaos from the top spot, and how Cosmos dominates the current balance of power.",
+        "title": "Аналіз Мети Патчу 1.4: Революція Лакшани та Психеї, Новий S+ Тір-ліст",
+        "titleEn": "Patch 1.4 Meta Analysis: Lakshana & Psyche Dominance, New S+ Apex",
+        "titleFr": "Analyse de la Méta du Patch 1.4 : Domination Lakshana & Psyché, Nouvel Apex S+",
+        "description": "Повний стратегічний аналіз оновленої мети патчу 1.4 'For Whom the Verses Mourn'. Чому Акане Рін та Блекберд здійснили переворот балансу, новий S+ тир та топові зв'язки загонів.",
+        "descriptionEn": "Complete tactical analysis of the updated Patch 1.4 meta 'For Whom the Verses Mourn'. Why Akane Rin and Blackbird revolutionized the meta, new S+ tier breakdown, and top team synergies.",
+        "descriptionFr": "Analyse tactique complète de la méta mise à jour du Patch 1.4. Pourquoi Akane Rin et Blackbird ont bouleversé l'équilibre, détails du palier S+ et meilleures synergies d'équipe.",
         "category": "meta",
-        "isFeatured": false,
+        "isFeatured": true,
         "difficulty": "Hard",
         "difficultyEn": "Hard",
-        "updateDate": "2026-07-08",
+        "difficultyFr": "Difficile",
+        "updateDate": "2026-10-21",
         "tags": [
-            "Meta",
+            "Meta 1.4",
             "Tier List",
-            "Analysis"
+            "Akane Rin",
+            "Blackbird",
+            "Synergy"
         ],
         "tagsEn": [
-            "Meta",
+            "Meta 1.4",
             "Tier List",
-            "Analysis"
+            "Akane Rin",
+            "Blackbird",
+            "Synergy"
+        ],
+        "tagsFr": [
+            "Méta 1.4",
+            "Tier List",
+            "Akane Rin",
+            "Blackbird",
+            "Synergie"
         ],
         "avatar": "src/assets/meta_analysis_icon.png",
         "content": {
             "sections": [
                 {
-                    "title": "1. Активний банер та домінуюча сила: Шінку (Cosmos DPS)",
-                    "titleEn": "1. Active Banner & Dominating Force: Shinku (Cosmos DPS)",
-                    "text": "З початком першої фази версії 1.2 Шінку (Shinku) стала головним об'єктом уваги. Як лімітований DPS стихії Космос, вона володіє колосальним потенціалом критичної шкоди у стані берсерка та витісняє колишніх лідерів на кшталт Хаоса.",
-                    "textEn": "With the start of version 1.2 first phase, Shinku has become the primary focus. As a limited Cosmos DPS, she possesses colossal critical damage potential in berserk state, pushing out previous top tier carries like Chaos.",
-                    "titleFr": "1. Bannière Active & Force Dominante : Shinku (DPS Cosmos)",
-                    "textFr": "Avec le début de la première phase de la version 1.2, Shinku est devenue le point de mire principal. En tant que DPS Cosmos limité, elle possède un potentiel de dégâts critiques colossal en mode berserk, détrônant les anciens carries comme Chaos."
+                    "title": "1. Переворот балансу версії 1.4: Прихід Акане Рін та Блекберд",
+                    "titleEn": "1. The Version 1.4 Meta Shift: Arrival of Akane Rin & Blackbird",
+                    "titleFr": "1. Le Bouleversement de la Méta 1.4 : Arrivée d'Akane Rin & Blackbird",
+                    "text": "Версія 1.4 докорінно перекроїла розстановку сил. Акане Рін (Akane Rin, Лакшана) стала абсолютним ядром будь-яких резонансних загонів, надаючи колосальний розгін швидкості атаки, електро-ланцюгову шкоду та синхронний бурст. Одночасно Блекберд (Blackbird, Психея) встановила абсолютний рекорд шкоди по площі (AoE) завдяки механіці накопичення 'Malice'.",
+                    "textEn": "Version 1.4 has fundamentally restructured the power balance. Akane Rin (Lakshana) has become the core catalyst for resonance teams, offering staggering ATK SPD buffs, chain damage, and coordinated burst. Simultaneously, Blackbird (Psyche) shattered all AoE DPS records utilizing her 'Malice' amplification mechanics.",
+                    "textFr": "La version 1.4 a profondément transformé l'équilibre du jeu. Akane Rin (Lakshana) est devenue le catalyseur absolu des équipes à résonance, tandis que Blackbird (Psyché) a pulvérisé les records de dégâts de zone grâce à sa mécanique de 'Malice'."
                 },
                 {
-                    "title": "2. Зростання популярності реакції Blossom та ефекту Cycle",
-                    "titleEn": "2. Rise of Blossom Reaction and Cycle Effects",
-                    "text": "Новий цілитель і бустер Іроі (Iroi) стихії Аніма вивів реакцію Blossom (Аніма + Аніма) на абсолютно новий рівень. Водночас ефект Циклу Есперів (Esper Cycle) з персонажами Космосу (Шінку, Зеро) залишається невід'ємною частиною будь-якого мета-загону.",
-                    "textEn": "The new Anima healer and buffer Iroi has brought the Blossom reaction (Anima + Anima) to a whole new level. Meanwhile, the Esper Cycle effect using Cosmos characters (Shinku, Zero) remains an indispensable part of any meta squad.",
-                    "titleFr": "2. Montée en Puissance de la Réaction Blossom et des Effets Cycle",
-                    "textFr": "Le nouveau soigneur et buffer Anima Iroi a porté la réaction Blossom (Anima + Anima) à un tout autre niveau. En parallèle, l'effet Cycle d'Espers avec les personnages Cosmos (Shinku, Zero) reste indispensable."
+                    "title": "2. Новий S+ Тір: Хто формує абсолютну верхівку",
+                    "titleEn": "2. The New S+ Tier: Titans of the Current Meta",
+                    "titleFr": "2. Le Nouveau Palier S+ : Les Titans de la Méta Actuelle",
+                    "text": "Абсолютний пантеон S+ тепер складається з 5 героїв:\n• Акане Рін — неперевершений буфер-саб-ДПС Лакшани.\n• Блекберд — найпотужніший Main DPS стихії Психея.\n• Занкоу — незрівнянна соло-таргет вбивця босів із DoT Heartwrench.\n• Сакірі — універсальний саппорт номер один для стяжки та зрізу опорів.\n• Хаос — король стійкого фізичного та Лакшана прокачування з телепортами.",
+                    "textEn": "The definitive S+ apex now comprises 5 champions:\n• Akane Rin — supreme Lakshana buffer/sub-DPS.\n• Blackbird — highest ceiling Psyche Main DPS.\n• Zankou — unmatched single-target boss assassin with Heartwrench DoT.\n• Sakiri — irreplaceable #1 support for CC grouping and universal res shred.\n• Chaos — relentless Lakshana hypercarry with teleportation frames.",
+                    "textFr": "Le sommet du palier S+ comprend désormais 5 champions incontournables : Akane Rin, Blackbird, Zankou, Sakiri et Chaos."
+                },
+                {
+                    "title": "3. Топові командні збірки Патчу 1.4",
+                    "titleEn": "3. Top Team Compositions for Patch 1.4",
+                    "titleFr": "3. Meilleures Compositions d'Équipe du Patch 1.4",
+                    "text": "1. 'StarSign Overdrive' (Акане Рін + Хаос + Сакірі + Зеро): Нескінченні ланцюгові блискавки та вибуховий крит-урон.\n2. 'Psychic Abyss' (Блекберд + Фадія + Ханіель + Сакірі): Абсолютна невразливість під захистом Фадії та колосальні ментальні вибухи Discord.",
+                    "textEn": "1. 'StarSign Overdrive' (Akane Rin + Chaos + Sakiri + Zero): Infinite lightning chains and explosive critical strikes.\n2. 'Psychic Abyss' (Blackbird + Fadia + Haniel + Sakiri): High sustain under Fadia's tanking coupled with astronomical Discord mental explosions.",
+                    "textFr": "1. 'StarSign Overdrive' (Akane Rin + Chaos + Sakiri + Zero).\n2. 'Psychic Abyss' (Blackbird + Fadia + Haniel + Sakiri)."
                 }
             ]
         },
         "references": [
+            "https://neverness.gg/meta/1.4",
             "https://reddit.com/r/NevernessToEverness",
             "https://keqingmains.com"
         ],
         "recommendedTeams": [
-            "shinku",
-            "iroi",
-            "zero",
-            "sakiri"
+            "akane",
+            "blackbird",
+            "zankou",
+            "sakiri",
+            "chaos"
         ],
         "progressionTips": [
-            "Використовуйте персонажів Космосу для активації ефекту Циклу Есперів та прискорення ротації навичок.",
-            "Сфокусуйтеся на отриманні Шінку (Shinku), оскільки її банер зараз активний і вона є найсильнішим carry-персонажем версії 1.2."
+            "Обов'язково вибивайте Акане Рін на поточному банері 1.4 Фази 2 — вона є універсальним фундаментом на кілька патчів вперед.",
+            "Інвестуйте в набір картриджів Dazzling Rhythm для Лакшана загонів та Shadow Aria для Блекберд.",
+            "Пам'ятайте, що Сакірі та Зеро чудово доповнюють як нові гіперкеррі 1.4, так і класичних героїв (Шінку, Наналлі)."
         ],
         "progressionTipsEn": [
-            "Use Cosmos characters to trigger the Esper Cycle effect and accelerate skill rotations.",
-            "Focus on pulling Shinku, as her banner is currently active and she is the strongest carry character in patch 1.2."
-        ],
-        "titleFr": "Analyse de la Méta du Patch 1.2 : Classements & Tendances",
-        "descriptionFr": "Analyse de la méta du jeu en version 1.2. Pourquoi Shinku et les nouvelles réactions ont détrôné Chaos, et comment Cosmos domine la méta actuelle.",
-        "difficultyFr": "Difficile",
-        "tagsFr": [
-            "Méta",
-            "Tier List",
-            "Analyse"
+            "Pull for Akane Rin on the current 1.4 Phase 2 banner — she is an enduring universal backbone for upcoming metas.",
+            "Farm Dazzling Rhythm cartridges for Lakshana teams and Shadow Aria for Blackbird.",
+            "Sakiri and Zero continue to empower both new 1.4 carries and established titans like Shinku and Nanally."
         ],
         "progressionTipsFr": [
-            "Utilisez des personnages Cosmos pour déclencher l'effet Cycle d'Espers et accélérer les rotations de compétences.",
-            "Concentrez-vous sur l'obtention de Shinku, car sa bannière est actuellement active et elle est le carry le plus fort du patch 1.2."
+            "Invoquez absolument Akane Rin sur la bannière active de la Phase 2 de la 1.4.",
+            "Farmez les cartouches Dazzling Rhythm pour les équipes Lakshana et Shadow Aria pour Blackbird."
         ]
     },
     {

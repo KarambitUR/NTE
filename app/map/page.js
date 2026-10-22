@@ -24,9 +24,9 @@ export default function MapPage() {
       fr: 'Carte Interactive de Farm Hethereau',
     },
     subtitle: {
-      uk: 'Візуальний путівник по аномаліях, телепортах, оракульським каменям та босам.',
-      en: 'Visual guide for anomalies, teleports, oracle stones, and boss drops.',
-      fr: 'Guide visuel pour les anomalies, téléporteurs et boss.',
+      uk: 'Візуальний тактичний путівник по аномаліях, телепортах, парку Пукаленд (v1.4), нічному клубу StarSign та ресурсах.',
+      en: 'Tactical visual guide for anomalies, teleports, Pukaland theme park (v1.4), StarSign nightclub, and resources.',
+      fr: 'Guide tactique visuel pour les anomalies, téléporteurs, le parc Pukaland (v1.4), le club StarSign et les ressources.',
     },
   };
 

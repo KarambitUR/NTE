@@ -35,6 +35,7 @@ export default function GuidesPage() {
 
   const categories = [
     { key: 'all', uk: 'Усі гайди', en: 'All Guides', fr: 'Tous les guides' },
+    { key: 'modes', uk: 'Нові Режими', en: 'New Game Modes', fr: 'Nouveaux Modes' },
     { key: 'character', uk: 'Персонажі та Білди', en: 'Characters & Builds', fr: 'Personnages & Builds' },
     { key: 'event', uk: 'Івенти та Події', en: 'Events', fr: 'Événements' },
     { key: 'meta', uk: 'Аналіз Мети', en: 'Meta Analysis', fr: 'Analyse Méta' },
@@ -49,9 +50,9 @@ export default function GuidesPage() {
       fr: 'Guides & Tutoriels Eibon Terminal',
     },
     subtitle: {
-      uk: 'Актуальні детальні посібники для Neverness to Everness (Версія 1.3 "Rising from the Moonlit Fog").',
-      en: 'Up-to-date detailed guides for Neverness to Everness (Version 1.3 "Rising from the Moonlit Fog").',
-      fr: 'Guides détaillés à jour pour Neverness to Everness (Version 1.3 "Rising from the Moonlit Fog").',
+      uk: 'Актуальні детальні посібники для Neverness to Everness (Версія 1.4 "For Whom the Verses Mourn").',
+      en: 'Up-to-date detailed guides for Neverness to Everness (Version 1.4 "For Whom the Verses Mourn").',
+      fr: 'Guides détaillés à jour pour Neverness to Everness (Version 1.4 "For Whom the Verses Mourn").',
     },
     searchPlaceholder: {
       uk: 'Пошук гайдів за назвою чи ключевими словами...',

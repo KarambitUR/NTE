@@ -661,3 +661,29 @@
         gap: 0.75rem;
     }
 }
+
+/* ── PATCH 1.4 SPECIAL LANDMARKS & ANIMATIONS ───────────────────────────── */
+
+.v14-map-pin {
+    background: transparent !important;
+    border: none !important;
+}
+
+.v14-map-pin > div {
+    animation: v14-pulse-glow 2.2s infinite ease-in-out;
+}
+
+@keyframes v14-pulse-glow {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 12px rgba(255, 0, 128, 0.8), 0 0 20px rgba(0, 229, 255, 0.4);
+    }
+    50% {
+        transform: scale(1.12);
+        box-shadow: 0 0 22px rgba(255, 0, 128, 1), 0 0 35px rgba(0, 229, 255, 0.75);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 12px rgba(255, 0, 128, 0.8), 0 0 20px rgba(0, 229, 255, 0.4);
+    }
+}
