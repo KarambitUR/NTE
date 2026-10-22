@@ -31,14 +31,14 @@ export default function MapClient() {
   // Authentic in-game regions for instant tactical navigation
   const REGIONS = [
     { id: 'hetero-center', icon: '🏙️', name: { uk: 'Центр Гетеро', en: 'Hethereau Center', fr: 'Centre Hethereau' }, y: 182, x: 289, zoom: 4 },
-    { id: 'duskmoor', icon: '🌫️', name: { uk: 'Даскмур / Фогден (v1.3)', en: 'Duskmoor / Fogden (v1.3)', fr: 'Duskmoor (v1.3)' }, y: -3650, x: -3650, zoom: 4 },
+    { id: 'duskmoor-caldera', icon: '🌋', name: { uk: 'Даскмур: Кратер (v1.3)', en: 'Duskmoor: Caldera (v1.3)', fr: 'Duskmoor Caldéra (v1.3)' }, y: 4966, x: -3046, zoom: 4 },
+    { id: 'puka-island', icon: '🎡', name: { uk: 'Острів Пукаленд (v1.4)', en: 'Pukaland Island (v1.4)', fr: 'Île Pukaland (v1.4)' }, y: -565, x: 2214, zoom: 4 },
     { id: 'witch-domain', icon: '🔮', name: { uk: 'Дім Відьми (Блекберд)', en: "The Witch's House", fr: 'Manoir Sorcière' }, y: -695.36, x: -987.96, zoom: 5 },
     { id: 'eibon-hq', icon: '🌆', name: { uk: 'Крамниця Eibon', en: 'Eibon Shop', fr: 'Boutique Eibon' }, y: -354.14, x: -819.11, zoom: 5 },
-    { id: 'cadenza-puka', icon: '🎡', name: { uk: 'Парк Пукаленд (v1.4)', en: 'Pukaland Park (v1.4)', fr: 'Parc Pukaland' }, y: 985.06, x: 1065.72, zoom: 5 },
     { id: 'heist-abyss', icon: '💎', name: { uk: 'Рейд Аномалій & Безодня', en: 'Anomaly Raid & Abyss', fr: 'Raid Anomalie' }, y: 2432.09, x: 127.17, zoom: 5 },
     { id: 'illusions', icon: '⛩️', name: { uk: 'Місто Ілюзій', en: 'Illusion Town', fr: 'Ville Illusions' }, y: 414, x: -1705, zoom: 4 },
     { id: 'bridges', icon: '🌉', name: { uk: 'Мостові Переходи', en: 'Bridge Crossings', fr: 'Ponts' }, y: -544, x: -1164, zoom: 4 },
-    { id: 'unheard', icon: '🌊', name: { uk: 'Нечувані Береги', en: 'Unheard Shores', fr: 'Rivages Inouïs' }, y: -2135, x: -2657, zoom: 3 },
+    { id: 'southern-island', icon: '🌊', name: { uk: 'Південний Архіпелаг', en: 'Southern Archipelago', fr: 'Archipel Sud' }, y: -3650, x: -3650, zoom: 4 },
   ];
 
   // Function to render markers based on zoom and active categories
@@ -170,8 +170,24 @@ export default function MapClient() {
     leafletMapRef.current = map;
     map.setView([182, 289], 3);
 
-    const bounds = L.latLngBounds([-4700, -4400], [3100, 4900]);
+    const bounds = L.latLngBounds([-6000, -6500], [8600, 7800]);
     map.setMaxBounds(bounds);
+
+    // High-resolution full world map layer (includes 1.3 Duskmoor crater & Pukaland island)
+    const fullWorldBounds = [
+      [-5696.7, -6129.3],
+      [8399.7, 7563.9]
+    ];
+    const worldOverlay = L.imageOverlay(
+      '/src/assets/nte_world_map_v14.png',
+      fullWorldBounds,
+      {
+        opacity: 0.98,
+        interactive: false,
+        zIndex: 1,
+      }
+    );
+    worldOverlay.addTo(map);
 
     // Custom dynamic GridLayer mapping to CDN tiles
     const NteGridLayer = L.GridLayer.extend({
