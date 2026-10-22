@@ -86,7 +86,7 @@
     {
         "code": "RACENOLIMIT",
         "rewards": "100 Annulith, 2 Elite Hunter Guides, 2 Chaotic Dyes, 12,000 Beetle Coins",
-        "active": true,
+        "active": false,
         "addedAt": "2026-05-25T10:00:00Z"
     },
     {
@@ -202,5 +202,17 @@
         "rewards": "three rising hunter guide, three light dyes, and three manhole thugs",
         "active": false,
         "addedAt": "2026-04-29T09:00:00Z"
+    },
+    {
+        "code": "NTENIGHT1021",
+        "rewards": "60 Annulith, 2 Cinema Tickets",
+        "active": true,
+        "addedAt": "2026-10-22T16:37:35.577Z"
+    },
+    {
+        "code": "AD_MOBILE_ID",
+        "rewards": "AD_DESKTOP_ID;",
+        "active": true,
+        "addedAt": "2026-10-22T16:37:35.578Z"
     }
 ]
