@@ -351,10 +351,45 @@ export const FALLBACK_CHARACTERS = [
         stats: ["Відновлення енергії", "ATK%", "Аніма шкода", "Шанс криту"],
         teamSynergy: "Занкоу (Заклинання), Наналлі (Аніма), Іроі (Аніма), Байканг (Заклинання)",
         lore: "Енергійний оперативник Бюро контролю аномалій (ETD-6), яка завжди працює у зв'язці зі своїм надійним аномальним компаньйоном Сяочженем."
+    },
+    {
+        id: "blackbird",
+        name: "Blackbird (Блекберд)",
+        rarity: 5,
+        attribute: "Psyche",
+        role: "Main DPS",
+        tier: "S+",
+        avatar: "src/assets/default_avatar.svg",
+        summary: "Екстраординарний атакуючий персонаж стихії Psyche. Використовує аномальну оптичну матерію та наносить нищівну психічну шкоду по площі.",
+        weapon: "Crime and Punishment (Злочин і кара)",
+        weaponF2p: "Midnight Reverie (Опівнічні марення)",
+        cartridge: "Shadow Aria (4 частини)",
+        stats: ["Шанс криту (70%+)", "Крит. шкода", "Психея шкода", "ATK%"],
+        teamSynergy: "Ханіель (Психея), Фадія (Психея), Сакірі (Закляття), Лакрімоза (Хаос)",
+        lore: "Загадкова фігура нічного Гетеро, чиє ім'я шепочуть у найтемніших куточках міста. Її зв'язок з аномаліями класу 'Psyche' вражає аналітиків Бюро контролю."
+    },
+    {
+        id: "akane",
+        name: "Akane Rin (Акане Рін)",
+        rarity: 5,
+        attribute: "Lakshana",
+        role: "Sub-DPS",
+        tier: "S+",
+        avatar: "src/assets/default_avatar.svg",
+        summary: "Діючий рейтап-персонаж версії 1.4! Гітаристка Livehouse StarSign та мисливиця на аномалії. Забезпечує безперервну резонансну підтримку та потужні ланцюгові атаки стихії Lakshana.",
+        weapon: "Far Side of the Moon (Зворотний бік Місяця)",
+        weaponF2p: "Amplifier Rhapsody (Рапсодія підсилювача)",
+        cartridge: "Dazzling Rhythm (4 частини)",
+        stats: ["Інтенсивність циклу", "Ефект пробиття", "Відновлення енергії", "Лакшана шкода"],
+        teamSynergy: "Хаос (Лакшана), Хатор (Лакшана), Наналлі (Аніма), Сакірі (Закляття)",
+        lore: "Вдень — студентка та талановита гітаристка клубу Livehouse StarSign, вночі — віртуозна мисливиця на просторові викривлення в районах Hethereau."
     }
 ];
 
 export const FALLBACK_PROMO_CODES = [
+    { code: "WONDERLOGGIFT", rewards: "30 Annulith, 3 Senior Hunter Guides, 20,000 Fons", active: true, addedAt: "2026-10-21T10:00:00Z" },
+    { code: "BLACKBIRDHERE", rewards: "Blackbird Avatar Frame, 50 Annulith", active: true, addedAt: "2026-10-01T10:00:00Z" },
+    { code: "BLACKBIRDINNTE", rewards: "20 Heterogeneous Units, 30,000 Beetle Coins, 10,000 Fons", active: true, addedAt: "2026-10-01T09:00:00Z" },
     { code: "ZANKOU0819", rewards: "30 Annulith, 50,000 Fons, 30,000 Beetle Coins", active: true, addedAt: "2026-08-19T12:00:00Z" },
     { code: "COMEBACK", rewards: "1 Fabricated Blue Dice", active: true, addedAt: "2026-08-19T11:00:00Z" },
     { code: "WELCOMETONTE", rewards: "Celebration Fireworks Avatar Frame, 100 Annulith", active: true, addedAt: "2026-08-01T12:00:00Z" },
@@ -363,9 +398,9 @@ export const FALLBACK_PROMO_CODES = [
     { code: "DRAGONGIRL", rewards: "30 Annulith, 20,000 Fons, 1 Puka Chocoa Ellie Tour Special", active: true, addedAt: "2026-08-01T09:00:00Z" },
     { code: "NTENENE", rewards: "10,000 Clicky Fries, 10 DynamiK", active: true, addedAt: "2026-05-23T06:00:00Z" },
     { code: "NTEGIFT", rewards: "50 Annulith, 5 Rising Hunter Guides, 5 Light Dye", active: true, addedAt: "2026-05-23T03:00:00Z" },
+    { code: "RACENOLIMIT", rewards: "100 Annulith, 2 Elite Hunter Guides, 2 Chaotic Dyes, 12,000 Beetle Coins", active: true, addedAt: "2026-05-25T10:00:00Z" },
     { code: "DREAMWALK0603", rewards: "100 Annulith, 5 Rising Hunter Guides, 5 Light Dyes, 4,000 Beetle Coins", active: false, addedAt: "2026-05-25T12:00:00Z" },
     { code: "TOMATO100", rewards: "100 Annulith, 5 Senior Hunter Guides, 5 Colorless Dyes, 6,000 Beetle Coins", active: false, addedAt: "2026-05-25T11:00:00Z" },
-    { code: "RACENOLIMIT", rewards: "100 Annulith, 2 Elite Hunter Guides, 2 Chaotic Dyes, 12,000 Beetle Coins", active: false, addedAt: "2026-05-25T10:00:00Z" },
     { code: "NTE429vtuber", rewards: "30,000 Beetle Coins, 30,000 Fons", active: false, addedAt: "2026-05-23T09:00:00Z" },
     { code: "NTEWINFONS", rewards: "10,000 Fons", active: false, addedAt: "2026-05-23T08:00:00Z" },
     { code: "NTEFUNGAME", rewards: "10,000 Fons", active: false, addedAt: "2026-05-23T07:00:00Z" },
@@ -411,16 +446,37 @@ export const FALLBACK_TIMELINE_EVENTS = [
     {
         date: "19 Серпня 2026",
         title: "Оновлення 1.3 'Rising from the Moonlit Fog': Банер Занкоу (Zankou)",
-        desc: "Офіційний реліз версії 1.3! Новий сюжет 'Fogden Game', локація Duskmoor та лімітований банер нової S+ атакуючої героїні Занкоу (стихія Заклинання, чергування режимів Реальності/Ілюзії).",
-        status: "Active",
+        desc: "Реліз версії 1.3. Сюжетний розділ 'Fogden Game', локація Duskmoor та лімітований банер атакуючої героїні Занкоу (стихія Заклинання).",
+        status: "Released",
         badgeClass: "badge-incant"
     },
     {
         date: "10 Вересня 2026",
         title: "Друга фаза 1.3: Банер Лінко (Linko)",
-        desc: "Старт другої фази оновлення 1.3. Лімітований банер нового персонажа підтримки S-рангу Лінко (стихія Аніма, резонансні поля та Synced Strikes).",
-        status: "Upcoming",
+        desc: "Старт другої фази 1.3. Лімітований банер саппорта S-рангу Лінко (стихія Аніма, резонансні поля та Synced Strikes).",
+        status: "Released",
         badgeClass: "badge-anima"
+    },
+    {
+        date: "30 Вересня 2026",
+        title: "Оновлення 1.4 'For Whom the Verses Mourn': Банер Блекберд (Blackbird)",
+        desc: "Старт першої фази версії 1.4! Нова сюжетна лінія, локація парку Pukaland, лімітований банер Блекберд (стихія Психея) та реран Лакрімози.",
+        status: "Released",
+        badgeClass: "badge-psyche"
+    },
+    {
+        date: "21 Жовтня - 11 Листопада 2026",
+        title: "Друга фаза 1.4: Банер Акане Рін (Akane Rin)",
+        desc: "ДІЮЧИЙ БАНЕР! Лімітований банер гітаристки Livehouse StarSign Акане Рін (стихія Лакшана) та сигнатурного Арку 'Far Side of the Moon'. Святкові піврічні нагороди релізу.",
+        status: "Active",
+        badgeClass: "badge-lakshana"
+    },
+    {
+        date: "12 Листопада 2026 (Анонс)",
+        title: "Оновлення 1.5 'Neon Resonance': Презентація версії",
+        desc: "Майбутнє велике оновлення з новими сюжетними арками Hethereau, розширенням музичних колаборацій та новими мисливцями на аномалії.",
+        status: "Upcoming",
+        badgeClass: "badge-cosmos"
     }
 ];
 

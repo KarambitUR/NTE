@@ -155,20 +155,61 @@
         teamSynergy: "Nanally (Anima), Iroi (Anima), Zero (Cosmos), Sakiri (Incantation)",
         lore: "Енергійна оперативниця Бюро Контролю Аномалій (BAC), яка використовує тактичний візор та високотехнологічні гаджети для розвідувальних місій."
     },
+    {
+        id: "blackbird",
+        name: "Blackbird (Блекберд)",
+        rarity: 5,
+        attribute: "Psyche",
+        role: "Main DPS",
+        tier: "S+",
+        avatar: "src/assets/default_avatar.svg",
+        summary: "Екстраординарний атакуючий персонаж стихії Psyche. Використовує аномальну оптичну матерію та наносить нищівну психічну шкоду по площі.",
+        weapon: "Crime and Punishment (Злочин і кара)",
+        weaponF2p: "Midnight Reverie (Опівнічні марення)",
+        cartridge: "Shadow Aria (4 частини)",
+        stats: ["Crit Rate (70%+)", "Crit DMG", "Psyche DMG", "ATK%"],
+        teamSynergy: "Haniel (Psyche), Fadia (Psyche), Sakiri (Incantation), Lacrimosa (Chaos)",
+        lore: "Загадкова фігура нічного Гетеро, чиє ім'я шепочуть у найтемніших куточках міста. Її зв'язок з аномаліями класу 'Psyche' вражає аналітиків Бюро контролю."
+    },
+    {
+        id: "akane",
+        name: "Akane Rin (Акане Рін)",
+        rarity: 5,
+        attribute: "Lakshana",
+        role: "Sub-DPS",
+        tier: "S+",
+        avatar: "src/assets/default_avatar.svg",
+        summary: "Діючий рейтап-персонаж версії 1.4! Гітаристка Livehouse StarSign та мисливиця на аномалії. Забезпечує безперервну резонансну підтримку та потужні ланцюгові атаки стихії Lakshana.",
+        weapon: "Far Side of the Moon (Зворотний бік Місяця)",
+        weaponF2p: "Amplifier Rhapsody (Рапсодія підсилювача)",
+        cartridge: "Dazzling Rhythm (4 частини)",
+        stats: ["Cycle Intensity", "Break Effect", "Energy Charge Efficiency", "Lakshana DMG"],
+        teamSynergy: "Chaos (Lakshana), Hathor (Lakshana), Nanally (Anima), Sakiri (Incantation)",
+        lore: "Вдень — студентка та талановита гітаристка клубу Livehouse StarSign, вночі — віртуозна мисливиця на просторові викривлення в районах Hethereau."
+    }
 ];
 
     // ===== PROMO CODES =====
     const promoCodes = [
-        { code: "DREAMWALK0603", rewards: "100 Annulith, 5 Rising Hunter Guides, 5 Light Dyes, 4,000 Beetle Coins", active: true, addedAt: "2026-05-25T12:00:00Z" },
-        { code: "TOMATO100", rewards: "100 Annulith, 5 Senior Hunter Guides, 5 Colorless Dyes, 6,000 Beetle Coins", active: true, addedAt: "2026-05-25T11:00:00Z" },
-        { code: "RACENOLIMIT", rewards: "100 Annulith, 2 Elite Hunter Guides, 2 Chaotic Dyes, 12,000 Beetle Coins", active: true, addedAt: "2026-05-25T10:00:00Z" },
-        { code: "NTE429vtuber", rewards: "30,000 Beetle Coins, 30,000 Fons", active: true, addedAt: "2026-05-23T09:00:00Z" },
-        { code: "NTEWINFONS", rewards: "10,000 Fons", active: true, addedAt: "2026-05-23T08:00:00Z" },
-        { code: "NTEFUNGAME", rewards: "10,000 Fons", active: true, addedAt: "2026-05-23T07:00:00Z" },
+        { code: "WONDERLOGGIFT", rewards: "30 Annulith, 3 Senior Hunter Guides, 20,000 Fons", active: true, addedAt: "2026-10-21T10:00:00Z" },
+        { code: "BLACKBIRDHERE", rewards: "Blackbird Avatar Frame, 50 Annulith", active: true, addedAt: "2026-10-01T10:00:00Z" },
+        { code: "BLACKBIRDINNTE", rewards: "20 Heterogeneous Units, 30,000 Beetle Coins, 10,000 Fons", active: true, addedAt: "2026-10-01T09:00:00Z" },
+        { code: "ZANKOU0819", rewards: "30 Annulith, 50,000 Fons, 30,000 Beetle Coins", active: true, addedAt: "2026-08-19T12:00:00Z" },
+        { code: "COMEBACK", rewards: "1 Fabricated Blue Dice", active: true, addedAt: "2026-08-19T11:00:00Z" },
+        { code: "WELCOMETONTE", rewards: "Celebration Fireworks Avatar Frame, 100 Annulith", active: true, addedAt: "2026-08-01T12:00:00Z" },
+        { code: "NTEKokushi", rewards: "30,000 Fons, 30,000 Beetle Coins", active: true, addedAt: "2026-08-01T11:00:00Z" },
+        { code: "NTEMusou", rewards: "10,000 Fons, 10,000 Beetle Coins", active: true, addedAt: "2026-08-01T10:00:00Z" },
+        { code: "DRAGONGIRL", rewards: "30 Annulith, 20,000 Fons, 1 Puka Chocoa Ellie Tour Special", active: true, addedAt: "2026-08-01T09:00:00Z" },
         { code: "NTENENE", rewards: "10,000 Clicky Fries, 10 DynamiK", active: true, addedAt: "2026-05-23T06:00:00Z" },
-        { code: "NTEFREE", rewards: "30,000 Fons", active: true, addedAt: "2026-05-23T05:00:00Z" },
-        { code: "NTEvtuber200", rewards: "10,000 Beetle Coins, 10,000 Fons", active: true, addedAt: "2026-05-23T04:00:00Z" },
         { code: "NTEGIFT", rewards: "50 Annulith, 5 Rising Hunter Guides, 5 Light Dye", active: true, addedAt: "2026-05-23T03:00:00Z" },
+        { code: "RACENOLIMIT", rewards: "100 Annulith, 2 Elite Hunter Guides, 2 Chaotic Dyes, 12,000 Beetle Coins", active: true, addedAt: "2026-05-25T10:00:00Z" },
+        { code: "DREAMWALK0603", rewards: "100 Annulith, 5 Rising Hunter Guides, 5 Light Dyes, 4,000 Beetle Coins", active: false, addedAt: "2026-05-25T12:00:00Z" },
+        { code: "TOMATO100", rewards: "100 Annulith, 5 Senior Hunter Guides, 5 Colorless Dyes, 6,000 Beetle Coins", active: false, addedAt: "2026-05-25T11:00:00Z" },
+        { code: "NTE429vtuber", rewards: "30,000 Beetle Coins, 30,000 Fons", active: false, addedAt: "2026-05-23T09:00:00Z" },
+        { code: "NTEWINFONS", rewards: "10,000 Fons", active: false, addedAt: "2026-05-23T08:00:00Z" },
+        { code: "NTEFUNGAME", rewards: "10,000 Fons", active: false, addedAt: "2026-05-23T07:00:00Z" },
+        { code: "NTEFREE", rewards: "30,000 Fons", active: false, addedAt: "2026-05-23T05:00:00Z" },
+        { code: "NTEvtuber200", rewards: "10,000 Beetle Coins, 10,000 Fons", active: false, addedAt: "2026-05-23T04:00:00Z" },
         { code: "504980102FKGOVNS", rewards: "30 Annulith, 1 Gubichi Flavor Chips, 20,000 Beetle Coins", active: false, addedAt: "2026-05-23T02:00:00Z" },
         { code: "NTE0429", rewards: "12k beetle coins, 100 annulith, five elite hunter guides, and two chaotic dye", active: false, addedAt: "2026-04-29T12:00:00Z" },
         { code: "NTENANALLYGO", rewards: "6k beetle coins, 100 annulith, five senior hunter guides, and five colorless dye", active: false, addedAt: "2026-04-29T11:00:00Z" },
@@ -183,8 +224,13 @@
         { order: 2, date: "3-4 Червня 2026", title: "Оновлення 1.1: 'Lacrimosa of Chaos'", desc: "Вихід першого великого патчу. Старт першої фази банера з Лакрімозою. Новий сюжетний епізод 'Театр Тіней'. Початок літнього івенту.", status: "Released", badgeClass: "badge-chaos" },
         { order: 3, date: "24 Червня 2026", title: "Друга фаза 1.1: Банер Хаосу (Chaos)", desc: "Старт другої фази версії 1.1. Лімітований банер нового персонажа S-рангу Хаосу (Chaos), який володіє стихією Лакшана.", status: "Released", badgeClass: "badge-lakshana" },
         { order: 4, date: "27 Червня 2026", title: "Стрім Розробників: Презентація Версії 1.2 '999 Nights'", desc: "Спеціальна трансляція від Hotta Studio. Детальна презентація оновлення 1.2, анонс нових героїв Шінку (Shinku) та Іроі (Iroi), демонстрація геймплею, нових ігрових зон та нові промокоди.", status: "Released", badgeClass: "badge-incant" },
-        { order: 5, date: "8 Липня 2026", title: "Оновлення 1.2 '999 Nights': Банер Шінку (Shinku)", desc: "Офіційний запуск версії 1.2. Старт першої фази з банером Шінку (S-ранг, стихія Космос, атакуючий DPS з механікою берсерка). Новий сюжетний розділ, розширення карти та літні події.", status: "Active", badgeClass: "badge-cosmos" },
-        { order: 6, date: "29 Липня 2026 (Прогноз)", title: "Друга фаза 1.2: Банер Іроі (Iroi)", desc: "Старт другої фази оновлення 1.2. Лімітований банер нового персонажа підтримки S-рангу Іроі (Iroi), яка володіє стихією Аніма та спеціалізується на лікуванні команди.", status: "Upcoming", badgeClass: "badge-anima" }
+        { order: 5, date: "8 Липня 2026", title: "Оновлення 1.2 '999 Nights': Банер Шінку (Shinku)", desc: "Офіційний запуск версії 1.2. Старт першої фази з банером Шінку (S-ранг, стихія Космос, атакуючий DPS з механікою берсерка). Новий сюжетний розділ, розширення карти та літні події.", status: "Released", badgeClass: "badge-cosmos" },
+        { order: 6, date: "29 Липня 2026", title: "Друга фаза 1.2: Банер Іроі (Iroi)", desc: "Старт другої фази оновлення 1.2. Лімітований банер нового персонажа підтримки S-рангу Іроі (Iroi), яка володіє стихією Аніма та спеціалізується на лікуванні команди.", status: "Released", badgeClass: "badge-anima" },
+        { order: 7, date: "19 Серпня 2026", title: "Оновлення 1.3 'Rising from the Moonlit Fog': Банер Занкоу (Zankou)", desc: "Офіційний реліз версії 1.3! Новий сюжет 'Fogden Game', локація Duskmoor та лімітований банер атакуючої героїні Занкоу (стихія Заклинання).", status: "Released", badgeClass: "badge-incant" },
+        { order: 8, date: "10 Вересня 2026", title: "Друга фаза 1.3: Банер Лінко (Linko)", desc: "Старт другої фази 1.3. Лімітований банер саппорта S-рангу Лінко (стихія Аніма, резонансні поля та Synced Strikes).", status: "Released", badgeClass: "badge-anima" },
+        { order: 9, date: "30 Вересня 2026", title: "Оновлення 1.4 'For Whom the Verses Mourn': Банер Блекберд (Blackbird)", desc: "Старт першої фази версії 1.4! Нова сюжетна лінія, локація парку Pukaland, лімітований банер Блекберд (стихія Психея) та реран Лакрімози.", status: "Released", badgeClass: "badge-psyche" },
+        { order: 10, date: "21 Жовтня - 11 Листопада 2026", title: "Друга фаза 1.4: Банер Акане Рін (Akane Rin)", desc: "ДІЮЧИЙ БАНЕР! Лімітований банер гітаристки Livehouse StarSign Акане Рін (стихія Лакшана) та сигнатурного Арку 'Far Side of the Moon'. Святкові піврічні нагороди релізу.", status: "Active", badgeClass: "badge-lakshana" },
+        { order: 11, date: "12 Листопада 2026 (Анонс)", title: "Оновлення 1.5 'Neon Resonance': Презентація версії", desc: "Майбутнє велике оновлення з новими сюжетними арками Hethereau, розширенням музичних колаборацій та новими мисливцями на аномалії.", status: "Upcoming", badgeClass: "badge-cosmos" }
     ];
 
     // ===== GUIDES =====

@@ -2,8 +2,8 @@ import { state } from '../scripts/state.js';
 
 // startBannerCountdown and updateTimer
 function startBannerCountdown() {
-    // Shinku's banner ends on July 29, 2026 at 05:59 UTC+8.
-    const bannerEndDate = new Date("2026-07-28T21:59:00Z").getTime();
+    // Akane Rin's banner (Version 1.4 Phase 2) ends on November 11, 2026 at 21:59 UTC.
+    const bannerEndDate = new Date("2026-11-11T21:59:00Z").getTime();
     
     function updateTimer() {
         const now = new Date().getTime();

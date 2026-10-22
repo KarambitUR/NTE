@@ -780,6 +780,70 @@ export const CHARACTER_TRANSLATIONS = {
             teamSynergy: "Zankou (Incantation), Nanally (Anima), Iroi (Anima), Baicang (Incantation)",
             lore: "Opératrice énergique de l'ETD-6 du Bureau de Contrôle des Anomalies, combattant aux côtés de son compagnon Xiaozhen."
         }
+    },
+    blackbird: {
+        uk: {
+            name: "Блекберд",
+            summary: "Екстраординарний атакуючий персонаж стихії Психея. Використовує аномальну оптичну матерію та наносить нищівну психічну шкоду по площі.",
+            weapon: "Злочин і кара (Сигнатурний Arc)",
+            weaponF2p: "Опівнічні марення",
+            cartridge: "Арія тіней (4 частини)",
+            stats: ["Шанс криту (70%+)", "Крит. шкода", "Психея шкода", "Сила атаки %"],
+            teamSynergy: "Ханіель (Психея), Фадія (Психея), Сакірі (Закляття), Лакрімоза (Хаос)",
+            lore: "Загадкова фігура нічного Гетеро, чиє ім'я шепочуть у найтемніших куточках міста. Її зв'язок з аномаліями класу 'Psyche' вражає аналітиків Бюро контролю."
+        },
+        en: {
+            name: "Blackbird",
+            summary: "Extraordinary Psyche attribute Main DPS. Manipulates optical anomaly matter to unleash devastating area-of-effect psychic damage.",
+            weapon: "Crime and Punishment (Signature Arc)",
+            weaponF2p: "Midnight Reverie",
+            cartridge: "Shadow Aria (4-piece)",
+            stats: ["Crit Rate (70%+)", "Crit DMG", "Psyche DMG", "ATK%"],
+            teamSynergy: "Haniel (Psyche), Fadia (Psyche), Sakiri (Incantation), Lacrimosa (Chaos)",
+            lore: "A mysterious figure of nighttime Hethereau, whispered in the darkest alleys. Her bond with Psyche-class anomalies baffles even BAC analysts."
+        },
+        fr: {
+            name: "Blackbird",
+            summary: "DPS Principal extraordinaire d'attribut Psyché. Manipule la matière anormale optique pour infliger de dévastateurs dégâts psychiques de zone.",
+            weapon: "Crime et Châtiment (Arc Signature)",
+            weaponF2p: "Rêverie de Minuit",
+            cartridge: "Aria des Ombres (4 pièces)",
+            stats: ["Taux Critique (70%+)", "Dégâts Critique", "Dégâts Psyché", "ATK %"],
+            teamSynergy: "Haniel (Psyché), Fadia (Psyché), Sakiri (Incantation), Lacrimosa (Chaos)",
+            lore: "Figure mystérieuse d'Hethereau nocturne. Ses liens avec les anomalies de classe Psyché déconcertent les analystes du BAC."
+        }
+    },
+    akane: {
+        uk: {
+            name: "Акане Рін",
+            summary: "Діючий рейтап-персонаж версії 1.4! Гітаристка Livehouse StarSign та мисливиця на аномалії. Забезпечує безперервну резонансну підтримку та потужні ланцюгові атаки стихії Лакшана.",
+            weapon: "Зворотний бік Місяця (Сигнатурний Arc)",
+            weaponF2p: "Рапсодія підсилювача",
+            cartridge: "Сліпучий ритм (4 частини)",
+            stats: ["Інтенсивність циклу", "Ефект пробиття", "Відновлення енергії", "Лакшана шкода"],
+            teamSynergy: "Хаос (Лакшана), Хатор (Лакшана), Наналлі (Аніма), Сакірі (Закляття)",
+            lore: "Вдень — студентка та талановита гітаристка клубу Livehouse StarSign, вночі — віртуозна мисливиця на просторові викривлення в районах Hethereau."
+        },
+        en: {
+            name: "Akane Rin",
+            summary: "Featured rate-up character in Version 1.4! Livehouse StarSign guitarist and anomaly hunter providing continuous resonance support and lightning-fast Lakshana chain attacks.",
+            weapon: "Far Side of the Moon (Signature Arc)",
+            weaponF2p: "Amplifier Rhapsody",
+            cartridge: "Dazzling Rhythm (4-piece)",
+            stats: ["Cycle Intensity", "Break Effect", "Energy Recharge", "Lakshana DMG"],
+            teamSynergy: "Chaos (Lakshana), Hathor (Lakshana), Nanally (Anima), Sakiri (Incantation)",
+            lore: "By day, a student and lead guitarist at Livehouse StarSign; by night, a virtuoso anomaly hunter tracking spatial fractures across Hethereau."
+        },
+        fr: {
+            name: "Akane Rin",
+            summary: "Personnage vedette de la Version 1.4 ! Guitariste du Livehouse StarSign et chasseuse d'anomalies offrant un soutien continu et de puissantes attaques en chaîne d'attribut Lakshana.",
+            weapon: "La Face Cachée de la Lune (Arc Signature)",
+            weaponF2p: "Rhapsodie de l'Amplificateur",
+            cartridge: "Rythme Éblouissant (4 pièces)",
+            stats: ["Intensité de Cycle", "Effet de Rupture", "Recharge d'Énergie", "Dégâts Lakshana"],
+            teamSynergy: "Chaos (Lakshana), Hathor (Lakshana), Nanally (Anima), Sakiri (Incantation)",
+            lore: "Étudiante et guitariste au club Livehouse StarSign le jour, chasseuse d'anomalies virtuose traquant les distorsions d'Hethereau la nuit."
+        }
     }
 };
 
@@ -1493,6 +1557,91 @@ export const TIMELINE_TRANSLATIONS = {
             date: "24 juin 2026",
             desc: "Début de la deuxième phase de la version 1.1. Bannière limitée pour le nouveau personnage de rang S Chaos (élément Lakshana)."
         }
+    },
+    "Оновлення 1.3 'Rising from the Moonlit Fog': Банер Занкоу (Zankou)": {
+        uk: {
+            title: "Оновлення 1.3 'Rising from the Moonlit Fog': Банер Занкоу (Zankou)",
+            date: "19 Серпня 2026",
+            desc: "Реліз версії 1.3. Сюжетний розділ 'Fogden Game', локація Duskmoor та лімітований банер атакуючої героїні Занкоу (стихія Заклинання)."
+        },
+        en: {
+            title: "Version 1.3 'Rising from the Moonlit Fog': Zankou Banner",
+            date: "August 19, 2026",
+            desc: "Release of Version 1.3. 'Fogden Game' story chapter, Duskmoor location, and limited banner for Main DPS heroine Zankou (Incantation attribute)."
+        },
+        fr: {
+            title: "Version 1.3 'Rising from the Moonlit Fog' : Bannière de Zankou",
+            date: "19 août 2026",
+            desc: "Sortie de la Version 1.3. Chapitre 'Fogden Game', zone de Duskmoor et bannière limitée du DPS Zankou (attribut Incantation)."
+        }
+    },
+    "Друга фаза 1.3: Банер Лінко (Linko)": {
+        uk: {
+            title: "Друга фаза 1.3: Банер Лінко (Linko)",
+            date: "10 Вересня 2026",
+            desc: "Старт другої фази 1.3. Лімітований банер саппорта S-рангу Лінко (стихія Аніма, резонансні поля та Synced Strikes)."
+        },
+        en: {
+            title: "Phase 2 of 1.3: Linko Banner",
+            date: "September 10, 2026",
+            desc: "Start of Phase 2 in Version 1.3. Limited banner for S-Rank Anima support Linko (Resonance fields and Synced Strikes)."
+        },
+        fr: {
+            title: "Phase 2 de la 1.3 : Bannière de Linko",
+            date: "10 septembre 2026",
+            desc: "Début de la Phase 2 de la version 1.3. Bannière limitée pour le soutien de rang S Linko (attribut Anima, champs de résonance et Synced Strikes)."
+        }
+    },
+    "Оновлення 1.4 'For Whom the Verses Mourn': Банер Блекберд (Blackbird)": {
+        uk: {
+            title: "Оновлення 1.4 'For Whom the Verses Mourn': Банер Блекберд (Blackbird)",
+            date: "30 Вересня 2026",
+            desc: "Старт першої фази версії 1.4! Нова сюжетна лінія, локація парку Pukaland, лімітований банер Блекберд (стихія Психея) та реран Лакрімози."
+        },
+        en: {
+            title: "Version 1.4 'For Whom the Verses Mourn': Blackbird Banner",
+            date: "September 30, 2026",
+            desc: "Launch of Version 1.4 Phase 1! New storyline, Pukaland theme park area, limited banner for Blackbird (Psyche attribute) and Lacrimosa rerun."
+        },
+        fr: {
+            title: "Version 1.4 'For Whom the Verses Mourn' : Bannière de Blackbird",
+            date: "30 septembre 2026",
+            desc: "Lancement de la Phase 1 de la version 1.4 ! Nouvelle histoire, zone du parc Pukaland, bannière limitée de Blackbird (attribut Psyché) et rerun de Lacrimosa."
+        }
+    },
+    "Друга фаза 1.4: Банер Акане Рін (Akane Rin)": {
+        uk: {
+            title: "Друга фаза 1.4: Банер Акане Рін (Akane Rin)",
+            date: "21 Жовтня - 11 Листопада 2026",
+            desc: "ДІЮЧИЙ БАНЕР! Лімітований банер гітаристки Livehouse StarSign Акане Рін (стихія Лакшана) та сигнатурного Арку 'Far Side of the Moon'. Святкові піврічні нагороди релізу."
+        },
+        en: {
+            title: "Phase 2 of 1.4: Akane Rin Banner",
+            date: "October 21 - November 11, 2026",
+            desc: "ACTIVE BANNER! Limited banner for Livehouse StarSign guitarist Akane Rin (Lakshana attribute) and signature Arc 'Far Side of the Moon'. Half-year anniversary rewards."
+        },
+        fr: {
+            title: "Phase 2 de la 1.4 : Bannière d'Akane Rin",
+            date: "21 octobre - 11 novembre 2026",
+            desc: "BANNIÈRE ACTIVE ! Bannière limitée de la guitariste du Livehouse StarSign Akane Rin (attribut Lakshana) et son Arc signature 'Far Side of the Moon'. Récompenses du semi-anniversaire."
+        }
+    },
+    "Оновлення 1.5 'Neon Resonance': Презентація версії": {
+        uk: {
+            title: "Оновлення 1.5 'Neon Resonance': Презентація версії",
+            date: "12 Листопада 2026 (Анонс)",
+            desc: "Майбутнє велике оновлення з новими сюжетними арками Hethereau, розширенням музичних колаборацій та новими мисливцями на аномалії."
+        },
+        en: {
+            title: "Version 1.5 'Neon Resonance': Version Preview",
+            date: "November 12, 2026 (Announcement)",
+            desc: "Upcoming major update featuring new Hethereau narrative arcs, expanded music collaborations, and new anomaly hunters."
+        },
+        fr: {
+            title: "Version 1.5 'Neon Resonance' : Aperçu de la Version",
+            date: "12 novembre 2026 (Annonce)",
+            desc: "Prochaine mise à jour majeure comprenant de nouveaux arcs narratifs à Hethereau, des collaborations musicales et de nouveaux chasseurs d'anomalies."
+        }
     }
 };
 
@@ -1640,7 +1789,7 @@ export const i18n = {
         hero_btn_tierlist: "Переглянути Тір-ліст",
         hero_btn_teambuilder: "Зібрати Загін",
         active_banner_badge: "АКТИВНИЙ БАНЕР",
-        active_banner_title: "Шінку: 999 Ночей",
+        active_banner_title: "Акане Рін: Зірка Сцени",
         banner_timer_label: "До завершення:",
         view_build_btn: "Оцінка та білд",
         feat_tierlist_title: "Інтерактивний Тір-ліст",
@@ -1863,7 +2012,7 @@ export const i18n = {
         hero_btn_tierlist: "View Tier List",
         hero_btn_teambuilder: "Build Squad",
         active_banner_badge: "ACTIVE BANNER",
-        active_banner_title: "Shinku: 999 Nights",
+        active_banner_title: "Akane Rin: Dazzling Star",
         banner_timer_label: "Ends in:",
         view_build_btn: "Review & Build",
         feat_tierlist_title: "Interactive Tier List",
@@ -2086,7 +2235,7 @@ export const i18n = {
         hero_btn_tierlist: "Voir la Tier List",
         hero_btn_teambuilder: "Créer une Équipe",
         active_banner_badge: "BANNIÈRE ACTIVE",
-        active_banner_title: "Shinku : 999 Nights",
+        active_banner_title: "Akane Rin : Étoile Éblouissante",
         banner_timer_label: "Se termine dans :",
         view_build_btn: "Évaluation & Build",
         feat_tierlist_title: "Tier List Interactive",

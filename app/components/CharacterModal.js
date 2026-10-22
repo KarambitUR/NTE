@@ -43,7 +43,7 @@ export default function CharacterModal() {
 
   return (
     <div
-      class="modal-overlay active"
+      className="modal-overlay active"
       style={{
         display: 'flex',
         position: 'fixed',
@@ -63,7 +63,7 @@ export default function CharacterModal() {
       onClick={closeCharacterModal}
     >
       <div
-        class="modal-content glass-panel"
+        className="modal-content glass-panel"
         style={{
           position: 'relative',
           maxWidth: '700px',
@@ -106,10 +106,10 @@ export default function CharacterModal() {
           <div>
             <h2 style={{ fontSize: '26px', fontWeight: '800', margin: '0 0 8px 0', color: '#fff' }}>{name}</h2>
             <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
-              <span class={`badge badge-${char.rarity === 5 ? 'hot' : 'cosmos'}`}>{char.rarity}★</span>
-              <span class={`badge badge-${String(char.attribute).toLowerCase()}`}>{char.attribute}</span>
-              <span class="badge badge-anima">{char.role}</span>
-              <span class="badge badge-incant">Tier {char.tier}</span>
+              <span className={`badge badge-${char.rarity === 5 ? 'hot' : 'cosmos'}`}>{char.rarity}★</span>
+              <span className={`badge badge-${String(char.attribute).toLowerCase()}`}>{char.attribute}</span>
+              <span className="badge badge-anima">{char.role}</span>
+              <span className="badge badge-incant">Tier {char.tier}</span>
             </div>
           </div>
         </div>
@@ -129,17 +129,17 @@ export default function CharacterModal() {
             </h4>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-              <div class="glass-panel" style={{ padding: '12px', borderRadius: '8px' }}>
+              <div className="glass-panel" style={{ padding: '12px', borderRadius: '8px' }}>
                 <span style={{ fontSize: '11px', opacity: 0.7, display: 'block' }}>{labels.bestWeapon[lang] || labels.bestWeapon.uk}</span>
                 <strong style={{ fontSize: '13px', color: '#fff' }}>{weapon}</strong>
               </div>
-              <div class="glass-panel" style={{ padding: '12px', borderRadius: '8px' }}>
+              <div className="glass-panel" style={{ padding: '12px', borderRadius: '8px' }}>
                 <span style={{ fontSize: '11px', opacity: 0.7, display: 'block' }}>{labels.f2pWeapon[lang] || labels.f2pWeapon.uk}</span>
                 <strong style={{ fontSize: '13px', color: '#fff' }}>{weaponF2p}</strong>
               </div>
             </div>
 
-            <div class="glass-panel" style={{ padding: '12px', borderRadius: '8px', marginTop: '12px' }}>
+            <div className="glass-panel" style={{ padding: '12px', borderRadius: '8px', marginTop: '12px' }}>
               <span style={{ fontSize: '11px', opacity: 0.7, display: 'block' }}>{labels.cartridge[lang] || labels.cartridge.uk}</span>
               <strong style={{ fontSize: '13px', color: '#fff' }}>{cartridge}</strong>
             </div>
@@ -148,7 +148,7 @@ export default function CharacterModal() {
               <span style={{ fontSize: '11px', opacity: 0.7, display: 'block', marginBottom: '6px' }}>{labels.statsPri[lang] || labels.statsPri.uk}</span>
               <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
                 {stats.map((st, i) => (
-                  <span key={i} class="badge badge-secondary" style={{ fontSize: '11px' }}>
+                  <span key={i} className="badge badge-secondary" style={{ fontSize: '11px' }}>
                     {st}
                   </span>
                 ))}

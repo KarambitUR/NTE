@@ -1,5 +1,137 @@
 [
     {
+        "code": "WONDERLOGGIFT",
+        "rewards": "30 Annulith, 3 Senior Hunter Guides, 20,000 Fons",
+        "active": true,
+        "addedAt": "2026-10-21T10:00:00Z"
+    },
+    {
+        "code": "BLACKBIRDHERE",
+        "rewards": "Blackbird Avatar Frame, 50 Annulith",
+        "active": true,
+        "addedAt": "2026-10-01T10:00:00Z"
+    },
+    {
+        "code": "BLACKBIRDINNTE",
+        "rewards": "20 Heterogeneous Units, 30,000 Beetle Coins, 10,000 Fons",
+        "active": true,
+        "addedAt": "2026-10-01T09:00:00Z"
+    },
+    {
+        "code": "PUKALANDGOGO",
+        "rewards": "100 Annulith, 2 Chaotic Dyes, 2 Elite Hunter Guides, 12,000 Beetle Coins",
+        "active": true,
+        "addedAt": "2026-09-20T15:26:10Z"
+    },
+    {
+        "code": "THEWHOOTS",
+        "rewards": "100 Annulith, 5 Colorless Dyes, 5 Senior Hunter Guides, 6,000 Beetle Coins",
+        "active": true,
+        "addedAt": "2026-09-20T15:26:10Z"
+    },
+    {
+        "code": "WITCHHOUSE",
+        "rewards": "100 Annulith, 5 Light Dyes, 5 Rising Hunter Guides, 4,000 Beetle Coins",
+        "active": true,
+        "addedAt": "2026-09-20T15:26:10Z"
+    },
+    {
+        "code": "ZANKOU0819",
+        "rewards": "30 Annulith, 50,000 Fons, 30,000 Beetle Coins",
+        "active": true,
+        "addedAt": "2026-08-19T12:00:00Z"
+    },
+    {
+        "code": "COMEBACK",
+        "rewards": "1 Fabricated Blue Dice",
+        "active": true,
+        "addedAt": "2026-08-19T11:00:00Z"
+    },
+    {
+        "code": "WELCOMETONTE",
+        "rewards": "Celebration Fireworks Avatar Frame, 100 Annulith",
+        "active": true,
+        "addedAt": "2026-08-01T12:00:00Z"
+    },
+    {
+        "code": "NTEKokushi",
+        "rewards": "30,000 Fons, 30,000 Beetle Coins",
+        "active": true,
+        "addedAt": "2026-08-01T11:00:00Z"
+    },
+    {
+        "code": "NTEMusou",
+        "rewards": "10,000 Fons, 10,000 Beetle Coins",
+        "active": true,
+        "addedAt": "2026-08-01T10:00:00Z"
+    },
+    {
+        "code": "DRAGONGIRL",
+        "rewards": "30 Annulith, 20,000 Fons, 1 Puka Chocoa Ellie Tour Special",
+        "active": true,
+        "addedAt": "2026-08-01T09:00:00Z"
+    },
+    {
+        "code": "NTENENE",
+        "rewards": "10,000 Clicky Fries, 10 DynamiK",
+        "active": true,
+        "addedAt": "2026-05-23T06:00:00Z"
+    },
+    {
+        "code": "NTEGIFT",
+        "rewards": "50 Annulith, 5 Rising Hunter Guides, 5 Light Dye",
+        "active": true,
+        "addedAt": "2026-05-23T03:00:00Z"
+    },
+    {
+        "code": "RACENOLIMIT",
+        "rewards": "100 Annulith, 2 Elite Hunter Guides, 2 Chaotic Dyes, 12,000 Beetle Coins",
+        "active": true,
+        "addedAt": "2026-05-25T10:00:00Z"
+    },
+    {
+        "code": "FOGDENGAME",
+        "rewards": "100 Annulith, 5 Light Dyes, 5 Rising Hunter Guides, 4,000 Beetle Coins",
+        "active": false,
+        "addedAt": "2026-08-08T18:34:31Z"
+    },
+    {
+        "code": "EYEOFDELUSION",
+        "rewards": "100 Annulith, 5 Light Dyes, 5 Rising Hunter Guides, 6,000 Beetle Coins",
+        "active": false,
+        "addedAt": "2026-08-08T18:34:31Z"
+    },
+    {
+        "code": "SUMMERTIME",
+        "rewards": "100 Annulith, 2 Light Dyes, 2 Rising Hunter Guides, 12,000 Beetle Coins",
+        "active": false,
+        "addedAt": "2026-08-08T18:34:31Z"
+    },
+    {
+        "code": "999NIGHTS",
+        "rewards": "100 Annulith, 5 Fabricated Dice",
+        "active": false,
+        "addedAt": "2026-06-27T13:42:59Z"
+    },
+    {
+        "code": "IROI0729",
+        "rewards": "100 Annulith, 20,000 Fons",
+        "active": false,
+        "addedAt": "2026-06-27T13:42:59Z"
+    },
+    {
+        "code": "SHINKU0708",
+        "rewards": "100 Annulith, 20,000 Fons",
+        "active": false,
+        "addedAt": "2026-06-27T13:42:59Z"
+    },
+    {
+        "code": "LACRIMOSA0603",
+        "rewards": "30 Annulith, 20,000 Fons",
+        "active": false,
+        "addedAt": "2026-06-03T12:00:00Z"
+    },
+    {
         "code": "DREAMWALK0603",
         "rewards": "100 Annulith, 5 Rising Hunter Guides, 5 Light Dyes, 4,000 Beetle Coins",
         "active": false,
@@ -10,12 +142,6 @@
         "rewards": "100 Annulith, 5 Senior Hunter Guides, 5 Colorless Dyes, 6,000 Beetle Coins",
         "active": false,
         "addedAt": "2026-05-25T11:00:00Z"
-    },
-    {
-        "code": "RACENOLIMIT",
-        "rewards": "100 Annulith, 2 Elite Hunter Guides, 2 Chaotic Dyes, 12,000 Beetle Coins",
-        "active": false,
-        "addedAt": "2026-05-25T10:00:00Z"
     },
     {
         "code": "NTE429vtuber",
@@ -36,12 +162,6 @@
         "addedAt": "2026-05-23T07:00:00Z"
     },
     {
-        "code": "NTENENE",
-        "rewards": "10,000 Clicky Fries, 10 DynamiK",
-        "active": true,
-        "addedAt": "2026-05-23T06:00:00Z"
-    },
-    {
         "code": "NTEFREE",
         "rewards": "30,000 Fons",
         "active": false,
@@ -52,12 +172,6 @@
         "rewards": "10,000 Beetle Coins, 10,000 Fons",
         "active": false,
         "addedAt": "2026-05-23T04:00:00Z"
-    },
-    {
-        "code": "NTEGIFT",
-        "rewards": "50 Annulith, 5 Rising Hunter Guides, 5 Light Dye",
-        "active": true,
-        "addedAt": "2026-05-23T03:00:00Z"
     },
     {
         "code": "504980102FKGOVNS",
@@ -88,141 +202,5 @@
         "rewards": "three rising hunter guide, three light dyes, and three manhole thugs",
         "active": false,
         "addedAt": "2026-04-29T09:00:00Z"
-    },
-    {
-        "code": "LACRIMOSA0603",
-        "rewards": "30 Annulith, 20,000 Fons",
-        "active": false
-    },
-    {
-        "code": "NTEvtuber",
-        "rewards": "50k fons and 50k beetle coins",
-        "active": false
-    },
-    {
-        "code": "SHINKU0708",
-        "rewards": "100 Annulith and other rewards",
-        "active": false,
-        "addedAt": "2026-06-27T13:42:59.670Z"
-    },
-    {
-        "code": "IROI0729",
-        "rewards": "100 Annulith and other rewards",
-        "active": false,
-        "addedAt": "2026-06-27T13:42:59.670Z"
-    },
-    {
-        "code": "999NIGHTS",
-        "rewards": "100 Annulith and other rewards",
-        "active": false,
-        "addedAt": "2026-06-27T13:42:59.670Z"
-    },
-    {
-        "code": "DRAGONGIRL",
-        "rewards": "30 Annulith, 20,000 Fons, 1 Puka Chocoa Ellie Tour Special",
-        "active": true,
-        "addedAt": "2026-07-08T13:58:43.599Z"
-    },
-    {
-        "code": "WELCOMETONTE",
-        "rewards": "Celebration Fireworks Avatar Frame",
-        "active": true,
-        "addedAt": "2026-07-08T13:58:43.600Z"
-    },
-    {
-        "code": "NTEKokushi",
-        "rewards": "30,000 Fons, 30,000 Beetle Coins",
-        "active": true,
-        "addedAt": "2026-07-16T13:44:31.420Z"
-    },
-    {
-        "code": "NTEMusou",
-        "rewards": "10,000 Fons, 10,000 Beetle Coins",
-        "active": true,
-        "addedAt": "2026-07-16T13:44:31.420Z"
-    },
-    {
-        "code": "COMEBACK",
-        "rewards": "1 Fabricated Dice",
-        "active": true,
-        "addedAt": "2026-07-30T08:22:53.592Z"
-    },
-    {
-        "code": "FEATURED",
-        "rewards": "WISHLIST STACKMON ON STEAM\">",
-        "active": false,
-        "addedAt": "2026-08-06T14:02:03.728Z"
-    },
-    {
-        "code": "AD_MOBILE_ID",
-        "rewards": "AD_DESKTOP_ID;",
-        "active": true,
-        "addedAt": "2026-08-06T14:02:03.729Z"
-    },
-    {
-        "code": "FOGDENGAME",
-        "rewards": "100 Anulith, 5 Light Dyes, 5 Rising Hunter Guides, 4,000 Beetle Coins",
-        "active": false,
-        "addedAt": "2026-08-08T18:34:31.237Z"
-    },
-    {
-        "code": "EYEOFDELUSION",
-        "rewards": "100 Annulith, 5 Light Dyes, 5 Rising Hunter Guides, 6,000 Beetle Coins",
-        "active": false,
-        "addedAt": "2026-08-08T18:34:31.237Z"
-    },
-    {
-        "code": "SUMMERTIME",
-        "rewards": "100 Annulith, 2 Light Dyes, 2 Rising Hunter Guides, 12,000 Beetle Coins",
-        "active": false,
-        "addedAt": "2026-08-08T18:34:31.237Z"
-    },
-    {
-        "code": "ZANKOU0819",
-        "rewards": "30 Annulith, 50,000 Fons, 30,000 Beetle Coins",
-        "active": true,
-        "addedAt": "2026-08-08T18:34:31.237Z"
-    },
-    {
-        "code": "VETERANS",
-        "rewards": "NAPOLEONIC WARS ON STEAM\">",
-        "active": false,
-        "addedAt": "2026-08-18T12:39:50.413Z"
-    },
-    {
-        "code": "WITCHHOUSE",
-        "rewards": "100 Anulith, 5 Light Dyes, 5 Rising Hunter Guides, 4,000 Beetle Coins",
-        "active": true,
-        "addedAt": "2026-09-20T15:26:10.512Z"
-    },
-    {
-        "code": "THEWHOOTS",
-        "rewards": "100 Annulith, 5 Colorless Dyes, 5 Senior Hunter Guides, 6,000 Beetle Coins",
-        "active": true,
-        "addedAt": "2026-09-20T15:26:10.512Z"
-    },
-    {
-        "code": "PUKALANDGOGO",
-        "rewards": "100 Annulith, 2 Chaotic Dyes, 2 Elite Hunter Guides, 12,000 Beetle Coins",
-        "active": true,
-        "addedAt": "2026-09-20T15:26:10.513Z"
-    },
-    {
-        "code": "BLACKBIRDINNTE",
-        "rewards": "20 Heterogeneous Units, 30,000 Beetle Coins, 10,000 Fons",
-        "active": true,
-        "addedAt": "2026-09-29T17:44:58.664Z"
-    },
-    {
-        "code": "WONDERLOGGIFT",
-        "rewards": "30 Annulith, 3 Senior Hunter Guides, 20,000 Fons",
-        "active": true,
-        "addedAt": "2026-10-04T16:31:29.743Z"
-    },
-    {
-        "code": "BLACKBIRDHERE",
-        "rewards": "1 Exclusive Avatar Frame",
-        "active": true,
-        "addedAt": "2026-10-04T16:31:29.743Z"
     }
 ]

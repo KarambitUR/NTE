@@ -23,15 +23,15 @@ export default function HomePage() {
   const [copiedCode, setCopiedCode] = useState(null);
 
   useEffect(() => {
-    // Banner target date for Zankou (Patch 1.3 Phase 1): September 9, 2026
-    const targetDate = new Date('2026-09-09T21:59:00Z').getTime();
+    // Banner target date for Akane Rin (Patch 1.4 Phase 2): November 11, 2026
+    const targetDate = new Date('2026-11-11T21:59:00Z').getTime();
 
     const updateTimer = () => {
       const now = new Date().getTime();
       const distance = targetDate - now;
 
       if (distance < 0) {
-        setTimeLeft('Ended');
+        setTimeLeft(lang === 'uk' ? 'Завершено' : lang === 'fr' ? 'Terminé' : 'Ended');
         return;
       }
 
@@ -39,13 +39,17 @@ export default function HomePage() {
       const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 
-      setTimeLeft(`${days}d ${String(hours).padStart(2, '0')}h ${String(minutes).padStart(2, '0')}m`);
+      const dSuffix = lang === 'uk' ? 'д' : lang === 'fr' ? 'j' : 'd';
+      const hSuffix = lang === 'uk' ? 'г' : lang === 'fr' ? 'h' : 'h';
+      const mSuffix = lang === 'uk' ? 'хв' : lang === 'fr' ? 'm' : 'm';
+
+      setTimeLeft(`${days}${dSuffix} ${String(hours).padStart(2, '0')}${hSuffix} ${String(minutes).padStart(2, '0')}${mSuffix}`);
     };
 
     updateTimer();
     const interval = setInterval(updateTimer, 60000);
     return () => clearInterval(interval);
-  }, []);
+  }, [lang]);
 
   const activeCodes = promoCodes.filter((c) => c.active !== false).slice(0, 3);
   const tierRank = { 'S+': 1, 'S': 2, 'A': 3, 'B': 4 };
@@ -61,14 +65,14 @@ export default function HomePage() {
       fr: 'RPG URBAIN SURNATUREL PAR HOTTA STUDIO',
     },
     title: {
-      uk: 'Занкоу: Схід з Туману',
-      en: 'Zankou: Moonlit Fog',
-      fr: 'Zankou : Brume Lunaire',
+      uk: 'Акане Рін: Зірка Сцени',
+      en: 'Akane Rin: Dazzling Star',
+      fr: 'Akane Rin : Étoile Éblouissante',
     },
     desc: {
-      uk: 'Оновлення 1.3 вже доступне! Новий S+ атакуючий персонаж стихії Заклинання — Занкоу (Zankou)! Збільшена ймовірність випадання її сигнатурної зброї "Ненаситний Клинок" (Ravenous Blade).',
-      en: 'Version 1.3 is now live! New S+ Incantation Main DPS — Zankou! Rate-up active for her signature Arc "Ravenous Blade" and exclusive cartridges.',
-      fr: 'La version 1.3 est disponible ! Nouveau DPS Principal Incantation S+ — Zankou ! Taux d\'obtention accru pour son Arc signature "Lame Vorace".',
+      uk: 'Оновлення 1.4 "For Whom the Verses Mourn" вже наживо! Новий S+ персонаж підтримки та суб-ДПС стихії Лакшана — Акане Рін (Akane Rin)! Збільшена ймовірність випадання її сигнатурної зброї "Зворотний бік Місяця" (Far Side of the Moon).',
+      en: 'Version 1.4 "For Whom the Verses Mourn" is now live! New S+ Lakshana Sub-DPS & Support — Akane Rin! Rate-up active for her signature Arc "Far Side of the Moon" and exclusive cartridges.',
+      fr: 'La version 1.4 "For Whom the Verses Mourn" est disponible ! Nouveau Sub-DPS & Soutien Lakshana S+ — Akane Rin ! Taux d\'obtention accru pour son Arc signature "Far Side of the Moon".',
     },
     timerLabel: {
       uk: 'До завершення:',
@@ -94,29 +98,29 @@ export default function HomePage() {
   };
 
   return (
-    <div class="tab-pane active" id="pane-home">
+    <div className="tab-pane active" id="pane-home">
       {/* Hero Banner */}
-      <div class="hero-banner-container">
-        <div class="banner-showcase">
-          <img src={formatImgUrl('src/assets/zankou_banner.png')} alt="Zankou Banner" class="banner-image" />
-          <div class="banner-overlay">
-            <div class="banner-text-content">
-              <span class="banner-welcome">{heroTexts.tagline[lang] || heroTexts.tagline.uk}</span>
-              <h1 class="banner-main-title">
-                <span>ACTIVE BANNER</span>: <span class="highlight-text">{heroTexts.title[lang] || heroTexts.title.uk}</span>
+      <div className="hero-banner-container">
+        <div className="banner-showcase">
+          <img src={formatImgUrl('src/assets/cyberpunk_bg.jpg')} alt="Akane Rin Banner" className="banner-image" />
+          <div className="banner-overlay">
+            <div className="banner-text-content">
+              <span className="banner-welcome">{heroTexts.tagline[lang] || heroTexts.tagline.uk}</span>
+              <h1 className="banner-main-title">
+                <span>ACTIVE BANNER</span>: <span className="highlight-text">{heroTexts.title[lang] || heroTexts.title.uk}</span>
               </h1>
-              <p class="banner-desc">{heroTexts.desc[lang] || heroTexts.desc.uk}</p>
+              <p className="banner-desc">{heroTexts.desc[lang] || heroTexts.desc.uk}</p>
 
-              <div class="banner-bottom-row">
-                <div class="banner-timer">
-                  <span class="timer-label">{heroTexts.timerLabel[lang] || heroTexts.timerLabel.uk}</span>
-                  <span class="timer-value">{timeLeft}</span>
+              <div className="banner-bottom-row">
+                <div className="banner-timer">
+                  <span className="timer-label">{heroTexts.timerLabel[lang] || heroTexts.timerLabel.uk}</span>
+                  <span className="timer-value">{timeLeft}</span>
                 </div>
-                <div class="banner-actions">
-                  <button class="btn btn-accent btn-sm" onClick={() => openCharacterModal('zankou')}>
+                <div className="banner-actions">
+                  <button className="btn btn-accent btn-sm" onClick={() => openCharacterModal('akane')}>
                     {heroTexts.buildBtn[lang] || heroTexts.buildBtn.uk}
                   </button>
-                  <Link href="/tierlist" class="btn btn-secondary btn-sm">
+                  <Link href="/tierlist" className="btn btn-secondary btn-sm">
                     {heroTexts.tierlistBtn[lang] || heroTexts.tierlistBtn.uk}
                   </Link>
                 </div>
@@ -127,32 +131,32 @@ export default function HomePage() {
       </div>
 
       {/* Home Widgets */}
-      <div class="home-widgets-grid">
+      <div className="home-widgets-grid">
         {/* Promo Codes Widget */}
-        <div class="home-widget-card glass-panel">
-          <div class="widget-header">
-            <div class="widget-title-group">
-              <span class="widget-icon">🎟️</span>
+        <div className="home-widget-card glass-panel">
+          <div className="widget-header">
+            <div className="widget-title-group">
+              <span className="widget-icon">🎟️</span>
               <h3>{lang === 'en' ? 'Active Promo Codes' : lang === 'fr' ? 'Codes promo actifs' : 'Актуальні промокоди'}</h3>
             </div>
-            <Link href="/codes" class="widget-badge badge-green">
+            <Link href="/codes" className="widget-badge badge-green">
               {lang === 'en' ? 'VIEW ALL' : lang === 'fr' ? 'TOUT VOIR' : 'ДИВИТИСЬ УСІ'}
             </Link>
           </div>
-          <div class="widget-body">
-            <p class="widget-desc">
+          <div className="widget-body">
+            <p className="widget-desc">
               {lang === 'en' ? 'Click on any code to copy instantly.' : lang === 'fr' ? 'Cliquez sur un code pour le copier.' : 'Натисніть на код, щоб миттєво скопіювати його.'}
             </p>
-            <div class="codes-list" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <div className="codes-list" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {activeCodes.map((c) => {
                 const isCopied = copiedCode === c.code;
                 return (
-                  <div key={c.code} class="code-card" style={{ padding: '12px 16px' }}>
-                    <div class="code-info">
-                      <span class="code-string" style={{ fontSize: '1rem' }}>{c.code}</span>
-                      <span class="code-rewards" style={{ fontSize: '0.8rem' }}>{c.rewards}</span>
+                  <div key={c.code} className="code-card" style={{ padding: '12px 16px' }}>
+                    <div className="code-info">
+                      <span className="code-string" style={{ fontSize: '1rem' }}>{c.code}</span>
+                      <span className="code-rewards" style={{ fontSize: '0.8rem' }}>{c.rewards}</span>
                     </div>
-                    <button class="btn-copy" onClick={() => handleCopy(c.code)}>
+                    <button className="btn-copy" onClick={() => handleCopy(c.code)}>
                       {isCopied ? (
                         <span>✓ {lang === 'en' ? 'Copied' : lang === 'fr' ? 'Copié !' : 'Скопійовано'}</span>
                       ) : (
@@ -173,30 +177,30 @@ export default function HomePage() {
         </div>
 
         {/* Tier List Quick Preview */}
-        <div class="home-widget-card glass-panel">
-          <div class="widget-header">
-            <div class="widget-title-group">
-              <span class="widget-icon">📊</span>
-              <h3>{lang === 'en' ? 'Meta Tier List (v1.3)' : lang === 'fr' ? 'Tier List Méta (v1.3)' : 'Топ Персонажі Патчу 1.3'}</h3>
+        <div className="home-widget-card glass-panel">
+          <div className="widget-header">
+            <div className="widget-title-group">
+              <span className="widget-icon">📊</span>
+              <h3>{lang === 'en' ? 'Meta Tier List (v1.4)' : lang === 'fr' ? 'Tier List Méta (v1.4)' : 'Топ Персонажі Патчу 1.4'}</h3>
             </div>
-            <Link href="/tierlist" class="widget-badge badge-purple">
+            <Link href="/tierlist" className="widget-badge badge-purple">
               S+ / S TIER
             </Link>
           </div>
-          <div class="widget-body">
-            <div class="home-tier-preview-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(80px, 1fr))', gap: '10px' }}>
+          <div className="widget-body">
+            <div className="home-tier-preview-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(80px, 1fr))', gap: '10px' }}>
               {topTierChars.map((char) => {
                 const name = (CHARACTER_TRANSLATIONS[char.id] && CHARACTER_TRANSLATIONS[char.id][lang]?.name) || char.name;
                 return (
                   <div
                     key={char.id}
-                    class="char-preview-mini"
+                    className="char-preview-mini"
                     onClick={() => openCharacterModal(char.id)}
                     style={{ cursor: 'pointer', textAlign: 'center' }}
                   >
                     <div style={{ position: 'relative', borderRadius: '8px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.2)', height: '85px' }}>
                       <img src={formatImgUrl(char.avatar)} alt={name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                      <span class={`tier-badge-mini tier-${char.tier.toLowerCase().replace('+', '-plus')}`} style={{ position: 'absolute', top: 2, right: 2, fontSize: '10px', padding: '2px 4px', borderRadius: '4px', background: 'rgba(0,0,0,0.8)', fontWeight: 'bold' }}>
+                      <span className={`tier-badge-mini tier-${char.tier.toLowerCase().replace('+', '-plus')}`} style={{ position: 'absolute', top: 2, right: 2, fontSize: '10px', padding: '2px 4px', borderRadius: '4px', background: 'rgba(0,0,0,0.8)', fontWeight: 'bold' }}>
                         {char.tier}
                       </span>
                     </div>
@@ -209,23 +213,23 @@ export default function HomePage() {
         </div>
 
         {/* Latest Guides Widget */}
-        <div class="home-widget-card glass-panel">
-          <div class="widget-header">
-            <div class="widget-title-group">
-              <span class="widget-icon">📖</span>
+        <div className="home-widget-card glass-panel">
+          <div className="widget-header">
+            <div className="widget-title-group">
+              <span className="widget-icon">📖</span>
               <h3>{lang === 'en' ? 'Featured Guides' : lang === 'fr' ? 'Guides en vedette' : 'Рекомендовані гайди'}</h3>
             </div>
-            <Link href="/guides" class="widget-badge badge-cyan">
+            <Link href="/guides" className="widget-badge badge-cyan">
               {lang === 'en' ? 'ALL GUIDES' : lang === 'fr' ? 'TOUS LES GUIDES' : 'УСІ ГАЙДИ'}
             </Link>
           </div>
-          <div class="widget-body">
-            <div class="home-guides-list" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          <div className="widget-body">
+            <div className="home-guides-list" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {latestGuides.map((g) => {
                 const title = getGuideText(g, 'title', lang);
                 return (
                   <Link key={g.id} href={`/guides/${g.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                    <div class="guide-quick-item glass-panel" style={{ padding: '10px 14px', borderRadius: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div className="guide-quick-item glass-panel" style={{ padding: '10px 14px', borderRadius: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <span style={{ fontWeight: '600', fontSize: '14px' }}>{title}</span>
                       <span style={{ fontSize: '12px', opacity: 0.7 }}>➔</span>
                     </div>

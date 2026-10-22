@@ -35,13 +35,13 @@ export default function CalendarPage() {
   };
 
   return (
-    <div class="tab-pane active" id="pane-calendar">
-      <div class="section-header">
-        <h2 class="section-title">{pageTexts.title[lang] || pageTexts.title.uk}</h2>
-        <p class="section-desc">{pageTexts.subtitle[lang] || pageTexts.subtitle.uk}</p>
+    <div className="tab-pane active" id="pane-calendar">
+      <div className="section-header">
+        <h2 className="section-title">{pageTexts.title[lang] || pageTexts.title.uk}</h2>
+        <p className="section-desc">{pageTexts.subtitle[lang] || pageTexts.subtitle.uk}</p>
       </div>
 
-      <div class="timeline-container">
+      <div className="timeline-container">
         {timelineEvents.map((evt, idx) => {
           const isLeft = idx % 2 === 0;
           const isActive = evt.status === 'Active';
@@ -54,13 +54,13 @@ export default function CalendarPage() {
           return (
             <div
               key={idx}
-              class={`timeline-event ${isLeft ? 'timeline-left' : 'timeline-right'}`}
+              className={`timeline-event ${isLeft ? 'timeline-left' : 'timeline-right'}`}
             >
-              <div class="timeline-content glass-panel">
+              <div className="timeline-content glass-panel">
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-                  <span class="timeline-date">{evt.date}</span>
+                  <span className="timeline-date">{evt.date}</span>
                   <span
-                    class={`badge ${isActive ? 'badge-green' : isUpcoming ? 'badge-orange' : 'badge-secondary'}`}
+                    className={`badge ${isActive ? 'badge-green' : isUpcoming ? 'badge-orange' : 'badge-secondary'}`}
                     style={{ fontSize: '10px' }}
                   >
                     {statusLabel}
