@@ -20,19 +20,19 @@
     {
         "code": "PUKALANDGOGO",
         "rewards": "100 Annulith, 2 Chaotic Dyes, 2 Elite Hunter Guides, 12,000 Beetle Coins",
-        "active": true,
+        "active": false,
         "addedAt": "2026-09-20T15:26:10Z"
     },
     {
         "code": "THEWHOOTS",
         "rewards": "100 Annulith, 5 Colorless Dyes, 5 Senior Hunter Guides, 6,000 Beetle Coins",
-        "active": true,
+        "active": false,
         "addedAt": "2026-09-20T15:26:10Z"
     },
     {
         "code": "WITCHHOUSE",
         "rewards": "100 Annulith, 5 Light Dyes, 5 Rising Hunter Guides, 4,000 Beetle Coins",
-        "active": true,
+        "active": false,
         "addedAt": "2026-09-20T15:26:10Z"
     },
     {
@@ -214,5 +214,23 @@
         "rewards": "AD_DESKTOP_ID;",
         "active": true,
         "addedAt": "2026-10-22T16:37:35.578Z"
+    },
+    {
+        "code": "INVALIDNUMBER",
+        "rewards": "100 Anulith, 5 Light Dyes, 5 Rising Hunter Guides, 4,000 Beetle Coins",
+        "active": true,
+        "addedAt": "2026-10-28T17:57:41.837Z"
+    },
+    {
+        "code": "HIOLDFRIEND",
+        "rewards": "100 Annulith, 5 Colorless Dyes, 5 Senior Hunter Guides, 6,000 Beetle Coins",
+        "active": true,
+        "addedAt": "2026-10-28T17:57:41.837Z"
+    },
+    {
+        "code": "EXENORESPONSE",
+        "rewards": "100 Annulith, 2 Colorless Dyes, 2 Elite Hunter Guides, 12,000 Beetle Coins",
+        "active": true,
+        "addedAt": "2026-10-28T17:57:41.837Z"
     }
 ]
