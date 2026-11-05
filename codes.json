@@ -212,7 +212,7 @@
     {
         "code": "AD_MOBILE_ID",
         "rewards": "AD_DESKTOP_ID;",
-        "active": true,
+        "active": false,
         "addedAt": "2026-10-22T16:37:35.578Z"
     },
     {
