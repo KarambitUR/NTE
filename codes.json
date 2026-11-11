@@ -232,5 +232,11 @@
         "rewards": "100 Annulith, 2 Colorless Dyes, 2 Elite Hunter Guides, 12,000 Beetle Coins",
         "active": true,
         "addedAt": "2026-10-28T17:57:41.837Z"
+    },
+    {
+        "code": "CALLELYMS",
+        "rewards": "30 Annulith, 3 Senior Hunter Guides, 20,000 Fons",
+        "active": true,
+        "addedAt": "2026-11-11T19:18:30.915Z"
     }
 ]
